@@ -142,6 +142,320 @@
             
 
 <div class="post">
+    <a href="/2022/05/28/JAVA入门/">
+        <h2>
+            JAVA入门
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/5/28
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h1><p>1.什么是编程语言？</p>
+<p>人与计算机沟通交流的一种特殊语言</p>
+<p>詹姆斯·高斯林 java语言创始者</p>
+<p>配置环境变量：</p>
+<p>​		<strong>jdk</strong>   java开发工具包</p>
+<p>​		<strong>jre</strong>    java运行时环境</p>
+<p>​		<strong>jvm</strong>  java虚拟机 </p>
+<p>java程序执行过程：</p>
+<p>​	1.先编写java源代码 javac.exe</p>
+<p>​	2.对java源代码进行编译 javac 源文件名称</p>
+<p>​		编译完成后会生成当前源文件所生成的字节码文件.class</p>
+<p>​    	字节码文件是开发人员看不懂的， 只有jvm虚拟机才能识别</p>
+<p>​	3.运行java代码 java.exe</p>
+<p>​		java 类名</p>
+<p>​		<strong>java语言是支持跨平台的：用java编写的源代码可以在不同的系统	上运行</strong></p>
+<p>​	<strong>使用JDK开发完成的java程序，交给JRE去运行</strong></p>
+<h2 id="2-java入门"><a href="#2-java入门" class="headerlink" title="2.java入门"></a>2.java入门</h2><p>java语法规范</p>
+<p>1.类和接口要声名一个标识符用大驼峰命名法</p>
+<p>2.变量和方法要声名标识符用小驼峰命名法</p>
+<p>注释：</p>
+<p><strong>#快捷键 ctrl + shift + &#x2F;</strong></p>
+<p>单行注释：&#x2F;&#x2F;注释文字</p>
+<p>多行注释：&#x2F;* 注释文字 *&#x2F;</p>
+<p>文档注释：&#x2F;** 注释文字 *&#x2F;</p>
+<pre><code class="java">class Hello&#123;
+    public static void main(String[] args)&#123;
+        System.out.println(&quot;Hello world&quot;);
+    &#125;
+&#125;
+//java最基本的Hello world
+</code></pre>
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>在程序执行的过程中其值不可以发生改变</p>
+<p>在方法外面定义，全大写，单词与单词之间用下划线分隔开</p>
+<p>java是一门强类型语言,对于每一种数据都定义了明确的具体数据类型</p>
+<p>在内存总分配了不同大小的内存空间</p>
+<p>数据类型</p>
+<p>1.基本数据类型：</p>
+<p>​		a.数值型：整数类型（byte，short，int，long），</p>
+<p>​						   浮点类型（float，double）</p>
+<p>​		b.字符型：(char)</p>
+<p>​		c.布尔型：(boolean)</p>
+<p>2.引用数据类型：</p>
+<p>​		a.类：    （class）</p>
+<p>​	    b.接口：（interface）</p>
+<p>​		c.数组:   （[ ]）</p>
+<pre><code class="java">double d = 3.14;
+
+float f = 3.14f;
+
+char c = &#39;q&#39;;
+
+String s = &quot;hello world&quot;;
+//String是引用数据类型
+
+boolean b = false;
+</code></pre>
+<p>有几个数据类型关键字就开辟几份内存空间</p>
+<p>强制转换：</p>
+<pre><code class="java">double d =3.14;
+int i = (int)d;
+</code></pre>
+<p>运算符+ - * &#x2F; %(取余)</p>
+<pre><code class="java">num++;
+//后置++，先取值再赋值
+--num;
+//前置--，先赋值再取值
+d1 += d2 -&gt; d1 = d1 + d2;
+&quot;Hello&quot; instanceof String //结果true,检查是否是类的对象
+ 
+ //与运算 两者同时为真结果为真
+ if (1 &gt; 2 &amp; 1 == 2);
+ //不短路 false &amp; false
+ if (1 &gt; 2 &amp;&amp; 1 == 2);
+ //短路运算 false &amp;&amp; 不运算
+
+//或运算 两者只要有一者为真，结果为真
+if (1 &lt; 2 | 2 &lt; 3);
+if (1 &lt;2 || 2 &lt; 3);
+//非运算,取反
+(1 &gt; 2) -&gt; false !(1 &gt; 2) -&gt; true
+  
+</code></pre>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>在JVM虚拟机的栈内存开辟空间</p>
+<p><strong>JAVA对类的定义：</strong></p>
+<p>​		<strong>java本身是面向对象的语言，如果需要使用java去开发一个软件</strong>**</p>
+<p><strong>那么，软件中的每一个模块都是一个个体，每一个个体会拆分为很多单元，每个单元本身</strong></p>
+<p><strong>是一个模糊的概念，针对这样的一个概念，我们一般用类去定义，然后在具体执行的时候，</strong></p>
+<p><strong>需要让模块之间相互协作，正常的去模拟现实生活中场景的时候，就需要创建这个类</strong></p>
+<p><strong>所对应的实例</strong></p>
+<h4 id="包"><a href="#包" class="headerlink" title="包"></a>包</h4><p>将鼠标光标放置于未被导入的包名称上，按住alt + Enter 可以快速import包 (I JAVA支持)</p>
+<p>创建类</p>
+<p>new关键字 创建类的实例</p>
+<p>创建类实例的对象</p>
+<p>对象.调用方法</p>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>方法是完成特定功能的代码块</p>
+<p>格式：</p>
+<pre><code class="java">        修饰符  返回值类型  方法名(参数类型  参数名1， 参数类型  参数名2..)&#123;
+    函数体;
+    return 返回值;
+&#125;
+
+
+    
+package com.tly.test;
+
+/**
+ * 第一个简单java小程序，输入三个浮点数，求最小值 
+ */
+
+import java.util.Scanner;
+
+public class Test02 &#123;
+    public static void main(String[] args) &#123;
+        
+        //创建Test02的对象
+        Test02 getMinNum = new Test02();
+        
+        //接收输入的浮点数据
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println(&quot;请输入第一个浮点数据类型：&quot;);
+        
+        //创建一个浮点型变量接收返回的参数
+        double num1 = scanner.nextDouble();
+
+        System.out.println(&quot;请输入第二个浮点数据类型：&quot;);
+
+        double num2 = scanner.nextDouble();
+
+        System.out.println(&quot;请输入第三个浮点数据类型：&quot;);
+
+        double num3 = scanner.nextDouble();
+        
+        //调用对象的方法并传输传输
+        double numMin = getMinNum.getMinNum(num1, num2, num3);
+
+        System.out.println(&quot;最小值为：&quot;+numMin);
+
+        &#125;
+    
+    //创建类的getMinNum方法
+    public double getMinNum(double num1,double num2, double num3)&#123;
+
+        double[] doubles = new double[3];
+
+        //将数据传输给列表
+        doubles[0] = num1;
+        doubles[1] = num2;
+        doubles[2] = num3;
+
+        //创建中间值
+        double numMin = num1;
+
+        for (int i = 0; i &lt; doubles.length; i++) &#123;
+
+            if(doubles[i] &lt; numMin)&#123;
+
+                numMin = doubles[i];
+
+            &#125;
+            
+        &#125;
+
+        return numMin;
+    &#125;
+&#125;
+
+</code></pre>
+<p>方法特性：</p>
+<p>递归：</p>
+<p><strong>使用递归会严重损耗系统资源，因此要尽量避免使用递归</strong></p>
+<p>方法的重载：</p>
+<p><strong>在一个区间内，java语法中运行方法名称相同，参数列表不同的语法格式，这种现象我们称之为重载</strong></p>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>new创建的容器存放在堆内存中</p>
+<p>数组是一个引用数据类型</p>
+<p>可以通过new的方式去创建数组</p>
+<p>在不赋值的情况下，取到的是默认值，整型默认值是0</p>
+<pre><code class="java">//创建数组
+int[] ints = new int[10];
+
+//给数组赋值
+ints[0] = 100;
+
+//遍历数组
+for (int i = 0; i &lt; ints.length; i++)&#123;
+    
+    System.out.println(ints[i]);
+
+&#125;
+
+//创建字符串数组
+String[] strings = new String[5];
+
+//赋值
+String[0] = &quot;hello&quot;;
+
+//foreach遍历
+//for (数据的数据类型 遍历的每一项 : 容器对象)
+for (String str : strings)&#123;
+    
+     System.out.println(str);
+    
+&#125;
+</code></pre>
+<p>数组操作常见的小问题：</p>
+<pre><code class="java">数组索引越界
+
+    -ArrayIndexOutOfBoundsException
+
+    -访问到了数组中的不存在的索引时发生。
+
+空指针异常
+    -NullPointerException
+    -数组引用没有指向实体，却在操作实体中的元素时。
+</code></pre>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>字符串常用函数</p>
+<pre><code class="java">//定义字符串
+String str = &quot;hello world&quot;;
+
+//str.equals() 判断字符是否完全匹配 
+System.out.println(str.equals(&quot;hello world&quot;));
+//输出true
+
+//str.contains()判断是否包含某一字符串
+System.out.println(str.contains(&quot;hello&quot;));
+//输出true
+
+//str.substring()切割字符串 int beginIndex
+System.out.println(str.substring(6));
+//输出world 切割[0,6)
+
+System.out.println(str.substring(6,11));
+//输出world 切割(6,11]
+
+//str.toLowerCase()将大写字母转成小写
+System.out.println(str.toLowerCase());
+
+//str.length() 获取字符串字符个数
+System.out.println(str.length());
+//输出11
+
+//str.endsWith()判断字符串是否以某个字符串结尾
+System.out.println(str.endsWith(&quot;d&quot;));
+//输出true
+
+//str.split()字符串的分割
+String[] strings = str.split(&quot; &quot;);
+
+//遍历数组
+for (String s:strings)&#123;
+    
+    System.out.println(s);
+    
+&#125;
+//输出hello 
+//输出world
+
+//将字符串转为字符数组
+char[] chars = str.toCharArray();
+
+for (String c:chars)&#123;
+    
+    System.out.println(c);
+    
+&#125;
+
+//str.replace()字符串替换方法
+String str4 = str.replace(&quot;world&quot;,&quot;java&quot;);
+System.out.println(str4);
+//输出hello java
+
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/java" style="color: #ffa2c4">
+                java
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/05/28/JAVA入门/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
     <a href="/2022/05/27/Linux云计算/">
         <h2>
             Linux云计算
@@ -426,50 +740,6 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
         
     </div>
     <a href="/2022/05/27/Linux云计算/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/05/18/hello-world/">
-        <h2>
-            Welcome!
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/5/18
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2022/05/18/hello-world/" class="go-post">
         阅读全文
     </a>
 </div>
