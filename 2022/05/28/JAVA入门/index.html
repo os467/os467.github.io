@@ -138,7 +138,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/java" style="color: #03a9f4">
+                <a href="/tags/java" style="color: #00bcd4">
                     java
                 </a>
             </span>
@@ -419,6 +419,386 @@ System.out.println(str4);
 //输出hello java
 
 </code></pre>
+<h2 id="3-面向对象（万物皆对象）"><a href="#3-面向对象（万物皆对象）" class="headerlink" title="3.面向对象（万物皆对象）"></a>3.面向对象（万物皆对象）</h2><h3 id="面向对象特征："><a href="#面向对象特征：" class="headerlink" title="面向对象特征："></a>面向对象特征：</h3><ul>
+<li><h4 id="封装（encapsulation）"><a href="#封装（encapsulation）" class="headerlink" title="封装（encapsulation）"></a>封装（encapsulation）</h4></li>
+<li><h4 id="继承（inheritance）"><a href="#继承（inheritance）" class="headerlink" title="继承（inheritance）"></a>继承（inheritance）</h4></li>
+<li><h4 id="多态（polymorphism）"><a href="#多态（polymorphism）" class="headerlink" title="多态（polymorphism）"></a>多态（polymorphism）</h4></li>
+</ul>
+<h4 id="类与对象关系"><a href="#类与对象关系" class="headerlink" title="类与对象关系"></a>类与对象关系</h4><p>以后我们开发项目的时候，要不断的去声明类，在类中需要去封装属性和行为，</p>
+<p>但是针对某一些属性，我们需要将它保护起来，不希望直接对外界提供访问。</p>
+<p>所以我们会将这些属性用private关键字进行修饰，private代表的是私有的访问权限修饰符。</p>
+<p> 被private修饰的属性只能在本类中才能访问到</p>
+<p><strong>alt + INS键快速选择创建类的get方法与set方法</strong></p>
+<pre><code class="java">public class User &#123;
+
+    private String userName;
+
+    private String address;
+
+    private String idCard;
+
+    private String phoneID;
+    
+    //提供一个idCard对应的get方法,没有参数，但是有返回值
+    public String getIdCard()&#123;
+
+        return idCard;
+
+    &#125;
+
+    //提供一个idCard对应的set方法，有参数，但是没有返回值
+    public void setIdCard(String idCard)&#123;
+
+        this.idCard = idCard;
+
+    &#125;
+
+
+&#125;
+</code></pre>
+<h3 id="JVM内存分配"><a href="#JVM内存分配" class="headerlink" title="JVM内存分配"></a>JVM内存分配</h3><p><strong>栈内存</strong>：主函数，定义的普通函数，基本数据类型，数据地址（引用数据类型的地址）,所有的方法</p>
+<p><strong>堆内存</strong>：new出来的对象,应用数据类型的值</p>
+<p><strong>方法区内存</strong>：方法区内存中一般存放的是代码片段（java源文件编译之后的字节码文件）,以及常量池</p>
+<p>​       <strong>静态方法存在栈内存中，静态变量存在于方法区内存中</strong></p>
+<ul>
+<li><p>定义在类中的实例变量一定是在堆内存中开辟的空间，因为new出来的部分一定存在于堆内存中。</p>
+</li>
+<li><p>在JVM内存中，所有的方法，无论是静态方法还是普通方法（实例方法），都是在栈中分配空间。</p>
+</li>
+</ul>
+<h4 id="局部变量和实例变量的区别："><a href="#局部变量和实例变量的区别：" class="headerlink" title="局部变量和实例变量的区别："></a>局部变量和实例变量的区别：</h4><p>局部变量是存在于方法体内部的变量（包含了参数），局部变量如果是基本数据类型，则直接在栈中开辟空间，如果是引用数据类型，变量声明部分在栈中，实例创建部分在堆中，如果是实例遍历，所有的内存都会在堆中去开辟。</p>
+<h5 id="常量池："><a href="#常量池：" class="headerlink" title="常量池："></a>常量池：</h5><p>常量池一般存储字符串常量</p>
+<p><strong>Java中通过 &#x3D;&#x3D; ，如果比较的是基本数据类型，比的是值，如果比较的是引用数据类型，则比较的是内存地址</strong></p>
+<h5 id="private关键字：私有的"><a href="#private关键字：私有的" class="headerlink" title="private关键字：私有的"></a>private关键字：私有的</h5><p>​		是一个权限修饰符</p>
+<p>​		可以修饰成员（成员变量和成员方法）</p>
+<p>​		被private修饰的成员只能在本类中才能访问</p>
+<h5 id="this关键词"><a href="#this关键词" class="headerlink" title="this关键词"></a>this关键词</h5><p>​		this：代表所在类的对象的引用（方法被哪个对象调用，this就代表那个对象）</p>
+<p>​		this.变量名 访问的是本类中的实例变量</p>
+<h3 id="构造方法（Constructor）"><a href="#构造方法（Constructor）" class="headerlink" title="构造方法（Constructor）"></a>构造方法（Constructor）</h3><p><strong>作用</strong>：给对象的数据进行初始化</p>
+<p>方法名与类名相同，没有返回值类型，连void也没，没有具体的返回值</p>
+<p>如果不提供构造方法，那么系统会给出默认的构造方法，如果提供了构造方法（不管是否带参数），系统将不再提供默认无参数的构造方法</p>
+<p>构造方法可以重载</p>
+<p><strong>构造方法的作用</strong>：</p>
+<p>​		无参构造：实例化对象，但是实例化对象后，所有的属性都是没有被赋值的</p>
+<p>​		有参构造：实例化对象，可以在创建对象时，就给实例的属性赋值</p>
+<h3 id="静态关键字-static"><a href="#静态关键字-static" class="headerlink" title="静态关键字 static"></a>静态关键字 static</h3><p>可以修饰方法，可以修饰属性，但是不能修饰类</p>
+<p>被静态关键字修饰的属性和方法，会成为一个类级别的元素，会随着类的加载而加载</p>
+<p>局部变量不能被static修饰</p>
+<p>被static修饰的变量我们称之为静态变量</p>
+<p>静态变量会随着类的加载而加载，在JVM解析字节码文件时，该变量的内存空间就会被开辟出来</p>
+<p>静态变量的内存空间会被开辟在该方法区中</p>
+<p><strong>静态方法</strong>：</p>
+<pre><code class="java">public class StaticTest01&#123;
+    
+    private static String name; //静态变量
+    
+    public static void main(String[] args)&#123;
+        
+        //调用静态方法
+        StaticTest01.getMethod();
+        
+        StaticTest01 staticTest01 = new StaticTest01();
+        
+        //调用实例方法
+        staticTest01.getMethod02();
+    &#125;
+    
+    //声明一个静态方法
+    public static void getMethod()&#123;
+        
+        System.out.println(&quot;我是一个静态方法!&quot;);
+        
+    &#125;
+    
+    public void getMethod02()&#123;
+        
+        System.out.println(&quot;我是一个静态方法!&quot;);
+        
+    &#125;     
+    
+&#125;
+
+</code></pre>
+<h5 id="静态代码块："><a href="#静态代码块：" class="headerlink" title="静态代码块："></a>静态代码块：</h5><p>在类加载的时候将会被执行的语句体，而且<strong>只加载一次</strong>（在主函数执行前执行）</p>
+<pre><code class="java">static&#123;
+    
+    System.out.println(&quot;static 执行了！！&quot;);
+    
+&#125;
+</code></pre>
+<h5 id="一个类基本类的标准代码写法"><a href="#一个类基本类的标准代码写法" class="headerlink" title="一个类基本类的标准代码写法"></a>一个类基本类的标准代码写法</h5><ul>
+<li><strong>类</strong></li>
+<li>​	<strong>成员变量</strong></li>
+<li>​	<strong>构造方法</strong></li>
+<li>​		无参构造方法</li>
+<li>​		带参构造方法</li>
+<li>​	<strong>成员方法</strong></li>
+<li>​		getXxx()</li>
+<li>​		setXxx()</li>
+<li><strong>给成员变量赋值的方法</strong></li>
+<li>​	无参构造方法+setXxx()</li>
+<li>​	带参构造方法</li>
+</ul>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p><strong>概述：</strong>多个类中存在相同的属性和行为时，将这些内容抽取到单独一个类中，那么多个类无需再定义这些属性和行为，只要继承那个类即可。</p>
+<p>通过<strong>extends</strong>关键词可以实现类与类的继承</p>
+<p><strong>class 子类名 extends 父类名 {}</strong></p>
+<p>单独的这个类称为父类，基类，或者超类；这多个类可以称为子类或者派生类</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>继承可以让子类去继承父类，这样子类会继承父类所有的属性和方法，在java中是<strong>不允许有多继承</strong>的</p>
+<p><strong>Object类</strong>：是java中的祖宗类，当一个类在代码层面没有去继承任何的父类，那么这个类</p>
+<p>默认会继承Object类</p>
+<p><strong>继承的重写</strong>（覆盖）：</p>
+<p>子类继承父类以后，可以获取到父类所有的方法（包含被private修饰的私有方法，但是访问不到）</p>
+<p>如果父类方法的功能不能够满足子类的需求，这个时候，子类可以针对这个方法进行重写 </p>
+<p>父类中私有方法不能被重写</p>
+<p>子类重写父类方法时，访问权限不能更低</p>
+<p>父类静态方法，子类也必须通过静态方法进行重写</p>
+<h5 id="继承的好处："><a href="#继承的好处：" class="headerlink" title="继承的好处："></a>继承的好处：</h5><p><strong>提高了代码的复用性</strong></p>
+<ul>
+<li>多个相同的成员可以放到同一个类中</li>
+</ul>
+<p><strong>提高了代码的维护性</strong></p>
+<ul>
+<li>如果功能的代码需要修改，修改一处即可</li>
+</ul>
+<p><strong>让类与类之间产生了关系，是多态的前提</strong></p>
+<ul>
+<li>其实这也是继承的一个弊端：类的耦合性很强</li>
+</ul>
+<p><strong>不要为了部分功能而去继承</strong> ，<strong>继承中类之间的体现是“is a”的关系</strong></p>
+<p><strong>继承中成员变量的关系</strong></p>
+<p>在子类方法中访问一个变量：</p>
+<ul>
+<li>首先在子类局部范围找</li>
+<li>然后在子类成员范围找</li>
+<li>最后在父类成员范围找（不能访问父类局部范围）</li>
+<li>如果还是没有就报错</li>
+</ul>
+<h4 id="Super关键字"><a href="#Super关键字" class="headerlink" title="Super关键字"></a>Super关键字</h4><p>子类继承父类之后，子类可以通过super关键字去指向父类的元素(属性，普通方法，构造方法)</p>
+<p> 如果指向父类的构造用super() 如果指向子类的构造用 this()</p>
+<pre><code class="java">public class Student extends Person&#123;
+    
+    public Student()&#123;
+        
+        //指向的是父类的无参构造,不写则默认存在
+        super();
+        
+    &#125;
+    
+    @Override
+    public void sleep()&#123;
+        
+        //指向父类的普通方法,只能存在于子类构造中 
+        super.sleep();
+        
+    &#125;
+    
+    public void getMethod()&#123;
+        
+        //this指向当前类实例的属性
+        System.out.println(this.name);
+        
+        //super指向父类的属性
+        System.out.println(super.name);
+        
+    &#125;
+    
+&#125;
+</code></pre>
+<h4 id="继承中的构造方法的关系"><a href="#继承中的构造方法的关系" class="headerlink" title="继承中的构造方法的关系"></a>继承中的构造方法的关系</h4><p>子类中所有的构造方法默认都会访问父类中的空参数的构造方法</p>
+<p>​		因为子类会继承父类中的数据，可能还会使用父类的数据</p>
+<p>​		所以，子类初始化之前，一定要先完成父类数据的初始化</p>
+<p>​		每一个构造方法的第一条语句默认都是：super()</p>
+<p>方法重写与方法重载的区别？方法重载能改变返回值类型吗？</p>
+<p>答：方法重写建立在类的继承关系上，是对父类同名方法的覆盖。方法重载是一个类中，多个同名方法，但是参数列表不同。方法重载可以改变返回值类型。</p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>某一事物，在不同时刻表现出来的不同状态</p>
+<p>多态是面向对象特征之一，也是最重要的一个特征</p>
+<p>多态思想：</p>
+<p>为了解除类与类之间的耦合（模块与模块之间的耦合），不能面向具体编程，而要面向抽象编程（面向接口编程）</p>
+<p>首先多态必须要有父子关系的体现（继承，实现），是在不同时刻展现出不同的状态</p>
+<p>父类的引用接收子类对象(向上转型)，或者是向下转型都是多态的体现</p>
+<p>多态在程序执行时分为编译阶段和运行阶段：</p>
+<p>普通方法：</p>
+<p>编译阶段看左边：编译时要检查调用的方法在父类中是否存在</p>
+<p>运行阶段看右边：因为我们实际new出来的对象是子类对象，所以最终执行的方法也是子类的方法</p>
+<p>静态方法:</p>
+<p>静态方法可以用类名去调用，类名.静态方法名()</p>
+<p>静态方法也可以用实例去调用,对象引用.静态方法名(),本质也是通过类名去调用</p>
+<p>静态方法是一个类级别的方法，所以它已经脱离了实例，和对象没有关系</p>
+<p>编译看左边，运行看左边</p>
+<pre><code class="java">class PloyTest01&#123;
+    
+    public static void main(String[] args)&#123;
+        
+        Cat cat = new Cat();
+        
+        //通过多态机制来创建猫的实例
+        Animal animal = new Cat();
+        
+        animal.eat();
+        
+        //引用数据类型的强转就是多态的一种,向上转型
+        Animal animal1 = (Animal)cat;
+        
+        //面试题:
+        Animal animal = new Rabbit();
+        
+        //判断animal1是否属于Cat,属于则进行强转
+        if (animal1 instanceof Cat)&#123;
+            
+            //向下转型
+            Cat cat1 = (Cat)animal1;
+        
+            cat1.eat();
+            
+        &#125;
+        
+        
+        
+        
+    &#125;
+    
+&#125;
+</code></pre>
+<p><strong>多态前提和体现</strong></p>
+<p>​	有继承关系</p>
+<p>​	有方法重写</p>
+<p>​	有父类引用指向子类对象</p>
+<p><strong>多态在开发中的作用</strong></p>
+<p>主任喂养宠物的案例：</p>
+<p>​		有一个主人是master喜欢喂养宠物，喂养的宠物有很多种（猫，狗，兔子，鸟），然后随着时间的推		移，主人会喂养越来越多的宠物，针对于这样的场景我们通过java程序去模拟一下（体现出多态）</p>
+<p>​		重载算不算多态？不算多态（没有体现父子关系）</p>
+<p>结论：如果按照传统的方式进行开发（不使用多态）：会发现程序进行迭代的时候，需要去修改主人类（需要在原有的代码继承上进行修改），这样做违背了设计模式中的<strong>开辟原则</strong>（OCP 对扩展开发，对修改关闭）：在写程序的时候，尽量避免在原有的代码之上进行修改，这样的话修改的部分容易对别的类（或者说别的模块造成影响）</p>
+<pre><code class="java">public class Master &#123;
+
+    //这是一个喂养的方法,用父类的引用去接收子类的对象
+    public void feed(Pet pet)&#123;
+
+        pet.eat();
+
+    &#125;
+
+&#125;
+
+//创建抽象类Pet
+public class Pet &#123;
+
+    public void eat()&#123;
+
+        System.out.println(&quot;所有的宠物都有吃的特性&quot;);
+
+
+    &#125;
+
+&#125;
+
+
+public class Cat extends Pet&#123;
+
+    public void eat()&#123;
+
+        System.out.println(&quot;猫吃鱼&quot;);
+
+    &#125;
+
+&#125;
+
+public class Rabbit extends Pet&#123;
+
+    public void eat()&#123;
+
+        System.out.println(&quot;兔子爱吃萝卜&quot;);
+
+    &#125;
+
+&#125;
+
+public class Dog extends Pet&#123;
+
+    public void eat()&#123;
+
+        System.out.println(&quot;狗爱啃骨头&quot;);
+
+    &#125;
+
+&#125;
+
+public class MasterTest &#123;
+
+    public static void main(String[] args) &#123;
+
+
+        Master master = new Master();
+
+        master.feed(new Cat());
+
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><p>一个没有方法体的方法应该定义为抽象方法，而类中如果有抽象方法，该类必须定义为抽象类</p>
+<p>抽象类是java中最顶级的一种表现形式，接下来就是类，再接下来就是对象</p>
+<p>抽象类用<strong>abstract</strong>修饰 &gt; 类class &gt; new 对象</p>
+<p>我们如果想创建对象的话，只能通过类class去创建，抽象类是不能创建对象的</p>
+<p>因为抽象类的下一级是类</p>
+<p><strong>格式</strong>：abstract class 类名{}</p>
+<ul>
+<li>抽象类指的是class（本身就是抽象的事物）往上继续抽象就得到了抽象类</li>
+<li>抽象类中可以有普通方法，也可以有抽象方法</li>
+<li>抽象方法一定存在于抽象类中</li>
+<li>抽象类是不能实例化对象的，因为抽象类的下一级是类class</li>
+<li>抽象类不能实例化对象，他的作用是用来被子类继承的</li>
+<li>抽象类中可以定义普通的成员变量、静态变量、静态方法</li>
+<li>抽象方法是没有方法体的，不用提供具体的实现，当子类去继承了抽象类之后，抽象类中的所有抽象方法必须要在子类中重写</li>
+</ul>
+<pre><code class="java">public abstract class Animal&#123;
+    
+    private String name;
+    
+    private static int age;
+    
+    //定义抽象方法，抽象方法是没有方法体的
+    //为什么抽象类没有方法体？因为抽象方法本身就是模糊的，不用去提供具体的实现
+    public abstract String eat();
+    
+    public void move()&#123;
+        
+        System.out.println(&quot;动物会移动&quot;)
+        
+    &#125;
+    
+    
+&#125;
+
+public class Cat extends Animal&#123;
+    
+    @Override
+    public String eat()&#123;
+        
+        return &quot;猫喜欢吃鱼&quot;;
+        
+    &#125;
+    
+&#125;
+
+public  class AbstractTest01&#123;
+    
+    public static void main(String[] args)&#123;
+        
+        Animal animal = new Cat();
+        
+        System.out.println(animal.eat());
+        
+    &#125;
+    
+&#125;
+</code></pre>
+<h4 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h4><p>final关键字：可以修饰类，成员变量，局部变量，方法（静态方法，实例方法）</p>
+<ul>
+<li>被final修饰的类不能用来被继承</li>
+<li>被final修饰的属性，如果是基本数据类型，一定在定义变量的时候就初始化，如果是引用数据类型，在程序运行过程中，变量的引用不能指向别的内存地址</li>
+<li>被final修饰的方法在子类继承父类之后，不能被重写</li>
+</ul>
+<p>用final关键字能不能修饰抽象类？不可以，因为抽象类的作用就是用来被子类继承的，但是被final修饰的类是无法被子类继承的，final和abstract是不能同时出现的</p>
 
     </div>
     
