@@ -142,6 +142,299 @@
             
 
 <div class="post">
+    <a href="/2022/06/21/javaScript/">
+        <h2>
+            javaScript
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/6/21
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="1-JavaScript入门"><a href="#1-JavaScript入门" class="headerlink" title="1.JavaScript入门"></a>1.JavaScript入门</h2><ul>
+<li>什么是 JavaScript？ </li>
+<li>JavaScript 被设计用来向 HTML 页面添加交互行为。  </li>
+<li>JavaScript 是一种脚本语言（脚本语言是一种轻量级的编程语言）。</li>
+<li>JavaScript 由数行可执行计算机代码组成。 </li>
+<li>JavaScript 通常被直接嵌入 HTML 页面。  </li>
+<li>JavaScript 是一种解释性语言（就是说，代码执行不进行预编译）。 </li>
+<li>所有的人无需购买许可证均可使用 JavaScript。</li>
+</ul>
+<h3 id="书写规范"><a href="#书写规范" class="headerlink" title="书写规范"></a>书写规范</h3><p>javaScript在html通常用<code>&lt;script&gt;&lt;/script&gt;</code>标签括起来,在此标签内的代码被浏览器识别为js代码</p>
+<p>同时使用 type 属性来定义脚本语言</p>
+<pre><code class="html">&lt;html&gt;
+&lt;body&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+此处写入js代码
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="在哪里放置-JavaScript"><a href="#在哪里放置-JavaScript" class="headerlink" title="在哪里放置 JavaScript"></a>在哪里放置 JavaScript</h3><p>页面中的脚本会在页面载入浏览器后立即执行。我们并不总希望这样。有时，我们希望当页面载入时执行脚本，而另外的时候，我们则希望当用户触发事件时才执行脚本。</p>
+<h5 id="位于-head-部分的脚本："><a href="#位于-head-部分的脚本：" class="headerlink" title="位于 head 部分的脚本："></a>位于 head 部分的脚本：</h5><p>当脚本被调用时，或者当事件被触发时，脚本就会被执行。当你把脚本放置到 head 部分后，就可以确保在需要使用脚本之前，它已经被载入了。</p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+....
+&lt;/script&gt;
+&lt;/head&gt;
+....
+</code></pre>
+<h5 id="位于-body-部分的脚本："><a href="#位于-body-部分的脚本：" class="headerlink" title="位于 body 部分的脚本："></a>位于 body 部分的脚本：</h5><p>在页面载入时脚本就会被执行。当你把脚本放置于 body 部分后，它就会生成页面的内容。</p>
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+....
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="在-body-和-head-部分的脚本："><a href="#在-body-和-head-部分的脚本：" class="headerlink" title="在 body 和 head 部分的脚本："></a>在 body 和 head 部分的脚本：</h5><p>你可以在文档中放置任何数量的脚本，因此你既可以把脚本放置到 body，又可以放置到 head 部分。</p>
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+....
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+....
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="使用外部-JavaScript"><a href="#使用外部-JavaScript" class="headerlink" title="使用外部 JavaScript"></a>使用外部 JavaScript</h5><p>有时，你也许希望在若干个页面中运行 JavaScript，同时不在每个页面中写相同的脚本。</p>
+<p>为了达到这个目的，你可以将 JavaScript 写入一个外部文件之中。然后以 .js 为后缀保存这个文件。</p>
+<p>注意：外部文件不能包含 <code>&lt;script&gt; </code>标签。</p>
+<p>然后把 .js 文件指定给 <code>&lt;script&gt;</code> 标签中的 “src” 属性，就可以使用这个外部文件了：</p>
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;script src=&quot;xxx.js&quot;&gt;....&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>提示：您可以把 .js 文件放到网站目录中通常存放脚本的子目录中，这样更容易管理和维护。</p>
+<h5 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h5><p>js使用<code>//</code>来标注单行注释</p>
+<pre><code class="javascript">//这是一个单行注释
+</code></pre>
+<p>js使用<code>/* */</code>来标注多行注释</p>
+<pre><code class="javascript">/*
+这是一个
+多行注释
+*/
+</code></pre>
+<h4 id="JavaScript-变量"><a href="#JavaScript-变量" class="headerlink" title="JavaScript 变量"></a>JavaScript 变量</h4><p><strong>JavaScript 变量名称的规则：</strong></p>
+<ul>
+<li>变量对大小写敏感（<em>y</em> 和 <em>Y</em> 是两个不同的变量） </li>
+<li>变量必须以<em>字母或下划线开始</em></li>
+</ul>
+<p>正如代数一样，JavaScript 变量用于保存值或表达式。</p>
+<p>可以给变量起一个简短名称，比如 <em>x</em>，或者更有描述性的名称，比如 <em>length</em>。</p>
+<p>JavaScript 变量也可以保存文本值，比如 <code>str=&quot;Hello word&quot;</code></p>
+<p><strong>声明（创建） JavaScript 变量:</strong></p>
+<p>通过var关键字来声明一个变量</p>
+<pre><code class="javascript">//声明一个变量
+var x;
+//为文本变量赋值
+var s = &quot;Hello world&quot;
+</code></pre>
+<p><strong>向未声明的 JavaScript 变量赋值:</strong></p>
+<p><em>如果您所赋值的变量还未进行过声明，该变量会自动声明</em></p>
+<pre><code class="javascript">//等同于 var x = 5;
+x=5;
+//等同于 var s = &quot;hello world&quot;
+s = &quot;hello world&quot;;
+</code></pre>
+<p><strong>重新声明 JavaScript 变量:</strong></p>
+<p>再次声明js变量，该变量也不会丢失其原始值</p>
+<pre><code class="javascript">var x=5;
+//var的值还是5
+var x; 
+</code></pre>
+<h4 id="JavaScript-算术运算符"><a href="#JavaScript-算术运算符" class="headerlink" title="JavaScript 算术运算符"></a>JavaScript 算术运算符</h4><p>算术运算符用于执行变量与&#x2F;或值之间的算术运算。</p>
+<p>给定 <em>y&#x3D;5</em>，下面的表格解释了这些算术运算符：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>例子</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>加</td>
+<td>x&#x3D;y+2</td>
+<td>x&#x3D;7</td>
+</tr>
+<tr>
+<td>-</td>
+<td>减</td>
+<td>x&#x3D;y-2</td>
+<td>x&#x3D;3</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘</td>
+<td>x&#x3D;y*2</td>
+<td>x&#x3D;10</td>
+</tr>
+<tr>
+<td>&#x2F;</td>
+<td>除</td>
+<td>x&#x3D;y&#x2F;2</td>
+<td>x&#x3D;2.5</td>
+</tr>
+<tr>
+<td>%</td>
+<td>求系数 (保留整数)</td>
+<td>x&#x3D;y%2</td>
+<td>x&#x3D;1</td>
+</tr>
+<tr>
+<td>++</td>
+<td>累加</td>
+<td>x&#x3D;++y</td>
+<td>x&#x3D;6</td>
+</tr>
+<tr>
+<td>–</td>
+<td>递减</td>
+<td>x&#x3D;–y</td>
+<td>x&#x3D;4</td>
+</tr>
+</tbody></table>
+<h4 id="JavaScript-赋值运算符"><a href="#JavaScript-赋值运算符" class="headerlink" title="JavaScript 赋值运算符"></a>JavaScript 赋值运算符</h4><p>赋值运算符用于给 JavaScript 变量赋值。</p>
+<p>给定 <em>x&#x3D;10</em> 和 <em>y&#x3D;5</em>，下面的表格解释了赋值运算符：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>例子</th>
+<th>等价于</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;</td>
+<td>x&#x3D;y</td>
+<td></td>
+<td>x&#x3D;5</td>
+</tr>
+<tr>
+<td>+&#x3D;</td>
+<td>x+&#x3D;y</td>
+<td>x&#x3D;x+y</td>
+<td>x&#x3D;15</td>
+</tr>
+<tr>
+<td>-&#x3D;</td>
+<td>x-&#x3D;y</td>
+<td>x&#x3D;x-y</td>
+<td>x&#x3D;5</td>
+</tr>
+<tr>
+<td>*&#x3D;</td>
+<td>x*&#x3D;y</td>
+<td>x&#x3D;x*y</td>
+<td>x&#x3D;50</td>
+</tr>
+<tr>
+<td>&#x2F;&#x3D;</td>
+<td>x&#x2F;&#x3D;y</td>
+<td>x&#x3D;x&#x2F;y</td>
+<td>x&#x3D;2</td>
+</tr>
+<tr>
+<td>%&#x3D;</td>
+<td>x%&#x3D;y</td>
+<td>x&#x3D;x%y</td>
+<td>x&#x3D;0</td>
+</tr>
+</tbody></table>
+<h4 id="用于字符串的-运算符"><a href="#用于字符串的-运算符" class="headerlink" title="用于字符串的 + 运算符"></a>用于字符串的 + 运算符</h4><p>+ 运算符用于把文本值或字符串变量加起来（连接起来）</p>
+<p>如需把两个或多个字符串变量连接起来，请使用 + 运算符</p>
+<pre><code class="javascript">txt1=&quot;hello&quot;;
+txt2=&quot;world&quot;;
+//txt3的值为&quot;hello world&quot;
+txt3=txt1+&quot; &quot;+txt2;
+</code></pre>
+<p><strong>注意：</strong>如果把数字与字符串相加，结果将成为字符串</p>
+<h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p>比较运算符在逻辑语句中使用，以测定变量或值是否相等。</p>
+<p>给定 x&#x3D;5，下面的表格解释了比较运算符：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;&#x3D;</td>
+<td>等于</td>
+<td>x&#x3D;&#x3D;8 为 false</td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;&#x3D;</td>
+<td>全等（值和类型）</td>
+<td>x&#x3D;&#x3D;&#x3D;5 为 true；x&#x3D;&#x3D;&#x3D;”5” 为 false</td>
+</tr>
+<tr>
+<td>!&#x3D;</td>
+<td>不等于</td>
+<td>x!&#x3D;8 为 true</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+<td>x&gt;8 为 false</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+<td>x&lt;8 为 true</td>
+</tr>
+<tr>
+<td>&gt;&#x3D;</td>
+<td>大于或等于</td>
+<td>x&gt;&#x3D;8 为 false</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;</td>
+<td>小于或等于</td>
+<td>x&lt;&#x3D;8 为 true</td>
+</tr>
+</tbody></table>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2022/06/21/javaScript/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
     <a href="/2022/06/19/SQL/">
         <h2>
             SQL
