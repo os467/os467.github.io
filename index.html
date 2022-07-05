@@ -142,6 +142,1555 @@
             
 
 <div class="post">
+    <a href="/2022/07/05/jdbc/">
+        <h2>
+            Jdbc
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/7/5
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><p><strong>JDBC是什么？</strong></p>
+<p>jdbc是一个由sun公司(Oracle)提出的规范（一套接口），jdbc指的就是java语言连接数据库</p>
+<p>jdbc就是一套面向所有数据库厂家的接口</p>
+<p>每一个数据库厂家都希望可以通过java语言连接到自己开发的数据库，</p>
+<p>这个时候，厂家肯定要写一套程序，java语言连接数据库的具体实现，这个实现类必须要实现JDBC接口</p>
+<ul>
+<li>作为开发人员来说，我们可能会连接到很多组不同的数据库，根据公司的业务不同，可能会连接mysql，SqlServer等等，但是我们不需要关注数据库具体的实现类是什么。我们关注的是jdbc这样的一套接口，因为这个接口提供了具体获取数据库对象的方法，还有相关执行增删改查的方法，还有相关事务提交的方法，事物处理的方法，我们只需要关注接口中有哪些方法，方法具体的实现交由数据库的厂家去完成！</li>
+</ul>
+<p>例如：java语言连接 Mysql</p>
+<p>mysql的厂家就必须要实现jdbc这个接口</p>
+<p><strong>JDBC的驱动类型</strong></p>
+<ul>
+<li>ODBC是微软为了解决跨数据平台的一个方案，sun提供支持</li>
+<li>部分java驱动程序使用特定数据库的API（一般是C和C++）将jdbc翻译成数据库的特定代码</li>
+<li>Jdbc-net将jdbc翻译成不针对特定数据库的网络协议，由数据库服务器翻译成特定代码</li>
+<li>本地协议纯java驱动程序将jdbc请求转化成针对特定数据库的网络协议</li>
+</ul>
+<p><strong>JDBC的用途</strong></p>
+<ol>
+<li>加载对应数据库驱动（Load Driver）</li>
+<li>与数据库建立连接（connection）</li>
+<li>发送操作数据库的语句（createStatement）</li>
+<li>执行并处理返回结果（executeQuery）</li>
+</ol>
+<h2 id="Java链接数据库"><a href="#Java链接数据库" class="headerlink" title="Java链接数据库"></a>Java链接数据库</h2><p>保证mysql服务是开启的</p>
+<p>将java包导入到工程lib下，并且添加到类路径下（保证版本对应）</p>
+<p>注册驱动，使用Class类下的一个静态方法<strong>forName</strong>,使得类加载</p>
+<p>获取数据库连接 DriverManager类提供了<strong>getConnection</strong>方法 （需要传入数据源信息）</p>
+<p>获取数据库操作对象 <strong>createStatement</strong>方法</p>
+<p>编写sql语句</p>
+<p>按照sql语句的类别调用不同方法,获取到返回的结果</p>
+<p>关闭数据库资源（放在<strong>finally</strong>语句块中）</p>
+<pre><code class="java">package com.os467.test;
+
+import java.sql.*;
+
+/**
+ * JDBC编程六步：
+ * 1.注册驱动
+ * 2.获取数据库连接
+ * 3.获取数据库操作对象
+ * 4.执行sql
+ * 5.返回记录条数/获取结果集对象
+ * 6.关闭资源
+ */
+
+public class JdbcTest01 &#123;
+
+    public static void main(String[] args) &#123;
+
+        //使三个实例作为成员变量存在在类中，使得finally语句块中可以读取到
+        Connection connection = null;
+
+        Statement statement = null;
+
+        ResultSet resultSet = null;
+
+        try&#123;
+
+            //1.注册驱动
+            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
+
+            //2.获取数据库链接
+            /**
+             * String url 链接数据库的地址
+             * String user 数据库的用户名 root
+             * String password 数据库密码 root
+             * jdbc:mysql:// 协议
+             * localhost 本地的ip地址
+             * 3306 默认端口号
+             * os467test 需要使用的数据库
+             * ?serverTimezone=GMT 设置时区
+             */
+
+            String url = &quot;jdbc:mysql://localhost:3306/os467test?serverTimezone=GMT&quot;;
+
+            String user = &quot;root&quot;;
+
+            String password = &quot;root&quot;;
+
+            connection = DriverManager.getConnection(url, user, password);
+
+            System.out.println(connection);
+
+            //3.获取数据库操作对象
+            statement = connection.createStatement();
+
+            //4.编写sql语句，执行sql
+            String sql = &quot;select * from emp&quot;;
+
+            //5.执行sql，获取返回的结果集对象,遍历结果集
+            resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next())&#123;
+
+                //取出结果集中的数据
+                int empno = resultSet.getInt(&quot;EMPNO&quot;);
+
+                String ename = resultSet.getString(&quot;ENAME&quot;);
+
+                System.out.println(&quot;员工的编号为&quot;+empno+&quot; 员工的姓名为&quot;+ename);
+
+            &#125;
+
+
+        &#125;catch (Exception e)&#123;
+
+            e.printStackTrace();
+
+        &#125;finally &#123;
+
+            //6.关闭数据库资源,先进行非空校验，对close()可能发生的异常进行处理
+            if (resultSet != null)&#123;
+
+                try &#123;
+                    resultSet.close();
+                &#125; catch (SQLException throwables) &#123;
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+            if (statement != null)&#123;
+
+                try &#123;
+                    statement.close();
+                &#125; catch (SQLException throwables) &#123;
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+            if (connection != null)&#123;
+
+                try &#123;
+                    connection.close();
+                &#125; catch (SQLException throwables) &#123;
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+        &#125;
+
+    &#125;
+
+
+&#125;
+</code></pre>
+<p><strong>注意：</strong>在为字符集添加中文数据时，在<strong>url</strong>后面用**&amp;<strong>拼接</strong>characterEncoding&#x3D;utf-8**来设置字符集</p>
+<p>并且数据库校对中每个字段的字符集也要设置为utf-8</p>
+<pre><code class="java">package com.os467.test;
+
+import javax.swing.*;
+import java.sql.*;
+
+/**
+ * 往学生表中添加数据
+ */
+public class JdbcTest03 &#123;
+
+    public static void main(String[] args) &#123;
+
+        Connection connection = null;
+
+        Statement statement = null;
+
+        try &#123;
+
+            //加载jdbc驱动
+            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
+
+            String url = &quot;jdbc:mysql://localhost:3306/os467test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;;
+
+            String user = &quot;root&quot;;
+
+            String password = &quot;root&quot;;
+
+            //链接数据库
+            connection = DriverManager.getConnection(url, user, password);
+
+            //获取操作对象
+            statement = connection.createStatement();
+
+            String sql = &quot;insert into tb_student(name,age,hobby)&quot; +
+                    &quot;value(&#39;Tom&#39;,18,&#39;打篮球&#39;)&quot;;
+
+            int num = statement.executeUpdate(sql);
+
+            if (num != 0)&#123;
+
+                System.out.println(&quot;添加成功&quot;);
+            &#125;else&#123;
+
+                System.out.println(&quot;添加失败&quot;);
+
+            &#125;
+
+        &#125;catch (Exception e)&#123;
+
+            e.printStackTrace();
+
+        &#125;finally &#123;
+            
+          //关闭数据库资源,避免占用系统资源
+          if (statement != null)&#123;
+
+              try &#123;
+                  statement.close();
+              &#125; catch (SQLException throwables) &#123;
+                  throwables.printStackTrace();
+              &#125;
+
+          &#125;
+
+          if (connection != null)&#123;
+
+              try &#123;
+                  connection.close();
+              &#125; catch (SQLException throwables) &#123;
+                  throwables.printStackTrace();
+              &#125;
+
+          &#125;
+
+
+
+        &#125;
+
+
+    &#125;
+
+
+&#125;
+</code></pre>
+<p>&#x2F;&#x2F;模拟用户登入</p>
+<pre><code class="sql">package com.os467.test;
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class UserJDBCTest02 &#123;
+
+    public static void main(String[] args) &#123;
+
+        //创建控制台打印对象
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println(&quot;请输入用户名:&quot;);
+
+        String username = scanner.next();
+
+        System.out.println(&quot;请输入密码:&quot;);
+
+        String password = scanner.next();
+
+
+        Connection connection = null;
+
+        Statement statement = null;
+
+        ResultSet resultSet = null;
+
+        try&#123;
+
+            //注册驱动
+            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
+
+            String url = &quot;jdbc:mysql://localhost:3306/web_test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;;
+
+            //获取数据库对象
+            connection = DriverManager.getConnection(url,&quot;root&quot;,&quot;root&quot;);
+
+            //获取数据库操作对象
+            statement = connection.createStatement();
+
+            resultSet = statement.executeQuery(&quot;select * from tb_user where username = &#39;&quot; + username + &quot;&#39; and password = &#39;&quot; + password + &quot;&#39;&quot;);
+
+            //判断结果集是否为空和集合中是否有元素
+            if(resultSet != null &amp;&amp; resultSet.next())&#123;
+
+                System.out.println(&quot;登入成功&quot;);
+
+            &#125;else&#123;
+
+                System.out.println(&quot;登入失败&quot;);
+
+            &#125;
+
+        &#125;catch (Exception e)&#123;
+
+            e.printStackTrace();
+
+        &#125;finally &#123;
+
+            if (resultSet != null)&#123;
+
+                try &#123;
+                    resultSet.close();
+                &#125; catch (SQLException throwables) &#123;
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+            //关闭数据库资源
+            if (statement != null)&#123;
+
+                try &#123;
+                    statement.close();
+                &#125; catch (SQLException throwables) &#123;
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+            if (connection != null)&#123;
+
+                try &#123;
+                    connection.close();
+                &#125; catch (SQLException throwables) &#123;
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+        &#125;
+
+
+
+    &#125;
+
+&#125;
+</code></pre>
+<p>数据库中创建的每一张表 在java中都有一个实体与之对应</p>
+<p>table中的字段对应的是实体beans中的属性</p>
+<p>tb_user					User</p>
+<p>uid							uid</p>
+<p>username				username</p>
+<p>password				password</p>
+<p>通过jdbc来读取数据，这些数据也是以对象的形式被封装在结果集容器中<strong>ResultSet</strong></p>
+<p><code>resultSet !=null &amp;&amp; resultSet.next()</code></p>
+<p>第一个条件保证容器对象不为空，判断容器中是否有元素</p>
+<p>我们会将读取的数据封装成对象，然后将对象装进集合中（ArrayList&#x2F;HashMap）</p>
+<p>后面学习了前端之后，我们会将集合对象传到前端，在前端取出集合中的数据，渲染数据！</p>
+<h3 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h3><p><strong>java事务</strong></p>
+<p>实际上，一个Java应用系统，如果要操作数据库，则通过JDBC来实现的。增加、修改、删除都是通过相应方法间接来实现的，事务的控制也相应转移到java程序代码中。因此，数据库操作的事务习惯上就称为Java事务。</p>
+<p>通俗的理解，事务是一组原子操作单元，从数据库角度说，就是一组SQL指令，要么全部执行成功，若因为某个原因其中一条指令执行有错误，则撤销先前执行过的所有指令。更简单的说就是：要么全部执行成功，要么撤销不执行。</p>
+<ul>
+<li>事务必须服从ISO&#x2F;IEC所制定的ACID原则。ACID是原子性（atomicity），一致性（consistency），隔离性（isolation）和持久性（durability）的缩写</li>
+<li>通常的观念认为，事务仅与数据库相关</li>
+<li>事务只存在于增删改状态下</li>
+</ul>
+<p><strong>事务的原子性：</strong>表示事务执行过程中的任何失败都将导致事务所作的任何修改失败</p>
+<p><strong>事务的一致性：</strong>表示当事务执行失败时，所有被该事务影响的数据都应该恢复到事务执行前的状态</p>
+<p><strong>事务的隔离性：</strong>表示在事务执行过程中对数据的修改，在事务提交之前对其他事务不可见</p>
+<p><strong>事务的持久性：</strong>表示已提交的数据在事务执行失败时，数据的状态都应该正确</p>
+<p>案例：</p>
+<p>银行存钱</p>
+<p>银行取钱</p>
+<p>转账方法 A B</p>
+<p>假设有一个转账的场景：A账户转账给B账户，这个时候我们需要在A账户上扣钱，在B账户上加钱</p>
+<p>所以我们需要去写两条sql来完成这样的需求，但是我们要开启事务的支持，因为这两条sql是在一条事务线上的，所以要么同时执行成功，要么同时失败，要满足事务的原子性和一致性。</p>
+<h4 id="事务设置setAuntoCommit"><a href="#事务设置setAuntoCommit" class="headerlink" title="事务设置setAuntoCommit()"></a>事务设置setAuntoCommit()</h4><p>事务案例代码：</p>
+<p><strong>jdbc默认状态下是自动提交的</strong></p>
+<ul>
+<li><p>A账户向B账户转账1000</p>
+</li>
+<li><p>模拟一个异常</p>
+</li>
+<li><p>开启对事务的支持</p>
+</li>
+<li><p>在jdbc中如何开启对事务的支持</p>
+</li>
+<li><p>jdbc默认是关闭事务的，如果想开启事务的话需要 <code>connection.setAutoCommit();</code><br>然后在sql都执行成功的情况下我们要进行一个事务提交的操作<code> connection.commit();</code></p>
+</li>
+<li><p><code>connection.rollback()</code>是一个回滚的方法，是为了让事务回到执行之前的状态</p>
+</li>
+</ul>
+<pre><code class="java">/**
+ * A账户向B账户转账1000
+ *
+ * 模拟一个异常
+ *
+ * 开启对事务的支持
+ *
+ * 在jdbc中如何开启对事务的支持
+ *
+ * jdbc默认是关闭事务的，如果想开启事务的话需要 connection.setAutoCommit();
+ */
+public class JdbcDemo02 &#123;
+
+    public static void main(String[] args) &#123;
+
+        Connection connection = null;
+
+        Statement statement = null;
+
+        try&#123;
+
+            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
+
+            connection = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/web_test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;, &quot;root&quot;, &quot;root&quot;);
+
+            //将自动提交设置为手动提交
+            connection.setAutoCommit(false);
+
+            statement = connection.createStatement();
+
+            //A账户扣钱
+            int num = statement.executeUpdate(&quot;update tb_account set balance_A = balance_A - 1000 where id = 1&quot;);
+
+            System.out.println(num==1 ? &quot;扣钱成功&quot; : &quot;扣钱失败&quot;);
+
+            //模拟一个异常
+            int i = 1 / 0;
+
+            //B账户加钱
+            num = statement.executeUpdate(&quot;update tb_account set balance_B = balance_B + 1000 where id = 1&quot;);
+
+            System.out.println(num==1?&quot;转账成功&quot;:&quot;转账失败&quot;);
+
+            //提交事务
+            connection.commit();
+
+        &#125; catch (Exception e) &#123;
+
+            e.printStackTrace();
+
+        &#125;finally&#123;
+
+            if (statement != null)&#123;
+
+                try &#123;
+                    statement.close();
+                &#125; catch (SQLException throwables) &#123;
+
+                    //事务回滚
+                    try &#123;
+                        connection.rollback();
+                    &#125; catch (SQLException e) &#123;
+                        e.printStackTrace();
+                    &#125;
+
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+            if (connection != null)&#123;
+
+                try &#123;
+                    connection.close();
+                &#125; catch (SQLException throwables) &#123;
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+        &#125;
+
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="预编译PreparedStatement"><a href="#预编译PreparedStatement" class="headerlink" title="预编译PreparedStatement"></a>预编译PreparedStatement</h4><p><strong>sql注入</strong>：指的就是通过在sql中加入数据库的关键字，导致最终sql执行的结果是错误的</p>
+<p><strong>PreparedStatement</strong> 这个对象可以防止sql注入 因为这个对象在执行sql的时候</p>
+<p>是分为两个步骤： 1.先预编译sql，先把sql的架子给搭建出来，但是没有赋值，2.给sql中注入具体的数据，执行sql</p>
+<p><strong>Statement</strong>对象没有预编译的过程，直接就是执行sql</p>
+<p>考虑到安全性我们以后不会直接使用<code>Statement</code>而是使用<code>PreparedStatement</code></p>
+<pre><code class="java">              //获取数据库操作对象并且预编译sql
+             PreparedStatement preparedStatement = connection.prepareStatement(&quot;select * from tb_user where username = ? and password = ? &quot;);
+
+             //给占位符?赋值,占位符从1开始
+            preparedStatement.setString(1,&quot;jack001&quot;);
+            preparedStatement.setString(2,&quot;123456&quot;);
+
+            //执行sql
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet != null &amp;&amp; resultSet.next())&#123;
+
+                System.out.println(&quot;登录成功&quot;);
+
+            &#125;
+</code></pre>
+<p>关于数据库的悲观锁和乐观锁（都是跟事务有关的）：</p>
+<p>​	乐观锁：假设在多线程场景下，多个线程同时对数据库中的一个表进行操作</p>
+<p>​	如果多个线程会去修改同一条数据，乐观锁的思想就是觉得这种情况不可能发生</p>
+<p><strong>乐观锁：</strong>乐观锁可以不用去开启事务的支持（采用的是自动提交的策略）</p>
+<pre><code class="sql">update tb_user set username = &#39;tom&#39; where id = 1 and version = &quot;影响记录条数只要大于等于1，这个	版本号就会改变&quot;
+</code></pre>
+<p><strong>悲观锁：</strong>针对于以上描述的情况，悲观锁思想就会觉得这种情况一定会发生，然后要提前去解决这个问题</p>
+<p>悲观锁一定要去开启对事务的支持，采用手动提交的策略来解决问题，行级锁，在sql后面加上 for update</p>
+<pre><code class="sql">select * from tb_account where id = 1 for update;
+</code></pre>
+<p>当一个线程在对某一条记录进行查询的时候，那么别的线程只能等待</p>
+<h4 id="封装工具类"><a href="#封装工具类" class="headerlink" title="封装工具类"></a>封装工具类</h4><p>工具类不能实例化对象，构造函数被private修饰</p>
+<p>所有的方法都要被static修饰</p>
+<pre><code class="java">package com.os467.utils;
+
+import java.sql.*;
+
+/**
+ * 封装工具类的步骤：
+ *
+ * 1.构造方法私有化
+ * 2.所有的方法都得是静态方法
+ *
+ */
+
+public class JdbcUtils &#123;
+
+    //私有化构造方法
+    private JdbcUtils()&#123;
+
+    &#125;
+
+    //注册驱动
+    static &#123;
+
+        try &#123;
+            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
+        &#125; catch (ClassNotFoundException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+    &#125;
+
+    /**
+     * 获取数据库链接方法
+     */
+    public static Connection getConnection() throws SQLException&#123;
+
+        return DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306&quot; +
+                &quot;/web_test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;,
+                &quot;root&quot;, &quot;root&quot;);
+
+    &#125;
+
+    /**
+     * 用于关闭资源的方法
+     */
+    public static void getClose(ResultSet resultSet, Statement statement,Connection connection)&#123;
+
+        if (resultSet != null)&#123;
+
+            try &#123;
+                resultSet.close();
+            &#125; catch (SQLException throwables) &#123;
+                throwables.printStackTrace();
+            &#125;
+
+        &#125;
+
+        if (statement != null)&#123;
+
+            try &#123;
+                statement.close();
+            &#125; catch (SQLException throwables) &#123;
+                throwables.printStackTrace();
+            &#125;
+
+        &#125;
+
+        if (connection != null)&#123;
+
+            try &#123;
+                connection.close();
+            &#125; catch (SQLException throwables) &#123;
+                throwables.printStackTrace();
+            &#125;
+
+        &#125;
+
+    &#125;
+
+&#125;
+</code></pre>
+<p>利用工具类来执行sql</p>
+<pre><code class="java">package com.os467.demmo;
+
+import com.os467.utils.JdbcUtils;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class JdbcDemo03 &#123;
+
+    public static void main(String[] args) &#123;
+
+        PreparedStatement preparedStatement = null;
+
+        ResultSet resultSet =null;
+
+        Connection connection = null;
+
+        try &#123;
+            //获取数据库链接对象
+            connection = JdbcUtils.getConnection();
+
+            //获取数据库操作对象
+            preparedStatement = connection.prepareStatement(&quot;select * from tb_user&quot;);
+
+            //执行sql
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet != null)&#123;
+
+                while (resultSet.next())&#123;
+
+                    int uid = resultSet.getInt(&quot;uid&quot;);
+
+                    String username = resultSet.getString(&quot;username&quot;);
+
+                    String password = resultSet.getString(&quot;password&quot;);
+
+                    System.out.println(uid+&quot; &quot;+username+&quot; &quot;+password);
+
+                &#125;
+
+            &#125;
+
+        &#125; catch (SQLException throwables) &#123;
+            throwables.printStackTrace();
+        &#125;finally &#123;
+
+            JdbcUtils.getClose(resultSet,preparedStatement,connection);
+
+        &#125;
+
+    &#125;
+
+&#125;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2022/07/05/jdbc/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2022/07/02/servlet/">
+        <h2>
+            Servlet
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/7/2
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h1><h2 id="Servlet-1"><a href="#Servlet-1" class="headerlink" title="Servlet"></a>Servlet</h2><p>JavaEE规范之一</p>
+<p>是运行在服务端上的一个java小程序，它可以接收客户端发过来的数据请求，并且响应数据给客户端</p>
+<p><strong>部署tomcat的时候记得部署工程</strong></p>
+<p><strong>Servlet的生命周期</strong></p>
+<p>1.浏览器根据地址来发起调用，tomcat容器在接收到请求之后会根据地址栏上的地址进行一个数据的解析</p>
+<p>会找到具体的工程，然后再定位到工程下面具体的资源</p>
+<p>2.定位到资源以后，首先会创建当前servlet类的实例，所以调用的是无参构造方法</p>
+<p>3.会执行初始化init方法，初始化servlet上下文配置对象ServletConfig</p>
+<p>4.会去执行service方法，service方法以后我们会用来执行请求的分发处理</p>
+<p>5.当容器关闭的时候，会执行销毁方法destroy</p>
+<p>使用浏览器去访问项目资源时候，记得在xml文件下注册资源路径，例如将HelloServlet注册路径设置为&#x2F;hello</p>
+<pre><code class="xml">  &lt;!--资源注册--&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;com.os467.servlet.HelloServlet&lt;/servlet-class&gt;
+    &lt;/servlet&gt;
+
+    &lt;!--资源路径的配置--&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/hello&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+</code></pre>
+<p>servlet的实例是由容器所创建的</p>
+<pre><code class="java">package com.os467.servlet;
+
+import javax.servlet.*;
+import java.io.IOException;
+
+public class HelloServlet implements Servlet &#123;
+
+    public HelloServlet()&#123;
+
+        System.out.println(&quot;无参构造方法执行了!&quot;);
+
+    &#125;
+
+
+    /**
+     * 初始化的方法
+     * @param servletConfig
+     * @throws ServletException
+     */
+    @Override
+    public void init(ServletConfig servletConfig) throws ServletException &#123;
+
+        System.out.println(&quot;init初始化方法执行了！&quot;);
+
+    &#125;
+
+    @Override
+    public ServletConfig getServletConfig() &#123;
+        return null;
+    &#125;
+
+    @Override
+    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException &#123;
+
+        System.out.println(&quot;service方法执行了！&quot;);
+
+    &#125;
+
+    @Override
+    public String getServletInfo() &#123;
+        return null;
+    &#125;
+
+    @Override
+    public void destroy() &#123;
+
+        System.out.println(&quot;destroy方法执行了！&quot;);
+
+    &#125;
+&#125;
+</code></pre>
+<h3 id="HttpServlet"><a href="#HttpServlet" class="headerlink" title="HttpServlet"></a>HttpServlet</h3><p>HttpServlet中的<strong>service</strong>方法为我们提供了请求分发的处理</p>
+<p>创建一个HelloServlet类，继承HttpServlet</p>
+<p>先由service方法接收到request对象，与response对象</p>
+<p>再根据客户端提交的方式调用不同的方法</p>
+<pre><code class="java">package com.os467.servlet;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+public class HelloServlet extends HttpServlet &#123;
+
+    /**
+     * servlet中的service方法实际上就是完成请求的分发处理，会根据客户端不同提交的方式来执行不同的方法
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+
+        //获取客户端的提交方式
+        String method = request.getMethod();
+
+        //客户端的提交方式
+        System.out.println(&quot;客户端的提交方式为：&quot;+method);
+
+        if (method.equals(&quot;GET&quot;))&#123;
+
+            doGet(request,response);
+
+        &#125;else if (method.equals(&quot;POST&quot;))&#123;
+
+            doPost(request,response);
+
+        &#125;
+
+
+
+    &#125;
+
+    public void doGet(HttpServletRequest request,HttpServletResponse response)&#123;
+
+        System.out.println(&quot;执行了doGet方法!!!&quot;);
+
+    &#125;
+
+    public void doPost(HttpServletRequest request,HttpServletResponse response)&#123;
+
+        System.out.println(&quot;执行了doPost方法!!!&quot;);
+
+    &#125;
+
+&#125;
+</code></pre>
+<p>&#x2F;&#x2F;前端资源</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;form action=&quot;http://localhost:8080/servlet/hello&quot; method=&quot;post&quot;&gt;
+
+        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="ServletConfig"><a href="#ServletConfig" class="headerlink" title="ServletConfig"></a>ServletConfig</h4><p>通过<strong>ServletConfig</strong>的对象来获取上下文配置信息（即xml文件内配置的信息）</p>
+<pre><code class="java">  /**
+     * ServletConfig用于获取上下文配置信息
+     * @param config
+     * @throws ServletException
+     */
+    @Override
+    public void init(ServletConfig config) throws ServletException &#123;
+
+        //获取初始化的数据
+        String mysql_url = config.getInitParameter(&quot;mysql_url&quot;);
+
+        System.out.println(mysql_url);
+    &#125;
+</code></pre>
+<p>配置文件</p>
+<pre><code class="xml"> &lt;servlet&gt;
+        &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;com.os467.servlet.HelloServlet&lt;/servlet-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;mysql_url&lt;/param-name&gt;
+            &lt;param-value&gt;jdbc:mysql://localhost:3306&lt;/param-value&gt;
+        &lt;/init-param&gt;
+
+        &lt;init-param&gt;
+            &lt;param-name&gt;username&lt;/param-name&gt;
+            &lt;param-value&gt;root&lt;/param-value&gt;
+        &lt;/init-param&gt;
+
+        &lt;init-param&gt;
+            &lt;param-name&gt;driver&lt;/param-name&gt;
+            &lt;param-value&gt;com.mysql.jdbc.Driver&lt;/param-value&gt;
+        &lt;/init-param&gt;
+
+    &lt;/servlet&gt;
+</code></pre>
+<p>servlet配置对象和servlet域对象都是<strong>单例</strong>的(从工程启动时，这两个实例就创建成功了，使用的都是同一个对象)</p>
+<p>单例模式（提高了系统资源，提高了程序的执行效率）</p>
+<pre><code class="java">public void doGet(HttpServletRequest request,HttpServletResponse response)&#123;
+
+        //获取servlet核心配置对象，打印结果为true
+        ServletConfig servletConfig01 = getServletConfig();
+        ServletConfig servletConfig02 = getServletConfig();
+
+        System.out.println(servletConfig01 == servletConfig02);
+
+        //获取servlet域对象,打印结果为true
+        //1.
+        ServletContext servletContext = getServletConfig().getServletContext();
+
+        //2.
+        ServletContext servletContext1 = getServletContext();
+
+        System.out.println(servletContext == servletContext1);
+    &#125;
+</code></pre>
+<h5 id="servlet域对象"><a href="#servlet域对象" class="headerlink" title="servlet域对象"></a>servlet域对象</h5><p><strong>ServletConfig</strong> 是servlet核心配置对象，而且该对象的生命周期是随着容器的创建而创建，<br>容器的销毁而销毁,在工程的任意位置去获取该实例的时候，指向的都是同一份内存地址<br><strong>作用</strong>：在servlet实例加载的时候去获取局部的初始化信息</p>
+<p><strong>servletContext</strong> 是servlet中的一个上下文本对象，而且该对象的生命周期是随着容器的创建而创建，<br>容器的销毁而销毁，在工程的任意位置去获取该实例的时候，指向的都是同一份内存地址<br><strong>作用</strong>：可以像map一样存放数据，取出数据，而且是在工程的任意位置取出数据，范围是<strong>整个web工程</strong>，可以去读取全局的初始化信息，可以在工程的任何位置读取</p>
+<p>后面会接触到的域对象：</p>
+<p>request（也是一个域对象，也可以去存放数据，只不过该对象的取值范围比较小），session（会话对象，会对客户端和服务端进行一个绑定）</p>
+<pre><code class="java">public void doGet(HttpServletRequest request,HttpServletResponse response)&#123;
+
+        //获取servlet核心配置对象
+        ServletConfig servletConfig0 = getServletConfig();
+
+        //获取servlet域对象
+        ServletContext servletContext = getServletConfig().getServletContext();
+
+        //往域中存放数据
+        servletContext.setAttribute(&quot;username&quot;,&quot;root&quot;);
+        servletContext.setAttribute(&quot;password&quot;,&quot;123456&quot;);
+
+        //取出域中的数据
+        System.out.println(&quot;username的值为：&quot;+servletContext.getAttribute(&quot;username&quot;)+
+        &quot;  password的值为：&quot;+servletContext.getAttribute(&quot;password&quot;));
+
+    &#125;
+</code></pre>
+<p>取出全局的初始化数据</p>
+<pre><code class="java"> //取出全局的初始化数据
+        String name = servletContext.getInitParameter(&quot;name&quot;);
+        String age = servletContext.getInitParameter(&quot;age&quot;);
+        String sex = servletContext.getInitParameter(&quot;sex&quot;);
+
+        System.out.println(name+&quot; &quot;+age+&quot; &quot;+sex);
+</code></pre>
+<p>配置文件（需要写在根标签web-app内部）</p>
+<pre><code class="xml"> &lt;/servlet-mapping&gt;
+
+    &lt;!--配置全局的初始化数据--&gt;
+    &lt;context-param&gt;
+        &lt;param-name&gt;name&lt;/param-name&gt;
+        &lt;param-value&gt;jack&lt;/param-value&gt;
+    &lt;/context-param&gt;
+
+    &lt;context-param&gt;
+        &lt;param-name&gt;age&lt;/param-name&gt;
+        &lt;param-value&gt;20&lt;/param-value&gt;
+    &lt;/context-param&gt;
+
+    &lt;context-param&gt;
+        &lt;param-name&gt;sex&lt;/param-name&gt;
+        &lt;param-value&gt;男&lt;/param-value&gt;
+    &lt;/context-param&gt;
+
+
+&lt;/web-app&gt;
+</code></pre>
+<p>**<init-param>**标签内的数据用servletConfig对象取出</p>
+<p>**<context-param>**标签内的数据用servletContext对象取出</p>
+<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><p>所谓HTTP协议，客户端和服务器之间通信时，发送的数据，需要遵循的规则，叫HTTP协议</p>
+<p>请求分为GET和POST两种</p>
+<p><strong>响应HTTP协议格式</strong></p>
+<p>1.响应行</p>
+<ul>
+<li>响应的协议和版本号</li>
+<li>响应状态码</li>
+<li>响应状态描述符</li>
+</ul>
+<p>2.响应头key ：value不同的请求头，有不同的含义</p>
+<p>3.响应体 &#x3D;&#x3D;&#x3D;&gt;&gt;&gt;就是回传给客户端的数据</p>
+<p><strong>常用响应码说明</strong></p>
+<ul>
+<li>200表示请求成功</li>
+<li>302表示请求重定向</li>
+<li>404表示请求服务器已经收到了，但是你要的数据不存在（请求地址错误）</li>
+<li>500表示服务器已经收到请求，但是服务器内部错误（代码错误）</li>
+</ul>
+<h4 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h4><p><strong>请求行</strong></p>
+<p>1.请求的方式GET</p>
+<p>2.请求的资源路径[+?+请求参数]</p>
+<p>3.请求的协议的版本号HTTP&#x2F;1.1</p>
+<p><strong>请求头</strong></p>
+<p>key : value 组成 不同的键值对，表示不同的含义</p>
+<p>无论客户端给服务器传数据，还是服务端给客户端传数据，都是基于http协议来完成数据的互传</p>
+<h4 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h4><p>客户端如何访问服务端，如何给服务区发送数据?</p>
+<p>1.要知道访问服务端具体的地址</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/servlet/hello">http://localhost:8080/servlet/hello</a></p>
+<p>格式：http:&#x2F;&#x2F;本地IP地址:端口号&#x2F;工程路径&#x2F;资源路径</p>
+<p>2.如何去传递数据</p>
+<p>看一下浏览器端的提交方式是什么，如果是get，则把数据封装在地址后面：资源路径?key1&#x3D;value1&amp;key2&#x3D;value2</p>
+<p>如果是post提交方式，则数据是被封装在请求体中的</p>
+<h4 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h4><p>服务端给客户端响应数据，直接是在当前页面上完成，没有地址的跳转，响应的数据则直接被封装在响应体中</p>
+<p>以后在前端框架中，我们会根据后端的响应数据，来完成前端逻辑的判断（比如AJA异步技术）</p>
+<h3 id="HttpServletRequest类"><a href="#HttpServletRequest类" class="headerlink" title="HttpServletRequest类"></a>HttpServletRequest类</h3><p>每次只要有请求进入Tomcat服务器，Tomcat服务器就会把请求过来的HTTP协议信息解析好封装到Request对象中。然后传递到service方法（doGet和doPost）中给我们使用。我们可以通过HttpServletRequest对象，获取到所有请求的信息</p>
+<h5 id="HttpServletRequest类的常用方法"><a href="#HttpServletRequest类的常用方法" class="headerlink" title="HttpServletRequest类的常用方法"></a>HttpServletRequest类的常用方法</h5><ul>
+<li><p>getRequestURI()  获取请求的资源路径</p>
+</li>
+<li><p>getRequestURL()  获取请求的统一资源定位符（绝对路径）</p>
+</li>
+<li><p>getRemoteHost()  获取客户端的ip地址iv.getHeader()获取求头</p>
+</li>
+<li><p>getParameter()  获取请求的参数</p>
+</li>
+<li><p>getParameterValues()  获取请求的参数（多个值的时候使用）</p>
+</li>
+<li><p>getMethod()  获取请求的方法GET或POST</p>
+</li>
+<li><p>setAttribute(key,value)  设置域数据</p>
+</li>
+<li><p>getAttribute(key)  获取域数据</p>
+</li>
+<li><p>getRequestDispatcher()  获取请求转发对象</p>
+</li>
+</ul>
+<h4 id="配置资源路径的方式-基于注解"><a href="#配置资源路径的方式-基于注解" class="headerlink" title="配置资源路径的方式(基于注解)"></a>配置资源路径的方式(基于注解)</h4><p>在类名上注释<code>@WebServlet(&quot;/hello05&quot;)</code></p>
+<h5 id="GET方法处理："><a href="#GET方法处理：" class="headerlink" title="GET方法处理："></a>GET方法处理：</h5><pre><code class="java">package com.os467.servlet;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet(&quot;/hello05&quot;)
+public class HelloServlet04 extends HttpServlet &#123;
+    
+     @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+
+        doGet(request,response);
+
+    &#125;
+
+     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+
+        //获取请求的资源路径
+        String requestURI = request.getRequestURI();
+
+        System.out.println(&quot;请求的资源路径为:&quot;+requestURI);
+
+        //基于浏览器的全路径
+        StringBuffer requestURL = request.getRequestURL();
+
+        //http://localhost:8080/servlet/hello04
+        System.out.println(requestURL);
+
+        //获取客户端的ip
+        String remoteHost = request.getRemoteHost();
+
+        //0:0:0:0:0:0:0:1
+        System.out.println(remoteHost);
+
+        String header = request.getHeader(&quot;User-Agent&quot;);
+
+        System.out.println(header);
+
+        //获取请求的参数，获取客户端传递过来的数据
+        String key1 = request.getParameter(&quot;key1&quot;);
+        String key2 = request.getParameter(&quot;key2&quot;);
+        String key3 = request.getParameter(&quot;key3&quot;);
+        String name = request.getParameter(&quot;name&quot;);
+
+        System.out.println(key1+&quot; &quot;+key2+&quot; &quot;+key3+&quot; &quot;+name);
+
+
+    &#125;
+
+&#125;
+</code></pre>
+<h5 id="Post方法处理："><a href="#Post方法处理：" class="headerlink" title="Post方法处理："></a>Post方法处理：</h5><p><strong>接收数据的方法:</strong></p>
+<p><code>request.getParameter(&quot;key的值&quot;)</code></p>
+<p><strong>处理中文乱码的方法:</strong></p>
+<pre><code class="java">//处理中文乱码
+request.setCharacterEncoding(&quot;utf-8&quot;);
+</code></pre>
+<pre><code class="java">package com.os467.servlet;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet(&quot;/hello04&quot;)
+public class HelloServlet04 extends HttpServlet &#123;
+
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+
+        //处理中文乱码
+        request.setCharacterEncoding(&quot;utf-8&quot;);
+
+        if (request.getMethod().equals(&quot;GET&quot;))&#123;
+
+            doGet(request,response);
+
+        &#125;else if (request.getMethod().equals(&quot;POST&quot;))&#123;
+
+            doPost(request,response);
+
+        &#125;
+
+    &#125;
+
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+        
+        //获取客户端传递来的数据
+        String username = request.getParameter(&quot;username&quot;);
+        String password = request.getParameter(&quot;password&quot;);
+        String sex = request.getParameter(&quot;sex&quot;);
+        String country = request.getParameter(&quot;country&quot;);
+
+        System.out.println(username);
+        System.out.println(password);
+        System.out.println(sex);
+        System.out.println(country);
+
+    &#125;
+&#125;
+</code></pre>
+<p>前端布局：</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;form action=&quot;http://localhost:8080/servlet/hello04&quot; method=&quot;post&quot;&gt;
+        username:&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;br&gt;
+
+        password:&lt;input type=&quot;text&quot; name=&quot;password&quot;&gt;&lt;br&gt;
+
+        男:&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;男&quot;&gt; 女:&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;女&quot;&gt;&lt;br&gt;
+        
+        国籍:&lt;select name=&quot;country&quot;&gt;
+            &lt;option value=&quot;1&quot;&gt;----请选择----&lt;/option&gt;
+            &lt;option value=&quot;中国&quot;&gt;中国&lt;/option&gt;
+            &lt;option value=&quot;美国&quot;&gt;美国&lt;/option&gt;
+            &lt;option value=&quot;日本&quot;&gt;日本&lt;/option&gt;
+            &lt;option value=&quot;德国&quot;&gt;德国&lt;/option&gt;
+            &lt;/select&gt;&lt;br&gt;
+
+        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>接收具有多个value值的key的方法</p>
+<pre><code class="java">//通过请求对象来接收value有多个的key
+        String[] hobbies = request.getParameterValues(&quot;hobby&quot;);
+        
+        //遍历value
+        for (String hobby : hobbies) &#123;
+
+            System.out.println(hobby);
+
+        &#125;
+</code></pre>
+<h3 id="HttpServletResponse类"><a href="#HttpServletResponse类" class="headerlink" title="HttpServletResponse类"></a>HttpServletResponse类</h3><p><strong>HttpServletResponse</strong>类和<strong>HttpServletRequest</strong>类一样，每次请求进来，Tomcat服务器都会创建一个<strong>Response</strong>对象传递给Servlet程序去使用，HttpServletRequest表示<strong>请求过来的信息</strong>，HttpServletResponse表示所有<strong>响应的信息</strong>，我们如果需要设置返回给客户端的信息，都可以通过HttpServletResponse对象来进行设置</p>
+<h5 id="往客户端回传数据"><a href="#往客户端回传数据" class="headerlink" title="往客户端回传数据"></a>往客户端回传数据</h5><p>字节流<strong>getOutputStream()</strong></p>
+<p>效率高</p>
+<p>常用于下载（传递二进制数据）</p>
+<p>字符流<strong>getWriter()</strong></p>
+<p>效率低</p>
+<p>常用于回传字符串（常用）</p>
+<p>响应中文乱码解决方法，以及设置浏览器可读取文本类型</p>
+<p><code>setContentType(&quot;text/html;charset=UTF-8&quot;)</code></p>
+<pre><code class="java">package com.os467.servlet;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet(&quot;/hello06&quot;)
+public class HelloServlet06 extends HttpServlet &#123;
+
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+
+        //让前后端字符集统一的方法
+        response.setContentType(&quot;text/html;charset=UTF-8&quot;);
+
+        //向tomcat服务器请求字符流对象
+        response.getWriter().print(&quot;hello servlet&quot;);
+        response.getWriter().print(&quot;&lt;br/&gt;&quot;);
+        response.getWriter().print(&quot;响应成功！&quot;);
+        response.getWriter().print(&quot;&lt;br/&gt;&quot;);
+        response.getWriter().print(&quot;&lt;input type=&#39;text&#39;&gt;&quot;);
+        
+
+
+    &#125;
+&#125;
+</code></pre>
+<p>案例：（通过前端访问，后端响应数据库数据给前端）</p>
+<p>User用户类</p>
+<p>JdbcUtils工具类</p>
+<pre><code class="java">package com.os467.servlet;
+
+import com.os467.beans.User;
+import com.os467.utils.JdbcUtils;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public class UserServlet extends HttpServlet &#123;
+
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+
+        //处理中文乱码
+        request.setCharacterEncoding(&quot;utf-8&quot;);
+        response.setContentType(&quot;text/html;charset=utf-8&quot;);
+
+        //获取提交类型
+        String method = request.getMethod();
+
+        if (method.equals(&quot;GET&quot;))&#123;
+
+            doGet(request,response);
+
+        &#125;else if (method.equals(&quot;POST&quot;))&#123;
+
+            doPost(request,response);
+
+        &#125;
+
+    &#125;
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+
+        ResultSet resultSet = null;
+
+        //创建集合对象
+        ArrayList&lt;User&gt; users = new ArrayList&lt;&gt;();
+
+        //获取数据库对象
+        try &#123;
+             connection = JdbcUtils.getConnection();
+
+             //获取数据库操作对象并且预编译sql
+             preparedStatement = connection.prepareStatement(&quot;select * from tb_user&quot;);
+
+             //执行sql
+             resultSet = preparedStatement.executeQuery();
+
+             //遍历结果集
+             while (resultSet.next())&#123;
+
+                 //取出数据
+                 int uid = resultSet.getInt(&quot;uid&quot;);
+
+                 String username = resultSet.getString(&quot;username&quot;);
+
+                 String password = resultSet.getString(&quot;password&quot;);
+
+                 //创建用户对象
+                 User user = new User(uid, username, password);
+
+                 //将用户对象添加到集合
+                 users.add(user);
+
+
+             &#125;
+
+           //将集合对象响应到前端
+            response.getWriter().print(users);
+
+        &#125; catch (Exception throwables) &#123;
+            throwables.printStackTrace();
+        &#125;finally &#123;
+
+            //关闭资源
+            JdbcUtils.getClose(resultSet,preparedStatement,connection);
+
+        &#125;
+
+
+
+
+    &#125;
+&#125;
+</code></pre>
+<h3 id="请求的转发"><a href="#请求的转发" class="headerlink" title="请求的转发"></a>请求的转发</h3><p>请求转发是指，服务器收到请求后，从一次资源跳转到另一个资源的操作叫做请求转发。（地址不会改变，即浏览器路径不会跳转）</p>
+<p>getRequestDispatcher() 获取请求转发对象</p>
+<pre><code class="java">package com.os467.servlet;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet(&quot;/hello01&quot;)
+public class HelloServlet extends HttpServlet &#123;
+
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+
+        //往域中去存放数据
+        request.setAttribute(&quot;username&quot;,&quot;jack&quot;);
+        request.setAttribute(&quot;password&quot;,&quot;123456&quot;);
+
+        //获取转发对象  相对路径
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(&quot;/hello02&quot;);
+
+        //走向具体的资源
+        requestDispatcher.forward(request,response);
+    &#125;
+&#125;
+</code></pre>
+<p>request除了可以作为请求对象之外，还可以作为域对象，但是该域对象的取值范围，是一次请求范围之内</p>
+<p>request通过<code>setAttribute(key,value)</code>方法存放数据</p>
+<p>通过<code>getAttribute(key)</code>方法获取数据</p>
+<p>请求转发：内部资源的跳转，通过浏览器发起访问，工程中的资源会从一个地址跳转到另外一个地址，浏览器的地址不会发生改变</p>
+<p><strong>请求转发集合对象</strong>  (使用request域存放数据，要使用请求转发)</p>
+<pre><code class="java">package com.os467.servlet;
+
+import com.os467.beans.User;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+
+@WebServlet(&quot;/hello06&quot;)
+public class HelloServlet06 extends HttpServlet &#123;
+
+
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+
+        //创建集合对象
+        ArrayList&lt;User&gt; users = new ArrayList&lt;&gt;();
+
+        //创建用户对象
+        User user1 = new User(100,&quot;jack001&quot;,&quot;123&quot;);
+        User user2 = new User(100,&quot;jack002&quot;,&quot;123&quot;);
+        User user3 = new User(100,&quot;jack003&quot;,&quot;123&quot;);
+        User user4 = new User(100,&quot;jack004&quot;,&quot;123&quot;);
+        User user5 = new User(100,&quot;jack005&quot;,&quot;123&quot;);
+
+        //将数据添加到集合中去
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
+        users.add(user4);
+        users.add(user5);
+
+        //将集合存放到域中
+        request.setAttribute(&quot;users&quot;,users);
+
+        //执行请求转发
+        request.getRequestDispatcher(&quot;/jsp/test.jsp&quot;).forward(request,response);
+
+    &#125;
+&#125;
+</code></pre>
+<h5 id="渲染后端数据-（使用jsp）"><a href="#渲染后端数据-（使用jsp）" class="headerlink" title="渲染后端数据 （使用jsp）"></a>渲染后端数据 （使用jsp）</h5><p>jsp的底层是java</p>
+<p>不使用html，html作为一个静态文件，是不能读取动态数据的，需要用jsp去操作</p>
+<p><strong>el表达式：</strong><br>      作用：取出后端域中的数据，完成数据的校验和判断<br>        <code>$&#123;后端域中的key&#125;</code></p>
+<pre><code class="jsp">&lt;%--
+  Created by IntelliJ IDEA.
+  User: tly20
+  Date: 2022/7/3
+  Time: 19:54
+  To change this template use File | Settings | File Templates.
+--%&gt;
+&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;test&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;%--
+        el表达式：
+        取出后端域中的数据
+        $&#123;后端域中的key&#125;
+    --%&gt;
+        $&#123;users&#125;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>使用servletContext域存放数据（可以使用请求重定向）</p>
+<pre><code class="java">//获取域对象
+ServletContext servletContext = getServletContext();
+
+servletContext.setAttribute(&quot;users&quot;,users);
+response.sendRedirect(&quot;http://localhost:8080/servlet/jsp/test.jsp&quot;);
+</code></pre>
+<h3 id="请求重定向"><a href="#请求重定向" class="headerlink" title="请求重定向"></a>请求重定向</h3><p>请求重定向，是指客户端给服务器发请求，然后服务器告诉客户端去新地址访问，叫做请求重定向</p>
+<p>请求重定向：也可以完成内部资源的跳转，而且浏览器的地址是会发生改变的，这种情况下是不能取到request域中的数据的</p>
+<pre><code class="java">package com.os467.servlet;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet(&quot;/hello03&quot;)
+public class HelloServlet03 extends HttpServlet &#123;
+
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+
+        //存数据
+        request.setAttribute(&quot;key&quot;,&quot;value&quot;);
+
+        //请求重定向  绝对路径
+        response.sendRedirect(&quot;http://localhost:8080/servlet/hello04&quot;);
+
+
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">package com.os467.servlet;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet(&quot;/hello04&quot;)
+public class HelloServlet04 extends HttpServlet &#123;
+
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+
+        Object key = request.getAttribute(&quot;key&quot;);
+        
+        //打印key的值应该为null，因为request域中的数据的作用范围只在一次请求范围内
+        System.out.println(key);
+
+
+    &#125;
+&#125;
+</code></pre>
+<p><strong>注意的点：</strong></p>
+<p>重定向和转发使用的域对象有哪些</p>
+<ul>
+<li>采用重定向的时候:    servletContext  session</li>
+<li>采用转发的时候:   servletContext  request  session</li>
+</ul>
+<h3 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h3><p>什么是jsp？</p>
+<ul>
+<li><p>JSP（全称Java Server Pages）是由Sun公司专门为了解决动态生成HTML文档的技术</p>
+</li>
+<li><p>jsp的主要作用是代替Servlet程序回传html页面的数据，因为Servlet程序回传html页面数据是一件非常繁琐的事情，开发成本和维护成本都极高</p>
+</li>
+</ul>
+<p><strong>jsp的运行原理</strong></p>
+<p>jsp的本质，其实是一个Servlet程序</p>
+<p>可以在<code>&lt;%...%&gt;</code>内写java代码</p>
+<p>通过脚本表达式<code>&lt;%=...%&gt;</code>取到值</p>
+<p>也可以通过el表达式<code>$&#123;...&#125;</code>取到域对象中的值</p>
+<p>el表达式可以取到后端中的数据，而且取值的方式比较简单${域的key}</p>
+<p>jsp脚本表达式&lt;%&#x3D;request.getAttribute(“key”)%&gt;</p>
+<p>el表达式其实在底层封装的就是对应的<strong>jsp</strong>脚本表达式，它出现目的就是为了替换脚本表达式，使得我们在开发的时候更高效</p>
+<p>el表达式的用法：相关的逻辑判断，判断一个容器是否为空，el表达式取到的数据只能是域中的数据，</p>
+<pre><code class="jsp">&lt;%--
+  Created by IntelliJ IDEA.
+  User: tly20
+  Date: 2022/7/4
+  Time: 9:53
+  To change this template use File | Settings | File Templates.
+--%&gt;
+&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;study&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;%
+    String username = &quot;123456&quot;;
+    request.setAttribute(&quot;key1&quot;,&quot;value1&quot;);
+    
+     ArrayList&lt;String&gt; strings = new ArrayList&lt;&gt;();
+
+    strings.add(&quot;hello&quot;);
+    strings.add(&quot;world&quot;);
+    strings.add(&quot;java&quot;);
+    strings.add(&quot;c++&quot;);
+
+    request.setAttribute(&quot;strings&quot;,strings);
+    
+    HashMap&lt;String, String&gt; hashMap = new HashMap&lt;&gt;();
+
+    hashMap.put(&quot;key1&quot;,&quot;value1&quot;);
+    hashMap.put(&quot;key2&quot;,&quot;value2&quot;);
+    hashMap.put(&quot;key3&quot;,&quot;value3&quot;);
+    hashMap.put(&quot;key4&quot;,&quot;value4&quot;);
+
+    session.setAttribute(&quot;hashMap&quot;,hashMap);
+%&gt;
+&lt;body&gt;
+    
+    &lt;%=request.getAttribute(&quot;key1&quot;)%&gt;
+    &lt;%=username%&gt;
+    $&#123;key1&#125;
+    
+    &lt;%=strings%&gt;&lt;br&gt;
+    集合中的一个对象:$&#123;strings[0]&#125;&lt;br&gt;
+    集合中的一个对象:$&#123;strings[1]&#125;&lt;br&gt;
+    集合中的一个对象:$&#123;strings[2]&#125;&lt;br&gt;
+    集合中的一个对象:$&#123;strings[3]&#125;&lt;br&gt;
+    map集合对象:$&#123;hashMap&#125;&lt;br&gt;
+    根据下表取到某一个元素:$&#123;hashMap.get(&quot;key1&quot;)&#125;&lt;br&gt;
+
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>判断一个对象是否为空（指的是对象是否存在，不是说容器长度为0）</p>
+<pre><code class="jsp">$&#123;empty strings&#125;   判断是否为空
+$&#123;not empty strings&#125;  判断是否不为空
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2022/07/02/servlet/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
     <a href="/2022/06/21/javaScript/">
         <h2>
             javaScript
