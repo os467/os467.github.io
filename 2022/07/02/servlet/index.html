@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Servlet | Tly的博客</title>
+        <title>Tly的博客</title>
         <meta name="author" content="Os467">
         <meta name="description" content="Welcome">
         <meta name="keywords" content="">
@@ -120,7 +120,7 @@
                         
 <div class="article">
     <div>
-        <h1>Servlet </h1>
+        <h1> </h1>
     </div>
     <div class="info">
         <span class="date">
@@ -139,10 +139,10 @@
 <p><strong>Servlet的生命周期</strong></p>
 <p>1.浏览器根据地址来发起调用，tomcat容器在接收到请求之后会根据地址栏上的地址进行一个数据的解析</p>
 <p>会找到具体的工程，然后再定位到工程下面具体的资源</p>
-<p>2.定位到资源以后，首先会创建当前servlet类的实例，所以调用的是无参构造方法</p>
-<p>3.会执行初始化init方法，初始化servlet上下文配置对象ServletConfig</p>
-<p>4.会去执行service方法，service方法以后我们会用来执行请求的分发处理</p>
-<p>5.当容器关闭的时候，会执行销毁方法destroy</p>
+<p>2.定位到资源以后，首先会创建当前servlet类的实例，所以调用的是<strong>无参构造方法</strong></p>
+<p>3.会执行初始化<strong>init</strong>方法，初始化servlet上下文配置对象ServletConfig</p>
+<p>4.会去执行<strong>service</strong>方法，service方法以后我们会用来执行请求的分发处理</p>
+<p>5.当容器关闭的时候，会执行销毁方法<strong>destroy</strong></p>
 <p>使用浏览器去访问项目资源时候，记得在xml文件下注册资源路径，例如将HelloServlet注册路径设置为&#x2F;hello</p>
 <pre><code class="xml">  &lt;!--资源注册--&gt;
     &lt;servlet&gt;
@@ -224,8 +224,8 @@ public class HelloServlet extends HttpServlet &#123;
 
     /**
      * servlet中的service方法实际上就是完成请求的分发处理，会根据客户端不同提交的方式来执行不同的方法
-     * @param request
-     * @param response
+     * @param request 请求对象 一般用于请求客户端传递过来的数据或者用于获取浏览器的一些信息
+     * @param response 响应对象 响应数据给前端
      * @throws ServletException
      * @throws IOException
      */
@@ -982,6 +982,31 @@ public class HelloServlet04 extends HttpServlet &#123;
 <p>判断一个对象是否为空（指的是对象是否存在，不是说容器长度为0）</p>
 <pre><code class="jsp">$&#123;empty strings&#125;   判断是否为空
 $&#123;not empty strings&#125;  判断是否不为空
+</code></pre>
+<h4 id="引入jstl标签库"><a href="#引入jstl标签库" class="headerlink" title="引入jstl标签库"></a>引入jstl标签库</h4><pre><code class="jsp">&lt;%@taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot;%&gt;
+</code></pre>
+<p><strong>ForEach标签</strong></p>
+<p>items表示遍历集合， var表示遍历集合中每一个对象</p>
+<pre><code class="jsp">&lt;c:forEach items=&quot;$&#123;empList&#125;&quot; var=&quot;emp&quot;&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;$&#123;emp.empName&#125;&lt;/td&gt;
+        &lt;td&gt;$&#123;emp.age&#125;&lt;/td&gt;
+        &lt;td&gt;$&#123;emp.sex == 1? &#39;男&#39; : &#39;女&#39;&#125;&lt;/td&gt;
+        &lt;td&gt;$&#123;emp.salary&#125;&lt;/td&gt;
+        &lt;td&gt;$&#123;emp.birthday&#125;&lt;/td&gt;
+        &lt;td&gt;
+            &lt;a href=&quot;http://localhost:8080/servlet/emp?flag=showEmpByID&amp;eid=$&#123;emp.eid&#125;&quot;&gt;修改&lt;/a&gt;
+            &lt;a href=&quot;http://localhost:8080/servlet/emp?flag=deleteEmpByID&amp;eid=$&#123;emp.eid&#125;&quot;&gt;删除&lt;/a&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/c:forEach&gt;
+</code></pre>
+<p><strong>If标签</strong></p>
+<pre><code class="jsp">&lt;c:if test=&quot;$&#123;not empty user&#125;&quot;&gt;
+代码执行
+&lt;/c:if&gt;
 </code></pre>
 
     </div>
