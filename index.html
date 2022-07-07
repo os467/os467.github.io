@@ -142,6 +142,334 @@
             
 
 <div class="post">
+    <a href="/2022/07/07/javaScript/">
+        <h2>
+            javaScript
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/7/7
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p><strong>什么是JavaScript？</strong></p>
+<ul>
+<li><p>JavaScript语言诞生主要是完成页面的数据验证</p>
+<p>因此它运行在客户端，需要运行浏览器来解析执行JavaScript代码 ，简称JS</p>
+</li>
+<li><p>JS是Netscape网景公司的产品，最早取名为LiveScript 为了吸引更多java开发人员，更名为JavaScript，JS是弱类型，Java是强类型</p>
+</li>
+</ul>
+<p><strong>JavaScript和html代码的结合</strong></p>
+<ul>
+<li>使用script标签来书写JavaScript代码</li>
+<li>使用script标签引入单独的JavaScript代码文件</li>
+</ul>
+<p><strong>JavaScript是运行在客户端的一门编程语言，简称js</strong></p>
+<h2 id="js的代码该如何去编写"><a href="#js的代码该如何去编写" class="headerlink" title="js的代码该如何去编写"></a>js的代码该如何去编写</h2><p>​		我们需要结合html来编写js代码：</p>
+<p>​		a、在html文件中定义一个<code>&lt;script&gt;&lt;/script&gt;</code>标签，在该标签的内部去写js代码</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;JavaScript&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!--定义一个script去写js代码--&gt;
+&lt;script&gt;
+
+    //js中封装的有对应的函数
+    alert(&quot;网页弹窗&quot;);
+
+&lt;/script&gt;
+&lt;body&gt;
+
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>​		b、会声明一个js文件，在js文件中去写js代码，然后通过<code>&lt;script&gt;</code>标签去引入js文件</p>
+<pre><code class="html">&lt;!--引入js文件--&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/test.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="JavaScript变量"><a href="#JavaScript变量" class="headerlink" title="JavaScript变量"></a>JavaScript变量</h2><ul>
+<li>数值类型：number</li>
+<li>字符串类型：string</li>
+<li>对象类型：object</li>
+<li>布尔类型：boolean</li>
+<li>函数类型：function</li>
+</ul>
+<p><strong>在js中如何去声明一个变量</strong></p>
+<p>​	<code>var、let</code>这两个关键字可以去接收一个变量</p>
+<p>而且任何变量都可以用这两个关键字接收</p>
+<p>var i &#x3D; 100</p>
+<p>let str &#x3D; “123456”</p>
+<p>关于js中的逻辑运行算（与 &amp;&amp;	或 ||	非 ! ）：</p>
+<p>在js中 null、undefined、0 、false参与逻辑运算时本身代表的是false，其余所有的数据都表示true</p>
+<p><strong>与运算</strong></p>
+<ul>
+<li>如果参与&amp;&amp;与运算两者都为真的情况下，会取到后者的值</li>
+<li>如果参与&amp;&amp;与运算有一者为假的情况下，会取到为假的那个值</li>
+<li>如果参与&amp;&amp;与运算两者都为假的情况下，会取到前者的值</li>
+</ul>
+<p><strong>或运算</strong></p>
+<ul>
+<li>如果参与||或运算两者都为真的情况下，会取到前者的值</li>
+<li>如果参与||或运算有一者为假的情况下，会取到为真的那个值</li>
+<li>如果参与||或运算两者都为假的情况下，会取到后者的值</li>
+</ul>
+<p><em>都有惰性取值的特点，最后计算完的值返回</em></p>
+<p>取非！运算，首先要搞清楚，数据本身是为真还是为假，取非之后，真就是假，假就是真</p>
+<h3 id="数组的定义方式"><a href="#数组的定义方式" class="headerlink" title="数组的定义方式"></a>数组的定义方式</h3><p>JS中数组的定义：</p>
+<p><strong>格式：</strong></p>
+<p><code>var 数组名 = [];</code>&#x2F;&#x2F;空数组</p>
+<p><code>var 数组名 = [1,&#39;abc&#39;,true];</code>&#x2F;&#x2F;定义数组同时赋值元素</p>
+<p>js数组可以在一个数组中存放任意类型的值</p>
+<p>js数组可以给任意一个下标赋值，未赋值的默认为<strong>undefined</strong></p>
+<p><strong>遍历数组</strong></p>
+<pre><code class="javascript">for (let i = 0;i &lt; array.length; i++)&#123;
+
+    alert(array[i]);
+
+&#125;
+</code></pre>
+<h3 id="JS对象"><a href="#JS对象" class="headerlink" title="JS对象"></a>JS对象</h3><p>在js中也能new对象，但是必须使用js封装好的对象</p>
+<p>通过<code>对象.属性 = 值</code>的方法赋值，属性和值都可以自定义</p>
+<pre><code class="javascript">let object = new Object();
+
+object.name = &quot;tom&quot;;
+object.age = 15;
+object.address = &quot;北京市&quot;;
+object.key = &quot;value&quot;;
+
+alert(object.name);
+alert(object.age);
+alert(object.address);
+
+//正则对象
+let regExp = new RegExp();
+</code></pre>
+<h2 id="函数的两种定义方式"><a href="#函数的两种定义方式" class="headerlink" title="函数的两种定义方式"></a>函数的两种定义方式</h2><ul>
+<li><p>function 函数名(形参列表){函数体}</p>
+<pre><code class="javascript">function function01(num1,num2)&#123;
+    
+    let num = num1 + num2;
+    
+    return num;
+    
+&#125;
+</code></pre>
+</li>
+<li><p>let  函数名 &#x3D; function(形参列表){函数体}</p>
+</li>
+</ul>
+<pre><code class="javascript">let function02 = function(num1,num2)&#123;
+    
+    let num = num1 + num2;
+    
+    return num;
+    
+&#125;
+</code></pre>
+<p><strong>注：</strong>js中的函数，在定义参数的时候可以不用写数据类型，参数与参数之间用逗号分割</p>
+<p><strong>注：</strong>js中的函数没有返回值类型，在函数体中写完代码之后，有返回值就返回，没有返回值就不用返回</p>
+<p><strong>注：</strong>js中的函数是不支持重载的，如果你同时定义了两个同名的函数，下面那个会覆盖上面那个</p>
+<p>在JavaScript语言中，定义带有返回值的函数<strong>只需要在函数体内直接使用return语句返回值即可</strong></p>
+<p><strong>JS隐式参数</strong></p>
+<pre><code class="javascript">//arguments js 中的隐式参数，是一个数组类型，可以去接收所有数据
+function function02()&#123;
+
+    alert(arguments[0]);
+    alert(arguments[1]);
+    alert(arguments[2]);
+
+&#125;
+
+alert(function02(100,true,&quot;hello&quot;));
+</code></pre>
+<p><strong>简单的数字相加函数</strong></p>
+<pre><code class="javascript">let function02 = function(num1,num2) &#123;
+
+       let num = null;
+
+       if ((typeof num1) == &quot;number&quot; &amp;&amp; (typeof num2) == &quot;number&quot;) &#123;
+
+           let num = num1 + num2;
+
+       &#125; else &#123;
+
+           return &quot;你传的数据不合法&quot;;
+
+       &#125;
+
+       return num;
+   &#125;
+</code></pre>
+<h2 id="JS中的事件"><a href="#JS中的事件" class="headerlink" title="JS中的事件"></a>JS中的事件</h2><ul>
+<li><strong>onload</strong> 加载完成事件：页面加载完成之后，常用于做页面js代码初始化操作</li>
+<li><strong>onclick</strong> 单机事件：常用于按钮的点击响应操作</li>
+<li><strong>onblur</strong> 失去焦点事件：常用于输入框失去焦点后验证其输入内容是否合法</li>
+<li><strong>onchange</strong> 内容发生改变事件：常用于下拉列表和输入框内容发生改变后操作</li>
+<li><strong>onsubmit</strong> 表单提交事件：常用于表单提交前，验证所有表单项是否合法</li>
+</ul>
+<p><strong>关于js中的事件（分为静态注册和动态注册）：</strong></p>
+<p>​	<strong>静态注册</strong>：通过html标签内部的事件属性来完成事件的注册</p>
+<pre><code class="javascript">&lt;body onload=&quot;alert(&#39;静态注册页面加载完成事件&#39;)&quot;&gt; &lt;/body&gt;
+</code></pre>
+<pre><code class="javascript">&lt;!--鼠标单机事件：静态注册--&gt;
+&lt;input type=&quot;button&quot; value=&quot;测试鼠标单机事件&quot; onclick=&quot;alert(&#39;鼠标单机事件静态注册&#39;)&quot;&gt;
+</code></pre>
+<p>​	</p>
+<p>​	<strong>动态注册</strong>：先通过dom对象获取到某一个具体的html元素，然后对这个标签进行绑定，注册事件</p>
+<p><code>document.getElementById()</code>通过id这个属性查找html元素</p>
+<p><strong>注</strong>：动态注册一定要写在<code>script</code>标签中，或者js文件中</p>
+<pre><code class="javascript">//页面加载完成事件动态注册
+//window是html内置对象
+  window.onload = function ()&#123;
+      
+    //在该函数中完成页面初始化的操作
+      
+      alert(&quot;动态绑定页面加载完成事件&quot;)
+
+  &#125;
+</code></pre>
+<p>动态注册单击事件</p>
+<pre><code class="javascript">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;JavaScript&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!--定义一个script去写js代码--&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+
+  //页面加载完成事件动态注册
+  //window是html内置对象
+    window.onload = function ()&#123;
+
+        alert(&quot;动态绑定页面加载完成事件&quot;)
+
+        //通过动态注册的方式来注册单击事件
+        let elementInput = document.getElementById(&quot;onclickTest&quot;);
+
+        //[object HTMLInputElement] dom对象
+        alert(elementInput)
+
+        //动态注册单击事件
+        elementInput.onclick=function ()&#123;
+
+            alert(&quot;触发了单击事件，动态注册的方式&quot;)
+
+        &#125;
+    &#125;
+
+
+    
+
+&lt;/script&gt;
+
+&lt;!--引入js文件--&gt;
+&lt;!--&lt;script type=&quot;text/javascript&quot; src=&quot;../js/test.js&quot;&gt;&lt;/script&gt;--&gt;
+&lt;body&gt;
+
+    &lt;!--鼠标单机事件：静态注册--&gt;
+    &lt;input type=&quot;button&quot; value=&quot;测试鼠标单机事件(静态)&quot; onclick=&quot;alert(&#39;鼠标单机事件静态注册&#39;)&quot;&gt;&lt;br&gt;
+    &lt;input type=&quot;button&quot; value=&quot;测试鼠标单机事件(动态)&quot; id=&quot;onclickTest&quot;&gt;&lt;br&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>加载完成事件（<strong>onload</strong>）：</p>
+<p>​		浏览器在解析html页面的时候是一个标签一个标签的往下解析</p>
+<p>​		在浏览器解析完所有的html元素之后会触发的操作</p>
+<p>失去焦点事件（<strong>onblur</strong>）</p>
+<pre><code class="html">测试鼠标失去焦点事件(静态):&lt;input type=&quot;text&quot; id=&quot;onblur&quot; onblur=&quot;alert(&#39;触发了失去焦点事件&#39;)&quot;&gt;&lt;br&gt;
+</code></pre>
+<pre><code class="javascript">//动态绑定失去焦点事件
+let elementOnblur = document.getElementById(&quot;onblurTest&quot;);
+
+//绑定事件
+elementOnblur.onblur = function ()&#123;
+
+    alert(&quot;触发了失去焦点事件，动态注册的方式&quot;);
+
+&#125;
+</code></pre>
+<p>内容发送改变事件（<strong>onchange</strong>）</p>
+<pre><code class="html">测试内容发生改变事件(静态):&lt;input type=&quot;text&quot; value=&quot;123&quot; onchange=&quot;alert(&#39;内容已发生改变&#39;)&quot;&gt;&lt;br&gt;
+</code></pre>
+<pre><code class="javascript">//内容发生改变事件
+let elementSelect = document.getElementById(&quot;onchangeTest&quot;);
+
+//绑定事件
+elementSelect.onchange = function ()&#123;
+
+    alert(&quot;内容已发生改变,动态注册的方式&quot;);
+
+&#125;
+</code></pre>
+<h4 id="关于html的上下文文本对象document"><a href="#关于html的上下文文本对象document" class="headerlink" title="关于html的上下文文本对象document"></a>关于html的上下文文本对象document</h4><p>这个是html内置的对象，通过这个对象可以去获取html对象（标签）</p>
+<p>而且获取的方式有很多种（比如：根据id属性获取，根据name属性获取，根据具体的标签名称获取）</p>
+<p><strong>DOM模型和document对象</strong></p>
+<p><strong>DOM</strong>全称是Document Object Model 文档对象模型</p>
+<p><strong>document</strong>对象</p>
+<p>1.Document它管理了所有的HTML文档内容</p>
+<p>2.document它是一种树结构的文档，有层级关系</p>
+<p>3.它让我们把所有的标签都对象化</p>
+<p>4.我们可以通过document访问所有的标签对象</p>
+<p><strong>Document对象中的方法</strong></p>
+<ul>
+<li><code>document.getElementById(elementId)</code>通过标签的id属性查找标签dom对象，elementId是标签的id属性值</li>
+<li><code>document.getElementsByName(elementName)</code>通过标签的name属性查找标签dom对象，elementName标签的name属性值</li>
+<li><code>document.getElementsByTagName(tagname)</code>通过标签名找标签dom对象，tagname是标签名</li>
+<li><code>document.createElement(tagName)</code>方法，通过给定的标签名，创建一个标签对象，tagName是要创建的标签名</li>
+</ul>
+<pre><code class="javascript">//获取所有name属性值为username的标签
+let inputEls = document.getElementsByName(&quot;username&quot;);
+
+//[object NodeList]
+alert(inputEls);
+
+for (let i = 0; i &lt; inputEls.length; i++) &#123;
+
+    alert(inputEls[i]);
+
+&#125;
+</code></pre>
+<h5 id="标签的常用属性"><a href="#标签的常用属性" class="headerlink" title="标签的常用属性"></a>标签的常用属性</h5><ul>
+<li>childNodes属性，获取当前节点的所有子节点</li>
+<li>firstChild属性，获取当前节点的第一个子节点</li>
+<li>lastChild属性，获取当前节点的最后一个子节点</li>
+<li>parentNode属性，获取当前节点的父节点</li>
+<li>nextSibling，获取当前节点的下一个节点</li>
+<li>previousSibling属性，获取当前节点的上一个节点</li>
+<li>className用于获取或设置标签的class属性值</li>
+<li>innerHTML属性，表示获取&#x2F;设置起始标签和结束标签中的内容</li>
+<li>innerText属性，表示获取&#x2F;设置起始标签和结束标签中的文本</li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2022/07/07/javaScript/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
     <a href="/2022/07/06/XML/">
         <h2>
             XML
@@ -705,674 +1033,6 @@ request.getSession().getAttribute(&quot;key&quot;);
         
     </div>
     <a href="/2022/07/06/cookie和session/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/07/05/jdbc/">
-        <h2>
-            Jdbc
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/7/5
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><p><strong>JDBC是什么？</strong></p>
-<p>jdbc是一个由sun公司(Oracle)提出的规范（一套接口），jdbc指的就是java语言连接数据库</p>
-<p>jdbc就是一套面向所有数据库厂家的接口</p>
-<p>每一个数据库厂家都希望可以通过java语言连接到自己开发的数据库，</p>
-<p>这个时候，厂家肯定要写一套程序，java语言连接数据库的具体实现，这个实现类必须要实现JDBC接口</p>
-<ul>
-<li>作为开发人员来说，我们可能会连接到很多组不同的数据库，根据公司的业务不同，可能会连接mysql，SqlServer等等，但是我们不需要关注数据库具体的实现类是什么。我们关注的是jdbc这样的一套接口，因为这个接口提供了具体获取数据库对象的方法，还有相关执行增删改查的方法，还有相关事务提交的方法，事物处理的方法，我们只需要关注接口中有哪些方法，方法具体的实现交由数据库的厂家去完成！</li>
-</ul>
-<p>例如：java语言连接 Mysql</p>
-<p>mysql的厂家就必须要实现jdbc这个接口</p>
-<p><strong>JDBC的驱动类型</strong></p>
-<ul>
-<li>ODBC是微软为了解决跨数据平台的一个方案，sun提供支持</li>
-<li>部分java驱动程序使用特定数据库的API（一般是C和C++）将jdbc翻译成数据库的特定代码</li>
-<li>Jdbc-net将jdbc翻译成不针对特定数据库的网络协议，由数据库服务器翻译成特定代码</li>
-<li>本地协议纯java驱动程序将jdbc请求转化成针对特定数据库的网络协议</li>
-</ul>
-<p><strong>JDBC的用途</strong></p>
-<ol>
-<li>加载对应数据库驱动（Load Driver）</li>
-<li>与数据库建立连接（connection）</li>
-<li>发送操作数据库的语句（createStatement）</li>
-<li>执行并处理返回结果（executeQuery）</li>
-</ol>
-<h2 id="Java链接数据库"><a href="#Java链接数据库" class="headerlink" title="Java链接数据库"></a>Java链接数据库</h2><p>保证mysql服务是开启的</p>
-<p>将java包导入到工程lib下，并且添加到类路径下（保证版本对应）</p>
-<p>注册驱动，使用Class类下的一个静态方法<strong>forName</strong>,使得类加载</p>
-<p>获取数据库连接 DriverManager类提供了<strong>getConnection</strong>方法 （需要传入数据源信息）</p>
-<p>获取数据库操作对象 <strong>createStatement</strong>方法</p>
-<p>编写sql语句</p>
-<p>按照sql语句的类别调用不同方法,获取到返回的结果</p>
-<p>关闭数据库资源（放在<strong>finally</strong>语句块中）</p>
-<pre><code class="java">package com.os467.test;
-
-import java.sql.*;
-
-/**
- * JDBC编程六步：
- * 1.注册驱动
- * 2.获取数据库连接
- * 3.获取数据库操作对象
- * 4.执行sql
- * 5.返回记录条数/获取结果集对象
- * 6.关闭资源
- */
-
-public class JdbcTest01 &#123;
-
-    public static void main(String[] args) &#123;
-
-        //使三个实例作为成员变量存在在类中，使得finally语句块中可以读取到
-        Connection connection = null;
-
-        Statement statement = null;
-
-        ResultSet resultSet = null;
-
-        try&#123;
-
-            //1.注册驱动
-            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
-
-            //2.获取数据库链接
-            /**
-             * String url 链接数据库的地址
-             * String user 数据库的用户名 root
-             * String password 数据库密码 root
-             * jdbc:mysql:// 协议
-             * localhost 本地的ip地址
-             * 3306 默认端口号
-             * os467test 需要使用的数据库
-             * ?serverTimezone=GMT 设置时区
-             */
-
-            String url = &quot;jdbc:mysql://localhost:3306/os467test?serverTimezone=GMT&quot;;
-
-            String user = &quot;root&quot;;
-
-            String password = &quot;root&quot;;
-
-            connection = DriverManager.getConnection(url, user, password);
-
-            System.out.println(connection);
-
-            //3.获取数据库操作对象
-            statement = connection.createStatement();
-
-            //4.编写sql语句，执行sql
-            String sql = &quot;select * from emp&quot;;
-
-            //5.执行sql，获取返回的结果集对象,遍历结果集
-            resultSet = statement.executeQuery(sql);
-
-            while(resultSet.next())&#123;
-
-                //取出结果集中的数据
-                int empno = resultSet.getInt(&quot;EMPNO&quot;);
-
-                String ename = resultSet.getString(&quot;ENAME&quot;);
-
-                System.out.println(&quot;员工的编号为&quot;+empno+&quot; 员工的姓名为&quot;+ename);
-
-            &#125;
-
-
-        &#125;catch (Exception e)&#123;
-
-            e.printStackTrace();
-
-        &#125;finally &#123;
-
-            //6.关闭数据库资源,先进行非空校验，对close()可能发生的异常进行处理
-            if (resultSet != null)&#123;
-
-                try &#123;
-                    resultSet.close();
-                &#125; catch (SQLException throwables) &#123;
-                    throwables.printStackTrace();
-                &#125;
-
-            &#125;
-
-            if (statement != null)&#123;
-
-                try &#123;
-                    statement.close();
-                &#125; catch (SQLException throwables) &#123;
-                    throwables.printStackTrace();
-                &#125;
-
-            &#125;
-
-            if (connection != null)&#123;
-
-                try &#123;
-                    connection.close();
-                &#125; catch (SQLException throwables) &#123;
-                    throwables.printStackTrace();
-                &#125;
-
-            &#125;
-
-        &#125;
-
-    &#125;
-
-
-&#125;
-</code></pre>
-<p><strong>注意：</strong>在为字符集添加中文数据时，在<strong>url</strong>后面用**&amp;<strong>拼接</strong>characterEncoding&#x3D;utf-8**来设置字符集</p>
-<p>并且数据库校对中每个字段的字符集也要设置为utf-8</p>
-<pre><code class="java">package com.os467.test;
-
-import javax.swing.*;
-import java.sql.*;
-
-/**
- * 往学生表中添加数据
- */
-public class JdbcTest03 &#123;
-
-    public static void main(String[] args) &#123;
-
-        Connection connection = null;
-
-        Statement statement = null;
-
-        try &#123;
-
-            //加载jdbc驱动
-            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
-
-            String url = &quot;jdbc:mysql://localhost:3306/os467test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;;
-
-            String user = &quot;root&quot;;
-
-            String password = &quot;root&quot;;
-
-            //链接数据库
-            connection = DriverManager.getConnection(url, user, password);
-
-            //获取操作对象
-            statement = connection.createStatement();
-
-            String sql = &quot;insert into tb_student(name,age,hobby)&quot; +
-                    &quot;value(&#39;Tom&#39;,18,&#39;打篮球&#39;)&quot;;
-
-            int num = statement.executeUpdate(sql);
-
-            if (num != 0)&#123;
-
-                System.out.println(&quot;添加成功&quot;);
-            &#125;else&#123;
-
-                System.out.println(&quot;添加失败&quot;);
-
-            &#125;
-
-        &#125;catch (Exception e)&#123;
-
-            e.printStackTrace();
-
-        &#125;finally &#123;
-            
-          //关闭数据库资源,避免占用系统资源
-          if (statement != null)&#123;
-
-              try &#123;
-                  statement.close();
-              &#125; catch (SQLException throwables) &#123;
-                  throwables.printStackTrace();
-              &#125;
-
-          &#125;
-
-          if (connection != null)&#123;
-
-              try &#123;
-                  connection.close();
-              &#125; catch (SQLException throwables) &#123;
-                  throwables.printStackTrace();
-              &#125;
-
-          &#125;
-
-
-
-        &#125;
-
-
-    &#125;
-
-
-&#125;
-</code></pre>
-<p>&#x2F;&#x2F;模拟用户登入</p>
-<pre><code class="sql">package com.os467.test;
-
-import java.sql.*;
-import java.util.Scanner;
-
-public class UserJDBCTest02 &#123;
-
-    public static void main(String[] args) &#123;
-
-        //创建控制台打印对象
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println(&quot;请输入用户名:&quot;);
-
-        String username = scanner.next();
-
-        System.out.println(&quot;请输入密码:&quot;);
-
-        String password = scanner.next();
-
-
-        Connection connection = null;
-
-        Statement statement = null;
-
-        ResultSet resultSet = null;
-
-        try&#123;
-
-            //注册驱动
-            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
-
-            String url = &quot;jdbc:mysql://localhost:3306/web_test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;;
-
-            //获取数据库对象
-            connection = DriverManager.getConnection(url,&quot;root&quot;,&quot;root&quot;);
-
-            //获取数据库操作对象
-            statement = connection.createStatement();
-
-            resultSet = statement.executeQuery(&quot;select * from tb_user where username = &#39;&quot; + username + &quot;&#39; and password = &#39;&quot; + password + &quot;&#39;&quot;);
-
-            //判断结果集是否为空和集合中是否有元素
-            if(resultSet != null &amp;&amp; resultSet.next())&#123;
-
-                System.out.println(&quot;登入成功&quot;);
-
-            &#125;else&#123;
-
-                System.out.println(&quot;登入失败&quot;);
-
-            &#125;
-
-        &#125;catch (Exception e)&#123;
-
-            e.printStackTrace();
-
-        &#125;finally &#123;
-
-            if (resultSet != null)&#123;
-
-                try &#123;
-                    resultSet.close();
-                &#125; catch (SQLException throwables) &#123;
-                    throwables.printStackTrace();
-                &#125;
-
-            &#125;
-
-            //关闭数据库资源
-            if (statement != null)&#123;
-
-                try &#123;
-                    statement.close();
-                &#125; catch (SQLException throwables) &#123;
-                    throwables.printStackTrace();
-                &#125;
-
-            &#125;
-
-            if (connection != null)&#123;
-
-                try &#123;
-                    connection.close();
-                &#125; catch (SQLException throwables) &#123;
-                    throwables.printStackTrace();
-                &#125;
-
-            &#125;
-
-        &#125;
-
-
-
-    &#125;
-
-&#125;
-</code></pre>
-<p>数据库中创建的每一张表 在java中都有一个实体与之对应</p>
-<p>table中的字段对应的是实体beans中的属性</p>
-<p>tb_user					User</p>
-<p>uid							uid</p>
-<p>username				username</p>
-<p>password				password</p>
-<p>通过jdbc来读取数据，这些数据也是以对象的形式被封装在结果集容器中<strong>ResultSet</strong></p>
-<p><code>resultSet !=null &amp;&amp; resultSet.next()</code></p>
-<p>第一个条件保证容器对象不为空，判断容器中是否有元素</p>
-<p>我们会将读取的数据封装成对象，然后将对象装进集合中（ArrayList&#x2F;HashMap）</p>
-<p>后面学习了前端之后，我们会将集合对象传到前端，在前端取出集合中的数据，渲染数据！</p>
-<h3 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h3><p><strong>java事务</strong></p>
-<p>实际上，一个Java应用系统，如果要操作数据库，则通过JDBC来实现的。增加、修改、删除都是通过相应方法间接来实现的，事务的控制也相应转移到java程序代码中。因此，数据库操作的事务习惯上就称为Java事务。</p>
-<p>通俗的理解，事务是一组原子操作单元，从数据库角度说，就是一组SQL指令，要么全部执行成功，若因为某个原因其中一条指令执行有错误，则撤销先前执行过的所有指令。更简单的说就是：要么全部执行成功，要么撤销不执行。</p>
-<ul>
-<li>事务必须服从ISO&#x2F;IEC所制定的ACID原则。ACID是原子性（atomicity），一致性（consistency），隔离性（isolation）和持久性（durability）的缩写</li>
-<li>通常的观念认为，事务仅与数据库相关</li>
-<li>事务只存在于增删改状态下</li>
-</ul>
-<p><strong>事务的原子性：</strong>表示事务执行过程中的任何失败都将导致事务所作的任何修改失败</p>
-<p><strong>事务的一致性：</strong>表示当事务执行失败时，所有被该事务影响的数据都应该恢复到事务执行前的状态</p>
-<p><strong>事务的隔离性：</strong>表示在事务执行过程中对数据的修改，在事务提交之前对其他事务不可见</p>
-<p><strong>事务的持久性：</strong>表示已提交的数据在事务执行失败时，数据的状态都应该正确</p>
-<p>案例：</p>
-<p>银行存钱</p>
-<p>银行取钱</p>
-<p>转账方法 A B</p>
-<p>假设有一个转账的场景：A账户转账给B账户，这个时候我们需要在A账户上扣钱，在B账户上加钱</p>
-<p>所以我们需要去写两条sql来完成这样的需求，但是我们要开启事务的支持，因为这两条sql是在一条事务线上的，所以要么同时执行成功，要么同时失败，要满足事务的原子性和一致性。</p>
-<h4 id="事务设置setAuntoCommit"><a href="#事务设置setAuntoCommit" class="headerlink" title="事务设置setAuntoCommit()"></a>事务设置setAuntoCommit()</h4><p>事务案例代码：</p>
-<p><strong>jdbc默认状态下是自动提交的</strong></p>
-<ul>
-<li><p>A账户向B账户转账1000</p>
-</li>
-<li><p>模拟一个异常</p>
-</li>
-<li><p>开启对事务的支持</p>
-</li>
-<li><p>在jdbc中如何开启对事务的支持</p>
-</li>
-<li><p>jdbc默认是关闭事务的，如果想开启事务的话需要 <code>connection.setAutoCommit();</code><br>然后在sql都执行成功的情况下我们要进行一个事务提交的操作<code> connection.commit();</code></p>
-</li>
-<li><p><code>connection.rollback()</code>是一个回滚的方法，是为了让事务回到执行之前的状态</p>
-</li>
-</ul>
-<pre><code class="java">/**
- * A账户向B账户转账1000
- *
- * 模拟一个异常
- *
- * 开启对事务的支持
- *
- * 在jdbc中如何开启对事务的支持
- *
- * jdbc默认是关闭事务的，如果想开启事务的话需要 connection.setAutoCommit();
- */
-public class JdbcDemo02 &#123;
-
-    public static void main(String[] args) &#123;
-
-        Connection connection = null;
-
-        Statement statement = null;
-
-        try&#123;
-
-            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
-
-            connection = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/web_test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;, &quot;root&quot;, &quot;root&quot;);
-
-            //将自动提交设置为手动提交
-            connection.setAutoCommit(false);
-
-            statement = connection.createStatement();
-
-            //A账户扣钱
-            int num = statement.executeUpdate(&quot;update tb_account set balance_A = balance_A - 1000 where id = 1&quot;);
-
-            System.out.println(num==1 ? &quot;扣钱成功&quot; : &quot;扣钱失败&quot;);
-
-            //模拟一个异常
-            int i = 1 / 0;
-
-            //B账户加钱
-            num = statement.executeUpdate(&quot;update tb_account set balance_B = balance_B + 1000 where id = 1&quot;);
-
-            System.out.println(num==1?&quot;转账成功&quot;:&quot;转账失败&quot;);
-
-            //提交事务
-            connection.commit();
-
-        &#125; catch (Exception e) &#123;
-
-            e.printStackTrace();
-
-        &#125;finally&#123;
-
-            if (statement != null)&#123;
-
-                try &#123;
-                    statement.close();
-                &#125; catch (SQLException throwables) &#123;
-
-                    //事务回滚
-                    try &#123;
-                        connection.rollback();
-                    &#125; catch (SQLException e) &#123;
-                        e.printStackTrace();
-                    &#125;
-
-                    throwables.printStackTrace();
-                &#125;
-
-            &#125;
-
-            if (connection != null)&#123;
-
-                try &#123;
-                    connection.close();
-                &#125; catch (SQLException throwables) &#123;
-                    throwables.printStackTrace();
-                &#125;
-
-            &#125;
-
-        &#125;
-
-    &#125;
-
-&#125;
-</code></pre>
-<h4 id="预编译PreparedStatement"><a href="#预编译PreparedStatement" class="headerlink" title="预编译PreparedStatement"></a>预编译PreparedStatement</h4><p><strong>sql注入</strong>：指的就是通过在sql中加入数据库的关键字，导致最终sql执行的结果是错误的</p>
-<p><strong>PreparedStatement</strong> 这个对象可以防止sql注入 因为这个对象在执行sql的时候</p>
-<p>是分为两个步骤： 1.先预编译sql，先把sql的架子给搭建出来，但是没有赋值，2.给sql中注入具体的数据，执行sql</p>
-<p><strong>Statement</strong>对象没有预编译的过程，直接就是执行sql</p>
-<p>考虑到安全性我们以后不会直接使用<code>Statement</code>而是使用<code>PreparedStatement</code></p>
-<pre><code class="java">              //获取数据库操作对象并且预编译sql
-             PreparedStatement preparedStatement = connection.prepareStatement(&quot;select * from tb_user where username = ? and password = ? &quot;);
-
-             //给占位符?赋值,占位符从1开始
-            preparedStatement.setString(1,&quot;jack001&quot;);
-            preparedStatement.setString(2,&quot;123456&quot;);
-
-            //执行sql
-            resultSet = preparedStatement.executeQuery();
-
-            if (resultSet != null &amp;&amp; resultSet.next())&#123;
-
-                System.out.println(&quot;登录成功&quot;);
-
-            &#125;
-</code></pre>
-<p>关于数据库的悲观锁和乐观锁（都是跟事务有关的）：</p>
-<p>​	乐观锁：假设在多线程场景下，多个线程同时对数据库中的一个表进行操作</p>
-<p>​	如果多个线程会去修改同一条数据，乐观锁的思想就是觉得这种情况不可能发生</p>
-<p><strong>乐观锁：</strong>乐观锁可以不用去开启事务的支持（采用的是自动提交的策略）</p>
-<pre><code class="sql">update tb_user set username = &#39;tom&#39; where id = 1 and version = &quot;影响记录条数只要大于等于1，这个	版本号就会改变&quot;
-</code></pre>
-<p><strong>悲观锁：</strong>针对于以上描述的情况，悲观锁思想就会觉得这种情况一定会发生，然后要提前去解决这个问题</p>
-<p>悲观锁一定要去开启对事务的支持，采用手动提交的策略来解决问题，行级锁，在sql后面加上 for update</p>
-<pre><code class="sql">select * from tb_account where id = 1 for update;
-</code></pre>
-<p>当一个线程在对某一条记录进行查询的时候，那么别的线程只能等待</p>
-<h4 id="封装工具类"><a href="#封装工具类" class="headerlink" title="封装工具类"></a>封装工具类</h4><p>工具类不能实例化对象，构造函数被private修饰</p>
-<p>所有的方法都要被static修饰</p>
-<pre><code class="java">package com.os467.utils;
-
-import java.sql.*;
-
-/**
- * 封装工具类的步骤：
- *
- * 1.构造方法私有化
- * 2.所有的方法都得是静态方法
- *
- */
-
-public class JdbcUtils &#123;
-
-    //私有化构造方法
-    private JdbcUtils()&#123;
-
-    &#125;
-
-    //注册驱动
-    static &#123;
-
-        try &#123;
-            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
-        &#125; catch (ClassNotFoundException e) &#123;
-            e.printStackTrace();
-        &#125;
-
-    &#125;
-
-    /**
-     * 获取数据库链接方法
-     */
-    public static Connection getConnection() throws SQLException&#123;
-
-        return DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306&quot; +
-                &quot;/web_test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;,
-                &quot;root&quot;, &quot;root&quot;);
-
-    &#125;
-
-    /**
-     * 用于关闭资源的方法
-     */
-    public static void getClose(ResultSet resultSet, Statement statement,Connection connection)&#123;
-
-        if (resultSet != null)&#123;
-
-            try &#123;
-                resultSet.close();
-            &#125; catch (SQLException throwables) &#123;
-                throwables.printStackTrace();
-            &#125;
-
-        &#125;
-
-        if (statement != null)&#123;
-
-            try &#123;
-                statement.close();
-            &#125; catch (SQLException throwables) &#123;
-                throwables.printStackTrace();
-            &#125;
-
-        &#125;
-
-        if (connection != null)&#123;
-
-            try &#123;
-                connection.close();
-            &#125; catch (SQLException throwables) &#123;
-                throwables.printStackTrace();
-            &#125;
-
-        &#125;
-
-    &#125;
-
-&#125;
-</code></pre>
-<p>利用工具类来执行sql</p>
-<pre><code class="java">package com.os467.demmo;
-
-import com.os467.utils.JdbcUtils;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-public class JdbcDemo03 &#123;
-
-    public static void main(String[] args) &#123;
-
-        PreparedStatement preparedStatement = null;
-
-        ResultSet resultSet =null;
-
-        Connection connection = null;
-
-        try &#123;
-            //获取数据库链接对象
-            connection = JdbcUtils.getConnection();
-
-            //获取数据库操作对象
-            preparedStatement = connection.prepareStatement(&quot;select * from tb_user&quot;);
-
-            //执行sql
-            resultSet = preparedStatement.executeQuery();
-
-            if (resultSet != null)&#123;
-
-                while (resultSet.next())&#123;
-
-                    int uid = resultSet.getInt(&quot;uid&quot;);
-
-                    String username = resultSet.getString(&quot;username&quot;);
-
-                    String password = resultSet.getString(&quot;password&quot;);
-
-                    System.out.println(uid+&quot; &quot;+username+&quot; &quot;+password);
-
-                &#125;
-
-            &#125;
-
-        &#125; catch (SQLException throwables) &#123;
-            throwables.printStackTrace();
-        &#125;finally &#123;
-
-            JdbcUtils.getClose(resultSet,preparedStatement,connection);
-
-        &#125;
-
-    &#125;
-
-&#125;
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2022/07/05/jdbc/" class="go-post">
         阅读全文
     </a>
 </div>
@@ -2284,9 +1944,9 @@ $&#123;not empty strings&#125;  判断是否不为空
 </div>
 
 <div class="post">
-    <a href="/2022/06/21/javaScript/">
+    <a href="/2022/07/01/jdbc/">
         <h2>
-            javaScript
+            Jdbc
         </h2>
     </a>
     <div class="category-and-date">
@@ -2295,274 +1955,649 @@ $&#123;not empty strings&#125;  判断是否不为空
             <span class="icon">
                 <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
-            2022/6/21
+            2022/7/1
         </span>
     </div>
     <div class="excerpt">
         <div class="content" v-pre>
             
-            <h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="1-JavaScript入门"><a href="#1-JavaScript入门" class="headerlink" title="1.JavaScript入门"></a>1.JavaScript入门</h2><ul>
-<li>什么是 JavaScript？ </li>
-<li>JavaScript 被设计用来向 HTML 页面添加交互行为。  </li>
-<li>JavaScript 是一种脚本语言（脚本语言是一种轻量级的编程语言）。</li>
-<li>JavaScript 由数行可执行计算机代码组成。 </li>
-<li>JavaScript 通常被直接嵌入 HTML 页面。  </li>
-<li>JavaScript 是一种解释性语言（就是说，代码执行不进行预编译）。 </li>
-<li>所有的人无需购买许可证均可使用 JavaScript。</li>
-</ul>
-<h3 id="书写规范"><a href="#书写规范" class="headerlink" title="书写规范"></a>书写规范</h3><p>javaScript在html通常用<code>&lt;script&gt;&lt;/script&gt;</code>标签括起来,在此标签内的代码被浏览器识别为js代码</p>
-<p>同时使用 type 属性来定义脚本语言</p>
-<pre><code class="html">&lt;html&gt;
-&lt;body&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-此处写入js代码
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h3 id="在哪里放置-JavaScript"><a href="#在哪里放置-JavaScript" class="headerlink" title="在哪里放置 JavaScript"></a>在哪里放置 JavaScript</h3><p>页面中的脚本会在页面载入浏览器后立即执行。我们并不总希望这样。有时，我们希望当页面载入时执行脚本，而另外的时候，我们则希望当用户触发事件时才执行脚本。</p>
-<h5 id="位于-head-部分的脚本："><a href="#位于-head-部分的脚本：" class="headerlink" title="位于 head 部分的脚本："></a>位于 head 部分的脚本：</h5><p>当脚本被调用时，或者当事件被触发时，脚本就会被执行。当你把脚本放置到 head 部分后，就可以确保在需要使用脚本之前，它已经被载入了。</p>
-<pre><code>&lt;html&gt;
-&lt;head&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-....
-&lt;/script&gt;
-&lt;/head&gt;
-....
-</code></pre>
-<h5 id="位于-body-部分的脚本："><a href="#位于-body-部分的脚本：" class="headerlink" title="位于 body 部分的脚本："></a>位于 body 部分的脚本：</h5><p>在页面载入时脚本就会被执行。当你把脚本放置于 body 部分后，它就会生成页面的内容。</p>
-<pre><code class="html">&lt;html&gt;
-&lt;head&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-....
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h5 id="在-body-和-head-部分的脚本："><a href="#在-body-和-head-部分的脚本：" class="headerlink" title="在 body 和 head 部分的脚本："></a>在 body 和 head 部分的脚本：</h5><p>你可以在文档中放置任何数量的脚本，因此你既可以把脚本放置到 body，又可以放置到 head 部分。</p>
-<pre><code class="html">&lt;html&gt;
-&lt;head&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-....
-&lt;/script&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-....
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h5 id="使用外部-JavaScript"><a href="#使用外部-JavaScript" class="headerlink" title="使用外部 JavaScript"></a>使用外部 JavaScript</h5><p>有时，你也许希望在若干个页面中运行 JavaScript，同时不在每个页面中写相同的脚本。</p>
-<p>为了达到这个目的，你可以将 JavaScript 写入一个外部文件之中。然后以 .js 为后缀保存这个文件。</p>
-<p>注意：外部文件不能包含 <code>&lt;script&gt; </code>标签。</p>
-<p>然后把 .js 文件指定给 <code>&lt;script&gt;</code> 标签中的 “src” 属性，就可以使用这个外部文件了：</p>
-<pre><code class="html">&lt;html&gt;
-&lt;head&gt;
-&lt;script src=&quot;xxx.js&quot;&gt;....&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>提示：您可以把 .js 文件放到网站目录中通常存放脚本的子目录中，这样更容易管理和维护。</p>
-<h5 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h5><p>js使用<code>//</code>来标注单行注释</p>
-<pre><code class="javascript">//这是一个单行注释
-</code></pre>
-<p>js使用<code>/* */</code>来标注多行注释</p>
-<pre><code class="javascript">/*
-这是一个
-多行注释
-*/
-</code></pre>
-<h4 id="JavaScript-变量"><a href="#JavaScript-变量" class="headerlink" title="JavaScript 变量"></a>JavaScript 变量</h4><p><strong>JavaScript 变量名称的规则：</strong></p>
+            <h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><p><strong>JDBC是什么？</strong></p>
+<p>jdbc是一个由sun公司(Oracle)提出的规范（一套接口），jdbc指的就是java语言连接数据库</p>
+<p>jdbc就是一套面向所有数据库厂家的接口</p>
+<p>每一个数据库厂家都希望可以通过java语言连接到自己开发的数据库，</p>
+<p>这个时候，厂家肯定要写一套程序，java语言连接数据库的具体实现，这个实现类必须要实现JDBC接口</p>
 <ul>
-<li>变量对大小写敏感（<em>y</em> 和 <em>Y</em> 是两个不同的变量） </li>
-<li>变量必须以<em>字母或下划线开始</em></li>
+<li>作为开发人员来说，我们可能会连接到很多组不同的数据库，根据公司的业务不同，可能会连接mysql，SqlServer等等，但是我们不需要关注数据库具体的实现类是什么。我们关注的是jdbc这样的一套接口，因为这个接口提供了具体获取数据库对象的方法，还有相关执行增删改查的方法，还有相关事务提交的方法，事物处理的方法，我们只需要关注接口中有哪些方法，方法具体的实现交由数据库的厂家去完成！</li>
 </ul>
-<p>正如代数一样，JavaScript 变量用于保存值或表达式。</p>
-<p>可以给变量起一个简短名称，比如 <em>x</em>，或者更有描述性的名称，比如 <em>length</em>。</p>
-<p>JavaScript 变量也可以保存文本值，比如 <code>str=&quot;Hello word&quot;</code></p>
-<p><strong>声明（创建） JavaScript 变量:</strong></p>
-<p>通过var关键字来声明一个变量</p>
-<pre><code class="javascript">//声明一个变量
-var x;
-//为文本变量赋值
-var s = &quot;Hello world&quot;
+<p>例如：java语言连接 Mysql</p>
+<p>mysql的厂家就必须要实现jdbc这个接口</p>
+<p><strong>JDBC的驱动类型</strong></p>
+<ul>
+<li>ODBC是微软为了解决跨数据平台的一个方案，sun提供支持</li>
+<li>部分java驱动程序使用特定数据库的API（一般是C和C++）将jdbc翻译成数据库的特定代码</li>
+<li>Jdbc-net将jdbc翻译成不针对特定数据库的网络协议，由数据库服务器翻译成特定代码</li>
+<li>本地协议纯java驱动程序将jdbc请求转化成针对特定数据库的网络协议</li>
+</ul>
+<p><strong>JDBC的用途</strong></p>
+<ol>
+<li>加载对应数据库驱动（Load Driver）</li>
+<li>与数据库建立连接（connection）</li>
+<li>发送操作数据库的语句（createStatement）</li>
+<li>执行并处理返回结果（executeQuery）</li>
+</ol>
+<h2 id="Java链接数据库"><a href="#Java链接数据库" class="headerlink" title="Java链接数据库"></a>Java链接数据库</h2><p>保证mysql服务是开启的</p>
+<p>将java包导入到工程lib下，并且添加到类路径下（保证版本对应）</p>
+<p>注册驱动，使用Class类下的一个静态方法<strong>forName</strong>,使得类加载</p>
+<p>获取数据库连接 DriverManager类提供了<strong>getConnection</strong>方法 （需要传入数据源信息）</p>
+<p>获取数据库操作对象 <strong>createStatement</strong>方法</p>
+<p>编写sql语句</p>
+<p>按照sql语句的类别调用不同方法,获取到返回的结果</p>
+<p>关闭数据库资源（放在<strong>finally</strong>语句块中）</p>
+<pre><code class="java">package com.os467.test;
+
+import java.sql.*;
+
+/**
+ * JDBC编程六步：
+ * 1.注册驱动
+ * 2.获取数据库连接
+ * 3.获取数据库操作对象
+ * 4.执行sql
+ * 5.返回记录条数/获取结果集对象
+ * 6.关闭资源
+ */
+
+public class JdbcTest01 &#123;
+
+    public static void main(String[] args) &#123;
+
+        //使三个实例作为成员变量存在在类中，使得finally语句块中可以读取到
+        Connection connection = null;
+
+        Statement statement = null;
+
+        ResultSet resultSet = null;
+
+        try&#123;
+
+            //1.注册驱动
+            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
+
+            //2.获取数据库链接
+            /**
+             * String url 链接数据库的地址
+             * String user 数据库的用户名 root
+             * String password 数据库密码 root
+             * jdbc:mysql:// 协议
+             * localhost 本地的ip地址
+             * 3306 默认端口号
+             * os467test 需要使用的数据库
+             * ?serverTimezone=GMT 设置时区
+             */
+
+            String url = &quot;jdbc:mysql://localhost:3306/os467test?serverTimezone=GMT&quot;;
+
+            String user = &quot;root&quot;;
+
+            String password = &quot;root&quot;;
+
+            connection = DriverManager.getConnection(url, user, password);
+
+            System.out.println(connection);
+
+            //3.获取数据库操作对象
+            statement = connection.createStatement();
+
+            //4.编写sql语句，执行sql
+            String sql = &quot;select * from emp&quot;;
+
+            //5.执行sql，获取返回的结果集对象,遍历结果集
+            resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next())&#123;
+
+                //取出结果集中的数据
+                int empno = resultSet.getInt(&quot;EMPNO&quot;);
+
+                String ename = resultSet.getString(&quot;ENAME&quot;);
+
+                System.out.println(&quot;员工的编号为&quot;+empno+&quot; 员工的姓名为&quot;+ename);
+
+            &#125;
+
+
+        &#125;catch (Exception e)&#123;
+
+            e.printStackTrace();
+
+        &#125;finally &#123;
+
+            //6.关闭数据库资源,先进行非空校验，对close()可能发生的异常进行处理
+            if (resultSet != null)&#123;
+
+                try &#123;
+                    resultSet.close();
+                &#125; catch (SQLException throwables) &#123;
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+            if (statement != null)&#123;
+
+                try &#123;
+                    statement.close();
+                &#125; catch (SQLException throwables) &#123;
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+            if (connection != null)&#123;
+
+                try &#123;
+                    connection.close();
+                &#125; catch (SQLException throwables) &#123;
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+        &#125;
+
+    &#125;
+
+
+&#125;
 </code></pre>
-<p><strong>向未声明的 JavaScript 变量赋值:</strong></p>
-<p><em>如果您所赋值的变量还未进行过声明，该变量会自动声明</em></p>
-<pre><code class="javascript">//等同于 var x = 5;
-x=5;
-//等同于 var s = &quot;hello world&quot;
-s = &quot;hello world&quot;;
+<p><strong>注意：</strong>在为字符集添加中文数据时，在<strong>url</strong>后面用**&amp;<strong>拼接</strong>characterEncoding&#x3D;utf-8**来设置字符集</p>
+<p>并且数据库校对中每个字段的字符集也要设置为utf-8</p>
+<pre><code class="java">package com.os467.test;
+
+import javax.swing.*;
+import java.sql.*;
+
+/**
+ * 往学生表中添加数据
+ */
+public class JdbcTest03 &#123;
+
+    public static void main(String[] args) &#123;
+
+        Connection connection = null;
+
+        Statement statement = null;
+
+        try &#123;
+
+            //加载jdbc驱动
+            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
+
+            String url = &quot;jdbc:mysql://localhost:3306/os467test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;;
+
+            String user = &quot;root&quot;;
+
+            String password = &quot;root&quot;;
+
+            //链接数据库
+            connection = DriverManager.getConnection(url, user, password);
+
+            //获取操作对象
+            statement = connection.createStatement();
+
+            String sql = &quot;insert into tb_student(name,age,hobby)&quot; +
+                    &quot;value(&#39;Tom&#39;,18,&#39;打篮球&#39;)&quot;;
+
+            int num = statement.executeUpdate(sql);
+
+            if (num != 0)&#123;
+
+                System.out.println(&quot;添加成功&quot;);
+            &#125;else&#123;
+
+                System.out.println(&quot;添加失败&quot;);
+
+            &#125;
+
+        &#125;catch (Exception e)&#123;
+
+            e.printStackTrace();
+
+        &#125;finally &#123;
+            
+          //关闭数据库资源,避免占用系统资源
+          if (statement != null)&#123;
+
+              try &#123;
+                  statement.close();
+              &#125; catch (SQLException throwables) &#123;
+                  throwables.printStackTrace();
+              &#125;
+
+          &#125;
+
+          if (connection != null)&#123;
+
+              try &#123;
+                  connection.close();
+              &#125; catch (SQLException throwables) &#123;
+                  throwables.printStackTrace();
+              &#125;
+
+          &#125;
+
+
+
+        &#125;
+
+
+    &#125;
+
+
+&#125;
 </code></pre>
-<p><strong>重新声明 JavaScript 变量:</strong></p>
-<p>再次声明js变量，该变量也不会丢失其原始值</p>
-<pre><code class="javascript">var x=5;
-//var的值还是5
-var x; 
+<p>&#x2F;&#x2F;模拟用户登入</p>
+<pre><code class="sql">package com.os467.test;
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class UserJDBCTest02 &#123;
+
+    public static void main(String[] args) &#123;
+
+        //创建控制台打印对象
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println(&quot;请输入用户名:&quot;);
+
+        String username = scanner.next();
+
+        System.out.println(&quot;请输入密码:&quot;);
+
+        String password = scanner.next();
+
+
+        Connection connection = null;
+
+        Statement statement = null;
+
+        ResultSet resultSet = null;
+
+        try&#123;
+
+            //注册驱动
+            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
+
+            String url = &quot;jdbc:mysql://localhost:3306/web_test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;;
+
+            //获取数据库对象
+            connection = DriverManager.getConnection(url,&quot;root&quot;,&quot;root&quot;);
+
+            //获取数据库操作对象
+            statement = connection.createStatement();
+
+            resultSet = statement.executeQuery(&quot;select * from tb_user where username = &#39;&quot; + username + &quot;&#39; and password = &#39;&quot; + password + &quot;&#39;&quot;);
+
+            //判断结果集是否为空和集合中是否有元素
+            if(resultSet != null &amp;&amp; resultSet.next())&#123;
+
+                System.out.println(&quot;登入成功&quot;);
+
+            &#125;else&#123;
+
+                System.out.println(&quot;登入失败&quot;);
+
+            &#125;
+
+        &#125;catch (Exception e)&#123;
+
+            e.printStackTrace();
+
+        &#125;finally &#123;
+
+            if (resultSet != null)&#123;
+
+                try &#123;
+                    resultSet.close();
+                &#125; catch (SQLException throwables) &#123;
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+            //关闭数据库资源
+            if (statement != null)&#123;
+
+                try &#123;
+                    statement.close();
+                &#125; catch (SQLException throwables) &#123;
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+            if (connection != null)&#123;
+
+                try &#123;
+                    connection.close();
+                &#125; catch (SQLException throwables) &#123;
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+        &#125;
+
+
+
+    &#125;
+
+&#125;
 </code></pre>
-<h4 id="JavaScript-算术运算符"><a href="#JavaScript-算术运算符" class="headerlink" title="JavaScript 算术运算符"></a>JavaScript 算术运算符</h4><p>算术运算符用于执行变量与&#x2F;或值之间的算术运算。</p>
-<p>给定 <em>y&#x3D;5</em>，下面的表格解释了这些算术运算符：</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>例子</th>
-<th>结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>+</td>
-<td>加</td>
-<td>x&#x3D;y+2</td>
-<td>x&#x3D;7</td>
-</tr>
-<tr>
-<td>-</td>
-<td>减</td>
-<td>x&#x3D;y-2</td>
-<td>x&#x3D;3</td>
-</tr>
-<tr>
-<td>*</td>
-<td>乘</td>
-<td>x&#x3D;y*2</td>
-<td>x&#x3D;10</td>
-</tr>
-<tr>
-<td>&#x2F;</td>
-<td>除</td>
-<td>x&#x3D;y&#x2F;2</td>
-<td>x&#x3D;2.5</td>
-</tr>
-<tr>
-<td>%</td>
-<td>求系数 (保留整数)</td>
-<td>x&#x3D;y%2</td>
-<td>x&#x3D;1</td>
-</tr>
-<tr>
-<td>++</td>
-<td>累加</td>
-<td>x&#x3D;++y</td>
-<td>x&#x3D;6</td>
-</tr>
-<tr>
-<td>–</td>
-<td>递减</td>
-<td>x&#x3D;–y</td>
-<td>x&#x3D;4</td>
-</tr>
-</tbody></table>
-<h4 id="JavaScript-赋值运算符"><a href="#JavaScript-赋值运算符" class="headerlink" title="JavaScript 赋值运算符"></a>JavaScript 赋值运算符</h4><p>赋值运算符用于给 JavaScript 变量赋值。</p>
-<p>给定 <em>x&#x3D;10</em> 和 <em>y&#x3D;5</em>，下面的表格解释了赋值运算符：</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>例子</th>
-<th>等价于</th>
-<th>结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&#x3D;</td>
-<td>x&#x3D;y</td>
-<td></td>
-<td>x&#x3D;5</td>
-</tr>
-<tr>
-<td>+&#x3D;</td>
-<td>x+&#x3D;y</td>
-<td>x&#x3D;x+y</td>
-<td>x&#x3D;15</td>
-</tr>
-<tr>
-<td>-&#x3D;</td>
-<td>x-&#x3D;y</td>
-<td>x&#x3D;x-y</td>
-<td>x&#x3D;5</td>
-</tr>
-<tr>
-<td>*&#x3D;</td>
-<td>x*&#x3D;y</td>
-<td>x&#x3D;x*y</td>
-<td>x&#x3D;50</td>
-</tr>
-<tr>
-<td>&#x2F;&#x3D;</td>
-<td>x&#x2F;&#x3D;y</td>
-<td>x&#x3D;x&#x2F;y</td>
-<td>x&#x3D;2</td>
-</tr>
-<tr>
-<td>%&#x3D;</td>
-<td>x%&#x3D;y</td>
-<td>x&#x3D;x%y</td>
-<td>x&#x3D;0</td>
-</tr>
-</tbody></table>
-<h4 id="用于字符串的-运算符"><a href="#用于字符串的-运算符" class="headerlink" title="用于字符串的 + 运算符"></a>用于字符串的 + 运算符</h4><p>+ 运算符用于把文本值或字符串变量加起来（连接起来）</p>
-<p>如需把两个或多个字符串变量连接起来，请使用 + 运算符</p>
-<pre><code class="javascript">txt1=&quot;hello&quot;;
-txt2=&quot;world&quot;;
-//txt3的值为&quot;hello world&quot;
-txt3=txt1+&quot; &quot;+txt2;
+<p>数据库中创建的每一张表 在java中都有一个实体与之对应</p>
+<p>table中的字段对应的是实体beans中的属性</p>
+<p>tb_user					User</p>
+<p>uid							uid</p>
+<p>username				username</p>
+<p>password				password</p>
+<p>通过jdbc来读取数据，这些数据也是以对象的形式被封装在结果集容器中<strong>ResultSet</strong></p>
+<p><code>resultSet !=null &amp;&amp; resultSet.next()</code></p>
+<p>第一个条件保证容器对象不为空，判断容器中是否有元素</p>
+<p>我们会将读取的数据封装成对象，然后将对象装进集合中（ArrayList&#x2F;HashMap）</p>
+<p>后面学习了前端之后，我们会将集合对象传到前端，在前端取出集合中的数据，渲染数据！</p>
+<h3 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h3><p><strong>java事务</strong></p>
+<p>实际上，一个Java应用系统，如果要操作数据库，则通过JDBC来实现的。增加、修改、删除都是通过相应方法间接来实现的，事务的控制也相应转移到java程序代码中。因此，数据库操作的事务习惯上就称为Java事务。</p>
+<p>通俗的理解，事务是一组原子操作单元，从数据库角度说，就是一组SQL指令，要么全部执行成功，若因为某个原因其中一条指令执行有错误，则撤销先前执行过的所有指令。更简单的说就是：要么全部执行成功，要么撤销不执行。</p>
+<ul>
+<li>事务必须服从ISO&#x2F;IEC所制定的ACID原则。ACID是原子性（atomicity），一致性（consistency），隔离性（isolation）和持久性（durability）的缩写</li>
+<li>通常的观念认为，事务仅与数据库相关</li>
+<li>事务只存在于增删改状态下</li>
+</ul>
+<p><strong>事务的原子性：</strong>表示事务执行过程中的任何失败都将导致事务所作的任何修改失败</p>
+<p><strong>事务的一致性：</strong>表示当事务执行失败时，所有被该事务影响的数据都应该恢复到事务执行前的状态</p>
+<p><strong>事务的隔离性：</strong>表示在事务执行过程中对数据的修改，在事务提交之前对其他事务不可见</p>
+<p><strong>事务的持久性：</strong>表示已提交的数据在事务执行失败时，数据的状态都应该正确</p>
+<p>案例：</p>
+<p>银行存钱</p>
+<p>银行取钱</p>
+<p>转账方法 A B</p>
+<p>假设有一个转账的场景：A账户转账给B账户，这个时候我们需要在A账户上扣钱，在B账户上加钱</p>
+<p>所以我们需要去写两条sql来完成这样的需求，但是我们要开启事务的支持，因为这两条sql是在一条事务线上的，所以要么同时执行成功，要么同时失败，要满足事务的原子性和一致性。</p>
+<h4 id="事务设置setAuntoCommit"><a href="#事务设置setAuntoCommit" class="headerlink" title="事务设置setAuntoCommit()"></a>事务设置setAuntoCommit()</h4><p>事务案例代码：</p>
+<p><strong>jdbc默认状态下是自动提交的</strong></p>
+<ul>
+<li><p>A账户向B账户转账1000</p>
+</li>
+<li><p>模拟一个异常</p>
+</li>
+<li><p>开启对事务的支持</p>
+</li>
+<li><p>在jdbc中如何开启对事务的支持</p>
+</li>
+<li><p>jdbc默认是关闭事务的，如果想开启事务的话需要 <code>connection.setAutoCommit();</code><br>然后在sql都执行成功的情况下我们要进行一个事务提交的操作<code> connection.commit();</code></p>
+</li>
+<li><p><code>connection.rollback()</code>是一个回滚的方法，是为了让事务回到执行之前的状态</p>
+</li>
+</ul>
+<pre><code class="java">/**
+ * A账户向B账户转账1000
+ *
+ * 模拟一个异常
+ *
+ * 开启对事务的支持
+ *
+ * 在jdbc中如何开启对事务的支持
+ *
+ * jdbc默认是关闭事务的，如果想开启事务的话需要 connection.setAutoCommit();
+ */
+public class JdbcDemo02 &#123;
+
+    public static void main(String[] args) &#123;
+
+        Connection connection = null;
+
+        Statement statement = null;
+
+        try&#123;
+
+            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
+
+            connection = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/web_test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;, &quot;root&quot;, &quot;root&quot;);
+
+            //将自动提交设置为手动提交
+            connection.setAutoCommit(false);
+
+            statement = connection.createStatement();
+
+            //A账户扣钱
+            int num = statement.executeUpdate(&quot;update tb_account set balance_A = balance_A - 1000 where id = 1&quot;);
+
+            System.out.println(num==1 ? &quot;扣钱成功&quot; : &quot;扣钱失败&quot;);
+
+            //模拟一个异常
+            int i = 1 / 0;
+
+            //B账户加钱
+            num = statement.executeUpdate(&quot;update tb_account set balance_B = balance_B + 1000 where id = 1&quot;);
+
+            System.out.println(num==1?&quot;转账成功&quot;:&quot;转账失败&quot;);
+
+            //提交事务
+            connection.commit();
+
+        &#125; catch (Exception e) &#123;
+
+            e.printStackTrace();
+
+        &#125;finally&#123;
+
+            if (statement != null)&#123;
+
+                try &#123;
+                    statement.close();
+                &#125; catch (SQLException throwables) &#123;
+
+                    //事务回滚
+                    try &#123;
+                        connection.rollback();
+                    &#125; catch (SQLException e) &#123;
+                        e.printStackTrace();
+                    &#125;
+
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+            if (connection != null)&#123;
+
+                try &#123;
+                    connection.close();
+                &#125; catch (SQLException throwables) &#123;
+                    throwables.printStackTrace();
+                &#125;
+
+            &#125;
+
+        &#125;
+
+    &#125;
+
+&#125;
 </code></pre>
-<p><strong>注意：</strong>如果把数字与字符串相加，结果将成为字符串</p>
-<h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p>比较运算符在逻辑语句中使用，以测定变量或值是否相等。</p>
-<p>给定 x&#x3D;5，下面的表格解释了比较运算符：</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>例子</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&#x3D;&#x3D;</td>
-<td>等于</td>
-<td>x&#x3D;&#x3D;8 为 false</td>
-</tr>
-<tr>
-<td>&#x3D;&#x3D;&#x3D;</td>
-<td>全等（值和类型）</td>
-<td>x&#x3D;&#x3D;&#x3D;5 为 true；x&#x3D;&#x3D;&#x3D;”5” 为 false</td>
-</tr>
-<tr>
-<td>!&#x3D;</td>
-<td>不等于</td>
-<td>x!&#x3D;8 为 true</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>大于</td>
-<td>x&gt;8 为 false</td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>小于</td>
-<td>x&lt;8 为 true</td>
-</tr>
-<tr>
-<td>&gt;&#x3D;</td>
-<td>大于或等于</td>
-<td>x&gt;&#x3D;8 为 false</td>
-</tr>
-<tr>
-<td>&lt;&#x3D;</td>
-<td>小于或等于</td>
-<td>x&lt;&#x3D;8 为 true</td>
-</tr>
-</tbody></table>
+<h4 id="预编译PreparedStatement"><a href="#预编译PreparedStatement" class="headerlink" title="预编译PreparedStatement"></a>预编译PreparedStatement</h4><p><strong>sql注入</strong>：指的就是通过在sql中加入数据库的关键字，导致最终sql执行的结果是错误的</p>
+<p><strong>PreparedStatement</strong> 这个对象可以防止sql注入 因为这个对象在执行sql的时候</p>
+<p>是分为两个步骤： 1.先预编译sql，先把sql的架子给搭建出来，但是没有赋值，2.给sql中注入具体的数据，执行sql</p>
+<p><strong>Statement</strong>对象没有预编译的过程，直接就是执行sql</p>
+<p>考虑到安全性我们以后不会直接使用<code>Statement</code>而是使用<code>PreparedStatement</code></p>
+<pre><code class="java">              //获取数据库操作对象并且预编译sql
+             PreparedStatement preparedStatement = connection.prepareStatement(&quot;select * from tb_user where username = ? and password = ? &quot;);
+
+             //给占位符?赋值,占位符从1开始
+            preparedStatement.setString(1,&quot;jack001&quot;);
+            preparedStatement.setString(2,&quot;123456&quot;);
+
+            //执行sql
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet != null &amp;&amp; resultSet.next())&#123;
+
+                System.out.println(&quot;登录成功&quot;);
+
+            &#125;
+</code></pre>
+<p>关于数据库的悲观锁和乐观锁（都是跟事务有关的）：</p>
+<p>​	乐观锁：假设在多线程场景下，多个线程同时对数据库中的一个表进行操作</p>
+<p>​	如果多个线程会去修改同一条数据，乐观锁的思想就是觉得这种情况不可能发生</p>
+<p><strong>乐观锁：</strong>乐观锁可以不用去开启事务的支持（采用的是自动提交的策略）</p>
+<pre><code class="sql">update tb_user set username = &#39;tom&#39; where id = 1 and version = &quot;影响记录条数只要大于等于1，这个	版本号就会改变&quot;
+</code></pre>
+<p><strong>悲观锁：</strong>针对于以上描述的情况，悲观锁思想就会觉得这种情况一定会发生，然后要提前去解决这个问题</p>
+<p>悲观锁一定要去开启对事务的支持，采用手动提交的策略来解决问题，行级锁，在sql后面加上 for update</p>
+<pre><code class="sql">select * from tb_account where id = 1 for update;
+</code></pre>
+<p>当一个线程在对某一条记录进行查询的时候，那么别的线程只能等待</p>
+<h4 id="封装工具类"><a href="#封装工具类" class="headerlink" title="封装工具类"></a>封装工具类</h4><p>工具类不能实例化对象，构造函数被private修饰</p>
+<p>所有的方法都要被static修饰</p>
+<pre><code class="java">package com.os467.utils;
+
+import java.sql.*;
+
+/**
+ * 封装工具类的步骤：
+ *
+ * 1.构造方法私有化
+ * 2.所有的方法都得是静态方法
+ *
+ */
+
+public class JdbcUtils &#123;
+
+    //私有化构造方法
+    private JdbcUtils()&#123;
+
+    &#125;
+
+    //注册驱动
+    static &#123;
+
+        try &#123;
+            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
+        &#125; catch (ClassNotFoundException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+    &#125;
+
+    /**
+     * 获取数据库链接方法
+     */
+    public static Connection getConnection() throws SQLException&#123;
+
+        return DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306&quot; +
+                &quot;/web_test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;,
+                &quot;root&quot;, &quot;root&quot;);
+
+    &#125;
+
+    /**
+     * 用于关闭资源的方法
+     */
+    public static void getClose(ResultSet resultSet, Statement statement,Connection connection)&#123;
+
+        if (resultSet != null)&#123;
+
+            try &#123;
+                resultSet.close();
+            &#125; catch (SQLException throwables) &#123;
+                throwables.printStackTrace();
+            &#125;
+
+        &#125;
+
+        if (statement != null)&#123;
+
+            try &#123;
+                statement.close();
+            &#125; catch (SQLException throwables) &#123;
+                throwables.printStackTrace();
+            &#125;
+
+        &#125;
+
+        if (connection != null)&#123;
+
+            try &#123;
+                connection.close();
+            &#125; catch (SQLException throwables) &#123;
+                throwables.printStackTrace();
+            &#125;
+
+        &#125;
+
+    &#125;
+
+&#125;
+</code></pre>
+<p>利用工具类来执行sql</p>
+<pre><code class="java">package com.os467.demmo;
+
+import com.os467.utils.JdbcUtils;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class JdbcDemo03 &#123;
+
+    public static void main(String[] args) &#123;
+
+        PreparedStatement preparedStatement = null;
+
+        ResultSet resultSet =null;
+
+        Connection connection = null;
+
+        try &#123;
+            //获取数据库链接对象
+            connection = JdbcUtils.getConnection();
+
+            //获取数据库操作对象
+            preparedStatement = connection.prepareStatement(&quot;select * from tb_user&quot;);
+
+            //执行sql
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet != null)&#123;
+
+                while (resultSet.next())&#123;
+
+                    int uid = resultSet.getInt(&quot;uid&quot;);
+
+                    String username = resultSet.getString(&quot;username&quot;);
+
+                    String password = resultSet.getString(&quot;password&quot;);
+
+                    System.out.println(uid+&quot; &quot;+username+&quot; &quot;+password);
+
+                &#125;
+
+            &#125;
+
+        &#125; catch (SQLException throwables) &#123;
+            throwables.printStackTrace();
+        &#125;finally &#123;
+
+            JdbcUtils.getClose(resultSet,preparedStatement,connection);
+
+        &#125;
+
+    &#125;
+
+&#125;
+</code></pre>
 
             
         </div>
@@ -2571,7 +2606,7 @@ txt3=txt1+&quot; &quot;+txt2;
         
         
     </div>
-    <a href="/2022/06/21/javaScript/" class="go-post">
+    <a href="/2022/07/01/jdbc/" class="go-post">
         阅读全文
     </a>
 </div>
