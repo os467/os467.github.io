@@ -1,0 +1,780 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>IO流 | Tly的博客</title>
+        <meta name="author" content="Os467">
+        <meta name="description" content="Welcome">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://img.gejiba.com/images/ad7295b88b395d72d985a0835695dd71.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Tly的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Tly的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>IO流 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/7/10
+        </span>
+        
+        
+    </div>
+    <div class="content" v-pre>
+        <h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><h2 id="IO流概述"><a href="#IO流概述" class="headerlink" title="IO流概述"></a>IO流概述</h2><p><strong>什么是IO流</strong></p>
+<p>​	io流就是内存和硬盘上完成对数据的读和写</p>
+<p>I：Input</p>
+<p>O：Output</p>
+<p>通过IO可以完成硬盘文件的读和写</p>
+<p>往内存中去，叫做<strong>输入</strong>（Input），或者叫做<strong>读</strong>（Read）</p>
+<p>从内存中出来，叫做<strong>输出</strong>（Output），或者叫做<strong>写</strong>（Write）</p>
+<h3 id="流的分类"><a href="#流的分类" class="headerlink" title="流的分类"></a>流的分类</h3><p><strong>字节和字符</strong>：</p>
+<p>​		字节（Byte）是一种计量单位，表示数据量多少，它是计算机信息技术用于计量存储容量的一种计量单位</p>
+<p>​		字符就是键盘上所有的符号，包括英文，汉字等</p>
+<p>​		针对于每一个字符，都有固定的Ascll码与之对应，<code>!</code>占了一个字节，然后根据字节流读取数据的时候，读取的是<code>!</code>这个字符所对应的AscII码</p>
+<p>​		像特殊符号、英文在java中占了一个字节，汉字<code>你</code>在java中占了两个字节</p>
+<p>有的流时按照字节的方式读取数据，一次读取1个字节byte，等同于一次读取8个二进制位</p>
+<p>按照字符的方式读取数据的，一次读取一个字符，这种流是为了方便读取普通文本文件而存在的</p>
+<ul>
+<li><strong>字节流</strong></li>
+</ul>
+<p>​			字节流在读取数据的时候，会遍历文件中的字符，然后读取的是每个字符所对应的asII码</p>
+<p>​			字节流可以读取任意类型的文件（普通文本，视频，录音，图片…）</p>
+<ul>
+<li><strong>字符流</strong></li>
+</ul>
+<p>​			在读取数据的时候，就是一个字符一个字符的进行读取，字符流的效率比较高，但是只能读取普通文本</p>
+<p><strong>流的分类</strong></p>
+<p><strong>java.io.InputStream</strong>		字节输入流</p>
+<p>读取硬盘数据到内存</p>
+<p><strong>java.io.OutputStream</strong>		字节输出流</p>
+<p>存储内存数据到硬盘</p>
+<p><strong>java.io.Reader</strong>		字符输入流</p>
+<p><strong>java.io.Writer</strong>		字符输出流</p>
+<h3 id="流的关闭"><a href="#流的关闭" class="headerlink" title="流的关闭"></a>流的关闭</h3><p>所有的<strong>流</strong>都实现了java.io.Closeable接口，都是可关闭的，都有<code>close()</code>方法</p>
+<p>所有的<strong>输出流</strong>都实现了java.io.Flushable接口，都是可刷新的，都有<code>flush()</code>方法 </p>
+<h5 id="文件专属流"><a href="#文件专属流" class="headerlink" title="文件专属流"></a>文件专属流</h5><ul>
+<li>java.io.FileInputStream</li>
+<li>java.io.FileOutputStream</li>
+<li>java.io.FileReader</li>
+<li>java.io.FileWriter</li>
+</ul>
+<pre><code class="java">//创建一个字节流对象
+FileInputStream fileInputStream = new FileInputStream(&quot;D:\\pythonschool\\PY_lab\\File\\html.txt&quot;);
+
+//调用读取数据的方法,一次读取一个字符
+//fileInputStream.read() 这个方法的返回值是指定字符的ascii码，在文件中数据都读取完的情况下会返回-1
+int read = fileInputStream.read();
+
+//输出一次读取的字符的Ascii码
+System.out.println(read);
+
+//读取数据
+int read = fileInputStream.read();
+
+//通过循环的方式来读取数据
+do &#123;
+
+    System.out.println(read);
+
+    read = fileInputStream.read();
+&#125;while (read !=-1);
+</code></pre>
+<p><code>fileInputStream.read()</code> 如果传了字符数组，那么返回的是读取的字符个数</p>
+<pre><code class="java">//通过字节数组的方式可以一次性读取多个字节
+//1、创建一个字节数组
+byte[] bytes = new byte[10];
+
+int read = fileInputStream.read(bytes);
+
+//read是读取字符的个数
+System.out.println(read);
+</code></pre>
+<p><strong>FileInputStream这个字节流如何将ascII转成对应的字符</strong></p>
+<p>可以根据String这个类来完成</p>
+<pre><code class="java">//创建一个String类
+//参数：读取数组，读取起始位置，读取字符数量
+//默认从0开始读，读取长度为bytes.length
+String s = new String(bytes);
+
+System.out.println(s);
+</code></pre>
+<p><strong>注</strong>：第二次读取会对之前数组中已经存储的数据进行覆盖</p>
+<h4 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h4><pre><code class="java">package com.os467.io;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class IoTest03 &#123;
+
+    public static void main(String[] args) &#123;
+
+        //创建输入流对象
+        FileInputStream fileInputStream = null;
+
+        try &#123;
+
+            fileInputStream = new FileInputStream(&quot;D:\\pythonschool\\PY_lab\\File\\html.txt&quot;);
+
+            //创建字节数组 1kb=1024b
+            byte[] bytes = new byte[1024];
+
+            int read = 0;
+
+            //遍历字节数组,读取数据
+            while ((read = fileInputStream.read(bytes)) != -1)&#123;
+
+                //根据字符串将读取到的字节转换成字符串,读取到多少个就转换多少个
+                System.out.print(new String(bytes,0,read));
+
+            &#125;
+
+
+        &#125; catch (FileNotFoundException e) &#123;
+            e.printStackTrace();
+        &#125; catch (IOException e) &#123;
+            e.printStackTrace();
+        &#125; finally &#123;
+
+            try &#123;
+                //关闭流对象
+                fileInputStream.close();
+            &#125; catch (IOException e) &#123;
+                e.printStackTrace();
+            &#125;
+
+        &#125;
+
+    &#125;
+
+
+
+
+&#125;
+</code></pre>
+<p><strong>方法2</strong>：只适合小文件</p>
+<pre><code class="java">fileInputStream = new FileInputStream(&quot;D:\\pythonschool\\PY_lab\\File\\html.txt&quot;);
+
+//获取指定文件的字节总个数
+int available = fileInputStream.available();
+
+byte[] bytes = new byte[available];
+
+int read = fileInputStream.read(bytes);
+
+System.out.println(new String(bytes,0,read));
+</code></pre>
+<h4 id="写入数据"><a href="#写入数据" class="headerlink" title="写入数据"></a>写入数据</h4><pre><code class="java">//创建字节输出流
+fileOutputStream = new FileOutputStream(&quot;C:\\Users\\tly20\\Desktop\\test.txt&quot;);
+
+//写入数据到硬盘上
+fileOutputStream.write(97);
+
+//创建一个字节数组
+byte[] bytes = &#123;98,99,100,101&#125;;
+
+fileOutputStream.write(bytes);
+</code></pre>
+<p><strong>将字符串数据写入</strong></p>
+<pre><code class="java">//创建一个字符串
+String str = &quot;你好，Tom&quot;;
+
+//将字符串转成对应的字节数组
+byte[] bytes1 = str.getBytes();
+
+//写入数据
+fileOutputStream.write(bytes1);
+
+//刷新
+fileOutputStream.flush();
+</code></pre>
+<p><strong>开启写入追加(默认是false，覆盖写入)</strong></p>
+<pre><code class="java">fileOutputStream = new FileOutputStream(&quot;C:\\Users\\tly20\\Desktop\\test.txt&quot;,true);
+</code></pre>
+<p><strong>字符输入输出流</strong></p>
+<pre><code class="java">package com.os467.io;
+
+import java.io.*;
+
+/**
+ * 通过字符输入流和字符输出流来完成一个普通文本文件的拷贝
+ */
+public class IoTest06 &#123;
+    public static void main(String[] args)&#123;
+
+        //文件字符输入流
+        FileReader fileReader = null;
+
+        //文件字符输出流
+        FileWriter fileWriter = null;
+
+
+        //创建文件字符输入流
+        try &#123;
+
+            //创建文件字符输入流
+            fileReader = new FileReader(&quot;C:\\Users\\tly20\\Desktop\\test.txt&quot;);
+
+            fileWriter = new FileWriter(&quot;C:\\Users\\tly20\\Desktop\\test_copy.txt&quot;,true);
+
+            //创建字符数组 一次读取1024字符
+            char[] chars = new char[100];
+
+            //读数据
+            int readCount = 0;
+
+            //一边读，一边写
+            while ((readCount = fileReader.read(chars) )!= -1)&#123;
+
+                //数据的转换
+                String str = new String(chars,0,readCount);
+
+                //数据的写入,可以直接写入字符串
+                fileWriter.write(str);
+
+            &#125;
+
+            //刷新输出流
+            fileWriter.flush();
+
+        &#125; catch (FileNotFoundException e) &#123;
+            e.printStackTrace();
+        &#125; catch (IOException e) &#123;
+            e.printStackTrace();
+        &#125; finally &#123;
+
+            //关闭资源
+            if (fileReader != null)&#123;
+
+                try &#123;
+                    fileReader.close();
+                &#125; catch (IOException e) &#123;
+                    e.printStackTrace();
+                &#125;
+
+            &#125;
+
+            if (fileWriter != null)&#123;
+
+                try &#123;
+                    fileWriter.close();
+                &#125; catch (IOException e) &#123;
+                    e.printStackTrace();
+                &#125;
+
+            &#125;
+
+        &#125;
+
+
+    &#125;
+
+
+
+
+&#125;
+</code></pre>
+<p><strong>注意点</strong>：</p>
+<ul>
+<li>字节流要创建<strong>字节数组</strong>bytes[]接收读取的数据，字符流要创建<strong>字符数组</strong>chars[]接收读取的数据</li>
+<li>输入流和输出流在最后都需要通过<code>close()</code>方法<strong>关闭资源</strong></li>
+<li>输出流需要通过<code>flush()</code>方法进行<strong>刷新</strong></li>
+</ul>
+<h5 id="缓冲流"><a href="#缓冲流" class="headerlink" title="缓冲流"></a>缓冲流</h5><ul>
+<li>java.io.BufferedReader</li>
+<li>java.io.BufferedWriter</li>
+<li>java.io.BufferedInputStream</li>
+<li>java.io.BufferedOutputStream</li>
+</ul>
+<p>缓冲流会将字节先写到一个缓冲区中，然后通过<code>flush()</code>或者关闭这个缓冲流来实现将缓冲流中的数据回显</p>
+<p><strong>特点</strong>：不需要创建数组</p>
+<pre><code class="java">package com.os467.io;
+
+import java.io.*;
+
+/**
+ * 缓冲流:
+ *      自带缓冲区的流，在一次读取多个字符的时候，可以不用创建数组
+ */
+public class IoTest08 &#123;
+    public static void main(String[] args) throws Exception&#123;
+
+        String readLine = null;
+
+        //创建缓冲流对象
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(&quot;C:\\Users\\tly20\\Desktop\\test.txt&quot;));
+
+        //调用读取数据的方法
+        //读取一行数据
+
+        while ((readLine = bufferedReader.readLine()) != null)&#123;
+
+            System.out.println(readLine);
+
+        &#125;
+
+
+        bufferedReader.close();
+    &#125;
+
+&#125;
+</code></pre>
+<h5 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h5><p>可以将字符流转换成字节流，也可以将字节流转换成字符流  InputStreamReader</p>
+<p>包装流和节点流： new 流(new 流()) 外层是包装流，里面的是节点流</p>
+<p>在关闭流对象的时候，只需要关闭<strong>最外层</strong>的包装流即可</p>
+<pre><code class="java">//创建转换流 将字节流转换成字符流
+        InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(&quot;C:\\Users\\tly20\\Desktop\\test.txt&quot;));
+
+//关闭流的时候只需要关闭最外层的包装流即可
+inputStreamReader.close();
+</code></pre>
+<h5 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h5><ul>
+<li>java.io.DataInputStream</li>
+<li>java.io.DataOutputStream</li>
+</ul>
+<p>数据流在写入数据到文件中的时候，要根据数据类型来写入，而且写入之后的文件是加密的，是我们看不懂的文件，如果想读取这些数据的话，只能通过数据输入流来读取</p>
+<p>数据输入流在读取数据的时候，是要按照写入的顺序来读取，而且需要按照指定的数据类型来读取</p>
+<p><strong>存入数据流数据</strong></p>
+<pre><code class="java">public static void main(String[] args) throws  Exception &#123;
+
+    //创建一个数据输出流
+    DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(&quot;C:\\Users\\tly20\\Desktop\\test_copy.txt&quot;));
+
+    //指定数据
+    boolean b = false;
+    float f = 10f;
+    int i = 20;
+    double d = 3.14;
+    
+    //调用写入的方法
+    dataOutputStream.writeBoolean(b);
+    dataOutputStream.writeFloat(f);
+    dataOutputStream.writeInt(i);
+    dataOutputStream.writeDouble(d);
+    
+    //刷新输出流
+    dataOutputStream.flush();
+    
+    //关闭流
+    dataOutputStream.close();
+    
+&#125;
+</code></pre>
+<p><strong>按照存储的顺序读取加密数据</strong></p>
+<pre><code class="java">public static void main(String[] args) throws  Exception &#123;
+
+    //创建一个数据输出流
+    DataInputStream dataInputStream = new DataInputStream(new FileInputStream(&quot;C:\\Users\\tly20\\Desktop\\test_copy.txt&quot;));
+
+    //读取数据要根据写入的顺序来读取
+    boolean b = dataInputStream.readBoolean();
+
+    float v = dataInputStream.readFloat();
+
+    int i = dataInputStream.readInt();
+
+    double v1 = dataInputStream.readDouble();
+
+    System.out.println(b);
+    System.out.println(v);
+    System.out.println(i);
+    System.out.println(v1);
+    
+    dataInputStream.close();
+
+
+&#125;
+</code></pre>
+<h5 id="标准输出流"><a href="#标准输出流" class="headerlink" title="标准输出流"></a>标准输出流</h5><ul>
+<li>java.io.PrintWriter</li>
+<li>java.io.PrintStream</li>
+</ul>
+<p>默认情况是我们经常使用的控制台打印，我们可以去改变输出流的输出方向</p>
+<p>标准输出流的默认输出方向就是控制台</p>
+<p><strong>标准输出流以后适用的场景</strong>：</p>
+<p>可以去收集日志</p>
+<p>比如说程序在某个时间点发生了某某异常，然后可以根据这个流来收集异常信息</p>
+<p>或者去收集模块域模块之间的调用次数</p>
+<pre><code class="java">//创建输出流对象，使用相对路径
+PrintStream printStream = new PrintStream(new FileOutputStream(&quot;data.txt&quot;));
+
+//打印hello world在data.txt文件中
+printStream.print(&quot;hello world&quot;);
+</code></pre>
+<pre><code class="java">//创建输出流对象，不设置路径会默认打印在控制台
+PrintStream printStream = System.out;
+
+printStream.print(&quot;Hello world&quot;);
+</code></pre>
+<pre><code class="java">//设置输出的方向
+PrintStream printStream = new PrintStream(new FileOutputStream(&quot;data.txt&quot;));
+
+System.setOut(printStream);
+
+//打印在data.txt中
+System.out.println(&quot;hello world&quot;);
+
+//刷新输出流
+printStream.flush();
+
+//关闭资源
+printStream.close();
+</code></pre>
+<h5 id="异常日志收集工具类"><a href="#异常日志收集工具类" class="headerlink" title="异常日志收集工具类"></a>异常日志收集工具类</h5><pre><code class="java">package com.os467.utils;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.PrintStream;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+/**
+ * 日志收集工具类
+ */
+public class LoggerUtils &#123;
+
+    private LoggerUtils()&#123;
+
+    &#125;
+
+    /**
+     * 收集日志的方法
+     * @param message
+     */
+    public static void logger(String message)&#123;
+
+        PrintStream printStream = null;
+
+        try &#123;
+
+            //创建标准输出流对象
+            printStream = new PrintStream(new FileOutputStream(&quot;logger&quot;,true));
+
+            //设置输出路径
+            System.setOut(printStream);
+
+            //创建日期对象
+            Date date = new Date();
+
+            //创建日期格式化对象
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss&quot;);
+
+            //将日期转成字符串
+            String time = simpleDateFormat.format(date);
+
+            //记录日志
+            System.out.println(time +&quot; : &quot;+message );
+
+            //刷新输出流对象
+            printStream.flush();
+
+        &#125; catch (FileNotFoundException e) &#123;
+            e.printStackTrace();
+        &#125;finally &#123;
+
+            if (printStream != null)&#123;
+
+                printStream.close();
+
+            &#125;
+
+        &#125;
+
+
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="对象专属流"><a href="#对象专属流" class="headerlink" title="对象专属流"></a>对象专属流</h3><p>java.io.ObjectInputStream</p>
+<p>java.io.ObjectOutput</p>
+<p><strong>可序列化接口</strong>：</p>
+<p>写入的对象必须实现序列化的<strong>接口</strong><code>Serializable</code></p>
+<ul>
+<li>对象专属流可以完成在一个内存和硬盘上对java对象进行<strong>序列化</strong>与<strong>反序列化</strong></li>
+</ul>
+<h4 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h4><p><strong>序列化</strong>：</p>
+<p>​		序列化就是将java对象写入到硬盘上，写入之后的文件也是加密的格式</p>
+<p><strong>反序列化</strong>：</p>
+<p>​		将文件中我们看不懂的加密数据读取出来，读取的就是java对象</p>
+<ul>
+<li><p>以后我们搭建的分布式项目，模块与模块间如果想完成数据的传输，需要通过<strong>序列化与反序列化</strong>来完成</p>
+</li>
+<li><p>序列化java对象的时候，该对象需要去实现一个序列化的接口</p>
+</li>
+<li><p><code>Serializable</code>序列化接口，这个接口没有任何的方法，只是一个标识性接口</p>
+<p>因为我们在执行加载某一个类的时候会生成该类对应的字节码文件，这个时候jvm虚拟机会检查该类是否有<code>Serializable</code>这个接口</p>
+<p>如果有，则赋予该类序列化的权限，如果没有则不能进行序列化</p>
+</li>
+</ul>
+<p><strong>对User类的对象进行序列化操作</strong></p>
+<pre><code class="java">public static void main(String[] args) throws  Exception &#123;
+
+    //创建输出流对象(序列化对象)
+    ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(&quot;users.txt&quot;));
+
+    //创建user对象
+    User user = new User();
+
+    //将java对象写到文件中
+    objectOutputStream.writeObject(user);
+
+    //刷新输出流
+    objectOutputStream.flush();
+
+    //关闭流
+    objectOutputStream.close();
+
+&#125;
+</code></pre>
+<p><strong>对文件中存储的user数据进行反序列化操作</strong></p>
+<pre><code class="java">public static void main(String[] args) throws  Exception &#123;
+
+    //创建输入流对象
+    ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(&quot;users.txt&quot;));
+
+    //读取数据
+    Object object = objectInputStream.readObject();
+
+    //判断数据类型
+    if (object instanceof User)&#123;
+
+        User user = (User)object;
+
+        System.out.println(user);
+
+    &#125;
+
+    //关闭流
+    objectInputStream.close();
+
+
+&#125;
+</code></pre>
+<p><strong>对多个对象进行序列化与反序列化（通过ArrayList来完成）</strong></p>
+<pre><code class="java">序列化多个对象
+-----------------------------------------------------------------------------------------
+//创建输出流对象(序列化对象)
+ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(&quot;users.txt&quot;));
+
+//创建user对象
+User user1 = new User(1,&quot;张三1&quot;,&quot;男&quot;);
+User user2 = new User(2,&quot;张三2&quot;,&quot;男&quot;);
+User user3 = new User(3,&quot;张三3&quot;,&quot;男&quot;);
+User user4 = new User(4,&quot;张三4&quot;,&quot;男&quot;);
+
+//创建集合对象
+ArrayList&lt;User&gt; users = new ArrayList&lt;&gt;();
+
+users.add(user1);
+users.add(user2);
+users.add(user3);
+users.add(user4);
+
+//将java对象写到文件中
+objectOutputStream.writeObject(users);
+
+//刷新输出流
+objectOutputStream.flush();
+
+//关闭流
+objectOutputStream.close();
+------------------------------------------------------------------------------------------
+反序列化多个对象
+------------------------------------------------------------------------------------------
+//创建输入流对象
+ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(&quot;users.txt&quot;));
+
+//用一个数组来接收
+ArrayList&lt;User&gt; arrayList = (ArrayList&lt;User&gt;)objectInputStream.readObject();
+
+for (User user : arrayList) &#123;
+
+    System.out.println(user);
+
+&#125;
+
+//关闭流
+objectInputStream.close();
+</code></pre>
+<p><strong>关于序列化版本号的问题</strong>：</p>
+<p>如果在反序列化之前修改了类中的代码，在类加载的时候会<strong>重新生成字节码文件</strong>，那么jvm给该类生成的<strong>序列化版本号</strong>就会<strong>改变</strong>，在反序列化时，旧的序列化版本号与新生成的版本号不对应，就无法完成反序列化</p>
+<p><strong>解决方案</strong>：</p>
+<p>我们可以在类中写死一个序列化版本号</p>
+<pre><code class="java">private static final long serialVersionUID = 8683452581122892189L;
+</code></pre>
+<h4 id="关键字transient"><a href="#关键字transient" class="headerlink" title="关键字transient"></a>关键字transient</h4><p><code>transient</code>可以使得某一属性不参与序列化的操作，在反序列化后会得到null值</p>
+<p><strong>JAVA	I&#x2F;O读取文件</strong></p>
+<p><strong>读取文本文件</strong></p>
+<p><code>new BufferedReader(new InputStreamReader(new FileInputStream(&quot;a.txt&quot;),&quot;UTF-8&quot;))</code></p>
+
+    </div>
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+    <div id="comment">
+        <div id="gitalk-container">
+        </div>
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2022 Tly的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @Os467
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+<script>
+    var clientID = "", clientSecret = "";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "",
+        owner: "",
+        admin: [""],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: true
+    })
+    gitalk.render("gitalk-container")
+</script>
+
+
+    </body>
+</html>
