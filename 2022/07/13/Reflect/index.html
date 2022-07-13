@@ -1,0 +1,628 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>Reflect | Tly的博客</title>
+        <meta name="author" content="Os467">
+        <meta name="description" content="Welcome">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://img.gejiba.com/images/ad7295b88b395d72d985a0835695dd71.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Tly的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Tly的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>Reflect </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/7/13
+        </span>
+        
+        
+    </div>
+    <div class="content" v-pre>
+        <h1 id="反射Reflect"><a href="#反射Reflect" class="headerlink" title="反射Reflect"></a>反射Reflect</h1><p><strong>反射机制是干什么的</strong>：</p>
+<ul>
+<li>可以在类加载的时候去获取类的相关信息（属性、方法、实现的接口、继承的类）</li>
+<li>反射可以通过字节码的方式来创建实例</li>
+</ul>
+<p><strong>反射在以后开发中的作用</strong>：</p>
+<p>​		我们设计程序最终是要提高程序的执行效率，我们在开发一个模块的时候，要不停的去创建对象 <code>User user = new User();</code> 使用<strong>new</strong>关键字，会使得程序之间产生耦合，以后new关键字使用多了，耦合就会变高，程序的执行效率就会很差</p>
+<p>​		这个时候我们能不能换一种方式去创建实例，尽量避免使用new关键字，反射机制就可以在<strong>不使用</strong>new的情况下去创建实例</p>
+<p>​		反射是各大java框架的<strong>底层</strong>：框架就是帮助程序解耦，提高程序的执行效率，提高开发人员的开发效率</p>
+<p>spring  框架：容器</p>
+<ul>
+<li>通过java语言中的反射机制可以操作字节码文件</li>
+<li>通过反射机制可以操作代码片段</li>
+<li><code>java.lang.reflect</code></li>
+</ul>
+<p><strong>什么是反射</strong>：</p>
+<p>​		反射是java中比较偏底层的一种机制，通过反射可以在类加载时去获取类相关的信息</p>
+<h2 id="如何去获取一个类的字节码对象（Class）"><a href="#如何去获取一个类的字节码对象（Class）" class="headerlink" title="如何去获取一个类的字节码对象（Class）"></a>如何去获取一个类的字节码对象（Class）</h2><p>​	<code>对象.getClass()</code></p>
+<p>​	<code>类.class属性</code></p>
+<p>​	<code>Class.forName(&quot;全类名&quot;)</code></p>
+<ul>
+<li><p><strong><code>java.lang.Class：</code></strong> </p>
+<p>代表整个字节码，代表一个类型，代表整个<strong>类</strong></p>
+</li>
+<li><p><strong><code>java.lang.reflect.Method</code>：</strong></p>
+<p>代表字节码中的方法字节码，代表类中的<strong>方法</strong></p>
+</li>
+<li><p><strong><code>java.lang.reflect.Constructor：</code></strong></p>
+<p>代表字节码中的<strong>构造方法</strong>字节码，代表类中的构造方法</p>
+</li>
+<li><p><strong><code>java.lang.reflect.Field：</code></strong></p>
+<p>代表字节码中的<strong>属性</strong>字节码，代表类中的成员变量（静态变量+实例变量）</p>
+</li>
+</ul>
+<h2 id="获取类中的属性"><a href="#获取类中的属性" class="headerlink" title="获取类中的属性"></a>获取类中的属性</h2><h3 id="获取类中公共的属性"><a href="#获取类中公共的属性" class="headerlink" title="获取类中公共的属性"></a>获取类中公共的属性</h3><p><code>getField()</code></p>
+<pre><code class="java">//获取字节码对象
+ Class stuClass = Class.forName(&quot;com.os467.pojo.Student&quot;);
+
+ //getField()这个方法只能去获取公共的属性
+ Field address = stuClass.getField(&quot;address&quot;);
+
+ System.out.println(address);
+</code></pre>
+<h3 id="获取类中所有的属性"><a href="#获取类中所有的属性" class="headerlink" title="获取类中所有的属性"></a>获取类中所有的属性</h3><p><code>getDeclaredField()</code></p>
+<pre><code class="java">//getDeclaredField()这个方法可以去获取一个类中所有的属性
+Field id = stuClass.getDeclaredField(&quot;id&quot;);
+
+System.out.println(id);
+</code></pre>
+<p><code>getDeclaredFields()</code></p>
+<pre><code class="java">//获取一个类中所有属性，封装成字节码数组
+Field[] declaredFields = stuClass.getDeclaredFields();
+</code></pre>
+<p><strong>获取全类名</strong></p>
+<pre><code class="java">String name = stuClass.getName();
+</code></pre>
+<p><strong>获取简类名</strong></p>
+<pre><code class="java">String simpleName = stuClass.getSimpleName();
+</code></pre>
+<p><strong>获取属性的类型</strong></p>
+<p><code>declaredField.getType()</code></p>
+<p><strong>获取属性的修饰符</strong></p>
+<pre><code class="java">//获取属性的修饰符代号
+int modifiers = declaredField.getModifiers();
+
+//将代号转成修饰符字符串
+String string = Modifier.toSring(modifiers);
+
+System.out.println(string);
+</code></pre>
+<p>在学习反射时，获取类的<strong>信息</strong>都是通过<strong>get方法</strong>去获取的</p>
+<h2 id="获取类中的方法"><a href="#获取类中的方法" class="headerlink" title="获取类中的方法"></a><strong>获取类中的方法</strong></h2><p>由于java类中的方法支持重载，所以在调用<code>getMethod(方法名称,参数类型)</code>方法时需要将方法的<strong>参数类型</strong>传入，不传入则默认获取<strong>无参</strong>的方法</p>
+<h3 id="获取类中公有的方法"><a href="#获取类中公有的方法" class="headerlink" title="获取类中公有的方法"></a>获取类中公有的方法</h3><pre><code class="java">public class ReflectDemo03 &#123;
+
+    public static void main(String[] args) throws Exception &#123;
+
+        //获取字节码对象
+        Class stuClass = Student.class;
+
+        //获取一个类中的方法
+        Method setAge = stuClass.getMethod(&quot;setAge&quot;,Integer.class);
+
+        System.out.println(setAge);
+
+        Method study = stuClass.getMethod(&quot;study&quot;, int.class, double.class, String.class);
+
+        System.out.println(study);
+
+    &#125;
+&#125;
+</code></pre>
+<h3 id="获取类中所有的方法"><a href="#获取类中所有的方法" class="headerlink" title="获取类中所有的方法"></a>获取类中所有的方法</h3><pre><code class="java">public class ReflectDemo03 &#123;
+
+    public static void main(String[] args) throws Exception &#123;
+
+        //获取字节码对象
+        Class stuClass = Student.class;
+
+        //获取一个类中所有的方法
+        Method[] declaredMethods = stuClass.getDeclaredMethods();
+
+        for (Method declaredMethod : declaredMethods) &#123;
+
+            System.out.println(declaredMethod);
+
+        &#125;
+
+    &#125;
+&#125;
+</code></pre>
+<p><strong>其它的方法</strong></p>
+<pre><code class="java">for (Method method : declaredMethods) &#123;
+
+    //获取方法名称
+    System.out.println(&quot;方法名称&quot;+method.getName());
+
+    //获取方法返回值类型
+    System.out.println(&quot;返回值类型&quot;+method.getReturnType().getSimpleName());
+
+    //获取方法的参数
+    for (Class&lt;?&gt; parameterType : method.getParameterTypes()) &#123;
+
+        System.out.println(&quot;方法的参数类型&quot;+parameterType);
+
+
+    &#125;
+
+    //获取修饰符
+    int modifiers = method.getModifiers();
+
+    //将修饰符代号转成字符串
+    String s = Modifier.toString(modifiers);
+
+    System.out.println(&quot;修饰符&quot;+s);
+
+&#125;
+</code></pre>
+<h3 id="获取所有的构造"><a href="#获取所有的构造" class="headerlink" title="获取所有的构造"></a>获取所有的构造</h3><pre><code class="java">public static void main(String[] args) throws Exception &#123;
+
+
+    //获取字节码对象
+    Class aClass = Class.forName(&quot;com.os467.pojo.Student&quot;);
+
+    //获取所有的构造
+    Constructor[] declaredConstructors = aClass.getDeclaredConstructors();
+
+    //遍历数组
+    for (Constructor declaredConstructor : declaredConstructors) &#123;
+
+        System.out.println(declaredConstructor);
+
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="反射工具类ReflectUtils"><a href="#反射工具类ReflectUtils" class="headerlink" title="反射工具类ReflectUtils"></a>反射工具类ReflectUtils</h2><p>写一个工具类，写一个静态方法，方法传入一个类的全类名，然后反编译（可以获取这个类中所有的信息）这个类工具类要适用于所有的类</p>
+<p><strong>根据反射获取类的信息</strong></p>
+<ul>
+<li>1、根据流对象先读取配置文件中的全类名数据</li>
+<li>2、根据全类名创建字节码对象</li>
+<li>3、根据字节码对象去获取类的信息，完成类的反编译</li>
+</ul>
+<pre><code class="java">package com.os467.utils;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.Properties;
+
+/**
+ * 反编译工具类
+ */
+public class ReflectUtils &#123;
+
+    //构造私有化
+    private ReflectUtils()&#123;
+
+    &#125;
+
+    /**
+     * 根据反射获取类的信息
+     * 1、根据流对象先读取配置文件中的全类名数据
+     * 2、根据全类名创建字节码对象
+     * 3、根据字节码对象去获取类的信息，完成类的反编译
+     * @return
+     */
+    public static String getTypeMessageByReflect()&#123;
+
+        //用于字符串的追加,效率要比String高
+        StringBuilder stringBuilder = new StringBuilder();
+
+        try &#123;
+
+            //创建流对象
+            FileReader fileReader = new FileReader(&quot;className.properties&quot;);
+
+            //创建集合对象
+            Properties properties = new Properties();
+
+            //将配置文件中的数据装载到集合里面
+            properties.load(fileReader);
+
+            //根据全类名创建字节码对象
+            Class aClass = Class.forName(properties.getProperty(&quot;className&quot;));
+
+            stringBuilder.append(&quot;public class &quot;);
+            stringBuilder.append(aClass.getSimpleName()+&quot; &#123; \n&quot;);
+            //获取类中所有的属性
+            Field[] declaredFields = aClass.getDeclaredFields();
+
+            for (Field declaredField : declaredFields) &#123;
+
+                stringBuilder.append(&quot;\n\t&quot;);
+
+                //获取属性的修饰符
+                int modifiers = declaredField.getModifiers();
+
+                //转成修饰符字符串
+                String s = Modifier.toString(modifiers);
+
+                //获取属性类型
+                String simpleName = declaredField.getType().getSimpleName();
+
+                //获取属性的名称
+                String name = declaredField.getName();
+
+                stringBuilder.append(s+&quot; &quot;+simpleName+&quot; &quot;+name+&quot;;&quot;);
+                stringBuilder.append(&quot;\n&quot;);
+
+            &#125;
+
+            //获取类的所有构造
+            Constructor[] declaredConstructors = aClass.getDeclaredConstructors();
+
+            //遍历数组
+            for (Constructor declaredConstructor : declaredConstructors) &#123;
+
+                stringBuilder.append(&quot;\n\t&quot;);
+
+                //获取构造的修饰符
+                int modifiers = declaredConstructor.getModifiers();
+
+                //转成修饰符字符串
+                String s = Modifier.toString(modifiers);
+
+                //获取构造名称
+                String name = aClass.getSimpleName();
+
+                stringBuilder.append(s + &quot; &quot; + name + &quot;(&quot;);
+
+                //获取参数列表
+                Class[] parameterTypes = declaredConstructor.getParameterTypes();
+
+                //遍历参数列表
+                for (Class parameterType : parameterTypes) &#123;
+
+                    //获取参数名
+                    stringBuilder.append(parameterType.getSimpleName()+&quot;,&quot;);
+
+                &#125;
+
+                //判断有参的还是无参的
+                if (parameterTypes.length &gt; 0)&#123;
+
+                    //删除具体下标下面的字符
+                    stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+
+                &#125;
+
+                stringBuilder.append(&quot;) &#123;&#125;&quot;);
+
+                stringBuilder.append(&quot;\n&quot;);
+
+                //获取所有的普通方法
+                Method[] declaredMethods = aClass.getDeclaredMethods();
+
+                //遍历数组
+                for (Method declaredMethod : declaredMethods) &#123;
+
+                    stringBuilder.append(&quot;\n\t&quot;);
+
+                    //获取方法的修饰符
+                    int modifiers1 = declaredMethod.getModifiers();
+
+                    //转成修饰符字符串
+                    String s1 = Modifier.toString(modifiers1);
+
+                    //获取返回值类型
+                    String simpleName = declaredMethod.getReturnType().getSimpleName();
+
+                    stringBuilder.append(s1 + &quot; &quot; +simpleName + &quot; &quot; + declaredMethod.getName()+&quot;(&quot;);
+
+                    //获取普通方法的参数列表
+                    Class[] parameterTypes1 = declaredMethod.getParameterTypes();
+
+                    //遍历参数
+                    for (Class parameterType : parameterTypes1) &#123;
+
+                        stringBuilder.append(parameterType.getSimpleName()+&quot;,&quot;);
+
+                        if (parameterTypes.length &gt; 0)&#123;
+
+                            //删除最后一个逗号
+                            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+
+                        &#125;
+
+                    &#125;
+                    stringBuilder.append(&quot;)&#123;&#125;&quot;);
+
+                    stringBuilder.append(&quot;\n&quot;);
+
+                &#125;
+
+            &#125;
+
+            stringBuilder.append(&quot;\n&#125;&quot;);
+
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+
+
+        return stringBuilder.toString();
+    &#125;
+
+
+&#125;
+</code></pre>
+<p><strong>反射</strong></p>
+<ul>
+<li>通过反射机制访问对象的某个属性</li>
+<li>通过反射机制调用对象的某个方法</li>
+<li>通过反射机制调用某个构造方法实例化对象</li>
+<li>通过反射机制获取父类及父类型接口</li>
+</ul>
+<p>获取父类</p>
+<pre><code class="java">Class superclass = aClass.getSuperclass();
+</code></pre>
+<p>获取实现的接口</p>
+<pre><code class="java">Class[] interfaces = aClass.getInterfaces();
+</code></pre>
+<h2 id="如何通过反射机制来创建一个类的实例"><a href="#如何通过反射机制来创建一个类的实例" class="headerlink" title="如何通过反射机制来创建一个类的实例"></a>如何通过反射机制来创建一个类的实例</h2><p><strong>无参构造实例</strong></p>
+<p><strong><code>newInstance()</code></strong></p>
+<pre><code class="java"> //获取字节码对象
+Class aClass = Student.class;
+
+//如何通过反射机制来创建一个类的实例
+//默认情况下调用的是无参构造
+Object o = aClass.newInstance();
+
+if (o instanceof Student)&#123;
+
+    Student student = (Student)o;
+
+    System.out.println(student);
+
+&#125;
+</code></pre>
+<p><strong>有参构造实例</strong></p>
+<p><code>getDeclaredConstructor()</code>	不传参数就是获取无参构造实例</p>
+<pre><code class="java">public static void main(String[] args) throws Exception &#123;
+
+    //创建字节码对象
+    Class aClass = User.class;
+
+    //获取构造字节码对象
+    Constructor constructor = aClass.getDeclaredConstructor(String.class,String.class);
+
+    Object obj02 = constructor.newInstance(&quot;root&quot;, &quot;123456&quot;);
+
+    System.out.println(obj02);
+    
+&#125;
+</code></pre>
+<h3 id="如何通过反射来给属性赋值"><a href="#如何通过反射来给属性赋值" class="headerlink" title="如何通过反射来给属性赋值"></a>如何通过反射来给属性赋值</h3><pre><code class="java">//获取属性，返回属性字节码对象
+Field addressFiled = aClass.getDeclaredField(&quot;address&quot;);
+
+//给属性进行一个赋值操作
+//Object obj 属性所在类的实例
+//Object value 具体要赋的值
+addressFiled.set(o,&quot;南京市&quot;);
+
+//通过反射获取属性具体的值
+System.out.println(addressFiled.get(o));
+
+System.out.println(o);
+</code></pre>
+<h3 id="如何通过反射获取属性值"><a href="#如何通过反射获取属性值" class="headerlink" title="如何通过反射获取属性值"></a>如何通过反射获取属性值</h3><p><strong>方法一</strong>：</p>
+<p>先打破封装，再通过set方法给属性赋值</p>
+<pre><code class="java">//获取属性字节码对象
+Field declaredFieldName = aClass.getDeclaredField(&quot;name&quot;);
+
+//打破封装
+declaredFieldName.setAccessible(true);
+
+//通过反射机制来创建一个类的实例
+//采用的无参构造创建的实例
+Object o = aClass.newInstance();
+
+//调用set方法给属性赋值
+declaredFieldName.set(o,&quot;张三&quot;);
+
+System.out.println(o);
+</code></pre>
+<p><strong>方法二</strong>：</p>
+<p>通过反射调用这个<strong>属性</strong>所对应的set方法给属性赋值</p>
+<h2 id="通过反射调用类中的方法"><a href="#通过反射调用类中的方法" class="headerlink" title="通过反射调用类中的方法"></a>通过反射调用类中的方法</h2><pre><code class="java">public static void main(String[] args) throws Exception &#123;
+
+    //获取字节码对象
+    Class userClass = User.class;
+
+    //获取方法字节码对象
+    Method declaredMethod = userClass.getDeclaredMethod(&quot;login&quot;,String.class,String.class);
+
+    //通过反射创建实例
+    Object o = userClass.newInstance();
+
+    //调用方法
+    //通过反射调用方法的方法
+    //Object var1 当前方法所在类的实例
+    //Object... var2 你需要传的参数
+    Object invoke = declaredMethod.invoke(o, &quot;zs001&quot;, &quot;123456&quot;);
+
+    System.out.println(invoke);
+
+
+&#125;
+</code></pre>
+<p><strong>注意</strong>：操作私有的方法需要打破封装</p>
+<pre><code class="java">declaredMethod.setAccessible(true);
+</code></pre>
+<h4 id="反射在以后的用途"><a href="#反射在以后的用途" class="headerlink" title="反射在以后的用途"></a>反射在以后的用途</h4><p>反射最重要的用途就是开发各种通用框架，比如在spring中，我们将所有的类Bean交给spring容器管理，无论是XML配置Bean还是注解配置，当我们从容器中获取Bean来依赖注入时，容器会读取配置，而配置中给的就是类的信息，spring根据这些信息，需要创建那些Bean，spring就动态的创建这些类，还有在struts2的struts.xml中配置action，也是通过反射调用的action</p>
+
+    </div>
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+    <div id="comment">
+        <div id="gitalk-container">
+        </div>
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2022 Tly的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @Os467
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+<script>
+    var clientID = "", clientSecret = "";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "",
+        owner: "",
+        admin: [""],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: true
+    })
+    gitalk.render("gitalk-container")
+</script>
+
+
+    </body>
+</html>
