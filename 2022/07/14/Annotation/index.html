@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>Annotation | Tly的博客</title>
+        <meta name="author" content="Os467">
+        <meta name="description" content="Welcome">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://img.gejiba.com/images/ad7295b88b395d72d985a0835695dd71.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Tly的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Tly的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>Annotation </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/7/14
+        </span>
+        
+        
+    </div>
+    <div class="content" v-pre>
+        <h1 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h1><p><strong>什么是注解？</strong></p>
+<p>是<strong>元数据(Annotation)</strong> ，是一种对代码进行说明的数据，JDK1.5引入的新<strong>规范</strong>，是与类、接口、枚举等引用类型处于同一个层次，可以用在包、类、属性、方法、方法的参数和局部变量等的前边，<strong>不影响代码的语义</strong>，可以对其进行<strong>解析</strong></p>
+<p><strong>注解Annotation</strong>:  是一种<strong>引用数据类型</strong>(在类加载的时候会生成字节码文件)</p>
+<p><strong>注解在以后的用途:</strong></p>
+<p>​		注解的作用：</p>
+<p>​		注解只能起到一个<strong>标识</strong>的作用</p>
+<p><strong>spring框架</strong>：基于注解的开发模式</p>
+<p>​		学习了反射可以不使用new关键字去创建一个类的实例</p>
+<p>​		spring是一个容器里面会存放很多类的实例</p>
+<p><strong>我怎么知道有哪些类需要去创建实例，那些类不需要创建实例?</strong></p>
+<p>​		用注解去标识一下，需要创建实例的类，用注解去做一个标识</p>
+<p>​		在spring框架检测到该类有注解时，就会通过反射机制去创建该类的实例</p>
+<p><strong>beans</strong>： User、Student、Person、Animal</p>
+<h2 id="创建一个注解"><a href="#创建一个注解" class="headerlink" title="创建一个注解"></a>创建一个注解</h2><pre><code class="java">public @interface MyAnnotation &#123;
+    
+&#125;
+</code></pre>
+<p>注解中可以拥有属性，但是<strong>不能拥有方法</strong></p>
+<p>如果你给一个注解声明了属性，那么在注解<strong>修饰元素</strong>的时候，就必须要给属性<strong>赋值</strong>，除非你在声明属性的时候，给了属性默认值</p>
+<h3 id="在注解中声明属性"><a href="#在注解中声明属性" class="headerlink" title="在注解中声明属性"></a>在注解中声明属性</h3><pre><code class="java">public @interface MyAnnotation &#123;
+
+    //在注解中如何去声明属性
+    String name() default &quot;&quot;;
+
+    int i();
+
+    String[] strings() default &#123;&quot;1&quot;,&quot;2&quot;&#125;;
+
+    //枚举类型
+    Math math() default Math.Max;
+    
+    Math[] maths() default &#123;Math.Max,Math.Count,Math.Sum&#125;;
+    
+&#125;
+</code></pre>
+<p><strong>在注解中定义属性只能时八大基本数据类型、字符串类型String、枚举类型、以及主要类型所对应的数组类型</strong></p>
+<p>在定义属性时，如果属性名称是<strong>value</strong>，那在注解修饰元素，并且给属性赋值的时候，属性名称可以<strong>省略不写</strong></p>
+<pre><code class="java">@MyAnnotation(name = &quot;123&quot;,i = 100)
+</code></pre>
+<h4 id="注解运用范围"><a href="#注解运用范围" class="headerlink" title="注解运用范围"></a>注解运用范围</h4><p>注解使用时的语法格式是：</p>
+<p>​		@注解类型名</p>
+<p>注解可以出现在类上、属性上、方法上、变量上等</p>
+<p>注解可以出现在注解类型上</p>
+<h3 id="JDK内置注解"><a href="#JDK内置注解" class="headerlink" title="JDK内置注解"></a>JDK内置注解</h3><p><strong>Deprecated</strong> 用 <code>@Deprecated</code> 注释的程序元素，不鼓励程序员使用这样的元素，通过是因为它很危险或存在更好的选择</p>
+<p><strong>Override</strong>表示一个方法声明打算重写超类中的另一个方法声明</p>
+<p><strong><code>SuppressWarnings</code></strong>  指示应该在注释元素（以及包含在该注释元素中的所有程序元素）中取消显示指定的编译器警告</p>
+<h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p><strong>什么是元注解？</strong></p>
+<p>用来标注“注解类型”的“注解”，称为元注解</p>
+<p><strong>修饰注解的注解</strong></p>
+<p>在定义注解时需要通过元注解指定例如注解的使用场合、是否生成文档、是否可以继承、注解保持的策略（是否能被反射机制所获取到）</p>
+<p><strong>元注解</strong>：</p>
+<p><code>@Target(&#123;ElementType.METHOD,ElementType.TYPE&#125;)</code>	表示注解的作用域</p>
+<p>参数只能是枚举类型数组</p>
+<pre><code class="java">//使得注解能标识在类和属性前
+@Target(&#123;ElementType.TYPE,ElementType.FIELD&#125;)
+public @interface MyAnnotation &#123;
+
+&#125;
+</code></pre>
+<ul>
+<li><p><code>@Retention(RetentionPolicy.RUNTIME)</code>	</p>
+<p>注解的生命周期</p>
+</li>
+<li><p><code>RetentionPolicy(设置注解的生命周期以及保持性策略)</code>:</p>
+<p>​	<strong>SOURCE</strong>：</p>
+<p>​		当前注解只保留在源码这个层面上，在类加载的时候不会去生成字节码文件，而且不可以被反射机制所获取!</p>
+<p>​		<strong>CLASS</strong>：</p>
+<p>​		在类加载的时候会生成字节码文件，但是不可以被发射机制获取</p>
+<p>​		<strong>RUNTIME</strong>：</p>
+<p>​		在类加载的时候可以生成字节码文件，而且可以被反射机制获取工</p>
+</li>
+<li><p><code>@Inherited</code></p>
+<p>标识允许子注解来继承这个注解（注意这里只能是继承不能是接口上使用，而且只能继承类上的注解，不能继承方法上的注解）</p>
+</li>
+<li><p><code>@Documented</code>	</p>
+<p>生成JAVADOC时会包含注解</p>
+</li>
+</ul>
+<h2 id="如何通过反射机制获取注解："><a href="#如何通过反射机制获取注解：" class="headerlink" title="如何通过反射机制获取注解："></a>如何通过反射机制获取注解：</h2><p>​		1、创建类对应的字节码对象</p>
+<p>​		2、通过字节码对象获取注解字节码对象</p>
+<pre><code class="java">public class Annotation01 &#123;
+
+    public static void main(String[] args) &#123;
+
+
+        try &#123;
+
+            //创建字节码对象
+            Class aClass = Class.forName(&quot;com.os467.pojo.User&quot;);
+
+            //获取类上的注解
+            MyAnnotation annotation = (MyAnnotation)aClass.getAnnotation(MyAnnotation.class);
+
+            if (annotation != null)&#123;
+
+                //获取注解上的属性
+                System.out.println(annotation.name());
+
+                //获取属性字节码对象
+                Field[] declaredFields = aClass.getDeclaredFields();
+
+                for (Field declaredField : declaredFields) &#123;
+
+                    MyAnnotation annotation1 = declaredField.getAnnotation(MyAnnotation.class);
+
+                    if (annotation1 != null)&#123;
+
+                        System.out.println(declaredField.getName()+&quot; 这个属性上有注解&quot;);
+
+                    &#125;
+
+                &#125;
+
+            &#125;
+
+        &#125; catch (ClassNotFoundException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="根据注解自动生成SQL查询语句"><a href="#根据注解自动生成SQL查询语句" class="headerlink" title="根据注解自动生成SQL查询语句"></a>根据注解自动生成SQL查询语句</h3><pre><code class="java">package com.os467;
+
+import com.os467.Annotion.Table;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+
+
+public class ORM &#123;
+
+    private ORM()&#123;
+
+    &#125;
+
+    public static String getSql(Object obj)&#123;
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        //获取obj字节码对象
+        Class aClass = obj.getClass();
+
+        Table annotation = (Table)aClass.getAnnotation(Table.class);
+
+        //表的名称
+        String table = null;
+
+        if (annotation != null)&#123;
+
+            //获取表的名称
+            table = annotation.value();
+
+            stringBuilder.append(&quot;select * from &quot;+ table +&quot; where &quot;);
+
+        &#125;
+
+        //获取属性字节码对象
+        Field[] declaredFields = aClass.getDeclaredFields();
+
+        for (Field declaredField : declaredFields) &#123;
+
+            //打破封装
+            declaredField.setAccessible(true);
+
+            com.os467.Annotion.Field annotation1 = declaredField.getAnnotation(com.os467.Annotion.Field.class);
+
+            //注解不为空的情况下拼接
+            if (annotation1 != null)&#123;
+
+                try &#123;
+
+                    //获取属性值
+                    Object o = declaredField.get(obj);
+
+                    //检查email属性是否有多个&quot;，&quot;隔开
+                    if (o != null &amp;&amp; o.toString().contains(&quot;,&quot;))&#123;
+
+                        stringBuilder.append(annotation1.value() + &quot; in(&quot; + o + &quot;) and&quot;);
+
+                    &#125;else if (o != null &amp;&amp; !o.toString().equals(&quot;0&quot;))&#123;
+
+                        stringBuilder.append(annotation1.value() + &quot; = &quot;);
+
+                        if (o instanceof String)&#123;
+
+                            stringBuilder.append(&quot;&#39;&quot; + o + &quot;&#39;&quot; + &quot; and &quot;);
+
+                        &#125;
+
+                        if (o instanceof Integer)&#123;
+
+                            stringBuilder.append(o + &quot; and &quot;);
+
+                        &#125;
+
+                    &#125;
+
+
+                &#125; catch (IllegalAccessException e) &#123;
+                    e.printStackTrace();
+                &#125;
+
+            &#125;
+
+        &#125;
+
+        String s = stringBuilder.toString();
+
+        //替换掉最后的and 
+        s = s.substring(0,s.length() - 4);
+
+        if (s.contains(&quot;=&quot;))&#123;
+
+            return s;
+
+        &#125;
+
+        return null;
+    &#125;
+
+&#125;
+</code></pre>
+
+    </div>
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+    <div id="comment">
+        <div id="gitalk-container">
+        </div>
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2022 Tly的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @Os467
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+<script>
+    var clientID = "", clientSecret = "";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "",
+        owner: "",
+        admin: [""],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: true
+    })
+    gitalk.render("gitalk-container")
+</script>
+
+
+    </body>
+</html>

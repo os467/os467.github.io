@@ -142,6 +142,262 @@
             
 
 <div class="post">
+    <a href="/2022/07/14/Annotation/">
+        <h2>
+            Annotation
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/7/14
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h1><p><strong>什么是注解？</strong></p>
+<p>是<strong>元数据(Annotation)</strong> ，是一种对代码进行说明的数据，JDK1.5引入的新<strong>规范</strong>，是与类、接口、枚举等引用类型处于同一个层次，可以用在包、类、属性、方法、方法的参数和局部变量等的前边，<strong>不影响代码的语义</strong>，可以对其进行<strong>解析</strong></p>
+<p><strong>注解Annotation</strong>:  是一种<strong>引用数据类型</strong>(在类加载的时候会生成字节码文件)</p>
+<p><strong>注解在以后的用途:</strong></p>
+<p>​		注解的作用：</p>
+<p>​		注解只能起到一个<strong>标识</strong>的作用</p>
+<p><strong>spring框架</strong>：基于注解的开发模式</p>
+<p>​		学习了反射可以不使用new关键字去创建一个类的实例</p>
+<p>​		spring是一个容器里面会存放很多类的实例</p>
+<p><strong>我怎么知道有哪些类需要去创建实例，那些类不需要创建实例?</strong></p>
+<p>​		用注解去标识一下，需要创建实例的类，用注解去做一个标识</p>
+<p>​		在spring框架检测到该类有注解时，就会通过反射机制去创建该类的实例</p>
+<p><strong>beans</strong>： User、Student、Person、Animal</p>
+<h2 id="创建一个注解"><a href="#创建一个注解" class="headerlink" title="创建一个注解"></a>创建一个注解</h2><pre><code class="java">public @interface MyAnnotation &#123;
+    
+&#125;
+</code></pre>
+<p>注解中可以拥有属性，但是<strong>不能拥有方法</strong></p>
+<p>如果你给一个注解声明了属性，那么在注解<strong>修饰元素</strong>的时候，就必须要给属性<strong>赋值</strong>，除非你在声明属性的时候，给了属性默认值</p>
+<h3 id="在注解中声明属性"><a href="#在注解中声明属性" class="headerlink" title="在注解中声明属性"></a>在注解中声明属性</h3><pre><code class="java">public @interface MyAnnotation &#123;
+
+    //在注解中如何去声明属性
+    String name() default &quot;&quot;;
+
+    int i();
+
+    String[] strings() default &#123;&quot;1&quot;,&quot;2&quot;&#125;;
+
+    //枚举类型
+    Math math() default Math.Max;
+    
+    Math[] maths() default &#123;Math.Max,Math.Count,Math.Sum&#125;;
+    
+&#125;
+</code></pre>
+<p><strong>在注解中定义属性只能时八大基本数据类型、字符串类型String、枚举类型、以及主要类型所对应的数组类型</strong></p>
+<p>在定义属性时，如果属性名称是<strong>value</strong>，那在注解修饰元素，并且给属性赋值的时候，属性名称可以<strong>省略不写</strong></p>
+<pre><code class="java">@MyAnnotation(name = &quot;123&quot;,i = 100)
+</code></pre>
+<h4 id="注解运用范围"><a href="#注解运用范围" class="headerlink" title="注解运用范围"></a>注解运用范围</h4><p>注解使用时的语法格式是：</p>
+<p>​		@注解类型名</p>
+<p>注解可以出现在类上、属性上、方法上、变量上等</p>
+<p>注解可以出现在注解类型上</p>
+<h3 id="JDK内置注解"><a href="#JDK内置注解" class="headerlink" title="JDK内置注解"></a>JDK内置注解</h3><p><strong>Deprecated</strong> 用 <code>@Deprecated</code> 注释的程序元素，不鼓励程序员使用这样的元素，通过是因为它很危险或存在更好的选择</p>
+<p><strong>Override</strong>表示一个方法声明打算重写超类中的另一个方法声明</p>
+<p><strong><code>SuppressWarnings</code></strong>  指示应该在注释元素（以及包含在该注释元素中的所有程序元素）中取消显示指定的编译器警告</p>
+<h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p><strong>什么是元注解？</strong></p>
+<p>用来标注“注解类型”的“注解”，称为元注解</p>
+<p><strong>修饰注解的注解</strong></p>
+<p>在定义注解时需要通过元注解指定例如注解的使用场合、是否生成文档、是否可以继承、注解保持的策略（是否能被反射机制所获取到）</p>
+<p><strong>元注解</strong>：</p>
+<p><code>@Target(&#123;ElementType.METHOD,ElementType.TYPE&#125;)</code>	表示注解的作用域</p>
+<p>参数只能是枚举类型数组</p>
+<pre><code class="java">//使得注解能标识在类和属性前
+@Target(&#123;ElementType.TYPE,ElementType.FIELD&#125;)
+public @interface MyAnnotation &#123;
+
+&#125;
+</code></pre>
+<ul>
+<li><p><code>@Retention(RetentionPolicy.RUNTIME)</code>	</p>
+<p>注解的生命周期</p>
+</li>
+<li><p><code>RetentionPolicy(设置注解的生命周期以及保持性策略)</code>:</p>
+<p>​	<strong>SOURCE</strong>：</p>
+<p>​		当前注解只保留在源码这个层面上，在类加载的时候不会去生成字节码文件，而且不可以被反射机制所获取!</p>
+<p>​		<strong>CLASS</strong>：</p>
+<p>​		在类加载的时候会生成字节码文件，但是不可以被发射机制获取</p>
+<p>​		<strong>RUNTIME</strong>：</p>
+<p>​		在类加载的时候可以生成字节码文件，而且可以被反射机制获取工</p>
+</li>
+<li><p><code>@Inherited</code></p>
+<p>标识允许子注解来继承这个注解（注意这里只能是继承不能是接口上使用，而且只能继承类上的注解，不能继承方法上的注解）</p>
+</li>
+<li><p><code>@Documented</code>	</p>
+<p>生成JAVADOC时会包含注解</p>
+</li>
+</ul>
+<h2 id="如何通过反射机制获取注解："><a href="#如何通过反射机制获取注解：" class="headerlink" title="如何通过反射机制获取注解："></a>如何通过反射机制获取注解：</h2><p>​		1、创建类对应的字节码对象</p>
+<p>​		2、通过字节码对象获取注解字节码对象</p>
+<pre><code class="java">public class Annotation01 &#123;
+
+    public static void main(String[] args) &#123;
+
+
+        try &#123;
+
+            //创建字节码对象
+            Class aClass = Class.forName(&quot;com.os467.pojo.User&quot;);
+
+            //获取类上的注解
+            MyAnnotation annotation = (MyAnnotation)aClass.getAnnotation(MyAnnotation.class);
+
+            if (annotation != null)&#123;
+
+                //获取注解上的属性
+                System.out.println(annotation.name());
+
+                //获取属性字节码对象
+                Field[] declaredFields = aClass.getDeclaredFields();
+
+                for (Field declaredField : declaredFields) &#123;
+
+                    MyAnnotation annotation1 = declaredField.getAnnotation(MyAnnotation.class);
+
+                    if (annotation1 != null)&#123;
+
+                        System.out.println(declaredField.getName()+&quot; 这个属性上有注解&quot;);
+
+                    &#125;
+
+                &#125;
+
+            &#125;
+
+        &#125; catch (ClassNotFoundException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="根据注解自动生成SQL查询语句"><a href="#根据注解自动生成SQL查询语句" class="headerlink" title="根据注解自动生成SQL查询语句"></a>根据注解自动生成SQL查询语句</h3><pre><code class="java">package com.os467;
+
+import com.os467.Annotion.Table;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+
+
+public class ORM &#123;
+
+    private ORM()&#123;
+
+    &#125;
+
+    public static String getSql(Object obj)&#123;
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        //获取obj字节码对象
+        Class aClass = obj.getClass();
+
+        Table annotation = (Table)aClass.getAnnotation(Table.class);
+
+        //表的名称
+        String table = null;
+
+        if (annotation != null)&#123;
+
+            //获取表的名称
+            table = annotation.value();
+
+            stringBuilder.append(&quot;select * from &quot;+ table +&quot; where &quot;);
+
+        &#125;
+
+        //获取属性字节码对象
+        Field[] declaredFields = aClass.getDeclaredFields();
+
+        for (Field declaredField : declaredFields) &#123;
+
+            //打破封装
+            declaredField.setAccessible(true);
+
+            com.os467.Annotion.Field annotation1 = declaredField.getAnnotation(com.os467.Annotion.Field.class);
+
+            //注解不为空的情况下拼接
+            if (annotation1 != null)&#123;
+
+                try &#123;
+
+                    //获取属性值
+                    Object o = declaredField.get(obj);
+
+                    //检查email属性是否有多个&quot;，&quot;隔开
+                    if (o != null &amp;&amp; o.toString().contains(&quot;,&quot;))&#123;
+
+                        stringBuilder.append(annotation1.value() + &quot; in(&quot; + o + &quot;) and&quot;);
+
+                    &#125;else if (o != null &amp;&amp; !o.toString().equals(&quot;0&quot;))&#123;
+
+                        stringBuilder.append(annotation1.value() + &quot; = &quot;);
+
+                        if (o instanceof String)&#123;
+
+                            stringBuilder.append(&quot;&#39;&quot; + o + &quot;&#39;&quot; + &quot; and &quot;);
+
+                        &#125;
+
+                        if (o instanceof Integer)&#123;
+
+                            stringBuilder.append(o + &quot; and &quot;);
+
+                        &#125;
+
+                    &#125;
+
+
+                &#125; catch (IllegalAccessException e) &#123;
+                    e.printStackTrace();
+                &#125;
+
+            &#125;
+
+        &#125;
+
+        String s = stringBuilder.toString();
+
+        //替换掉最后的and 
+        s = s.substring(0,s.length() - 4);
+
+        if (s.contains(&quot;=&quot;))&#123;
+
+            return s;
+
+        &#125;
+
+        return null;
+    &#125;
+
+&#125;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2022/07/14/Annotation/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
     <a href="/2022/07/13/Reflect/">
         <h2>
             Reflect
@@ -5483,1811 +5739,6 @@ ORDER BY e.SAL LIMIT 0,3;
         
     </div>
     <a href="/2022/06/19/SQL/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/05/28/JAVA入门/">
-        <h2>
-            JAVA入门
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/5/28
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h1><h2 id="1-JAVA概述"><a href="#1-JAVA概述" class="headerlink" title="1.JAVA概述"></a>1.JAVA概述</h2><p>1.什么是编程语言？</p>
-<p>人与计算机沟通交流的一种特殊语言</p>
-<p>詹姆斯·高斯林 java语言创始者</p>
-<p>配置环境变量：</p>
-<p>​		<strong><code>jdk</code></strong>   java开发工具包</p>
-<p>​		<strong><code>jre</code></strong>    java运行时环境</p>
-<p>​		<strong><code>jvm</code></strong>  java虚拟机 </p>
-<p>java程序执行过程：</p>
-<p>​	1.先编写java源代码 javac.exe</p>
-<p>​	2.对java源代码进行编译 <code>javac</code> 源文件名称</p>
-<p>​		编译完成后会生成当前源文件所生成的字节码文件.class</p>
-<p>​    	字节码文件是开发人员看不懂的， 只有<code>jvm</code>虚拟机才能识别</p>
-<p>​	3.运行java代码 java.exe</p>
-<p>​		java 类名</p>
-<p>​		<strong>java语言是支持跨平台的：用java编写的源代码可以在不同的系统	上运行</strong></p>
-<p>​	<strong>使用JDK开发完成的java程序，交给JRE去运行</strong></p>
-<h2 id="2-java入门"><a href="#2-java入门" class="headerlink" title="2.java入门"></a>2.java入门</h2><p>java语法规范</p>
-<p>1.类和接口要声名一个标识符用大驼峰命名法</p>
-<p>2.变量和方法要声名标识符用小驼峰命名法</p>
-<p>注释：</p>
-<p><strong>#快捷键 ctrl + shift + &#x2F;</strong></p>
-<p>单行注释：&#x2F;&#x2F;注释文字</p>
-<p>多行注释：&#x2F;* 注释文字 *&#x2F;</p>
-<p>文档注释：&#x2F;** 注释文字 *&#x2F;</p>
-<pre><code class="java">class Hello&#123;
-    public static void main(String[] args)&#123;
-        System.out.println(&quot;Hello world&quot;);
-    &#125;
-&#125;
-//java最基本的Hello world
-</code></pre>
-<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>在程序执行的过程中其值不可以发生改变</p>
-<p>在方法外面定义，全大写，单词与单词之间用下划线分隔开</p>
-<p>java是一门强类型语言,对于每一种数据都定义了明确的具体数据类型</p>
-<p>在内存总分配了不同大小的内存空间</p>
-<p>数据类型</p>
-<p>1.基本数据类型：</p>
-<p>​		a.数值型：整数类型（<code>byte，short，int，long</code>）</p>
-<p>​						   浮点类型（<code>float，double</code>）</p>
-<p>​		b.字符型：(<code>char</code>)</p>
-<p>​		c.布尔型：(<code>boolean</code>)</p>
-<p>2.引用数据类型：</p>
-<p>​		a.类：    （<code>class</code>）</p>
-<p>​	    b.接口：（<code>interface</code>）</p>
-<p>​		c.数组:   （<code>[ ]</code>）</p>
-<pre><code class="java">double d = 3.14;
-
-float f = 3.14f;
-
-char c = &#39;q&#39;;
-
-String s = &quot;hello world&quot;;
-//String是引用数据类型
-
-boolean b = false;
-</code></pre>
-<p>有几个数据类型关键字就开辟几份内存空间</p>
-<p>强制转换：</p>
-<pre><code class="java">double d =3.14;
-int i = (int)d;
-</code></pre>
-<p>运算符+ - * &#x2F; %(取余)</p>
-<pre><code class="java">num++;
-//后置++，先取值再赋值
---num;
-//前置--，先赋值再取值
-d1 += d2 -&gt; d1 = d1 + d2;
-&quot;Hello&quot; instanceof String //结果true,检查是否是类的对象
- 
- //与运算 两者同时为真结果为真
- if (1 &gt; 2 &amp; 1 == 2);
- //不短路 false &amp; false
- if (1 &gt; 2 &amp;&amp; 1 == 2);
- //短路运算 false &amp;&amp; 不运算
-
-//或运算 两者只要有一者为真，结果为真
-if (1 &lt; 2 | 2 &lt; 3);
-if (1 &lt;2 || 2 &lt; 3);
-//非运算,取反
-(1 &gt; 2) -&gt; false !(1 &gt; 2) -&gt; true
-  
-</code></pre>
-<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>成员变量：实例变量，静态变量</p>
-<p>在JVM虚拟机的栈内存开辟空间，但静态变量在方法区空间开辟内存</p>
-<p>局部变量：方法体内部的变量（包括参数中的变量）</p>
-<p><strong>JAVA对类的定义：</strong></p>
-<p>​		<strong>java本身是面向对象的语言，如果需要使用java去开发一个软件</strong>**</p>
-<p><strong>那么，软件中的每一个模块都是一个个体，每一个个体会拆分为很多单元，每个单元本身</strong></p>
-<p><strong>是一个模糊的概念，针对这样的一个概念，我们一般用类去定义，然后在具体执行的时候，</strong></p>
-<p><strong>需要让模块之间相互协作，正常的去模拟现实生活中场景的时候，就需要创建这个类</strong></p>
-<p><strong>所对应的实例</strong></p>
-<h4 id="包"><a href="#包" class="headerlink" title="包"></a>包</h4><p>将鼠标光标放置于未被导入的包名称上，按住alt + Enter 可以快速import包 (IntelliJ IDEA支持)</p>
-<p>创建类</p>
-<p>new关键字 创建类的实例</p>
-<p>创建类实例的对象</p>
-<p>对象.调用方法</p>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>方法是完成特定功能的代码块</p>
-<p>格式：</p>
-<pre><code class="java">        修饰符  返回值类型  方法名(参数类型  参数名1， 参数类型  参数名2..)&#123;
-    函数体;
-    return 返回值;
-&#125;
-
-
-    
-package com.tly.test;
-
-/**
- * 第一个简单java小程序，输入三个浮点数，求最小值 
- */
-
-import java.util.Scanner;
-
-public class Test02 &#123;
-    public static void main(String[] args) &#123;
-        
-        //创建Test02的对象
-        Test02 getMinNum = new Test02();
-        
-        //接收输入的浮点数据
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println(&quot;请输入第一个浮点数据类型：&quot;);
-        
-        //创建一个浮点型变量接收返回的参数
-        double num1 = scanner.nextDouble();
-
-        System.out.println(&quot;请输入第二个浮点数据类型：&quot;);
-
-        double num2 = scanner.nextDouble();
-
-        System.out.println(&quot;请输入第三个浮点数据类型：&quot;);
-
-        double num3 = scanner.nextDouble();
-        
-        //调用对象的方法并传输传输
-        double numMin = getMinNum.getMinNum(num1, num2, num3);
-
-        System.out.println(&quot;最小值为：&quot;+numMin);
-
-        &#125;
-    
-    //创建类的getMinNum方法
-    public double getMinNum(double num1,double num2, double num3)&#123;
-
-        double[] doubles = new double[3];
-
-        //将数据传输给列表
-        doubles[0] = num1;
-        doubles[1] = num2;
-        doubles[2] = num3;
-
-        //创建中间值
-        double numMin = num1;
-
-        for (int i = 0; i &lt; doubles.length; i++) &#123;
-
-            if(doubles[i] &lt; numMin)&#123;
-
-                numMin = doubles[i];
-
-            &#125;
-            
-        &#125;
-
-        return numMin;
-    &#125;
-&#125;
-
-</code></pre>
-<p>方法特性：</p>
-<p>递归：</p>
-<p><strong>使用递归会严重损耗系统资源，因此要尽量避免使用递归</strong></p>
-<p>方法的重载：</p>
-<p><strong>在一个区间内，java语法中运行方法名称相同，参数列表不同的语法格式，这种现象我们称之为重载</strong></p>
-<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>new创建的容器存放在堆内存中</p>
-<p>数组是一个引用数据类型</p>
-<p>可以通过new的方式去创建数组</p>
-<p>在不赋值的情况下，取到的是默认值，整型默认值是0</p>
-<pre><code class="java">//创建数组
-int[] ints = new int[10];
-
-//给数组赋值
-ints[0] = 100;
-
-//遍历数组
-for (int i = 0; i &lt; ints.length; i++)&#123;
-    
-    System.out.println(ints[i]);
-
-&#125;
-
-//创建字符串数组
-String[] strings = new String[5];
-
-//赋值
-String[0] = &quot;hello&quot;;
-
-//foreach遍历
-//for (数据的数据类型 遍历的每一项 : 容器对象)
-for (String str : strings)&#123;
-    
-     System.out.println(str);
-    
-&#125;
-</code></pre>
-<p>数组操作常见的小问题：</p>
-<pre><code class="java">数组索引越界
-
-    -ArrayIndexOutOfBoundsException
-
-    -访问到了数组中的不存在的索引时发生。
-
-空指针异常
-    -NullPointerException
-    -数组引用没有指向实体，却在操作实体中的元素时。
-</code></pre>
-<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>字符串常用函数</p>
-<pre><code class="java">//定义字符串
-String str = &quot;hello world&quot;;
-
-//str.equals() 判断字符是否完全匹配 
-System.out.println(str.equals(&quot;hello world&quot;));
-//输出true
-
-//str.contains()判断是否包含某一字符串
-System.out.println(str.contains(&quot;hello&quot;));
-//输出true
-
-//str.substring()切割字符串 int beginIndex
-System.out.println(str.substring(6));
-//输出world 切割[0,6)
-
-System.out.println(str.substring(6,11));
-//输出world 切割(6,11]
-
-//str.toLowerCase()将大写字母转成小写
-System.out.println(str.toLowerCase());
-
-//str.length() 获取字符串字符个数
-System.out.println(str.length());
-//输出11
-
-//str.endsWith()判断字符串是否以某个字符串结尾
-System.out.println(str.endsWith(&quot;d&quot;));
-//输出true
-
-//str.split()字符串的分割
-String[] strings = str.split(&quot; &quot;);
-
-//遍历数组
-for (String s:strings)&#123;
-    
-    System.out.println(s);
-    
-&#125;
-//输出hello 
-//输出world
-
-//将字符串转为字符数组
-char[] chars = str.toCharArray();
-
-for (String c:chars)&#123;
-    
-    System.out.println(c);
-    
-&#125;
-
-//str.replace()字符串替换方法
-String str4 = str.replace(&quot;world&quot;,&quot;java&quot;);
-System.out.println(str4);
-//输出hello java
-
-</code></pre>
-<h2 id="3-面向对象（万物皆对象）"><a href="#3-面向对象（万物皆对象）" class="headerlink" title="3.面向对象（万物皆对象）"></a>3.面向对象（万物皆对象）</h2><h3 id="面向对象特征："><a href="#面向对象特征：" class="headerlink" title="面向对象特征："></a>面向对象特征：</h3><ul>
-<li><h4 id="封装（encapsulation）"><a href="#封装（encapsulation）" class="headerlink" title="封装（encapsulation）"></a>封装（encapsulation）</h4></li>
-<li><h4 id="继承（inheritance）"><a href="#继承（inheritance）" class="headerlink" title="继承（inheritance）"></a>继承（inheritance）</h4></li>
-<li><h4 id="多态（polymorphism）"><a href="#多态（polymorphism）" class="headerlink" title="多态（polymorphism）"></a>多态（polymorphism）</h4></li>
-</ul>
-<h4 id="类与对象关系"><a href="#类与对象关系" class="headerlink" title="类与对象关系"></a>类与对象关系</h4><p>以后我们开发项目的时候，要不断的去声明类，在类中需要去封装属性和行为，</p>
-<p>但是针对某一些属性，我们需要将它保护起来，不希望直接对外界提供访问。</p>
-<p>所以我们会将这些属性用private关键字进行修饰，private代表的是私有的访问权限修饰符。</p>
-<p> 被private修饰的属性只能在本类中才能访问到</p>
-<p><strong>alt + INS键快速选择创建类的get方法与set方法</strong></p>
-<pre><code class="java">public class User &#123;
-
-    private String userName;
-
-    private String address;
-
-    private String idCard;
-
-    private String phoneID;
-    
-    //提供一个idCard对应的get方法,没有参数，但是有返回值
-    public String getIdCard()&#123;
-
-        return idCard;
-
-    &#125;
-
-    //提供一个idCard对应的set方法，有参数，但是没有返回值
-    public void setIdCard(String idCard)&#123;
-
-        this.idCard = idCard;
-
-    &#125;
-
-
-&#125;
-</code></pre>
-<h3 id="JVM内存分配"><a href="#JVM内存分配" class="headerlink" title="JVM内存分配"></a>JVM内存分配</h3><p><strong>栈内存</strong>：主函数，定义的普通函数，基本数据类型，数据地址（引用数据类型的地址）,所有的方法</p>
-<p><strong>堆内存</strong>：new出来的对象,应用数据类型的值</p>
-<p><strong>方法区内存</strong>：方法区内存中一般存放的是代码片段（java源文件编译之后的字节码文件）,以及常量池</p>
-<p>​       <strong>静态方法存在栈内存中，静态变量存在于方法区内存中</strong></p>
-<ul>
-<li><p>定义在类中的实例变量一定是在堆内存中开辟的空间，因为new出来的部分一定存在于堆内存中。</p>
-</li>
-<li><p>在JVM内存中，所有的方法，无论是静态方法还是普通方法（实例方法），都是在栈中分配空间。</p>
-</li>
-</ul>
-<h4 id="局部变量和实例变量的区别："><a href="#局部变量和实例变量的区别：" class="headerlink" title="局部变量和实例变量的区别："></a>局部变量和实例变量的区别：</h4><p>局部变量是存在于方法体内部的变量（包含了参数），局部变量如果是基本数据类型，则直接在栈中开辟空间，如果是引用数据类型，变量声明部分在栈中，实例创建部分在堆中，如果是实例遍历，所有的内存都会在堆中去开辟。</p>
-<h5 id="常量池："><a href="#常量池：" class="headerlink" title="常量池："></a>常量池：</h5><p>常量池一般存储字符串常量</p>
-<p><strong>Java中通过 &#x3D;&#x3D; ，如果比较的是基本数据类型，比的是值，如果比较的是引用数据类型，则比较的是内存地址</strong></p>
-<h5 id="private关键字：私有的"><a href="#private关键字：私有的" class="headerlink" title="private关键字：私有的"></a>private关键字：私有的</h5><p>​		是一个权限修饰符</p>
-<p>​		可以修饰成员（成员变量和成员方法）</p>
-<p>​		被private修饰的成员只能在本类中才能访问</p>
-<h5 id="this关键词"><a href="#this关键词" class="headerlink" title="this关键词"></a>this关键词</h5><p>​		this：代表所在类的对象的引用（方法被哪个对象调用，this就代表那个对象）</p>
-<p>​		this.变量名 访问的是本类中的实例变量</p>
-<h3 id="构造方法（Constructor）"><a href="#构造方法（Constructor）" class="headerlink" title="构造方法（Constructor）"></a>构造方法（Constructor）</h3><p><strong>作用</strong>：给对象的数据进行初始化</p>
-<p>方法名与类名相同，没有返回值类型，连void也没，没有具体的返回值</p>
-<p>如果不提供构造方法，那么系统会给出默认的构造方法，如果提供了构造方法（不管是否带参数），系统将不再提供默认无参数的构造方法</p>
-<p>构造方法可以重载</p>
-<p><strong>构造方法的作用</strong>：</p>
-<p>​		无参构造：实例化对象，但是实例化对象后，所有的属性都是没有被赋值的</p>
-<p>​		有参构造：实例化对象，可以在创建对象时，就给实例的属性赋值</p>
-<h3 id="静态关键字-static"><a href="#静态关键字-static" class="headerlink" title="静态关键字 static"></a>静态关键字 static</h3><p>可以修饰方法，可以修饰属性，但是不能修饰类</p>
-<p>被静态关键字修饰的属性和方法，会成为一个类级别的元素，会随着类的加载而加载</p>
-<p>局部变量不能被static修饰</p>
-<p>被static修饰的变量我们称之为静态变量</p>
-<p>静态变量会随着类的加载而加载，在JVM解析字节码文件时，该变量的内存空间就会被开辟出来</p>
-<p>静态变量的内存空间会被开辟在该方法区中</p>
-<p><strong>静态方法</strong>：</p>
-<pre><code class="java">public class StaticTest01&#123;
-    
-    private static String name; //静态变量
-    
-    public static void main(String[] args)&#123;
-        
-        //调用静态方法
-        StaticTest01.getMethod();
-        
-        StaticTest01 staticTest01 = new StaticTest01();
-        
-        //调用实例方法
-        staticTest01.getMethod02();
-    &#125;
-    
-    //声明一个静态方法
-    public static void getMethod()&#123;
-        
-        System.out.println(&quot;我是一个静态方法!&quot;);
-        
-    &#125;
-    
-    public void getMethod02()&#123;
-        
-        System.out.println(&quot;我是一个静态方法!&quot;);
-        
-    &#125;     
-    
-&#125;
-
-</code></pre>
-<h5 id="静态代码块："><a href="#静态代码块：" class="headerlink" title="静态代码块："></a>静态代码块：</h5><p>在类加载的时候将会被执行的语句体，而且<strong>只加载一次</strong>（在主函数执行前执行）</p>
-<pre><code class="java">static&#123;
-    
-    System.out.println(&quot;static 执行了！！&quot;);
-    
-&#125;
-</code></pre>
-<h5 id="一个类基本类的标准代码写法"><a href="#一个类基本类的标准代码写法" class="headerlink" title="一个类基本类的标准代码写法"></a>一个类基本类的标准代码写法</h5><ul>
-<li><strong>类</strong></li>
-<li>​	<strong>成员变量</strong></li>
-<li>​	<strong>构造方法</strong></li>
-<li>​		无参构造方法</li>
-<li>​		带参构造方法</li>
-<li>​	<strong>成员方法</strong></li>
-<li>​		getXxx()</li>
-<li>​		setXxx()</li>
-<li><strong>给成员变量赋值的方法</strong></li>
-<li>​	无参构造方法+setXxx()</li>
-<li>​	带参构造方法</li>
-</ul>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p><strong>概述：</strong>多个类中存在相同的属性和行为时，将这些内容抽取到单独一个类中，那么多个类无需再定义这些属性和行为，只要继承那个类即可。</p>
-<p>通过<strong>extends</strong>关键词可以实现类与类的继承</p>
-<p><strong>class 子类名 extends 父类名 {}</strong></p>
-<p>单独的这个类称为父类，基类，或者超类；这多个类可以称为子类或者派生类</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>继承可以让子类去继承父类，这样子类会继承父类所有的属性和方法，在java中是<strong>不允许有多继承</strong>的</p>
-<p><strong>Object类</strong>：是java中的祖宗类，当一个类在代码层面没有去继承任何的父类，那么这个类</p>
-<p>默认会继承Object类</p>
-<p><strong>继承的重写</strong>（覆盖）：</p>
-<p>子类继承父类以后，可以获取到父类所有的方法（包含被private修饰的私有方法，但是访问不到）</p>
-<p>如果父类方法的功能不能够满足子类的需求，这个时候，子类可以针对这个方法进行重写 </p>
-<p>父类中私有方法不能被重写</p>
-<p>子类重写父类方法时，访问权限不能更低</p>
-<p>父类静态方法，子类也必须通过静态方法进行重写</p>
-<h5 id="继承的好处："><a href="#继承的好处：" class="headerlink" title="继承的好处："></a>继承的好处：</h5><p><strong>提高了代码的复用性</strong></p>
-<ul>
-<li>多个相同的成员可以放到同一个类中</li>
-</ul>
-<p><strong>提高了代码的维护性</strong></p>
-<ul>
-<li>如果功能的代码需要修改，修改一处即可</li>
-</ul>
-<p><strong>让类与类之间产生了关系，是多态的前提</strong></p>
-<ul>
-<li>其实这也是继承的一个弊端：类的耦合性很强</li>
-</ul>
-<p><strong>不要为了部分功能而去继承</strong> ，<strong>继承中类之间的体现是“is a”的关系</strong></p>
-<p><strong>继承中成员变量的关系</strong></p>
-<p>在子类方法中访问一个变量：</p>
-<ul>
-<li>首先在子类局部范围找</li>
-<li>然后在子类成员范围找</li>
-<li>最后在父类成员范围找（不能访问父类局部范围）</li>
-<li>如果还是没有就报错</li>
-</ul>
-<h4 id="Super关键字"><a href="#Super关键字" class="headerlink" title="Super关键字"></a>Super关键字</h4><p>子类继承父类之后，子类可以通过super关键字去指向父类的元素(属性，普通方法，构造方法)</p>
-<p> 如果指向父类的构造用super() 如果指向子类的构造用 this()</p>
-<pre><code class="java">public class Student extends Person&#123;
-    
-    public Student()&#123;
-        
-        //指向的是父类的无参构造,不写则默认存在
-        super();
-        
-    &#125;
-    
-    @Override
-    public void sleep()&#123;
-        
-        //指向父类的普通方法,只能存在于子类构造中 
-        super.sleep();
-        
-    &#125;
-    
-    public void getMethod()&#123;
-        
-        //this指向当前类实例的属性
-        System.out.println(this.name);
-        
-        //super指向父类的属性
-        System.out.println(super.name);
-        
-    &#125;
-    
-&#125;
-</code></pre>
-<h4 id="继承中的构造方法的关系"><a href="#继承中的构造方法的关系" class="headerlink" title="继承中的构造方法的关系"></a>继承中的构造方法的关系</h4><p>子类中所有的构造方法默认都会访问父类中的空参数的构造方法</p>
-<p>​		因为子类会继承父类中的数据，可能还会使用父类的数据</p>
-<p>​		所以，子类初始化之前，一定要先完成父类数据的初始化</p>
-<p>​		每一个构造方法的第一条语句默认都是：super()</p>
-<p>方法重写与方法重载的区别？方法重载能改变返回值类型吗？</p>
-<p>答：方法重写建立在类的继承关系上，是对父类同名方法的覆盖。方法重载是一个类中，多个同名方法，但是参数列表不同。方法重载可以改变返回值类型。</p>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>某一事物，在不同时刻表现出来的不同状态</p>
-<p>多态是面向对象特征之一，也是最重要的一个特征</p>
-<p>多态思想：</p>
-<p>为了解除类与类之间的耦合（模块与模块之间的耦合），不能面向具体编程，而要面向抽象编程（面向接口编程）</p>
-<p>首先多态必须要有父子关系的体现（继承，实现），是在不同时刻展现出不同的状态</p>
-<p>父类的引用接收子类对象(向上转型)，或者是向下转型都是多态的体现</p>
-<p>多态在程序执行时分为编译阶段和运行阶段：</p>
-<p>普通方法：</p>
-<p>编译阶段看左边：编译时要检查调用的方法在父类中是否存在</p>
-<p>运行阶段看右边：因为我们实际new出来的对象是子类对象，所以最终执行的方法也是子类的方法</p>
-<p>静态方法:</p>
-<p>静态方法可以用类名去调用，类名.静态方法名()</p>
-<p>静态方法也可以用实例去调用,对象引用.静态方法名(),本质也是通过类名去调用</p>
-<p>静态方法是一个类级别的方法，所以它已经脱离了实例，和对象没有关系</p>
-<p>编译看左边，运行看左边</p>
-<pre><code class="java">class PloyTest01&#123;
-    
-    public static void main(String[] args)&#123;
-        
-        Cat cat = new Cat();
-        
-        //通过多态机制来创建猫的实例
-        Animal animal = new Cat();
-        
-        animal.eat();
-        
-        //引用数据类型的强转就是多态的一种,向上转型
-        Animal animal1 = (Animal)cat;
-        
-        //面试题:
-        Animal animal = new Rabbit();
-        
-        //判断animal1是否属于Cat,属于则进行强转
-        if (animal1 instanceof Cat)&#123;
-            
-            //向下转型
-            Cat cat1 = (Cat)animal1;
-        
-            cat1.eat();
-            
-        &#125;
-        
-        
-        
-        
-    &#125;
-    
-&#125;
-</code></pre>
-<p><strong>多态前提和体现</strong></p>
-<p>​	有继承关系</p>
-<p>​	有方法重写</p>
-<p>​	有父类引用指向子类对象</p>
-<p><strong>多态在开发中的作用</strong></p>
-<p>主任喂养宠物的案例：</p>
-<p>​		有一个主人是master喜欢喂养宠物，喂养的宠物有很多种（猫，狗，兔子，鸟），然后随着时间的推		移，主人会喂养越来越多的宠物，针对于这样的场景我们通过java程序去模拟一下（体现出多态）</p>
-<p>​		重载算不算多态？不算多态（没有体现父子关系）</p>
-<p>结论：如果按照传统的方式进行开发（不使用多态）：会发现程序进行迭代的时候，需要去修改主人类（需要在原有的代码继承上进行修改），这样做违背了设计模式中的<strong>开辟原则</strong>（OCP 对扩展开发，对修改关闭）：在写程序的时候，尽量避免在原有的代码之上进行修改，这样的话修改的部分容易对别的类（或者说别的模块造成影响）</p>
-<pre><code class="java">public class Master &#123;
-
-    //这是一个喂养的方法,用父类的引用去接收子类的对象
-    public void feed(Pet pet)&#123;
-
-        pet.eat();
-
-    &#125;
-
-&#125;
-
-//创建抽象类Pet
-public class Pet &#123;
-
-    public void eat()&#123;
-
-        System.out.println(&quot;所有的宠物都有吃的特性&quot;);
-
-
-    &#125;
-
-&#125;
-
-
-public class Cat extends Pet&#123;
-
-    public void eat()&#123;
-
-        System.out.println(&quot;猫吃鱼&quot;);
-
-    &#125;
-
-&#125;
-
-public class Rabbit extends Pet&#123;
-
-    public void eat()&#123;
-
-        System.out.println(&quot;兔子爱吃萝卜&quot;);
-
-    &#125;
-
-&#125;
-
-public class Dog extends Pet&#123;
-
-    public void eat()&#123;
-
-        System.out.println(&quot;狗爱啃骨头&quot;);
-
-    &#125;
-
-&#125;
-
-public class MasterTest &#123;
-
-    public static void main(String[] args) &#123;
-
-
-        Master master = new Master();
-
-        master.feed(new Cat());
-
-    &#125;
-
-&#125;
-</code></pre>
-<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><p>一个没有方法体的方法应该定义为抽象方法，而类中如果有抽象方法，该类必须定义为抽象类</p>
-<p>抽象类是java中最顶级的一种表现形式，接下来就是类，再接下来就是对象</p>
-<p>抽象类用<strong>abstract</strong>修饰 &gt; 类class &gt; new 对象</p>
-<p>我们如果想创建对象的话，只能通过类class去创建，抽象类是不能创建对象的</p>
-<p>因为抽象类的下一级是类</p>
-<p><strong>格式</strong>：abstract class 类名{}</p>
-<ul>
-<li>抽象类指的是class（本身就是抽象的事物）往上继续抽象就得到了抽象类</li>
-<li>抽象类中可以有普通方法，也可以有抽象方法</li>
-<li>抽象方法一定存在于抽象类中</li>
-<li>抽象类是不能实例化对象的，因为抽象类的下一级是类class</li>
-<li>抽象类不能实例化对象，他的作用是用来被子类继承的</li>
-<li>抽象类中可以定义普通的成员变量、静态变量、静态方法</li>
-<li>抽象方法是没有方法体的，不用提供具体的实现，当子类去继承了抽象类之后，抽象类中的所有抽象方法必须要在子类中重写</li>
-</ul>
-<pre><code class="java">public abstract class Animal&#123;
-    
-    private String name;
-    
-    private static int age;
-    
-    //定义抽象方法，抽象方法是没有方法体的
-    //为什么抽象类没有方法体？因为抽象方法本身就是模糊的，不用去提供具体的实现
-    public abstract String eat();
-    
-    public void move()&#123;
-        
-        System.out.println(&quot;动物会移动&quot;)
-        
-    &#125;
-    
-    
-&#125;
-
-public class Cat extends Animal&#123;
-    
-    @Override
-    public String eat()&#123;
-        
-        return &quot;猫喜欢吃鱼&quot;;
-        
-    &#125;
-    
-&#125;
-
-public  class AbstractTest01&#123;
-    
-    public static void main(String[] args)&#123;
-        
-        Animal animal = new Cat();
-        
-        System.out.println(animal.eat());
-        
-    &#125;
-    
-&#125;
-</code></pre>
-<p>抽象类中是有构造方法的（抽象类不可以实例化对象，但是却存在构造函数）  </p>
-<p>抽象类父类构造函数是通过子类构造去调用的，通过super关键字调用父类构造</p>
-<pre><code class="java">public class Cat extends Animal&#123;
-    
-    
-    public Cat(String name,int age)&#123;
-        
-        super(name,age);
-        
-    &#125;
-    
-&#125;
-</code></pre>
-<h4 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h4><p>final关键字：可以修饰类，成员变量，局部变量，方法（静态方法，实例方法）</p>
-<ul>
-<li><p>被final修饰的类不能用来被继承</p>
-</li>
-<li><p>被final修饰的属性，如果是基本数据类型，一定在定义变量的时候就初始化，如果是引用数据类型，在程序运行</p>
-<p>过程中，变量的引用不能指向别的内存地址</p>
-</li>
-<li><p>被final修饰的方法在子类继承父类之后，不能被重写</p>
-</li>
-</ul>
-<p>用final关键字能不能修饰抽象类？不可以，因为抽象类的作用就是用来被子类继承的，但是被final修饰的类是无法被子类继承的，final和abstract是不能同时出现的</p>
-<p>如何去声明一个常量？</p>
-<p>​		常量是程序运行过程中不可以发生改变的量</p>
-<p>​		对于那些无论创建多少次对象，值都亘古不变的数据，我们把该属性定义为常量</p>
-<pre><code class="java">public static final 属性类型 常量名称(所有字母都大写,单词之间用_分隔) = 值
-</code></pre>
-<p>​		用static修饰常量是因为想让改常量变成一个类级别的，然后随着类加载，该常量就初始化</p>
-<p>​		避免多次开辟空间，浪费系统资源</p>
-<p>​		用final修饰常量，是因为不希望在程序运行时，该量的值发生变化，final代表最终的</p>
-<p>​		</p>
-<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p><strong>接口</strong>：接口是一种规范，在进行程序设计的时候，都是基于接口进行开发</p>
-<p>因为在声明方法的时候，我们需要这个方法存在多变性，而且可以随着业务的改变，针对这个接口做具体的实现</p>
-<p>构造方法：没有，因为接口主要是扩展功能的，而没有具体存在</p>
-<p><strong>接口的定义</strong>：</p>
-<ul>
-<li>接口其实就是一个特殊的抽象类，接口中的方法只能有抽象方法</li>
-<li>通过<strong>interface</strong>来定义接口</li>
-<li>接口也是一种引用数据类型，在类加载的时候会生成字节码文件</li>
-</ul>
-<p>格式: interface 接口名 {}</p>
-<pre><code class="java">package com.os467.interface_test;
-
-//声明一个接口 
-public interface MyInterface01&#123;
-    
-    int I = 100;
-    
-    Object O = new Object();
-    
-    static String ADDRESS = &quot;南京&quot;
-    //以上都是常量，忽略了public static final,不是变量
-        
-    public static final String NAME = &quot;Tom&quot;;
-    //可以省略public static final
-    
-    //抽象方法
-     //public abstract void getMethod();接口中下面的代码等同于这行代码 
-    void getMethod();
-
-    
-&#125;
-</code></pre>
-<ul>
-<li>接口中的成员：<strong>抽象方法，常量</strong></li>
-<li>由于接口中所有的方法都是抽象的，所以关键字public abstract 是可以省略掉的</li>
-<li>在接口中是允许有多继承的</li>
-<li>接口不能实例化对象，它的作用是用来被子类实现的</li>
-</ul>
-<p><strong>接口在开发中的作用</strong>:</p>
-<p>​		设计模式中提到在设计程序时，我们要面向接口开发，接口+多态，可以实现程序的可拓展性，灵活性</p>
-<h4 id="implements关键字："><a href="#implements关键字：" class="headerlink" title="implements关键字："></a>implements关键字：</h4><p> 作用：子类实现接口的关键字(类似extends关键字)</p>
-<p>接口中定义的抽象方法，在子类实现之后一定要进行重写</p>
-<p>格式： class 类名 implements 接口名{}</p>
-<pre><code class="java">public class MyInterfaceImpl implements MyInterface01&#123;
-    
-    @Override
-    public void getMethod()&#123;
-        
-       System.out.println(&quot;子类实现接口之后重写的方法&quot;) 
-       
-        
-    &#125;
-    
-&#125;
-
-public class InterfaceTest01&#123;
-    
-    public static void main(String[] args)&#123;
-        
-        //通过多态的方式来创建实例
-        MyInterface01 myInterface01 = new MyInterfaceImpl();
-        
-        myInterface01.getMethod();
-        
-    &#125;
-    
-&#125;
-</code></pre>
-<p><strong>接口案例</strong></p>
-<pre><code class="java">package com.os467.interfaceTest.person;
-
-public interface Message &#123;
-
-    void getMessage();
-
-&#125;
---------------------------------------------------------
-package com.os467.interfaceTest.person;
-
-public class QQ implements Message&#123;
-
-    @Override
-    public void getMessage() &#123;
-        System.out.println(&quot;接收的是QQ消息&quot;);
-    &#125;
-&#125;
---------------------------------------------------------
-package com.os467.interfaceTest.person;
-
-public class Email implements Message&#123;
-
-    @Override
-    public void getMessage() &#123;
-
-        System.out.println(&quot;接收的是电子邮件&quot;);
-    &#125;
-&#125;
----------------------------------------------------------
-    package com.os467.interfaceTest.person;
-
-public class QQ implements Message&#123;
-
-    @Override
-    public void getMessage() &#123;
-        System.out.println(&quot;接收的是QQ消息&quot;);
-    &#125;
-&#125;
----------------------------------------------------------
-    package com.os467.interfaceTest.person;
-
-public class Person &#123;
-
-    //接收消息的方法
-    public void receive(Message message)&#123;
-
-        //调用接收消息的方法
-        message.getMessage();
-
-    &#125;
-
-&#125;
-----------------------------------------------------------
-    package com.os467.interfaceTest.person;
-
-public class Test &#123;
-
-    public static void main(String[] args) &#123;
-
-        Person person = new Person();
-
-        //调用接收消息的方法
-        person.receive(new QQ());
-        person.receive(new WeChat());
-        person.receive(new Email());
-
-    &#125;
-
-&#125;
-</code></pre>
-<p>按照多态的方式，由具体的子类实例化，这其实也是多态的一种，接口多态</p>
-<p>类对多个接口方法的实现</p>
-<pre><code class="java">//一个类的多接口实现，接口与接口之间用逗号隔开
-public class MyImpl implements MyInterface01, Myinterface02&#123;
-    @Override
-    public void getMethod()&#123;
-        
-    &#125;
-    
-    @Override
-    public String getMethod02()&#123;
-        
-        return null;
-    &#125;
-&#125;
-</code></pre>
-<p>接口与接口之间的多继承</p>
-<pre><code class="java">//继承接口02,接口01的所有抽象方法与常量
-public interface MyInterface03 extends MyInterface02, MyInterface01()&#123;
-    
-&#125;
-</code></pre>
-<p><strong>总结</strong>：抽象类与接口的区别：</p>
-<p>抽象类有成员变量，以及抽象方法（没有方法体）与普通方法，拥有自己的构造函数，继承抽象类的子类需要重写抽象类中的所有抽象方法，抽象类没有实例对象，因为其下一级是类</p>
-<p>抽象类被继承体现的是”is a“的关系，共性功能</p>
-<p>接口可以说是特殊的抽象类，只是接口内只有抽象方法和常量，接口不具有构造函数，实现接口的类需要重写接口中的所有抽象方法，接口没有实例对象，它的作用是用来被子类实现的</p>
-<p>接口被实现体现的是：”like a“的关系，扩展功能</p>
-<h4 id="类与类，类与接口，接口与接口之间的关系"><a href="#类与类，类与接口，接口与接口之间的关系" class="headerlink" title="类与类，类与接口，接口与接口之间的关系"></a>类与类，类与接口，接口与接口之间的关系</h4><p><strong>类与类：</strong></p>
-<p>​		继承关系，只能单继承，但是可以多层继承</p>
-<p><strong>类与接口：</strong></p>
-<p>​		实现关系，可以单实现，也可以多实现，还可以在继承一个类的同时实现多个接口</p>
-<p><strong>接口与接口之间：</strong></p>
-<p>​		继承关系，可以单继承，也可以多继承</p>
-<p>接口和抽象类都可以作为一个方法的返回值，参数，也可以作为类的成员变量</p>
-<pre><code class="java"> public static void main(String[] args) &#123;
-
-        public Myinterface02 getFun()&#123;
-            
-            //返回的是一个接口
-            return new MyImpl();
-
-        &#125;
-</code></pre>
-<h3 id="包-1"><a href="#包-1" class="headerlink" title="包"></a>包</h3><p>package只能存在工程的第一行</p>
-<p>包其实就是文件夹</p>
-<p>作用：对类进行分类管理</p>
-<p>格式：package 包名；</p>
-<p>多级包用”.“分开即可</p>
-<p><strong>访问权限修饰符区别</strong></p>
-<table>
-<thead>
-<tr>
-<th align="center">访问权限修饰符</th>
-<th align="center">本类</th>
-<th align="center">同一包下</th>
-<th align="center">子类（同一包下）</th>
-<th align="center">子类（不同包下）</th>
-<th align="center">不同包下非子类</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">private</td>
-<td align="center">√</td>
-<td align="center">×</td>
-<td align="center">×</td>
-<td align="center">×</td>
-<td align="center">×</td>
-</tr>
-<tr>
-<td align="center">default(不写修饰符)</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">×</td>
-<td align="center">×</td>
-</tr>
-<tr>
-<td align="center">protected</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">×</td>
-</tr>
-<tr>
-<td align="center">public</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-</tr>
-</tbody></table>
-<h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><p>把类定义在其他类的内部，这个类就被称为内部类</p>
-<p>内部类的访问特点：</p>
-<p>​		内部类可以直接访问外部类的成员，包括私有</p>
-<p>​		外部类要访问内部类的成员，必须创建对象</p>
-<pre><code class="java">//创建内部类的实例,B是类A的内部类
-A.B b = new A().new B();
-
-//调用内部类中实例的方法
-b.getMethod();
-</code></pre>
-<p>内部类中不允许写静态方法</p>
-<h4 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h4><p>就是内部类的简化写法</p>
-<p><strong>前提：</strong>存在一个类或接口</p>
-<p>​		这里的类可以是具体类也可以是抽象类</p>
-<p><strong>格式：</strong></p>
-<p>​		new 类名或者接口名( ){重写方法;}</p>
-<p><strong>本质：</strong></p>
-<p>创建一个父类所对应的匿名对象</p>
-<p>是一个继承了</p>
-<p>类或者实现了接口的子类匿名对象</p>
-<pre><code class="java">//给接口创建一个匿名对象，可以把 new MyInterface()&#123;&#125;视为接口的匿名子类
-MyInterface myInterface = new MyInterface()&#123;
-    
-    @Override
-    public double getSum(double num1, double num2)&#123;
-        
-        return num1 + num2;
-    &#125;
-    
-&#125;;
-
-double sum = myInterface.getSum(100,200);
-
-System.out.println(&quot;结果为&quot;+sum);
-//结果为 300.0
-</code></pre>
-<h2 id="4-异常"><a href="#4-异常" class="headerlink" title="4.异常"></a>4.异常</h2><p>当程序出现异常时，java会创建对应的异常对象，并且抛出(throw)</p>
-<p>当异常抛出之后，会影响接下来代码的执行(打断)</p>
-<h4 id="Throwable类"><a href="#Throwable类" class="headerlink" title="Throwable类"></a>Throwable类</h4><p>在 Java 中，所有的异常都有一个共同的祖先类<strong>Throwable</strong>（可抛出）</p>
-<p>Throwable有两个子类 Error 和 Exception</p>
-<h5 id="Error类"><a href="#Error类" class="headerlink" title="Error类"></a>Error类</h5><p>错误（Error）: JVM系统内部错误，资源耗尽等严重情况</p>
-<p>Error是Throwable的子类，用于指示合理的应用程序不应该试图捕获的严重问题</p>
-<p><strong>无法从代码层面解决此异常</strong></p>
-<h5 id="Exception类"><a href="#Exception类" class="headerlink" title="Exception类"></a>Exception类</h5><p>异常（Exception）: 其它因编程错误或偶然的外在因素导致的一般性问题</p>
-<p>Exception（异常）:是程序本身可以处理的异常,<strong>Exception</strong> 类有一个重要的子类<code>RuntimeException</code></p>
-<p><strong>常见异常:</strong></p>
-<p><strong><code>RuntimeException</code></strong></p>
-<p>​		<code>ArithmeticException:数学计算异常</code></p>
-<p>​		<code>NullPointerException:空指针异常</code></p>
-<p>​		<code>NegativeArraySizeException:数组索引越界异常</code></p>
-<p>​		<code>ClassNotFoundException:类文件未找到异常</code></p>
-<p>​		<code>ClassCastException:造型异常</code></p>
-<p><strong><code>IOException</code></strong></p>
-<p>​		<code>FileNotFoundException:文件未找到异常</code></p>
-<p>​		<code>EOFException:读写文件尾异常</code></p>
-<p><strong>异常：</strong></p>
-<p>​		<strong>编译时异常</strong>：当JVM进行编译的时候就会出现报错，对于那些大概率会发生的异常，我们会定义成编译时异常，编译时异常要求开发人员必须对其进行处理</p>
-<p>直接或间接继承了<strong>Exception</strong>类的异常就是编译时异常</p>
-<p>​		<strong>运行时异常</strong>：程序在运行时，才会出现的异常，小概率会出现的异常，我们会定义成运行时异常，开发人员可以不用对其进行处理</p>
-<p>直接或者是间接的继承了**<code>RuntimeException</code>**类，该异常就是运行时异常</p>
-<h4 id="异常处理机制"><a href="#异常处理机制" class="headerlink" title="异常处理机制"></a>异常处理机制</h4><p><strong>1.通过throws关键字将异常往上抛</strong></p>
-<pre><code class="java">//throws关键字为方法添加方法体内可能出现的异常,如文件找不到异常,不添加则无法运行方法体中的代码
-public static void main(String[] args) throws FileNotFoundException &#123;
-        
-        FileInputStream fileInputStream = new FileInputStream(&quot;D:\\test\\test.txt&quot;);
-
-        System.out.println(fileInputStream);
-
-
-    &#125;
-</code></pre>
-<p><strong>2.通过异常的捕获try{}catch{}语句块</strong></p>
-<h4 id="异常处理的try-catch-finally语句"><a href="#异常处理的try-catch-finally语句" class="headerlink" title="异常处理的try - catch - finally语句"></a>异常处理的<strong>try - catch - finally</strong>语句</h4><p><strong>语句块机制：</strong></p>
-<pre><code class="java">try&#123;
-    //可能会抛出特定异常的代码段
-&#125;catch(MyExceptionType myException)&#123;
-    //如果myException被抛出，则执行这段代码
-&#125;catch(Exception otherException)&#123;
-    //如果另外的异常otherException被抛出，则执行这段代码
-&#125;finally&#123;
-    //用于资源回收,回收的资源一般是指会造成对系统资源浪费的对象
-    //无条件执行的语句！！一定会执行
-&#125; 
-/*
-通过这种方式去处理异常，在捕获到异常之后，还是一样会创建该异常对象，但是该对象会
-被catch语句块所捕获，具体用异常类来接收该异常对象，然后在catch语句块中可以针对
-该异常进行相关的处理，程序会继续往下执行
-*/
-</code></pre>
-<p><strong>注意：</strong>用try{…}catch{…}捕捉了异常之后一定要对在catch{…}中对其进行处理，那怕是最简单的一句输出语句，或打印日志来显示整个调用流程</p>
-<pre><code class="java">catch(Exception e)&#123;
-    
-    //栈输入,打印日志
-    e.printStackTrace();
-    
-&#125;
-</code></pre>
-<h4 id="throws关键字"><a href="#throws关键字" class="headerlink" title="throws关键字"></a>throws关键字</h4><p>throws : 是方法可能抛出异常的声明</p>
-<p>用在声明方法时，表示该方法<strong>可能</strong>要抛出异常，<strong>交给上层调用它的方法程序处理</strong></p>
-<p>通过throws关键字（写在方法后面的）把异常向上抛（抛给该方法的调用处）</p>
-<p> 不会影响程序正常运行</p>
-<pre><code class="java">//throws后面为方法中可能出现的异常,如空指针异常
-public void getMethod01() throws NullPointerException&#123;
-
-&#125;
-
-//抛出编译时异常
-public FileInputStream getMethod02() throws FileNotFoundException&#123;
-    
-    return new FileInputStream(&quot;D:\\file\\demo.java&quot;)
-    
-&#125;
-</code></pre>
-<h4 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h4><p>java给我们提供了很多种异常，但是在做项目的时候，这些异常是不够用的，所以需要我们自定义异常</p>
-<p><strong>自定义异常方式：</strong></p>
-<ol>
-<li>直接声明一个类</li>
-<li>如果想定义成<strong>编译时异常</strong>让该类去继承<strong>Exception</strong></li>
-<li>如果想定义成<strong>运行时异常</strong>，让该类去继承**<code>RuntimeException</code>**</li>
-<li>然后需要提供一个构造，通过super关键字，把异常信息告诉父类即可</li>
-</ol>
-<pre><code class="Java">public class ExceptionDemmo extends Exception&#123;
-    
-    //提供一个构造，把异常信息告诉父类
-    public ExceptionDemmo(String message)&#123;
-
-        super(message);
-
-    &#125;
-
-&#125;
-
-public class RuntimeExceptionDemmo extends RuntimeException&#123;
-    
-    //提供一个构造，把异常信息告诉父类
-    public RuntimeExceptionDemmo(String message)&#123;
-
-        super(message);
-
-    &#125;
-
-&#125;
-</code></pre>
-<h4 id="throw关键字"><a href="#throw关键字" class="headerlink" title="throw关键字"></a>throw关键字</h4><p>系统在遇到异常时会自动生成一个 throw new 异常类(); 来抛出异常</p>
-<p>throw是语句抛出一个异常，一般是在<strong>方法体的内部</strong>，当程序出现某种逻辑错误时由<strong>程序员主动抛出</strong>某种特定类型的异常</p>
-<pre><code class="java">public static void main(String[] args) throws Exception&#123;
-    
-    ExceptionDemo exceptionDemo = new ExceptionDemo(&quot;这是我提供的自定义异常信息&quot;);
-    
-    throw exceptionDemo;
-    
-    //也可写成throw new ExceptionDemmo(&quot;这是我提供的自定义异常信息&quot;);
-&#125;
-
-public static void main(String[] args)&#123;
-    
-    RuntimeExceptionDemo runtimeExceptionDemo = new RuntimeExceptionDemo(&quot;这是我提供的自定义异常信息&quot;);
-    
-    throw exceptionDemo;
-    
-    //也可写成throw new RuntimeExceptionDemmo(&quot;这是我提供的自定义异常信息&quot;);
-&#125;
-</code></pre>
-<p>字符串比较的方法：</p>
-<p>空指针异常时以后我们写程序经常会遇见的一种异常，接收过来的引用为空，然后拿着该引用去调用方法</p>
-<p>空指针异常的解决方案：我们要对接收过来的引用数据类型做非空校验</p>
-<pre><code class="java">public boolean getEquals(String str1, String str2)&#123;
-    
-        boolean b = false;
-    
-    if (str1 == null || str == null)&#123;
-        
-        System.out.println(&quot;接收的引用为空&quot;)
-        
-    &#125;else&#123;
-        
-           b = str1.equals(str2);//new NullPointerException();
-        
-        return b;
-        
-    &#125;
-    
-    return b;
-    
-&#125;
-</code></pre>
-<h2 id="5-集合"><a href="#5-集合" class="headerlink" title="5.集合"></a>5.集合</h2><p><strong>集合：</strong></p>
-<ul>
-<li>​	集合是容器，只能存放引用数据类型</li>
-<li>​	每个集合的实现类底层都封装了一种数据结构</li>
-<li>​	每个集合都可以去获取迭代器接口提供的迭代方法</li>
-</ul>
-<h4 id="JAVA中的自动装箱和自动拆箱"><a href="#JAVA中的自动装箱和自动拆箱" class="headerlink" title="JAVA中的自动装箱和自动拆箱:"></a>JAVA中的自动装箱和自动拆箱:</h4><p>​		java中所有的基本数据类型都有对应的封装类（引用数据类型），我们学习的集合是只能存放引用数据类型的容器。</p>
-<pre><code class="java">int i = 100;
-
-//创建一个集合对象
-ArrayList arrayList = new ArrayList();
-
-//添加元素的方法,自动装箱：int ---&gt; Integer
-arrayList.add(i);
-
-for (int j = 0; j &lt; arrayList.size(); j++)&#123;
-    
-    //根据下标来取元素
-    System.out.println(arrayList.get(j));
-    
-&#125;
-</code></pre>
-<p><strong>Java中有自动装箱机制，会把基本类型转化为其对应的封装类:</strong></p>
-<ul>
-<li>int → Integer</li>
-<li>double → Double</li>
-<li>float → Float</li>
-<li>char → Character</li>
-<li>byte → Byte</li>
-<li>short → Short</li>
-<li>long → Long</li>
-<li>boolean → Boolean</li>
-</ul>
-<p><strong>将引用数据类型转为基本数据类型就是自动拆箱</strong></p>
-<h3 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h3><p><strong>Iterator</strong>接口：Collection继承的超级接口， 只有一个返回迭代器的方法</p>
-<p><strong>Collection :</strong> 集合层次中的根接口，JDK没有提供这个接口直接的实现类</p>
-<p>​		将一组对象以集合元素的形式组织到一起，在其子接口中分别实现不同的组织方法</p>
-<pre><code class="java">//创建一个集合对象
-Collection collection = new ArrayList();
-
-//添加的是基本数据类型 会自动装箱
-collection.add(1000);
-
-//添加浮点型 自动装箱
-collection.add(3.14);
-
-//添加引用数据类型
-collection.add(new Object());
-
-System.out.println(&quot;集合的长度为&quot;+collection.size());
-
-//遍历Collection接口方法 遍历集合中的元素
-//获取迭代器对象方法
-Iterator iterator = collection.iterator();
-while (iterator.hasNext())&#123;
-    
-    Object next = iterator.next();
-    
-    System.out.println(next);
-    
-&#125;
-
-//判断集合中是否包含指定元素
-System.out.println(&quot;是否包含元素?&quot;collection.contains(1000));
-
-//比较集合是否相等
-System.out.println(collection.equals(collection1));
-
-//返回哈希码值
-System.out.println(&quot;hash码值为&quot;+collection.hashCode());
-
-//判断集合是否为空
-System.out.println(&quot;集合是否为空？&quot;+collection.isEmpty());
-
-//根据指定元素,删除集合中所对应的元素
-collection.remove(1000);
-
-//返回集合元素个数
-System.out.println(&quot;集合元素个数：&quot;+collection.size());
-
-//将集合转成数组
-Object[] objects = collection.toArray();
-
-for (Object object : objects)&#123;
-    
-    System.out.println(object)
-    
-&#125;
-
-//清空集合中的元素
-collection.clear();
-</code></pre>
-<p><strong>Collection的两个子接口：</strong></p>
-<h4 id="1-List接口："><a href="#1-List接口：" class="headerlink" title="1.List接口："></a>1.List接口：</h4><h4 id="有序集合的三种访问方式"><a href="#有序集合的三种访问方式" class="headerlink" title="有序集合的三种访问方式"></a>有序集合的三种访问方式</h4><p>是一个有序的集合，可以包含重复的元素，提供了按<strong>索引访问</strong>的方式</p>
-<pre><code class="java">public class CollectionTest01 &#123;
-
-    public static void main(String[] args) &#123;
-
-        List list1 = new ArrayList();
-
-        List list2 = new Vector();
-
-        list1.add(100);
-        list1.add(100);
-        list1.add(&quot;hello&quot;);
-        list1.add(new Object());
-        list1.add(list2);
-        
-        //List接口提供按索引访问的方法
-        for (int i = 0; i &lt; list1.size(); i++) &#123;
-
-            System.out.println(list1.get(i));
-
-        &#125;
-
-    &#125;
-
-&#125;
-</code></pre>
-<p><strong>迭代器方法访问元素：</strong></p>
-<p>Iterator接口定义了对Collection类型对象中所含元素的遍历等增强处理功能</p>
-<p>​		可以通过Collection接口中定义的iterator()方法</p>
-<p>​		获得一个对应的Iterator(实现类)对象</p>
-<p>​		Set(实现类)对象对应的Iterator仍然是无序的</p>
-<p>​		List(实现类)对象对应的<code>ListIterator</code>对象可以实现对所含元素的双向遍历：</p>
-<p>​		使用next()方法和previous()方法</p>
-<pre><code class="java">  //获取迭代器对象,注意：获取迭代器对象之后不允许对集合元素进行修改或删除，否则会报错
-        Iterator iterator = list1.iterator();
-
-        /*遍历集合
-        iterator.hasNext()是一个指针，判断集合中下一个
-        单元中是否存在元素，如果存在指针向下走一个单元*/
-        while(iterator.hasNext())&#123;
-
-            //返回当前指针指向的元素
-            Object next = iterator.next();
-            
-            //迭代器的删除方法，删除的是当前遍历的元素
-            //iterator.remove();
-            
-            //最好不要在迭代器中用
-            //List.remove(next)
-
-            System.out.println(next);
-        &#125;
-</code></pre>
-<p><strong>forEach循环（加强版for循环）：</strong></p>
-<pre><code class="java">for (Object obj : list1)&#123;
-
-            System.out.println(obj);
-            
-        &#125;
-</code></pre>
-<hr>
-<p><strong>案例分析(关于集合当中的方法)：</strong></p>
-<p><strong>List的方法：</strong></p>
-<p><strong>contains 方法：</strong> 底层重写了equals方法，判断集合中是否包含某一个元素，如果该元素重写了equals方法，比较的就是内容，如果没有重写equals方法，默认会采用Object类中的equals方法，这时候比较的就是地址</p>
-<p><strong>remove方法：</strong> 底层重写了equals方法，删除集合中的元素，但是永远只能删除一个元素，因为在底层删除之后就return了</p>
-<pre><code class="java">/**
- * 创建两个学生对象（属性有 姓名，年龄，身份证号），然后
- * 重写equals方法，在年龄姓名身份证号相同的清空下，两个比较的实例才是相同的！
- *
- */
-public class ListDemo &#123;
-    public static void main(String[] args) &#123;
-
-        //创建集合对象
-        List list = new ArrayList();
-
-        //创建两个学生实例
-        Student student1 = new Student(&quot;Tom&quot;,20,&quot;1232312312&quot;);
-        Student student2 = new Student(&quot;Tom&quot;,20,&quot;1232312312&quot;);
-
-        list.add(student1);
-        
-        //因为在contains的底层调用了equals方法，student在contains中用Object类接收
-        //而父类Object中的equals方法不能满足需求，因此需要在Student类中去重写equals方法
-        System.out.println(list.contains(student2));
-    &#125; 
-
-&#125;
-</code></pre>
-<pre><code class="java">public class Student &#123;
-
-    private String name;
-
-    private int age;
-
-    private String idCard;
-
-    public Student(String name, int age, String idCard) &#123;
-        this.name = name;
-        this.age = age;
-        this.idCard = idCard;
-    &#125;
-
-    public Student() &#123;
-    &#125;
-
-    public String getName() &#123;
-        return name;
-    &#125;
-
-    public void setName(String name) &#123;
-        this.name = name;
-    &#125;
-
-    public int getAge() &#123;
-        return age;
-    &#125;
-
-    public void setAge(int age) &#123;
-        this.age = age;
-    &#125;
-
-    public String getIdCard() &#123;
-        return idCard;
-    &#125;
-
-    public void setIdCard(String idCard) &#123;
-        this.idCard = idCard;
-    &#125;
-
-    //重写equals方法
-    @Override
-    public boolean equals(Object obj) &#123;
-        
-        //如果接收到为空 或者 obj不是Student类的对象 返回false
-        if (obj == null || !(obj instanceof  Student))&#123;
-
-            return false;
-
-        &#125;
-        
-        //对obj向下转型，用Student类的对象student接收
-        Student student = (Student)obj;
-        
-        //满足 对象与student的姓名，年龄，身份证号相等 返回true
-        if(this.name.equals(student.name) &amp;&amp; this.age == student.age &amp;&amp; this.idCard.equals(student.idCard))&#123;
-
-            return  true;
-
-        &#125;
-        
-        //不满足则返回false
-        return false;
-    &#125;
-
-    @Override
-    public String toString() &#123;
-        return &quot;Student&#123;&quot; +
-                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
-                &quot;, age=&quot; + age +
-                &quot;, idCard=&#39;&quot; + idCard + &#39;\&#39;&#39; +
-                &#39;&#125;&#39;;
-    &#125;
-&#125;
-</code></pre>
-<hr>
-<p><code>ArrayList</code> 和 <code>vector</code> 集合区别:</p>
-<p>这两个集合底层都封装了数组这一种数据结构，<code>ArrayList</code>是线程不安全的，<code>Vector</code>是线程安全的</p>
-<p>所有封装的方法都是一样的，还有就是扩容机制有一点不一样，<code>ArrayList</code> 和 <code>vector</code>最开始的时候只能存放10个元素，默认初始容量是10，当元素超过10个之后，就会触发底层的扩容机制</p>
-<p><code>ArrayList</code>的扩容因子是1.5  <code>10 * 1.5 = 15</code></p>
-<p><code>Vector</code>的扩容因子是2.0  <code>10 * 2.0 = 20</code></p>
-<p><code>ArrayList</code> 和 <code>LinkedList</code> 集合区别:</p>
-<p><code>ArrayList</code> 底层是数组，<code>LinkedList</code> 底层是链表结构</p>
-<p>数组查询效率高，随机增删效率低</p>
-<p>链表随机增删效率高，查询效率低</p>
-<h4 id="集合的泛型"><a href="#集合的泛型" class="headerlink" title="集合的泛型"></a>集合的泛型</h4><p>JDK1.5版本之后引入的新特性，强制让集合只能存放某一种数据类型</p>
-<p>&lt;数据类型&gt;钻石表达式</p>
-<pre><code class="java">//创建只能存放字符串类型的数组 
-ArrayList&lt;String&gt; string = new ArrayList&lt;&gt;();
-</code></pre>
-<p>自定义泛型：</p>
-<pre><code class="java">//&lt;&gt;内部的类容可以是任意的,例如可以是Collection&lt;? extends E&gt; var1,即传入数据类型必须是Collection的子类
-//&lt;E&gt;的存在用来接收Person类内部的E的具体引用数据类型
-public class Person&lt;E&gt; &#123;
-    
-    //e这个成员变量的类型为E，E的类型由外部指定
-    private E e;
-    
-    //泛型构造方法形参e的类型也为E，E的类型由外部指定
-    public void getE(E e)&#123;
-
-        System.out.println(e);
-
-    &#125;
-
-&#125;
-
-------------------------------------------------------------
-public class Test &#123;
-
-    public static void main(String[] args) &#123;
-
-        Person&lt;String&gt; stringPerson = new Person&lt;&gt;();
-
-        stringPerson.getE(&quot;abc&quot;);
-
-    &#125;
-
-&#125;
-</code></pre>
-<h4 id="2-Set接口："><a href="#2-Set接口：" class="headerlink" title="2.Set接口："></a>2.Set接口：</h4><p><strong>Set接口的实现类：<code>HashSet</code></strong></p>
-<p>底层封装了<code>HashMap</code></p>
-<p><code>HashSet</code>中<strong>不允许出现重复元素</strong>,不保证集合中元素的顺序（<strong>存入的顺序与取出的不同</strong>）</p>
-<p><code>HashSet</code>中允许包含值为null的元素，但最多只能由一个null元素</p>
-<pre><code class="java"> HashSet&lt;String&gt; hashSet = new HashSet&lt;&gt;();
-
-        hashSet.add(&quot;abc&quot;);
-        hashSet.add(&quot;efg&quot;);
-        hashSet.add(&quot;xyz&quot;);
-        hashSet.add(&quot;xyz&quot;);
-
-        for (String s : hashSet) &#123;
-
-            System.out.println(s);
-
-        &#125;
-</code></pre>
-<p><strong>Set接口的实现类：<code>TreeSet</code></strong></p>
-<p>底层封装了<code>TreeMap</code></p>
-<pre><code class="java">//创建TreeSet集合
-TreeSet treeSet = new TreeSet();
-
-        treeSet.add(123);
-        treeSet.add(124);
-        treeSet.add(120);
-        treeSet.add(128);
-        treeSet.add(129);
-
-        for (Object o : treeSet) &#123;
-
-            System.out.println(o);
-
-        &#125;
-</code></pre>
-<h4 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口:"></a>Map接口:</h4><ol>
-<li><p>map集合是存放键值对的容器</p>
-</li>
-<li><p>value是key的一个替代品，我们以后操作元素时，是根据key去操作</p>
-</li>
-<li><p>map集合的key是不允许重复的，如果在添加元素时，key的值重复，那么后添加的元素将会把前一个覆盖掉</p>
-</li>
-<li><p>value的值可以重复</p>
-</li>
-</ol>
-<p>​	Map:包含了key-value对, Map不能包含重复的key， <code>SortedMap</code>是一个按照升序排列key的Map</p>
-<p>​	映射(map)是一个存储关键字和值的关联或者说是关键字&#x2F;值对的对象，给定一个关键字，可以得到它的值</p>
-<p>​	关键字和值都是对象，关键字必须是唯一的，但值是可以被复制的</p>
-<p>​	有些映射可以接收null关键字和null值，而有的则不行</p>
-<ul>
-<li>一个Map中的key值是唯一的，不重复（如，不要用员工姓名作为key）</li>
-<li>一个Map中一个key只能对应一个value（可以为空），但一个value可以有多个key与之对应</li>
-<li>Map能让你通过key快速查找到相应的对象并获得它对应的value的引用（如存储员工资料并用员工ID作为key来查找某一员工的信息）</li>
-</ul>
-<pre><code class="java">//创建集合对象
-Map map = new HashMap();
-Map map2 = new HashMap();
-
-//添加元素
-map.put(&quot;name&quot;,&quot;jack&quot;);
-map.put(&quot;age&quot;,20);
-map.put(&quot;address&quot;,&quot;北京市&quot;);
-map.put(&quot;idCard&quot;,&quot;123456&quot;);
-
-//查看集合的长度
-System.out.println(&quot;集合的长度为&quot;+map.size());
-
-//查询集合中是否包含某一个key
-System.out.println(&quot;是否包含key&quot;+map.containsKey(&quot;name&quot;));
-
-//是否包含value
-System.out.println(&quot;是否包含value&quot;+map.containsValue(20));
-
-//判断集合对象是否相等
-System.out.println(map.equals(map2));
-
-//根据key来获取value
-System.out.println(&quot;name的值为&quot;+map.get(&quot;name&quot;));
-
-//判断集合是否为空
-System.out.println(&quot;是否为空&quot;+map.isEmpty);
-
-//将map集合中的key部分转成set集合
-Set set = map.keySet();
-
-for(Object o : set)&#123;
-    
-    System.out.println(o);
-    
-&#125;
-
-//复制集合中所有的元素,将map的内容复制给map2
-map2.putAll(map);
-
-//根据key来删除整个键值,返回的是删除的key所对应的value
-Object age = map.remove(&quot;age&quot;);
-
-//将map集合所有的value部分转成collection集合 
-Collection collection = map.values();
-
-for(Object o : collection)&#123;
-    
-    System.out.println(o);
-    
-&#125;
-</code></pre>
-<p><strong>如何遍历Map集合（两种方法）:</strong></p>
-<p>1.keySet方法：将map集合所有key部分转成set集合，再根据get()获取对应value的值</p>
-<pre><code class="java">//创建map集合对象
-Map map = new HashMap();
-
-//添加元素
-map.put(&quot;name&quot;,&quot;Tom&quot;);
-map.put(&quot;age&quot;,20);
-map.put(&quot;address&quot;,&quot;北京市&quot;);
-map.put(&quot;idCard&quot;,&quot;123456&quot;);
-
-//将所有的key转成set集合
-Set set = map.keySet();
-
-//获取迭代器对象
-Iterator iterator = set.iterator();
-
-while (iterator.hasNext())&#123;
-    
-    Object key = iterator.next();
-    
-    //根据key获取value
-    Object value = map.get(key);
-    
-    System.out.println(key+&quot; = &quot;+value);
-    
-&#125;
-</code></pre>
-<p><strong>2.<code>Set&lt;Map.Entry&lt;K,V&gt; entrySet()</code></strong></p>
-<p>将map集合转成set集合(效率比第一种高)</p>
-<pre><code class="java">Set&lt;Map.Entry&lt;String,String&gt;&gt; entries = map.entrySet();
-
-//这里的Entry&lt;k,V&gt;为Map的内部接口
-for (Map.Entry&lt;String,String&gt; entry : entries)&#123;
-    
-    //获取key的值
-    String key = entry.getKey();
-    
-    //获取value的值
-    String value = entry.getValue();
-    
-    System.out.println(key+&quot; = &quot;+value);
-    
-&#125;
-</code></pre>
-<p><strong>Map接口实现类：<code>HashMap</code>:</strong></p>
-<p><code>hashMap</code>集合的存储过程：</p>
-<p><code>hashCode()</code>随机生成哈希码值</p>
-<p>我们添加到集合的元素是引用数据类型</p>
-<p>那一定会继承Object类中的<code>hashCode</code>方法</p>
-<p>首先map集合会调用put()方法来添加元素，</p>
-<p>这个时候<code>hashMap</code>底层会生成hash值（如果在该引用数据类型中重写了<strong>hashCode</strong>方法，那么生成的不再是随机值，数据便会存储在同一单元中）</p>
-<p>根据这个hash值来计算该元素的位置应该存放在数组的哪个单元下面</p>
-<p>确定了存放的单元，这个时候就会去拿着key的引用</p>
-<p>与该单元下所有的node节点进行一个<strong>equals</strong>比较（<strong>该引用数据类型有没有重写equals方法</strong>如果重写了，比较的是对应属性的内容，如果没有重写，那比较的就是内存地址）</p>
-<p>如果发下equals的返回值是true，新添加进来的节点将会把旧的节点覆盖掉</p>
-<p>如果equals的返回值是false，该节点将会存放在数组单元中的单向链表的最下面（成为链表尾节点）</p>
-<pre><code class="java">//创建集合对象
-HashMap&lt;Student,Object&gt; hashMap = new HashMap&lt;&gt;();
-
-//添加元素,key和value
-hashMap.put(new Student(&quot;jack&quot;,20),100);
-hashMap.put(new Student(&quot;jack&quot;,20),101);
-</code></pre>
-<p><strong><code>hashMap</code>案例：</strong></p>
-<pre><code class="java">//根据hashMap统计字符出现的个数
-String str = &quot;djaiwj jdjia1dj dj&quot;;
-
-        char[] chars = str.toCharArray();
-
-        //创建hashMap集合
-        HashMap&lt;Character,Integer&gt; hashMap = new HashMap&lt;&gt;();
-
-        for (char aChar : chars) &#123;
-
-            //在遍历字符数组的过程中判断map集合中是否有该字符，如果有在当前个数基础上加一
-            //如果不存在，则把该字符重新添加到集合中，个数赋值为1
-            if (hashMap.containsKey(aChar))&#123;
-
-                //个数在当前基础上加一
-                hashMap.put(aChar,hashMap.get(aChar)+1);
-
-            &#125;else&#123;
-                
-                hashMap.put(aChar,1);
-
-            &#125;
-
-        &#125;
-
-        //遍历map集合
-        Set&lt;Map.Entry&lt;Character, Integer&gt;&gt; entries = hashMap.entrySet();
-
-        for (Map.Entry&lt;Character, Integer&gt; entry : entries) &#123;
-
-            System.out.println(entry.getKey()+&quot;===&gt;&quot;+entry.getValue());
-        &#125;
-</code></pre>
-<p><strong>Map接口实现类：<code>HashTable</code>:</strong></p>
-<p><code>HashTable</code>和<code>HashMap</code>的区别：</p>
-<p><code>HashMap</code> key-value可以为一次空</p>
-<p><code>HashTable</code> 不可以为空</p>
-<p><code>HashTable</code><strong>是线程同步的，也是线程安全的</strong></p>
-<p>其实<code>hashtable</code>就是线程安全版的<code>hashmap</code>，所有的方法以及使用方式都是一样的</p>
-<p><code>hashtable</code>的key和value不允许为空</p>
-<p>跟<code>arrayList</code>和<code>vector</code>是一样的，<code>hashmap</code>的执行效率要比<code>hashtable</code>高，因为<code>hashtable</code>所有的方法都添加了线程同步关键字，这样的话在多线程场景下，执行效率是不高，但是以后开发中我们可以通过别的途径来解决线程安全问题，所以<code>hashMap</code>这个集合是我们以后使用的最多key-value集合</p>
-<pre><code class="java">Hashtable&lt;Object,Object&gt; hashtable = new Hashtable&lt;&gt;();
-</code></pre>
-<p><strong>Map接口实现类：<code>TreeMap</code>:</strong></p>
-<p><code>treeMap</code>是一个可以按照key自动排序的集合</p>
-<pre><code class="java">//创建集合对象
-Treemap&lt;Integer,Object&gt; treeMap = new TreeMap&lt;&gt;();
-
-treeMap.put(110,101);
-treeMap.put(100,101);
-treeMap.put(102,101);
-
-//map集合转set集合
-Set&lt;Map.Entry&lt;String,String&gt;&gt; entries = treeMap.entrySet();
-
-//forEach
-for (Map.Entry&lt;Integer, Object&gt; entry : entries)&#123;
-    
-    System.out.println(entry.getKey()+&quot; = &quot;+entry.getValue());
-    
-&#125;
-//输出结果：
-//100 = 101
-//102 = 101
-//110 = 101
-
-//对自定义的引用数据类型使用treeMap，treeSet需要在类中实现Comparatable接口
-public class Goods implements Comparable&lt;Goods&gt; &#123;
-    
-    private Double price;
-    
-    //重写compareTo方法，二叉树根据返回的值的正负来存放数据
-@Override
-public int compareTo(Goods goods)&#123;
-    
-    return (int)(this.price - goods.price);
-   
-&#125;
-    
-&#125;
-</code></pre>
-<p><strong>案例:</strong></p>
-<p>用<code>hashMap</code>统计字符出现的个数</p>
-<pre><code class="java">package com.os467.hashMapDemo;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-public class HashMapTest &#123;
-
-    public static void main(String[] args) &#123;
-
-        //统计每个字符出现的次数
-        getCharNum();
-
-    &#125;
-
-    /**统计字符出现的个数
-     *s.matches()正则表达式方法,用于匹配符合规则的字符串
-     */
-    public static void getCharNum()&#123;
-
-        System.out.println(&quot;---------统计每个字符出现的次数----------&quot;);
-
-        //创建HashMap集合
-        HashMap&lt;Character,Integer&gt; hashMap = new HashMap&lt;&gt;();
-
-        //将字符串切割成字符数组
-        char[] chars = getString().toCharArray();
-
-        //遍历字符串数组
-        for (char c: chars) &#123;
-
-            if (hashMap.containsKey(c)) &#123;
-
-                //个数在当前基础上加一
-                hashMap.put(c, hashMap.get(c) + 1);
-
-            &#125; else &#123;
-
-                hashMap.put(c, 1);
-
-            &#125;
-
-            &#125;
-        //将map集合转成set集合
-        Set&lt;Map.Entry&lt;Character, Integer&gt;&gt; entries = hashMap.entrySet();
-
-        //遍历set集合
-        for (Map.Entry&lt;Character, Integer&gt; entry : entries) &#123;
-
-            System.out.println(entry.getKey()+&quot; ===&gt; &quot;+entry.getValue());
-
-        &#125;
-
-
-
-
-    &#125;
-
-    //获取字符串的方法
-    public static String getString()&#123;
-
-        return &quot;adaw diicj123&quot;;
-
-    &#125;
-
-&#125;
-</code></pre>
-<p><strong>Properties集合:</strong></p>
-<p>继承了<code>hashtable</code></p>
-<pre><code class="java">        //创建集合对象
-        Properties properties = new Properties();
-
-        //创建流对象
-        FileReader fileReader = new FileReader(&quot;jdbc&quot;);
-
-        //通过流对象去解析数据，并把数据放到集合
-        properties.load(fileReader);
-
-        //私有的方法
-        properties.setProperty(&quot;username&quot;,&quot;root&quot;);
-        properties.setProperty(&quot;password&quot;,&quot;root&quot;);
-        properties.setProperty(&quot;url&quot;,&quot;jdbc:mysql://localhost:3306&quot;);
-        properties.setProperty(&quot;driver&quot;,&quot;com.mysql.jdbc.driver&quot;);
-
-        //取出集合中的数据
-        String username = properties.getProperty(&quot;username&quot;);
-        String password = properties.getProperty(&quot;password&quot;);
-        String url = properties.getProperty(&quot;url&quot;);
-        String driver = properties.getProperty(&quot;driver&quot;);
-
-        System.out.println(username);
-        System.out.println(password);
-        System.out.println(url);
-        System.out.println(driver);
-</code></pre>
-<h4 id="集合总结"><a href="#集合总结" class="headerlink" title="集合总结"></a>集合总结</h4><p><strong>Collection体系：</strong></p>
-<p>​		List接口：</p>
-<p>​				<code>ArrayList</code>:</p>
-<p>​							有序可重复的集合，底层封装了数组这种数据结构，所以有数组所有的特性，可以通过下标索引来获取元素，查询数据的效率会很高，但是随机增删的效率会比较低，本身是一个线程不安全的集合，默认初始容量是10，如果存放元素超过10会触发扩容机制，扩容因子是1.5,每触发一次扩容机制，加载为原来的1.5倍</p>
-<p>​				<code>Vector</code>:</p>
-<p>​							Vector就是一个线程安全版的<code>Arraylist</code>,这个集合的所有方法都添加了线程同步关键字，在多线程场景下，效率是很低的，我们一般不会使用这个集合,默认初始容量是10，如果存放元素超过10会触发扩容机制，扩容因子是2.0,每触发一次扩容机制，加载为原来的2倍</p>
-<p>​				<code>LinkedList</code>:</p>
-<p>​							这个集合在底层封装了单向链表这种数据结构，所以该集合拥有链表的所有特性，查询效率是不高的，但是随机增删效率很高，而且在<code>LinkedList</code>底层还为我们封装了队列，我们可以去调用入队和出队的方法</p>
-<p>​		Set接口：</p>
-<p>​				<code>HashSet</code>:</p>
-<p>​							在底层为我们聚合了<code>HashMap</code>，在添加元素的时候，实际上调用了<code>HashMap</code>的put方法，元素存放在put方法的key部分</p>
-<p><code>HashSet</code>是一个无序不可重复的集合，存入数据的顺序和取出数据的顺序是不同的</p>
-<p>​				<code>TreeSet</code>:</p>
-<p>​							在底层为我们聚合了<code>TreeMap</code>，在添加元素的时候，实际上调用了<code>TreeMap</code>的put方法，元素存放在put方法的key部分</p>
-<p><code>TreeSet</code>是一个可以按照排序规则自动排序的方法，如果存入元素的引用时我们自定义的，该引用必须要实现比较器接口Comparable&lt;泛型&gt;，重写比较规则，不然会报类型转换异常</p>
-<p><strong>Map体系：</strong></p>
-<p>​		<code>HashMap</code>:</p>
-<p>​							可以以key-value的形式去存放数据，key和value都是允许为空的，不是线程安全的集合，但是执行效率很高，在底层封装的是哈希散列</p>
-<p>​		<code>HashTable</code>:</p>
-<p>​							线程安全版的<code>HashMap</code>,执行效率不是很高，key和value都不允许重复</p>
-<p>​		<code>TreeMap</code>:</p>
-<p>​							是可以根据key来完成自动排序的key-value集合，如果存入元素的引用是我们自定义的，该引用必须要实现比较器接口Comparable&lt;泛型&gt;，重写比较规则，不然会报类型转换异常</p>
-<p>​		<code>Properties</code>:</p>
-<p>​							这个集合继承了<code>HashTable</code>,所以该集合是一个线程安全的集合，而且提供了私有的方法<code>SetProper()</code>,<code>getProper()</code>,该集合可以集合流对象高效的去读取配置文件，把数据解析到集合中</p>
-<hr>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2022/05/28/JAVA入门/" class="go-post">
         阅读全文
     </a>
 </div>
