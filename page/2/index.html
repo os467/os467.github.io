@@ -142,6 +142,948 @@
             
 
 <div class="post">
+    <a href="/2022/06/19/SQL/">
+        <h2>
+            SQL
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/6/19
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><p>SQL用来和数据库打交道，完成和数据库的通信，SQL是一套标准</p>
+<p>数据库（DataBase）：</p>
+<p>通常是一个或一组文件，保存了一些符合特定规格的数据</p>
+<p><strong>表（table）:</strong></p>
+<p>是一种结构化的文件，可以用来存储特定类型的数据</p>
+<p>表中的概念：列，行，主键</p>
+<p>列叫做字段（Column），行叫做表中的记录，每一个字段都有：</p>
+<p>字段名称&#x2F;字段数据类型&#x2F;字段约束&#x2F;字段长度</p>
+<p><strong>学生信息表：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">学号（主键）</th>
+<th align="center">姓名</th>
+<th align="center">性别</th>
+<th align="center">年龄</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">00001</td>
+<td align="center">张三</td>
+<td align="center">男</td>
+<td align="center">20</td>
+</tr>
+<tr>
+<td align="center">00002</td>
+<td align="center">李四</td>
+<td align="center">女</td>
+<td align="center">20</td>
+</tr>
+</tbody></table>
+<p>主键是不能重复的</p>
+<p>在mysql中语句是不区分大小写的</p>
+<p><strong>数据查询语言</strong>（DQL-Data Query Language）</p>
+<p>代表关键字：select</p>
+<p><strong>数据操作语言</strong>（DML-Data Manipulation Language）</p>
+<p>代表关键字：insert，delete，update</p>
+<p><strong>数据定义语言</strong>（DDL-Data Definition Language）</p>
+<p>代表关键字：create，drop，alter</p>
+<p><strong>事务控制语言</strong>（TCL-Transaction Control Language）</p>
+<p>代表关键字：commit，rollback</p>
+<p><strong>数据控制语言</strong>（DCL-Data Control Language）</p>
+<p>代表关键字：grant，revoke</p>
+<p><strong>创建数据库</strong></p>
+<p>create database 数据库名称</p>
+<pre><code class="mysql">create database os467test;
+</code></pre>
+<p>use 数据库名称</p>
+<pre><code class="mysql">use os467test;
+</code></pre>
+<p>在数据库中建立表，因此创建表的时候必须要先选择数据库</p>
+<p>可以查询当前使用的数据库</p>
+<pre><code class="mysql">select database();
+</code></pre>
+<p>查询数据库版本也可以使用</p>
+<pre><code class="mysql">select version();
+</code></pre>
+<p>终止一条语句,输入ctrl + c</p>
+<p>退出mysql</p>
+<p>可以使用<strong>\q</strong>，QUIT或EXIT</p>
+<p>显示表</p>
+<pre><code class="mysql">show tables;
+</code></pre>
+<h3 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程:"></a><strong>基本流程:</strong></h3><p>1.安装mysql</p>
+<p>2.启动mysql</p>
+<pre><code>net start mysql
+</code></pre>
+<p>3.登录mysql</p>
+<pre><code>mysql -u -p
+</code></pre>
+<p>4.创建数据库</p>
+<pre><code class="mysql">create database 数据库名称;
+</code></pre>
+<p>5.使用数据库</p>
+<pre><code class="mysql">use 数据库名称;
+</code></pre>
+<p>6.创建测试表，添加测试数据</p>
+<pre><code class="sql">DROP TABLE IF EXISTS EMP;
+DROP TABLE IF EXISTS DEPT;
+DROP TABLE IF EXISTS SALGRADE;
+
+CREATE TABLE DEPT
+       (DEPTNO int(2) not null ,
+    DNAME VARCHAR(14) ,
+    LOC VARCHAR(13),
+    primary key (DEPTNO)
+    );
+CREATE TABLE EMP
+       (EMPNO int(4)  not null ,
+    ENAME VARCHAR(10),
+    JOB VARCHAR(9),
+    MGR INT(4),
+    HIREDATE DATE  DEFAULT NULL,
+    SAL DOUBLE(7,2),
+    COMM DOUBLE(7,2),
+    primary key (EMPNO),
+    DEPTNO INT(2) 
+    )
+    ;
+
+CREATE TABLE SALGRADE
+      ( GRADE INT,
+    LOSAL INT,
+    HISAL INT );
+
+
+
+
+INSERT INTO DEPT ( DEPTNO, DNAME, LOC ) VALUES ( 
+10, &#39;ACCOUNTING&#39;, &#39;NEW YORK&#39;); 
+INSERT INTO DEPT ( DEPTNO, DNAME, LOC ) VALUES ( 
+20, &#39;RESEARCH&#39;, &#39;DALLAS&#39;); 
+INSERT INTO DEPT ( DEPTNO, DNAME, LOC ) VALUES ( 
+30, &#39;SALES&#39;, &#39;CHICAGO&#39;); 
+INSERT INTO DEPT ( DEPTNO, DNAME, LOC ) VALUES ( 
+40, &#39;OPERATIONS&#39;, &#39;BOSTON&#39;); 
+commit;
+ 
+INSERT INTO EMP ( EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM,
+DEPTNO ) VALUES ( 
+7369, &#39;SMITH&#39;, &#39;CLERK&#39;, 7902,  &#39;1980-12-17&#39;
+, 800, NULL, 20); 
+INSERT INTO EMP ( EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM,
+DEPTNO ) VALUES ( 
+7499, &#39;ALLEN&#39;, &#39;SALESMAN&#39;, 7698,  &#39;1981-02-20&#39;
+, 1600, 300, 30); 
+INSERT INTO EMP ( EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM,
+DEPTNO ) VALUES ( 
+7521, &#39;WARD&#39;, &#39;SALESMAN&#39;, 7698,  &#39;1981-02-22&#39;
+, 1250, 500, 30); 
+INSERT INTO EMP ( EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM,
+DEPTNO ) VALUES ( 
+7566, &#39;JONES&#39;, &#39;MANAGER&#39;, 7839,  &#39;1981-04-02&#39;
+, 2975, NULL, 20); 
+INSERT INTO EMP ( EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM,
+DEPTNO ) VALUES ( 
+7654, &#39;MARTIN&#39;, &#39;SALESMAN&#39;, 7698,  &#39;1981-09-28&#39;
+, 1250, 1400, 30); 
+INSERT INTO EMP ( EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM,
+DEPTNO ) VALUES ( 
+7698, &#39;BLAKE&#39;, &#39;MANAGER&#39;, 7839,  &#39;1981-05-01&#39;
+, 2850, NULL, 30); 
+INSERT INTO EMP ( EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM,
+DEPTNO ) VALUES ( 
+7782, &#39;CLARK&#39;, &#39;MANAGER&#39;, 7839,  &#39;1981-06-09&#39;
+, 2450, NULL, 10); 
+INSERT INTO EMP ( EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM,
+DEPTNO ) VALUES ( 
+7788, &#39;SCOTT&#39;, &#39;ANALYST&#39;, 7566,  &#39;1987-04-19&#39;
+, 3000, NULL, 20); 
+INSERT INTO EMP ( EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM,
+DEPTNO ) VALUES ( 
+7839, &#39;KING&#39;, &#39;PRESIDENT&#39;, NULL,  &#39;1981-11-17&#39;
+, 5000, NULL, 10); 
+INSERT INTO EMP ( EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM,
+DEPTNO ) VALUES ( 
+7844, &#39;TURNER&#39;, &#39;SALESMAN&#39;, 7698,  &#39;1981-09-08&#39;
+, 1500, 0, 30); 
+INSERT INTO EMP ( EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM,
+DEPTNO ) VALUES ( 
+7876, &#39;ADAMS&#39;, &#39;CLERK&#39;, 7788,  &#39;1987-05-23&#39;
+, 1100, NULL, 20); 
+INSERT INTO EMP ( EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM,
+DEPTNO ) VALUES ( 
+7900, &#39;JAMES&#39;, &#39;CLERK&#39;, 7698,  &#39;1981-12-03&#39;
+, 950, NULL, 30); 
+INSERT INTO EMP ( EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM,
+DEPTNO ) VALUES ( 
+7902, &#39;FORD&#39;, &#39;ANALYST&#39;, 7566,  &#39;1981-12-03&#39;
+, 3000, NULL, 20); 
+INSERT INTO EMP ( EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM,
+DEPTNO ) VALUES ( 
+7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782,  &#39;1982-01-23&#39;
+, 1300, NULL, 10); 
+commit;
+ 
+INSERT INTO SALGRADE ( GRADE, LOSAL, HISAL ) VALUES ( 
+1, 700, 1200); 
+INSERT INTO SALGRADE ( GRADE, LOSAL, HISAL ) VALUES ( 
+2, 1201, 1400); 
+INSERT INTO SALGRADE ( GRADE, LOSAL, HISAL ) VALUES ( 
+3, 1401, 2000); 
+INSERT INTO SALGRADE ( GRADE, LOSAL, HISAL ) VALUES ( 
+4, 2001, 3000); 
+INSERT INTO SALGRADE ( GRADE, LOSAL, HISAL ) VALUES ( 
+5, 3001, 9999); 
+commit;
+</code></pre>
+<p>7.关于表的结构</p>
+<p>​	emp员工表</p>
+<p>​	dept部门表</p>
+<p>​	SALGRADE薪水等级表</p>
+<p>员工表和部门表的关系是多对一的关系，因为多个员工会对应一个部门</p>
+<p>一个部门会对应多个员工；然后现在我们要找到员工表和部门表之间对应的关系</p>
+<p>dept 主键 deptno（唯一标识）</p>
+<p>emp 主键 empno	<strong>外键</strong>（通过主键id建立多表关系的字段，一般就是另外一张表的主键id）deptno</p>
+<p>列出当前可用数据库：</p>
+<pre><code class="sql">show databases; 
+</code></pre>
+<p><strong>写SQL语句：</strong></p>
+<h3 id="1-DQL语句（select）"><a href="#1-DQL语句（select）" class="headerlink" title="1.DQL语句（select）"></a>1.DQL语句（select）</h3><p>单表查询</p>
+<p>​	&#x2F;&#x2F;查询员工表emp所有的数据 ，<code> *</code>通配符，代表所有的数据	from 属于</p>
+<pre><code class="sql">select * from emp;
+</code></pre>
+<p><strong>查询结果：</strong></p>
+<pre><code class="sql">+-------+--------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+</code></pre>
+<h3 id="2-DML语句（增删改-insert（添加）-delete（删除）-update（修改））"><a href="#2-DML语句（增删改-insert（添加）-delete（删除）-update（修改））" class="headerlink" title="2.DML语句（增删改 insert（添加） delete（删除） update（修改））"></a>2.DML语句（增删改 insert（添加） delete（删除） update（修改））</h3><p>&#x2F;&#x2F;a：在emp员工表中添加一条员工数据 一般在添加数据的时候，<strong>主键</strong>在有自动递增的情况下是不用添加的，因为主键我们在设计表的时候给了它自动递增的约束</p>
+<p>&#x2F;&#x2F;into关键字可加可不加</p>
+<pre><code class="sql">insert into emp(EMPNO,ename,job,mgr,hiredate,sal,comm,deptno)
+values(7935,&quot;Tom&quot;,&quot;CLERK&quot;,7698,&quot;1980-12-17&quot;,1600.00,1400.00,10);
+</code></pre>
+<p>&#x2F;&#x2F;删除员工表中姓名为”Tom”的数据</p>
+<p>&#x2F;&#x2F;条件关键字where</p>
+<pre><code class="sql">delete from emp where ename = &quot;Tom&quot;;
+</code></pre>
+<p>&#x2F;&#x2F;修改员工表中SMITH的薪水为850；</p>
+<pre><code class="sql">update emp set SAL = 850 where ename = &quot;SMITH&quot;;
+</code></pre>
+<h3 id="3-带条件查询"><a href="#3-带条件查询" class="headerlink" title="3.带条件查询"></a>3.带条件查询</h3><p>&#x2F;&#x2F;查询一个字段</p>
+<p>&#x2F;&#x2F;查询多个字段</p>
+<pre><code class="sql">select ename from emp;
++--------+                         
+| ename  |
++--------+
+| SMITH  |
+| ALLEN  |
+| WARD   |
+| JONES  |
+| MARTIN |
+| BLAKE  |
+| CLARK  |
+| SCOTT  |
+| KING   |
+| TURNER |
+| ADAMS  |
+| JAMES  |
+| FORD   |
+| MILLER |
++--------+                        
+select ename,job from emp;
++--------+-----------+
+| ename  | job       |
++--------+-----------+
+| SMITH  | CLERK     |
+| ALLEN  | SALESMAN  |
+| WARD   | SALESMAN  |
+| JONES  | MANAGER   |
+| MARTIN | SALESMAN  |
+| BLAKE  | MANAGER   |
+| CLARK  | MANAGER   |
+| SCOTT  | ANALYST   |
+| KING   | PRESIDENT |
+| TURNER | SALESMAN  |
+| ADAMS  | CLERK     |
+| JAMES  | CLERK     |
+| FORD   | ANALYST   |
+| MILLER | CLERK     |
++--------+-----------+
+</code></pre>
+<p>&#x2F;&#x2F;计算员工的年薪（月薪*12）</p>
+<pre><code class="sql">select ename,SAL*12 from emp;
++--------+----------+
+| ename  | SAL*12   |
++--------+----------+
+| SMITH  | 10200.00 |
+| ALLEN  | 19200.00 |
+| WARD   | 15000.00 |
+| JONES  | 35700.00 |
+| MARTIN | 15000.00 |
+| BLAKE  | 34200.00 |
+| CLARK  | 29400.00 |
+| SCOTT  | 36000.00 |
+| KING   | 60000.00 |
+| TURNER | 18000.00 |
+| ADAMS  | 13200.00 |
+| JAMES  | 11400.00 |
+| FORD   | 36000.00 |
+| MILLER | 15600.00 |
++--------+----------+
+select ename,SAL*12 as &#39;年薪&#39; from emp;
+//或者 select ename,SAL*12 &#39;年薪&#39; from emp;
++--------+----------+
+| ename  | 年薪     |
++--------+----------+
+| SMITH  | 10200.00 |
+| ALLEN  | 19200.00 |
+| WARD   | 15000.00 |
+| JONES  | 35700.00 |
+| MARTIN | 15000.00 |
+| BLAKE  | 34200.00 |
+| CLARK  | 29400.00 |
+| SCOTT  | 36000.00 |
+| KING   | 60000.00 |
+| TURNER | 18000.00 |
+| ADAMS  | 13200.00 |
+| JAMES  | 11400.00 |
+| FORD   | 36000.00 |
+| MILLER | 15600.00 |
++--------+----------+
+</code></pre>
+<p>&#x2F;&#x2F;查询出薪资大于2000的员工</p>
+<pre><code class="sql">select ename,SAL from emp where SAL &gt; 2000;
++-------+---------+
+| ename | SAL     |
++-------+---------+
+| JONES | 2975.00 |
+| BLAKE | 2850.00 |
+| CLARK | 2450.00 |
+| SCOTT | 3000.00 |
+| KING  | 5000.00 |
+| FORD  | 3000.00 |
++-------+---------+
+</code></pre>
+<p>Sql语句<strong>条件</strong>运算符（where后面的）</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>&lt;&gt;或!&#x3D;</td>
+<td>不等于</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>&gt;&#x3D;</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td>between … and ….</td>
+<td>两个值之间,<strong>等同于 &gt;&#x3D; and &lt;&#x3D;</strong></td>
+</tr>
+<tr>
+<td>is null</td>
+<td>为null（is not null 不为空）</td>
+</tr>
+<tr>
+<td><strong>and</strong></td>
+<td>并且</td>
+</tr>
+<tr>
+<td><strong>or</strong></td>
+<td>或者</td>
+</tr>
+<tr>
+<td>in</td>
+<td>包含，相当于多个or（not in不在这个范围中）</td>
+</tr>
+<tr>
+<td>not</td>
+<td>not可以取非，主要用在is 或in中</td>
+</tr>
+<tr>
+<td>like</td>
+<td>like称为模糊查询，支持%或下划线匹配  %匹配任意个字符  下划线，一个下划线只匹配一个字符</td>
+</tr>
+</tbody></table>
+<p>&#x2F;&#x2F;部门编号不等于20的员工</p>
+<pre><code class="sql">select * from emp where deptno != 20;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+</code></pre>
+<p>&#x2F;&#x2F;查找薪资大于500小于1000的员工</p>
+<pre><code class="sql">select * from emp where SAL &gt; 500 and SAL &lt; 1000;
+//或 select * from emp where sal between 500 and 1000;
++-------+-------+-------+------+------------+--------+------+--------+
+| EMPNO | ENAME | JOB   | MGR  | HIREDATE   | SAL    | COMM | DEPTNO |
++-------+-------+-------+------+------------+--------+------+--------+
+|  7369 | SMITH | CLERK | 7902 | 1980-12-17 | 850.00 | NULL |     20 |
+|  7900 | JAMES | CLERK | 7698 | 1981-12-03 | 950.00 | NULL |     30 |
++-------+-------+-------+------+------------+--------+------+--------+
+</code></pre>
+<p>&#x2F;&#x2F;查询出COMM字段不为空的数据</p>
+<pre><code class="sql">select * from emp where comm is not null;
+//查询为空的: select * from emp where comm is null;
++-------+--------+----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB      | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+----------+------+------------+---------+---------+--------+
+|  7499 | ALLEN  | SALESMAN | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7654 | MARTIN | SALESMAN | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7844 | TURNER | SALESMAN | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
++-------+--------+----------+------+------------+---------+---------+--------+
+</code></pre>
+<p>&#x2F;&#x2F;查询出薪资小于1000或者薪资大于2000的员工</p>
+<pre><code class="sql">select * from emp where sal &lt; 1000 or sal &gt; 2000;
++-------+-------+-----------+------+------------+---------+------+--------+
+| EMPNO | ENAME | JOB       | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-------+-----------+------+------------+---------+------+--------+
+|  7369 | SMITH | CLERK     | 7902 | 1980-12-17 |  850.00 | NULL |     20 |
+|  7566 | JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 | NULL |     20 |
+|  7698 | BLAKE | MANAGER   | 7839 | 1981-05-01 | 2850.00 | NULL |     30 |
+|  7782 | CLARK | MANAGER   | 7839 | 1981-06-09 | 2450.00 | NULL |     10 |
+|  7788 | SCOTT | ANALYST   | 7566 | 1987-04-19 | 3000.00 | NULL |     20 |
+|  7839 | KING  | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
+|  7900 | JAMES | CLERK     | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7902 | FORD  | ANALYST   | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |
++-------+-------+-----------+------+------------+---------+------+--------+
+</code></pre>
+<p>&#x2F;&#x2F;<strong>in</strong>（包含的数据），查询出员工编号是7369、7839、7788的员工</p>
+<p>&#x2F;&#x2F;不包含：<strong>not int</strong></p>
+<pre><code class="sql">select * from emp where empno in (7369,7839,7788);
++-------+-------+-----------+------+------------+---------+------+--------+
+| EMPNO | ENAME | JOB       | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-------+-----------+------+------------+---------+------+--------+
+|  7369 | SMITH | CLERK     | 7902 | 1980-12-17 |  850.00 | NULL |     20 |
+|  7788 | SCOTT | ANALYST   | 7566 | 1987-04-19 | 3000.00 | NULL |     20 |
+|  7839 | KING  | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
++-------+-------+-----------+------+------------+---------+------+--------+
+</code></pre>
+<ul>
+<li>Like可以实现模糊查询，like支持%和下划线匹配</li>
+<li>查询姓名以M开头所有的员工</li>
+</ul>
+<pre><code class="sql">select ename as &#39;员工姓名&#39; from emp where ename like &quot;M%&quot;;
++----------+
+| 员工姓名 |
++----------+
+| MARTIN   |
+| MILLER   |
++----------+
+//查询以S结尾的员工姓名
+select ename as &#39;员工姓名&#39; from emp where ename like &quot;%S&quot;;
++----------+
+| 员工姓名 |
++----------+
+| JONES    |
+| ADAMS    |
+| JAMES    |
++----------+
+//查询员工姓名中包含O的员工姓名
+select ename as &#39;员工姓名&#39; from emp where ename like &quot;%O%&quot;;
++----------+
+| 员工姓名 |
++----------+
+| JONES    |
+| SCOTT    |
+| FORD     |
++----------+
+</code></pre>
+<h3 id="4-排序数据"><a href="#4-排序数据" class="headerlink" title="4.排序数据"></a>4.排序数据</h3><p>排序采用order by子句，order by后面跟上排序字段，排序字段可以放多个，多个采用逗号间隔，order by默认采用升序，如果存在where子句那么order by必须放到where语句的后面</p>
+<p>&#x2F;&#x2F;按照薪水由小到大排序  <strong>order by</strong> 排序关键字 （默认是升序）</p>
+<p><strong>注意：</strong>order by后面的排序依据字段<strong>不加引号</strong></p>
+<pre><code class="sql">select ename &#39;员工姓名&#39;,SAL &#39;薪水&#39; from emp order by SAL asc;//asc为正序关键字可以省略
++----------+---------+
+| 员工姓名 | 薪水    |
++----------+---------+
+| SMITH    |  850.00 |
+| JAMES    |  950.00 |
+| ADAMS    | 1100.00 |
+| WARD     | 1250.00 |
+| MARTIN   | 1250.00 |
+| MILLER   | 1300.00 |
+| TURNER   | 1500.00 |
+| ALLEN    | 1600.00 |
+| CLARK    | 2450.00 |
+| BLAKE    | 2850.00 |
+| JONES    | 2975.00 |
+| SCOTT    | 3000.00 |
+| FORD     | 3000.00 |
+| KING     | 5000.00 |
++----------+---------+
+select ename &#39;员工姓名&#39;,SAL &#39;薪水&#39; from emp order by SAL desc;
+//此为倒序排序 使用desc关键字
+</code></pre>
+<p>&#x2F;&#x2F;查询出薪资大于1000的员工，然后按照薪水降序排列</p>
+<pre><code class="sql">select ename &#39;员工姓名&#39;,SAL &#39;薪水&#39; from emp where SAL &gt; 1000 order by SAL desc;
++----------+---------+
+| 员工姓名 | 薪水    |
++----------+---------+
+| KING     | 5000.00 |
+| SCOTT    | 3000.00 |
+| FORD     | 3000.00 |
+| JONES    | 2975.00 |
+| BLAKE    | 2850.00 |
+| CLARK    | 2450.00 |
+| ALLEN    | 1600.00 |
+| TURNER   | 1500.00 |
+| MILLER   | 1300.00 |
+| WARD     | 1250.00 |
+| MARTIN   | 1250.00 |
+| ADAMS    | 1100.00 |
++----------+---------+
+</code></pre>
+<p>&#x2F;&#x2F;按照job 和 sal 倒序 （满足前面的条件，再满足后面的条件，排序具有优先级）</p>
+<pre><code class="sql">select * from emp order by job desc,sal desc;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  850.00 |    NULL |     20 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+</code></pre>
+<h3 id="5-分组函数-x2F-聚合函数-x2F-多行处理函数"><a href="#5-分组函数-x2F-聚合函数-x2F-多行处理函数" class="headerlink" title="5.分组函数&#x2F;聚合函数&#x2F;多行处理函数"></a>5.分组函数&#x2F;聚合函数&#x2F;多行处理函数</h3><table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">count</td>
+<td align="left">取得记录数</td>
+</tr>
+<tr>
+<td align="left">sum</td>
+<td align="left">求和</td>
+</tr>
+<tr>
+<td align="left">avg</td>
+<td align="left">取平均</td>
+</tr>
+<tr>
+<td align="left">max</td>
+<td align="left">取最大的数</td>
+</tr>
+<tr>
+<td align="left">min</td>
+<td align="left">取最小的数</td>
+</tr>
+</tbody></table>
+<p>&#x2F;&#x2F;统计emp这张表中有多少个员工  <strong>count(*)</strong> 求一张表中的总记录条数</p>
+<pre><code class="sql">select count(*) &#39;总记录条数&#39; from emp;
+select count(1) &#39;总记录条数&#39; from emp; //作用一样，但是执行效率高
++------------+
+| 总记录条数 |
++------------+
+|         14 |
++------------+
+</code></pre>
+<p>&#x2F;&#x2F;求出员工薪资大于2000的薪资总和</p>
+<pre><code class="sql">select sum(SAL) &#39;薪资总和&#39; from emp where SAL &gt; 2000;
++----------+
+| 薪资总和 |
++----------+
+| 19275.00 |
++----------+
+</code></pre>
+<p>&#x2F;&#x2F;求出薪资小于2000的薪资平均值</p>
+<pre><code class="sql">select avg(SAL) &#39;薪资平均值&#39; from emp where SAL &lt; 2000;
++-------------+
+| 薪资平均值  |
++-------------+
+| 1225.000000 |
++-------------+
+</code></pre>
+<p>&#x2F;&#x2F;求出薪资的最大值,最小值</p>
+<pre><code class="sql">select max(SAL) &#39;薪资最大值&#39;,min(SAL) &#39;薪资最小值&#39; from emp;
++------------+------------+
+| 薪资最大值 | 薪资最小值 |
++------------+------------+
+|    5000.00 |     850.00 |
++------------+------------+
+</code></pre>
+<p>&#x2F;&#x2F;组合聚合函数</p>
+<pre><code class="sql">select count(1),sum(sal),avg(sal),max(sal),min(sal) from emp;
++----------+----------+-------------+----------+----------+
+| count(1) | sum(sal) | avg(sal)    | max(sal) | min(sal) |
++----------+----------+-------------+----------+----------+
+|       14 | 29075.00 | 2076.785714 |  5000.00 |   850.00 |
++----------+----------+-------------+----------+----------+
+</code></pre>
+<h3 id="6-分组查询"><a href="#6-分组查询" class="headerlink" title="6.分组查询"></a>6.分组查询</h3><p><strong>group by</strong> 关键字</p>
+<p>&#x2F;&#x2F;取得每个工作岗位的工资和，要求显示岗位名称和工资总和，按照薪水的倒序进行排序</p>
+<pre><code class="sql">select job &#39;岗位&#39;,sum(SAL) &#39;薪资总和&#39; from emp group by job order by 薪资总和 desc;
++-----------+----------+
+| 岗位      | 薪资总和 |
++-----------+----------+
+| MANAGER   |  8275.00 |
+| ANALYST   |  6000.00 |
+| SALESMAN  |  5600.00 |
+| PRESIDENT |  5000.00 |
+| CLERK     |  4200.00 |
++-----------+----------+
+</code></pre>
+<p>&#x2F;&#x2F;按照工作岗位和部门编码分组，取得的工资合计</p>
+<pre><code class="sql">select job &#39;工作岗位&#39;,deptNO &#39;部门编码&#39;,sum(SAL) from emp group by job,deptNO;
++-----------+----------+----------+
+| 工作岗位  | 部门编码 | sum(SAL) |
++-----------+----------+----------+
+| ANALYST   |       20 |  6000.00 |
+| CLERK     |       10 |  1300.00 |
+| CLERK     |       20 |  1950.00 |
+| CLERK     |       30 |   950.00 |
+| MANAGER   |       10 |  2450.00 |
+| MANAGER   |       20 |  2975.00 |
+| MANAGER   |       30 |  2850.00 |
+| PRESIDENT |       10 |  5000.00 |
+| SALESMAN  |       30 |  5600.00 |
++-----------+----------+----------+
+</code></pre>
+<p>如果有<strong>group by</strong> 语句，那么在select语句后面只能跟<code>分组函数</code>+<code>参与分组的字段</code></p>
+<p><strong>having</strong>关键字</p>
+<p>如果想对分组数据再进行过滤需要使用having子句</p>
+<p>取得每个岗位的平均工资大于2000</p>
+<pre><code class="sql">select job, avg(sal) from emp group by job having avg(sal) &gt;2000;
++-----------+-------------+
+| job       | avg(sal)    |
++-----------+-------------+
+| ANALYST   | 3000.000000 |
+| MANAGER   | 2758.333333 |
+| PRESIDENT | 5000.000000 |
++-----------+-------------+
+</code></pre>
+<h3 id="select语句总结"><a href="#select语句总结" class="headerlink" title="select语句总结"></a>select语句总结</h3><p>一个<strong>完整的select语句格式</strong>如下</p>
+<ul>
+<li>select 字段</li>
+<li>from 表名</li>
+<li>where …….</li>
+<li>group by ……..</li>
+<li>having …….(就是为了过滤分组后的数据而存在的—不可以单独的出现)</li>
+<li>order by ……..</li>
+</ul>
+<p><strong>以上语句的执行顺序</strong></p>
+<ol>
+<li>首先执行where语句过滤原始数据</li>
+<li>执行group by进行分组</li>
+<li>执行having对分组数据进行操作</li>
+<li>执行select选出数据</li>
+<li>执行order by排序</li>
+</ol>
+<p><strong>原则</strong>：能在<strong>where</strong>中过滤的数据，尽量在where中过滤，<strong>效率较高</strong>。having的过滤是专门对分组之后的数据进行过滤的。</p>
+<h2 id="多表查询："><a href="#多表查询：" class="headerlink" title="多表查询："></a>多表查询：</h2><p>在项目中，业务是很复杂的，那表与表之间的关系也很复杂，而且以后在公司中我们接触到的表会有几百张或者几千张，在进行多表查询的时候，我们要捋清楚表与表之间的关系</p>
+<p>多表查询的时候<strong>一定要带条件进行查询</strong>，不然会出现笛卡尔积现象！</p>
+<p>多表查询语法：</p>
+<p><strong>sql92：</strong></p>
+<p>​	emp 	主表 	找到从表的外键deptno</p>
+<p>​	dept	 从表	 </p>
+<pre><code class="sql">select * from emp,dept where emp.deptno = dept.deptno;
+//映射关系：主表的外键 = 从表的主键
++-------+--------+-----------+------+------------+---------+---------+--------+--------+------------+----------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO | DEPTNO | DNAME      | LOC      |
++-------+--------+-----------+------+------------+---------+---------+--------+--------+------------+----------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  850.00 |    NULL |     20 |     20 | RESEARCH   | DALLAS   |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |     30 | SALES      | CHICAGO  |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |     30 | SALES      | CHICAGO  |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |     20 | RESEARCH   | DALLAS   |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |     30 | SALES      | CHICAGO  |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |     30 | SALES      | CHICAGO  |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |     10 | ACCOUNTING | NEW YORK |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |     20 | RESEARCH   | DALLAS   |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |     10 | ACCOUNTING | NEW YORK |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |     30 | SALES      | CHICAGO  |
+|  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |     20 | RESEARCH   | DALLAS   |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |     30 | SALES      | CHICAGO  |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |     20 | RESEARCH   | DALLAS   |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |     10 | ACCOUNTING | NEW YORK |
++-------+--------+-----------+------+------------+---------+---------+--------+--------+------------+----------+
+</code></pre>
+<p>&#x2F;&#x2F;查询每个员工所对应的部门</p>
+<pre><code class="sql">select e.ename &#39;员工姓名&#39;,d.dname &#39;部门名称&#39; from emp e,dept d where e.deptno = d.deptno;
++----------+------------+
+| 员工姓名 | 部门名称   |
++----------+------------+
+| SMITH    | RESEARCH   |
+| ALLEN    | SALES      |
+| WARD     | SALES      |
+| JONES    | RESEARCH   |
+| MARTIN   | SALES      |
+| BLAKE    | SALES      |
+| CLARK    | ACCOUNTING |
+| SCOTT    | RESEARCH   |
+| KING     | ACCOUNTING |
+| TURNER   | SALES      |
+| ADAMS    | RESEARCH   |
+| JAMES    | SALES      |
+| FORD     | RESEARCH   |
+| MILLER   | ACCOUNTING |
++----------+------------+
+</code></pre>
+<p>&#x2F;&#x2F;显示出薪资大于2000的员工,并显示出每个员工对应的部门(连接查询)</p>
+<pre><code class="sql">select e.ename &#39;员工姓名&#39;,e.SAL &#39;薪水&#39;,d.dname &#39;部门&#39; from emp e,dept d where e.deptno = d.deptno and e.sal &gt; 2000;
++----------+---------+------------+
+| 员工姓名 | 薪水    | 部门       |
++----------+---------+------------+
+| JONES    | 2975.00 | RESEARCH   |
+| BLAKE    | 2850.00 | SALES      |
+| CLARK    | 2450.00 | ACCOUNTING |
+| SCOTT    | 3000.00 | RESEARCH   |
+| KING     | 5000.00 | ACCOUNTING |
+| FORD     | 3000.00 | RESEARCH   |
++----------+---------+------------+
+</code></pre>
+<p><strong>sql99：</strong></p>
+<p><strong>内连接</strong></p>
+<p>&#x2F;&#x2F;显示出薪资大于2000的员工,并显示出每个员工对应的部门  <strong>inner join</strong> 等值连接 （效率高 inner可以不写）</p>
+<pre><code class="sql">select e.ename &#39;员工姓名&#39; , e.sal &#39;薪水&#39;,d.dname &#39;部门&#39; 
+from emp e 
+inner join dept d 
+on e.deptno = d.deptno 
+where e.sal &gt; 2000;
++----------+---------+------------+
+| 员工姓名 | 薪水    | 部门       |
++----------+---------+------------+
+| JONES    | 2975.00 | RESEARCH   |
+| BLAKE    | 2850.00 | SALES      |
+| CLARK    | 2450.00 | ACCOUNTING |
+| SCOTT    | 3000.00 | RESEARCH   |
+| KING     | 5000.00 | ACCOUNTING |
+| FORD     | 3000.00 | RESEARCH   |
++----------+---------+------------+
+</code></pre>
+<p><strong>外连接</strong></p>
+<p>​	左外连接 <strong>left join</strong>		</p>
+<pre><code class="sql">select 查询的数据 from 表1(主表) left join 表2(从表) on 表1的条件 = 表2的条件;
+</code></pre>
+<p>​	右外连接 <strong>right join</strong>			</p>
+<pre><code class="sql">select 查询的数据 from 表1(从表) right join 表2(主表) on 表1的条件 = 表2的条件;
+</code></pre>
+<p>在外连接中，主表的数据要求全部显示出来，即使在从表中没用数据与之匹配，那该数据也必须显示出来，从从表中不能匹配的数据用null来代替</p>
+<p>&#x2F;&#x2F;显示员工信息，并显示所属的部门名称，如果某一个部门没有员工，那么该部门也必须显示出来</p>
+<pre><code class="sql">select e.*,d.dname &#39;部门&#39; from emp e right join dept d on e.deptno = d.deptno;
++-------+--------+-----------+------+------------+---------+---------+--------+------------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO | 部门       |
++-------+--------+-----------+------+------------+---------+---------+--------+------------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  850.00 |    NULL |     20 | RESEARCH   |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 | SALES      |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 | SALES      |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 | RESEARCH   |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 | SALES      |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 | SALES      |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 | ACCOUNTING |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 | RESEARCH   |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 | ACCOUNTING |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 | SALES      |
+|  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 | RESEARCH   |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 | SALES      |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 | RESEARCH   |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 | ACCOUNTING |
+|  NULL | NULL   | NULL      | NULL | NULL       |    NULL |    NULL |   NULL | OPERATIONS |
++-------+--------+-----------+------+------------+---------+---------+--------+------------+
+</code></pre>
+<p>&#x2F;&#x2F;查询出所有的员工的薪资以及员工的薪水等级显示每个员工所对应的部门</p>
+<pre><code class="sql">select 
+e.ename &#39;员工姓名&#39;,e.sal &#39;员工薪资&#39;,s.grade &#39;薪水等级&#39;,d.dname &#39;所属部门&#39; 
+from emp e left join dept d 
+on e.deptno = d.deptno
+left join salgrade s
+on e.sal between s.losal and s.hisal;
++----------+----------+----------+------------+
+| 员工姓名 | 员工薪资 | 薪水等级 | 所属部门   |
++----------+----------+----------+------------+
+| SMITH    |   850.00 |        1 | RESEARCH   |
+| ADAMS    |  1100.00 |        1 | RESEARCH   |
+| JAMES    |   950.00 |        1 | SALES      |
+| MILLER   |  1300.00 |        2 | ACCOUNTING |
+| WARD     |  1250.00 |        2 | SALES      |
+| MARTIN   |  1250.00 |        2 | SALES      |
+| ALLEN    |  1600.00 |        3 | SALES      |
+| TURNER   |  1500.00 |        3 | SALES      |
+| CLARK    |  2450.00 |        4 | ACCOUNTING |
+| JONES    |  2975.00 |        4 | RESEARCH   |
+| SCOTT    |  3000.00 |        4 | RESEARCH   |
+| FORD     |  3000.00 |        4 | RESEARCH   |
+| BLAKE    |  2850.00 |        4 | SALES      |
+| KING     |  5000.00 |        5 | ACCOUNTING |
++----------+----------+----------+------------+
+</code></pre>
+<p><strong>通过子查询的方式查表</strong></p>
+<p>&#x2F;&#x2F;查询出薪水大于平均薪水的员工的薪水</p>
+<pre><code class="sql">select ename &#39;员工姓名&#39;,sal &#39;员工薪水&#39; from emp
+where sal &gt; (select avg(e.sal) &#39;平均薪水&#39; from emp e);
++----------+----------+
+| 员工姓名 | 员工薪水 |
++----------+----------+
+| JONES    |  2975.00 |
+| BLAKE    |  2850.00 |
+| CLARK    |  2450.00 |
+| SCOTT    |  3000.00 |
+| KING     |  5000.00 |
+| FORD     |  3000.00 |
++----------+----------+
+</code></pre>
+<p>&#x2F;&#x2F;查询每个工作岗位对应的薪资总和并且降序排序</p>
+<pre><code class="sql">select e.job &#39;工作岗位&#39;,sum(e.sal) &#39;工资合计&#39; from emp e group by e.job order by 工资合计 desc;
++-----------+----------+
+| 工作岗位  | 工资合计 |
++-----------+----------+
+| MANAGER   |  8275.00 |
+| ANALYST   |  6000.00 |
+| SALESMAN  |  5600.00 |
+| PRESIDENT |  5000.00 |
+| CLERK     |  4200.00 |
++-----------+----------+
+</code></pre>
+<p>&#x2F;&#x2F;查询每个员工所对应的领导姓名</p>
+<pre><code class="sql">select e1.ename &#39;员工姓名&#39;,e2.ename &#39;领导姓名&#39; from emp e1
+inner join emp e2 on e1.MGR = e2.EMPNO;
++----------+----------+
+| 员工姓名 | 领导姓名 |
++----------+----------+
+| SMITH    | FORD     |
+| ALLEN    | BLAKE    |
+| WARD     | BLAKE    |
+| JONES    | KING     |
+| MARTIN   | BLAKE    |
+| BLAKE    | KING     |
+| CLARK    | KING     |
+| SCOTT    | JONES    |
+| TURNER   | BLAKE    |
+| ADAMS    | SCOTT    |
+| JAMES    | BLAKE    |
+| FORD     | JONES    |
+| MILLER   | CLARK    |
++----------+----------+
+</code></pre>
+<h3 id="7-子查询"><a href="#7-子查询" class="headerlink" title="7.子查询"></a>7.子查询</h3><p>子查询就是嵌套的select语句，可以理解为子查询是一张表</p>
+<p>在where语句中使用子查询，也就是在where语句中加入select语句</p>
+<p>&#x2F;&#x2F;查询每个部门平均薪水所对应的薪水等级</p>
+<pre><code class="sql">select y.部门名称,s.grade &#39;薪水等级&#39; from 
+
+(select d.dname &#39;部门名称&#39;,avg(e.sal) &#39;平均薪水&#39; from
+
+emp e left join dept d on e.deptno = d.deptno 
+
+group by d.dname) y left join salgrade s on
+
+y.平均薪水 between s.losal and hisal;
+
++------------+----------+
+| 部门名称   | 薪水等级 |
++------------+----------+
+| SALES      |        3 |
+| ACCOUNTING |        4 |
+| RESEARCH   |        4 |
++------------+----------+
+</code></pre>
+<h4 id="分页"><a href="#分页" class="headerlink" title="分页:"></a>分页:</h4><p><strong>limit关键字</strong>(在sql语句最后面)</p>
+<pre><code class="sql">select * from emp limit 起始索引位置,分页单位;
+
+1.select * from emp limit 0,3;
+2.select * from emp limit 3,3;
+3.select * from emp limit 6,3;
+</code></pre>
+<p>起始索引位置：从哪个位置开始查（小标索引是从0开始）</p>
+<p>分页单位：查询多少条数据</p>
+<p>起始索引位置跟当前页的关系**(平均分页)**:<br>$$<br>起始索引位置 &#x3D; （当前页-1）* 分页单位<br>$$<br>&#x2F;&#x2F;根据分页来查询5-10条的数据</p>
+<pre><code class="sql">select * from emp limit 4,6;
+</code></pre>
+<p>&#x2F;&#x2F;查询出每个员工的所属部门，薪水，薪水等级，取到薪资最低的三个员工</p>
+<pre><code class="sql">select e.ename &#39;员工姓名&#39;,d.dname &#39;部门名称&#39;,
+e.sal &#39;薪水&#39;,s.GRADE &#39;薪水等级&#39; FROM
+emp e left join dept d on e.DEPTNO = d.DEPTNO
+left join salgrade s on e.sal BETWEEN s.LOSAL and s.HISAL
+ORDER BY e.SAL LIMIT 0,3;
++----------+----------+---------+----------+
+| 员工姓名 | 部门名称 | 薪水    | 薪水等级 |
++----------+----------+---------+----------+
+| SMITH    | RESEARCH |  850.00 |        1 |
+| JAMES    | SALES    |  950.00 |        1 |
+| ADAMS    | RESEARCH | 1100.00 |        1 |
++----------+----------+---------+----------+
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2022/06/19/SQL/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
     <a href="/2022/05/28/JAVA入门/">
         <h2>
             JAVA入门

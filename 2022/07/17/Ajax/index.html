@@ -1,0 +1,504 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>Ajax | Tly的博客</title>
+        <meta name="author" content="Os467">
+        <meta name="description" content="Welcome">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://img.gejiba.com/images/ad7295b88b395d72d985a0835695dd71.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Tly的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Tly的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>Ajax </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/7/17
+        </span>
+        
+        
+    </div>
+    <div class="content" v-pre>
+        <h1 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h1><p>AJAX 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术</p>
+<h2 id="AJAX-是什么？"><a href="#AJAX-是什么？" class="headerlink" title="AJAX 是什么？"></a>AJAX 是什么？</h2><p>AJAX &#x3D; Asynchronous JavaScript and XML</p>
+<p>AJAX 是一种用于创建快速<strong>动态网页</strong>的技术</p>
+<p>AJAX 通过在后台与服务器进行少量数据交换，使网页实现<strong>异步更新</strong>，这意味着可以在不重载整个页面的情况下，对网页的某些<strong>部分进行更新</strong></p>
+<p>传统的网页（不使用 AJAX）如果需要更新内容，必须重载整个页面</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/08/ajax.gif"></p>
+<h2 id="AJAX-基于因特网标准"><a href="#AJAX-基于因特网标准" class="headerlink" title="AJAX 基于因特网标准"></a>AJAX 基于因特网标准</h2><p>AJAX 基于因特网标准，并使用以下技术组合：</p>
+<ul>
+<li>XMLHttpRequest 对象（与服务器异步交互数据）</li>
+<li>JavaScript&#x2F;DOM（显示&#x2F;取回信息）</li>
+<li>CSS（设置数据的样式）</li>
+<li>XML（常用作数据传输的格式）</li>
+</ul>
+<p><img src="https://www.runoob.com/images/lamp.gif" alt="lamp"> AJAX 应用程序与浏览器和平台无关的！</p>
+<h2 id="AJAX-创建-XMLHttpRequest-对象"><a href="#AJAX-创建-XMLHttpRequest-对象" class="headerlink" title="AJAX - 创建 XMLHttpRequest 对象"></a>AJAX - 创建 XMLHttpRequest 对象</h2><hr>
+<p>XMLHttpRequest 是 AJAX 的基础。</p>
+<hr>
+<h3 id="XMLHttpRequest-对象"><a href="#XMLHttpRequest-对象" class="headerlink" title="XMLHttpRequest 对象"></a>XMLHttpRequest 对象</h3><p>所有现代浏览器均支持 XMLHttpRequest 对象（IE5 和 IE6 使用 <code>ActiveXObject</code>）。</p>
+<p>XMLHttpRequest 用于在后台与服务器交换数据。这意味着可以在<strong>不重新加载整个网页的情况下，对网页的某部分进行更新</strong></p>
+<hr>
+<h3 id="创建-XMLHttpRequest-对象"><a href="#创建-XMLHttpRequest-对象" class="headerlink" title="创建 XMLHttpRequest 对象"></a>创建 XMLHttpRequest 对象</h3><p>所有现代浏览器（IE7+、Firefox、Chrome、Safari 以及 Opera）均内建 XMLHttpRequest 对象。</p>
+<p>创建 XMLHttpRequest 对象的语法：</p>
+<pre><code class="javascript">variable = new XMLHttpRequest();
+</code></pre>
+<p>老版本的 Internet Explorer （IE5 和 IE6）使用 ActiveX 对象：</p>
+<pre><code class="javascript">variable = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+</code></pre>
+<p>为了应对所有的现代浏览器，包括 IE5 和 IE6，请检查浏览器是否支持 XMLHttpRequest 对象。如果支持，则创建 XMLHttpRequest 对象。如果不支持，则创建 <code>ActiveXObject </code>：</p>
+<pre><code class="javascript">var xmlhttp; 
+if (window.XMLHttpRequest) &#123;
+
+//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码   
+    xmlhttp=new XMLHttpRequest(); 
+
+&#125; else &#123;    
+
+// IE6, IE5 浏览器执行代码    
+xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+
+&#125;
+</code></pre>
+<h2 id="向服务器发送请求"><a href="#向服务器发送请求" class="headerlink" title="向服务器发送请求"></a>向服务器发送请求</h2><p>如需将请求发送到服务器，我们使用 <strong>XMLHttpRequest</strong> 对象的 <strong>open()</strong> 和 <strong>send()</strong> 方法：</p>
+<p><code>open(method,url,async)</code></p>
+<p>规定请求的类型、URL 以及是否异步处理请求。</p>
+<ul>
+<li>method：请求的类型；GET 或 POST</li>
+<li><code>url</code>：文件在服务器上的位置</li>
+<li><code>async</code>：true（异步）或 false（同步）</li>
+</ul>
+<pre><code class="javascript">xmlhttp.open(&quot;GET&quot;,&quot;ajax_info.txt&quot;,true);
+xmlhttp.send();
+</code></pre>
+<p><code>send(string)</code></p>
+<p>将请求发送到服务器。</p>
+<ul>
+<li>string：仅用于 POST 请求</li>
+</ul>
+<h2 id="服务器响应"><a href="#服务器响应" class="headerlink" title="服务器响应"></a>服务器响应</h2><p>如需获得来自服务器的响应，请使用 XMLHttpRequest 对象的 <code>responseText</code> 或 <code>responseXML</code> 属性。</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>responseText</code></td>
+<td align="center">获得字符串形式的响应数据。</td>
+</tr>
+<tr>
+<td align="center"><code>responseXML</code></td>
+<td align="center">获得 XML 形式的响应数据。</td>
+</tr>
+</tbody></table>
+<h2 id="onreadystatechange-事件"><a href="#onreadystatechange-事件" class="headerlink" title="onreadystatechange 事件"></a><code>onreadystatechange</code> 事件</h2><p>当<strong>请求被发送到服务器</strong>时，我们需要<strong>执行一些基于响应的任务</strong>。</p>
+<p>每当 <code>readyState</code> <strong>改变</strong>时，就会触发 <code>onreadystatechange</code> 事件。</p>
+<p><code>readyState</code> 属性存有 XMLHttpRequest 的状态信息。</p>
+<p>下面是 XMLHttpRequest 对象的三个重要的属性：</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>onreadystatechange</code></td>
+<td align="center">存储函数（或函数名），每当 <code>readyState</code> 属性改变时，就会调用该函数。</td>
+</tr>
+<tr>
+<td align="center"><code>readyState</code></td>
+<td align="center">存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。0: 请求未初始化1: 服务器连接已建立2: 请求已接收3: 请求处理中4: 请求已完成，且响应已就绪</td>
+</tr>
+<tr>
+<td align="center">status</td>
+<td align="center">200: “OK” 404: 未找到页面</td>
+</tr>
+</tbody></table>
+<p>在 <code>onreadystatechange</code> 事件中，我们规定当服务器响应已做好被处理的准备时所执行的任务。</p>
+<p>当 <code>readyState</code> 等于 4 且状态为 200 时，表示响应已就绪：</p>
+<p><strong>后端进行一个简单的用户伪校验</strong></p>
+<pre><code class="java">@Override
+protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+
+    request.setCharacterEncoding(&quot;utf-8&quot;);
+    response.setContentType(&quot;html/text;charset=utf-8&quot;);
+
+    String username = request.getParameter(&quot;username&quot;);
+    String password = request.getParameter(&quot;password&quot;);
+
+    if (username.equals(&quot;jack001&quot;) &amp;&amp; password.equals(&quot;123456&quot;))&#123;
+
+        response.getWriter().print(&quot;1&quot;);
+
+    &#125;else &#123;
+
+        response.getWriter().print(&quot;2&quot;);
+
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="Ajax-JS"><a href="#Ajax-JS" class="headerlink" title="Ajax(JS)"></a>Ajax(JS)</h3><p><strong>一个基于JS原生Ajax的用户数据后端校验</strong></p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;原生js的ajax&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;script&gt;
+
+    //测试Ajax的函数
+    function testAjax()&#123;
+
+        let xmlHttp;
+
+        //判断是不是ie浏览器
+        if(window.XMLHttpRequest)&#123;
+
+            xmlHttp = new XMLHttpRequest();
+
+        &#125;else &#123;
+
+            xmlHttp = ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+
+        &#125;
+
+        let usernameEl = document.getElementById(&quot;username&quot;);
+
+        let passwordEl = document.getElementById(&quot;password&quot;);
+
+        let username = usernameEl.value;
+
+        let password = passwordEl.value;
+
+        //设置参数
+        xmlHttp.open(&quot;GET&quot;,&quot;http://localhost:8080/jQuery/test?username=&quot;+username+&quot;&amp;password=&quot;+password,true);
+
+        //访问具体的服务，发送请求
+        xmlHttp.send();
+
+        //绑定监听事件
+        xmlHttp.onreadystatechange = function ()&#123;
+
+            //判断服务器和网页的状态
+            if (xmlHttp.readyState == 4 &amp;&amp; xmlHttp.status == 200)&#123;
+
+                //获取服务器响应的数据
+                alert(xmlHttp.responseText);
+
+            &#125;
+
+        &#125;
+
+    &#125;
+
+&lt;/script&gt;
+
+&lt;body&gt;
+请输入用户名：&lt;input type=&quot;text&quot; id=&quot;username&quot; value=&quot;&quot;&gt;&lt;br&gt;
+请输入用户名密码：&lt;input type=&quot;password&quot; id=&quot;password&quot; value=&quot;&quot;&gt;&lt;br&gt;
+&lt;input type=&quot;button&quot; value=&quot;ajax监听事件按钮&quot; onclick=&quot;testAjax()&quot;&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="Ajax-JQuery"><a href="#Ajax-JQuery" class="headerlink" title="Ajax(JQuery)"></a>Ajax(JQuery)</h3><p><strong>一个基于Ajax的用户登录校验</strong></p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;jQuery的ajax&lt;/title&gt;
+&lt;/head&gt;
+&lt;script src=&quot;../jQuery/jquery-1.7.2.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+
+   $(function ()&#123;
+
+       $(&quot;[value=提交]&quot;).click(function ()&#123;
+
+           //获取用户名和密码的值
+           let username = $(&quot;#username&quot;).val();
+
+           let password = $(&quot;#password&quot;).val();
+
+           //调用ajax函数
+           $.ajax(&#123;
+
+               //提交到后端的地址
+               url:&quot;http://localhost:8080/jQuery/test&quot;,
+
+               //提交的方式
+               type:&quot;POST&quot;,
+
+               //提交到后端的数据
+               data:&#123;
+                   username:username,
+                   password:password
+               &#125;,
+
+               //请求成功之后的回调函数，监听事件
+               success:function (obj)&#123;
+
+                   if (obj == &quot;1&quot;)&#123;
+
+                       alert(&quot;登陆成功&quot;);
+
+                       //跳转到页面
+                       location.href = &quot;http://www.baidu.com&quot;;
+                   &#125;else &#123;
+
+                       alert(&quot;登陆失败&quot;);
+
+                   &#125;
+
+               &#125;,
+
+               //服务端返回的数据类型text,html,json,xml
+               dataType:&quot;text&quot;
+
+           &#125;)
+
+
+       &#125;)
+
+   &#125;)
+
+&lt;/script&gt;
+
+&lt;body&gt;
+&lt;table align=&quot;center&quot; border=&quot;1px&quot;&gt;
+    &lt;tr align=&quot;center&quot;&gt;
+        &lt;td colspan=&quot;2&quot;&gt;&lt;h3&gt;用户登录&lt;/h3&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            请输入用户名
+        &lt;/td&gt;
+        &lt;td&gt;
+            &lt;input type=&quot;text&quot; id=&quot;username&quot; value=&quot;&quot;&gt;&lt;br&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            请输入密码
+        &lt;/td&gt;
+        &lt;td&gt;
+            &lt;input type=&quot;password&quot; id=&quot;password&quot; value=&quot;&quot;&gt;&lt;br&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr align=&quot;center&quot;&gt;
+        &lt;td colspan=&quot;2&quot;&gt;
+            &lt;input type=&quot;button&quot; value=&quot;提交&quot;&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>jQuery中封装的ajax以JSON串的形式存值</strong></p>
+<p>一些关键的<strong>key与value</strong>：</p>
+<table>
+<thead>
+<tr>
+<th align="center">KEY</th>
+<th align="center">VALUE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">url</td>
+<td align="center">后端资源地址</td>
+</tr>
+<tr>
+<td align="center">type</td>
+<td align="center">“GET”、”POST”…</td>
+</tr>
+<tr>
+<td align="center">data</td>
+<td align="center">提交到后端的数据（JSON串）{username : username, password : password}</td>
+</tr>
+<tr>
+<td align="center">success</td>
+<td align="center">服务器反馈数据成功后执行的方法 function (object接收后端的参数){方法体}</td>
+</tr>
+<tr>
+<td align="center">dataType</td>
+<td align="center">服务端返回的数据类型text,html,json,xml   “text”</td>
+</tr>
+</tbody></table>
+
+    </div>
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+    <div id="comment">
+        <div id="gitalk-container">
+        </div>
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2022 Tly的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @Os467
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+<script>
+    var clientID = "", clientSecret = "";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "",
+        owner: "",
+        admin: [""],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: true
+    })
+    gitalk.render("gitalk-container")
+</script>
+
+
+    </body>
+</html>
