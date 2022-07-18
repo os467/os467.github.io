@@ -1,0 +1,1104 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>设计模式 | Tly的博客</title>
+        <meta name="author" content="Os467">
+        <meta name="description" content="Welcome">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://img.gejiba.com/images/ad7295b88b395d72d985a0835695dd71.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Tly的博客</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Tly的博客</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>设计模式 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/7/18
+        </span>
+        
+        
+    </div>
+    <div class="content" v-pre>
+        <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><ul>
+<li><p>软件工程中，设计模式（design	pattern）是对软件设计中<strong>普遍存在</strong>（反复出现）的各种<strong>问题</strong>，所提出的<strong>解决方案</strong></p>
+</li>
+<li><p>这个术语是由埃里希·伽马（Erich Gamma）等人在1990年代从建筑设计领域引入到计算机科学的</p>
+</li>
+</ul>
+<p>拿实际工作经历来说，当一个项目开发完成后，如果客户提出增新功能，怎么办</p>
+<p>如果项目开发完后，原来程序员离职，你接收维护该项目怎么办？（维护性，可读性，规范性）</p>
+<p>目前开发人员门槛越来越高，一线IT公司（大厂），都会问你在实际项目中使用过什么</p>
+<p>设计模式，怎样使用的，解决了什么问题</p>
+<p><strong>设计模式哪里使用</strong></p>
+<p>基于面向对象</p>
+<p>功能模块	[设计模式+算法（数据结构）]</p>
+<p>&#x3D;&gt; 框架	[使用到多种设计模式]</p>
+<p>&#x3D;&gt;架构	[服务器集群]</p>
+<h2 id="设计模式的目的"><a href="#设计模式的目的" class="headerlink" title="设计模式的目的"></a>设计模式的目的</h2><p>编写软件过程中，开发人员面临着来自耦合性，内聚性以及可维护性，可扩展性，重用性，灵活性等多方面的挑战，设计模式是为了让程序（软件），具有更好的代码<strong>重用性、可读性、可扩展性、可靠性、使程序呈现高内聚，低耦合</strong>。</p>
+<h2 id="设计模式七大原则"><a href="#设计模式七大原则" class="headerlink" title="设计模式七大原则"></a>设计模式七大原则</h2><h3 id="1-单一职责原则"><a href="#1-单一职责原则" class="headerlink" title="1.单一职责原则"></a>1.单一职责原则</h3><p>​		对类来说，即一个类应该只负责一项职责，如类A负责两个不同职责：职责1，职责2</p>
+<p>​		当职责1需求变更而改变A时，可能造成职责2执行错误，所以需要将类A的粒度分解为A1，A2</p>
+<p><strong>一个类去做一类事，一个方法去做一件事</strong></p>
+<p>降低类的复杂度，一个类只负责一项职责</p>
+<p>提高类的可读性，可维护性</p>
+<p>降低变更引起的风险</p>
+<p>通常情况下，我们应当遵循单一职责原则，只有逻辑足够简单，才可以在代码级违反单一职责原则</p>
+<h3 id="2-接口隔离原则"><a href="#2-接口隔离原则" class="headerlink" title="2.接口隔离原则"></a>2.接口隔离原则</h3><p>（Interface Segregation Principle）</p>
+<p>客户端不应该<strong>依赖</strong>它不需要的接口，即一个类对另一个类的依赖应该建立在最小的接 口上</p>
+<p>类A通过接口Interface依赖类B，类C通过接口Interface1依赖类D，如果接口Interface对于类A和类C来说不是最小接口，那么类B和类D必须去实现他们不需要的方法</p>
+<p>按隔离原则应当这样处理：将接口Interface<strong>拆分</strong>为独立的几个接口，类A和类C分别与他们<strong>需要的接口</strong>建立<strong>依赖关系</strong>，也就是采用接口隔离原则</p>
+<p>在接口中只去定义需要被实现类<strong>所需要</strong>的方法</p>
+<p>​		以后在设计程序时，一个类实现的接口应该是最小接口，这个接口中的方法应该是这个类都需要用到的</p>
+<h3 id="3-依赖倒转原则"><a href="#3-依赖倒转原则" class="headerlink" title="3.依赖倒转原则"></a>3.依赖倒转原则</h3><p>（Dependence Inversion Principle）</p>
+<ul>
+<li><p>高层模块不应该依赖低层模块，二者都应该依赖其抽象</p>
+</li>
+<li><p>抽象不应该依赖细节，细节应该依赖抽象</p>
+</li>
+<li><p>依赖倒转(倒置)的<strong>中心思想</strong>是<strong>面向接口编程</strong></p>
+</li>
+<li><p>依赖倒转原则是基于这样的设计理念：相对于细节的多变性，<strong>抽象</strong>的东西要<strong>稳定</strong>的多，以<strong>抽象为基础</strong>搭建的架构比以细节为基础的架构要稳定的多，在java中，<strong>抽象</strong>指的是<strong>接口或抽象类</strong>，<strong>细节</strong>就是具体的<strong>实现类</strong></p>
+</li>
+<li><p>使用接口或抽象类的目的是制定好<strong>规范</strong>，而不涉及任何具体的操作，把展现细节的任务交给他们的实现类去完成</p>
+</li>
+</ul>
+<p><strong>多态</strong>：面向多态、面向抽象、面向接口</p>
+<p>低层模块尽量都要有抽象类或接口，或者两者都有，程序稳定性更好</p>
+<p><strong>变量</strong>的<strong>声明类型</strong>尽量是<strong>抽象类</strong>或<strong>接口</strong>，这样我们的变量引用和实际对象间，就存在一个缓冲层，<strong>利于程序扩展和优化</strong></p>
+<h3 id="4-里氏替换原则"><a href="#4-里氏替换原则" class="headerlink" title="4.里氏替换原则"></a>4.里氏替换原则</h3><ul>
+<li><p>里氏替换原则(Liskov Substitution Principle)在1988年，由麻省理工学院的以为姓里的女士提出的</p>
+</li>
+<li><p>如果对每个类型为T1的对象o1，都有类型为T2的对象o2，使得以T1定义的所有程序P在所有的对象o1都代换成o2时，程序P的行为没有发生变化，那么类型T2是类型T1的子类型，换句话说，所有引用基类的地方必须能透明地使用其子类的对象</p>
+</li>
+<li><p>在使用继承时，遵循里氏替换原则，在子类中<strong>尽量不要重写父类的方法</strong></p>
+</li>
+<li><p>里氏替换原则告诉我们，继承实际上让两个类耦合性增强了，在适当的情况下，可以通过<strong>聚合，组合（依赖）</strong>来解决问题</p>
+</li>
+</ul>
+<p><strong>继承包含这样层含义</strong>:</p>
+<p>​		父类中凡是已经实现好的方法，实际上是在设定规范和契约，虽然它不强制要求所有的子类必须遵循这些契约，但是如果子类对这些已经实现的方法<strong>任意修改</strong>，就会对整个继承体系造成<strong>破坏</strong></p>
+<p>​		继承在给程序设计带来便利的同时，也带来了<strong>弊端</strong>，比如使用继承会给程序带来<strong>侵入性</strong>，程序的<strong>可移植性降低</strong>，增加对象间的<strong>耦合性</strong>，如果一个类被其他的类所继承，则当这个类需要修改时，必须<strong>考虑到</strong>所有的<strong>子类</strong>，并且父类修改后，所有涉及到子类的功能都有可能产生故障</p>
+<p>在子类和父类中如果存在一个同名方法，默认会构成重写</p>
+<p>所以说默认类B就重写了类A的方法，数据会错乱，性质就变了</p>
+<p><strong>继承</strong>会使得，类与类之间产生耦合性，同时也会给程序带来侵入性</p>
+<p>所以说以后如果我们在一个类中需要使用另外一个类的资源，我们通常情况下会采用组合、聚合的方式来引入这个类的实例，而尽量不要采用继承的方式（使用<strong>组合、聚合</strong>等方式<strong>替换继承</strong>）</p>
+<h4 id="组合、聚合："><a href="#组合、聚合：" class="headerlink" title="组合、聚合："></a>组合、聚合：</h4><pre><code class="java">class B&#123;
+   
+    //聚合：set、构造
+    private A a;
+    
+    //组合
+    private A a = new A();
+    
+    public B(A a)&#123;
+        this.a = a;
+    &#125;
+    
+    public void setA(A a)&#123;
+        this.a = a;
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="5-开闭原则-OCP"><a href="#5-开闭原则-OCP" class="headerlink" title="5.开闭原则(OCP)"></a>5.开闭原则(OCP)</h3><ul>
+<li><p>开闭原则（<strong>Open Closed Principle</strong>）是编程中最基础、最重要的设计原则</p>
+</li>
+<li><p>一个软件实体如类，模块和函数应该<strong>对扩展开放（提供方）</strong>，<strong>对修改关闭（使用方）</strong>，用抽象构建框架，用实现扩展细节</p>
+</li>
+<li><p>当软件需要变化时，尽量通过<strong>扩展软件实体行为</strong>来实现变化，而不是通过修改已有的代码来实现变化</p>
+</li>
+<li><p>编程中遵循其它原则，以及使用设计模式的目的就是遵循开闭原则</p>
+</li>
+</ul>
+<h3 id="6-迪米特法则"><a href="#6-迪米特法则" class="headerlink" title="6.迪米特法则*"></a>6.迪米特法则*</h3><ul>
+<li><p>一个对象应该对其他对象保持最少的了解</p>
+</li>
+<li><p>类与类关系越密切，耦合度越大</p>
+</li>
+<li><p>迪米特法则（Demeter Principle）又叫最少知道原则，即一个类对自己依赖的类知道的越少越好，也就是说，对于被依赖的类不管多么复杂，都尽量将逻辑封装在类的内部，对外除了提供的public方法，不对外泄露任何信息</p>
+</li>
+<li><p>迪米特法则还有个更简单的定义：只与直接的朋友通信</p>
+</li>
+</ul>
+<p>我们称出现<strong>成员变量、方法参数、方法返回值中的类</strong>为直接的朋友，而出现在局部变量中的类不是直接的朋友，也就是说陌生的类最好<strong>不要</strong>以<strong>局部变量</strong>的形式出现在类的内部</p>
+<p>迪米特法则的<strong>核心</strong>是<strong>降低类之间的耦合</strong></p>
+<p>但是注意：由于每个类都减少了不必要的依赖，因此迪米特法则只是要求降低类间（对象间）耦合关系，并不是要求完全没有依赖关系</p>
+<p>一个类对于他所依赖的实例知道的越少越好</p>
+<p>​		<strong>耦合只能降低，不可能完全消除</strong></p>
+<h3 id="7-合成复用原则"><a href="#7-合成复用原则" class="headerlink" title="7.合成复用原则"></a>7.合成复用原则</h3><p>原则是尽量使用<strong>合成(组合)&#x2F;聚合</strong>的方式，而不是使用继承</p>
+<h2 id="设计原则核心思想"><a href="#设计原则核心思想" class="headerlink" title="设计原则核心思想"></a>设计原则核心思想</h2><ul>
+<li>找出应用中可能需要变化之处，把它们独立出来，不要和那些不需要变化的代码混在一起</li>
+<li>针对接口编程，而不是针对实现编程</li>
+<li>为了交互对象之间的松耦合（<strong>解耦</strong>）设计而努力</li>
+</ul>
+<h2 id="设计模式介绍"><a href="#设计模式介绍" class="headerlink" title="设计模式介绍"></a>设计模式介绍</h2><p>设计模式是程序员在面对同类软件工程设计问题所总结出来的<strong>有用的经验</strong>，模式不是代码，而是某类问题的<strong>通用解决方案</strong>，设计模式(Design pattern) 代表了<strong>最佳的实践</strong>，这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的</p>
+<p>设计模式的<strong>本质</strong>是提高软件的维护性，通用性和扩展性，并降低软件的复杂度</p>
+<h3 id="设计模式类型"><a href="#设计模式类型" class="headerlink" title="设计模式类型"></a>设计模式类型</h3><h4 id="1-创建型模式："><a href="#1-创建型模式：" class="headerlink" title="1.创建型模式："></a>1.创建型模式：</h4><p><strong>单例模式</strong></p>
+<p>抽象工厂模式</p>
+<p><strong>原型模式</strong></p>
+<p>建造者模式</p>
+<p><strong>工厂模式</strong></p>
+<h4 id="2-结构型模式："><a href="#2-结构型模式：" class="headerlink" title="2.结构型模式："></a>2.结构型模式：</h4><p>适配器模式</p>
+<p>桥接模式</p>
+<p><strong>装饰模式</strong></p>
+<p>组合模式</p>
+<p>外观模式</p>
+<p>享元模式</p>
+<p><strong>代理模式</strong></p>
+<h4 id="3-行为型模式："><a href="#3-行为型模式：" class="headerlink" title="3.行为型模式："></a>3.行为型模式：</h4><p>模板方法模式</p>
+<p>命令模式</p>
+<p>访问者模式</p>
+<p>迭代器模式</p>
+<p>观察者模式</p>
+<p>中介者模式</p>
+<p>备忘录模式</p>
+<p>解释器模式（Interpreter模式）</p>
+<p>状态模式</p>
+<p>策略模式</p>
+<p>职责链模式（责任链模式）</p>
+<h3 id="★单例设计模式介绍"><a href="#★单例设计模式介绍" class="headerlink" title="★单例设计模式介绍"></a>★单例设计模式介绍</h3><p>所谓类的单例设计模式，就是采取一定的方法保证在整个的软件系统中，对某个类只能存在<strong>一个对象实例</strong>，并且该类只提供<strong>一个取得其对象实例的方法</strong>（静态方法）</p>
+<p>就是在软件系统中，对于某个类，在任何位置，只能存在一份对象实例</p>
+<p><strong>解耦：</strong></p>
+<p>​		类A	在项目中的很多模块都需要用到，这个时候如果正常的去获取该类的实例，需要用到<code>new A()</code>，每使用一个new关键字都会去开辟一份空间，占用系统的资源，指向不同的内存地址</p>
+<p>​		我们能不能想一种解决方案，在模块需要调用A的资源的时候，不需要反复的去创建对象</p>
+<p>单例模式：这个软件系统中你获得的<strong>A的实例</strong>指向的是<strong>一份内存地址</strong></p>
+<p>​		</p>
+<h4 id="1-饿汉式："><a href="#1-饿汉式：" class="headerlink" title="1.饿汉式："></a>1.饿汉式：</h4><pre><code class="java">public class SingletonDemo&#123;
+    
+    //对本类进行构造方法私有化，禁止外界new本类实例
+    private SingletonDemo()&#123;&#125;
+    
+    //在本类中创建本类的实例(静态的，具有唯一内存地址)
+    private static final SingletonDemo singletonDemo = new SingletonDemo();
+    
+    //为外界提供访问本类实例的静态方法
+    public static SingletonDemo getInstance()&#123;
+        
+        return singletonDemo;
+        
+    &#125;
+    
+&#125;
+</code></pre>
+<p><strong>静态代码块的方式</strong></p>
+<pre><code class="java">public class SingletonDemo02 &#123;
+
+    //1.构造方法私有化,不希望在外界可以实例化对象
+    private SingletonDemo02()&#123;&#125;
+
+    //2.在本类实例化本类的实例(静态的,不会在每次调用重新加载实例)
+    private static SingletonDemo02 singletonDemo02;
+
+    static &#123;
+
+        singletonDemo02 = new SingletonDemo02();
+
+    &#125;
+
+    //3.提供唯一一个获取这个类实例的方法(静态的)
+    public static SingletonDemo02 getInstance()&#123;
+
+        return singletonDemo02;
+
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="2-懒汉式："><a href="#2-懒汉式：" class="headerlink" title="2.懒汉式："></a>2.懒汉式：</h4><p>懒汉式会有<strong>线程安全</strong>的问题，如果t1线程和t2线程同时访问这个类，并且同时判断实例为空，两个线程就会同时去创建实例，就不再是<strong>单例</strong>了</p>
+<p>如果直接在<strong>方法上加锁</strong>确实可以解决线程安全问题，但是效率却不是最好的</p>
+<p>在保证线程安全的同时也要考虑效率问题</p>
+<p>在实例还没有创建的时候，多线程确实需要同步执行，但是实例已经创建出来的时候，多线程可以并发的去获取实例</p>
+<p><strong>volatile</strong>关键字修饰引用，实现多线程之间的可见性，在t1线程创建实例时及时的去通知t2线程</p>
+<p><strong>最终解决方案</strong>：通过双重校验来实现当实例存在的情况下，多线程可以并发的去获取，实例不存在，多线程要同步的去创建</p>
+<p>不会直接去创建实例，先去判断实例是否为空，如果实例为空再去创建</p>
+<pre><code class="java">public class SingletonDemo03&#123;
+    
+    //构造方法的私有化
+    private SingletonDemo03()&#123;&#125;
+    
+    //在本类中聚合本类的引用
+    private volatile static SingletonDemo03 singletonDemo03;
+    
+    //提供获取本类中实例的方法
+    public static SingletonDemo03 getInstance()&#123;
+        
+        //检查是否创建实例,如果创建了则直接获取实例，否则创建实例对象
+        if(singletonDemo03 == null)&#123;
+            
+            //提供类锁
+            synchronized(SingletonDemo03.class)&#123;
+                
+                //为上次被阻塞的线程添加一次判断是否在之前有线程创建过实例
+                if(singletonDemo03 == null)&#123;
+                    
+                    singletonDemo03 = new SingletonDemo03();
+                    
+                &#125;
+                
+            &#125;
+            
+        &#125;
+        
+        //返回本类的实例
+        return singletonDemo03;
+        
+    &#125;
+    
+    
+&#125;
+</code></pre>
+<h3 id="★代理模式（Proxy）介绍"><a href="#★代理模式（Proxy）介绍" class="headerlink" title="★代理模式（Proxy）介绍"></a>★代理模式（Proxy）介绍</h3><p><strong>代理模式：</strong></p>
+<ul>
+<li><p>为一个对象提供一个<strong>替身</strong>，以控制对这个对象的访问，即通过<strong>代理对象</strong>访问目标对象，这样做的好处是：可以在目标对象实现的基础上，增强额外的功能操作，即<strong>扩展</strong>目标对象的<strong>功能</strong></p>
+</li>
+<li><p>被代理的对象可以是远程对象、创建开销大的对象或需要安全控制的对象</p>
+</li>
+<li><p>代理模式有不同的形式，主要有三种	<strong>静态代理</strong>，<strong>动态代理</strong>（JDK代理、接口代理）和 <strong>Cglib代理</strong>（可以在内存多态的创建对象，而不需要实现接口，他是属于动态代理的范畴）</p>
+</li>
+</ul>
+<p><strong>代理模式是干什么的？</strong></p>
+<p>代理模式就是为了<strong>完成对目标类的增强</strong>，完成对目标类的<strong>织入</strong></p>
+<p>代理模式增强的是切入点(目标类方法)</p>
+<h4 id="静态代理："><a href="#静态代理：" class="headerlink" title="静态代理："></a>静态代理：</h4><p>​	静态代理在使用时，需要定义接口或者父类，被代理对象与代理对象一起<strong>实现相同的接口</strong>或者是<strong>继承相同的父类</strong></p>
+<p><strong>优点</strong>：在不修改目标对象的功能前提下，能通过代理对象对目标功能扩展</p>
+<p><strong>缺点</strong>：因为代理对象需要与目标对象实现一样的接口，所以会有很多代理类，一旦接口增加方法，目标对象与代理对象都要维护</p>
+<p>目标类（被代理类），代理类，逻辑发起点 ：</p>
+<p>​	类似于中介（代理类）和房东（目标类）的关系</p>
+<p>​	逻辑发起点：客户要找房</p>
+<p>​	代理类：负责帮客户选房</p>
+<p>​	目标类：签合同</p>
+<hr>
+<p><strong>逻辑发起点</strong></p>
+<pre><code class="java">package com.os467.proxy;
+
+/**
+ * 客户（逻辑发起点）
+ * 有找房需求：客户有中介的联系方式
+ * 客户选好了房子，中介可以联系到房东
+ */
+public class ProxyApp &#123;
+
+    public static void main(String[] args) &#123;
+
+        //创建中介对象
+        ProxyDao proxyDao = new ProxyDao(new ProxyDaoImpl());
+
+        //调用找房子的方法
+        proxyDao.findHouse();
+
+
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>代理类与目标类需要实现的接口</strong></p>
+<pre><code class="java">package com.os467.proxy;
+
+/**
+ * 代理类与目标类需要实现的接口
+ */
+public interface ProxyInterface &#123;
+
+    /**
+     * 找房的方法
+     */
+    void findHouse();
+
+
+&#125;
+</code></pre>
+<p><strong>代理类</strong></p>
+<pre><code class="java">package com.os467.proxy;
+
+/**
+ * 代理类（中介）
+ */
+public class ProxyDao implements ProxyInterface&#123;
+
+    //在中介这个类中要得有房东的引用,但是房东是有很多的是模糊的，
+    //但是房东实现了这个接口，所以我们在类中聚合接口
+    private ProxyInterface proxyInterface;
+
+    //提供一个有参构造
+    public ProxyDao(ProxyInterface proxyInterface) &#123;
+        this.proxyInterface = proxyInterface;
+    &#125;
+
+    /**
+     * 在不修改目标方法逻辑的前提下，完成对目标方法的增强
+     * 代理类中对目标类方法逻辑的增强
+     * 对目标类的织入
+     */
+    @Override
+    public void findHouse() &#123;
+
+        //前置通知(增强的业务逻辑)
+        System.out.println(&quot;中介带着客户开始找房&quot;);
+
+        //找到房东，然后签合同，目标方法所有的逻辑
+        //代理模式可以通过代理类去增强目标类，增强的一般是切入点（方法）
+        proxyInterface.findHouse();
+
+        //后置通知(增强的业务逻辑)
+        System.out.println(&quot;中介会告诉客户小区周围的环境，买菜在哪，逛街在哪&quot;);
+
+    &#125;
+&#125;
+</code></pre>
+<p><strong>目标类</strong></p>
+<pre><code class="java">package com.os467.proxy;
+
+/**
+ * 目标类（房东）
+ */
+public class ProxyDaoImpl implements ProxyInterface&#123;
+
+    @Override
+    public void findHouse() &#123;
+
+        System.out.println(&quot;客户选好了房子，中介直接带着客户来签合同&quot;);
+        System.out.println(&quot;合同签署完毕&quot;);
+
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h4 id="动态代理："><a href="#动态代理：" class="headerlink" title="动态代理："></a>动态代理：</h4><h5 id="JDK动态代理"><a href="#JDK动态代理" class="headerlink" title="JDK动态代理"></a>JDK动态代理</h5><p>代理对象的生成，是利用JDK的API，动态的在内存中构建代理对象</p>
+<p><strong>实现步骤</strong>：需要调用JDK提供的相关方法</p>
+<p><strong>创建的对象</strong>：目标对象、代理对象（不需要我们创建，通过反射去创建）、创建代理对象的对象</p>
+<p>目标类和代理类<strong>实现了相同的接口</strong>，那么可以使用两者<strong>接口的方法字节码对象</strong>来调用两者的对应方法</p>
+<hr>
+<p><strong>代理类创建类</strong></p>
+<pre><code class="java">package com.os467.jdkProxy;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
+/**
+ * 这个类不是代理类，是创建代理类的类
+ */
+public class CreateJdkProxy &#123;
+
+    //目标对象
+    private Object object;
+
+    public CreateJdkProxy(Object object)&#123;
+
+        this.object = object;
+
+    &#125;
+
+    /**
+     * 通过反射机制来创建代理对象
+     * @return
+     */
+    public Object getProxy()&#123;
+
+        /**
+         * ClassLoader loader ：目标类的类加载器对象
+         * Class[] interfaces ：目标类所实现的接口字节码对象
+         * InvocationHandler h ：是一个接口对象，这个接口提供了invoke方法
+         * 方法里面完成对目标对象的增强
+         */
+
+        //目标类的类加载器对象
+        ClassLoader classLoader = object.getClass().getClassLoader();
+
+        //目标类所实现的接口字节码对象
+        Class[] interfaces = object.getClass().getInterfaces();
+
+        //接口实例,匿名内部类
+        InvocationHandler invocationHandler = new InvocationHandler() &#123;
+
+            /**
+             * 这个方法的作用就是完成对目标对象的增强，对目标方法增强的整个过程都在这个方法内
+             * @param proxy ：代理对象
+             * @param method ：代理对象的与目标对象实现的共同接口方法字节码对象
+             * @param args ：代理方法字节码对象对应的参数
+             * @return 返回目标对象方法返回值
+             * @throws Throwable
+             */
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;
+
+                System.out.println(&quot;前置通知----&quot;);
+
+                //调用目标对象的方法，接口方法字节码对象调用目标对象的方法
+                Object invoke = method.invoke(object, args);
+
+                System.out.println(&quot;后置通知----&quot;);
+
+                return invoke;
+            &#125;
+        &#125;;
+
+        //这个方法返回的就是一个代理对象
+        Object obj = Proxy.newProxyInstance(classLoader,interfaces,invocationHandler);
+
+        return obj;
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>目标类</strong></p>
+<pre><code class="java">package com.os467.jdkProxy;
+
+/**
+ * 目标类
+ */
+public class ProxyDao implements ProxyInterface &#123;
+
+    /**
+     * 目标类重写的方法
+     * @param food
+     * @return
+     */
+    @Override
+    public String eat(String name,String food) &#123;
+
+        System.out.println(&quot;目标方法中的逻辑&quot;);
+
+        return name+&quot;正在吃&quot;+food;
+
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>共同接口</strong></p>
+<pre><code class="java">package com.os467.jdkProxy;
+
+/**
+ * 代理类和目标类需要实现的共同接口
+ */
+public interface ProxyInterface &#123;
+
+    /**
+     * 吃的方法
+     * @param food
+     * @return
+     */
+    String eat(String name,String food);
+
+&#125;
+</code></pre>
+<p><strong>逻辑发起点</strong></p>
+<pre><code class="java">package com.os467.jdkProxy;
+
+public class Test &#123;
+
+    public static void main(String[] args) &#123;
+
+        //创建目标对象
+        ProxyInterface proxyInterface = new ProxyDao();
+
+        //用于获取代理对象创建类的实例
+        CreateJdkProxy createJdkProxy = new CreateJdkProxy(proxyInterface);
+
+        //调用方法，获取到代理对象
+        ProxyInterface proxy = (ProxyInterface)createJdkProxy.getProxy();
+
+        //调用方法
+        System.out.println(proxy.eat(&quot;张三&quot;,&quot;饭&quot;));
+
+    &#125;
+
+&#125;
+</code></pre>
+<hr>
+<p><strong>InvocationHandler接口</strong> (调用处理程序对象)</p>
+<p>用于返回目标对象方法调用后的<strong>返回值</strong></p>
+<p>需要在创建代理对象的时候作为参数使用，通过<strong>匿名内部类</strong>方式创建实例</p>
+<p>需要重写<strong>invoke</strong>方法，此方法回返值即目标对象方法的返回值</p>
+<p>区分使用<strong>method</strong>字节码对象与使用<strong>invocationHandler</strong>实例调用invoke方法所需要的参数</p>
+<p>假设在代理类中聚合了invocationHandler实例：</p>
+<p>提供<strong>目标类实例</strong>，<strong>参数列表</strong></p>
+<pre><code class="java">Object invoke1 = method.invoke(ProxyDao.class.newInstance(), new Object[]&#123;&#125;);
+</code></pre>
+<p>提供<strong>代理类实例</strong>，<strong>方法字节码对象</strong>，<strong>参数列表</strong></p>
+<pre><code class="java">Object invoke = invocationHandler.invoke(this,method,new Object[]&#123;&#125;);
+</code></pre>
+<p><strong>模拟动态代理在底层的调用</strong></p>
+<pre><code class="java">/**
+ * 模拟jdk动态代理在底层调用过程
+ */
+public class Proxy implements ProxyInterface &#123;
+
+    //聚合调用处理程序对象
+    private InvocationHandler invocationHandler;
+
+    public Proxy(InvocationHandler invocationHandler) &#123;
+
+        this.invocationHandler = invocationHandler;
+
+    &#125;
+
+    @Override
+    public void study() &#123;
+
+        try &#123;
+
+            //先定义目标类方法字节码对象，我们创建接口的方法字节码对象
+            Method method = ProxyInterface.class.getDeclaredMethod(&quot;study&quot;);
+
+            //调用目标类的方法
+            Object invoke = invocationHandler.invoke(this, method, new Object[]&#123;&#125;);
+
+            System.out.println(invoke);
+
+
+        &#125; catch (NoSuchMethodException e) &#123;
+            e.printStackTrace();
+        &#125; catch (Throwable throwable) &#123;
+            throwable.printStackTrace();
+        &#125; 
+
+    &#125;
+&#125;
+</code></pre>
+<h5 id="Cglib动态代理"><a href="#Cglib动态代理" class="headerlink" title="Cglib动态代理"></a>Cglib动态代理</h5><ul>
+<li><p>静态代理和JDK代理模式都要求目标对象是实现一个接口，但是有时候目标对象只是一个单独的对象，并没有实现任何接口，这个时候可以<strong>使用目标对象子类来实现代理</strong> （这就是Cglib代理）</p>
+</li>
+<li><p>Cglib代理也叫做子类代理，它是在内存中构建一个子类对象从而实现对目标对象功能扩展，有些书也将Cglib代理归属到动态代理</p>
+</li>
+<li><p>Cglib是一个强大的高性能的代码生成包，它可以在运行期扩展java类与实现java接口，它广泛的被许多AOP的框架使用，例如Spring AOP，实现方法拦截</p>
+</li>
+<li><p>在AOP编程过程中如何选择代理模式：</p>
+<p>​	1.目标对象需要实现接口，用JDK代理</p>
+<p>​	2.目标对象不需要实现接口，用Cglib代理</p>
+<p>​	</p>
+</li>
+<li><p>Cglib包的底层是通过使用字节码处理框架ASM来转换字节码并生成新的类</p>
+</li>
+</ul>
+<p><strong>目标类</strong></p>
+<pre><code class="java">package com.os467.Cglib;
+
+/**
+ * 目标类
+ */
+public class CglibDao &#123;
+
+    public void getMethod()&#123;
+
+        System.out.println(&quot;需要增强方法的主题内容&quot;);
+
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>创建代理类</strong></p>
+<pre><code class="java">package com.os467.Cglib;
+
+import net.sf.cglib.proxy.Enhancer;
+import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
+
+import java.lang.reflect.Method;
+
+public class CreateCglib implements MethodInterceptor &#123;
+
+    //聚合目标类
+    private Object object;
+
+    public CreateCglib(Object object) &#123;
+        this.object = object;
+    &#125;
+
+    /**
+     * 获取代理对象
+     * @return
+     */
+    public Object getCglibProxy()&#123;
+
+        //创建cglib对象
+        Enhancer enhancer = new Enhancer();
+
+        //设置代理对象的父类
+        enhancer.setSuperclass(object.getClass());
+
+        //设置回调函数
+        enhancer.setCallback(this);
+
+        //创建代理对象并且返回
+        return enhancer.create();
+    &#125;
+
+    /**
+     * 增强目标类
+     * @param o 代理类对象 基本用不到
+     * @param method 代理类方法字节码对象
+     * @param objects 传递的参数
+     * @param methodProxy 基本用不到
+     * @return
+     * @throws Throwable
+     */
+    @Override
+    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable &#123;
+
+        System.out.println(&quot;前置通知---&quot;);
+
+        //调用目标方法
+        Object invoke = method.invoke(object, objects);
+
+        System.out.println(&quot;后置通知---&quot;);
+
+     return invoke;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>测试类</strong></p>
+<pre><code class="java">package com.os467.Cglib;
+
+public class Test &#123;
+
+    public static void main(String[] args) &#123;
+
+        //创建目标对象
+        CglibDao cglibDao = new CglibDao();
+
+        //创建代理对象
+        CreateCglib createCglib = new CreateCglib(cglibDao);
+
+        CglibDao cglibProxy = (CglibDao)createCglib.getCglibProxy();
+
+        cglibProxy.getMethod();
+
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>总结JDK动态代理和Cglib动态代理</strong>：</p>
+<p>​		<strong>相同点</strong>：都是在内存中去创建对象，功能也是一样的，都是完成对目标方法的增强</p>
+<p>​		<strong>不同点</strong>：</p>
+<p>​			<strong>jdk代理</strong>：要求目标类必须实现一个接口，内存中创建出来的代理类也会实现相同的接口</p>
+<p>​			<strong>Cglib代理</strong>：目标类不用实现接口，可以只是一个普通的类，在内存中创建出来的代理类是目标类的子类</p>
+<p><strong>总结</strong>：动态代理实际上都是用于<strong>增强目标方法</strong>，如果需要被增强的类实现了接口，我们需要采用JDK代理，如果没有实现接口，我们采用Cglib代理</p>
+<p><strong>动态代理在以后开发中的作用</strong>：</p>
+<p>​		SpringAop（面向切面编程：底层就是通过代理模式实现的）：</p>
+<p>​		模块1：</p>
+<p>​		模块2：</p>
+<p>​		模块3：</p>
+<p>​		假设某项目有很多模块，每个模块封装了不同的业务逻辑，我们以后使用框架进行开发，目的可以提高开发效率，可以让开发人员只去关注核心业务，不去关注一些非核心业务</p>
+<p>​		<strong>提一个需求</strong>：希望每个模块都能完成日志的收集，当任意一个模块的代码发生了异常，这个时候希望整理成日志文档，方便开发人员排错</p>
+<p>​		<strong>注意</strong>：日志收集的代码不属于核心业务，日志收集的代码是每个模块都需要的</p>
+<p>​		SpringAop可以完成对核心模块的增强：</p>
+<p>​		日志收集的代码（需要对每个模块增强的部分）</p>
+<p>​		<strong>增强的步骤</strong>：</p>
+<p>​				1、获取每个模块的目标方法</p>
+<p>​				2、配置SpringAop的切面 &#x3D;&#x3D;&gt; 切面（指的就是增强的过程）</p>
+<p>​		<strong>切面</strong>：</p>
+<p>​				spring会去校验核心模块中的核心类是否实现了接口，如果实现了，在底层使用jdk代理来完成，如果没有实现，则使用Cglib代理来完成</p>
+<p>核心类实现了接口需要在 invoke 方法当中完成对目标方法的增强</p>
+<p>invoke{ </p>
+<p>日志收集的代码1   </p>
+<p>通过反射机制调用目标方法  </p>
+<p>日志收集的代码2 </p>
+<p>}</p>
+<p>所以说，通过这种方式可以让非核心代码脱离核心模块，而且方便维护，易于管理</p>
+<h3 id="★工厂模式"><a href="#★工厂模式" class="headerlink" title="★工厂模式"></a>★工厂模式</h3><h4 id="普通工厂模式"><a href="#普通工厂模式" class="headerlink" title="普通工厂模式"></a>普通工厂模式</h4><p>是指由一个工厂对象决定创建出哪一种产品类的实例，属于创建型模式</p>
+<p>1、适用于工厂类负责创建的对象较少的场景</p>
+<p>2、且客户端只需要传入工厂类的参数，对于如何创建对象的逻辑不需要关心</p>
+<p>简单工厂模式<strong>缺点</strong>：</p>
+<p>1、工厂类的职责相对过重，增加新的产品时需要<strong>修改工厂类的逻辑判断</strong>，<strong>违背开闭原则</strong>（ocp）</p>
+<p>2、不易于扩展过于复杂的产品结构</p>
+<p>由工厂来为我们生产对象</p>
+<p>生产手机的工厂Phone_Factory：华为、苹果、小米</p>
+<p><strong>普通工厂模式</strong>：根据标识去生产实例</p>
+<pre><code class="java">/**
+ * 生产手机：我们通过普通工厂模式来写这个类
+ */
+public class PhoneFactory &#123;
+
+    /**
+     * 获取手机实例的方法
+     * @return
+     */
+    public Object getPhone(String flag)&#123;
+
+        if (flag.equals(&quot;mi&quot;))&#123;
+
+            //返回小米的实例
+            return new Mi();
+
+        &#125;else if (flag.equals(&quot;huawei&quot;))&#123;
+
+            //返回的是苹果的实例
+            return new HuaWei();
+
+        &#125;else if (flag.equals(&quot;iphone&quot;))&#123;
+
+            //返回的是苹果的实例
+            return new Iphone();
+
+        &#125;
+
+        return null;
+    &#125;
+
+&#125;
+</code></pre>
+<pre><code class="java">/**
+ * 需求：通过工厂获取手机实例
+ */
+public class FactoryTest01 &#123;
+
+    public static void main(String[] args) &#123;
+
+        //创建工厂对象
+        PhoneFactory phoneFactory = new PhoneFactory();
+
+        //获取华为实例
+        HuaWei huawei = (HuaWei)phoneFactory.getPhone(&quot;huawei&quot;);
+
+        huawei.make();
+
+        //获取小米的实例
+        Mi mi = (Mi)phoneFactory.getPhone(&quot;mi&quot;);
+
+        mi.make();
+
+    &#125;
+
+&#125;
+</code></pre>
+<p>工厂模式为了避免程序过多的使用<strong>new关键字</strong>来创建对象，这样会产生耦合</p>
+<hr>
+<h4 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h4><ul>
+<li><p>是指定义一个创建对象的接口，但让实现这个接口的类来决定实例化哪个类，工厂方法让类的实例化推迟到子类中进行</p>
+</li>
+<li><p>用户只需要关心所需产品对应的工厂，无需关心创建的细节，而且加入新的产品符合开闭原则</p>
+</li>
+</ul>
+<pre><code class="java">/**
+ * 生产手机：我们通过工厂方法模式来写这个类
+ */
+public class PhoneFactory2 &#123;
+
+    /**
+     * 获取小米手机实例的方法
+     * @return
+     */
+    public Phone getMi()&#123;
+
+        return new Mi();
+    &#125;
+
+    /**
+     * 获取华为手机实例的方法
+     * @return
+     */
+    public Phone getHuaWei()&#123;
+
+        return new HuaWei();
+    &#125;
+
+    /**
+     * 获取苹果手机实例的方法
+     * @return
+     */
+    public Phone getIphone()&#123;
+
+        return new Iphone();
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>产品需要实现的接口</strong></p>
+<pre><code class="java">public interface Phone &#123;
+
+    void make();
+
+&#125;
+</code></pre>
+<p><strong>测试类</strong></p>
+<pre><code class="java">/**
+ * 需求：通过工厂获取手机实例
+ */
+public class FactoryTest02 &#123;
+
+    public static void main(String[] args) &#123;
+
+        //创建工厂对象
+        PhoneFactory2 phoneFactory2 = new PhoneFactory2();
+
+        //获取华为实例
+        Phone huaWei = phoneFactory2.getHuaWei();
+
+        huaWei.make();
+
+        //获取华为实例
+        Phone iphone = phoneFactory2.getIphone();
+
+        iphone.make();
+
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<p><strong>静态工厂</strong></p>
+<p>将工厂类中的方法加上<strong>static关键字</strong>，这样就不需要创建工厂对象</p>
+<hr>
+<h4 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h4><p>是指<strong>提供</strong>一个创建一系列相关或者相互依赖对象的<strong>接口</strong>，无需指定他们具体的类</p>
+<p><strong>抽象工厂模式使用场景</strong>：</p>
+<p>1、客户端（应用层）不依赖于产品类实例如何被创建，实现等细节</p>
+<p>2、强调一系列相关的产品对象（属于同一产品族）一起使用创建对象需要大量重复的代码</p>
+<p>3、提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体的实现</p>
+<p><strong>抽象工厂模式优点</strong>：</p>
+<p>1、具体产品在应用层代码隔离，无需关系创建细节</p>
+<p>2、将一个系列的产品族统一到一起创建</p>
+<p>抽象工厂模式要求工厂和产品<strong>都需要基于接口开发</strong></p>
+<p><strong>工厂类需要实现的工厂接口</strong></p>
+<pre><code class="java">/**
+ * 所有工厂都需要去实现的接口
+ *
+ *  工厂是用来生产产品的
+ */
+public interface Factory &#123;
+
+    /**
+     * 制作手机的方法
+     */
+    Phone makePhone(String className);
+
+&#125;
+</code></pre>
+<p><strong>产品需要实现的接口</strong></p>
+<pre><code class="java">public interface Phone &#123;
+
+    void make();
+
+&#125;
+</code></pre>
+<p><strong>创建手机工厂类实现工厂接口</strong></p>
+<pre><code class="java">/**
+ * 生产手机：通过抽象工厂模式来写这个类
+ */
+public class PhoneFactory3 implements Factory&#123;
+
+    /**
+     * 用于生产手机的方法
+     * @param className
+     * @return
+     */
+    @Override
+    public Phone makePhone(String className) &#123;
+
+        if (className != null)&#123;
+
+            try &#123;
+
+                //获取字节码对象
+                Class&lt;?&gt; aClass = Class.forName(className);
+
+                //通过反射机制来创建实例
+                Object o = aClass.newInstance();
+
+                if (o instanceof Phone)&#123;
+
+                    return (Phone)o;
+
+                &#125;
+
+            &#125; catch (ClassNotFoundException e) &#123;
+                e.printStackTrace();
+            &#125; catch (IllegalAccessException e) &#123;
+                e.printStackTrace();
+            &#125; catch (InstantiationException e) &#123;
+                e.printStackTrace();
+            &#125;
+
+
+        &#125;
+
+        return null;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>测试类</strong></p>
+<pre><code class="java">/**
+ * 需求：通过抽象工厂获取手机实例
+ */
+public class FactoryTest03 &#123;
+
+    public static void main(String[] args) &#123;
+
+        Factory factory = new PhoneFactory3();
+
+        Phone phone = factory.makePhone(&quot;com.os467.phone.Mi&quot;);
+
+        phone.make();
+
+    &#125;
+&#125;
+</code></pre>
+
+    </div>
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+    <div id="comment">
+        <div id="gitalk-container">
+        </div>
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2022 Tly的博客
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @Os467
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+<script>
+    var clientID = "", clientSecret = "";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "",
+        owner: "",
+        admin: [""],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: true
+    })
+    gitalk.render("gitalk-container")
+</script>
+
+
+    </body>
+</html>
