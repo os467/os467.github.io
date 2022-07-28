@@ -142,6 +142,401 @@
             
 
 <div class="post">
+    <a href="/2022/07/06/cookie和session/">
+        <h2>
+            Cookie和session
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/7/6
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><p>Cookie 是服务器通知客户端保存键值对的一种技术</p>
+<p>客户端</p>
+<p>有了Cookie后，每次请求都发送给服务器</p>
+<p>每个Cookie的大小不能超过4kb</p>
+<p>1.什么是cookie？</p>
+<p>​	cookie是客户端保存数据的一种技术，而且保存的方式是键值对形式</p>
+<p>2.如何去创建cookie，在客户端保存数据</p>
+<p>​	cookie这个对象是servlet的jar包给我们提供的，我们只需要去创建cookie，并且通知浏览器保存cookie就可了</p>
+<p>创建cookie对象</p>
+<p><code>Cookie cookie = new Cookie(&quot;key&quot;,&quot;value&quot;);</code></p>
+<p>通知浏览器保存cookie</p>
+<p><code>response.addCookie(cookie);</code></p>
+<p>3.cookie的生命周期</p>
+<p>​	cookie默认的生命周期是一个session级别的，是浏览器的开启到关闭</p>
+<p>服务器获取Cookie</p>
+<p>​	获取cookie方法</p>
+<p>​	<code>request.getCookies()</code></p>
+<pre><code class="java">package com.os467.cookie;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+public class CookieDemo01 extends HttpServlet &#123;
+
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+
+        addCookie(request,response);
+        getCookies(request,response);
+
+        getCookieFilter(request,response);
+    &#125;
+
+    /**
+     * 向客户端添加cookie
+     * @param request
+     * @param response
+     */
+    public void addCookie(HttpServletRequest request,HttpServletResponse response)&#123;
+
+        //创建cookie对象
+        Cookie cookie1 = new Cookie(&quot;username&quot;,&quot;tom&quot;);
+        Cookie cookie2 = new Cookie(&quot;password&quot;,&quot;123&quot;);
+        Cookie cookie3 = new Cookie(&quot;address&quot;,&quot;beijing&quot;);
+        Cookie cookie4 = new Cookie(&quot;idCard&quot;,&quot;123124325&quot;);
+
+
+        //通知浏览器保存cookie
+        response.addCookie(cookie1);
+        response.addCookie(cookie2);
+        response.addCookie(cookie3);
+        response.addCookie(cookie4);
+
+    &#125;
+
+
+    /**
+     * 获取单个cookie的方式，只能通过遍历cookie数组，然后进行过滤
+     * @param request
+     * @param response
+     */
+    public void getCookieFilter(HttpServletRequest request,HttpServletResponse response)&#123;
+
+        //根据请求对象获取客户端的cookie
+        Cookie[] cookies = request.getCookies();
+
+        //遍历cookie数组
+        for (Cookie cookie : cookies) &#123;
+
+            if(cookie.getName().equals(&quot;username&quot;))&#123;
+
+                //设置响应对象支持html文本
+                response.setContentType(&quot;text/html;charset=utf-8&quot;);
+
+                //cookie.getName()获取cookie的key
+                //cookie.getValue()获取cookie的value
+                try &#123;
+                    response.getWriter().print(cookie.getName()+&quot; &quot;+cookie.getValue()+&quot;&lt;br&gt;&quot;);
+                &#125; catch (IOException e) &#123;
+                    e.printStackTrace();
+                &#125;
+
+            &#125;
+
+        &#125;
+
+    &#125;
+
+
+    /**
+     * 获取浏览器端所有的cookie
+     *
+     * 获取cookie没有提供获取单个cookie的方法，只能获取所有然后再筛选出需要的cookie
+     * @param request
+     * @param response
+     */
+    public void getCookies(HttpServletRequest request,HttpServletResponse response)&#123;
+
+        //根据请求对象获取客户端的cookie
+        Cookie[] cookies = request.getCookies();
+
+        //遍历cookie数组
+        for (Cookie cookie : cookies) &#123;
+
+            //设置响应对象支持html文本
+            response.setContentType(&quot;text/html;charset=utf-8&quot;);
+
+            //cookie.getName()获取cookie的key
+            //cookie.getValue()获取cookie的value
+            try &#123;
+                response.getWriter().print(cookie.getName()+&quot; &quot;+cookie.getValue()+&quot;&lt;br&gt;&quot;);
+            &#125; catch (IOException e) &#123;
+                e.printStackTrace();
+            &#125;
+
+        &#125;
+
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="Cookie值的修改"><a href="#Cookie值的修改" class="headerlink" title="Cookie值的修改"></a>Cookie值的修改</h2><p>方案一</p>
+<p>1.先创建一个要修改的同名Cookie对象</p>
+<p>2.再构造器，同时赋予新的Cookie值</p>
+<p>3.调用response.addCookie(Cookie)</p>
+<p>方案二</p>
+<p>1.先查找到需要修改的Cookie对象</p>
+<p>2.调用setValue()方法赋予新的Cookie值</p>
+<p>3.调用response.addCookie()通知客户端保存修改</p>
+<pre><code class="java">/**
+ * 修改对象的cookie值
+ * @param request
+ * @param response
+ */
+public void setCookie(HttpServletRequest request,HttpServletResponse response)&#123;
+
+    //把username的值改成jack
+    Cookie cookie1 = new Cookie(&quot;username&quot;, &quot;jack&quot;);
+
+    //通知浏览器保存cookie
+    response.addCookie(cookie1);
+
+    //将密码改成654321
+
+    //先获取浏览器所有的cookie
+    Cookie[] cookies = request.getCookies();
+
+    Cookie c = null;
+
+    //遍历cookie
+    for (Cookie cookie : cookies) &#123;
+
+        if (cookie.getName().equals(&quot;password&quot;))&#123;
+
+            cookie.setValue(&quot;654321&quot;);
+
+            c = cookie;
+
+        &#125;
+
+    &#125;
+
+    //通知浏览器保存cookie
+    response.addCookie(c);
+
+&#125;
+</code></pre>
+<h2 id="封装Cookie工具类"><a href="#封装Cookie工具类" class="headerlink" title="封装Cookie工具类"></a>封装Cookie工具类</h2><p>Cookie类无法获取浏览器端单个cookie，每次需要去遍历，因此我们选择把对cookie的操作封装成一个工具类</p>
+<pre><code class="java">package com.os467.utils;
+
+import javax.servlet.http.Cookie;
+
+/**
+ *根据cookie的key来找到某一个具体的cookie,因为api中我们只能获取所有cookie
+ * 获取单个cookie的话只能通过标识去过滤，这样就很麻烦，所以我们可以封装一个工具类
+ * 来提高开发速率
+ */
+public class FindCookieUtils &#123;
+
+    //构造方法私有化
+    private FindCookieUtils()&#123;
+
+    &#125;
+
+    /**
+     * 根据key来获取cookie
+     * @return
+     */
+    public static Cookie findCookie(Cookie[] cookies,String name)&#123;
+
+        if (cookies == null || cookies.length == 0 || name == null)&#123;
+
+            return null;
+
+        &#125;
+
+        //遍历cookie数组
+        for (Cookie cookie : cookies) &#123;
+
+            if (cookie.getName().equals(name))&#123;
+
+                return cookie;
+
+            &#125;
+
+        &#125;
+
+        return null;
+
+
+    &#125;
+
+
+&#125;
+</code></pre>
+<h2 id="Cookie的生命周期"><a href="#Cookie的生命周期" class="headerlink" title="Cookie的生命周期"></a>Cookie的生命周期</h2><p>cookie默认的生命周期是一个session级别的，是浏览器的开启到关闭</p>
+<h3 id="Cookie生命控制"><a href="#Cookie生命控制" class="headerlink" title="Cookie生命控制"></a>Cookie生命控制</h3><p><code>setMaxAge()</code></p>
+<p>正数，表示在指定的秒数后过期</p>
+<p>负数，表示浏览器一关，Cookie就会被删除（默认值是-1）</p>
+<p>零，表示马上删除Cookie</p>
+<p><strong>设置cookie的生命周期</strong></p>
+<pre><code class="java">/**
+ * 设置cookie的生命周期
+ * @param request
+ * @param response
+ */
+public void setMaxAgeCookie(HttpServletRequest request,HttpServletResponse response)&#123;
+
+    //1.将所有的cookie的生命周期设置为一年
+    for (Cookie cookie : request.getCookies()) &#123;
+
+        cookie.setMaxAge(60 * 60 * 24 * 365);
+
+        //通知浏览器保存cookie
+        response.addCookie(cookie);
+
+    &#125;
+
+    //将密码所对应的cookie的生命周期改为一周
+    Cookie cookie = FindCookieUtils.findCookie(request.getCookies(), &quot;password&quot;);
+
+    //修改生命周期
+    cookie.setMaxAge(60 * 60 * 24 * 7);
+
+    //通知浏览器保存
+    response.addCookie(cookie);
+
+&#125;
+</code></pre>
+<p><strong>删除一个具体的cookie</strong></p>
+<pre><code class="java">/**
+ * 删除一个具体的cookie
+ * @param request
+ * @param response
+ */
+public void deleteCookie(HttpServletRequest request,HttpServletResponse response) &#123;
+
+    //删除idCard所对应的cookie
+    Cookie cookie = FindCookieUtils.findCookie(request.getCookies(), &quot;idCard&quot;);
+
+    cookie.setMaxAge(0);
+
+    //通知浏览器保存cookie
+
+    response.addCookie(cookie);
+
+&#125;
+</code></pre>
+<h1 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h1><p>Session是一个接口（HttpSession）</p>
+<p>Session就是会话，它是用来维护一个客户端和服务器之间关联的一种技术</p>
+<p>每个客户端都有自己的一个Session会话</p>
+<p>Session会话中，我们经常用来保存用户登录之后的信息</p>
+<p>session是在服务端保存数据的一种技术，而且session可以关联客户端和服务端</p>
+<p>session跟cookie是有关系的</p>
+<p>以后会用session来保存用户登录之后的用户信息，我们之前所完成的登录功能是不完整的</p>
+<p>前端校验会话中是否有用户数据，如果有，才能登录成功</p>
+<p><strong>如何去创建session对象？</strong></p>
+<p>创建session对象，需要用到request对象</p>
+<p><code>HttpSession session = request.getSession()</code></p>
+<p>session也可以说是一个域对象，可以存取值，取值范围，是浏览器的开启到关闭</p>
+<p><code>request.getSession()</code>第一次调用是：创建Session会话</p>
+<p><code>isNew()</code>判断到底是不是刚创建出来的</p>
+<p><code>getId()</code>得到Session的会话id值</p>
+<p>session对象是一个<strong>单例</strong>的对象</p>
+<h2 id="Session域数据的存取"><a href="#Session域数据的存取" class="headerlink" title="Session域数据的存取"></a>Session域数据的存取</h2><pre><code class="java">//存数据
+request.getSession().setAttribute(&quot;key&quot;,&quot;value&quot;);
+
+//取数据
+request.getSession().getAttribute(&quot;key&quot;);
+</code></pre>
+<h2 id="Session生命周期"><a href="#Session生命周期" class="headerlink" title="Session生命周期"></a>Session生命周期</h2><h3 id="Session生命周期控制"><a href="#Session生命周期控制" class="headerlink" title="Session生命周期控制"></a>Session生命周期控制</h3><p><code>public void setMaxInactiveInterval(int interval)</code></p>
+<p>设置Session的超时时间，超过指定的时长，Session就会被销毁</p>
+<p>值为正数的时候，设定Session的超时时长，负数表示永不超时</p>
+<p><code>getMaxInactiveInterval()</code>获取Session的超时时间</p>
+<p><code>invalidate()</code>让当前Session会话马上超时无效</p>
+<p>session默认超时时间是<strong>30分钟</strong></p>
+<p><strong>设置生命周期与cookie区别：</strong></p>
+<p>负数，cookie代表浏览器关闭则删除，session代表永不超时</p>
+<p>删除cookie可以设置0，删除session不可以，需要用指定的方法</p>
+<h4 id="设置session的超时时间"><a href="#设置session的超时时间" class="headerlink" title="设置session的超时时间"></a>设置session的超时时间</h4><p><strong>设置session的超时时间</strong></p>
+<pre><code class="java">session.setMaxInactiveInterval(3600 * 24);
+</code></pre>
+<p><strong>通过配置文件设置默认超时时间</strong></p>
+<p>xml中配置是按照<strong>分钟</strong>配置的</p>
+<pre><code class="xml">&lt;!--配置默认的超时时间--&gt;
+&lt;session-config&gt;
+    &lt;session-timeout&gt;45&lt;/session-timeout&gt;
+&lt;/session-config&gt;
+</code></pre>
+<p><strong>让当前的session立即超时无效</strong></p>
+<p>这个方法在以后做注销的时候会用到</p>
+<pre><code class="java">session.invalidate();
+</code></pre>
+<pre><code class="java">public class SessionDemo01 extends HttpServlet &#123;
+
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+
+        response.setContentType(&quot;text/html;charset=utf-8&quot;);
+
+        //创建session对象
+        HttpSession session = request.getSession();
+        HttpSession session2 = request.getSession();
+
+        /*session.setMaxInactiveInterval(3600 * 24);*/
+
+
+        response.getWriter().print(&quot;session是否是新创建的：&quot;+session.isNew()+&quot;&lt;br&gt;&quot;);
+
+        response.getWriter().print(&quot;session的会话id值为：&quot;+session.getId()+&quot;&lt;br&gt;&quot;);
+
+        response.getWriter().print(&quot;session对象是否是单例的：&quot;+ (session == session2)+&quot;&lt;br&gt;&quot;);
+
+        //往session域中存数据
+        session.setAttribute(&quot;key1&quot;,&quot;value1&quot;);
+        session.setAttribute(&quot;key2&quot;,&quot;value2&quot;);
+
+        //取出session中的数据
+        response.getWriter().print(&quot;取出session中key1的数据&quot;+session.getAttribute(&quot;key1&quot;)+&quot;&lt;br&gt;&quot;);
+
+        response.getWriter().print(&quot;取出session中key2的数据&quot;+session.getAttribute(&quot;key2&quot;)+&quot;&lt;br&gt;&quot;);
+
+        //获取session超时时间
+        response.getWriter().print(&quot;session默认超时时间&quot;+session.getMaxInactiveInterval()+&quot;&lt;br&gt;&quot;);
+
+    &#125;
+&#125;
+</code></pre>
+<h1 id="session和cookie的关系和区别"><a href="#session和cookie的关系和区别" class="headerlink" title="session和cookie的关系和区别"></a>session和cookie的关系和区别</h1><h2 id="session和cookie的关系"><a href="#session和cookie的关系" class="headerlink" title="session和cookie的关系"></a>session和cookie的关系</h2><p>cookie保存数据的原理就是通过http协议响应头的方式把数据传递过去</p>
+<p>在浏览器访问服务端的时候，假设我们并没有手动的去创建session对象，但是我们在响应头会发现一个现象：会有一个<strong>set-cookie : JESSIONID &#x3D; 74045E2CC5F9FA30EE9CEBE1D092E1CD</strong></p>
+<p>JSEEIONID &#x3D; session的会话id</p>
+<p>所以说要想获得会话id，就必须得有session对象</p>
+<p>总结：浏览器访问服务端的时候，会自动的去创建session会话id，自动生成会话id，然后在底层通过创建cookie对象的方式将会话id保存下来</p>
+<p><code>Cookie cookie = new Cookie(&quot;JESSIONID&quot;,session的会话id)</code></p>
+<h2 id="session和cookie的区别"><a href="#session和cookie的区别" class="headerlink" title="session和cookie的区别"></a>session和cookie的区别</h2><p><strong>cookie</strong></p>
+<p>​		cookie是客户端保存数据的技术：只能去存放一些最基本的字符串，json串，不能存放java对象</p>
+<p>​		cookie相对来说不安全，因为数据存在浏览器的内存里面，所以可以通过一些途径来获取到这些数据</p>
+<p><strong>session</strong></p>
+<p>​		session是服务端保存数据的技术，可以存放的数据类型有很多，String、List、Map、java对象</p>
+<p>​		session相对来说是安全的，但是会占用服务器的资源，cookie是不会占用服务器资源的</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2022/07/06/cookie和session/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
     <a href="/2022/07/02/servlet/">
         <h2>
             Servlet
