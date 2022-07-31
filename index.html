@@ -142,6 +142,1115 @@
             
 
 <div class="post">
+    <a href="/2022/07/31/MyBatis/">
+        <h2>
+            MyBatis
+        </h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/7/31
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h1><h2 id="MyBatis简介"><a href="#MyBatis简介" class="headerlink" title="MyBatis简介"></a>MyBatis简介</h2><p>MyBatis是一款优秀的<strong>持久层框架</strong>，它支持自定义SQL、存储过程以及高级映射，MyBatis免除了几乎所有的JDBC代码以及设置参数和获取结果集的工作，MyBatis可以通过简单的<strong>XML</strong>或<strong>注解</strong>来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录，MyBatis本是apache的一个开源项目<strong>ibatis</strong>，2010年这个项目由apache迁移到了google code，并且<strong>改名为MyBatis</strong> (ORM 对象关系映射)</p>
+<p>在spring中学到的jdbcTemplate只是一个工具类，只能去写和增删改查相关的功能，和框架是有区别的</p>
+<ul>
+<li><p>Mybatis就是帮助程序员将数据存入数据库中，和从数据库中取数据</p>
+</li>
+<li><p>传统的jdbc操作，有很多重复代码块，比如：数据取出时的封装，数据库的建立链接等，通过框架可以减少重复代码，提高开发效率</p>
+</li>
+<li><p>MyBatis是一个<strong>半自动化</strong>的<strong>ORM框架</strong>（Object Relationship Mapping 对象关系映射）</p>
+</li>
+</ul>
+<p><strong>半自动的好处</strong>：相比hibernet的全自动ORM，MyBatis支持手动写sql，我们在后续优化项目的时候可以通过sql语句优化来提高程序的整体执行效率</p>
+<p>通过xml配置，实现了sql语句和核心代码模块的分离</p>
+<p>如果使用 Maven 来构建项目，则需将下面的依赖代码置于 pom.xml 文件中：</p>
+<pre><code class="xml"> &lt;!--导入MyBatis坐标--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+            &lt;version&gt;3.5.0&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!--导入数据库驱动--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;version&gt;8.0.22&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!--导入日志依赖，需要log4j.properties文件支持--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;log4j&lt;/groupId&gt;
+            &lt;artifactId&gt;log4j&lt;/artifactId&gt;
+            &lt;version&gt;1.2.17&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!--单元测试依赖--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;junit&lt;/groupId&gt;
+            &lt;artifactId&gt;junit&lt;/artifactId&gt;
+            &lt;version&gt;4.13.2&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<h3 id="MyBatis的核心配置文件"><a href="#MyBatis的核心配置文件" class="headerlink" title="MyBatis的核心配置文件"></a>MyBatis的核心配置文件</h3><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE configuration
+  PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+  &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;configuration&gt;
+  &lt;environments default=&quot;development&quot;&gt;
+    &lt;environment id=&quot;development&quot;&gt;
+        &lt;!--
+            开启事务，默认开启事务，type：事务类型
+        --&gt;
+      &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+            &lt;!--
+                配置数据源信息
+                POOLED：采用链接池的形式
+            --&gt;
+      &lt;dataSource type=&quot;POOLED&quot;&gt;
+        &lt;property name=&quot;driver&quot; value=&quot;$&#123;driver&#125;&quot;/&gt;
+        &lt;property name=&quot;url&quot; value=&quot;$&#123;url&#125;&quot;/&gt;
+        &lt;property name=&quot;username&quot; value=&quot;$&#123;username&#125;&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;$&#123;password&#125;&quot;/&gt;
+      &lt;/dataSource&gt;
+    &lt;/environment&gt;
+  &lt;/environments&gt;
+  &lt;mappers&gt;
+    &lt;mapper resource=&quot;org/mybatis/example/BlogMapper.xml&quot;/&gt;
+  &lt;/mappers&gt;
+&lt;/configuration&gt;
+</code></pre>
+<p>​	&#x3D;&#x3D;与spring中的dataSource数据源不同，驱动的name属性不是driverClassName，而是driver，我们要依照MyBatis官网提供的属性名称来写标签&#x3D;&#x3D;</p>
+<p>MyBatis采用了池的思想，将数据库链接对象</p>
+<p>environment 元素体中包含了事务管理和连接池的配置，mappers 元素则包含了一组映射器（mapper），这些映射器的 XML 映射文件包含了 SQL 代码和映射定义信息</p>
+<h4 id="读取数据源数据"><a href="#读取数据源数据" class="headerlink" title="读取数据源数据"></a>读取数据源数据</h4><p><strong>属性（properties）</strong></p>
+<ul>
+<li>这些属性可以在外部进行配置，并可以进行动态替换（在配置文件中使用el表达式<code>$&#123;&#125;</code>来获取到值）</li>
+<li>你既可以在典型的 Java 属性文件中配置这些属性，也可以在 properties 标签的内部标签property中设置</li>
+</ul>
+<p><strong>属性配置文件</strong></p>
+<pre><code class="properties">db.url=jdbc:mysql://localhost:3306/web_test?serverTimezone=GMT&amp;characterEncoding=utf-8
+db.driver=com.mysql.cj.jdbc.Driver
+db.username=root
+db.password=root
+</code></pre>
+<p><strong>resource属性</strong>：引用外部配置文件，相对路径、绝对路径</p>
+<pre><code class="xml">&lt;!--用于读取外部配置文件--&gt;
+&lt;properties resource=&quot;db.properties&quot;&gt;
+  &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+  &lt;property name=&quot;password&quot; value=&quot;root&quot;/&gt;
+&lt;/properties&gt;
+</code></pre>
+<h5 id="类型别名（typeAliases）"><a href="#类型别名（typeAliases）" class="headerlink" title="类型别名（typeAliases）"></a>类型别名（typeAliases）</h5><p>在<code>&lt;configuration&gt;</code>标签中配置</p>
+<p>类型别名可给类起别名，它仅用于 XML 配置，意在降低冗余的全限定类名书写</p>
+<p><strong>这样我们在mapper映射文件中就能使用别名了</strong></p>
+<pre><code class="xml">&lt;!--给实体类定义别名--&gt;
+&lt;typeAliases&gt;
+
+    &lt;!--给具体的实体定义别名--&gt;
+    &lt;typeAlias type=&quot;com.os467.pojo.Emp&quot; alias=&quot;emp&quot;&gt;&lt;/typeAlias&gt;
+
+    &lt;!--给指定包下面的实体定义别名，默认的别名就是类名，而且是不区分大小写的--&gt;
+    &lt;package name=&quot;com.os467&quot;&gt;&lt;/package&gt;
+
+&lt;/typeAliases&gt;
+</code></pre>
+<p>mapper文件中使用别名：</p>
+<pre><code class="xml">&lt;select id=&quot;getEmpList&quot; resultType=&quot;emp&quot; resultMap=&quot;getEmpListMap&quot;&gt;
+</code></pre>
+<h3 id="SqlSessionFactory"><a href="#SqlSessionFactory" class="headerlink" title="SqlSessionFactory"></a>SqlSessionFactory</h3><p>SqlSessionFactory的实例是MyBatis应用的<strong>核心</strong>，SqlSessionFactory的实例可以通过SqlSessionFactoryBuilder获得，而SqlSessionFactoryBuilder则可以从XML配置文件或一个预先配置的Configuration实例来构建出SqlSessionFactory实例</p>
+<p>从 XML 文件中构建 SqlSessionFactory 的实例非常简单，建议使用类路径下的资源文件进行配置，但也可以使用任意的<strong>输入流</strong>（InputStream）实例，比如用文件路径字符串或 file:&#x2F;&#x2F; URL 构造的输入流，MyBatis 包含一个名叫 <strong>Resources 的工具类</strong>(使用的是org.apache.ibatis.io包下的类)，它包含一些实用方法，使得从类路径或其它位置加载资源文件更加容易</p>
+<pre><code class="java">//资源路径
+String resource = &quot;org/mybatis/example/mybatis-config.xml&quot;;
+
+//读取配置文件
+InputStream inputStream = Resources.getResourceAsStream(resource);
+
+//创建SqlSessionFactory实例
+SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+</code></pre>
+<p>MyBatis在底层会通过<strong>动态代理</strong>为持久层接口创建对应的实现类（<strong>接口代理</strong>）</p>
+<p>测试类：</p>
+<pre><code class="java">InputStream resourceAsStream = null;
+SqlSession sqlSession = null;
+
+try &#123;
+
+    //根据流对象来解析mybatis核心配置文件，读取相关数据
+    resourceAsStream = Resources.getResourceAsStream(&quot;mybatis-config.xml&quot;);
+
+    //创建sqlSessionFactory工厂对象
+    SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+
+    //将sqlSession对象从工厂中取出来
+    sqlSession = sqlSessionFactory.openSession();
+
+    //mybatis在底层会通过动态代理为持久层接口创建对应的实现类
+    UserDao userDao = sqlSession.getMapper(UserDao.class);
+
+    //调用查询用户信息的方法
+    List&lt;User&gt; userList = userDao.getUserList();
+
+    //遍历集合
+    for (User user : userList) &#123;
+
+        System.out.println(user);
+
+    &#125;
+
+&#125; catch (IOException e) &#123;
+    e.printStackTrace();
+&#125;finally &#123;
+
+    //关闭资源
+    if (resourceAsStream != null)&#123;
+
+        try &#123;
+            resourceAsStream.close();
+        &#125; catch (IOException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+    &#125;
+
+    if (sqlSession != null)&#123;
+
+        sqlSession.close();
+
+    &#125;
+
+
+&#125;
+</code></pre>
+<h3 id="配置Mapper文件"><a href="#配置Mapper文件" class="headerlink" title="配置Mapper文件"></a>配置Mapper文件</h3><p>mapper文件存放sql资源，在Resource文件下mapper<strong>文件资源路径</strong>必须和持<strong>久层接口的包结构相同</strong></p>
+<p>Resource中的包结构以<strong>文件夹</strong>的形式创建，不能以”.”的方式分隔</p>
+<p><em>可以将映射文件命名为持久层接口名+Mapper的形式</em></p>
+<pre><code class="xml">&lt;!--映射一个mapper文件--&gt;
+&lt;mappers&gt;
+    &lt;mapper resource=&quot;&quot;&gt;&lt;/mapper&gt;
+&lt;/mappers&gt;
+</code></pre>
+<p><strong>引入映射文件约束</strong></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper
+        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+
+&lt;!--namespace就是持久层接口的全类名--&gt;
+&lt;mapper namespace=&quot;&quot;&gt;
+
+&lt;/mapper&gt;
+</code></pre>
+<h3 id="配置sql语句"><a href="#配置sql语句" class="headerlink" title="配置sql语句"></a>配置sql语句</h3><p>详细参考官方文档：<a target="_blank" rel="noopener" href="https://mybatis.net.cn/sqlmap-xml.html">https://mybatis.net.cn/sqlmap-xml.html</a></p>
+<h4 id="查询语句"><a href="#查询语句" class="headerlink" title="查询语句"></a>查询语句</h4><p><code>&lt;select&gt;</code> 标签用于编写查询语句</p>
+<p><strong>id</strong>：<strong>必须</strong>是接口中的方法名称</p>
+<p><strong>resultType属性</strong>：需要将映射实体的全类名传过来</p>
+<p><strong>resultMap属性</strong>：自定义的字段映射规则，如果没有定义的字段就按照默认的映射规则,需要传入resultMap的<strong>id值</strong></p>
+<p><strong>parameterType属性</strong>：如果有参数需要把参数的全类名传过来</p>
+<pre><code class="xml">&lt;mapper namespace=&quot;com.os467.dao.UserDao&quot;&gt;
+
+    &lt;!--查询所有的用户数据--&gt;
+    &lt;select id=&quot;getUserList&quot;&gt;
+        
+        select * from tb_user
+        
+    &lt;/select&gt;
+
+&lt;/mapper&gt;
+</code></pre>
+<p><strong>默认映射规则</strong>：</p>
+<ul>
+<li>当数据库中的字段名和实体类的<strong>属性名一致</strong>的时候，类型映射器将<strong>自动赋值</strong>，并返回一个完整的User对象</li>
+<li>而当有属性名和字段名<strong>不一致</strong>的时候，自动赋值无法完成，会出现<strong>属性值为空</strong>的情况</li>
+</ul>
+<p><strong>解决方案</strong></p>
+<p><strong>1、在sql语句中使用别名</strong></p>
+<p>这种方式就不能用*，比较麻烦</p>
+<pre><code class="xml">&lt;select id=&quot;getEmpList&quot; resultType=&quot;com.os467.pojo.Emp&quot;&gt;        select emp_name as empName from emp 
+&lt;/select&gt;
+</code></pre>
+<p><strong>2、设置映射结果集，自定义映射关</strong></p>
+<p>在select标签中添加resultMap属性，引入自定义的映射结果集</p>
+<p>以下将字段中的emp_name映射到实例中的empName，没有设置映射关系的就按照默认的映射规则</p>
+<pre><code class="xml">&lt;select id=&quot;getEmpList&quot; resultType=&quot;com.os467.pojo.Emp&quot; resultMap=&quot;empMap&quot;&gt;
+
+    select * from emp
+
+&lt;/select&gt;
+
+&lt;!--映射结果集--&gt;
+&lt;resultMap id=&quot;empMap&quot; type=&quot;com.os467.pojo.Emp&quot;&gt;
+
+    &lt;!--匹配主键字段--&gt;
+     &lt;id column=&quot;eid&quot; property=&quot;id&quot;&gt;&lt;/id&gt;
+    
+    &lt;!--匹配非主键字段，column是字段名，property对应属性名--&gt;
+    &lt;result column=&quot;emp_name&quot; property=&quot;empName&quot;&gt;&lt;/result&gt;
+
+&lt;/resultMap&gt;
+</code></pre>
+<h5 id="底层模拟"><a href="#底层模拟" class="headerlink" title="底层模拟"></a>底层模拟</h5><p><strong>模拟SqlSession中getMapper方法底层：</strong></p>
+<p>模拟一个mybatis通过反射创建的持久层接口实现类，通过聚合sqlSession读取mapper文件来映射对应的sql并且返回结果</p>
+<pre><code class="java">package com.os467.mapper;
+
+import com.os467.pojo.User;
+import org.apache.ibatis.session.SqlSession;
+
+import java.util.List;
+
+/**
+ * 假如这个类就是mybatis底层创建出来的实现类
+ */
+public class UserMapperImpl implements UserMapper &#123;
+
+    private SqlSession sqlSession;
+
+    public UserMapperImpl(SqlSession sqlSession) &#123;
+        this.sqlSession = sqlSession;
+    &#125;
+
+    /**
+     * 查询所有的用户数据
+     * @return
+     */
+    public List&lt;User&gt; getUserList() &#123;
+
+        //读取mapper文件，根据全局标识来映射到对应的sql，底层类似dom4j解析
+        List&lt;User&gt; userList = sqlSession.selectList(&quot;com.os467.mapper.UserMapper.getUserList&quot;);
+
+        return userList;
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>测试：</strong></p>
+<pre><code class="java">//创建一个持久层的实现类的实例
+UserMapper userMapper = new UserMapperImpl(sqlSession);
+
+List&lt;User&gt; userList = userMapper.getUserList();
+
+for (User user : userList) &#123;
+
+    System.out.println(user);
+
+&#125;
+</code></pre>
+<p>单元测试中的Before和After标签：</p>
+<p>可以减少测试方法中的代码量</p>
+<pre><code class="java">InputStream resourceAsStream = null;
+SqlSession sqlSession = null;
+SqlSessionFactory sqlSessionFactory = null;
+
+/**
+ * @Before 这个注解的作用：会在所有的测试单元执行之前执行
+ */
+@Before
+public void mybatisBefore()&#123;
+
+    //根据流对象来解析mybatis核心配置文件，读取相关数据
+    try &#123;
+
+        resourceAsStream = Resources.getResourceAsStream(&quot;mybatis-config.xml&quot;);
+
+    &#125; catch (IOException e) &#123;
+        e.printStackTrace();
+    &#125;
+
+    //创建sqlSessionFactory工厂对象
+    sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+
+    //将sqlSession对象从工厂中取出来
+    sqlSession = sqlSessionFactory.openSession();
+
+&#125;
+
+/**
+ * @After 这个注解的作用：会在所有的测试单元执行之后执行
+ */
+@After
+public void mybatisAfter()&#123;
+
+    //关闭资源
+    if (resourceAsStream != null)&#123;
+
+        try &#123;
+            resourceAsStream.close();
+        &#125; catch (IOException e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+
+    if (sqlSession != null)&#123;
+
+        try &#123;
+            sqlSession.close();
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="删除语句"><a href="#删除语句" class="headerlink" title="删除语句"></a>删除语句</h4><h6 id="OGNL表达式"><a href="#OGNL表达式" class="headerlink" title="OGNL表达式"></a>OGNL表达式</h6><p>在mybatis中可以通过OGNL表达式去取值</p>
+<p>OGNL表达式： <code>#&#123; &#125;</code>  可以取到实体中某一个属性的值，在执行sql的时候可以防止sql注入</p>
+<pre><code class="xml">&lt;!--根据id来删除员工数据--&gt;
+&lt;delete id=&quot;deleteEmpByEid&quot; parameterType=&quot;com.os467.pojo.Emp&quot;&gt;
+
+    delete from emp where eid = #&#123;eid&#125;
+
+&lt;/delete&gt;
+</code></pre>
+<p>返回值类型为影响记录条数，可以不用写</p>
+<p><strong>在开启事务的条件下，增删改语句后还要提交事务</strong></p>
+<pre><code class="java">//在关闭资源前，需要提交事务
+sqlSession.commit();
+</code></pre>
+<h4 id="修改语句"><a href="#修改语句" class="headerlink" title="修改语句"></a>修改语句</h4><pre><code class="xml">&lt;!--根据id来修改员工数据--&gt;
+&lt;update id=&quot;updateEmpByEid&quot; parameterType=&quot;com.os467.pojo.Emp&quot;&gt;
+
+    update emp set
+
+    emp_name = #&#123;empName&#125;,
+
+    age = #&#123;age&#125;,
+
+    sex = #&#123;sex&#125;,
+
+    salary = #&#123;salary&#125;,
+
+    birthday = #&#123;birthday&#125;
+
+    where eid = #&#123;eid&#125;
+
+&lt;/update&gt;
+</code></pre>
+<h4 id="添加语句"><a href="#添加语句" class="headerlink" title="添加语句"></a>添加语句</h4><h6 id="selectKey标签"><a href="#selectKey标签" class="headerlink" title="selectKey标签"></a>selectKey标签</h6><p>一些情况下，新增一条数据信息，但其主键（id）是数据库自动在数据库生成（自增），而有些业务逻辑的处理是需要要到这个生成的主键（id）</p>
+<p>selectKey 会将 SELECT LAST_INSERT_ID() 函数返回的结果放入到实体中</p>
+<ul>
+<li>keyProperty：对应的实例中的主键的属性名</li>
+<li>keyColumn:  数据库的主键字段名</li>
+<li>order：<ul>
+<li>AFTER 表示 SELECT LAST_INSERT_ID() 在insert执行之后执行,多用与自增主键</li>
+<li>BEFORE 表示 SELECT LAST_INSERT_ID() 在insert执行之前执行，这样的话就拿不到主键了，适合那种主键不是自增的类型</li>
+</ul>
+</li>
+<li>resultType：返回<strong>主键的数据类型</strong></li>
+</ul>
+<pre><code class="xml">&lt;!--添加员工--&gt;
+&lt;insert id=&quot;addEmp&quot; parameterType=&quot;com.os467.pojo.Emp&quot;&gt;
+
+    &lt;selectKey resultType=&quot;java.lang.Integer&quot; keyColumn=&quot;eid&quot; keyProperty=&quot;eid&quot; order=&quot;AFTER&quot;&gt;
+
+            SELECT LAST_INSERT_ID()
+
+    &lt;/selectKey&gt;
+
+    insert into emp (
+        emp_name,
+        age,
+        sex,
+        salary,
+        birthday
+    )values (
+        #&#123;empName&#125;,
+        #&#123;age&#125;,
+        #&#123;sex&#125;,
+        #&#123;salary&#125;,
+        #&#123;birthday&#125;
+    )
+
+&lt;/insert&gt;
+</code></pre>
+<h4 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h4><p>OGNL表达式<strong>不支持字符串拼接</strong></p>
+<p>所以要在传值的时候就把模糊查询的条件给定义好（百分号要提前写好）</p>
+<p>OGNL表达式{}中的内容在此处可以是任意的</p>
+<p>OGNL表达式使用的是preparedStatement，是有预编译的</p>
+<pre><code class="java">empMapper.likeEmpName(&quot;%小%&quot;);
+</code></pre>
+<pre><code class="xml">&lt;!--根据员工姓名来实现模糊查询的功能--&gt;
+&lt;select id=&quot;likeEmpName&quot; parameterType=&quot;java.lang.String&quot; resultMap=&quot;getEmpListMap&quot;&gt;
+
+    select * from emp where emp_name like #&#123;name&#125;
+
+&lt;/select&gt;
+</code></pre>
+<p>或者使用<strong>el表达式</strong></p>
+<p>el表达式支持字符串的拼接</p>
+<p>但是el表达式<strong>必须在{}内部写value</strong></p>
+<p><strong>el表达式不能防止sql注入</strong></p>
+<p>el表达式在mybatis中是直接使用statement的，没有预编译，但是模糊查询并没有sql注入这一方面的隐患，因此可以使用</p>
+<pre><code class="java">empMapper.likeEmpName(&quot;小&quot;);
+</code></pre>
+<pre><code class="xml">&lt;!--根据员工姓名来实现模糊查询的功能--&gt;
+&lt;select id=&quot;likeEmpName&quot; parameterType=&quot;String&quot; resultMap=&quot;getEmpListMap&quot;&gt;
+
+    select * from emp where emp_name like &#39;%$&#123;value&#125;%&#39;
+
+&lt;/select&gt;
+</code></pre>
+<h4 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h4><p>resultType是需要写的，与增删改语句的影响记录条数不同</p>
+<pre><code class="xml">&lt;!--求员工的总个数--&gt;
+&lt;select id=&quot;getEmpCount&quot; resultType=&quot;java.lang.Integer&quot;&gt;
+    
+    select count(*) from emp
+    
+&lt;/select&gt;
+</code></pre>
+<p><strong>parameterType，resultType属性</strong>: 如果是<strong>java.lang</strong>这个包下的可以直接写类名，基本数据类型也可以直接写，<strong>不区分大小写</strong></p>
+<p><strong>测试单元</strong></p>
+<pre><code class="java">package com.os467.test;
+
+import com.os467.mapper.EmpMapper;
+import com.os467.mapper.UserMapper;
+import com.os467.mapper.UserMapperImpl;
+import com.os467.pojo.Emp;
+import com.os467.pojo.User;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.List;
+
+public class MybatisTest02 &#123;
+
+    InputStream resourceAsStream = null;
+    SqlSession sqlSession = null;
+    SqlSessionFactory sqlSessionFactory = null;
+    EmpMapper empMapper = null;
+
+    /**
+     * @Before 这个注解的作用：会在所有的测试单元执行之前执行
+     */
+    @Before
+    public void mybatisBefore()&#123;
+
+        //根据流对象来解析mybatis核心配置文件，读取相关数据
+        try &#123;
+
+            resourceAsStream = Resources.getResourceAsStream(&quot;mybatis-config.xml&quot;);
+
+        &#125; catch (IOException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+        //创建sqlSessionFactory工厂对象
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+
+        //将sqlSession对象从工厂中取出来
+        sqlSession = sqlSessionFactory.openSession();
+        
+        empMapper = sqlSession.getMapper(EmpMapper.class);
+    &#125;
+
+    /**
+     * @After 这个注解的作用：会在所有的测试单元执行之后执行
+     */
+    @After
+    public void mybatisAfter()&#123;
+
+        //提交事务
+        sqlSession.commit();
+
+        //关闭资源
+        if (resourceAsStream != null)&#123;
+
+            try &#123;
+                resourceAsStream.close();
+            &#125; catch (IOException e) &#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+
+        if (sqlSession != null)&#123;
+
+            try &#123;
+                sqlSession.close();
+            &#125; catch (Exception e) &#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+
+    &#125;
+
+    /**
+     * 测试查询功能
+     */
+
+    @Test
+    public void test01()&#123;
+
+        List&lt;Emp&gt; empList = empMapper.getEmpList();
+
+        for (Emp emp : empList) &#123;
+
+            System.out.println(emp);
+
+        &#125;
+
+    &#125;
+
+    /**
+     * 测试删除功能
+     */
+    @Test
+    public void test02()&#123;
+
+        Emp emp = new Emp();
+
+        emp.setEid(4);
+
+        int num = empMapper.deleteEmpByEid(emp);
+
+        System.out.println(num==1?&quot;删除成功&quot;:&quot;删除失败&quot;);
+
+    &#125;
+
+    /**
+     * 测试修改功能
+     */
+    @Test
+    public void test03()&#123;
+
+        Emp emp = new Emp();
+
+        emp.setEid(1);
+        emp.setEmpName(&quot;张三&quot;);
+        emp.setSalary(6000);
+        emp.setAge(20);
+        emp.setSex(2);
+        emp.setBirthday(&quot;2022-07-12&quot;);
+
+        int num = empMapper.updateEmpByEid(emp);
+
+        System.out.println(num==1?&quot;修改成功&quot;:&quot;修改失败&quot;);
+
+    &#125;
+
+    /**
+     * 测试添加功能
+     */
+    @Test
+    public void test04()&#123;
+
+        Emp emp = new Emp();
+
+        emp.setEmpName(&quot;小刘&quot;);
+        emp.setSalary(10000);
+        emp.setAge(21);
+        emp.setSex(2);
+        emp.setBirthday(&quot;2022-07-12&quot;);
+
+        System.out.println(&quot; 添加之前 &quot;+emp);
+
+        int num = empMapper.addEmp(emp);
+
+        System.out.println(num==1?&quot;添加成功&quot;:&quot;添加失败&quot;);
+
+        System.out.println(&quot; 添加之后 &quot;+emp);
+
+    &#125;
+
+    /**
+     * 测试模糊查询功能
+     */
+    @Test
+    public void test05()&#123;
+
+        List&lt;Emp&gt; empList = empMapper.likeEmpName(&quot;小&quot;);
+
+        for (Emp emp : empList) &#123;
+
+            System.out.println(emp);
+
+        &#125;
+
+    &#125;
+
+    /**
+     * 求总记录条数
+     */
+    @Test
+    public void test06()&#123;
+
+        Integer empCount = empMapper.getEmpCount();
+
+        System.out.println(&quot;员工总个数为&quot;+empCount);
+
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="动态SQL"><a href="#动态SQL" class="headerlink" title="动态SQL"></a>动态SQL</h3><p>动态SQL指的是根据不同的查询条件，生成不同的Sql语句</p>
+<ul>
+<li>if</li>
+<li>choose(when,otherwise)</li>
+<li>trim(where,set)</li>
+<li>foreach</li>
+</ul>
+<h4 id="if标签"><a href="#if标签" class="headerlink" title="if标签"></a>if标签</h4><p>我们会先给 where 后面加上一个恒成立的条件 <code>1=1</code></p>
+<p>再在后面使用<code>&lt;if&gt;&lt;/if&gt;</code>标签设置查询的条件</p>
+<p>或者使用<code>&lt;where&gt;&lt;/where&gt;</code>标签，将<code>&lt;if&gt;&lt;/if&gt;</code>标签放在<code>&lt;where&gt;&lt;/where&gt;</code>标签中</p>
+<pre><code class="xml">&lt;where&gt;
+    &lt;if test=&quot;..&quot;&gt;and ...&lt;/if&gt;
+&lt;/where&gt;
+</code></pre>
+<p><strong>test属性</strong>：会通过参数中实例的get方法获取到属性，对属性值进行测试，如果<strong>属性不为空</strong>则生成对应的查询条件</p>
+<pre><code class="xml">&lt;!--根据条件来查询数据--&gt;
+    &lt;select id=&quot;findUser&quot; parameterType=&quot;user&quot; resultType=&quot;user&quot;&gt;
+
+            select * from tb_user where 1 = 1
+
+            &lt;if test=&quot;username != null&quot;&gt;
+
+                and username = #&#123;username&#125;
+
+            &lt;/if&gt;
+            
+            &lt;if test=&quot;password != null&quot;&gt;
+                
+                and password = #&#123;password&#125;
+                
+            &lt;/if&gt;
+
+    &lt;/select&gt;
+</code></pre>
+<h4 id="choose、when、otherwise标签"><a href="#choose、when、otherwise标签" class="headerlink" title="choose、when、otherwise标签"></a>choose、when、otherwise标签</h4><p>类似java的 switch 语句</p>
+<pre><code class="xml">&lt;!--根据条件来查询数据--&gt;
+&lt;select id=&quot;findUser&quot; parameterType=&quot;user&quot; resultType=&quot;user&quot;&gt;
+
+        select * from tb_user
+
+        &lt;where&gt;
+            &lt;choose&gt;
+
+                &lt;when test=&quot;username != null&quot;&gt;
+
+                    and username = #&#123;username&#125;
+
+                &lt;/when&gt;
+
+                &lt;when test=&quot;password != null&quot;&gt;
+
+                    and password = #&#123;password&#125;
+
+                &lt;/when&gt;
+
+                &lt;otherwise&gt;
+                    and id = 1
+                &lt;/otherwise&gt;
+
+            &lt;/choose&gt;
+        &lt;/where&gt;
+
+&lt;/select&gt;
+</code></pre>
+<p>和 <em>where</em> 元素等价的自定义 trim 元素为：</p>
+<pre><code class="xml">&lt;trim prefix=&quot;WHERE&quot; prefixOverrides=&quot;AND |OR &quot;&gt;
+  ...
+&lt;/trim&gt;
+</code></pre>
+<h4 id="set标签"><a href="#set标签" class="headerlink" title="set标签"></a>set标签</h4><p>用于动态更新语句的类似解决方案叫做 <em>set</em>，<em>set</em> 元素可以用于动态包含需要更新的列，忽略其它不更新的列</p>
+<pre><code class="xml">&lt;!--根据id来修改员工数据--&gt;
+&lt;update id=&quot;updateEmpByEid&quot; parameterType=&quot;com.os467.pojo.Emp&quot;&gt;
+
+    update emp
+
+    &lt;set&gt;
+
+        &lt;if test=&quot;empName != null&quot;&gt;emp_name = #&#123;empName&#125;,&lt;/if&gt;
+
+        &lt;if test=&quot;age != null&quot;&gt; age = #&#123;age&#125;,&lt;/if&gt;
+
+        &lt;if test=&quot;sex != null&quot;&gt; sex = #&#123;sex&#125;,&lt;/if&gt;
+
+        &lt;if test=&quot;salary != null&quot;&gt;salary = #&#123;salary&#125;,&lt;/if&gt;
+
+        &lt;if test=&quot;birthday != null&quot;&gt;birthday = #&#123;birthday&#125;,&lt;/if&gt;
+
+    &lt;/set&gt;
+
+    where eid = #&#123;eid&#125;
+
+&lt;/update&gt;
+</code></pre>
+<p>这个例子中，<em>set</em> 元素会动态地在行首插入 SET 关键字，并会删掉额外的逗号（这些逗号是在使用条件语句给列赋值时引入的）</p>
+<p>与 <em>set</em> 元素等价的自定义 <em>trim</em> 元素</p>
+<pre><code class="xml">&lt;trim prefix=&quot;SET&quot; suffixOverrides=&quot;,&quot;&gt;
+  ...
+&lt;/trim&gt;
+</code></pre>
+<h4 id="foreach标签"><a href="#foreach标签" class="headerlink" title="foreach标签"></a>foreach标签</h4><pre><code class="xml">&lt;!--根据EidS来删除员工数据--&gt;
+    &lt;delete id=&quot;deleteEmpByEidS&quot; parameterType=&quot;java.util.List&quot;&gt;
+
+        delete from emp 
+        where eid in
+        &lt;foreach item=&quot;item&quot; index=&quot;index&quot; collection=&quot;list&quot;
+                 open=&quot;(&quot; separator=&quot;,&quot; close=&quot;)&quot;&gt;
+
+            #&#123;item&#125;
+
+        &lt;/foreach&gt;
+
+    &lt;/delete&gt;
+</code></pre>
+<p>你可以将任何可迭代对象（如 List、Set 等）、Map 对象或者数组对象作为集合参数传递给 <em>foreach</em>。当使用可迭代对象或者数组时，index 是当前迭代的序号，item 的值是本次迭代获取到的元素。当使用 Map 对象（或者 Map.Entry 对象的集合）时，index 是键，item 是值。</p>
+<h4 id="script标签"><a href="#script标签" class="headerlink" title="script标签"></a>script标签</h4><p>要在带注解的映射器接口类中使用动态 SQL，可以使用 <em>script</em> 元素</p>
+<pre><code class="java">@Update(&#123;&quot;&lt;script&gt;&quot;,
+      &quot;update Author&quot;,
+      &quot;  &lt;set&gt;&quot;,
+      &quot;    &lt;if test=&#39;username != null&#39;&gt;username=#&#123;username&#125;,&lt;/if&gt;&quot;,
+      &quot;    &lt;if test=&#39;password != null&#39;&gt;password=#&#123;password&#125;,&lt;/if&gt;&quot;,
+      &quot;    &lt;if test=&#39;email != null&#39;&gt;email=#&#123;email&#125;,&lt;/if&gt;&quot;,
+      &quot;    &lt;if test=&#39;bio != null&#39;&gt;bio=#&#123;bio&#125;&lt;/if&gt;&quot;,
+      &quot;  &lt;/set&gt;&quot;,
+      &quot;where id=#&#123;id&#125;&quot;,
+      &quot;&lt;/script&gt;&quot;&#125;)
+    void updateAuthorValues(Author author);
+</code></pre>
+<p>详情查看官方文档：<a target="_blank" rel="noopener" href="https://mybatis.net.cn/dynamic-sql.html">https://mybatis.net.cn/dynamic-sql.html</a></p>
+<h3 id="多表联查"><a href="#多表联查" class="headerlink" title="多表联查"></a>多表联查</h3><p>涉及业务的实体都要对应一个接口</p>
+<p><strong>一对一：账单对用户，一个账单只能对应一个用户</strong></p>
+<p>将账单表看成主表</p>
+<p>我们一般在主表中聚合一个从表的引用</p>
+<pre><code class="java">//聚合从表的引用
+private User user;
+</code></pre>
+<p><strong>为聚合的实例赋值</strong></p>
+<p>需要在resultMap中配置映射关系</p>
+<p>配置查询语句</p>
+<pre><code class="xml">&lt;!--查询所有的账单数据--&gt;
+&lt;select id=&quot;findAccountList&quot; resultMap=&quot;accountVo&quot;&gt;
+
+    select * from ts_account a
+    left join tb_user u
+    on u.id = a.uid;
+
+&lt;/select&gt;
+</code></pre>
+<p>配置映射关系</p>
+<p><strong>association标签</strong></p>
+<p>通过多表联查找到的主键id字段来为聚合的实例赋值</p>
+<p><strong>property属性：</strong>就是引用的属性名称</p>
+<p><strong>column属性：</strong>匹配的主键id</p>
+<pre><code class="xml">&lt;!--建立起实体属性和表字段的一个对应关系--&gt;
+&lt;resultMap id=&quot;accountVo&quot; type=&quot;account&quot;&gt;
+
+    &lt;!--匹配主键字段--&gt;
+    &lt;id column=&quot;tid&quot; property=&quot;tid&quot;&gt;&lt;/id&gt;
+
+    &lt;!--匹配非主键字段--&gt;
+    &lt;result column=&quot;money&quot; property=&quot;money&quot;&gt;&lt;/result&gt;
+    &lt;result column=&quot;uid&quot; property=&quot;uid&quot;&gt;&lt;/result&gt;
+
+    &lt;!--
+        配置一对一的关系
+        property 就是引用的属性名称
+        column 匹配的主键id
+    --&gt;
+    &lt;association property=&quot;user&quot; column=&quot;id&quot;&gt;
+
+        &lt;id column=&quot;id&quot; property=&quot;id&quot;&gt;&lt;/id&gt;
+        &lt;result column=&quot;username&quot; property=&quot;username&quot;&gt;&lt;/result&gt;
+        &lt;result column=&quot;password&quot; property=&quot;password&quot;&gt;&lt;/result&gt;
+
+    &lt;/association&gt;
+
+&lt;/resultMap&gt;
+</code></pre>
+<p><strong>一对多：用户对账单，一个用户可以对应多个账单</strong></p>
+<p>用户表看成主表</p>
+<pre><code class="java">//聚合从表的集合引用
+private List&lt;Account&gt; accounts;
+</code></pre>
+<p>配置查询语句</p>
+<pre><code class="xml">&lt;!--查询所有的用户数据--&gt;
+&lt;select id=&quot;getUserList&quot; resultMap=&quot;userVo&quot;&gt;
+
+    select * from tb_user u
+    left join ts_account a
+    on u.id = a.uid
+
+&lt;/select&gt;
+</code></pre>
+<p>配置映射关系</p>
+<p><strong>collection标签</strong></p>
+<p><strong>property属性：</strong>集合引用的属性名称</p>
+<p><strong>ofType属性：</strong>集合的泛型的<strong>全类名</strong>，有别名可以用别名</p>
+<pre><code class="xml">&lt;!--建立起实体属性和表字段的一个对应关系--&gt;
+&lt;resultMap id=&quot;userVo&quot; type=&quot;user&quot;&gt;
+
+    &lt;!--匹配主键字段--&gt;
+    &lt;id column=&quot;id&quot; property=&quot;id&quot;&gt;&lt;/id&gt;
+
+    &lt;!--匹配非主键字段--&gt;
+    &lt;result column=&quot;username&quot; property=&quot;username&quot;&gt;&lt;/result&gt;
+    &lt;result column=&quot;password&quot; property=&quot;password&quot;&gt;&lt;/result&gt;
+
+
+    &lt;!--配置一对多的关系--&gt;
+    &lt;collection property=&quot;accounts&quot; ofType=&quot;account&quot;&gt;
+
+        &lt;!--匹配主键字段--&gt;
+        &lt;id column=&quot;tid&quot; property=&quot;tid&quot;&gt;&lt;/id&gt;
+
+        &lt;!--匹配非主键字段--&gt;
+        &lt;result column=&quot;money&quot; property=&quot;money&quot;&gt;&lt;/result&gt;
+        &lt;result column=&quot;uid&quot; property=&quot;uid&quot;&gt;&lt;/result&gt;
+
+    &lt;/collection&gt;
+
+&lt;/resultMap&gt;
+</code></pre>
+<p><strong>多对多：用户和角色，一个用户可以对应多个角色，一个角色也可以对应多个用户</strong></p>
+<p>​		<strong>例子：</strong></p>
+<p>​			张三：在家庭中是一个父亲，在工作中，是一个项目经理</p>
+<p>​			项目经理：张三，李四</p>
+<ul>
+<li>多对多在设计表结构的时候，需要去指定一个中间表，来存放两张表的映射关系</li>
+<li>中间表中存放的每条记录是 表1的主键id 以及对应的 表2的主键id</li>
+<li><strong>中间表仅起到过度作用，我们从中间表中去找到两张表的映射关系</strong></li>
+<li>我们把用户表先看成主表</li>
+</ul>
+<p>查询语句</p>
+<pre><code class="xml"> &lt;!--查询所有的用户数据--&gt;
+    &lt;select id=&quot;getUserList&quot; resultMap=&quot;userVo&quot;&gt;
+
+             select u.*,r.*
+            from tb_user u
+            /*
+                先让用户表连接中间表
+            */
+            left join user_role ur
+            on u.id = ur.uid
+            /*
+                将用户表作为主表建立起与中间表的对应关系
+                再将查询的结果作为新表建立起与角色表的对应关系
+            */
+            left join tb_role r
+            on r.rid = ur.rid
+
+    &lt;/select&gt;
+</code></pre>
+<p>配置映射关系</p>
+<pre><code class="xml">&lt;!--建立起实体属性和表字段的一个对应关系--&gt;
+&lt;resultMap id=&quot;userVo&quot; type=&quot;user&quot;&gt;
+
+    &lt;!--匹配主键字段--&gt;
+    &lt;id column=&quot;id&quot; property=&quot;id&quot;&gt;&lt;/id&gt;
+
+    &lt;!--匹配非主键字段--&gt;
+    &lt;result column=&quot;username&quot; property=&quot;username&quot;&gt;&lt;/result&gt;
+    &lt;result column=&quot;password&quot; property=&quot;password&quot;&gt;&lt;/result&gt;
+
+    &lt;!--配置多对多的关系--&gt;
+    &lt;collection property=&quot;roles&quot; ofType=&quot;role&quot;&gt;
+
+        &lt;!--匹配主键字段--&gt;
+        &lt;id column=&quot;rid&quot; property=&quot;rid&quot;&gt;&lt;/id&gt;
+
+        &lt;!--匹配非主键字段--&gt;
+        &lt;result column=&quot;role_name&quot; property=&quot;roleName&quot;&gt;&lt;/result&gt;
+
+    &lt;/collection&gt;
+
+&lt;/resultMap&gt;
+</code></pre>
+<h3 id="延迟加载（懒加载）和立即加载"><a href="#延迟加载（懒加载）和立即加载" class="headerlink" title="延迟加载（懒加载）和立即加载"></a>延迟加载（懒加载）和立即加载</h3><p><strong>什么是延迟加载？</strong></p>
+<p>真正在使用数据的时候才发起查询，不用的时候不查询，按需加载（懒加载）</p>
+<p><strong>什么是立即加载？</strong></p>
+<p>不管用不用，一调用方法，马上发起查询，效率会低于延迟加载</p>
+<ul>
+<li>针对一对多和多对多：通常情况下使用延迟加载</li>
+<li>针对多对一和一对一：通常情况下使用立即加载</li>
+</ul>
+<p>在查询用户数据的时候，有没有必要将账单数据带出来？</p>
+<p>​	没有必要，我们会采用延迟加载的策略</p>
+<p>在查询账单数据的时候，有没有必要将用户数据带出来？</p>
+<p>​	有必要，因为在查询账单的时候，需要知道该账单对应的用户是谁，要采用立即加载的策略</p>
+<p><strong>配置延迟加载（懒加载）</strong></p>
+<p>工程默认情况下采用的是立即加载的策略</p>
+<p>设置名：</p>
+<p><code>lazyLoadingEnabled</code> </p>
+<p>延迟加载的全局开关，当开启时，所有关联对象都会延迟加载， 特定关联关系中可通过设置 <code>fetchType</code> 属性来覆盖该项的开关状态，默认值就是false</p>
+<p><code>aggressiveLazyLoading</code></p>
+<p>开启时，任一方法的调用都会加载该对象的所有延迟加载属性，否则，每个延迟加载属性会按需加载，默认值false</p>
+<p>需要在configuration标签下创建<strong>settings标签</strong></p>
+<pre><code class="xml">&lt;settings&gt;
+    &lt;!--开启当前工程的延迟加载--&gt;
+    &lt;setting name=&quot;lazyLoadingEnabled&quot; value=&quot;true&quot;/&gt;
+    &lt;setting name=&quot;aggressiveLazyLoading&quot; value=&quot;false&quot;/&gt;
+&lt;/settings&gt;
+</code></pre>
+<h4 id="一对一中立即加载的配置"><a href="#一对一中立即加载的配置" class="headerlink" title="一对一中立即加载的配置"></a>一对一中立即加载的配置</h4><p>查询的时候只查询账户表数据，因为如果使用多表联查是一定会把数据立即查出来的</p>
+<pre><code class="xml">&lt;select id=&quot;findAccountList&quot; resultMap=&quot;accountVo&quot;&gt;
+
+    select * from ts_account
+
+&lt;/select&gt;
+</code></pre>
+<p>在association中加入<strong>select属性</strong></p>
+<p><strong>select属性：</strong>提供UserMapper.xml中查询语句的全局标识</p>
+<p><strong>column属性：</strong>主sql查出来的某一列字段作为参数传递给子sql，提供一对一查询用户表的查询条件</p>
+<p>由于全局标识可能会重复，所以我们把名称空间也带上</p>
+<pre><code class="xml">&lt;!--建立起实体属性和表字段的一个对应关系--&gt;
+&lt;resultMap id=&quot;accountVo&quot; type=&quot;account&quot;&gt;
+
+    &lt;id column=&quot;tid&quot; property=&quot;tid&quot;&gt;&lt;/id&gt;
+    &lt;result column=&quot;money&quot; property=&quot;money&quot;&gt;&lt;/result&gt;
+    &lt;result column=&quot;uid&quot; property=&quot;uid&quot;&gt;&lt;/result&gt;
+
+      &lt;association property=&quot;user&quot; column=&quot;uid&quot; select=&quot;com.os467.mapper.UserMapper.findUserById&quot;&gt;
+
+            &lt;id column=&quot;id&quot; property=&quot;id&quot;&gt;&lt;/id&gt;
+            &lt;result column=&quot;username&quot; property=&quot;username&quot;&gt;&lt;/result&gt;
+            &lt;result column=&quot;password&quot; property=&quot;password&quot;&gt;&lt;/result&gt;
+
+    &lt;/association&gt;
+
+&lt;/resultMap&gt;
+</code></pre>
+<p>UserMapper中新建条件查询sql</p>
+<pre><code class="xml">&lt;!--根据id来查询对应的用户数据--&gt;
+&lt;select id=&quot;findUserById&quot; parameterType=&quot;java.lang.Integer&quot; resultMap=&quot;userVo&quot;&gt;
+
+    select * from tb_user where id = #&#123;id&#125;
+
+&lt;/select&gt;
+</code></pre>
+<h4 id="一对多中按需加载的配置"><a href="#一对多中按需加载的配置" class="headerlink" title="一对多中按需加载的配置"></a>一对多中按需加载的配置</h4><p>只有在存放多表数据的属性<strong>需要被用到的时候</strong>才会去查询并返回结果（延迟加载）</p>
+<p><strong>select属性：</strong>提供AccountMapper.xml中查询语句的全局标识</p>
+<p><strong>column属性：</strong>主sql查出来的某一列字段作为参数传递给子sql，提供一对多查询账户表的查询条件</p>
+<pre><code class="xml">&lt;!--建立起实体属性和表字段的一个对应关系--&gt;
+&lt;resultMap id=&quot;userVo&quot; type=&quot;user&quot;&gt;
+
+    &lt;id column=&quot;id&quot; property=&quot;id&quot;&gt;&lt;/id&gt;
+    &lt;result column=&quot;username&quot; property=&quot;username&quot;&gt;&lt;/result&gt;
+    &lt;result column=&quot;password&quot; property=&quot;password&quot;&gt;&lt;/result&gt;
+
+    &lt;!--配置一对多的关系--&gt;
+    &lt;collection property=&quot;accounts&quot; ofType=&quot;account&quot; column=&quot;id&quot; select=&quot;com.os467.mapper.AccountMapper.findAccountByUid&quot;&gt;
+
+        &lt;!--匹配主键字段--&gt;
+        &lt;id column=&quot;tid&quot; property=&quot;tid&quot;&gt;&lt;/id&gt;
+
+        &lt;!--匹配非主键字段--&gt;
+        &lt;result column=&quot;money&quot; property=&quot;money&quot;&gt;&lt;/result&gt;
+        &lt;result column=&quot;uid&quot; property=&quot;uid&quot;&gt;&lt;/result&gt;
+
+    &lt;/collection&gt;
+
+&lt;/resultMap&gt;
+</code></pre>
+<p>AccountMapper中新建条件查询sql</p>
+<pre><code class="xml">&lt;select id=&quot;findAccountByUid&quot; parameterType=&quot;java.lang.Integer&quot; resultType=&quot;account&quot;&gt;
+
+    select * from ts_account where uid = #&#123;id&#125;
+
+&lt;/select&gt;
+</code></pre>
+<p>注意在使用resultMap的时候不要在两个表间同时配置对方表的select引用，否则会出现栈溢出死循环</p>
+<h3 id="★关于mybatis中的缓存"><a href="#★关于mybatis中的缓存" class="headerlink" title="★关于mybatis中的缓存"></a>★关于mybatis中的缓存</h3><p><strong>缓存</strong></p>
+<p>1、什么是缓存</p>
+<p>存在内存中的临时数据</p>
+<p>将用户经常查询的数据放在缓存（内存）中，用户去查询数据就不用从磁盘上（关系型数据库数据文件）查询，从缓存中查询，从而提高查询效率，解决了高并发系统的性能问题</p>
+<p>2、为什么使用缓存</p>
+<p>减少和数据库的交互次数，减少系统开销，提高系统效率</p>
+<p>3、什么样的数据能使用缓存</p>
+<p>经常查询并且不经常改变的数据</p>
+<p><strong>关于mybatis中的缓存：一级缓存，二级缓存</strong></p>
+<p>​	<strong>一级缓存：</strong>sqlSession级别的缓存，<strong>这个缓存默认是存在的</strong>，在我们进行数据查询的时候，mybatis会先去数据库中将对应的数据查出来，查出来之后，<strong>会将数据封装成对象，存到缓存域中</strong>，下次再发起查询的时候，mybatis会从缓存域中去读取数据，避免了与数据库的多次交互</p>
+<p>​	<strong>二级缓存：</strong>sqlSessionFactory级别的缓存，这个缓存可以<strong>共享所有的sqlSession</strong>，将数据通过<strong>序列化</strong>的方式存到缓存域中，<strong>存放的是数据</strong>，不是对象</p>
+<p>测试一级缓存</p>
+<pre><code class="java">//访问数据库
+List&lt;User&gt; userList = mapper.getUserList2();
+
+//从缓存中查
+List&lt;User&gt; userList2 = mapper.getUserList2();
+
+//true，内存地址相同，第二次查询是从缓存中取的数据
+System.out.println(userList == userList2);
+</code></pre>
+<h4 id="如何让一级缓存失效"><a href="#如何让一级缓存失效" class="headerlink" title="如何让一级缓存失效"></a>如何让一级缓存失效</h4><p>​	1、在调用了清空缓存的方法之后</p>
+<pre><code class="java">//调用清空缓存的方法
+sqlSession.clearCache();
+</code></pre>
+<p>​	2、在关闭了sqlSession对象之后</p>
+<p>​	3、第二次查询的数据跟第一次查询的数据有偏差（在第一次查询了之后，你去执行了添加、删除、修改等操作）</p>
+<h4 id="开启二级缓存"><a href="#开启二级缓存" class="headerlink" title="开启二级缓存"></a>开启二级缓存</h4><p>使用二级缓存需要让被查询的实体<strong>实现序列化接口</strong></p>
+<pre><code class="java">public class User implements Serializable
+</code></pre>
+<p><strong>设置（settings）</strong></p>
+<p><code>cacheEnabled</code>	全局性地开启或关闭所有映射器配置文件中已配置的任何缓存，默认值是true</p>
+<pre><code class="xml">&lt;!--开启缓存--&gt;
+&lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot;/
+</code></pre>
+<p>在UserMapper.xml中配置</p>
+<p><strong>开启对缓存的支持</strong></p>
+<pre><code class="xml">&lt;!--支持User开启二级缓存--&gt;
+&lt;cache&gt;&lt;/cache&gt;
+</code></pre>
+<p>在需要使用到<strong>二级缓存</strong>的查询语句中添加<code>useCache</code>属性，true：使用二级缓存，false：不使用，默认情况下是false</p>
+<pre><code class="xml">&lt;!--查询所有的用户数据--&gt;
+&lt;select id=&quot;getUserList&quot; resultMap=&quot;userVo&quot; useCache=&quot;true&quot;&gt;
+
+     select * from tb_user
+
+&lt;/select&gt;
+</code></pre>
+<h4 id="如何让二级缓存失效"><a href="#如何让二级缓存失效" class="headerlink" title="如何让二级缓存失效"></a>如何让二级缓存失效</h4><p>1、在调用了清空缓存的方法之后</p>
+<p>2、关闭sqlSessionFactory</p>
+<h3 id="注解方式写SQL"><a href="#注解方式写SQL" class="headerlink" title="注解方式写SQL"></a>注解方式写SQL</h3><p>在以后开发中注解方式用的较少</p>
+<p>不用写mapper文件</p>
+<p>在配置文件中加上mapper映射路径，使用class属性映射到类</p>
+<pre><code class="xml">&lt;mapper class=&quot;com.os467.mapper.UserMapper2&quot;&gt;&lt;/mapper&gt;
+</code></pre>
+<p><strong>注解方式</strong></p>
+<pre><code class="java">/**
+ * 查询所有用户数据
+ */
+@Select(&quot;select * from tb_user&quot;)
+@Results(value = &#123;
+        
+        @Result(id = true, column = &quot;id&quot;, property = &quot;id&quot;),
+        @Result(column = &quot;username&quot;, property = &quot;username&quot;),
+        @Result(column = &quot;password&quot;,property = &quot;password&quot;)
+                
+        &#125;
+)
+List&lt;User&gt; getUserList();
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2022/07/31/MyBatis/" class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
     <a href="/2022/07/28/Maven/">
         <h2>
             Maven
@@ -6248,179 +7357,6 @@ for (let i = 0; i &lt; inputEls.length; i++) &#123;
         
     </div>
     <a href="/2022/07/07/javaScript/" class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-    <a href="/2022/07/06/XML/">
-        <h2>
-            XML
-        </h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/7/6
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h1><p><strong>什么是xml?</strong></p>
-<p>xml是可扩展的标记性语言</p>
-<p><strong>xml的作用</strong></p>
-<p>xml的主要作用有：</p>
-<p>1.用来保存数据，而且这些数据具有自我描述性</p>
-<p>2.它还可以作为项目或者模块的配置文件</p>
-<p>3.还可以作为网络传输数据的格式</p>
-<h2 id="xml语法"><a href="#xml语法" class="headerlink" title="xml语法"></a>xml语法</h2><h3 id="xml命名规则"><a href="#xml命名规则" class="headerlink" title="xml命名规则"></a>xml命名规则</h3><ul>
-<li>名称可以含字母、数字以及其他的字符</li>
-<li>名称不能以数字或者标点符号开始</li>
-<li>名称不能包含空格</li>
-</ul>
-<p><strong>1.文档声明</strong></p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-</code></pre>
-<p><strong>2.元素（标签）</strong></p>
-<p>元素是指开始标签到结束标签的内容</p>
-<pre><code class="xml">&lt;!--根标签--&gt;
-&lt;students&gt;
-
-    &lt;!--子标签--&gt;
-    &lt;student id=&quot;1001&quot;&gt;
-        &lt;name&gt;张三&lt;/name&gt;
-        &lt;age&gt;25&lt;/age&gt;
-        &lt;address&gt;镇江市&lt;/address&gt;
-    &lt;/student&gt;
-
-    &lt;!--子标签--&gt;
-    &lt;student id=&quot;1002&quot;&gt;
-        &lt;name&gt;李四&lt;/name&gt;
-        &lt;age&gt;29&lt;/age&gt;
-        &lt;address&gt;南京市&lt;/address&gt;
-    &lt;/student&gt;
-
-    &lt;!--子标签--&gt;
-    &lt;student id=&quot;1003&quot;&gt;
-        &lt;name&gt;王五&lt;/name&gt;
-        &lt;age&gt;19&lt;/age&gt;
-        &lt;address&gt;上海市&lt;/address&gt;
-    &lt;/student&gt;
-
-&lt;/students&gt;
-</code></pre>
-<p><strong>3.xml属性</strong></p>
-<p><strong>id属性为1003</strong></p>
-<pre><code class="xml">&lt;student id=&quot;1003&quot;&gt;
-</code></pre>
-<p><strong>4.xml注释</strong></p>
-<p> ctrl + shift + &#x2F;</p>
-<pre><code class="xml">&lt;!--此处写注释--&gt;
-</code></pre>
-<h2 id="xml解析技术"><a href="#xml解析技术" class="headerlink" title="xml解析技术"></a>xml解析技术</h2><p>​	xml可扩展的标记语言，不管是html文件还是xml文件它们都是标记型文档，都可以使用w3c组织制定的dom技术来解析</p>
-<p>​	document对象表示的是整个文档（可以是html文档，也可以是xml文档）</p>
-<p>​		w3c是一个制定规范的组织，针对于xml，html都制定了相关的规范，元素都是以标签的形式体现的，每个标签都是一个对象，而且每个标签都是有层级关系的，w3c通过一种树形图来管理这种关系，而且提供了一个文本对象dom对象，通过这个dom对象可以去获取所有的标签对象</p>
-<p><strong>dom解析技术</strong></p>
-<ul>
-<li><p>dom解析技术是W3C组织制定的，而所有的编程语言都对这个解析技术使用了自己语言的特点进行实现，Java对<strong>dom技术解析</strong>标记也做了实现</p>
-</li>
-<li><p>sun公司在JDK5版本对dom解析技术进行升级：<strong>SAX</strong>（Simple API for XML） SAX解析，它跟W3C制定的解析不太一样，它是以类似事件机制通过回调告诉用户当前正在解析的内容，它是一行一行的读取xml文件进行解析的，不会创建大量的dom对象，所以它在解析xml的时候，在<strong>内存</strong>的使用上，和<strong>性能</strong>上，都优于Dom解析。</p>
-</li>
-<li><p>jdom在dom基础上进行了封装</p>
-</li>
-<li><p>dom4j又对jdom进行了封装</p>
-</li>
-<li><p>pull主要用在Android手机开发，实在跟sax非常类似都是事件机制解析xml文件</p>
-</li>
-</ul>
-<h2 id="Dom4j"><a href="#Dom4j" class="headerlink" title="Dom4j"></a>Dom4j</h2><ul>
-<li>Dom4j是第三方的解析技术，我们需要使用第三方给我们提供好的类库才可以解析xml文件</li>
-<li></li>
-<li>由于dom4j它不是sun公司的技术，而属于第三方公司的技术，需要使用dom4j就需要到dom4j官网下载dom4j的jar包</li>
-</ul>
-<h3 id="dom4j编程步骤"><a href="#dom4j编程步骤" class="headerlink" title="dom4j编程步骤"></a>dom4j编程步骤</h3><p>1.先加载xml文件创建Document对象</p>
-<p>2.通过Document对象拿到根元素对象 <code>getRootElement()</code></p>
-<p>3.通过<code>根元素.elements(标签名)</code>；可以返回一个集合，这个集合里放着。所有你指定的标签名的元素对象</p>
-<p>4.找到你想要修改、删除的子元素，进行相应的操作</p>
-<p>5.保存到硬盘上</p>
-<p>将xml文件内容解析封装为java对象</p>
-<pre><code class="java">package com.os467.xml;
-
-import com.os467.beans.Student;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class Dom4jTest &#123;
-
-    public static void main(String[] args) &#123;
-
-        try &#123;
-            //创建流对象
-            SAXReader saxReader = new SAXReader();
-
-            //通过流对象读取xml文件，然后返回document对象
-            Document document = saxReader.read(&quot;src/xml/test.xml&quot;);
-
-            //通过document获取到根标签
-            Element rootElement = document.getRootElement();
-
-            //获取根标签中所有的子标签对象
-            List&lt;Element&gt; elements = rootElement.elements(&quot;student&quot;);
-
-            //创建集合对象
-            List&lt;Student&gt; studentList = new ArrayList&lt;&gt;();
-
-            //遍历集合
-            for (Element element : elements) &#123;
-
-                //获取子标签中的数据
-                String name = element.elementText(&quot;name&quot;);
-                String age = element.elementText(&quot;age&quot;);
-                String address = element.elementText(&quot;address&quot;);
-                
-
-                //将这些数据封装成java对象
-                Student student = new Student(name, Integer.parseInt(age), address);
-
-                //将这些对象添加到集合中
-                studentList.add(student);
-
-
-            &#125;
-
-            for (Student student : studentList) &#123;
-
-                System.out.println(student);
-
-            &#125;
-
-        &#125; catch (DocumentException e) &#123;
-            e.printStackTrace();
-        &#125;
-
-
-    &#125;
-
-&#125;
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/2022/07/06/XML/" class="go-post">
         阅读全文
     </a>
 </div>
