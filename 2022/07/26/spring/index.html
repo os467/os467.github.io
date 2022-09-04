@@ -1,97 +1,547 @@
-
-
-
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,inital-scale=1,user-scalable=no">
-  <title>spring [ Tly的博客 ]</title>
-  <!-- bootstrapcss文件 -->
- <!--  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-<!--   
-<link rel="stylesheet" href="/css/zhl.css">
+  <meta charset="utf-8">
+  <title>spring | Tly的博客</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="spring | Tly的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="MavenMaven介绍 Maven是 Apache 下的一个纯 Java 开发的开源项目 基于项目对象模型（缩写：POM）概念，Maven利用一个中央信息片断能管理一个项目的构建、报告和文档等步骤 Maven 是一个项目管理工具，可以对 Java 项目进行构建、依赖管理  Maven 也可被用于构建和管理各种项目，例如 C#，Ruby，Scala 和其他语言编写的项目。Maven 曾是 Jaka">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maven">
+<meta property="og:url" content="https://os467.github.io/2022/07/28/Maven/index.html">
+<meta property="og:site_name" content="Tly的博客">
+<meta property="og:description" content="MavenMaven介绍 Maven是 Apache 下的一个纯 Java 开发的开源项目 基于项目对象模型（缩写：POM）概念，Maven利用一个中央信息片断能管理一个项目的构建、报告和文档等步骤 Maven 是一个项目管理工具，可以对 Java 项目进行构建、依赖管理  Maven 也可被用于构建和管理各种项目，例如 C#，Ruby，Scala 和其他语言编写的项目。Maven 曾是 Jaka">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-28T11:10:41.000Z">
+<meta property="article:modified_time" content="2022-07-28T11:11:09.117Z">
+<meta property="article:author" content="Os467">
+<meta name="twitter:card" content="summary">
 
- -->
-  
-    <!-- stylesheets list from config.yml -->
-    
-      <link rel="stylesheet" href="/css/fork-awesome.min.css">
-    
-      <link rel="stylesheet" href="/css/zhl.css">
-    
-  
-  
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
 <meta name="generator" content="Hexo 6.2.0"></head>
-<body>
-<div class="container-fluid">
-  <div class="row">
-  <div id="wrap" class="col-md-12">
-    <div id="header">
-	<div id="header-left">
-	<h1 id="header-title"> 
-	<a href="/">
-		Tly的博客
-	</a>
-	</h1>
-	
-	</div>
-	<div id="header-right">
-		
-		
-		<a href="/"  title="home"><i class="fa fa-home ">home</i></a>
-		
-		<a target="_blank" rel="noopener" href="https://github.com/lizehongss/demo_show"  title="demo"><i class="fa fa-code ">demo</i></a>
-		
-		<a href="/about"  title="about"><i class="fa fa-user ">about</i></a>
-		
-		<a href="/"  title="music"><i class="fa fa-music ">music</i></a>
-		
-		
-	</div>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
 </div>
 
-  </div>
-  </div>
-  <div id="content" class="row">
-    <div id="content-left" class="col-md-4">
-      
-
-	
-
-	
-
-	
-	<div class="widget-wrap">
-		<h3 class="widget-title fa fa-archive">归档</h3>
-		<div class="widget">
-			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">17</span></li></ul>
-		</div>
-	</div>
 
 
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Os467</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(17)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="17">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
 
     </div>
-    <div id="content-right" class="col-md-8">
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
     
-<article id="post">
-	<div class="post-title">
-  <h1>spring</h1>
-  	</div>
-  <div class="page-meta">
-  	<span class="fa-wrap">
-  		<i class="fa fa-clock-o"></i>
-  		<span class="date-meta">2022-07-26</span>
-  	</span>
-  	<span class="fa-wrap">
-  		
-  	</span>
-  	<span class="fa-wrap">
-  		
-  	</span>
-  </div>
-  <div class="post-content">
-  <h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><h2 id="spring概述"><a href="#spring概述" class="headerlink" title="spring概述"></a>spring概述</h2><p>Spring是分层的 Java SE&#x2F;EE 应用 full-stack <strong>轻量级开源框架</strong>，以<strong>IoC</strong>（Inverse Of Control：<strong>反转控制</strong>）和<strong>AOP</strong>（Aspect Oriented Programming：<strong>面向切面编程</strong>）为内核，提供了展现层<strong>Spring MVC</strong>和持久层<strong>Spring JDBC</strong>以及业务层事务管理等众多的企业级应用技术，还能整合开源世界众多著名的第三方框架和类库，逐渐成为使用最多的 <strong>Java EE</strong> 企业应用开源框架</p>
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/31/MyBatis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatis">MyBatis</span>
+            <span class="post-date" title="2022-07-31 10:10:26">2022/07/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/28/Maven/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven">Maven</span>
+            <span class="post-date" title="2022-07-28 19:10:41">2022/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/26/spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="spring">spring</span>
+            <span class="post-date" title="2022-07-26 21:54:22">2022/07/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式">设计模式</span>
+            <span class="post-date" title="2022-07-18 19:21:50">2022/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/17/Ajax/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ajax">Ajax</span>
+            <span class="post-date" title="2022-07-17 12:07:22">2022/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/14/Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Annotation">Annotation</span>
+            <span class="post-date" title="2022-07-14 19:36:02">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/13/Reflect/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Reflect">Reflect</span>
+            <span class="post-date" title="2022-07-13 14:40:18">2022/07/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2022-07-12 12:29:58">2022/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/10/IO%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IO流">IO流</span>
+            <span class="post-date" title="2022-07-10 20:14:33">2022/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/07/javaScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="javaScript">javaScript</span>
+            <span class="post-date" title="2022-07-07 12:54:16">2022/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/06/XML/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="XML">XML</span>
+            <span class="post-date" title="2022-07-06 18:28:03">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/06/cookie%E5%92%8Csession/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="cookie和session">cookie和session</span>
+            <span class="post-date" title="2022-07-06 18:27:45">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/02/servlet/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="servlet">servlet</span>
+            <span class="post-date" title="2022-07-02 08:24:49">2022/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/01/jdbc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jdbc">jdbc</span>
+            <span class="post-date" title="2022-07-01 08:24:49">2022/07/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/06/19/SQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL">SQL</span>
+            <span class="post-date" title="2022-06-19 19:45:07">2022/06/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/28/JAVA%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JAVA入门">JAVA入门</span>
+            <span class="post-date" title="2022-05-28 00:32:07">2022/05/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/27/Linux%E4%BA%91%E8%AE%A1%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux云计算">Linux云计算</span>
+            <span class="post-date" title="2022-05-27 00:05:15">2022/05/27</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-spring" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">spring</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-07-26 21:54:55'>2022-07-26 21:54</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring"><span class="toc-text">Spring</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#spring%E6%A6%82%E8%BF%B0"><span class="toc-text">spring概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring%E7%9A%84%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B"><span class="toc-text">Spring的发展历程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-text">Spring的优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-text">Spring的体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E9%97%B4%E7%9A%84%E8%80%A6%E5%90%88"><span class="toc-text">程序间的耦合</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%98%85IOC"><span class="toc-text">★IOC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IOC-%E2%80%94-spring%E7%9A%84IOC%E8%A7%A3%E5%86%B3%E7%A8%8B%E5%BA%8F%E8%80%A6%E5%90%88"><span class="toc-text">IOC — spring的IOC解决程序耦合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8Exml%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9D%A5%E5%88%9B%E5%BB%BAspring%E6%A0%B8%E5%BF%83%E5%AE%B9%E5%99%A8%E5%AF%B9%E8%B1%A1"><span class="toc-text">基于xml的方式来创建spring核心容器对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5-Dependency-Injection"><span class="toc-text">依赖注入 Dependency Injection</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EXML%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5-set%E6%96%B9%E5%BC%8F"><span class="toc-text">基于XML配置的依赖注入(set方式)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EXML%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5-%E6%9E%84%E9%80%A0%E6%96%B9%E5%BC%8F"><span class="toc-text">基于XML配置的依赖注入(构造方式)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">关于组件的生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BeanFactory%E5%92%8CApplicationContext%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">BeanFactory和ApplicationContext的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E9%80%9A%E8%BF%87xml%E9%85%8D%E7%BD%AE%E8%BF%9B%E8%A1%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5"><span class="toc-text">三层架构通过xml配置进行依赖注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9FspringIOC%E5%BA%95%E5%B1%82%E5%9F%BA%E4%BA%8E%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E8%A7%A3%E8%80%A6"><span class="toc-text">模拟springIOC底层基于工厂模式解耦</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E9%85%8D%E7%BD%AE"><span class="toc-text">基于注解的IOC配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%96%B9%E5%BC%8F%E6%B3%A8%E5%85%A5%E5%B1%9E%E6%80%A7%E7%9A%84%E5%80%BC"><span class="toc-text">基于注解的方式注入属性的值</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9FspringIoC%E5%BA%95%E5%B1%82%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E6%B3%A8%E5%85%A5"><span class="toc-text">模拟springIoC底层基于注解的方式进行注入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9D%A5%E5%88%9B%E5%BB%BA%E6%A0%B8%E5%BF%83%E5%AE%B9%E5%99%A8%E5%AF%B9%E8%B1%A1"><span class="toc-text">基于注解的方式来创建核心容器对象</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%98%85AOP"><span class="toc-text">★AOP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP%E6%A6%82%E8%BF%B0"><span class="toc-text">AOP概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E6%A8%A1%E6%8B%9FAOP%E5%BA%95%E5%B1%82"><span class="toc-text">JDK动态代理模拟AOP底层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EXML%E7%9A%84AOP%E9%85%8D%E7%BD%AE"><span class="toc-text">基于XML的AOP配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84AOP%E9%85%8D%E7%BD%AE"><span class="toc-text">基于注解的AOP配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95junit"><span class="toc-text">单元测试junit</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jdbcTemplate%E6%A8%A1%E6%9D%BF%E5%AF%B9%E8%B1%A1"><span class="toc-text">jdbcTemplate模板对象</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#xml%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7"><span class="toc-text">xml中的特殊符号</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6"><span class="toc-text">Spring中的事务控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PlatformTransactionManager%E6%8E%A5%E5%8F%A3"><span class="toc-text">PlatformTransactionManager接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EXML%E7%9A%84%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6"><span class="toc-text">基于XML的声明式事务控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TransactionDefinition%E4%BA%8B%E5%8A%A1%E5%B1%9E%E6%80%A7"><span class="toc-text">TransactionDefinition事务属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6"><span class="toc-text">基于注解的声明式事务控制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%98%85MVC"><span class="toc-text">★MVC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringMVC"><span class="toc-text">SpringMVC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#springMVC%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="toc-text">springMVC核心原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEspringMVC"><span class="toc-text">配置springMVC</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringMVC%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3"><span class="toc-text">SpringMVC基于注解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#springMVC%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%A5%E6%94%B6%E5%89%8D%E7%AB%AF%E4%BC%A0%E9%80%92%E8%BF%87%E6%9D%A5%E7%9A%84%E5%80%BC"><span class="toc-text">springMVC如何去接收前端传递过来的值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#springMVC%E5%A6%82%E4%BD%95%E5%B0%86%E5%B0%81%E8%A3%85%E5%A5%BD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AD%98%E5%88%B0Model%E4%B8%AD"><span class="toc-text">springMVC如何将封装好的数据存到Model中</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE"><span class="toc-text">项目</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><h2 id="spring概述"><a href="#spring概述" class="headerlink" title="spring概述"></a>spring概述</h2><p>Spring是分层的 Java SE&#x2F;EE 应用 full-stack <strong>轻量级开源框架</strong>，以<strong>IoC</strong>（Inverse Of Control：<strong>反转控制</strong>）和<strong>AOP</strong>（Aspect Oriented Programming：<strong>面向切面编程</strong>）为内核，提供了展现层<strong>Spring MVC</strong>和持久层<strong>Spring JDBC</strong>以及业务层事务管理等众多的企业级应用技术，还能整合开源世界众多著名的第三方框架和类库，逐渐成为使用最多的 <strong>Java EE</strong> 企业应用开源框架</p>
 <p>spring官网：<a target="_blank" rel="noopener" href="http://spring.io/">http://spring.io/</a></p>
 <h2 id="Spring的发展历程"><a href="#Spring的发展历程" class="headerlink" title="Spring的发展历程"></a>Spring的发展历程</h2><p>1997年IBM提出了EJB的思想</p>
 <p>1998年，SUN制定开发标准规范EJB1.0</p>
@@ -2248,51 +2698,194 @@ public ModelAndView getEmpList()&#123;
 <p>redirect</p>
 <h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1><p><strong>通过spring + springMVC + jdbcTemplate 来搭建一个web项目，完成员工列表</strong></p>
 
-	</div>
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
 </article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
 
 
 
     </div>
-  </div>
-  <div class="row">
-<div id="bottom" class="col-md-12"> 
-  <div class="bottom-nav">
-	
-	
-	<a href="https://github.com/lizehongss" class="fa fa-github fa-2x" target="_blank" title="Follow me" ></a>
-	
-	
-</div>
-<div class="bottom-info">
-	&copy; 2022 Os467<br>
-	Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-	theme <a href="https://github.com/lizehongss/hexo-theme-zhl" target="_blank">zhl</a>
-</div>
-</div>
-</div>
-</div>
-<div id="tool">
-  <ul>
-    <li class="fa fa-angle-up top" id="top"></li>
-  </ul>
-</div>
-  <div class="bg_content">
-    <canvas id="canvas"></canvas>
-  </div>
-  
-  <!-- scripts list from theme config.yml -->
-  
-    <script src="/js/zhl.js"></script>
-  
-    <script src="/js/bj.js"></script>
-  
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
-<!-- jQ cdn  -->
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<!-- bootstrap js cdn-->
-<!-- <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
 
 
 </body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
 </html>
