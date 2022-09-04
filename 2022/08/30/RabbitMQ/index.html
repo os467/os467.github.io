@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>RabbitMQ | Tly的博客</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="RabbitMQ | Tly的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="分布式搜索ESElastic Search简介什么是elasticsearch？ elasticsearch是一款非常强大的开源搜索引擎，可以帮助我们从海量数据中快速找到需要的内容 elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK），被广泛应用在日志数据分析、实时监控等领域 数据可视化  Kibana  存储、搜索、分析数据  el">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ElasticSearch">
+<meta property="og:url" content="https://os467.github.io/2022/09/04/ElasticSearch/index.html">
+<meta property="og:site_name" content="Tly的博客">
+<meta property="og:description" content="分布式搜索ESElastic Search简介什么是elasticsearch？ elasticsearch是一款非常强大的开源搜索引擎，可以帮助我们从海量数据中快速找到需要的内容 elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK），被广泛应用在日志数据分析、实时监控等领域 数据可视化  Kibana  存储、搜索、分析数据  el">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-04T15:29:31.000Z">
+<meta property="article:modified_time" content="2022-09-04T15:19:52.792Z">
+<meta property="article:author" content="Os467">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/headimg.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/headimg.jpg"/>
+</a>
+<div class="author">
+    <span>Os467</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/os467"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/os467/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(34)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="34">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/ElasticSearch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ElasticSearch">ElasticSearch</span>
+            <span class="post-date" title="2022-09-04 23:29:31">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springMVC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/bootstrap/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/01/springCloud%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud项目搭建">SpringCloud项目搭建</span>
+            <span class="post-date" title="2022-09-01 22:23:21">2022/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/30/RabbitMQ/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RabbitMQ">RabbitMQ</span>
+            <span class="post-date" title="2022-08-30 20:25:33">2022/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/29/MVC%E8%AE%BF%E9%97%AE%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MVC多线程安全问题">MVC多线程安全问题</span>
+            <span class="post-date" title="2022-08-29 17:18:53">2022/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/27/JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM类加载机制">JVM类加载机制</span>
+            <span class="post-date" title="2022-08-27 18:10:23">2022/08/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/24/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM虚拟机">JVM虚拟机</span>
+            <span class="post-date" title="2022-08-24 18:28:03">2022/08/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/23/Docker/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Docker">Docker</span>
+            <span class="post-date" title="2022-08-23 13:25:11">2022/08/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/18/springCloud/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud">SpringCloud</span>
+            <span class="post-date" title="2022-08-18 13:21:39">2022/08/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="微服务入门">微服务入门</span>
+            <span class="post-date" title="2022-08-15 15:44:35">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/15/dubbo/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="dubbo">dubbo</span>
+            <span class="post-date" title="2022-08-15 07:25:45">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/13/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Redis">Redis</span>
+            <span class="post-date" title="2022-08-13 14:25:31">2022/08/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/12/springboot/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot">SpringBoot</span>
+            <span class="post-date" title="2022-08-12 12:15:35">2022/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/08/ssm%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SSM项目整合">SSM项目整合</span>
+            <span class="post-date" title="2022-08-08 12:15:25">2022/08/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/03/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="外卖项目">外卖项目</span>
+            <span class="post-date" title="2022-08-03 08:35:11">2022/08/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/01/MyBatisPlus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatisPlus">MyBatisPlus</span>
+            <span class="post-date" title="2022-08-01 11:15:26">2022/08/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/31/MyBatis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatis">MyBatis</span>
+            <span class="post-date" title="2022-07-31 10:10:26">2022/07/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/28/Maven/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven">Maven</span>
+            <span class="post-date" title="2022-07-28 19:10:41">2022/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/26/spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="spring">spring</span>
+            <span class="post-date" title="2022-07-26 21:54:22">2022/07/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式">设计模式</span>
+            <span class="post-date" title="2022-07-18 19:21:50">2022/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/17/Ajax/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ajax">Ajax</span>
+            <span class="post-date" title="2022-07-17 12:07:22">2022/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/14/Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Annotation">Annotation</span>
+            <span class="post-date" title="2022-07-14 19:36:02">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/13/Reflect/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Reflect">Reflect</span>
+            <span class="post-date" title="2022-07-13 14:40:18">2022/07/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2022-07-12 12:29:58">2022/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/10/IO%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IO流">IO流</span>
+            <span class="post-date" title="2022-07-10 20:14:33">2022/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/07/javaScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="javaScript">javaScript</span>
+            <span class="post-date" title="2022-07-07 12:54:16">2022/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/06/XML/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="XML">XML</span>
+            <span class="post-date" title="2022-07-06 18:28:03">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/06/cookie%E5%92%8Csession/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="cookie和session">cookie和session</span>
+            <span class="post-date" title="2022-07-06 18:27:45">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/02/servlet/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="servlet">servlet</span>
+            <span class="post-date" title="2022-07-02 08:24:49">2022/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/01/jdbc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jdbc">jdbc</span>
+            <span class="post-date" title="2022-07-01 08:24:49">2022/07/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/06/19/SQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL">SQL</span>
+            <span class="post-date" title="2022-06-19 19:45:07">2022/06/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/28/JAVA%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JAVA入门">JAVA入门</span>
+            <span class="post-date" title="2022-05-28 00:32:07">2022/05/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/27/Linux%E4%BA%91%E8%AE%A1%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux云计算">Linux云计算</span>
+            <span class="post-date" title="2022-05-27 00:05:15">2022/05/27</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-RabbitMQ" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">RabbitMQ</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-09-04 23:17:53'>2022-08-30 20:25</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RabbitMQ"><span class="toc-text">RabbitMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MQ%E7%AE%80%E4%BB%8B"><span class="toc-text">MQ简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MQ%E7%9A%84%E4%BC%98%E5%8A%BF%E5%92%8C%E5%8A%A3%E5%8A%BF"><span class="toc-text">MQ的优势和劣势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8MQ%E7%9A%84%E5%89%8D%E6%8F%90"><span class="toc-text">使用MQ的前提</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84MQ%E4%BA%A7%E5%93%81"><span class="toc-text">常见的MQ产品</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RabbitMQ%E7%AE%80%E4%BB%8B"><span class="toc-text">RabbitMQ简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JMS"><span class="toc-text">JMS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2rabbitmq"><span class="toc-text">部署rabbitmq</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95PQC%E6%A8%A1%E5%BC%8F"><span class="toc-text">简单PQC模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">生产者代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#queueDeclare%E5%87%BD%E6%95%B0"><span class="toc-text">queueDeclare函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#basicPublish%E5%87%BD%E6%95%B0"><span class="toc-text">basicPublish函数</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%88%E8%B4%B9%E8%80%85%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">消费者代码实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RabbitMQ%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-text">RabbitMQ的工作模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97%E6%A8%A1%E5%BC%8F"><span class="toc-text">工作队列模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pub-x2F-Sub%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">Pub&#x2F;Sub订阅模式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#exchangeDeclare%E5%87%BD%E6%95%B0"><span class="toc-text">exchangeDeclare函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Routing%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%BC%8F"><span class="toc-text">Routing路由模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Topics%E9%80%9A%E9%85%8D%E7%AC%A6%E6%A8%A1%E5%BC%8F"><span class="toc-text">Topics通配符模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSpringAMQP"><span class="toc-text">什么是SpringAMQP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring%E6%95%B4%E5%90%88rabbitMQ"><span class="toc-text">spring整合rabbitMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85%E5%AE%9E%E7%8E%B0"><span class="toc-text">生产者实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E8%B4%B9%E8%80%85%E5%AE%9E%E7%8E%B0"><span class="toc-text">消费者实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#springboot%E6%95%B4%E5%90%88rabbitMQ"><span class="toc-text">springboot整合rabbitMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85%E5%AE%9E%E7%8E%B0-1"><span class="toc-text">生产者实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E8%B4%B9%E8%80%85%E5%AE%9E%E7%8E%B0-1"><span class="toc-text">消费者实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%8F%91%E9%80%81Object%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE"><span class="toc-text">测试发送Object类型数据</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h1><h2 id="MQ简介"><a href="#MQ简介" class="headerlink" title="MQ简介"></a>MQ简介</h2><p>MQ全称Message Queue（消息队列），是在消息的传输过程中保存新消息的容器，多用于分布式系统之间进行通信</p>
+<p>生产者 →  中间件(MQ)  → 消费者</p>
+<p>分布式系统通信两种方式：直接远程调用和借助第三方完成间接通信</p>
+<p>发送方称为生产者，接收方称为消费者</p>
+<p><strong>同步调用存在的问题</strong></p>
+<ul>
+<li>耦合度高，加入新需求需要修改原来的代码，<strong>违背了开闭原则</strong></li>
+<li>性能下降，调用者需要<strong>等待服务提供者响应</strong>，如果调用链过长则响应时间等于每次调用的时间之和</li>
+<li>资源浪费，调用链中的每个服务在等待响应过程中，<strong>不能释放请求占用的资源</strong>，高并发场景下会极度浪费系统资源</li>
+<li>级联失败，如果服务提供者出现问题，所有调用方也会跟着出现问题，会迅速导致整个微服务群的故障</li>
+</ul>
+<p><strong>异步调用方案</strong></p>
+<p>异步调用常见实现就是事件驱动模式</p>
+<h3 id="MQ的优势和劣势"><a href="#MQ的优势和劣势" class="headerlink" title="MQ的优势和劣势"></a>MQ的优势和劣势</h3><p><strong>优势</strong></p>
+<p>应用解耦</p>
+<ul>
+<li>系统的耦合性越高，容错性就越低，可维护性就越低，使用MQ使得应用间解耦，提升容错性和可维护性</li>
+<li>MQ存放生产者提供的信息，传递给需要的消费者，降低了生产者和消费者之间直接远程调用产生的耦合</li>
+</ul>
+<p>异步提速</p>
+<ul>
+<li>系统只需要向MQ发送本次调用所需要的信息而无需等待返回结果</li>
+<li>提升了用户体验和系统吞吐量（单位时间内处理请求的数目）</li>
+</ul>
+<p>削峰填谷</p>
+<ul>
+<li>削峰指的是在一段时间内出现的用户访问量激增，将请求消息积压在MQ中来缓解服务的压力</li>
+<li>填谷指的是将高峰期后的一段时间内对MQ内积压的请求消息进行稳定处理</li>
+<li>提高了系统的稳定性</li>
+</ul>
+<p><strong>劣势</strong></p>
+<p><strong>系统可用性降低</strong></p>
+<ul>
+<li>系统引入的外部依赖越多，系统稳定性越差，一旦MQ宕机，就会对业务造成影响</li>
+</ul>
+<p><strong>系统复杂度提高</strong></p>
+<ul>
+<li>MQ的加入大大增加了系统的复杂度，以前系统间是同步的远程调用，现在是通过MQ进行异步调用</li>
+</ul>
+<p><strong>一致性问题</strong></p>
+<ul>
+<li>A系统处理完业务，通过MQ给B、C、D三个系统发送消息数据，如果B系统，C系统处理成功，D系统处理失败，如何保证消息数据处理的一致性？</li>
+</ul>
+<h3 id="使用MQ的前提"><a href="#使用MQ的前提" class="headerlink" title="使用MQ的前提"></a>使用MQ的前提</h3><p><strong>生产者不需要从消费者处获得反馈</strong></p>
+<p>引入消息列队之前的直接调用，其接口的返回值应该为空，这才让明明下层的动作还没做，上层却当成功动作做完了继续</p>
+<p><strong>容许短暂的不一致性</strong></p>
+<p><strong>确实用了有效果</strong></p>
+<p>即解耦、提速、削峰这些方面的收益，超过加入MQ，管理MQ这些成本</p>
+<h3 id="常见的MQ产品"><a href="#常见的MQ产品" class="headerlink" title="常见的MQ产品"></a>常见的MQ产品</h3><p>目前业界有很多的MQ产品，例如RabbitMQ，RocketMQ，ActiveMQ，Kafka，ZeroMQ，MetaMQ等，也有直接使用Redis充当消息队列的案例，这些消息队列产品，各有侧重，在实际选型时，需要结合自身需求及MQ产品特征，综合考虑</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>RabbitMQ</strong></th>
+<th><strong>ActiveMQ</strong></th>
+<th><strong>RocketMQ</strong></th>
+<th><strong>Kafka</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>公司&#x2F;社区</td>
+<td>Rabbit</td>
+<td>Apache</td>
+<td>阿里</td>
+<td>Apache</td>
+</tr>
+<tr>
+<td>开发语言</td>
+<td>Erlang</td>
+<td>Java</td>
+<td>Java</td>
+<td>Scala&amp;Java</td>
+</tr>
+<tr>
+<td>协议支持</td>
+<td>AMQP，XMPP，SMTP，STOMP</td>
+<td>OpenWire,STOMP，REST,XMPP,AMQP</td>
+<td>自定义协议</td>
+<td>自定义协议</td>
+</tr>
+<tr>
+<td>可用性</td>
+<td>高</td>
+<td>一般</td>
+<td>高</td>
+<td>高</td>
+</tr>
+<tr>
+<td>单机吞吐量</td>
+<td>一般</td>
+<td>差</td>
+<td>高</td>
+<td>非常高</td>
+</tr>
+<tr>
+<td>消息延迟</td>
+<td>微秒级</td>
+<td>毫秒级</td>
+<td>毫秒级</td>
+<td>毫秒以内</td>
+</tr>
+<tr>
+<td>消息可靠性</td>
+<td>高</td>
+<td>一般</td>
+<td>高</td>
+<td>一般</td>
+</tr>
+</tbody></table>
+<h2 id="RabbitMQ简介"><a href="#RabbitMQ简介" class="headerlink" title="RabbitMQ简介"></a>RabbitMQ简介</h2><p><strong>AMQP</strong>，即Advanced Message Queuing Protocol （高级消息队列协议），是一个网络协议，是应用层的一个开放标准，为面向消息的中间件设计，基于此协议的客户端与消息中间件可传递消息，并不受客户端&#x2F;中间件不同产品，不同的开发语言等条件的限制，2006年，AMQP规范发布，类比Http</p>
+<p><strong>RabbitMQ基础架构</strong></p>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fhhr-hhr%2Fimages%40master%2F20210504%2Frabbitmq5.51h05f6b22w0.png&refer=http%3A%2F%2Fcdn.jsdelivr.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1664081278&t=6af94839ae6b1a6c9f9d6b2adbc6f4bb"></p>
+<p><strong>Broker</strong></p>
+<p>接收和分发消息的应用，RabbitMQ Server就是 Message Broker</p>
+<p><strong>Virtual host</strong></p>
+<p>出于多租户和安全因素设计的，把 AMQP 的基本组件划分到一个虚拟的分组中，类似于网络中的namespace概念。当多个不同的用户使用同一个RabbitMQ server 提供的服务时，可以划分出多个vhost，每个用户在自己的 vhost创建exchange &#x2F; queue等</p>
+<p><strong>Connection</strong></p>
+<p>publisher &#x2F; consumer 和broker之间的TCP连接</p>
+<p><strong>Channel</strong></p>
+<p>如果每一次访问RabbitMQ都建立一个Connection，在消息量大的时候建立TCP Connectio的开销将是巨大的，效率也较低，Channel是在connection内部建立的逻辑连接，如果应用程序支持多线程，通常每个thread创建单独的channel进行通讯，AMQP method包含了channel id帮助客户端和message broker 识别channel，所以 channel之间是完全隔离的，Channel作为轻量级的Connection极大减少了操作系统建立TCP connection的开销</p>
+<blockquote>
+<p>在RabbitMQ中可以虚拟消息服务器VirtualHost，每个VirtualHost相当月一个相对独立的RabbitMQ服务器，每个VirtualHost之间是相互隔离的</p>
+</blockquote>
+<p><strong>Exchange</strong></p>
+<p>message到达 broker的第一站，根据分发规则，匹配查询表中的<strong>RoutingKey</strong>，分发消息到queue中去，常用的交换机类型有: <strong>路由</strong>direct (point-to-point), <strong>通配符</strong>topic(publish-subscribe) and <strong>订阅</strong>fanout (multicast)</p>
+<p><strong>Queue</strong></p>
+<p>消息最终被送到这里等待consumer取走</p>
+<p><strong>Binding</strong></p>
+<p>exchange和queue之间的虚拟连接，binding 中可以包含 routing key，Binding信息被保存到exchange 中的查询表中，用于message 的分发依据</p>
+<h3 id="JMS"><a href="#JMS" class="headerlink" title="JMS"></a>JMS</h3><p>JMS即<strong>Java消息服务</strong>（JavaMessage Service）应用程序<strong>接口</strong>，是一个Java平台中关于面向消息中间件的API</p>
+<p>JMS是JavaEE规范中的一种，类比JDBC</p>
+<p>很多消息中间件都实现了JMS规范，例如：ActiveMQ</p>
+<p>RabbitMQ官方没有提供JMS的实现包，但是开源社区有</p>
+<p>rabbitMQ官网：<a target="_blank" rel="noopener" href="http://www.rabbitmq.com/">http://www.rabbitmq.com/</a></p>
+<h3 id="部署rabbitmq"><a href="#部署rabbitmq" class="headerlink" title="部署rabbitmq"></a>部署rabbitmq</h3><p>使用docker拉取镜像</p>
+<pre><code class="bash">docker pull rabbitmq:3-management
+</code></pre>
+<p>运行rabbitmq</p>
+<pre><code class="bash">docker run \
+ -e RABBITMQ_DEFAULT_USER=root \
+ -e RABBITMQ_DEFAULT_PASS=123456 \
+ --name mq \
+ --hostname mq1 \
+ -p 15672:15672 \
+ -p 5672:5672 \
+ -d \
+ rabbitmq:3-management
+</code></pre>
+<p>本机访问控制台 <code>虚拟机ip:15672</code></p>
+<p><strong>引入rabbitmq依赖坐标</strong></p>
+<pre><code class="xml">&lt;!--rabbitmq java 客户端--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.rabbitmq&lt;/groupId&gt;
+    &lt;artifactId&gt;amqp-client&lt;/artifactId&gt;
+    &lt;version&gt;5.4.3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="简单PQC模式"><a href="#简单PQC模式" class="headerlink" title="简单PQC模式"></a>简单PQC模式</h3><p>P：生产者，也就是要发送消息的程序</p>
+<p>Q：消息队列，类似一个邮箱，可以缓存消息，生产者向其中投递消息，消费者从其中取出消息</p>
+<p>C：消费者：消息的接收者，会一直等待消息到来</p>
+<h4 id="生产者代码实现"><a href="#生产者代码实现" class="headerlink" title="生产者代码实现"></a>生产者代码实现</h4><p>1、创建连接工厂</p>
+<pre><code class="java">//创建连接工厂
+ConnectionFactory factory = new ConnectionFactory();
+</code></pre>
+<p>2、设置参数</p>
+<pre><code class="java">//设置参数
+//设置主机ip和端口，默认为localhost:5672
+factory.setHost(&quot;192.168.119.88&quot;);
+factory.setPort(5672);
+//设置虚拟机名
+factory.setVirtualHost(&quot;/&quot;);
+//设置用户名和密码
+factory.setUsername(&quot;root&quot;);
+factory.setPassword(&quot;123456&quot;);
+</code></pre>
+<p>3、创建连接 Connection</p>
+<pre><code class="java">//创建连接 Connection
+Connection connection = factory.newConnection();
+</code></pre>
+<p>4、创建 Channel</p>
+<pre><code class="java">//创建channel
+Channel channel = connection.createChannel();
+</code></pre>
+<p>5、创建列队Queue</p>
+<h5 id="queueDeclare函数"><a href="#queueDeclare函数" class="headerlink" title="queueDeclare函数"></a>queueDeclare函数</h5><p>用于消息队列</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li>String queue：队列名称</li>
+<li>boolean durable：是否持久化，当mq重启之后是否存在</li>
+<li>boolean exclusive：是否独占，只能有一个消费者监听这队列，当Connection关闭时，是否删除队列</li>
+<li>boolean autoDelete：是否自动删除，当没有Consumer时，自动删除掉</li>
+<li>Map&lt;String, Object&gt; arguments：参数消息</li>
+</ul>
+<pre><code class="java">/*
+    参数：
+        1、String queue：队列名称
+        2、boolean durable：是否持久化，当mq重启之后，还在
+        3、boolean exclusive：是否独占，只能有一个消费者监听这队列，当Connection关闭时，是否删除队列
+        4、boolean autoDelete：是否自动删除，当没有Consumer时，自动删除掉
+        5、Map&lt;String, Object&gt; arguments：参数消息
+ */
+//如果没有一个名字叫hello world的队列将会创建该队列，如果有则不会创建
+channel.queueDeclare(&quot;hello world&quot;,true,false,false,null);
+</code></pre>
+<p>6、发送消息</p>
+<h5 id="basicPublish函数"><a href="#basicPublish函数" class="headerlink" title="basicPublish函数"></a>basicPublish函数</h5><p>用于生产者发送消息给交换机，并且对消息进行一些设置</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li>String exchange：交换机的名称，简单模式下交换机会使用默认的</li>
+<li>String routingKey：路由名称，没有指定交换机时可以是队列名称</li>
+<li>BasicProperties props：配置信息</li>
+<li>byte[] body：发送消息数据</li>
+</ul>
+<pre><code class="java">/*
+    参数：
+        1、String exchange：交换机的名称，简单模式下交换机会使用默认的
+        2、String routingKey：路由名称，没有指定交换机时可以是队列名称
+        3、BasicProperties props：配置信息
+        4、byte[] body：发送消息数据
+ */
+//发送消息
+
+String body = &quot;Hello rabbitMQ!&quot;;
+
+channel.basicPublish(&quot;&quot;,&quot;hello world&quot;,null,body.getBytes());
+</code></pre>
+<p>7、释放资源</p>
+<pre><code class="java">//释放资源
+channel.close();
+connection.close();
+</code></pre>
+<h4 id="消费者代码实现"><a href="#消费者代码实现" class="headerlink" title="消费者代码实现"></a>消费者代码实现</h4><p>1、创建连接工厂，设置参数</p>
+<pre><code class="java">//创建连接工厂
+ConnectionFactory factory = new ConnectionFactory();
+
+//设置参数
+//设置主机ip和端口，默认为localhost:5672
+factory.setHost(&quot;192.168.119.88&quot;);
+factory.setPort(5672);
+//设置虚拟机名
+factory.setVirtualHost(&quot;/&quot;);
+//设置用户名和密码
+factory.setUsername(&quot;root&quot;);
+factory.setPassword(&quot;123456&quot;);
+</code></pre>
+<p>2、创建Connection和Channel</p>
+<pre><code class="java">//创建连接 Connection
+Connection connection = factory.newConnection();
+
+//创建channel
+Channel channel = connection.createChannel();
+
+//创建列队
+channel.queueDeclare(&quot;hello world&quot;,true,false,false,null);
+</code></pre>
+<p>3、接收消息</p>
+<pre><code class="java">/*
+    参数：
+        1、queue：队列名称
+        2、autoAck：是否自动确认
+        3、callback：回调对象
+ */
+Consumer consumer = new DefaultConsumer(channel)&#123;
+    /**
+     * 回调方法，当收到消息后，会自动执行该方法
+     * @param consumerTag 标识
+     * @param envelope 获取一些信息（交换机，路由key...）
+     * @param properties 配置信息
+     * @param body 数据
+     * @throws IOException
+     */
+    @Override
+    public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException &#123;
+
+        System.out.println(&quot;consumerTag：&quot;+consumerTag);
+        System.out.println(&quot;Exchange：&quot;+envelope.getExchange());
+        System.out.println(&quot;RoutingKey：&quot;+envelope.getRoutingKey());
+        System.out.println(&quot;properties：&quot;+properties);
+        System.out.println(&quot;body：&quot;+new String(body));
+
+    &#125;
+&#125;;
+
+//接收消息
+channel.basicConsume(&quot;hello world&quot;,true,consumer);
+</code></pre>
+<h2 id="RabbitMQ的工作模式"><a href="#RabbitMQ的工作模式" class="headerlink" title="RabbitMQ的工作模式"></a>RabbitMQ的工作模式</h2><h3 id="工作队列模式"><a href="#工作队列模式" class="headerlink" title="工作队列模式"></a>工作队列模式</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/aa833fc0231b67a9e483c0146795e394.jpeg" alt="img"></p>
+<p><strong>Work queues</strong>  与入门程序的简单模式相比，多了一个或一些消费端，多个消费端共同消费同一个队列中的消息</p>
+<p><strong>应用场景：</strong> 对于任务过重或任务较多情况使用工作队列可以提高任务处理的速度</p>
+<p>在一个队列中如果有多个消费者，那么消费者之间对于同一个消息的关系是<strong>竞争</strong>的关系</p>
+<p>Work Queues 对于任务过重或任务较多情况使用工作队列可以提高任务处理的速度</p>
+<p><strong>例如</strong>：短信服务部署多个，只需要有一个节点成功发送即可</p>
+<p><strong>默认</strong>采用轮询方式分发消息给消费者</p>
+<p><strong>生产者发送10次消息</strong></p>
+<pre><code class="java">/*
+    参数：
+        1、queue：队列名称
+        2、durable：是否持久化，当mq重启之后，还在
+        3、exclusive：是否独占，只能有一个消费者监听这队列，当Connection关闭时，是否删除队列
+        4、autoDelete：是否自动删除，当没有Consumer时，自动删除掉
+        5、arguments：参数消息
+ */
+//如果没有一个名字叫hello world的队列将会创建该队列，如果有则不会创建
+channel.queueDeclare(&quot;work_queues&quot;,true,false,false,null);
+
+/*
+    参数：
+        1、exchange：交换机的名称，简单模式下交换机会使用默认的
+        2、routingKey：路由名称
+        3、props：配置信息
+        4、body：发送消息数据
+ */
+//发送消息
+for (int i = 0; i &lt; 10; i++) &#123;
+
+    String body = i+&quot;：Hello rabbitMQ!&quot;;
+
+    channel.basicPublish(&quot;&quot;,&quot;work_queues&quot;,null,body.getBytes());
+
+
+&#125;
+</code></pre>
+<p><strong>消费者监听消息列队</strong></p>
+<pre><code class="java">  /*
+        参数：
+            1、queue：队列名称
+            2、durable：是否持久化，当mq重启之后，还在
+            3、exclusive：是否独占，只能有一个消费者监听这队列，当Connection关闭时，是否删除队列
+            4、autoDelete：是否自动删除，当没有Consumer时，自动删除掉
+            5、arguments：参数消息
+     */
+    //如果没有一个名字叫hello world的队列将会创建该队列，如果有则不会创建
+    channel.queueDeclare(&quot;work_queues&quot;,true,false,false,null);
+
+    /*
+        参数：
+            1、queue：队列名称
+            2、autoAck：是否自动确认
+            3、callback：回调对象
+     */
+    Consumer consumer = new DefaultConsumer(channel)&#123;
+        /**
+         * 回调方法，当收到消息后，会自动执行该方法
+         * @param consumerTag 标识
+         * @param envelope 获取一些信息（交换机，路由key...）
+         * @param properties 配置信息
+         * @param body 数据
+         * @throws IOException
+         */
+        @Override
+        public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException &#123;
+
+            System.out.println(&quot;body：&quot;+new String(body));
+
+        &#125;
+    &#125;;
+
+    //接收消息
+    channel.basicConsume(&quot;work_queues&quot;,true,consumer);
+
+&#125;
+</code></pre>
+<h3 id="Pub-x2F-Sub订阅模式"><a href="#Pub-x2F-Sub订阅模式" class="headerlink" title="Pub&#x2F;Sub订阅模式"></a>Pub&#x2F;Sub订阅模式</h3><p><img src="https://upload-images.jianshu.io/upload_images/5543739-4486cf05e8c9b52e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/387/format/webp"></p>
+<p>在订阅模型中，多了一个Exchange角色，而且过程略有变化：</p>
+<ul>
+<li><p>P：生产者，也就是要发送消息的程序，但是不再发送到队列中，而是发给X（交换机）</p>
+</li>
+<li><p>C：消费者，消息的接收者，会一直等待消息到来</p>
+</li>
+<li><p>Queue：消息队列，接收消息、缓存消息</p>
+</li>
+<li><p>Exchange：交换机 (X)，一方面，接收生产者发送的消息，另一方面，知道如何处理消息，例如递交给某个特别队列、递交给所有队列、或是将消息丢弃，到底如何操作，取决于Exchange的类型</p>
+</li>
+</ul>
+<p><strong>Exchange有常见以下3种类型:</strong></p>
+<ul>
+<li>Fanout：广播，将消息交给所有绑定到交换机的队列</li>
+<li>Direct：定向，把消息交给符合指定routing key的队列</li>
+<li>Topic：通配符，把消息交给符合routing pattern(路由模式)的队列</li>
+</ul>
+<p>Exchange（交换机）<strong>只负责转发消息，不具备存储消息的能力</strong>，因此如果<strong>没有任何队列与Exchange绑定</strong>，或者<strong>没有符合路由规则</strong>的队列，那么消息会丢失</p>
+<h5 id="exchangeDeclare函数"><a href="#exchangeDeclare函数" class="headerlink" title="exchangeDeclare函数"></a>exchangeDeclare函数</h5><p>用于声明一个交换机</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li><p>String exchange 交换机名称</p>
+</li>
+<li><p>BuiltinExchangeType type 交换机类型</p>
+<ul>
+<li>DIRECT(“direct”)：定向</li>
+<li>FANOUT(“fanout”)：扇形（广播），发送消息到每个与之绑定的队列</li>
+<li>TOPIC(“topic”)：通配符的方式</li>
+<li>HEADERS(“headers”)：参数匹配</li>
+</ul>
+</li>
+<li><p>boolean durable 是否持久化</p>
+</li>
+<li><p>boolean autoDelete 自动删除</p>
+</li>
+<li><p>boolean internal 内部使用，一般为false</p>
+</li>
+<li><p>Map&lt;String,Object&gt; arguments 参数</p>
+</li>
+</ul>
+<p><strong>生产者代码实现</strong></p>
+<pre><code class="java">//创建连接工厂
+ConnectionFactory factory = new ConnectionFactory();
+
+//设置参数
+//设置主机ip和端口，默认为localhost:5672
+factory.setHost(&quot;192.168.119.88&quot;);
+factory.setPort(5672);
+//设置虚拟机名
+factory.setVirtualHost(&quot;/&quot;);
+//设置用户名和密码
+factory.setUsername(&quot;root&quot;);
+factory.setPassword(&quot;123456&quot;);
+
+
+
+//创建连接 Connection
+Connection connection = factory.newConnection();
+
+//创建channel
+Channel channel = connection.createChannel();
+
+/*
+    参数：
+        1、String exchange 交换机名称
+        2、BuiltinExchangeType type 交换机类型
+            DIRECT(&quot;direct&quot;)：定向
+            FANOUT(&quot;fanout&quot;)：扇形（广播），发送消息到每个与之绑定的队列
+            TOPIC(&quot;topic&quot;)：通配符的方式
+            HEADERS(&quot;headers&quot;)：参数匹配
+
+        3、boolean durable 是否持久化
+        4、boolean autoDelete 自动删除
+        5、boolean internal 内部使用，一般为false
+        6、Map&lt;String,Object&gt; arguments 参数
+ */
+
+String exchangeName = &quot;test_fanout&quot;;
+
+//创建交换机
+channel.exchangeDeclare(exchangeName, BuiltinExchangeType.FANOUT,true,false,false,null);
+
+//创建队列
+String queue1Name = &quot;test_fanout_queue1&quot;;
+String queue2Name = &quot;test_fanout_queue2&quot;;
+channel.queueDeclare(queue1Name,true,false,false,null);
+channel.queueDeclare(queue2Name,true,false,false,null);
+
+
+//绑定队列和交换机
+/*
+    参数：
+        1、String queue 队列名称
+        2、String exchange 交换机名称
+        3、String routingKey 路由键，绑定规则
+            如果交换机的类型为fanout，routingKey设置为&quot;&quot;
+ */
+channel.queueBind(queue1Name,exchangeName,&quot;&quot;);
+channel.queueBind(queue2Name,exchangeName,&quot;&quot;);
+</code></pre>
+<p><strong>routingKey的作用</strong></p>
+<p>交换机根据消息携带的路由键，来决定该消息递交给哪个队列，交换机根据路由键提供的绑定规则来递交消息后，消费者就可以连接队列获取消息</p>
+<ul>
+<li><strong>单播（PQC）模式</strong>根据路由键名称指定消息队列</li>
+<li><strong>发布订阅模式</strong>无需路由键，将消息发送给对应绑定了交换器的<strong>所有消息队列</strong></li>
+<li>topic模式是根据路由键的规则匹配，有选择性的进行广播</li>
+</ul>
+<p><strong>首先</strong>路由键需要用在在交换机和队列创建之后的相互绑定</p>
+<p><strong>其次</strong>发布数据的时候需要在某个交换机里面填写路由键，然后写上要发送的消息内容</p>
+<p><strong>最后</strong>路由键就可以找到被绑定的相应的队列来接收消息</p>
+<p><strong>消费者代码实现</strong></p>
+<pre><code class="java">//创建连接工厂
+ConnectionFactory factory = new ConnectionFactory();
+
+//设置参数
+//设置主机ip和端口，默认为localhost:5672
+factory.setHost(&quot;192.168.119.88&quot;);
+factory.setPort(5672);
+//设置虚拟机名
+factory.setVirtualHost(&quot;/&quot;);
+//设置用户名和密码
+factory.setUsername(&quot;root&quot;);
+factory.setPassword(&quot;123456&quot;);
+
+
+
+//创建连接 Connection
+Connection connection = factory.newConnection();
+
+//创建channel
+Channel channel = connection.createChannel();
+
+
+/*
+    参数：
+        1、queue：队列名称
+        2、autoAck：是否自动确认
+        3、callback：回调对象
+ */
+Consumer consumer = new DefaultConsumer(channel)&#123;
+    /**
+     * 回调方法，当收到消息后，会自动执行该方法
+     * @param consumerTag 标识
+     * @param envelope 获取一些信息（交换机，路由key...）
+     * @param properties 配置信息
+     * @param body 数据
+     * @throws IOException
+     */
+    @Override
+    public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException &#123;
+
+        System.out.println(&quot;body：&quot;+new String(body));
+        System.out.println(&quot;将日志信息打印到控制台...&quot;);
+
+    &#125;
+&#125;;
+//接收消息，绑定一条列队
+channel.basicConsume(&quot;test_fanout_queue1&quot;,true,consumer);
+</code></pre>
+<h3 id="Routing路由模式"><a href="#Routing路由模式" class="headerlink" title="Routing路由模式"></a>Routing路由模式</h3><p><img src="https://upload-images.jianshu.io/upload_images/5543739-04ecec645d1bcdf4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/437/format/webp"></p>
+<ul>
+<li><strong>队列与交换机的绑定</strong>，不能是任意绑定了，而是要<strong>指定一个RoutingKey</strong>（路由key）</li>
+<li>消息的发送方在向Exchange发送消息时，也必须指定<strong>消息的RoutingKey</strong></li>
+<li>Exchange不再把消息交给每一个绑定的队列，而是根据消息的RoutingKey进行判断，只有<strong>队列的Routingkey与消息的Routingkey完全一致</strong>，才会接收到消息，此时交换机的类型应该是<strong>DIRECT</strong></li>
+</ul>
+<p><strong>生产者代码实现</strong></p>
+<pre><code class="java">//创建连接工厂
+ConnectionFactory factory = new ConnectionFactory();
+
+//设置参数
+//设置主机ip和端口，默认为localhost:5672
+factory.setHost(&quot;192.168.119.88&quot;);
+factory.setPort(5672);
+//设置虚拟机名
+factory.setVirtualHost(&quot;/&quot;);
+//设置用户名和密码
+factory.setUsername(&quot;root&quot;);
+factory.setPassword(&quot;123456&quot;);
+
+
+
+//创建连接 Connection
+Connection connection = factory.newConnection();
+
+//创建channel
+Channel channel = connection.createChannel();
+
+/*
+            参数：
+                1、String exchange 交换机名称
+                2、BuiltinExchangeType type 交换机类型
+                    DIRECT(&quot;direct&quot;)：定向
+                    FANOUT(&quot;fanout&quot;)：扇形（广播），发送消息到每个与之绑定的队列
+                    TOPIC(&quot;topic&quot;)：通配符的方式
+                    HEADERS(&quot;headers&quot;)：参数匹配
+
+                3、boolean durable 是否持久化
+                4、boolean autoDelete 自动删除
+                5、boolean internal 内部使用，一般为false
+                6、Map&lt;String,Object&gt; arguments 参数
+         */
+
+String exchangeName = &quot;test_direct&quot;;
+
+//创建交换机
+channel.exchangeDeclare(exchangeName, BuiltinExchangeType.DIRECT,true,false,false,null);
+
+//创建队列
+String queue1Name = &quot;test_direct_queue1&quot;;
+String queue2Name = &quot;test_direct_queue2&quot;;
+
+channel.queueDeclare(queue1Name,true,false,false,null);
+channel.queueDeclare(queue2Name,true,false,false,null);
+
+
+//绑定队列和交换机
+/*
+            参数：
+                1、String queue 队列名称
+                2、String exchange 交换机名称
+                3、String routingKey 路由键，绑定规则
+         */
+//队列1的绑定
+channel.queueBind(queue1Name,exchangeName,&quot;error&quot;);
+//队列2的绑定
+channel.queueBind(queue2Name,exchangeName,&quot;error&quot;);
+channel.queueBind(queue2Name,exchangeName,&quot;warning&quot;);
+channel.queueBind(queue2Name,exchangeName,&quot;info&quot;);
+
+String body = &quot;日志信息，张三调用了findAll方法...日志级别：info...&quot;;
+String body2 = &quot;错误信息，数据出现错误...级别：error...&quot;;
+
+//发送消息info
+channel.basicPublish(exchangeName,&quot;info&quot;,null,body.getBytes());
+channel.basicPublish(exchangeName,&quot;error&quot;,null,body2.getBytes());
+
+
+//释放资源
+channel.close();
+connection.close();
+</code></pre>
+<p><strong>消费者代码实现</strong></p>
+<pre><code class="java">//创建连接工厂
+ConnectionFactory factory = new ConnectionFactory();
+
+//设置参数
+//设置主机ip和端口，默认为localhost:5672
+factory.setHost(&quot;192.168.119.88&quot;);
+factory.setPort(5672);
+//设置虚拟机名
+factory.setVirtualHost(&quot;/&quot;);
+//设置用户名和密码
+factory.setUsername(&quot;root&quot;);
+factory.setPassword(&quot;123456&quot;);
+
+
+
+//创建连接 Connection
+Connection connection = factory.newConnection();
+
+//创建channel
+Channel channel = connection.createChannel();
+
+
+/*
+    参数：
+        1、queue：队列名称
+        2、autoAck：是否自动确认
+        3、callback：回调对象
+ */
+Consumer consumer = new DefaultConsumer(channel)&#123;
+    /**
+     * 回调方法，当收到消息后，会自动执行该方法
+     * @param consumerTag 标识
+     * @param envelope 获取一些信息（交换机，路由key...）
+     * @param properties 配置信息
+     * @param body 数据
+     * @throws IOException
+     */
+    @Override
+    public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException &#123;
+
+        System.out.println(&quot;body：&quot;+new String(body));
+        System.out.println(&quot;将error信息保存到数据库...&quot;);
+
+    &#125;
+&#125;;
+
+//接收消息
+channel.basicConsume(&quot;test_direct_queue1&quot;,true,consumer);
+</code></pre>
+<h3 id="Topics通配符模式"><a href="#Topics通配符模式" class="headerlink" title="Topics通配符模式"></a>Topics通配符模式</h3><p><img src="https://upload-images.jianshu.io/upload_images/5543739-969d32e5c7e271ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/495/format/webp"></p>
+<p><strong>通配符：</strong></p>
+<p>*****号代表恰好匹配1个单词   能匹配<code>topic.hello</code></p>
+<p>**#**号代表匹配0个或多个单词  能匹配<code>topic.hello.world</code></p>
+<p>例如：routingKey为 <code>系统的名称.日志的级别</code></p>
+<p>需求：将所有error级别的日志存入数据库，所有的order系统的日志存入数据库</p>
+<h2 id="什么是SpringAMQP"><a href="#什么是SpringAMQP" class="headerlink" title="什么是SpringAMQP"></a>什么是SpringAMQP</h2><ul>
+<li><p>AMQP （Advanced Message Queuing Protocol），是用于在应用程序或之间传递业务消息的开放标准，该协议与语言和平台无关，更符合微服务中独立性的要求</p>
+</li>
+<li><p>Spring AMQP 是基于AMQP协议定义的一套API规范，提供了模板来发送和接收消息</p>
+<p>包含两部分，其中spring-amqp是基础抽象，spring-rabbit是底层的默认实现</p>
+</li>
+</ul>
+<p><strong>springAMQP</strong></p>
+<p><strong>特点</strong></p>
+<ul>
+<li>监听器容器，用于异步处理入站消息</li>
+<li>用于发送和接收消息的RabbitTemplate</li>
+<li>RabbitAdmin用于自动声明队列，交换和绑定</li>
+</ul>
+<h2 id="spring整合rabbitMQ"><a href="#spring整合rabbitMQ" class="headerlink" title="spring整合rabbitMQ"></a>spring整合rabbitMQ</h2><p><strong>生产者</strong></p>
+<ul>
+<li>创建生产者工程</li>
+<li>添加依赖</li>
+<li>配置整合</li>
+<li>编写代码发送消息</li>
+</ul>
+<p><strong>消费者</strong></p>
+<ul>
+<li>创建生产者工程</li>
+<li>添加依赖</li>
+<li>配置整合</li>
+<li>编写消息监听器</li>
+</ul>
+<h3 id="生产者实现"><a href="#生产者实现" class="headerlink" title="生产者实现"></a>生产者实现</h3><p><strong>引入maven坐标</strong></p>
+<pre><code class="xml">&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+        &lt;version&gt;5.2.1.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.amqp&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-rabbit&lt;/artifactId&gt;
+        &lt;version&gt;2.2.6.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;junit&lt;/groupId&gt;
+        &lt;artifactId&gt;junit&lt;/artifactId&gt;
+        &lt;version&gt;4.12&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-test&lt;/artifactId&gt;
+        &lt;version&gt;5.2.1.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<p><strong>创建配置信息文件</strong></p>
+<pre><code class="properties">rabbitmq.host=192.168.119.88
+rabbitmq.port=5672
+rabbitmq.username=root
+rabbitmq.password=123456
+rabbitmq.virtual-host=/
+</code></pre>
+<p><strong>配置spring核心配置文件（生产者）</strong></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xmlns:rabbit=&quot;http://www.springframework.org/schema/rabbit&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/rabbit
+       http://www.springframework.org/schema/rabbit/spring-rabbit.xsd&quot;&gt;
+
+    &lt;!--引入配置信息--&gt;
+    &lt;context:property-placeholder location=&quot;classpath:rabbitmq.properties&quot;&gt;&lt;/context:property-placeholder&gt;
+
+    &lt;!--定义rabbitmq connectionFactory--&gt;
+    &lt;rabbit:connection-factory id=&quot;connectionFactory&quot; host=&quot;$&#123;rabbitmq.host&#125;&quot;
+                               port=&quot;$&#123;rabbitmq.port&#125;&quot;
+                               username=&quot;$&#123;rabbitmq.username&#125;&quot;
+                               password=&quot;$&#123;rabbitmq.password&#125;&quot;
+                               virtual-host=&quot;$&#123;rabbitmq.virtual-host&#125;&quot;/&gt;
+
+    &lt;!--定义管理交换机、队列--&gt;
+    &lt;rabbit:admin connection-factory=&quot;connectionFactory&quot;/&gt;
+
+    &lt;!--定义持久化队列，不存在则自动创建，不绑定到交换机则绑定到默认交换机
+    默认交换机类型为direct，名字为&quot;&quot;，路由键为队列的名称
+    id：bean的名称
+    name：queue的名称
+    auto-declare：自动创建
+    auto-delete：自动删除，最后一个消费者和该队列断开连接后，自动删除队列
+    durable：是否持久化true/false
+    exclusive：是否独占连接
+    --&gt;
+    &lt;rabbit:queue id=&quot;spring_queue&quot; name=&quot;spring_queue&quot; auto-declare=&quot;true&quot;/&gt;
+
+    &lt;!--广播类型队列，所有队列都能收到消息，不存在自动创建--&gt;
+    &lt;rabbit:queue id=&quot;spring_fanout_queue_1&quot; name=&quot;spring_fanout_queue_1&quot; auto-declare=&quot;true&quot;/&gt;
+    &lt;rabbit:queue id=&quot;spring_fanout_queue_2&quot; name=&quot;spring_fanout_queue_2&quot; auto-declare=&quot;true&quot;/&gt;
+
+    &lt;!--定义广播类型交换机，并绑定上述两个队列--&gt;
+    &lt;rabbit:fanout-exchange id=&quot;spring_fanout_exchange&quot; name=&quot;spring_fanout_exchange&quot; auto-declare=&quot;true&quot;&gt;
+
+        &lt;rabbit:bindings&gt;
+            &lt;rabbit:binding queue=&quot;spring_fanout_queue_1&quot;&gt;&lt;/rabbit:binding&gt;
+            &lt;rabbit:binding queue=&quot;spring_fanout_queue_2&quot;&gt;&lt;/rabbit:binding&gt;
+        &lt;/rabbit:bindings&gt;
+
+    &lt;/rabbit:fanout-exchange&gt;
+
+    &lt;!--通配符类型队列，*匹配一个单词，#匹配多个单词，不存在则自动创建--&gt;
+    &lt;rabbit:queue id=&quot;spring_topic_queue_1&quot; name=&quot;spring_topic_queue_1&quot; auto-declare=&quot;true&quot;/&gt;
+    &lt;rabbit:queue id=&quot;spring_topic_queue_2&quot; name=&quot;spring_topic_queue_2&quot; auto-declare=&quot;true&quot;/&gt;
+    &lt;rabbit:queue id=&quot;spring_topic_queue_3&quot; name=&quot;spring_topic_queue_3&quot; auto-declare=&quot;true&quot;/&gt;
+
+    &lt;!--创建Topic类型交换机，如果不存在则自动创建，并且将上面三个队列与该交换机绑定--&gt;
+    &lt;rabbit:topic-exchange id=&quot;spring_topic_exchange&quot; name=&quot;spring_topic_exchange&quot; auto-declare=&quot;true&quot;&gt;
+        &lt;rabbit:bindings&gt;
+            &lt;rabbit:binding pattern=&quot;os467.*&quot; queue=&quot;spring_topic_queue_1&quot;/&gt;
+            &lt;rabbit:binding pattern=&quot;os467.#&quot; queue=&quot;spring_topic_queue_2&quot;/&gt;
+            &lt;rabbit:binding pattern=&quot;com.os467.#&quot; queue=&quot;spring_topic_queue_3&quot;/&gt;
+        &lt;/rabbit:bindings&gt;
+    &lt;/rabbit:topic-exchange&gt;
+
+    &lt;!--定义rabbitTemplate对象操作可以在代码中方便发送消息--&gt;
+    &lt;rabbit:template id=&quot;rabbitTemplate&quot; connection-factory=&quot;connectionFactory&quot;&gt;&lt;/rabbit:template&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<p><strong>在单元测试中测试</strong></p>
+<pre><code class="java">package com.os467.rabbitmq_pro_test;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = &quot;classpath:spring_rabbitmq_pro.xml&quot;)
+public class MqProTest &#123;
+
+    //注入rabbitmq模板对象
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @Test
+    public void testHelloWorld()&#123;
+
+        //发送消息
+        rabbitTemplate.convertAndSend(&quot;spring_queue&quot;,&quot;testing spring-rabbitmq...&quot;);
+
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>测试topic类型消息</strong></p>
+<pre><code class="java">@Test
+public void testFanoutQueue()&#123;
+
+    rabbitTemplate.convertAndSend(&quot;spring_topic_exchange&quot;,&quot;os467.test.msg&quot;,&quot;this is topic mode!&quot;);
+
+&#125;
+</code></pre>
+<h3 id="消费者实现"><a href="#消费者实现" class="headerlink" title="消费者实现"></a>消费者实现</h3><p><strong>导入maven坐标</strong></p>
+<pre><code class="xml">&lt;dependencies&gt;
+   
+    &lt;dependency&gt;
+        &lt;groupId&gt;junit&lt;/groupId&gt;
+        &lt;artifactId&gt;junit&lt;/artifactId&gt;
+        &lt;version&gt;4.12&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-test&lt;/artifactId&gt;
+        &lt;version&gt;5.2.1.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+        &lt;version&gt;5.2.1.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.amqp&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-rabbit&lt;/artifactId&gt;
+        &lt;version&gt;2.1.8.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+
+&lt;/dependencies&gt;
+</code></pre>
+<p><strong>编辑消费者消息监听器</strong></p>
+<ul>
+<li><p>需要继承<strong>MessageListener</strong>接口</p>
+</li>
+<li><p>重写<code>onMessage()</code>方法</p>
+</li>
+</ul>
+<pre><code class="java">package com.os467.rabbitmq_con;
+
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageListener;
+
+public class SpringQueueListener implements MessageListener &#123;
+
+
+    /**
+     * 监听器，回调方法
+     * @param message
+     */
+    @Override
+    public void onMessage(Message message) &#123;
+
+        //打印消息
+        System.out.println(new String(message.getBody()));
+
+    &#125;
+&#125;
+</code></pre>
+<p><strong>配置spring核心配置文件（消费者）</strong></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xmlns:rabbit=&quot;http://www.springframework.org/schema/rabbit&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/rabbit
+       http://www.springframework.org/schema/rabbit/spring-rabbit.xsd&quot;&gt;
+    &lt;!--加载配置文件--&gt;
+    &lt;context:property-placeholder location=&quot;classpath:rabbitmq.properties&quot;/&gt;
+
+    &lt;!-- 定义rabbitmq connectionFactory --&gt;
+    &lt;rabbit:connection-factory id=&quot;connectionFactory&quot; host=&quot;$&#123;rabbitmq.host&#125;&quot;
+                               port=&quot;$&#123;rabbitmq.port&#125;&quot;
+                               username=&quot;$&#123;rabbitmq.username&#125;&quot;
+                               password=&quot;$&#123;rabbitmq.password&#125;&quot;
+                               virtual-host=&quot;$&#123;rabbitmq.virtual-host&#125;&quot;/&gt;
+
+    &lt;bean id=&quot;springQueueListener&quot; class=&quot;com.os467.rabbitmq_con.SpringQueueListener&quot;&gt;&lt;/bean&gt;
+
+    &lt;!--配置消息监听器--&gt;
+    &lt;rabbit:listener-container connection-factory=&quot;connectionFactory&quot; auto-declare=&quot;true&quot;&gt;
+
+        &lt;rabbit:listener ref=&quot;springQueueListener&quot; queue-names=&quot;spring_queue&quot;/&gt;
+
+    &lt;/rabbit:listener-container&gt;
+
+
+&lt;/beans&gt;
+</code></pre>
+<h2 id="springboot整合rabbitMQ"><a href="#springboot整合rabbitMQ" class="headerlink" title="springboot整合rabbitMQ"></a>springboot整合rabbitMQ</h2><h3 id="生产者实现-1"><a href="#生产者实现-1" class="headerlink" title="生产者实现"></a>生产者实现</h3><p><strong>引入坐标</strong></p>
+<pre><code class="java">&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;!--springboot整合rabbitmq--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+&lt;/dependencies&gt;
+</code></pre>
+<p><strong>配置启动类配置文件</strong></p>
+<pre><code class="properties">spring.rabbitmq.host=192.168.119.88
+spring.rabbitmq.port=5672
+spring.rabbitmq.virtual-host=/
+spring.rabbitmq.username=root
+spring.rabbitmq.password=123456
+</code></pre>
+<p><strong>配置核心配置类</strong></p>
+<p>1、需要配置一个<strong>交换机</strong></p>
+<p>2、需要声明一个<strong>队列</strong></p>
+<p>3、配置交换机和队列<strong>绑定关系</strong></p>
+<pre><code class="java">package com.os467.demo.rabbitmq.config;
+
+import com.rabbitmq.client.AMQP;
+import org.springframework.amqp.core.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class RabbitMQConfig &#123;
+
+    public static final String TOPIC_EXCHANGE_NAME = &quot;boot_topic_exchange&quot;;
+
+    public static final String TOPIC_QUEUE_NAME = &quot;boot_topic_queue&quot;;
+
+
+    //1、交换机
+    @Bean(&quot;bootExchange&quot;)
+    public Exchange bootExchange()&#123;
+
+        //ExchangeBuilder创建交换机的类，durable是否持久化，build()创建交换机
+        return ExchangeBuilder.topicExchange(TOPIC_EXCHANGE_NAME).durable(true).build();
+
+    &#125;
+
+
+    //2、Queue队列
+    @Bean(&quot;bootQueue&quot;)
+    public Queue bootQueue()&#123;
+
+        //队列声明
+        return QueueBuilder.durable(TOPIC_QUEUE_NAME).build();
+    &#125;
+
+    //3、队列和交换机绑定关系 Binding
+    /*
+        1、知道哪个队列
+        2、知道哪个交换机
+        3、routing key
+     */
+    @Bean
+    public Binding bindingQueueExchange(Exchange bootExchange,Queue bootQueue)&#123;
+
+        return BindingBuilder.bind(bootQueue).to(bootExchange).with(&quot;os467.#&quot;).noargs();
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>测试生产者发送消息</strong></p>
+<pre><code class="java">package com.os467.demo.rabbitmq;
+
+import com.os467.demo.rabbitmq.config.RabbitMQConfig;
+import org.junit.jupiter.api.Test;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+public class ProducerTest &#123;
+
+    //注入RabbitTemplate
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @Test
+    public void testSend()&#123;
+
+        //测试生产者发送消息
+        rabbitTemplate.convertAndSend(RabbitMQConfig.TOPIC_EXCHANGE_NAME,&quot;os467.testTopic&quot;,&quot;boot mq testing...&quot;);
+
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="消费者实现-1"><a href="#消费者实现-1" class="headerlink" title="消费者实现"></a>消费者实现</h3><p>创建springboot工程<strong>导入maven坐标</strong></p>
+<pre><code class="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p><strong>配置启动类配置文件</strong></p>
+<pre><code class="properties">spring.rabbitmq.host=192.168.119.88
+spring.rabbitmq.port=5672
+spring.rabbitmq.virtual-host=/
+spring.rabbitmq.username=root
+spring.rabbitmq.password=123456
+</code></pre>
+<p><strong>创建静态类</strong></p>
+<p>使用**@Component**将类添加为spring组件</p>
+<p><strong>配置一个监听器</strong></p>
+<p>使用**@RabbitListener注解**</p>
+<p>指定消费者监听器监听的<strong>队列名称</strong></p>
+<pre><code class="java">package com.os467.demo.rabbitmq_listener;
+
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Component;
+
+@Component
+public class RabbitMQListener &#123;
+
+    @RabbitListener(queues = &quot;boot_topic_queue&quot;)
+    public void ListenerQueue(Message message)&#123;
+
+        System.out.println(message);
+
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>总结</strong></p>
+<ul>
+<li>Springboot提供了<strong>快速整合RabbitMQ的方式</strong></li>
+<li>基本信息只需要在<strong>properties</strong>中配置即可，交换机队列以及绑定关系在核心配置类中用**@Bean**配置</li>
+<li>生产者注入<strong>RabbitTemplate</strong>完成消息发送</li>
+<li>消费者使用<strong>RabbitListener</strong>完成消息接收</li>
+</ul>
+<h3 id="测试发送Object类型数据"><a href="#测试发送Object类型数据" class="headerlink" title="测试发送Object类型数据"></a>测试发送Object类型数据</h3><p><strong>创建队列</strong></p>
+<pre><code class="java">@Bean
+public Queue objectQueue()&#123;
+    return new Queue(&quot;object.queue&quot;);
+&#125;
+</code></pre>
+<p><strong>测试发送消息</strong></p>
+<pre><code class="java">@Test
+public void testSendObjectQueue()&#123;
+    Map&lt;String,Object&gt; msg = new HashMap&lt;&gt;();
+    msg.put(&quot;name&quot;,&quot;tom&quot;);
+    msg.put(&quot;age&quot;,21);
+    rabbitTemplate.convertAndSend(&quot;object.queue&quot;,msg);
+&#125;
+</code></pre>
+<ul>
+<li>Spring对消息对象的处理是由<code>org.springframework.amqp.support.converter.MessageConverter</code>来处理的，而<strong>默认实现</strong>是SimpleMessageConverter，<strong>基于JDK的ObjectOutputStream完成序列化</strong></li>
+<li>而这种序列化生成的数据较长而且容易发生注入问题，因此不推荐</li>
+<li>如果需要修改需要定义一个MessageConverter类型的Bean，推荐用JSON方式序列化</li>
+</ul>
+<p><strong>消息转化器</strong></p>
+<p>需要在消费者和生产者服务中配置</p>
+<p>在服务中引入jackson核心依赖</p>
+<pre><code class="xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>在服务中声明MessageConverter（amqp包下的）</p>
+<pre><code class="java">@Bean
+public MessageConverter messageConverter()&#123;
+    return new Jackson2JsonMessageConverter();
+&#125;
+</code></pre>
+<p>SpringAMQP中消息的序列化和反序列化如何实现？</p>
+<ul>
+<li>利用MessageConverter实现的，默认是JDK的序列化</li>
+<li>注意发送方与接收方必须使用相同的MessageConverter</li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 os467
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,3589 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>外卖项目 | Tly的博客</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="外卖项目 | Tly的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="分布式搜索ESElastic Search简介什么是elasticsearch？ elasticsearch是一款非常强大的开源搜索引擎，可以帮助我们从海量数据中快速找到需要的内容 elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK），被广泛应用在日志数据分析、实时监控等领域 数据可视化  Kibana  存储、搜索、分析数据  el">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ElasticSearch">
+<meta property="og:url" content="https://os467.github.io/2022/09/04/ElasticSearch/index.html">
+<meta property="og:site_name" content="Tly的博客">
+<meta property="og:description" content="分布式搜索ESElastic Search简介什么是elasticsearch？ elasticsearch是一款非常强大的开源搜索引擎，可以帮助我们从海量数据中快速找到需要的内容 elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK），被广泛应用在日志数据分析、实时监控等领域 数据可视化  Kibana  存储、搜索、分析数据  el">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-04T15:29:31.000Z">
+<meta property="article:modified_time" content="2022-09-04T15:19:52.792Z">
+<meta property="article:author" content="Os467">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/headimg.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/headimg.jpg"/>
+</a>
+<div class="author">
+    <span>Os467</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/os467"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/os467/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(34)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="34">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/ElasticSearch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ElasticSearch">ElasticSearch</span>
+            <span class="post-date" title="2022-09-04 23:29:31">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springMVC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/bootstrap/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/01/springCloud%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud项目搭建">SpringCloud项目搭建</span>
+            <span class="post-date" title="2022-09-01 22:23:21">2022/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/30/RabbitMQ/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RabbitMQ">RabbitMQ</span>
+            <span class="post-date" title="2022-08-30 20:25:33">2022/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/29/MVC%E8%AE%BF%E9%97%AE%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MVC多线程安全问题">MVC多线程安全问题</span>
+            <span class="post-date" title="2022-08-29 17:18:53">2022/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/27/JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM类加载机制">JVM类加载机制</span>
+            <span class="post-date" title="2022-08-27 18:10:23">2022/08/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/24/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM虚拟机">JVM虚拟机</span>
+            <span class="post-date" title="2022-08-24 18:28:03">2022/08/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/23/Docker/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Docker">Docker</span>
+            <span class="post-date" title="2022-08-23 13:25:11">2022/08/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/18/springCloud/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud">SpringCloud</span>
+            <span class="post-date" title="2022-08-18 13:21:39">2022/08/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="微服务入门">微服务入门</span>
+            <span class="post-date" title="2022-08-15 15:44:35">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/15/dubbo/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="dubbo">dubbo</span>
+            <span class="post-date" title="2022-08-15 07:25:45">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/13/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Redis">Redis</span>
+            <span class="post-date" title="2022-08-13 14:25:31">2022/08/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/12/springboot/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot">SpringBoot</span>
+            <span class="post-date" title="2022-08-12 12:15:35">2022/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/08/ssm%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SSM项目整合">SSM项目整合</span>
+            <span class="post-date" title="2022-08-08 12:15:25">2022/08/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/03/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="外卖项目">外卖项目</span>
+            <span class="post-date" title="2022-08-03 08:35:11">2022/08/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/01/MyBatisPlus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatisPlus">MyBatisPlus</span>
+            <span class="post-date" title="2022-08-01 11:15:26">2022/08/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/31/MyBatis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatis">MyBatis</span>
+            <span class="post-date" title="2022-07-31 10:10:26">2022/07/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/28/Maven/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven">Maven</span>
+            <span class="post-date" title="2022-07-28 19:10:41">2022/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/26/spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="spring">spring</span>
+            <span class="post-date" title="2022-07-26 21:54:22">2022/07/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式">设计模式</span>
+            <span class="post-date" title="2022-07-18 19:21:50">2022/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/17/Ajax/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ajax">Ajax</span>
+            <span class="post-date" title="2022-07-17 12:07:22">2022/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/14/Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Annotation">Annotation</span>
+            <span class="post-date" title="2022-07-14 19:36:02">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/13/Reflect/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Reflect">Reflect</span>
+            <span class="post-date" title="2022-07-13 14:40:18">2022/07/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2022-07-12 12:29:58">2022/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/10/IO%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IO流">IO流</span>
+            <span class="post-date" title="2022-07-10 20:14:33">2022/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/07/javaScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="javaScript">javaScript</span>
+            <span class="post-date" title="2022-07-07 12:54:16">2022/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/06/XML/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="XML">XML</span>
+            <span class="post-date" title="2022-07-06 18:28:03">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/06/cookie%E5%92%8Csession/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="cookie和session">cookie和session</span>
+            <span class="post-date" title="2022-07-06 18:27:45">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/02/servlet/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="servlet">servlet</span>
+            <span class="post-date" title="2022-07-02 08:24:49">2022/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/01/jdbc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jdbc">jdbc</span>
+            <span class="post-date" title="2022-07-01 08:24:49">2022/07/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/06/19/SQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL">SQL</span>
+            <span class="post-date" title="2022-06-19 19:45:07">2022/06/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/28/JAVA%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JAVA入门">JAVA入门</span>
+            <span class="post-date" title="2022-05-28 00:32:07">2022/05/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/27/Linux%E4%BA%91%E8%AE%A1%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux云计算">Linux云计算</span>
+            <span class="post-date" title="2022-05-27 00:05:15">2022/05/27</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-外卖项目" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">外卖项目</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-09-04 23:11:05'>2022-08-03 08:35</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE"><span class="toc-text">瑞吉外卖项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="toc-text">软件开发流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%92%E8%89%B2%E5%88%86%E5%B7%A5"><span class="toc-text">角色分工</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83"><span class="toc-text">软件环境</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D"><span class="toc-text">瑞吉外卖项目介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Slf4j"><span class="toc-text">Slf4j</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lombok"><span class="toc-text">Lombok</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="toc-text">配置核心配置类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C%E7%B1%BB"><span class="toc-text">返回结果类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-text">功能实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E5%90%8E%E7%AB%AF%E6%A0%A1%E9%AA%8C"><span class="toc-text">1.1用户登录后端校验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2%E7%94%A8%E6%88%B7%E6%B3%A8%E9%94%80"><span class="toc-text">1.2用户注销</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86%E5%AE%8C%E5%96%84%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD%EF%BC%88%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%89"><span class="toc-text">☆完善登录功能（过滤器）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#WebFilter%E6%B3%A8%E8%A7%A3"><span class="toc-text">@WebFilter注解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3%E6%96%B0%E5%A2%9E%E5%91%98%E5%B7%A5"><span class="toc-text">1.3新增员工</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%98%86%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7%EF%BC%88AOP%EF%BC%89"><span class="toc-text">☆全局异常捕获（AOP）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ControllerAdvice%E6%B3%A8%E8%A7%A3"><span class="toc-text">@ControllerAdvice注解</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1%E5%91%98%E5%B7%A5%E4%BF%A1%E6%81%AF%E7%9A%84%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="toc-text">2.1员工信息的分页查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2%E5%90%AF%E7%94%A8-x2F-%E7%A6%81%E7%94%A8%E5%91%98%E5%B7%A5%E8%B4%A6%E5%8F%B7"><span class="toc-text">2.2启用&#x2F;禁用员工账号</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%98%86JS%E5%A4%84%E7%90%86Long%E7%B1%BB%E5%9E%8B%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1"><span class="toc-text">☆JS处理Long类型精度丢失</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E8%BD%AC%E6%8D%A2%E5%99%A8"><span class="toc-text">消息转换器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3%E7%BC%96%E8%BE%91%E5%91%98%E5%B7%A5%E4%BF%A1%E6%81%AF"><span class="toc-text">2.3编辑员工信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%86%E7%B1%BB%E7%AE%A1%E7%90%86%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91"><span class="toc-text">3.分类管理业务开发</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%98%86%E5%85%AC%E5%85%B1%E5%AD%97%E6%AE%B5%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85"><span class="toc-text">☆公共字段自动填充</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E5%AE%8C%E5%96%84"><span class="toc-text">功能完善</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ThreadLocal%E7%B1%BB"><span class="toc-text">ThreadLocal类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1%E6%96%B0%E5%A2%9E%E5%88%86%E7%B1%BB"><span class="toc-text">3.1新增分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2%E5%88%A0%E9%99%A4%E5%88%86%E7%B1%BB"><span class="toc-text">3.2删除分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3%E4%BF%AE%E6%94%B9%E5%88%86%E7%B1%BB"><span class="toc-text">3.3修改分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%8F%9C%E5%93%81%E7%AE%A1%E7%90%86%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91"><span class="toc-text">4.菜品管理业务开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD"><span class="toc-text">4.1文件上传上传下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2%E6%96%B0%E5%A2%9E%E8%8F%9C%E5%93%81"><span class="toc-text">4.2新增菜品</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1%E5%9B%9E%E6%98%BE%E5%88%86%E7%B1%BB%E6%95%B0%E6%8D%AE"><span class="toc-text">4.2.1回显分类数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2%E6%96%B0%E5%A2%9E%E8%8F%9C%E5%93%81"><span class="toc-text">4.2.2新增菜品</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3%E8%8F%9C%E5%93%81%E4%BF%A1%E6%81%AF%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="toc-text">4.3菜品信息分页查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4%E4%BF%AE%E6%94%B9%E8%8F%9C%E5%93%81"><span class="toc-text">4.4修改菜品</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%A5%97%E9%A4%90%E9%83%A8%E5%88%86%EF%BC%88%E7%8B%AC%E7%AB%8B%E5%AE%8C%E6%88%90%EF%BC%89"><span class="toc-text">5.套餐部分（独立完成）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="toc-text">6.手机验证码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81"><span class="toc-text">6.1短信发送</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9F%AD%E4%BF%A1%E6%9C%8D%E5%8A%A1%E4%BB%8B%E7%BB%8D"><span class="toc-text">短信服务介绍</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2%E5%AF%BC%E5%85%A5%E7%94%A8%E6%88%B7%E5%9C%B0%E5%9D%80%E7%B0%BF%E7%9B%B8%E5%85%B3%E5%8A%9F%E8%83%BD%E4%BB%A3%E7%A0%81"><span class="toc-text">6.2导入用户地址簿相关功能代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3%E8%AE%A2%E5%8D%95%E5%8A%9F%E8%83%BD"><span class="toc-text">6.3订单功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4%E8%B4%AD%E7%89%A9%E8%BD%A6%E5%8A%9F%E8%83%BD"><span class="toc-text">6.4购物车功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5%E5%9C%B0%E5%9D%80%E7%B0%BF%E5%8A%9F%E8%83%BD"><span class="toc-text">6.5地址簿功能</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="瑞吉外卖项目"><a href="#瑞吉外卖项目" class="headerlink" title="瑞吉外卖项目"></a>瑞吉外卖项目</h1><h2 id="软件开发流程"><a href="#软件开发流程" class="headerlink" title="软件开发流程"></a>软件开发流程</h2><p><strong>1、需求分析</strong></p>
+<p>产品原型、需求规格说明书</p>
+<p><strong>2、设计</strong></p>
+<p>产品文档、UI界面设计、概要设计、详细设计、数据库设计</p>
+<p><strong>3、编码</strong></p>
+<p>项目代码、单元测试</p>
+<p><strong>4、测试</strong></p>
+<p>测试用例、设施报告</p>
+<p><strong>5、上线运维</strong></p>
+<p>软件环境安装、配置</p>
+<h3 id="角色分工"><a href="#角色分工" class="headerlink" title="角色分工"></a>角色分工</h3><ul>
+<li>项目经理：对整个项目负责，任务分配，把控进度</li>
+<li>产品经理：进行需求调研，输出需求调研文档、产品原型等</li>
+<li>UI设计师：根据产品原型输出界面效果图</li>
+<li>架构师：项目整体架构设计，技术选型等</li>
+<li>开发工程师：代码实现</li>
+<li>测试工程师：编写测试用例，输出测试报告</li>
+<li>运维工程师：软件环境搭建、项目上线</li>
+</ul>
+<h3 id="软件环境"><a href="#软件环境" class="headerlink" title="软件环境"></a>软件环境</h3><ul>
+<li>开发环境（development）：开发人员在开发阶段使用的环境，一般外部用户无法访问</li>
+<li>测试环境（testing）：专门给测试人员使用的环境，用于测试项目，一般外部用户无法访问</li>
+<li>生产环境（production）：即线上环境，正式提供对外服务的环境</li>
+</ul>
+<h2 id="瑞吉外卖项目介绍"><a href="#瑞吉外卖项目介绍" class="headerlink" title="瑞吉外卖项目介绍"></a>瑞吉外卖项目介绍</h2><p><strong>项目介绍</strong><br>本项目〈(瑞吉外卖）是专门为餐饮企业（餐厅、饭店）定制的一款软件产品，包括系统管理后台和移动端应用两部分。其中系统管理后台主要提供给餐饮企业内部员工使用，可以对餐厅的菜品、套餐、订单等进行管理维护。移动端应用主要提供给消费者使用，可以在线浏览菜品、添加购物车、下单等。</p>
+<p><strong>本项目共分为3期进行开发:</strong></p>
+<ol>
+<li>第一期主要实现基本需求，其中移动端应用通过H5实现，用户可以通过手机浏览器访问。</li>
+<li>第二期主要针对移动端应用进行改进，使用微信小程序实现，用户使用起来更加方便。</li>
+<li>第三期主要针对系统进行优化升级，提高系统的访问性能。</li>
+</ol>
+<p> <strong>产品原型</strong></p>
+<p>就是一款产品成型之前的一个简单的框架，就是将页面的排版布局展现出来，使产品的初步构思有一个可视化的展示。通过原型展示，可以更加直观的了解项目的需求和提供的功能。</p>
+<p>导入pom</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.4.5&lt;/version&gt;
+        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+    &lt;/parent&gt;
+
+    &lt;properties&gt;
+        &lt;java.version&gt;1.8&lt;/java.version&gt;
+    &lt;/properties&gt;
+
+    &lt;groupId&gt;com.os467&lt;/groupId&gt;
+    &lt;artifactId&gt;reggie_take_out&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+
+    &lt;dependencies&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+            &lt;scope&gt;compile&lt;/scope&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;
+            &lt;version&gt;3.4.2&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+            &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+            &lt;version&gt;1.18.20&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+            &lt;version&gt;1.2.76&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;commons-lang&lt;/groupId&gt;
+            &lt;artifactId&gt;commons-lang&lt;/artifactId&gt;
+            &lt;version&gt;2.6&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;scope&gt;runtime&lt;/scope&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;
+            &lt;version&gt;1.1.23&lt;/version&gt;
+        &lt;/dependency&gt;
+
+    &lt;/dependencies&gt;
+
+
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;2.3.5.RELEASE&lt;/version&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+
+
+
+
+&lt;/project&gt;
+</code></pre>
+<p>配置springboot启动类</p>
+<pre><code class="java">package com.os467.reggie;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ReggieApplication &#123;
+
+    public static void main(String[] args) &#123;
+
+        SpringApplication.run(ReggieApplication.class,args);
+
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="Slf4j"><a href="#Slf4j" class="headerlink" title="Slf4j"></a>Slf4j</h2><p>Simple Logging Facade for Java（SLF4J）作为各种日志框架（例如Java.util.Logging、logback、log4j）的简单外观或抽象</p>
+<p>首先<code>slf4j</code>可以理解为规则的制定者，是一个抽象层，定义了日志相关的接口。<code>log4j</code>,<code>logback</code>,<code>JDK Logging</code>都是<code>slf4j</code>的实现层，只是出处不同，当然使用起来也就各有千秋</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/GBS20200720/article/details/122818549">引用文章</a></p>
+<p><strong>为什么加了@slf4j注解 就可以直接使用log了呢?</strong></p>
+<p>如果不使用注解，那我们使用log，需要这样定义</p>
+<pre><code class="java">static Logger logger = LoggerFactory.getLogger(&quot;Update的日志&quot;)
+</code></pre>
+<p>其实在编译完成生成字节码文件的时候idea就已经帮我们生成了这段代码</p>
+<p>这就得益于<strong>lombok插件</strong>了</p>
+<p>其实这就是因为Lombok项目是一种自动接通你的编辑器和构建工具的一个Java库</p>
+<p>可以理解为有了<code>@slf4j</code>，编辑器里就会给你加log的智能提示，但这并不代表log对象已生成</p>
+<h3 id="Lombok"><a href="#Lombok" class="headerlink" title="Lombok"></a>Lombok</h3><p><a target="_blank" rel="noopener" href="https://projectlombok.org/">Lombok官网</a></p>
+<p>Lombok项目是一个java库，它可以自动插入到编辑器和构建工具中，增强java的性能，不需要再写getter、setter或equals方法，只要有一个注解，你的类就有一个功能齐全的构建器、自动记录变量等等</p>
+<p><strong>@Data</strong></p>
+<p>整合了Getter、Setter、ToString、EqualsAndHashCode、RequiredArgsConstructor注解</p>
+<p><strong>@Getter</strong></p>
+<p>快速构建Getter方法</p>
+<p><strong>@Setter</strong></p>
+<p>快速构建Setter方法</p>
+<p><strong>@ToString</strong></p>
+<p>快速将当前对象转换成字符串类型，便于log</p>
+<p><strong>@EqualsAndHashCode</strong></p>
+<p>快速进行相等判断</p>
+<p><strong>@NonNull</strong></p>
+<p>判断变量（对象）是否为空</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45433031/article/details/121846207">https://blog.csdn.net/weixin_45433031/article/details/121846207</a></p>
+<h2 id="配置核心配置类"><a href="#配置核心配置类" class="headerlink" title="配置核心配置类"></a>配置核心配置类</h2><p><strong>方法1 实现WebMvcConfigurer接口</strong></p>
+<p><strong>WebMvcConfigurer</strong> 接口其实是Spring内部的一种配置方式，我们需要去实现这个接口</p>
+<p>（接口中的default关键字规定了接口方法有方法体并且能被实现类继承和重写）</p>
+<pre><code class="java">package com.os467.reggie.config;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Slf4j
+@Configuration
+public class WebMvcConfig implements WebMvcConfigurer &#123;
+
+    /**
+     * 设置静态资源映射
+     * @param registry
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) &#123;
+
+        log.info(&quot;开始进行静态资源映射&quot;);
+
+        //将前端拦截到的资源路径映射到本地服务器静态资源
+        registry.addResourceHandler(&quot;/backend/**&quot;).addResourceLocations(&quot;classpath:backend/&quot;);
+
+        registry.addResourceHandler(&quot;/front/**&quot;).addResourceLocations(&quot;classpath:front/&quot;);
+    &#125;
+
+    
+&#125;
+</code></pre>
+<p><strong>方法2 继承WebMvcConfigurationSupport类</strong></p>
+<p>由于服务器无法访问后端的backend和front资源，我们需要配置一个WebMvcConfig配置类，我们需要让这个类去继承<strong>WebMvcConfigurationSupport</strong>这个类</p>
+<p><strong>这个类为我们提供了一个资源拦截器方法</strong></p>
+<p>我们想自定义静态资源映射目录的话，只需重写addResourceHandlers方法即可</p>
+<p>SpringBoot拦截器<code>addResourceHandlers()</code></p>
+<p><code>addResourceLocations()</code> 需要映射到的后端资源地址</p>
+<pre><code class="java">package com.os467.reggie.config;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+
+@Slf4j
+@Configuration
+public class WebMvcConfig extends WebMvcConfigurationSupport &#123;
+
+    /**
+     * 设置静态资源映射
+     * @param registry
+     */
+    @Override
+    protected void addResourceHandlers(ResourceHandlerRegistry registry) &#123;
+
+        log.info(&quot;开始进行静态资源映射&quot;);
+
+        //将前端拦截到的资源路径映射到本地服务器静态资源
+        registry.addResourceHandler(&quot;/backend/**&quot;).addResourceLocations(&quot;classpath:backend/&quot;);
+
+        registry.addResourceHandler(&quot;/front/**&quot;).addResourceLocations(&quot;classpath:front/&quot;);
+        
+    &#125;
+&#125;
+</code></pre>
+<p>我们在持久层接口上加<strong>Mapper标签</strong></p>
+<p>让EmployeeMapper去继承MyBatisPlus提供的BaseMapper接口，需要提供一个实体类泛型</p>
+<pre><code class="java">package com.os467.reggie.mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.os467.reggie.entity.Employee;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface EmployeeMapper extends BaseMapper&lt;Employee&gt; &#123;
+
+
+
+&#125;
+</code></pre>
+<p><strong>表现层</strong></p>
+<p><strong>@RequestBody注解</strong>   使得接收到的值指定为json串，必须是post方式提交</p>
+<p><strong>@PostMapping(“&#x2F;login”)注解</strong></p>
+<p>等价于<code>@RequestMapping(value = “/user/login”,method = RequestMethod.POST)</code></p>
+<pre><code class="java">package com.os467.reggie.controller;
+
+import com.os467.reggie.common.R;
+import com.os467.reggie.entity.Employee;
+import com.os467.reggie.service.EmployeeService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+
+@Slf4j
+@RestController
+@RequestMapping(&quot;/employee&quot;)
+public class EmployeeController &#123;
+
+    //注入业务层实例
+    @Autowired
+    private EmployeeService employeeService;
+
+    /**
+     * 员工登入
+     * @param request
+     * @param employee @RequestBody 注解使得接收到的值指定为json串
+     * @return
+     */
+    @PostMapping(&quot;/login&quot;)
+    public R&lt;Employee&gt; login(HttpServletRequest request, @RequestBody Employee employee)&#123;
+
+
+        return null;
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="返回结果类"><a href="#返回结果类" class="headerlink" title="返回结果类"></a>返回结果类</h2><p>本次工程内封装的返回结果类，用于给前端响应数据</p>
+<pre><code class="java">package com.os467.reggie.common;
+
+import lombok.Data;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 通用返回结果类，服务端响应的数据最终都会封装成此对象
+ * @param &lt;T&gt;
+ */
+@Data
+public class R&lt;T&gt; &#123;
+
+    private Integer code; //编码：1成功，0和其它数字为失败
+
+    private String msg; //错误信息
+
+    private T data; //数据
+
+    private Map map = new HashMap(); //动态数据
+
+    public static &lt;T&gt; R&lt;T&gt; success(T object) &#123;
+        R&lt;T&gt; r = new R&lt;T&gt;();
+        r.data = object;
+        r.code = 1;
+        return r;
+    &#125;
+
+    public static &lt;T&gt; R&lt;T&gt; error(String msg) &#123;
+        R r = new R();
+        r.msg = msg;
+        r.code = 0;
+        return r;
+    &#125;
+
+    public R&lt;T&gt; add(String key, Object value) &#123;
+        this.map.put(key, value);
+        return this;
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h2><h3 id="1-1用户登录后端校验"><a href="#1-1用户登录后端校验" class="headerlink" title="1.1用户登录后端校验"></a>1.1用户登录后端校验</h3><p>需要对前端传来的用户密码进行md5加密</p>
+<p>在后端查询是否有此用户名（用户名在数据库中设置了不能重）</p>
+<p>进行密码校验</p>
+<p>需要将用户数据存入到session域中</p>
+<pre><code class="java">/**
+ * 员工登入
+ * @param request
+ * @param employee @RequestBody 注解使得接收到的值指定为json串
+ * @return
+ */
+@PostMapping(&quot;/login&quot;)
+public R&lt;Employee&gt; login(HttpServletRequest request, @RequestBody Employee employee)&#123;
+
+    //1、将页面提交的密码password进行md5加密处理
+    String password = employee.getPassword();
+
+    password = DigestUtils.md5DigestAsHex(password.getBytes());
+
+    //2、根据页面提交的用户名username查询数据库
+    String username = employee.getUsername();
+
+    LambdaQueryWrapper&lt;Employee&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+    queryWrapper.eq(Employee::getUsername, username);
+
+    Employee anEmployee = employeeService.getOne(queryWrapper);
+
+    //3、如果没有查询到则返回登录失败结果
+    if (anEmployee == null)&#123;
+
+        return R.error(&quot;登录失败&quot;);
+
+    &#125;
+
+    //4、密码比对，如果不一致则返回登陆失败结果
+    if (!anEmployee.getPassword().equals(password))&#123;
+
+        return R.error(&quot;登录失败&quot;);
+
+    &#125;
+
+    //5、查看员工状态，如果已禁用状态，则返回员工已禁用结果
+    if (anEmployee.getStatus() == 0)&#123;
+
+        return  R.error(&quot;账号已禁用&quot;);
+
+    &#125;
+
+    //6、登录成功，将员工id存入Session域中并返回登入成功结果
+
+    request.getSession().setAttribute(&quot;employee&quot;,employee.getId());
+
+    return R.success(anEmployee);
+&#125;
+</code></pre>
+<h3 id="1-2用户注销"><a href="#1-2用户注销" class="headerlink" title="1.2用户注销"></a>1.2用户注销</h3><pre><code class="java">/**
+ * 员工注销方法
+ * 1、清理Session中的用户id
+ * 2、返回结果
+ * @return
+ */
+@PostMapping(&quot;/logout&quot;)
+public R&lt;String&gt; logout(HttpServletRequest request)&#123;
+
+    //清除Session域中保存的当前登录员工的id
+    request.getSession().removeAttribute(&quot;employee&quot;);
+
+    return R.success(&quot;退出成功&quot;);
+&#125;
+</code></pre>
+<h3 id="☆完善登录功能（过滤器）"><a href="#☆完善登录功能（过滤器）" class="headerlink" title="☆完善登录功能（过滤器）"></a>☆完善登录功能（过滤器）</h3><p>如果用户不登陆，直接访问系统页面，照样可以正常访问</p>
+<p>这种设计并不合理，我们希望看到的效果应该是，只有登录成功后才可以访问系统中的页面，如果没有登录则跳转登录页面</p>
+<p><strong>具体如何实现？</strong></p>
+<p>使用过滤器或者拦截器，在过滤器或拦截器中判断用户是否已经无参登录，如果没有登录则跳转登录页面</p>
+<blockquote>
+<p>步骤</p>
+</blockquote>
+<p>1、创建自定义过滤器LoginCheckFilter</p>
+<p>2、在启动类上加入<strong>注解@ServletCompontentScan</strong></p>
+<p>3、完善过滤器的处理逻辑</p>
+<blockquote>
+<p> 创建过滤器</p>
+</blockquote>
+<p>首先在springboot启动类上加**@ServletComponentScan注解**</p>
+<ul>
+<li>开启扫描包后</li>
+<li>Servlet、Filter、Listener 可以直接通过 @WebServlet、@WebFilter、@WebListener 注解自动注册</li>
+</ul>
+<h4 id="WebFilter注解"><a href="#WebFilter注解" class="headerlink" title="@WebFilter注解"></a>@WebFilter注解</h4><p>在servlet3.0以后，我们可以不用在web.xml文件内配置Filter，只需要加上**@WebFilter注解**就可以实现，以达到简化配置的目的</p>
+<p>该注解用来声明servlet过滤器，将会在<strong>部署时被容器处理</strong>，容器将根据具体的属性配置将相应的类部署为过滤器</p>
+<p><strong>filterName属性</strong></p>
+<p>指定过滤器的名字</p>
+<p><strong>urlPatterns属性</strong></p>
+<p>指定一组过滤器的URL匹配模式</p>
+<pre><code class="java">package com.os467.reggie.Filter;
+
+import lombok.extern.slf4j.Slf4j;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+/**
+ * 检查用户是否完成登录
+ */
+@Slf4j
+@WebFilter(filterName = &quot;loginCheckFilter&quot;,urlPatterns = &quot;/*&quot;)
+public class LoginCheckFilter implements Filter &#123;
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException &#123;
+
+        //需要先向下转型
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+
+        //日志
+        log.info(&quot;拦截到请求：&#123;&#125;&quot;,request.getRequestURI());
+
+        filterChain.doFilter(request,response);
+
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>过滤器具体的处理逻辑如下：</strong></p>
+<p>1、获取本次请求的URI</p>
+<p>2、判断本次请求是否需要处理</p>
+<p>3、如果不需要处理，则直接放行</p>
+<p>4、判断登录状态，如果已登录，则直接放行</p>
+<p>5、如果未登录则返回未登录结果</p>
+<ul>
+<li>过滤器的作用就是之一就是在用户的请求到达servlet之前，拦截下来做预处理</li>
+<li>处理之后便执行<code>chain.doFilter(request, response)</code>这个方法，如果还有别的过滤器，那么将处理好的请求传给下个过滤器，依此类推</li>
+<li>当所有的过滤器都把这个请求处理好了之后，再将处理完的请求发给servlet</li>
+<li>如果就这一个过滤器，那么就将处理好的请求直接发给servlet</li>
+</ul>
+<p><strong>AntPathMatcher：</strong>	路径匹配器，支持通配符</p>
+<pre><code class="java">package com.os467.reggie.Filter;
+
+import com.alibaba.fastjson.JSON;
+import com.os467.reggie.common.R;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.AntPathMatcher;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+/**
+ * 检查用户是否完成登录
+ */
+@Slf4j
+@WebFilter(filterName = &quot;loginCheckFilter&quot;,urlPatterns = &quot;/*&quot;)
+public class LoginCheckFilter implements Filter &#123;
+
+    //路径匹配器，支持通配符
+    private static final AntPathMatcher PATH_MATCHER = new AntPathMatcher();
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException &#123;
+
+        //需要先向下转型
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+
+        //1、获取本次请求的URI
+        String requestURI = request.getRequestURI();
+
+        //定义不要被处理的请求路径
+        String[] urls = new String[]&#123;
+                &quot;/employee/login&quot;,
+                &quot;/employee/logout&quot;,
+                &quot;backend/**&quot;,
+                &quot;/front/**&quot;
+        &#125;;
+
+        //2、判断本次请求是否需要处理
+        boolean check = check(urls, requestURI);
+
+        //3、如果不需要处理，则直接放行
+        if (check)&#123;
+            filterChain.doFilter(request,response);
+            return;
+        &#125;
+
+        //4、判断登录状态，如果已登录，则直接放行
+       if(request.getSession().getAttribute(&quot;employee&quot;) != null)&#123;
+           filterChain.doFilter(request,response);
+           return;
+       &#125;
+
+        //5、如果未登录则返回未登录结果,通过输出流的方式向客户端来响应数据
+        response.getWriter().write(JSON.toJSONString(R.error(&quot;NOTLOGIN&quot;)));
+        return;
+        
+    &#125;
+
+    /**
+     * 路径匹配，检查本次请求是否需要放行
+     * @param urls
+     * @param requestURI
+     * @return
+     */
+    public boolean check(String[] urls,String requestURI)&#123;
+
+        for (String url : urls) &#123;
+
+            boolean match = PATH_MATCHER.match(url, requestURI);
+            if (match)&#123;
+                return true;
+            &#125;
+        &#125;
+
+        return false;
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="1-3新增员工"><a href="#1-3新增员工" class="headerlink" title="1.3新增员工"></a>1.3新增员工</h3><p>为数据库新增员工</p>
+<pre><code class="java">/**
+ * 新增员工
+ * @param employee
+ * @return
+ */
+@PostMapping
+public R&lt;String&gt; save(HttpServletRequest request,@RequestBody Employee employee)&#123;
+    log.info(&quot;新增员工，员工信息：&#123;&#125;&quot;,employee.toString());
+
+    //设置初始密码123456，并且md5加密
+    employee.setPassword(DigestUtils.md5DigestAsHex(&quot;123456&quot;.getBytes()));
+
+    //设置创建和更新时间
+    employee.setCreateTime(LocalDateTime.now());
+    employee.setUpdateTime(LocalDateTime.now());
+
+    Long empId = (Long)request.getSession().getAttribute(&quot;employee&quot;);
+
+    //设置账户的创建更新人id
+    employee.setCreateUser(empId);
+    employee.setUpdateUser(empId);
+
+    employeeService.save(employee);
+
+    return R.success(&quot;新增员工成功&quot;);
+&#125;
+</code></pre>
+<h4 id="☆全局异常捕获（AOP）"><a href="#☆全局异常捕获（AOP）" class="headerlink" title="☆全局异常捕获（AOP）"></a>☆全局异常捕获（AOP）</h4><p>前面的程序还存在一个问题，就是当我们在新增员工时输入的账号已经存在，由于employee表中对该字段加入了唯一约束，此时程序会抛出异常</p>
+<p>此时需要我们的程序进行异常捕获，通常由两种处理方式：</p>
+<p>1、在Controller方法中加入try、catch进行异常捕获（不推荐）</p>
+<p>2、使用异常处理器进行全局异常捕获</p>
+<p>第二种方法其实就是通过<strong>AOP底层动态代理</strong>来对目标方法的增强（异常通知）</p>
+<h5 id="ControllerAdvice注解"><a href="#ControllerAdvice注解" class="headerlink" title="@ControllerAdvice注解"></a>@ControllerAdvice注解</h5><p><strong>annotations属性：</strong>	被其中存放的注解修饰的方法会被拦截，传入注解字节码数组</p>
+<p><strong>@ExceptionHandler注解</strong></p>
+<p>传入<strong>异常类的字节码</strong>，修饰方法（异常通知的内容），指定异常的处理类型</p>
+<pre><code class="java">package com.os467.reggie.common;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.sql.SQLIntegrityConstraintViolationException;
+
+/**
+ * 全局异常捕获
+ */
+@ControllerAdvice(annotations = &#123;RestController.class&#125;)
+@ResponseBody
+@Slf4j
+public class GlobalExceptionHandler &#123;
+
+    /**
+     * 异常处理方法
+     * @return
+     */
+    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+    public R&lt;String&gt; exceptionHandler(SQLIntegrityConstraintViolationException exception)&#123;
+
+        log.error(exception.getMessage());
+
+        //根据异常提示定位到具体异常处理
+        if (exception.getMessage().contains((&quot;Duplicate entry&quot;)))&#123;
+
+            String msg = exception.getMessage().split(&quot; &quot;)[2] + &quot;已存在&quot;;
+
+            return R.error(msg);
+        &#125;
+
+        return R.error(&quot;未知错误&quot;);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1、根据产品原型明确业务需求</p>
+<p>2、重点分析数据的流转过程和数据格式</p>
+<p>3、通过debug断点调试跟踪程序执行过程</p>
+<h3 id="2-1员工信息的分页查询"><a href="#2-1员工信息的分页查询" class="headerlink" title="2.1员工信息的分页查询"></a>2.1员工信息的分页查询</h3><p>系统中的员工很多的时候，如果在一个页面中全部展示出来会显得比较乱，不便于查看，所以一般的系统中都会以分页的方式来展示列表数据</p>
+<p><strong>代码开发</strong></p>
+<p>1、页面发送ajax请求，将分页查询参数（page，pageSize，name）提交到服务器</p>
+<p>2、服务器Controller接收页面提交的数据并调用Service查询数据</p>
+<p>3、Service调用Mapper操作数据库，查询分页数据</p>
+<p>4、Controller将查询到的分页数据响应给页面</p>
+<p>5、页面接收到分页数据并通过ElementUI的Table组件展示到页面上</p>
+<pre><code class="java">/**
+ * 员工信息的分页查询
+ * @param page
+ * @param pageSize
+ * @param name
+ * @return
+ */
+@GetMapping(&quot;/page&quot;)
+public R&lt;Page&gt; page(int page,int pageSize,String name)&#123;
+
+    log.info(&quot;page = &#123;&#125;,pageSize=&#123;&#125;,name=&#123;&#125;&quot;,page,pageSize,name);
+
+    //构造分页构造器
+    Page pageConstructor = new Page(page,pageSize);
+
+    //构造条件构造器，需要提供泛型
+    LambdaQueryWrapper&lt;Employee&gt; queryWrapper = new LambdaQueryWrapper();
+
+    //添加过滤条件
+    queryWrapper.like(StringUtils.isNotBlank(name),Employee::getUsername,name);
+
+    //排序条件
+    queryWrapper.orderByDesc(Employee::getUpdateTime);
+
+    //执行查询
+    employeeService.page(pageConstructor,queryWrapper);
+
+    return R.success(pageConstructor);
+&#125;
+</code></pre>
+<h3 id="2-2启用-x2F-禁用员工账号"><a href="#2-2启用-x2F-禁用员工账号" class="headerlink" title="2.2启用&#x2F;禁用员工账号"></a>2.2启用&#x2F;禁用员工账号</h3><p><strong>需求分析</strong></p>
+<p>在员工管理列表页面，可以对某个员工账号进行启用或者禁用操作，账号禁用的员工不能登录系统，启用后的员工可以正常登录</p>
+<p>需要注意，只有管理员（admin用户）可以对其他普通用户进行启用、禁用操作，所以普通用户登录系统后启用、禁用按钮不显示</p>
+<p>管理员admin登录系统可以对所有员工账号进行启用，禁用操作</p>
+<p>如果某个员工账号状态为正常，则按钮显示“禁用”，如果员工账号状态为已禁用，则按钮显示为“启用”</p>
+<p>普通员工登录系统后，启用、禁用按钮不显示</p>
+<p><strong>代码开发</strong></p>
+<p>启用、禁用员工账号，本质上就是一个更新操作，也就是对status状态字段进行操作，在Controller中创建update方法，此方法时一个通用的修改员工信息的方法</p>
+<h4 id="☆JS处理Long类型精度丢失"><a href="#☆JS处理Long类型精度丢失" class="headerlink" title="☆JS处理Long类型精度丢失"></a>☆JS处理Long类型精度丢失</h4><p><strong>代码修复</strong></p>
+<p>通过观察控制台输出的SQL发现页面传递过来的员工id的值和数据库中的id值不一致，这是怎么回事？</p>
+<ul>
+<li><p>原来 JS 内置有 32 位整数，而 number 类型的安全整数是 53 位。如果超过 53 位，则精度会丢失。正如现在后台传来一个 64 位的 Long 类型整数，因此超过了 53 位，所以后台返回的值和前台获取的值会不一样</p>
+</li>
+<li><p>页面中js处理long型数字只能精确到前16位，所以最终通过ajax请求提交给服务端的时候id的后三位被四舍五入了</p>
+</li>
+</ul>
+<p>如何解决这个问题？</p>
+<p>我们可以在服务端给页面响应json数据时进行处理，将long型数据统一转为String字符串</p>
+<p><strong>方法一</strong></p>
+<p>使用**@JsonSerialize注解**</p>
+<p>该注解用于属性或者getter⽅法上，⽤于在序列化时嵌⼊开发者⾃定义的代码</p>
+<p><code>@JsonSerialize(using = ToStringSerializer.class)</code></p>
+<ul>
+<li>通过fastjson序列化时，增加该字段的序列化类，该序列化类通过CODE查找名称，并序列化到前端，就不会丢失精度了</li>
+<li>使得Json序列化的时候将此属性转化为String类型</li>
+</ul>
+<p>使用以下包</p>
+<pre><code class="java">import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer
+</code></pre>
+<pre><code class="java">@JsonSerialize(using = ToStringSerializer.class)
+private Long id;
+</code></pre>
+<p><strong>方法二</strong></p>
+<p>1、提供对象转换器JacksonObjectMapper，基于jackson进行java对象到json数据的转换</p>
+<p>2、在WebMvcConfig配置类中扩展SpringMVC的<strong>消息转换器</strong>，在此消息转换器中使用提供的对象转换器进行Java对象到Json数据的转换</p>
+<p>直接使用<strong>JacksonObjectMapper类</strong></p>
+<pre><code class="java">package com.os467.reggie.common;
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES;
+
+/**
+ * 对象映射器:基于jackson将Java对象转为json，或者将json转为Java对象
+ * 将JSON解析为Java对象的过程称为 [从JSON反序列化Java对象]
+ * 从Java对象生成JSON的过程称为 [序列化Java对象到JSON]
+ */
+public class JacksonObjectMapper extends ObjectMapper &#123;
+
+    public static final String DEFAULT_DATE_FORMAT = &quot;yyyy-MM-dd&quot;;
+    public static final String DEFAULT_DATE_TIME_FORMAT = &quot;yyyy-MM-dd HH:mm:ss&quot;;
+    public static final String DEFAULT_TIME_FORMAT = &quot;HH:mm:ss&quot;;
+
+    public JacksonObjectMapper() &#123;
+        super();
+        //收到未知属性时不报异常
+        this.configure(FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+        //反序列化时，属性不存在的兼容处理
+        this.getDeserializationConfig().withoutFeatures(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+
+
+        SimpleModule simpleModule = new SimpleModule()
+                .addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(DEFAULT_DATE_TIME_FORMAT)))
+                .addDeserializer(LocalDate.class, new LocalDateDeserializer(DateTimeFormatter.ofPattern(DEFAULT_DATE_FORMAT)))
+                .addDeserializer(LocalTime.class, new LocalTimeDeserializer(DateTimeFormatter.ofPattern(DEFAULT_TIME_FORMAT)))
+
+                .addSerializer(BigInteger.class, ToStringSerializer.instance)
+                .addSerializer(Long.class, ToStringSerializer.instance)
+                .addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(DEFAULT_DATE_TIME_FORMAT)))
+                .addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(DEFAULT_DATE_FORMAT)))
+                .addSerializer(LocalTime.class, new LocalTimeSerializer(DateTimeFormatter.ofPattern(DEFAULT_TIME_FORMAT)));
+
+        //注册功能模块 例如，可以添加自定义序列化器和反序列化器
+        this.registerModule(simpleModule);
+    &#125;
+&#125;
+</code></pre>
+<p>我们需要去扩展mvc框架的消息转换器</p>
+<p>在<strong>WebMvcConfig配置类</strong>中重写<strong>extendMessageConverters方法</strong></p>
+<h4 id="消息转换器"><a href="#消息转换器" class="headerlink" title="消息转换器"></a>消息转换器</h4><p>添加自定义消息转换器不覆盖默认转换器</p>
+<p>使用springboot中默认的Json消息转换器<strong>MappingJackson2HttpMessageConverter类</strong>创建转换器</p>
+<p>这个类的主要实现逻辑是在AbstractJackson2HttpMessageConverter抽象类中实现的</p>
+<p>这个列实现序列化与反序列化的最核心组件是<strong>ObjectMapper</strong>这个类</p>
+<p>这些组件之间是如何协助，怎样才能合理的改写组件而实现自定义呢，这就需要了解起原理了</p>
+<p><strong>消息转换器创建和生效原理</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Heron22/article/details/109512976">CSDN博文引用</a></p>
+<pre><code class="java">/**
+ * 扩展mvc框架的消息转换器
+ * @param converters
+ */
+@Override
+public void extendMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) &#123;
+
+    //创建新的消息转换器
+    MappingJackson2CborHttpMessageConverter messageConverter = new MappingJackson2CborHttpMessageConverter();
+
+    //设置对象转换器，底层使用Jackson将java对象转成json
+    messageConverter.setObjectMapper(new JacksonObjectMapper());
+
+    //将上面的消息转换器对象追加到mvc框架的转换器集合中，放在最前面优先使用
+    converters.add(0,messageConverter);
+
+    super.extendMessageConverters(converters);
+&#125;
+</code></pre>
+<p><strong>通用修改员工数据方法</strong></p>
+<pre><code class="java">/**
+ * 根据id来修改员工信息
+ * @param employee
+ * @return
+ */
+@PutMapping
+public R&lt;String&gt; update(HttpServletRequest request, @RequestBody Employee employee)&#123;
+
+    log.info(employee+&quot;&quot;);
+
+    Long empId = (Long) request.getSession().getAttribute(&quot;employee&quot;);
+
+    employee.setUpdateUser(empId);
+    employee.setUpdateTime(LocalDateTime.now());
+
+    employeeService.updateById(employee);
+
+    return R.success(&quot;修改成功&quot;);
+&#125;
+</code></pre>
+<h3 id="2-3编辑员工信息"><a href="#2-3编辑员工信息" class="headerlink" title="2.3编辑员工信息"></a>2.3编辑员工信息</h3><p>在员工管理列表页面点击编辑按钮，跳转到编辑页面，在编辑页面回显员工信息并进行修改，最后点击保存按钮完成编辑操作</p>
+<p><strong>代码开发</strong></p>
+<p>1、点击编辑按钮时,页面跳转到add.html，并在url中携带参数[员工id]</p>
+<p>2、在add.html页面获取url中的参数[员工id]</p>
+<p>3、发送ajax请求，请求服务端，同时提交员工id参数</p>
+<p>4、服务端接收请求，根据员工id查询员工信息，将员工信息以json形式响应给页面</p>
+<p>5、页面接收服务端响应的json数据，通过VUE的数据绑定进行员工信息回显</p>
+<p>6、点击保存按钮，发送ajax请求，将页面中的员工信息以json方式提交给服务端</p>
+<p>7、服务端接收员工信息，并进行处理，完成后给页面响应</p>
+<p>8、页面接收到服务端响应信息后进行相应处理</p>
+<p><strong>@PathVariable注解</strong></p>
+<p>通过 <strong>@PathVariable</strong> 可以将 <strong>URL</strong> 中占位符参数绑定到控制器处理方法的入参中：URL 中的 {<strong>xxx</strong>} 占位符可以通过@PathVariable(“<strong>xxx</strong>“) 绑定到操作方法的入参中</p>
+<pre><code class="java">@GetMapping(&quot;/&#123;id&#125;&quot;)
+public R&lt;Employee&gt; getById(@PathVariable Long id)&#123;
+
+    log.info(&quot;根据id来查询员工信息&quot;);
+
+    Employee employee = employeeService.getById(id);
+
+    return R.success(employee);
+&#125;
+</code></pre>
+<h3 id="3-分类管理业务开发"><a href="#3-分类管理业务开发" class="headerlink" title="3.分类管理业务开发"></a>3.分类管理业务开发</h3><h4 id="☆公共字段自动填充"><a href="#☆公共字段自动填充" class="headerlink" title="☆公共字段自动填充"></a>☆公共字段自动填充</h4><p>前面我们已经完成了后台系统的员工管理功能开发，在新增员工时需要设置创建时间、创建人、修改时间、修改人等字段，在编辑员工时需要设置修改时间和修改人等字段，这些字段属于公共字段，也就是很多表中都有这些字段</p>
+<p>能不能对于这些公共字段在某个地方统一处理，来简化开发呢？</p>
+<p>使用MybatisPlus提供的<strong>公共字段自动填充</strong>功能</p>
+<p>也就是在插入或者更新的时候为指定字段赋予指定的值，使用它的好处就是可以统一对这些字段进行处理，避免了重复代码</p>
+<p>实现步骤：</p>
+<p>1、在实体类的属性上加入@TableField注解，指定自动填充的策略</p>
+<p>2、按照框架要求编写元数据对象处理器，在此类中统一为公共字段赋值，需要实现MetaObjectHandler接口</p>
+<p>使用**@TableField注解**</p>
+<p><code>@TableField(fill = FieldFill.INSERT)</code>	</p>
+<p>指定填充策略</p>
+<ul>
+<li>DEFAULT 默认不处理</li>
+<li>INSERT 插入时填充字段</li>
+<li>UPDATE 更新时填充字段</li>
+<li>INSERT_UPDATE 插入和更新时填充字段</li>
+</ul>
+<p><strong>元数据对象处理器(填充策略的具体实现)</strong></p>
+<p>要实现一个<strong>MetaObjectHandler接口</strong></p>
+<pre><code class="java">package com.os467.reggie.common;
+
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.reflection.MetaObject;
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
+
+/**
+ * 元数据对象处理器
+ */
+@Component
+@Slf4j
+public class MyMetaObjectHandler implements MetaObjectHandler &#123;
+
+    /**
+     * 插入操作自动填充
+     * @param metaObject
+     */
+    @Override
+    public void insertFill(MetaObject metaObject) &#123;
+        log.info(&quot;公共字段自动填充[insert]...&quot;);
+        log.info(metaObject+&quot;&quot;);
+
+        metaObject.setValue(&quot;createTime&quot;, LocalDateTime.now());
+        metaObject.setValue(&quot;updateTime&quot;, LocalDateTime.now());
+        metaObject.setValue(&quot;createUser&quot;, new Long(1));
+        metaObject.setValue(&quot;updateUser&quot;, new Long(1));
+    &#125;
+
+    /**
+     * 更新操作自动填充
+     * @param metaObject
+     */
+    @Override
+    public void updateFill(MetaObject metaObject) &#123;
+        log.info(&quot;公共字段自动填充[update]...&quot;);
+        log.info(metaObject+&quot;&quot;);
+
+        metaObject.setValue(&quot;updateTime&quot;, LocalDateTime.now());
+        metaObject.setValue(&quot;updateUser&quot;, new Long(1));
+
+    &#125;
+&#125;
+</code></pre>
+<p><strong>注意：</strong>当前我们设置createUser和updateUser为固定值，后面我们需要进行改造，改为动态获得当前登录用户的id</p>
+<h4 id="功能完善"><a href="#功能完善" class="headerlink" title="功能完善"></a>功能完善</h4><p>前面我们已经完成了公共字段自动填充功能的代码开发，但是还有一个问题没有解决</p>
+<ul>
+<li>就是我们在自动填充createUser和updateUser时，设置的用户id是固定值，现在我们需要改造成动态获取当前登录用户的id</li>
+</ul>
+<p>有的同学可能想到，用户登录成功后我们将用户id存入了HttpSession中，现在我从HttpSession中获取不就行了?</p>
+<ul>
+<li><strong>注意：</strong>我们在MyMetaobjectHandler类中是不能获得HttpSession对象的，所以我们需要通过其他方式来获取登录用户id</li>
+<li>可以使用<strong>ThreadLocal</strong>来解决此问题，它是<strong>JDK</strong>中提供的一个类。</li>
+</ul>
+<h4 id="ThreadLocal类"><a href="#ThreadLocal类" class="headerlink" title="ThreadLocal类"></a>ThreadLocal类</h4><p>在学习ThreadLocal之前，我们需要先确认一个事情，就是客户端发送的每次http请求，对应的在服务端都会<strong>分配一个新的线程</strong>来处理，在处理过程中涉及到下面类中的方法都属于相同的一个线程：</p>
+<p>1、LoginCheckFilter的doFilter方法</p>
+<p>2、EmployeeController的update方法</p>
+<p>3、MyMetaObjectHandler的updateFill方法</p>
+<p>可以在上面的三个方法中分别加入下面代码（获取当前线程id）：</p>
+<p><code>log.info(&quot;线程id:&#123;&#125;&quot;,Thread.currentThread().getId());</code></p>
+<p><strong>什么是ThreadLocal？</strong></p>
+<p>ThreadLocal并不是一个线程，而是线程的局部变量，当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，而不会影响其它线程所对应的副本，ThreadLocal为每个线程提供单独一份存储空间，具有线程隔离的效果，只有在<strong>线程内才能获取到对应的值</strong>，线程外则不能访问</p>
+<p>ThreadLocal常用方法：</p>
+<p><code>public void set(T value)</code> 	设置当前线程的线程局部变量的值</p>
+<p><code>public T get()</code>	返回当前线程所对应的线程局部变量的值</p>
+<p>我们可以在LoginCheckFilter的<code>doFilter</code>方法中获取当前登录用户id，并调用ThreadLocal的<code>set</code>方法来设置当前线程的线程局部变量的值（用户id)，然后在MyMetaObjectHandler的<code>updateFill</code>方法中调用ThreadLocal的<code>get</code>方法来获得当前线程所对应的线程局部变量的值(用户id)。</p>
+<p><strong>实现步骤</strong></p>
+<p>1、编写<strong>BaseContext工具类</strong>，基于ThreadLocal封装的工具类</p>
+<p>2、在LoginCheckFilter的doFilter方法中调用BaseContext来设置当前登录用户的id</p>
+<p>3、在MyMetaObjectHandler的方法中调用BaseContext获取登录用户的id</p>
+<p>编写工具类</p>
+<pre><code class="java">package com.os467.reggie.common;
+
+/**
+ * 基于ThreadLocal封装工具类，用户保存和获取当前登录用户id
+ */
+public class BaseContext &#123;
+
+    private static ThreadLocal&lt;Long&gt; threadLocal = new ThreadLocal&lt;&gt;();
+
+    public static void setCurrentId(Long id)&#123;
+        threadLocal.set(id);
+    &#125;
+
+    public static Long getCurrentId()&#123;
+        return threadLocal.get();
+    &#125;
+
+&#125;
+</code></pre>
+<p>在doFilter方法中获取id并且存储id值</p>
+<pre><code class="java">/4、判断登录状态，如果已登录，则直接放行
+if(request.getSession().getAttribute(&quot;employee&quot;) != null)&#123;
+
+    Long empId = (Long)request.getSession().getAttribute(&quot;employee&quot;);
+
+    BaseContext.setCurrentId(empId);
+
+    log.info(&quot;用户已登录，用户id为：&#123;&#125;&quot;,request.getSession().getAttribute(&quot;employee&quot;));
+    filterChain.doFilter(request,response);
+    return;
+&#125;
+</code></pre>
+<p>在MyMetaObjectHandler类中获取需要的id值</p>
+<pre><code class="java">/**
+ * 更新操作自动填充
+ * @param metaObject
+ */
+@Override
+public void updateFill(MetaObject metaObject) &#123;
+    log.info(&quot;公共字段自动填充[update]...&quot;);
+    log.info(metaObject+&quot;&quot;);
+
+    metaObject.setValue(&quot;updateTime&quot;, LocalDateTime.now());
+    metaObject.setValue(&quot;updateUser&quot;, BaseContext.getCurrentId());
+
+&#125;
+</code></pre>
+<h3 id="3-1新增分类"><a href="#3-1新增分类" class="headerlink" title="3.1新增分类"></a>3.1新增分类</h3><p><strong>需求分析</strong></p>
+<p>后台系统中可以管理分类信息，分类包括两种类型，分别是菜品分类和套餐分类。当我们在后台系统中添加菜品时需要选择一个菜品分类，当我们在后台系统中添加一个套餐时需要选择一个套餐分类，在移动端也会按照菜品分类和套餐分类来展示对应的菜品和套餐。</p>
+<pre><code class="java">/**
+ * 新增分类
+ * @param category
+ * @return
+ */
+@PostMapping
+public R&lt;String&gt; save(@RequestBody Category category)&#123;
+
+    log.info(&quot;category:&#123;&#125;&quot;,category);
+
+    categoryService.save(category);
+
+    return R.success(&quot;新增分类成功&quot;);
+&#125;
+</code></pre>
+<p><strong>分页列表</strong></p>
+<pre><code class="java">/**
+ * 分类分页
+ * @param page
+ * @param pageSize
+ * @return
+ */
+@GetMapping(&quot;page&quot;)
+public R&lt;Page&gt; page(int page,int pageSize)&#123;
+
+    log.info(&quot;page = &#123;&#125;,pageSize=&#123;&#125;,&quot;,page,pageSize);
+
+    Page&lt;Category&gt; pageConstructor = new Page&lt;&gt;(page,pageSize);
+
+    //条件构造器
+    LambdaQueryWrapper&lt;Category&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+    //根据sort字段排序
+    queryWrapper.orderByAsc(Category::getSort);
+
+    categoryService.page(pageConstructor,queryWrapper);
+
+    return R.success(pageConstructor);
+&#125;
+</code></pre>
+<h3 id="3-2删除分类"><a href="#3-2删除分类" class="headerlink" title="3.2删除分类"></a>3.2删除分类</h3><p>删除分类</p>
+<pre><code class="java">/**
+ * 删除分类
+ * @param ids
+ * @return
+ */
+@DeleteMapping
+public R&lt;String&gt; delete(Long ids)&#123;
+
+    log.info(&quot;删除分类，id为&#123;&#125;&quot;,ids);
+
+    categoryService.removeById(ids);
+
+    return R.success(&quot;分类信息删除成功&quot;);
+&#125;
+</code></pre>
+<p><strong>功能完善</strong></p>
+<p>前面我们已经实现了根据id删除分类的功能，但是并没有检查删除的分类是否关联了菜品或者套餐，所以我们需要进行功能完善</p>
+<p>要完善分类删除功能，需要准备基础的类和接口：</p>
+<p>实体类Dish和Setmeal</p>
+<p>Mapper接口</p>
+<p>Service实接口</p>
+<p>Service实现类</p>
+<p>根据条件删除分类，同时判断是否抛出异常</p>
+<pre><code class="java">package com.os467.reggie.service.impl;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.os467.reggie.common.CustomException;
+import com.os467.reggie.entity.Category;
+import com.os467.reggie.entity.Dish;
+import com.os467.reggie.entity.Setmeal;
+import com.os467.reggie.mapper.CategoryMapper;
+import com.os467.reggie.service.CategoryService;
+import com.os467.reggie.service.DishService;
+import com.os467.reggie.service.SetmealService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CategoryServiceImpl extends ServiceImpl&lt;CategoryMapper, Category&gt; implements CategoryService &#123;
+
+    @Autowired
+    private SetmealService setmealService;
+
+    @Autowired
+    private DishService dishService;
+
+    /**
+     * 根据id来删除分类，删除之前进行判断
+     * @param id
+     */
+    @Override
+    public void remove(Long id) &#123;
+
+        LambdaQueryWrapper&lt;Dish&gt; queryWrapperDish = new LambdaQueryWrapper&lt;&gt;();
+        //添加查询条件，根据分类id进行查询
+        queryWrapperDish.eq(Dish::getCategoryId, id);
+
+        //查询当前分类是否关联了菜品
+        int count1 = dishService.count(queryWrapperDish);
+
+        if (count1 &gt; 0)&#123;
+
+            //已经关联了菜品，抛出一个业务异常
+            throw new CustomException(&quot;当前分类下关联了菜品，不能删除&quot;);
+
+        &#125;
+
+        //查询当前的分类是否关联了相应的套餐
+        LambdaQueryWrapper&lt;Setmeal&gt; queryWrapperSetmeal = new LambdaQueryWrapper&lt;&gt;();
+
+        queryWrapperSetmeal.eq(Setmeal::getCategoryId,id);
+
+        int count2 = setmealService.count(queryWrapperSetmeal);
+
+        if (count2 &gt; 0)&#123;
+
+            //已经关联了套餐，抛出一个业务异常
+            throw new CustomException(&quot;当前分类下关联了套餐，不能删除&quot;);
+
+        &#125;
+
+        //正常删除分类
+        super.removeById(id);
+
+    &#125;
+&#125;
+</code></pre>
+<p><strong>自定义的异常</strong></p>
+<pre><code class="java">package com.os467.reggie.common;
+
+public class CustomException extends RuntimeException &#123;
+
+    public CustomException(String msg)&#123;
+
+        super(msg);
+
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>在全局异常处理类中进行处理</strong></p>
+<pre><code class="java">/**
+ * 异常处理方法
+ * @return
+ */
+@ExceptionHandler(CustomException.class)
+public R&lt;String&gt; exceptionHandler(CustomException exception)&#123;
+
+    log.error(exception.getMessage());
+
+    return R.error(exception.getMessage());
+&#125;
+</code></pre>
+<h3 id="3-3修改分类"><a href="#3-3修改分类" class="headerlink" title="3.3修改分类"></a>3.3修改分类</h3><pre><code class="java">/**
+ * 根据id修改分类信息
+ * @param category
+ * @return
+ */
+@PutMapping
+public R&lt;String&gt; update(@RequestBody Category category)&#123;
+
+    log.info(&quot;修改分类信息:&#123;&#125;&quot;,category);
+
+    categoryService.updateById(category);
+
+    return R.success(&quot;修改分类信息成功&quot;);
+&#125;
+</code></pre>
+<h3 id="4-菜品管理业务开发"><a href="#4-菜品管理业务开发" class="headerlink" title="4.菜品管理业务开发"></a>4.菜品管理业务开发</h3><h3 id="4-1文件上传上传下载"><a href="#4-1文件上传上传下载" class="headerlink" title="4.1文件上传上传下载"></a>4.1文件上传上传下载</h3><p><strong>文件上传介绍</strong></p>
+<p>文件上传，也称为upload，是指将本地图片、视频、音频等文件上传到服务器上，可以供其它用户浏览或下载的过程，文件上传在项目中应用非常广泛，我们经常发微博、发微信朋友圈都用到了文件上传功能</p>
+<p>文件上传时，对页面的form表单有如下要求（固定要求）：</p>
+<ul>
+<li><code>method=&quot;post&quot;</code>		采用post方式提交数据</li>
+<li><code>enctype=&quot;multipart/form-data&quot;</code>		采用multipart格式上传文件</li>
+<li><code>type=&quot;file&quot;</code>		使用input的file控件上传</li>
+</ul>
+<p>目前一些前端组件库也提供了相应的上传组件，但是底层原理还是基于form表单的文件上传</p>
+<p>例如ElementUI中提供的upload上传组件</p>
+<p>服务端要接收客户端页面上传的文件，通常都会使用<strong>Apache的两个组件</strong>：</p>
+<ul>
+<li>commons-fileupload</li>
+<li>commons-io</li>
+</ul>
+<p>Spring框架在spring-web包中<strong>对文件上传进行了封装</strong>，大大简化了服务端代码，我们只需要在Controller的方法中声明一个<strong>MultipartFile</strong>类型的参数即可接收上传的文件，例如：</p>
+<p><strong>文件下载介绍</strong></p>
+<p>文件下载，也称为download，是指将文件从服务器传输到本地计算机的过程</p>
+<p>通过浏览器进行文件下载，通常有两种表现形式：</p>
+<ul>
+<li>以附件形式下载，弹出保存对话框，将文件保存到指定磁盘目录</li>
+<li>直接在浏览器中打开</li>
+</ul>
+<p>通过浏览器进行文件下载，本质上就是<strong>服务端将文件以流的形式写回浏览器的过程</strong></p>
+<p><strong>文件上传代码实现</strong></p>
+<p>MultipartFile类：用于接收文件类型数据</p>
+<p>创建一个CommonController来处理平常一些的请求</p>
+<p>测试是否能接收到文件</p>
+<pre><code class="java">package com.os467.reggie.controller;
+
+import com.os467.reggie.common.R;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+/**
+ * 文件的上传和下载
+ */
+@RestController
+@RequestMapping(&quot;/common&quot;)
+@Slf4j
+public class CommonController &#123;
+
+    /**
+     * 文件上传
+     * @param file 参数名必须和前端name一致
+     * @return
+     */
+    @PostMapping(&quot;/upload&quot;)
+    public R&lt;String&gt; upload(MultipartFile file)&#123;
+        log.info(file.toString());
+        return null;
+    &#125;
+
+&#125;
+</code></pre>
+<p>在配置文件中指定文件存放路径</p>
+<pre><code class="properties">reggie.iconPath=D:\\pythonschool\\PY_lab\\JavaProject\\reggie_take_out\\src\\main\\resources\\localIcon
+</code></pre>
+<p>在表现层通过Value注解获取</p>
+<pre><code class="java">@Value(&quot;$&#123;reggie.iconPath&#125;&quot;)
+private String basePath;
+</code></pre>
+<p>文件上传</p>
+<pre><code class="java">/**
+ * 文件上传
+ * @param file 参数名必须和前端name一致
+ * @return
+ */
+@PostMapping(&quot;/upload&quot;)
+public R&lt;String&gt; upload(  MultipartFile file)&#123;
+    //file是一个临时文件，需要转存到指定位置，否则本子请求完成后临时文件就会删除
+    log.info(file.toString());
+
+    //获取原始文件名
+    String originalFilename = file.getOriginalFilename();
+
+    String suffix = originalFilename.substring(originalFilename.lastIndexOf(&quot;.&quot;));
+
+    //使用UUID重新生成文件名称，防止文件名称重复造成文件覆盖
+    String fileName = UUID.randomUUID().toString() + suffix;
+
+    //创建一个目录对象
+    File dir = new File(basePath);
+
+    //判断当前目录是否存在
+    if (!dir.exists())&#123;
+
+        dir.mkdirs();
+
+    &#125;
+
+    try &#123;
+
+        //将临时文件转存到指定位置
+        file.transferTo(new File(basePath+fileName));
+
+    &#125; catch (IOException e) &#123;
+        e.printStackTrace();
+    &#125;
+
+    return R.success(fileName);
+&#125;
+</code></pre>
+<p><strong>文件下载代码实现</strong></p>
+<p><code>getOutputStream()</code></p>
+<p>该方法所获得的的字节流对象为ServletOutputStream类型, 由于ServletOutputStream是OutputStream的子类，它可以直接输出字节组中的二进制数据</p>
+<pre><code class="java">/**
+ * 文件下载
+ * @param name
+ * @param response
+ */
+@GetMapping(&quot;/download&quot;)
+public void download(String name, HttpServletResponse response)&#123;
+
+    FileInputStream fileInputStream = null;
+
+    ServletOutputStream outputStream = null;
+
+    try &#123;
+
+        //输入流，通过输入流读取文件类容
+        fileInputStream = new FileInputStream(new File(basePath+name));
+
+        //输出流，通过输出流将文件写回浏览器，在浏览器展示图片
+        outputStream = response.getOutputStream();
+
+        byte[] bytes = new byte[1024];
+
+        //设置响应文件类型
+        response.setContentType(&quot;image/jpeg&quot;);
+
+        int read = 0;
+
+        while ((read = fileInputStream.read(bytes)) != -1)&#123;
+
+            outputStream.write(bytes,0,read);
+            outputStream.flush();
+        &#125;
+
+
+    &#125; catch (FileNotFoundException e) &#123;
+        e.printStackTrace();
+    &#125; catch (IOException e) &#123;
+        e.printStackTrace();
+    &#125;finally &#123;
+
+        try &#123;
+            if (fileInputStream != null)&#123;
+                fileInputStream.close();
+            &#125;
+
+            if (outputStream != null)&#123;
+                outputStream.close();
+            &#125;
+        &#125; catch (IOException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+    &#125;
+
+
+&#125;
+</code></pre>
+<h3 id="4-2新增菜品"><a href="#4-2新增菜品" class="headerlink" title="4.2新增菜品"></a>4.2新增菜品</h3><p>新增菜品，其实就是将新增页面录入的菜品信息插入到dish表</p>
+<p>如果添加了口味做法，还需要向dish_flavor表插入数据</p>
+<p>所以在新增菜品时，涉及到两个表：</p>
+<ul>
+<li>dish		菜品表</li>
+<li>dish_flavor		菜品口味表</li>
+</ul>
+<p><strong>交互过程</strong></p>
+<p>1、页面(backend&#x2F;page&#x2F;food&#x2F;add.html)发送ajax请求，请求服务端获取菜品分类数据并展示到下拉框中</p>
+<p>2、页面发送请求进行图片上传，请求服务端将图片保存到服务器</p>
+<p>3、页面发送请求进行图片下载，将上传的图片进行回显</p>
+<p>4、点击保存按钮，发送ajax请求，将菜品相关数据以json形式提交到服务端</p>
+<h4 id="4-2-1回显分类数据"><a href="#4-2-1回显分类数据" class="headerlink" title="4.2.1回显分类数据"></a>4.2.1回显分类数据</h4><pre><code class="java">/**
+ * 根据条件来回显分类数据
+ * @param category
+ * @return
+ */
+@GetMapping(&quot;list&quot;)
+public R&lt;List&lt;Category&gt;&gt; list(Category category)&#123;
+
+    //条件构造器
+    LambdaQueryWrapper&lt;Category&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+    //添加条件
+    queryWrapper.eq(category.getType() != null,Category::getType,category.getType());
+
+    //添加排序条件
+    queryWrapper.orderByAsc(Category::getSort).orderByDesc(Category::getUpdateTime);
+
+    //查询
+    List&lt;Category&gt; list = categoryService.list(queryWrapper);
+
+    return R.success(list);
+&#125;
+</code></pre>
+<p>导入DishDto，用于封装页面提交的数据</p>
+<p>DTO，全称为Data Transfer Object，即数据传输对象，一般用于展示与服务层之间的数据传输</p>
+<p><strong>Stream流的特性</strong></p>
+<p><strong>相比forEach效率高，数据多会启用多线程</strong></p>
+<ul>
+<li><p>Stream流不是一种数据结构，不保存数据，它只是在原数据集上定义了一组操作</p>
+</li>
+<li><p>这些操作是惰性的，即每当访问到流中的一个元素，才会在此元素上执行这一系列操作</p>
+</li>
+<li><p>Stream不保存数据，故每个Stream流只能使用一次</p>
+</li>
+<li><p>关于应用在Stream流上的操作，可以分成两种：Intermediate(中间操作)和Terminal(终止操作)</p>
+</li>
+<li><p>中间操作的返回结果都是Stream，故可以多个中间操作叠加</p>
+</li>
+<li><p>终止操作用于返回我们最终需要的数据，只能有一个终止操作</p>
+</li>
+</ul>
+<p><strong>Intermediate(中间操作)：</strong>map (mapToInt, flatMap 等)、 filter、 distinct、 sorted、 peek、 skip、 parallel、 sequential、 unordered</p>
+<p><strong>Terminal(终止操作)：</strong>forEach、 forEachOrdered、 toArray、 reduce、 collect、 min、 max、 count、iterator</p>
+<p><strong>Short-circuiting(短路)：</strong>anyMatch、 allMatch、 noneMatch、 findFirst、 findAny、 limit</p>
+<p><strong>开启事务</strong></p>
+<p>需要在启动类上添加注解</p>
+<pre><code class="java">@EnableTransactionManagement
+</code></pre>
+<p>在新增菜品的方法上开启事务</p>
+<pre><code class="java">@Transactional
+</code></pre>
+<h4 id="4-2-2新增菜品"><a href="#4-2-2新增菜品" class="headerlink" title="4.2.2新增菜品"></a>4.2.2新增菜品</h4><pre><code class="java">/**
+ * 新增菜品
+ * @param dishDto
+ * @return
+ */
+@PostMapping
+public R&lt;String&gt; save(@RequestBody DishDto dishDto)&#123;
+
+    log.info(&quot;dishDto:&#123;&#125;&quot;,dishDto);
+
+    dishService.saveWithFlavor(dishDto);
+
+    return R.success(&quot;新增菜品成功&quot;);
+&#125;
+</code></pre>
+<p><strong>DishServiceImpl</strong></p>
+<pre><code class="java">/**
+ * 新增菜品，同时保存对应的口味数据
+ * @param dishDto
+ */
+@Override
+@Transactional
+public void saveWithFlavor(DishDto dishDto) &#123;
+    //保存菜品的基本信息到菜品表dish
+    this.save(dishDto);
+
+    Long id = dishDto.getId();
+
+    //菜品口味
+    List&lt;DishFlavor&gt; flavors = dishDto.getFlavors();
+
+    //使用stream流遍历
+    flavors = flavors.stream().map((item) -&gt;&#123;
+       item.setDishId(id);
+       return item;
+    &#125;).collect(Collectors.toList());
+
+    //保存菜品口味数据到菜品口味表
+    dishFlavorService.saveBatch(flavors);
+
+&#125;
+</code></pre>
+<h3 id="4-3菜品信息分页查询"><a href="#4-3菜品信息分页查询" class="headerlink" title="4.3菜品信息分页查询"></a>4.3菜品信息分页查询</h3><p>再查询菜品信息的同时要查询到菜品分类名</p>
+<p>我们使用DishDto来构造分页，通过拷贝工具将查询好的菜品信息复制给DishDto模型</p>
+<p>spring提供的BeansUtil有拷贝功能（底层是反射）</p>
+<pre><code class="java">/**
+ * 菜品分页
+ * @param page
+ * @param pageSize
+ * @return
+ */
+@GetMapping(&quot;page&quot;)
+public R&lt;Page&gt; page(int page, int pageSize,String name)&#123;
+
+    log.info(&quot;page = &#123;&#125;,pageSize=&#123;&#125;,&quot;,page,pageSize);
+
+    log.info(&quot;name:&#123;&#125;&quot;,name);
+
+    //菜品分页构造器
+    Page&lt;Dish&gt; dishPage = new Page&lt;&gt;(page,pageSize);
+
+    //模型分页构造器
+    Page&lt;DishDto&gt; dishDtoPage = new Page&lt;&gt;(page,pageSize);
+
+    //条件构造器
+    LambdaQueryWrapper&lt;Dish&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+    //查询条件
+    queryWrapper.like(StringUtils.isNotBlank(name),Dish::getName,name);
+
+    //根据sort字段排序
+    queryWrapper.orderByAsc(Dish::getSort);
+
+    dishService.page(dishPage,queryWrapper);
+
+    //对象拷贝
+    BeanUtils.copyProperties(dishPage,dishDtoPage,&quot;records&quot;);
+
+    //获取菜品分页构造器内部查询到的菜品列表信息
+    List&lt;Dish&gt; dishList = dishPage.getRecords();
+
+    //创建模型列表
+    List&lt;DishDto&gt; list = null;
+
+    //遍历菜品数据流，修改成我们想要的泛型
+    list = dishList.stream().map((item) -&gt; &#123;
+
+        //创建模型对象
+        DishDto dishDto = new DishDto();
+
+        //将菜品对象信息拷贝到模型对象
+        BeanUtils.copyProperties(item, dishDto);
+
+        //获取到分类id
+        Long categoryId = item.getCategoryId();
+
+        //查询分类信息
+        Category category = categoryService.getById(categoryId);
+
+        //获取分类名
+        String categoryName = category.getName();
+
+        //为模型赋值分类名
+        dishDto.setCategoryName(categoryName);
+
+        return dishDto;
+
+    &#125;).collect(Collectors.toList());
+
+    //为模型分页赋值
+    dishDtoPage.setRecords(list);
+
+    return R.success(dishDtoPage);
+&#125;
+</code></pre>
+<h3 id="4-4修改菜品"><a href="#4-4修改菜品" class="headerlink" title="4.4修改菜品"></a>4.4修改菜品</h3><p><strong>回显菜品信息以及对应口味信息</strong></p>
+<p><strong>代码实现</strong></p>
+<pre><code class="java">/**
+ * 根据id来查询菜品信息和对应的口味信息
+ * @param id
+ * @return
+ */
+@GetMapping(&quot;/&#123;id&#125;&quot;)
+public R&lt;DishDto&gt; page(@PathVariable(&quot;id&quot;) Long id)&#123;
+
+    DishDto dishDto = dishService.getByIdWithFlavor(id);
+
+    return R.success(dishDto);
+&#125;
+</code></pre>
+<pre><code class="java">/**
+ * 根据id来查询菜品信息和对应的口味信息
+ * @param id
+ * @return
+ */
+@Override
+public DishDto getByIdWithFlavor(Long id) &#123;
+    //查询菜品基本信息
+    Dish dish = this.getById(id);
+
+    DishDto dishDto = new DishDto();
+
+    BeanUtils.copyProperties(dish,dishDto);
+
+    //查询菜品对应的口味信息
+    LambdaQueryWrapper&lt;DishFlavor&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+    queryWrapper.eq(DishFlavor::getDishId,dish.getId());
+
+    List&lt;DishFlavor&gt; flavors = dishFlavorService.list(queryWrapper);
+
+    dishDto.setFlavors(flavors);
+
+    return dishDto;
+&#125;
+</code></pre>
+<p><strong>提交修改</strong></p>
+<pre><code class="java">/**
+ * 修改菜品信息
+ * @return
+ */
+@PutMapping
+public R&lt;String&gt; update(@RequestBody DishDto dishDto)&#123;
+
+    log.info(&quot;dishDto:&#123;&#125;&quot;,dishDto);
+
+    dishService.updateWithFlavor(dishDto);
+
+    return R.success(&quot;修改菜品成功&quot;);
+
+&#125;
+</code></pre>
+<pre><code class="java">/**
+ * 修改菜品信息并且更新对应口味信息
+ * @param dishDto
+ */
+@Override
+@Transactional
+public void updateWithFlavor(DishDto dishDto) &#123;
+
+    //更新菜品表信息
+    this.updateById(dishDto);
+
+    //清理当前菜品对应的口味数据---dish_flavor表的delete操作
+    LambdaQueryWrapper&lt;DishFlavor&gt; queryWrapper = new LambdaQueryWrapper();
+
+    queryWrapper.eq(DishFlavor::getDishId,dishDto.getId());
+
+    dishFlavorService.remove(queryWrapper);
+
+    List&lt;DishFlavor&gt; flavors = dishDto.getFlavors();
+
+    //使用stream流遍历
+    flavors = flavors.stream().map((item) -&gt;&#123;
+        item.setDishId(dishDto.getId());
+        return item;
+    &#125;).collect(Collectors.toList());
+
+    //添加当前提交过来的口味数据
+    dishFlavorService.saveBatch(flavors);
+
+&#125;
+</code></pre>
+<h3 id="5-套餐部分（独立完成）"><a href="#5-套餐部分（独立完成）" class="headerlink" title="5.套餐部分（独立完成）"></a>5.套餐部分（独立完成）</h3><pre><code class="java">package com.os467.reggie.controller;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.os467.reggie.common.R;
+import com.os467.reggie.dto.SetmealDto;
+import com.os467.reggie.entity.Category;
+import com.os467.reggie.entity.Dish;
+import com.os467.reggie.entity.Setmeal;
+import com.os467.reggie.entity.SetmealDish;
+import com.os467.reggie.service.CategoryService;
+import com.os467.reggie.service.SetmealService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+
+@RestController
+@RequestMapping(&quot;/setmeal&quot;)
+@Slf4j
+public class SetmealController &#123;
+
+    @Autowired
+    private SetmealService setmealService;
+
+    @Autowired
+    private CategoryService categoryService;
+
+    /**
+     * 获取套餐列表，并且显示套餐分类
+     * @param page
+     * @param pageSize
+     * @param name
+     * @return
+     */
+    @GetMapping(&quot;/page&quot;)
+    public R&lt;Page&lt;SetmealDto&gt;&gt; page(Integer page,Integer pageSize,String name)&#123;
+
+        //创建分页构造器
+        Page&lt;Setmeal&gt; setmealPage = new Page&lt;&gt;(page,pageSize);
+
+        LambdaQueryWrapper&lt;Setmeal&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        //根据条件模糊查询
+        queryWrapper.like(StringUtils.isNotBlank(name),Setmeal::getName,name);
+
+        //分页查询
+        setmealService.page(setmealPage,queryWrapper);
+
+        //创建SetmealDto分页构造器
+        Page&lt;SetmealDto&gt; setmealDtoPage = new Page&lt;SetmealDto&gt;();
+
+        //拷贝分页构造器
+        BeanUtils.copyProperties(setmealPage,setmealDtoPage,&quot;records&quot;);
+
+        //获取套餐记录
+        List&lt;Setmeal&gt; setmealList = setmealPage.getRecords();
+
+        //获取Dto格式的套餐信息
+        List&lt;SetmealDto&gt; setmealDtoList = setmealList.stream().map((item) -&gt; &#123;
+
+            SetmealDto setmealDto = new SetmealDto();
+
+            //获取套餐id
+            Long categoryId = item.getCategoryId();
+
+            //获取该套餐信息
+            Category category = categoryService.getById(categoryId);
+
+            //拷贝套餐信息
+            BeanUtils.copyProperties(item, setmealDto);
+
+            //设置套餐名称
+            setmealDto.setCategoryName(category.getName());
+
+            return setmealDto;
+        &#125;).collect(Collectors.toList());
+
+        //为分页构造器添加信息
+        setmealDtoPage.setRecords(setmealDtoList);
+
+        return R.success(setmealDtoPage);
+    &#125;
+
+    /**
+     * 添加套餐并且保存套餐对应菜品信息
+     * @param setmealDto
+     * @return
+     */
+    @PostMapping
+    public R&lt;String&gt; save(@RequestBody SetmealDto setmealDto)&#123;
+
+        //添加套餐
+        setmealService.saveSetmealWithDish(setmealDto);
+
+        return R.success(&quot;添加成功&quot;);
+    &#125;
+
+    /**
+     * 删除套餐，并且删除套餐对应的菜品
+     * @param ids
+     * @return
+     */
+    @DeleteMapping
+    public R&lt;String&gt; delete(String ids)&#123;
+
+        setmealService.deleteSetmealWithDish(ids);
+
+        return R.success(&quot;删除成功&quot;);
+    &#125;
+
+    @GetMapping(&quot;/&#123;setmealId&#125;&quot;)
+    public R&lt;SetmealDto&gt; getSetmeal(@PathVariable(&quot;setmealId&quot;) Long setmealId)&#123;
+
+        SetmealDto setmealDto = setmealService.getSetmeal(setmealId);
+
+        return R.success(setmealDto);
+    &#125;
+
+    /**
+     * 起售、停售菜品
+     * @param flag
+     * @param ids
+     * @return
+     */
+    @PostMapping(&quot;/status/&#123;flag&#125;&quot;)
+    public R&lt;String&gt; stopSale(@PathVariable(&quot;flag&quot;) Integer flag,String ids)&#123;
+
+        LambdaUpdateWrapper&lt;Setmeal&gt; updateWrapper = new LambdaUpdateWrapper&lt;&gt;();
+
+        String[] idList = ids.split(&quot;,&quot;);
+
+        updateWrapper.in(Setmeal::getId,idList);
+
+        updateWrapper.set(Setmeal::getStatus,flag);
+
+        setmealService.update(updateWrapper);
+
+        return R.success(&quot;状态更新成功&quot;);
+    &#125;
+
+
+    /**
+     * 更新套餐数据
+     * @param setmealDto
+     * @return
+     */
+    @PutMapping
+    public R&lt;String&gt; update(@RequestBody SetmealDto setmealDto)&#123;
+
+        log.info(&quot;setmealDto:&#123;&#125;&quot;,setmealDto);
+
+        setmealService.updateWithDish(setmealDto);
+
+        return R.success(&quot;更新成功&quot;);
+    &#125;
+
+&#125;
+</code></pre>
+<pre><code class="java">package com.os467.reggie.service.impl;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.os467.reggie.dto.SetmealDto;
+import com.os467.reggie.entity.Dish;
+import com.os467.reggie.entity.Setmeal;
+import com.os467.reggie.entity.SetmealDish;
+import com.os467.reggie.mapper.SetmealMapper;
+import com.os467.reggie.service.CategoryService;
+import com.os467.reggie.service.DishService;
+import com.os467.reggie.service.SetmealDishService;
+import com.os467.reggie.service.SetmealService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+public class SetmealServiceImpl extends ServiceImpl&lt;SetmealMapper, Setmeal&gt; implements SetmealService &#123;
+
+    @Autowired
+    private SetmealDishService setmealDishService;
+
+    @Autowired
+    private CategoryService categoryService;
+
+
+    /**
+     * 设置套餐，并且保存套餐菜品信息
+     * @param setmealDto
+     */
+    @Override
+    public void saveSetmealWithDish(SetmealDto setmealDto) &#123;
+
+        //获取套餐菜品关系列表
+        List&lt;SetmealDish&gt; setmealDishes = setmealDto.getSetmealDishes();
+
+        //保存套餐信息
+        this.save(setmealDto);
+
+        //获取套餐id
+        Long setmealId = setmealDto.getId();
+
+        //设置套餐id
+        List&lt;SetmealDish&gt; setmealDishList = setmealDishes.stream().map((item) -&gt; &#123;
+
+            item.setSetmealId(setmealId);
+
+            return item;
+
+        &#125;).collect(Collectors.toList());
+
+        //保存套餐菜品信息
+        setmealDishService.saveBatch(setmealDishList);
+
+    &#125;
+
+    /**
+     * 删除套餐，以及对应的菜品
+     * @param ids
+     */
+    @Override
+    public void deleteSetmealWithDish(String ids) &#123;
+
+        //获取需要删除的套餐id列表
+        String[] idList = ids.split(&quot;,&quot;);
+
+        LambdaQueryWrapper&lt;Setmeal&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        //需要删除id列表包含的菜套餐
+        queryWrapper.in(Setmeal::getId,idList);
+
+        //删除套餐
+        this.remove(queryWrapper);
+
+        //删除套餐对应的菜品
+        LambdaQueryWrapper&lt;SetmealDish&gt; queryWrapperDish = new LambdaQueryWrapper&lt;&gt;();
+
+        queryWrapperDish.in(SetmealDish::getSetmealId,idList);
+
+        //删除套餐对应菜品
+        setmealDishService.remove(queryWrapperDish);
+
+    &#125;
+
+    /**
+     * 回显套餐信息
+     * @param setmealId
+     */
+    @Override
+    public SetmealDto getSetmeal(Long setmealId) &#123;
+
+        //根据id查询出套餐信息
+        Setmeal setmeal = this.getById(setmealId);
+
+        Long categoryId = setmeal.getCategoryId();
+
+        //获取套餐分类名
+        String categoryName = categoryService.getById(categoryId).getName();
+
+        //创建Dto模型
+        SetmealDto setmealDto = new SetmealDto();
+
+        //拷贝套餐信息
+        BeanUtils.copyProperties(setmeal,setmealDto);
+
+        //获取套餐对应菜品列表
+        LambdaQueryWrapper&lt;SetmealDish&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        //查询条件
+        queryWrapper.eq(SetmealDish::getSetmealId,setmealId);
+
+        //查询出符合条件的套餐菜品表
+        List&lt;SetmealDish&gt; setmealDishList = setmealDishService.list(queryWrapper);
+
+        //存放套餐菜品列表
+        setmealDto.setSetmealDishes(setmealDishList);
+
+        //存放套餐名
+        setmealDto.setCategoryName(categoryName);
+
+        return setmealDto;
+    &#125;
+
+    /**
+     * 更新套餐信息以及套餐菜品
+     * @param setmealDto
+     */
+    @Override
+    public void updateWithDish(SetmealDto setmealDto) &#123;
+
+        this.updateById(setmealDto);
+
+        Long setmealId = setmealDto.getId();
+
+        LambdaQueryWrapper&lt;SetmealDish&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        queryWrapper.eq(SetmealDish::getSetmealId,setmealId);
+
+        //清除相关菜品信息
+        setmealDishService.remove(queryWrapper);
+
+        //重新写入套餐id
+        List&lt;SetmealDish&gt; setmealDishList = setmealDto.getSetmealDishes().stream().map((item) -&gt; &#123;
+
+            item.setSetmealId(setmealId);
+
+            return item;
+        &#125;).collect(Collectors.toList());
+
+        //重新写入菜品信息
+        setmealDishService.saveBatch(setmealDishList);
+
+    &#125;
+&#125;
+</code></pre>
+<h3 id="6-手机验证码"><a href="#6-手机验证码" class="headerlink" title="6.手机验证码"></a>6.手机验证码</h3><h4 id="6-1短信发送"><a href="#6-1短信发送" class="headerlink" title="6.1短信发送"></a>6.1短信发送</h4><h5 id="短信服务介绍"><a href="#短信服务介绍" class="headerlink" title="短信服务介绍"></a>短信服务介绍</h5><p>目前市面上有很多第三方提供的短信服务，这些第三方短信服务会和各个运营商（移动、联通、电信）对接，我们只要注册成为会员并且按照提供的开发文档进行调用就可以发送短信，需要说明的是，这些短信服务一般都是收费服务</p>
+<p>常用短信服务：</p>
+<ul>
+<li>阿里云</li>
+<li>华为云</li>
+<li>腾讯云</li>
+<li>京东</li>
+<li>梦网</li>
+<li>乐信</li>
+</ul>
+<p><strong>阿里云短信服务-介绍</strong></p>
+<p>阿里云短信服务(Short Message Service)是广大企业客户快速触达手机用户所优选使用的通信能力。调用API或用群发助手，即可发送验证码、通知类和营销类短信;国内验证短信秒级触达，到达率最高可达99%;国际&#x2F;港澳台短信覆盖200多个国家和地区，安全稳定，广受出海企业选用。</p>
+<p>应用场景：</p>
+<ul>
+<li>验证码</li>
+<li>短信通知</li>
+<li>推广短信</li>
+</ul>
+<p>使用阿里云短信服务发送短信，可以参照官方提供的文档即可</p>
+<p>具体开发步骤：</p>
+<p>1、导入maven坐标</p>
+<p>2、调用API</p>
+<p>在开发代码之前，需要梳理一下登录时前端页面和服务端的交互过程:</p>
+<p>1、在登录页面(front&#x2F;page&#x2F;login.html)输入手机号，点击【获取验证码】按钮，页面发送ajax请求，在服务端调用短信服务API给指定手机号发送验证码短信</p>
+<p>2、在登录页面输入验证码，点击【登录】按钮，发送ajax请求，在服务端处理登录请求开发手机验证码登录功能，其实就是在服务端编</p>
+<p>写代码去处理前端页面发送的这2次请求即可。</p>
+<p><strong>添加不需要处理的路径</strong></p>
+<pre><code class="java">//定义不需要处理的请求路径
+String[] urls = new String[]&#123;
+        &quot;/employee/login&quot;,
+        &quot;/employee/logout&quot;,
+        &quot;/backend/**&quot;,
+        &quot;/front/**&quot;,
+        &quot;/user/sendMsg&quot;,//移动端发送短信
+        &quot;/user/login&quot;//移动端登录
+&#125;;
+</code></pre>
+<p><strong>判断移动端登录状态</strong></p>
+<pre><code class="java">//4-2、判断移动端登录状态，如果已登录，则直接放行
+if(request.getSession().getAttribute(&quot;user&quot;) != null)&#123;
+
+    Long userId = (Long)request.getSession().getAttribute(&quot;user&quot;);
+
+    BaseContext.setCurrentId(userId);
+
+    log.info(&quot;用户已登录，用户id为：&#123;&#125;&quot;,request.getSession().getAttribute(&quot;user&quot;));
+    filterChain.doFilter(request,response);
+    return;
+&#125;
+</code></pre>
+<p><strong>手机验证码发送</strong></p>
+<pre><code class="java">/**
+ * 发送手机短信验证码
+ * @param user
+ * @return
+ */
+@PostMapping(&quot;/sendMsg&quot;)
+public R&lt;String&gt; sendMsg(@RequestBody User user, HttpSession session)&#123;
+    //获取手机号
+    String phone = user.getPhone();
+
+    if (StringUtils.isNotBlank(phone))&#123;
+
+        //生成随机的四位的验证码
+        String code = ValidateCodeUtils.generateValidateCode(4).toString();
+        log.info(&quot;code=&#123;&#125;&quot;,code);
+
+        //调用阿里云提供的短信服务API提供短信服务
+        //SMSUtils.sendMessage(&quot;短信验证码&quot;,&quot;&quot;,phone,code);
+
+        //需要将生成的验证码保存到Session中
+        session.setAttribute(phone,code);
+
+        return R.success(&quot;手机验证码短信发送成功&quot;);
+
+    &#125;
+
+    return R.error(&quot;手机验证码短信发送失败&quot;);
+
+&#125;
+</code></pre>
+<p><strong>移动端登录验证</strong></p>
+<pre><code class="java">/**
+ * 移动端用户登录
+ * @param userInfo
+ * @return
+ */
+@PostMapping(&quot;/login&quot;)
+public R&lt;User&gt; login(@RequestBody Map userInfo, HttpSession session)&#123;
+
+    log.info(&quot;Map:&#123;&#125;&quot;,userInfo);
+
+    //获取手机号
+    String phone = userInfo.get(&quot;phone&quot;).toString();
+
+    //获取验证码
+    String code = userInfo.get(&quot;code&quot;).toString();
+
+    //从Session中获取保存的验证码
+    Object codeInSession = session.getAttribute(&quot;code&quot;);
+
+    log.info(&quot;前端：&#123;&#125;,后端：&#123;&#125;&quot;,code,codeInSession);
+
+    //验证码的比对（页面提交的验证码和Session中保存的验证码比对）
+    if (codeInSession != null &amp;&amp; codeInSession.equals(code))&#123;
+        //能够比对成功，则说明登录成功
+
+        LambdaQueryWrapper&lt;User&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        queryWrapper.eq(User::getPhone,phone);
+
+        User user = userService.getOne(queryWrapper);
+
+        //判断当前手机号对应的用户是否为新用户，如果是新用户就自动完成注册
+        if (user == null)&#123;
+
+            log.info(&quot;新用户注册&quot;);
+
+            user = new User();
+
+            user.setPhone(phone);
+
+            userService.save(user);
+        &#125;
+
+        session.setAttribute(&quot;user&quot;,user.getId());
+
+        return R.success(user);
+
+    &#125;
+
+    return R.error(&quot;登录失败&quot;);
+&#125;
+</code></pre>
+<h3 id="6-2导入用户地址簿相关功能代码"><a href="#6-2导入用户地址簿相关功能代码" class="headerlink" title="6.2导入用户地址簿相关功能代码"></a>6.2导入用户地址簿相关功能代码</h3><pre><code class="java">package com.os467.reggie.controller;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.os467.reggie.common.BaseContext;
+import com.os467.reggie.common.R;
+import com.os467.reggie.entity.AddressBook;
+import com.os467.reggie.service.AddressBookService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * 地址簿管理
+ */
+@Slf4j
+@RestController
+@RequestMapping(&quot;/addressBook&quot;)
+public class AddressBookController &#123;
+
+    @Autowired
+    private AddressBookService addressBookService;
+
+    /**
+     * 新增
+     */
+    @PostMapping
+    public R&lt;AddressBook&gt; save(@RequestBody AddressBook addressBook) &#123;
+        addressBook.setUserId(BaseContext.getCurrentId());
+        log.info(&quot;addressBook:&#123;&#125;&quot;, addressBook);
+        addressBookService.save(addressBook);
+        return R.success(addressBook);
+    &#125;
+
+    /**
+     * 设置默认地址
+     */
+    @PutMapping(&quot;default&quot;)
+    public R&lt;AddressBook&gt; setDefault(@RequestBody AddressBook addressBook) &#123;
+        log.info(&quot;addressBook:&#123;&#125;&quot;, addressBook);
+        LambdaUpdateWrapper&lt;AddressBook&gt; wrapper = new LambdaUpdateWrapper&lt;&gt;();
+        wrapper.eq(AddressBook::getUserId, BaseContext.getCurrentId());
+        wrapper.set(AddressBook::getIsDefault, 0);
+        //SQL:update address_book set is_default = 0 where user_id = ?
+        addressBookService.update(wrapper);
+
+        addressBook.setIsDefault(1);
+        //SQL:update address_book set is_default = 1 where id = ?
+        addressBookService.updateById(addressBook);
+        return R.success(addressBook);
+    &#125;
+
+    /**
+     * 根据id查询地址
+     */
+    @GetMapping(&quot;/&#123;id&#125;&quot;)
+    public R get(@PathVariable Long id) &#123;
+        AddressBook addressBook = addressBookService.getById(id);
+        if (addressBook != null) &#123;
+            return R.success(addressBook);
+        &#125; else &#123;
+            return R.error(&quot;没有找到该对象&quot;);
+        &#125;
+    &#125;
+
+    /**
+     * 查询默认地址
+     */
+    @GetMapping(&quot;default&quot;)
+    public R&lt;AddressBook&gt; getDefault() &#123;
+        LambdaQueryWrapper&lt;AddressBook&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+        queryWrapper.eq(AddressBook::getUserId, BaseContext.getCurrentId());
+        queryWrapper.eq(AddressBook::getIsDefault, 1);
+
+        //SQL:select * from address_book where user_id = ? and is_default = 1
+        AddressBook addressBook = addressBookService.getOne(queryWrapper);
+
+        if (null == addressBook) &#123;
+            return R.error(&quot;没有找到该对象&quot;);
+        &#125; else &#123;
+            return R.success(addressBook);
+        &#125;
+    &#125;
+
+    /**
+     * 查询指定用户的全部地址
+     */
+    @GetMapping(&quot;/list&quot;)
+    public R&lt;List&lt;AddressBook&gt;&gt; list(AddressBook addressBook) &#123;
+        addressBook.setUserId(BaseContext.getCurrentId());
+        log.info(&quot;addressBook:&#123;&#125;&quot;, addressBook);
+
+        //条件构造器
+        LambdaQueryWrapper&lt;AddressBook&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+        queryWrapper.eq(null != addressBook.getUserId(), AddressBook::getUserId, addressBook.getUserId());
+        queryWrapper.orderByDesc(AddressBook::getUpdateTime);
+
+        //SQL:select * from address_book where user_id = ? order by update_time desc
+        return R.success(addressBookService.list(queryWrapper));
+    &#125;
+
+    /**
+     * 删除地址
+     * @param ids
+     * @return
+     */
+    @DeleteMapping
+    public R&lt;String&gt; deleteById(String ids)&#123;
+
+        if (ids != null)&#123;
+
+            addressBookService.removeById(ids);
+
+            return R.success(&quot;删除成功&quot;);
+
+        &#125;
+
+        return R.error(&quot;删除失败&quot;);
+
+    &#125;
+
+    @PutMapping
+    public R&lt;String&gt; update(@RequestBody AddressBook addressBook)&#123;
+
+        //如果存在地址簿信息则修改
+        if (addressBook != null)&#123;
+
+            addressBookService.updateById(addressBook);
+
+            return R.success(&quot;保存成功&quot;);
+        &#125;
+
+        return R.error(&quot;修改失败&quot;);
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="6-3订单功能"><a href="#6-3订单功能" class="headerlink" title="6.3订单功能"></a>6.3订单功能</h3><pre><code class="java">package com.os467.reggie.controller;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.os467.reggie.common.R;
+import com.os467.reggie.dto.OrdersDto;
+import com.os467.reggie.entity.*;
+import com.os467.reggie.service.*;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+@RestController
+@Slf4j
+@RequestMapping(&quot;/order&quot;)
+public class OrdersController &#123;
+
+    @Autowired
+    private OrdersService ordersService;
+
+    @Autowired
+    private AddressBookService addressBookService;
+
+    @Autowired
+    private ShoppingCartService shoppingCartService;
+
+    @Autowired
+    private OrderDetailService orderDetailService;
+
+    @Autowired
+    private UserService userService;
+
+
+    /**
+     * 回显用户信息
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    @GetMapping(&quot;/userPage&quot;)
+    public R&lt;Page&lt;User&gt;&gt; userPage(Integer page, Integer pageSize, HttpSession session)&#123;
+
+        //创建分页构造器
+        Page&lt;User&gt; userPage = new Page&lt;&gt;(page,pageSize);
+
+        Long userId = (Long)session.getAttribute(&quot;user&quot;);
+
+        LambdaQueryWrapper&lt;Orders&gt; ordersLambdaQueryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        return R.success(userPage);
+    &#125;
+
+    /**
+     * 回显用户信息
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    @GetMapping(&quot;/page&quot;)
+    public R&lt;Page&lt;OrdersDto&gt;&gt; page(Integer page, Integer pageSize, HttpSession session)&#123;
+
+        //创建分页构造器
+        Page&lt;Orders&gt; orderPage = new Page&lt;&gt;(page,pageSize);
+
+        //创建分页构造器
+        Page&lt;OrdersDto&gt; orderDtoPage = new Page&lt;&gt;(page,pageSize);
+
+        Long userId = (Long)session.getAttribute(&quot;user&quot;);
+
+        LambdaQueryWrapper&lt;Orders&gt; ordersLambdaQueryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        ordersLambdaQueryWrapper.orderByDesc(Orders::getOrderTime);
+
+        ordersService.page(orderPage,ordersLambdaQueryWrapper);
+
+        //拷贝分页结构
+        BeanUtils.copyProperties(orderPage,orderDtoPage,&quot;records&quot;);
+
+        List&lt;OrdersDto&gt; ordersDtoList = orderPage.getRecords().stream().map((item) -&gt; &#123;
+
+            OrdersDto ordersDto = new OrdersDto();
+
+            BeanUtils.copyProperties(item, ordersDto);
+
+            //获取订单id
+            Long ordersId = ordersDto.getId();
+
+            LambdaQueryWrapper&lt;OrderDetail&gt; orderDetailLambdaQueryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+            //与订单匹配的订单明细
+            orderDetailLambdaQueryWrapper.eq(OrderDetail::getOrderId, ordersId);
+
+            //获取订单明细列表
+            List&lt;OrderDetail&gt; orderDetailList = orderDetailService.list(orderDetailLambdaQueryWrapper);
+
+            ordersDto.setOrderDetails(orderDetailList);
+
+            return ordersDto;
+
+        &#125;).collect(Collectors.toList());
+
+        //设置分页内数据
+        orderDtoPage.setRecords(ordersDtoList);
+
+        return R.success(orderDtoPage);
+    &#125;
+
+    /**
+     * 提交订单，清空购物车
+     * @return
+     */
+    @PostMapping(&quot;/submit&quot;)
+    public R&lt;String&gt; submit(@RequestBody Orders orders,HttpSession session)&#123;
+
+        AddressBook addressBook = addressBookService.getById(orders.getAddressBookId());
+
+        //获取当前用户id
+        Long userId = (Long)session.getAttribute(&quot;user&quot;);
+
+        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        //根据用户id查询购物车
+        queryWrapper.eq(ShoppingCart::getUserId,userId);
+
+        //获取购物车金额
+        List&lt;ShoppingCart&gt; shoppingCartList = shoppingCartService.list(queryWrapper);
+
+        //累计金额
+        BigDecimal amountSum = new BigDecimal(0);
+
+        for (ShoppingCart shoppingCart : shoppingCartList) &#123;
+
+            amountSum.add(shoppingCart.getAmount().multiply(new BigDecimal(shoppingCart.getNumber())));
+        &#125;
+
+        //设置时间
+        orders.setOrderTime(LocalDateTime.now());
+        orders.setCheckoutTime(LocalDateTime.now());
+        //设置总金额
+        orders.setAmount(amountSum);
+        //设置用户id
+        orders.setUserId(userId);
+        orders.setConsignee(addressBook.getConsignee()+(addressBook.getSex().equals(&quot;1&quot;)?&quot;先生&quot;:&quot;女士&quot;));
+        orders.setPhone(addressBook.getPhone());
+        orders.setAddress(addressBook.getDetail());
+
+        //获取用户信息
+        User user = userService.getById(userId);
+
+        orders.setUserName(user.getName());
+
+        int count = ordersService.count();
+
+        if (count == 0)&#123;
+
+            orders.setNumber(&quot;1&quot;);
+
+        &#125;else &#123;
+
+            LambdaQueryWrapper&lt;Orders&gt; ordersLambdaQueryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+            ordersLambdaQueryWrapper.orderByDesc(Orders::getNumber);
+
+            ordersLambdaQueryWrapper.last(&quot;limit 1&quot;);
+
+            Orders one = ordersService.getOne(ordersLambdaQueryWrapper);
+
+            //生成订单号
+            orders.setNumber(Integer.parseInt(one.getNumber())+1+&quot;&quot;);
+
+        &#125;
+
+        ordersService.save(orders);
+
+        List&lt;OrderDetail&gt; orderDetailList = new ArrayList&lt;&gt;();
+
+        //保存订单明细
+        for (ShoppingCart shoppingCart : shoppingCartList) &#123;
+
+            OrderDetail orderDetail = new OrderDetail();
+
+            //保存订单id
+            orderDetail.setOrderId(orders.getId());
+
+            //保存订单明细数据
+            orderDetail.setAmount(shoppingCart.getAmount());
+            orderDetail.setNumber(shoppingCart.getNumber());
+            orderDetail.setDishId(shoppingCart.getDishId());
+            orderDetail.setSetmealId(shoppingCart.getSetmealId());
+            orderDetail.setDishFlavor(shoppingCart.getDishFlavor());
+            orderDetail.setImage(shoppingCart.getImage());
+            orderDetail.setName(shoppingCart.getName());
+
+            orderDetailList.add(orderDetail);
+
+        &#125;
+
+        //保存订单明细
+        orderDetailService.saveBatch(orderDetailList);
+
+        //清除购物车记录
+        LambdaQueryWrapper&lt;ShoppingCart&gt; shoppingCartLambdaQueryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        shoppingCartLambdaQueryWrapper.eq(ShoppingCart::getUserId,userId);
+
+        shoppingCartService.remove(shoppingCartLambdaQueryWrapper);
+
+        return R.success(&quot;下单成功&quot;);
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="6-4购物车功能"><a href="#6-4购物车功能" class="headerlink" title="6.4购物车功能"></a>6.4购物车功能</h3><pre><code class="java">package com.os467.reggie.controller;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.os467.reggie.common.R;
+import com.os467.reggie.entity.DishFlavor;
+import com.os467.reggie.entity.Setmeal;
+import com.os467.reggie.entity.ShoppingCart;
+import com.os467.reggie.service.DishFlavorService;
+import com.os467.reggie.service.SetmealService;
+import com.os467.reggie.service.ShoppingCartService;
+import com.sun.org.apache.regexp.internal.RE;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+import java.util.List;
+
+@RestController
+@Slf4j
+@RequestMapping(&quot;/shoppingCart&quot;)
+public class ShoppingCartController &#123;
+
+    @Autowired
+    private ShoppingCartService shoppingCartService;
+
+    @Autowired
+    private DishFlavorService dishFlavorService;
+
+    /**
+     * 向购物车中添加数据
+     * @param shoppingCart
+     * @param session
+     * @return
+     */
+    @PostMapping(&quot;/add&quot;)
+    public R&lt;String&gt; add(@RequestBody ShoppingCart shoppingCart, HttpSession session)&#123;
+
+        log.info(&quot;ShoppingCart:&#123;&#125;&quot;,shoppingCart);
+
+        Long userId = (Long)session.getAttribute(&quot;user&quot;);
+
+        //向购物车中添加用户id
+        shoppingCart.setUserId(userId);
+
+        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        //检查购物车里是否有相同的菜品或套餐
+        queryWrapper.eq(ShoppingCart::getUserId,userId).
+                eq(ShoppingCart::getDishId,shoppingCart.getDishId()).or().
+                eq(ShoppingCart::getSetmealId,shoppingCart.getSetmealId());
+
+        ShoppingCart one = shoppingCartService.getOne(queryWrapper);
+
+        if (one != null &amp;&amp; one.getNumber() &gt;= 1)&#123;
+
+            //更新数量
+            one.setNumber(one.getNumber()+1);
+            //更新口味
+            one.setDishFlavor(shoppingCart.getDishFlavor());
+
+            shoppingCartService.updateById(one);
+
+            return R.success(&quot;添加成功&quot;);
+
+        &#125;else &#123;
+
+            return shoppingCartService.save(shoppingCart)?R.success(&quot;添加成功&quot;):R.error(&quot;添加失败&quot;);
+
+        &#125;
+
+    &#125;
+
+    /**
+     * 根据用户id获取购物车列表
+     * @return
+     */
+    @GetMapping(&quot;/list&quot;)
+    public R&lt;List&lt;ShoppingCart&gt;&gt; list(HttpSession session)&#123;
+
+        //获取用户id
+        Long userId = (Long)session.getAttribute(&quot;user&quot;);
+
+        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        //查询该用户的购物车
+        queryWrapper.eq(ShoppingCart::getUserId, userId);
+
+        List&lt;ShoppingCart&gt; shoppingCartList = shoppingCartService.list(queryWrapper);
+
+        if (shoppingCartList != null)&#123;
+
+            return R.success(shoppingCartList);
+
+        &#125;
+
+        return R.error(&quot;未找到数据&quot;);
+    &#125;
+
+    /**
+     * 根据id删除该用户购物车中的内容
+     * @param shoppingCart
+     * @return
+     */
+    @PostMapping(&quot;/sub&quot;)
+    public R&lt;String&gt; sub(@RequestBody ShoppingCart shoppingCart,HttpSession session)&#123;
+
+        //获取当前用户id
+        Long userId = (Long)session.getAttribute(&quot;user&quot;);
+
+        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        queryWrapper.eq(shoppingCart.getDishId() != null,ShoppingCart::getDishId,shoppingCart.getDishId());
+        queryWrapper.eq(shoppingCart.getSetmealId() != null,ShoppingCart::getSetmealId,shoppingCart.getSetmealId());
+        queryWrapper.eq(userId != null,ShoppingCart::getUserId,userId);
+
+        ShoppingCart one = shoppingCartService.getOne(queryWrapper);
+
+        if (one.getNumber() == 1)&#123;
+            shoppingCartService.removeById(one.getId());
+        &#125;else &#123;
+
+            //数量减一
+            one.setNumber(one.getNumber()-1);
+
+            shoppingCartService.updateById(one);
+
+        &#125;
+
+        return R.success(&quot;更新成功&quot;);
+
+    &#125;
+
+    /**
+     * 根据当前用户id清空购物车
+     * @param session
+     * @return
+     */
+    @DeleteMapping(&quot;/clean&quot;)
+    public R&lt;String&gt; cleanShoppingCart(HttpSession session)&#123;
+
+        //获取当前用户id
+        Long userId = (Long)session.getAttribute(&quot;user&quot;);
+
+        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        queryWrapper.eq(userId != null,ShoppingCart::getUserId,userId);
+
+        return shoppingCartService.remove(queryWrapper)?R.success(&quot;清空成功&quot;):R.error(&quot;清空失败&quot;);
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="6-5地址簿功能"><a href="#6-5地址簿功能" class="headerlink" title="6.5地址簿功能"></a>6.5地址簿功能</h3><pre><code class="java">package com.os467.reggie.controller;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.os467.reggie.common.BaseContext;
+import com.os467.reggie.common.R;
+import com.os467.reggie.entity.AddressBook;
+import com.os467.reggie.service.AddressBookService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * 地址簿管理
+ */
+@Slf4j
+@RestController
+@RequestMapping(&quot;/addressBook&quot;)
+public class AddressBookController &#123;
+
+    @Autowired
+    private AddressBookService addressBookService;
+
+    /**
+     * 新增
+     */
+    @PostMapping
+    public R&lt;AddressBook&gt; save(@RequestBody AddressBook addressBook) &#123;
+        addressBook.setUserId(BaseContext.getCurrentId());
+        log.info(&quot;addressBook:&#123;&#125;&quot;, addressBook);
+        addressBookService.save(addressBook);
+        return R.success(addressBook);
+    &#125;
+
+    /**
+     * 设置默认地址
+     */
+    @PutMapping(&quot;default&quot;)
+    public R&lt;AddressBook&gt; setDefault(@RequestBody AddressBook addressBook) &#123;
+        log.info(&quot;addressBook:&#123;&#125;&quot;, addressBook);
+        LambdaUpdateWrapper&lt;AddressBook&gt; wrapper = new LambdaUpdateWrapper&lt;&gt;();
+        wrapper.eq(AddressBook::getUserId, BaseContext.getCurrentId());
+        wrapper.set(AddressBook::getIsDefault, 0);
+        //SQL:update address_book set is_default = 0 where user_id = ?
+        addressBookService.update(wrapper);
+
+        addressBook.setIsDefault(1);
+        //SQL:update address_book set is_default = 1 where id = ?
+        addressBookService.updateById(addressBook);
+        return R.success(addressBook);
+    &#125;
+
+    /**
+     * 根据id查询地址
+     */
+    @GetMapping(&quot;/&#123;id&#125;&quot;)
+    public R get(@PathVariable Long id) &#123;
+        AddressBook addressBook = addressBookService.getById(id);
+        if (addressBook != null) &#123;
+            return R.success(addressBook);
+        &#125; else &#123;
+            return R.error(&quot;没有找到该对象&quot;);
+        &#125;
+    &#125;
+
+    /**
+     * 查询默认地址
+     */
+    @GetMapping(&quot;default&quot;)
+    public R&lt;AddressBook&gt; getDefault() &#123;
+        LambdaQueryWrapper&lt;AddressBook&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+        queryWrapper.eq(AddressBook::getUserId, BaseContext.getCurrentId());
+        queryWrapper.eq(AddressBook::getIsDefault, 1);
+
+        //SQL:select * from address_book where user_id = ? and is_default = 1
+        AddressBook addressBook = addressBookService.getOne(queryWrapper);
+
+        if (null == addressBook) &#123;
+            return R.error(&quot;没有找到该对象&quot;);
+        &#125; else &#123;
+            return R.success(addressBook);
+        &#125;
+    &#125;
+
+    /**
+     * 查询指定用户的全部地址
+     */
+    @GetMapping(&quot;/list&quot;)
+    public R&lt;List&lt;AddressBook&gt;&gt; list(AddressBook addressBook) &#123;
+        addressBook.setUserId(BaseContext.getCurrentId());
+        log.info(&quot;addressBook:&#123;&#125;&quot;, addressBook);
+
+        //条件构造器
+        LambdaQueryWrapper&lt;AddressBook&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+        queryWrapper.eq(null != addressBook.getUserId(), AddressBook::getUserId, addressBook.getUserId());
+        queryWrapper.orderByDesc(AddressBook::getUpdateTime);
+
+        //SQL:select * from address_book where user_id = ? order by update_time desc
+        return R.success(addressBookService.list(queryWrapper));
+    &#125;
+
+    /**
+     * 删除地址
+     * @param ids
+     * @return
+     */
+    @DeleteMapping
+    public R&lt;String&gt; deleteById(String ids)&#123;
+
+        if (ids != null)&#123;
+
+            addressBookService.removeById(ids);
+
+            return R.success(&quot;删除成功&quot;);
+
+        &#125;
+
+        return R.error(&quot;删除失败&quot;);
+
+    &#125;
+
+    @PutMapping
+    public R&lt;String&gt; update(@RequestBody AddressBook addressBook)&#123;
+
+        //如果存在地址簿信息则修改
+        if (addressBook != null)&#123;
+
+            addressBookService.updateById(addressBook);
+
+            return R.success(&quot;保存成功&quot;);
+        &#125;
+
+        return R.error(&quot;修改失败&quot;);
+    &#125;
+
+&#125;
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 os467
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
