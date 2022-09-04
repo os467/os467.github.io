@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tly的博客</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Tly的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="JVM虚拟机Java在各个平台上是如何跑起来的？ 我们都知道 Java 源文件，通过编译器，能够生产相应的.Class 文件，也就是字节码文件， 而字节码文件又通过 Java 虚拟机中的解释器，编译成特定机器上的机器码   不同平台上的解释器不同，但是虚拟机环境是相同的，这就是java为什么能在各个平台上运行的原因  JVM允许一个应用并发执行多个线程 JVM 内存区域主要分为线程私有区域【程序计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tly的博客">
+<meta property="og:url" content="https://os467.github.io/2022/09/04/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/index.html">
+<meta property="og:site_name" content="Tly的博客">
+<meta property="og:description" content="JVM虚拟机Java在各个平台上是如何跑起来的？ 我们都知道 Java 源文件，通过编译器，能够生产相应的.Class 文件，也就是字节码文件， 而字节码文件又通过 Java 虚拟机中的解释器，编译成特定机器上的机器码   不同平台上的解释器不同，但是虚拟机环境是相同的，这就是java为什么能在各个平台上运行的原因  JVM允许一个应用并发执行多个线程 JVM 内存区域主要分为线程私有区域【程序计">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p1.itc.cn/q_70/images03/20220708/5b6750852c5a4e0d9fdb7577eda33a62.png">
+<meta property="article:published_time" content="2022-09-04T15:04:48.851Z">
+<meta property="article:modified_time" content="2022-08-16T06:48:09.269Z">
+<meta property="article:author" content="Os467">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p1.itc.cn/q_70/images03/20220708/5b6750852c5a4e0d9fdb7577eda33a62.png">
+
+
+<link rel="icon" href="/img/headimg.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/headimg.jpg"/>
+</a>
+<div class="author">
+    <span>Os467</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/os467"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/os467/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(34)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="34">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:48">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:48">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/MVC%E8%AE%BF%E9%97%AE%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:48">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/ElasticSearch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springCloud%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/RabbitMQ/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/Docker/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springCloud/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/dubbo/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springboot/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springMVC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/ssm%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/bootstrap/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/01/MyBatisPlus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatisPlus">MyBatisPlus</span>
+            <span class="post-date" title="2022-08-01 11:15:26">2022/08/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/31/MyBatis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatis">MyBatis</span>
+            <span class="post-date" title="2022-07-31 10:10:26">2022/07/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/28/Maven/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven">Maven</span>
+            <span class="post-date" title="2022-07-28 19:10:41">2022/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/26/spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="spring">spring</span>
+            <span class="post-date" title="2022-07-26 21:54:22">2022/07/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式">设计模式</span>
+            <span class="post-date" title="2022-07-18 19:21:50">2022/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/17/Ajax/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ajax">Ajax</span>
+            <span class="post-date" title="2022-07-17 12:07:22">2022/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/14/Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Annotation">Annotation</span>
+            <span class="post-date" title="2022-07-14 19:36:02">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/13/Reflect/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Reflect">Reflect</span>
+            <span class="post-date" title="2022-07-13 14:40:18">2022/07/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2022-07-12 12:29:58">2022/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/10/IO%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IO流">IO流</span>
+            <span class="post-date" title="2022-07-10 20:14:33">2022/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/07/javaScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="javaScript">javaScript</span>
+            <span class="post-date" title="2022-07-07 12:54:16">2022/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/06/XML/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="XML">XML</span>
+            <span class="post-date" title="2022-07-06 18:28:03">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/06/cookie%E5%92%8Csession/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="cookie和session">cookie和session</span>
+            <span class="post-date" title="2022-07-06 18:27:45">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/02/servlet/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="servlet">servlet</span>
+            <span class="post-date" title="2022-07-02 08:24:49">2022/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/01/jdbc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jdbc">jdbc</span>
+            <span class="post-date" title="2022-07-01 08:24:49">2022/07/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/06/19/SQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL">SQL</span>
+            <span class="post-date" title="2022-06-19 19:45:07">2022/06/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/28/JAVA%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JAVA入门">JAVA入门</span>
+            <span class="post-date" title="2022-05-28 00:32:07">2022/05/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/27/Linux%E4%BA%91%E8%AE%A1%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux云计算">Linux云计算</span>
+            <span class="post-date" title="2022-05-27 00:05:15">2022/05/27</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-bootstrap" class="article article-type-post" itemscope itemprop="blogPost">
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-08-16 15:22:15'>2022-09-04 23:04</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Bootstrap%EF%BC%88Web%E6%A1%86%E6%9E%B6%EF%BC%89"><span class="toc-text">Bootstrap（Web框架）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AE%B9"><span class="toc-text">内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BootstrapCDN"><span class="toc-text">BootstrapCDN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A8%A1%E6%9D%BF"><span class="toc-text">基本模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%A9%E6%94%BE"><span class="toc-text">缩放</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E7%89%88%E4%B8%8E%E9%93%BE%E6%8E%A5"><span class="toc-text">排版与链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B1%80%E5%AE%B9%E5%99%A8"><span class="toc-text">布局容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%85%E6%A0%BC%E7%B3%BB%E7%BB%9F"><span class="toc-text">栅格系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%85%E6%A0%BC%E5%8F%82%E6%95%B0"><span class="toc-text">栅格参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%EF%BC%9A%E4%BB%8E%E5%A0%86%E5%8F%A0%E5%88%B0%E6%B0%B4%E5%B9%B3%E6%8E%92%E5%88%97"><span class="toc-text">实例：从堆叠到水平排列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%EF%BC%9A%E5%A4%9A%E4%BD%99%E7%9A%84%E5%88%97%EF%BC%88column%EF%BC%89%E5%B0%86%E5%8F%A6%E8%B5%B7%E4%B8%80%E8%A1%8C%E6%8E%92%E5%88%97"><span class="toc-text">实例：多余的列（column）将另起一行排列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E5%81%8F%E7%A7%BB"><span class="toc-text">列偏移</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E6%8E%92%E5%BA%8F"><span class="toc-text">*列排序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E7%89%88"><span class="toc-text">排版</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E9%A2%98"><span class="toc-text">标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E5%BF%83%E5%86%85%E5%AE%B9"><span class="toc-text">中心内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E8%81%94%E6%96%87%E6%9C%AC%E5%85%83%E7%B4%A0"><span class="toc-text">内联文本元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%A9%E7%95%A5%E8%AF%AD"><span class="toc-text">缩略语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-text">引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E8%A1%A8"><span class="toc-text">列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-text">无序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-text">有序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0"><span class="toc-text">描述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B0%B4%E5%B9%B3%E6%8E%92%E5%88%97%E7%9A%84%E6%8F%8F%E8%BF%B0"><span class="toc-text">水平排列的描述</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E8%81%94%E4%BB%A3%E7%A0%81"><span class="toc-text">内联代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5"><span class="toc-text">用户输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-text">代码块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E8%BE%93%E5%87%BA"><span class="toc-text">程序输出</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E6%80%81%E6%A1%86"><span class="toc-text">模态框</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Bootstrap（Web框架）"><a href="#Bootstrap（Web框架）" class="headerlink" title="Bootstrap（Web框架）"></a>Bootstrap（Web框架）</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Bootstrap是基于HTML、CSS、JavaScript 开发的简洁、直观、强悍的前端开发框架，使得Web开发更加快捷，Bootstrap提供 了优雅的HTML和CSS规范，它即是由动态CSS语言Less写成， Bootstrap——经推出后颇受欢迎，一直是GitHub上的热门开源项目，包括NASA的MSNBC (微软全国广播公司)的Breaking News都使用了该项目</p>
+<p>访问bootstrap官网：<a target="_blank" rel="noopener" href="https://v3.bootcss.com/">https://v3.bootcss.com/</a></p>
+<ul>
+<li><p>bootstrap是套现成的css效果祥式集合</p>
+</li>
+<li><p>bootstrap是最受欢迎的HTM, cssfavyaScript框架，用于开发<strong>响应式布局</strong>（一个网站能够兼容多个终端）、移动设备优先的WEB项目</p>
+</li>
+<li><p>bootstrap特别适合没有设计师的团队，可以快速的写出一个网页</p>
+</li>
+</ul>
+<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><ul>
+<li>甚本结构: Bootstrap 提供了一个带有网格系统、链接样式、背景的基本结构，这将在Bootstrap基本结构部分详细讲解。</li>
+<li>CSS: Bootstrap自带以下特性:全局的CSS设置、定义基本的HTML元素样式、可扩展的class，以及一个先进的网格系统，这将在Bootstrap CSS部分详细讲解。</li>
+<li>组件: Bootstrap包含了十几个可重用的组件，用于创建图像、 下拉菜单、导航、警告框、弹出框等等，这将在布局组件部分详细讲解。</li>
+<li>JavaScript插件: Bootstap包含了十几个自定义的jQuery插件。您可以直接包含所有的插件，也可以逐个包含这些插件，这将在Bootstrap插件 部分详细讲解</li>
+<li>定制:您可以定制ootstrp的组件、LESS 变是和jQuery插件来得到您自己的版本</li>
+</ul>
+<h2 id="BootstrapCDN"><a href="#BootstrapCDN" class="headerlink" title="BootstrapCDN"></a>BootstrapCDN</h2><p>使用cdn可以直接获取互联网资源</p>
+<pre><code class="html">&lt;!-- 最新版本的 Bootstrap 核心 CSS 文件 --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css&quot; integrity=&quot;sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu&quot; crossorigin=&quot;anonymous&quot;&gt;
+
+&lt;!-- 可选的 Bootstrap 主题文件（一般不用引入） --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css&quot; integrity=&quot;sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ&quot; crossorigin=&quot;anonymous&quot;&gt;
+
+&lt;!-- 最新的 Bootstrap 核心 JavaScript 文件 --&gt;
+&lt;script src=&quot;https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js&quot; integrity=&quot;sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h3 id="基本模板"><a href="#基本模板" class="headerlink" title="基本模板"></a>基本模板</h3><pre><code class="html">&lt;!doctype html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;
+    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+
+    &lt;!-- Bootstrap 通过文件形式引入配置 --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;bootstrap/css/bootstrap.min.css&quot;&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;你好，世界！&lt;/h1&gt;
+
+&lt;script src=&quot;jQuery/jquery-1.7.2.js&quot;&gt;&lt;/script&gt;
+&lt;!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 --&gt;
+&lt;script src=&quot;bootstrap/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<pre><code class="html">&lt;div class=&quot;container&quot; style=&quot;background-color: #e8e8e8;height: 100px&quot;&gt;
+    固定宽度
+&lt;/div&gt;
+
+&lt;div class=&quot;container-fluid&quot; style=&quot;background-color: #e8e8e8;height: 100px&quot;&gt;
+    占据全部
+&lt;/div&gt;
+</code></pre>
+<p>页面布局样式：<a target="_blank" rel="noopener" href="https://v3.bootcss.com/css/#tables-responsive">https://v3.bootcss.com/css/?#tables-responsive</a></p>
+<p><strong>搜索框样式</strong></p>
+<pre><code class="html">&lt;div class=&quot;form-inline&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;exampleInputEmail1&quot;&gt;查询员工&lt;/label&gt;
+        &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;exampleInputEmail1&quot; placeholder=&quot;员工姓名&quot;&gt;
+    &lt;/div&gt;
+    &lt;input type=&quot;submit&quot; value=&quot; 查询 &quot;&gt;
+&lt;/div&gt;
+</code></pre>
+<p>图标样式：<a target="_blank" rel="noopener" href="https://v3.bootcss.com/components/">https://v3.bootcss.com/components/</a></p>
+<p><strong>图标式按钮</strong></p>
+<pre><code class="html">&lt;button style=&quot;width: 50px;height: 30px&quot; type=&quot;button&quot; id=&quot;编辑&quot; class=&quot;btn btn-primary&quot;&gt;
+    &lt;span class=&quot;glyphicon glyphicon-cog&quot;&gt;&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button style=&quot;width: 50px;height: 30px&quot; type=&quot;button&quot; id=&quot;删除&quot; class=&quot;btn btn-danger&quot;&gt;
+    &lt;span class=&quot;glyphicon glyphicon-trash&quot;&gt;&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;button type=&quot;button&quot; class=&quot;btn btn-info&quot;&gt;（一般信息）Info&lt;/button&gt;
+</code></pre>
+<p>配合style标签调整图标button大小</p>
+<pre><code class="html">&lt;style type=&quot;text/css&quot;&gt;
+    button
+    &#123;
+        width: 50px;height: 35px
+    &#125;
+&lt;/style&gt;
+</code></pre>
+<p><strong>表格</strong></p>
+<pre><code class="html">&lt;form class=&quot;form-horizontal col-md-offset-2&quot;&gt;
+
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;goodsName&quot; class=&quot;col-sm-2 control-label&quot;&gt;商品名称&lt;/label&gt;
+        &lt;div class=&quot;col-sm-7&quot;&gt;
+            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;goodsName&quot; placeholder=&quot;商品名称&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+&lt;/form&gt;
+</code></pre>
+<p><strong>内联单选框</strong></p>
+<pre><code class="html">&lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;goodsCate&quot; class=&quot;col-sm-2 control-label&quot;&gt;商品类别：&lt;/label&gt;
+            &lt;div class=&quot;col-sm-7&quot;&gt;
+                &lt;div class=&quot;radio&quot; id=&quot;goodsCate&quot;&gt;
+                    &lt;label class=&quot;radio-inline&quot;&gt;
+                        &lt;input type=&quot;radio&quot; name=&quot;cateId&quot; value=&quot;1&quot;&gt;服装服饰
+                    &lt;/label&gt;
+                    &lt;label class=&quot;radio-inline&quot;&gt;
+                        &lt;input type=&quot;radio&quot; name=&quot;cateId&quot; value=&quot;2&quot;&gt;运动器材
+                    &lt;/label&gt;
+                    &lt;label class=&quot;radio-inline&quot;&gt;
+                        &lt;input type=&quot;radio&quot; name=&quot;cateId&quot; value=&quot;3&quot;&gt;家用电器
+                    &lt;/label&gt;
+                    &lt;label class=&quot;radio-inline&quot;&gt;
+                        &lt;input type=&quot;radio&quot; name=&quot;cateId&quot; value=&quot;4&quot;&gt;电子产品
+                    &lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+</code></pre>
+<p><strong>下拉框</strong></p>
+<pre><code class="html">&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;goodsBrand&quot; class=&quot;col-sm-2 control-label&quot;&gt;商品品牌：&lt;/label&gt;
+    &lt;div class=&quot;col-sm-7&quot;&gt;
+        &lt;select class=&quot;form-control&quot; id=&quot;goodsBrand&quot; name=&quot;brandId&quot;&gt;
+            &lt;option&gt;---请选择---&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h3><p>为了确保适当的绘制和触屏缩放，需要在 <code>&lt;head&gt;</code> 之中<strong>添加 viewport 元数据标签</strong></p>
+<pre><code class="html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+</code></pre>
+<p>在移动设备浏览器上，通过为视口（viewport）设置 meta 属性为 <code>user-scalable=no</code> 可以禁用其缩放（zooming）功能，这样禁用缩放功能后，用户只能滚动屏幕</p>
+<pre><code class="html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
+</code></pre>
+<h2 id="排版与链接"><a href="#排版与链接" class="headerlink" title="排版与链接"></a>排版与链接</h2><p>Bootstrap 排版、链接样式设置了基本的全局样式：</p>
+<ul>
+<li>为 <code>body</code> 元素设置 <code>background-color: #fff;</code></li>
+<li>使用 <code>@font-family-base</code>、<code>@font-size-base</code> 和 <code>@line-height-base</code> 变量作为排版的基本参数</li>
+<li>为所有链接设置了基本颜色 <code>@link-color</code> ，并且当链接处于 <code>:hover</code> 状态时才添加下划线</li>
+</ul>
+<p>这些样式都能在 <code>scaffolding.less</code> 文件中找到对应的源码</p>
+<h2 id="布局容器"><a href="#布局容器" class="headerlink" title="布局容器"></a>布局容器</h2><p>Bootstrap 需要为页面内容和栅格系统包裹一个 <code>container</code> 容器，注意，由于 <code>padding</code> 等属性的原因，这两种 容器类不能互相嵌套</p>
+<ul>
+<li><code>container</code> 类用于固定宽度并支持响应式布局的容器</li>
+<li><code>container-fluid</code> 类用于 100% 宽度，占据全部视口（viewport）的容器</li>
+</ul>
+<pre><code class="html">&lt;div class=&quot;container&quot;&gt;
+  ...
+&lt;/div&gt;
+
+&lt;div class=&quot;container-fluid&quot;&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
+<h2 id="栅格系统"><a href="#栅格系统" class="headerlink" title="栅格系统"></a>栅格系统</h2><p>栅格系统用于通过一系列的<strong>行（row）与列（column）</strong>的组合来创建页面布局</p>
+<ul>
+<li>“行（row）”<strong>必须</strong>包含在 <code>container</code> （固定宽度）或 <code>container-fluid</code> （100% 宽度）中，以便为其赋予合适的排列（aligment）和内补（padding）</li>
+<li>你的内容应当放置于<strong>列（column）</strong>内，并且，只有列（column）可以作为行（row）的<strong>直接子元素</strong></li>
+</ul>
+<p>栅格系统中的列是通过指定1到12的值来表示其跨越的范围。例如，三个等宽的列可以使用三个 <code>col-xs-4</code> 来创建</p>
+<pre><code class="html">&lt;div class=&quot;container&quot; style=&quot;background-color: #e8e8e8;height: 100px&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-md-4&quot;&gt;.col-md-4&lt;/div&gt;
+        &lt;div class=&quot;col-md-4&quot;&gt;.col-md-4&lt;/div&gt;
+        &lt;div class=&quot;col-md-4&quot;&gt;.col-md-4&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="栅格参数"><a href="#栅格参数" class="headerlink" title="栅格参数"></a>栅格参数</h2><p>通过下表可以详细查看 Bootstrap 的栅格系统是如何在多种屏幕设备上工作的。</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">超小屏幕 手机 (&lt;768px)</th>
+<th align="left">小屏幕 平板 (≥768px)</th>
+<th align="left">中等屏幕 桌面显示器 (≥992px)</th>
+<th align="left">大屏幕 大桌面显示器 (≥1200px)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">栅格系统行为</td>
+<td align="left">总是水平排列</td>
+<td align="left">开始是堆叠在一起的，当大于这些阈值时将变为水平排列C</td>
+<td align="left">&lt;&lt;</td>
+<td align="left">&lt;&lt;</td>
+</tr>
+<tr>
+<td align="left"><code>.container</code> 最大宽度</td>
+<td align="left">None （自动）</td>
+<td align="left">750px</td>
+<td align="left">970px</td>
+<td align="left">1170px</td>
+</tr>
+<tr>
+<td align="left">类前缀</td>
+<td align="left"><code>.col-xs-</code></td>
+<td align="left"><code>.col-sm-</code></td>
+<td align="left"><code>.col-md-</code></td>
+<td align="left"><code>.col-lg-</code></td>
+</tr>
+<tr>
+<td align="left">列（column）数</td>
+<td align="left">12</td>
+<td align="left">&lt;&lt;</td>
+<td align="left">&lt;&lt;</td>
+<td align="left">&lt;&lt;</td>
+</tr>
+<tr>
+<td align="left">最大列（column）宽</td>
+<td align="left">自动</td>
+<td align="left">~62px</td>
+<td align="left">~81px</td>
+<td align="left">~97px</td>
+</tr>
+<tr>
+<td align="left">槽（gutter）宽</td>
+<td align="left">30px （每列左右均有 15px）</td>
+<td align="left">&lt;&lt;</td>
+<td align="left">&lt;&lt;</td>
+<td align="left">&lt;&lt;</td>
+</tr>
+<tr>
+<td align="left">可嵌套</td>
+<td align="left">是</td>
+<td align="left">&lt;&lt;</td>
+<td align="left">&lt;&lt;</td>
+<td align="left">&lt;&lt;</td>
+</tr>
+<tr>
+<td align="left">偏移（Offsets）</td>
+<td align="left">是</td>
+<td align="left">&lt;&lt;</td>
+<td align="left">&lt;&lt;</td>
+<td align="left">&lt;&lt;</td>
+</tr>
+<tr>
+<td align="left">列排序</td>
+<td align="left">是</td>
+<td align="left">&lt;&lt;</td>
+<td align="left">&lt;&lt;</td>
+<td align="left">&lt;&lt;</td>
+</tr>
+</tbody></table>
+<h3 id="实例：从堆叠到水平排列"><a href="#实例：从堆叠到水平排列" class="headerlink" title="实例：从堆叠到水平排列"></a>实例：从堆叠到水平排列</h3><p>使用单一的一组 <code>col-md-*</code> 栅格类，就可以创建一个基本的栅格系统，在手机和平板设备上一开始是堆叠在一起的（超小屏幕到小屏幕这一范围），在桌面（中等）屏幕设备上变为水平排列。所有列（column）必须放在 ”<code>row</code> 内。</p>
+<pre><code class="html">&lt;div class=&quot;container&quot; style=&quot;background-color: #e8e8e8;height: 100px&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+            &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+            &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+            &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+            &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+            &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+            &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+            &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+            &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+            &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+            &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+            &lt;div class=&quot;col-md-1&quot;&gt;.col-md-1&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="实例：多余的列（column）将另起一行排列"><a href="#实例：多余的列（column）将另起一行排列" class="headerlink" title="实例：多余的列（column）将另起一行排列"></a>实例：多余的列（column）将另起一行排列</h2><p>如果在一个 <code>row</code> 内包含的列（column）大于12个，包含多余列（column）的元素将作为一个整体单元被另起一行排列。</p>
+<pre><code class="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-xs-9&quot;&gt;.col-xs-9&lt;/div&gt;
+  &lt;div class=&quot;col-xs-4&quot;&gt;.col-xs-4&lt;br&gt;Since 9 + 4 = 13 &amp;gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.&lt;/div&gt;
+  &lt;div class=&quot;col-xs-6&quot;&gt;.col-xs-6&lt;br&gt;Subsequent columns continue along the new line.&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="列偏移"><a href="#列偏移" class="headerlink" title="列偏移"></a>列偏移</h2><p>使用 <code>col-md-offset-*</code> 类可以将列向<strong>右侧偏移</strong>，这些类实际是通过使用 <code>*</code> 选择器为当前元素增加了左侧的边距（margin），例如，<code>col-md-offset-4</code> 类将 <code>col-md-4</code> 元素向右侧偏移了4个列（column）的宽度</p>
+<pre><code class="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;.col-md-4&lt;/div&gt;
+  &lt;div class=&quot;col-md-4 col-md-offset-4&quot;&gt;.col-md-4 .col-md-offset-4&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-md-3 col-md-offset-3&quot;&gt;.col-md-3 .col-md-offset-3&lt;/div&gt;
+  &lt;div class=&quot;col-md-3 col-md-offset-3&quot;&gt;.col-md-3 .col-md-offset-3&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-md-6 col-md-offset-3&quot;&gt;.col-md-6 .col-md-offset-3&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="列排序"><a href="#列排序" class="headerlink" title="*列排序"></a>*列排序</h2><p>通过使用 <code>col-md-push-*</code> 和 <code>col-md-pull-*</code> 类就可以很容易的改变列（column）的顺序</p>
+<pre><code class="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-md-9 col-md-push-3&quot;&gt;.col-md-9 .col-md-push-3&lt;/div&gt;
+  &lt;div class=&quot;col-md-3 col-md-pull-9&quot;&gt;.col-md-3 .col-md-pull-9&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h1 id="排版"><a href="#排版" class="headerlink" title="排版"></a>排版</h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>HTML 中的所有标题标签，<code>&lt;h1&gt;</code> 到 <code>&lt;h6&gt;</code> 均可使用。另外，还提供了 <code>.h1</code> 到 <code>.h6</code> 类，为的是给内联（inline）属性的文本赋予标题的样式</p>
+<p>在标题内还可以包含 <code>&lt;small&gt;</code> 标签或赋予 <code>.small</code> 类的元素，可以用来标记副标题</p>
+<pre><code class="html">&lt;h1&gt;主标题 &lt;small&gt; 副标题&lt;/small&gt;&lt;/h1&gt;
+</code></pre>
+<h3 id="中心内容"><a href="#中心内容" class="headerlink" title="中心内容"></a>中心内容</h3><p>通过添加 <code>.lead</code> 类可以让段落<strong>突出显示</strong></p>
+<pre><code class="html">&lt;p class=&quot;lead&quot;&gt;...&lt;/p&gt;
+</code></pre>
+<h2 id="内联文本元素"><a href="#内联文本元素" class="headerlink" title="内联文本元素"></a>内联文本元素</h2><p><strong>高亮文本</strong></p>
+<p><mark>Test</mark></p>
+<pre><code class="html">&lt;mark&gt;highlight&lt;/mark&gt;
+</code></pre>
+<p><strong>被删除的文本</strong></p>
+<p><del>Test</del></p>
+<pre><code class="html">&lt;del&gt;This line of text is meant to be treated as deleted text.&lt;/del&gt;
+</code></pre>
+<p>对于没用的文本使用 <code>&lt;s&gt;</code> 标签（和删除效果差不多）</p>
+<p><s>Test</s></p>
+<pre><code class="html">&lt;s&gt;This line of text is meant to be treated as no longer accurate.&lt;/s&gt;
+</code></pre>
+<p><strong>额外插入的文本</strong>使用 <code>&lt;ins&gt;</code> 标签</p>
+<p><ins>Test</ins></p>
+<pre><code class="html">&lt;ins&gt;This line of text is meant to be treated as an addition to the document.&lt;/ins&gt;
+</code></pre>
+<p><strong>为文本添加下划线</strong>，使用 <code>&lt;u&gt;</code> 标签</p>
+<p><u>Test</u></p>
+<pre><code class="html">&lt;u&gt;This line of text will render as underlined&lt;/u&gt;
+</code></pre>
+<p> <strong>小号文本</strong></p>
+<p>对于不需要强调的inline或block类型的文本，使用 <code>&lt;small&gt;</code> 标签包裹，其内的文本将被设置为父容器字体大小的 85%，标题元素中嵌套的 <code>&lt;small&gt;</code> 元素被设置不同的 <code>font-size</code></p>
+<p>你还可以为行内元素赋予 <code>.small</code> 类以代替任何 <code>&lt;small&gt;</code> 元素</p>
+<p><small>Test</small></p>
+<pre><code class="html">&lt;small&gt;This line of text is meant to be treated as fine print.&lt;/small&gt;
+</code></pre>
+<p><strong>着重</strong></p>
+<p><strong>Test</strong></p>
+<pre><code class="html">&lt;strong&gt;rendered as bold text&lt;/strong&gt;
+</code></pre>
+<p><strong>斜体</strong></p>
+<p><em>Test</em></p>
+<pre><code class="html">&lt;em&gt;rendered as italicized text&lt;/em&gt;
+</code></pre>
+<p><strong>对齐</strong></p>
+<p>通过文本对齐类，可以简单方便的将文字重新对齐</p>
+<pre><code class="html">&lt;p class=&quot;text-left&quot;&gt;Left aligned text.&lt;/p&gt;
+&lt;p class=&quot;text-center&quot;&gt;Center aligned text.&lt;/p&gt;
+&lt;p class=&quot;text-right&quot;&gt;Right aligned text.&lt;/p&gt;
+&lt;p class=&quot;text-justify&quot;&gt;Justified text.&lt;/p&gt;
+&lt;p class=&quot;text-nowrap&quot;&gt;No wrap text.&lt;/p&gt;
+</code></pre>
+<h2 id="缩略语"><a href="#缩略语" class="headerlink" title="缩略语"></a>缩略语</h2><p>当鼠标悬停在缩写和缩写词上时就会显示完整内容，Bootstrap 实现了对 HTML 的 <code>&lt;abbr&gt;</code> 元素的增强样式</p>
+<p>缩略语元素带有 <code>title</code> 属性，外观表现为带有较浅的虚线框，鼠标移至上面时会变成带有“问号”的指针</p>
+<p>如想看完整的内容可把鼠标悬停在缩略语上（对使用辅助技术的用户也可见）, 但需要包含 title 属性</p>
+<p><abbr title="This is a test.">Test</abbr></p>
+<pre><code class="html">&lt;abbr title=&quot;attribute&quot;&gt;attr&lt;/abbr&gt;
+</code></pre>
+<p>为缩略语添加 <code>.initialism</code> 类，可以让 font-size 变得稍微小些</p>
+<pre><code class="html">&lt;abbr title=&quot;HyperText Markup Language&quot; class=&quot;initialism&quot;&gt;HTML&lt;/abbr&gt;
+</code></pre>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>在你的文档中引用其他来源的内容</p>
+<p> <strong>默认样式的引用</strong></p>
+<p>将任何 HTML 元素包裹在 <code>&lt;blockquote&gt;</code> 中即可表现为引用样式</p>
+<p>对于直接引用，建议用 <code>&lt;p&gt;</code> 标签</p>
+<blockquote>Test</blockquote>
+
+<pre><code class="html">&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+&lt;/blockquote&gt;
+</code></pre>
+<p><strong>多种引用样式</strong></p>
+<p>对于标准样式的 <code>&lt;blockquote&gt;</code>，可以通过几个简单的变体就能改变风格和内容</p>
+<p>添加 <code>&lt;footer&gt;</code> 用于标明引用来源，来源的名称可以包裹进 <code>&lt;cite&gt;</code>标签中</p>
+<blockquote><p>Test</p><fotter>This test by <cite title="Os467">Os467</cite></fotter></blockquote>
+
+<pre><code class="html">&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+  &lt;footer&gt;Someone famous in &lt;cite title=&quot;Source Title&quot;&gt;Source Title&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+</code></pre>
+<p>通过赋予 <code>.blockquote-reverse</code> 类可以让引用呈现内容右对齐的效果</p>
+<pre><code class="html">&lt;blockquote class=&quot;blockquote-reverse&quot;&gt;
+  ...
+&lt;/blockquote&gt;
+</code></pre>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>排列顺序的一列元素</p>
+<ul>
+  <li>
+      Test
+      <ul>
+        <li>
+          test 
+         </li> 
+      </ul>
+    </li>
+</ul>
+
+<pre><code class="html">&lt;ul&gt;
+    &lt;li&gt;
+      Test
+      &lt;ul&gt;
+        &lt;li&gt;
+            test
+        &lt;/li&gt; 
+      &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>顺序的一组元素</p>
+<pre><code class="html">&lt;ol&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>带有描述的短语列表</p>
+<dl>
+  <dt>Test</dt>
+  <dd>test</dd>
+</dl>
+
+<pre><code class="html">&lt;dl&gt;
+  &lt;dt&gt;...&lt;/dt&gt;
+  &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+</code></pre>
+<h4 id="水平排列的描述"><a href="#水平排列的描述" class="headerlink" title="水平排列的描述"></a>水平排列的描述</h4><p><code>.dl-horizontal</code> 可以让 <code>&lt;dl&gt;</code> 内的短语及其描述排在一行，开始是像 <code>&lt;dl&gt;</code> 的默认样式堆叠在一起，随着导航条逐渐展开而排列在一行</p>
+<pre><code class="html">&lt;dl class=&quot;dl-horizontal&quot;&gt;
+  &lt;dt&gt;...&lt;/dt&gt;
+  &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+</code></pre>
+<p><strong>自动截断</strong></p>
+<p>通过 <code>text-overflow</code> 属性，水平排列的描述列表将会截断左侧太长的短语，在较窄的视口（viewport）内，列表将变为默认堆叠排列的布局方式</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="内联代码"><a href="#内联代码" class="headerlink" title="内联代码"></a>内联代码</h2><p>通过 <code>&lt;code&gt;</code> 标签包裹内联样式的代码片段</p>
+<p><code>&lt;section&gt;</code></p>
+<pre><code class="html">For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped as inline.
+</code></pre>
+<h2 id="用户输入"><a href="#用户输入" class="headerlink" title="用户输入"></a>用户输入</h2><p>通过 <code>&lt;kbd&gt;</code> 标签标记用户通过键盘输入的内容</p>
+<p><kbd>ctrl</kbd><kbd> + </kbd></p>
+<pre><code class="html">To switch directories, type &lt;kbd&gt;cd&lt;/kbd&gt; followed by the name of the directory.&lt;br&gt;
+To edit settings, press &lt;kbd&gt;&lt;kbd&gt;ctrl&lt;/kbd&gt; + &lt;kbd&gt;,&lt;/kbd&gt;&lt;/kbd&gt;
+</code></pre>
+<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p>多行代码可以使用 <code>&lt;pre&gt;</code> 标签，为了正确的展示代码，注意将尖括号做转义处理</p>
+<pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+
+<pre><code class="html">&lt;pre&gt;&amp;lt;p&amp;gt;Sample text here...&amp;lt;/p&amp;gt;&lt;/pre&gt;
+</code></pre>
+<p>还可以使用 <code>.pre-scrollable</code> 类，其作用是设置 max-height 为 350px ，并在垂直方向展示滚动条</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>通过 <code>&lt;var&gt;</code> 标签标记变量</p>
+<p><var>y</var> &#x3D; <var>m</var><var>x</var> + <var>b</var></p>
+<pre><code class="html">&lt;var&gt;y&lt;/var&gt; = &lt;var&gt;m&lt;/var&gt;&lt;var&gt;x&lt;/var&gt; + &lt;var&gt;b&lt;/var&gt;
+</code></pre>
+<h2 id="程序输出"><a href="#程序输出" class="headerlink" title="程序输出"></a>程序输出</h2><p>通过 <code>&lt;samp&gt;</code> 标签来标记程序输出的内容</p>
+<p><samp>This text is meant to be treated as sample output from a computer program.</samp></p>
+<pre><code class="html">&lt;samp&gt;This text is meant to be treated as sample output from a computer program.&lt;/samp&gt;
+</code></pre>
+<h1 id="模态框"><a href="#模态框" class="headerlink" title="模态框"></a>模态框</h1>
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 os467
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

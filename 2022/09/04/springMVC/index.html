@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tly的博客</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Tly的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="JVM虚拟机Java在各个平台上是如何跑起来的？ 我们都知道 Java 源文件，通过编译器，能够生产相应的.Class 文件，也就是字节码文件， 而字节码文件又通过 Java 虚拟机中的解释器，编译成特定机器上的机器码   不同平台上的解释器不同，但是虚拟机环境是相同的，这就是java为什么能在各个平台上运行的原因  JVM允许一个应用并发执行多个线程 JVM 内存区域主要分为线程私有区域【程序计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tly的博客">
+<meta property="og:url" content="https://os467.github.io/2022/09/04/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/index.html">
+<meta property="og:site_name" content="Tly的博客">
+<meta property="og:description" content="JVM虚拟机Java在各个平台上是如何跑起来的？ 我们都知道 Java 源文件，通过编译器，能够生产相应的.Class 文件，也就是字节码文件， 而字节码文件又通过 Java 虚拟机中的解释器，编译成特定机器上的机器码   不同平台上的解释器不同，但是虚拟机环境是相同的，这就是java为什么能在各个平台上运行的原因  JVM允许一个应用并发执行多个线程 JVM 内存区域主要分为线程私有区域【程序计">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p1.itc.cn/q_70/images03/20220708/5b6750852c5a4e0d9fdb7577eda33a62.png">
+<meta property="article:published_time" content="2022-09-04T15:04:48.851Z">
+<meta property="article:modified_time" content="2022-08-16T06:48:09.269Z">
+<meta property="article:author" content="Os467">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p1.itc.cn/q_70/images03/20220708/5b6750852c5a4e0d9fdb7577eda33a62.png">
+
+
+<link rel="icon" href="/img/headimg.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/headimg.jpg"/>
+</a>
+<div class="author">
+    <span>Os467</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/os467"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/os467/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(34)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="34">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:48">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:48">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/MVC%E8%AE%BF%E9%97%AE%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:48">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/ElasticSearch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springCloud%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/RabbitMQ/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/Docker/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springCloud/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/dubbo/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springboot/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springMVC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/ssm%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/bootstrap/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/01/MyBatisPlus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatisPlus">MyBatisPlus</span>
+            <span class="post-date" title="2022-08-01 11:15:26">2022/08/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/31/MyBatis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatis">MyBatis</span>
+            <span class="post-date" title="2022-07-31 10:10:26">2022/07/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/28/Maven/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven">Maven</span>
+            <span class="post-date" title="2022-07-28 19:10:41">2022/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/26/spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="spring">spring</span>
+            <span class="post-date" title="2022-07-26 21:54:22">2022/07/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式">设计模式</span>
+            <span class="post-date" title="2022-07-18 19:21:50">2022/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/17/Ajax/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ajax">Ajax</span>
+            <span class="post-date" title="2022-07-17 12:07:22">2022/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/14/Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Annotation">Annotation</span>
+            <span class="post-date" title="2022-07-14 19:36:02">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/13/Reflect/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Reflect">Reflect</span>
+            <span class="post-date" title="2022-07-13 14:40:18">2022/07/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2022-07-12 12:29:58">2022/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/10/IO%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IO流">IO流</span>
+            <span class="post-date" title="2022-07-10 20:14:33">2022/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/07/javaScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="javaScript">javaScript</span>
+            <span class="post-date" title="2022-07-07 12:54:16">2022/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/06/XML/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="XML">XML</span>
+            <span class="post-date" title="2022-07-06 18:28:03">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/06/cookie%E5%92%8Csession/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="cookie和session">cookie和session</span>
+            <span class="post-date" title="2022-07-06 18:27:45">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/02/servlet/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="servlet">servlet</span>
+            <span class="post-date" title="2022-07-02 08:24:49">2022/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/01/jdbc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jdbc">jdbc</span>
+            <span class="post-date" title="2022-07-01 08:24:49">2022/07/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/06/19/SQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL">SQL</span>
+            <span class="post-date" title="2022-06-19 19:45:07">2022/06/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/28/JAVA%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JAVA入门">JAVA入门</span>
+            <span class="post-date" title="2022-05-28 00:32:07">2022/05/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/27/Linux%E4%BA%91%E8%AE%A1%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux云计算">Linux云计算</span>
+            <span class="post-date" title="2022-05-27 00:05:15">2022/05/27</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-springMVC" class="article article-type-post" itemscope itemprop="blogPost">
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-08-08 20:14:32'>2022-09-04 23:04</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%98%85springMVC%E8%A1%A8%E7%8E%B0%E5%B1%82%E6%A1%86%E6%9E%B6"><span class="toc-text">★springMVC表现层框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringMVC"><span class="toc-text">SpringMVC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#springMVC%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="toc-text">springMVC核心原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEspringMVC"><span class="toc-text">配置springMVC</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringMVC%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3"><span class="toc-text">SpringMVC基于注解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#springMVC%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%A5%E6%94%B6%E5%89%8D%E7%AB%AF%E4%BC%A0%E9%80%92%E8%BF%87%E6%9D%A5%E7%9A%84%E5%80%BC"><span class="toc-text">springMVC如何去接收前端传递过来的值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#springMVC%E5%A6%82%E4%BD%95%E5%B0%86%E5%B0%81%E8%A3%85%E5%A5%BD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AD%98%E5%88%B0Model%E4%B8%AD"><span class="toc-text">springMVC如何将封装好的数据存到Model中</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87SpringMVC%E6%9D%A5%E5%AE%9E%E7%8E%B0%E8%BD%AC%E5%8F%91%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">通过SpringMVC来实现转发和重定向</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E6%8C%81mvc%E8%BF%94%E5%9B%9E%E5%AF%B9%E8%B1%A1%E7%BB%99%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">支持mvc返回对象给客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE"><span class="toc-text">项目</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="★springMVC表现层框架"><a href="#★springMVC表现层框架" class="headerlink" title="★springMVC表现层框架"></a>★springMVC表现层框架</h1><p><strong>什么是MVC？</strong></p>
+<ul>
+<li><p>MVC是模型（Model）、视图（View）、控制器（Controller）的简写，是一种软件设计规范</p>
+</li>
+<li><p>是将业务逻辑、数据、显示分离的方法来组织代码</p>
+</li>
+<li><p>MVC主要作用是<strong>降低了视图与业务逻辑间的双向耦合</strong></p>
+</li>
+<li><p>MVC不是一种设计模式，<strong>MVC是一种架构模式</strong>，不同的MVC存在差异</p>
+</li>
+</ul>
+<p>Model（模型）：数据模型，<strong>提供前端要展示的数据</strong>，因此包含数据和行为，可以认为是领域模型或JavaBean组件（包含数据和行为），不过现在一般都分离开来：Value Object（数据Dao）和服务层（行为Service），也就是模型提供了模型数据查询和模型数据的状态更新等功能，包括数据和业务</p>
+<p>View（视图）：负责进行模型的展示，一般就是我们见到的用户界面，客户想看到的东西</p>
+<p>Controller（控制器）：接收用户请求，委托给模型进行处理（状态改变），处理完毕后把返回的模型数据返回给视图，由视图负责展示，也就是说控制器做了个调度员的工作</p>
+<h2 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h2><p>Spring MVC是Spring Framework的一部分，是基于Java实现MVC的轻量级Web框架</p>
+<p>Spring MVC的特点：</p>
+<p>​	1、轻量级，简单易学</p>
+<p>​	2、高效，基于请求响应的MVC框架</p>
+<p>​	3、与Spring兼容性好，无缝结合</p>
+<p>​	4、约定优于配置</p>
+<p>​	5、功能强大：RESTful、数据验证、格式化、本地化、主题化等</p>
+<p>​	6、简洁灵活</p>
+<p>最开始我们在处理请求和响应是基于servlet的，那servlet是一个规范，不属于框架，springMVC是一个表现层的框架，在底层封装了servlet</p>
+<p><strong>MVC实现了视图和业务代码的分离</strong></p>
+<h3 id="springMVC核心原理"><a href="#springMVC核心原理" class="headerlink" title="springMVC核心原理"></a>springMVC核心原理</h3><ol>
+<li>用户发送请求给服务器，url：user.do</li>
+<li>服务器收到请求，发现DispatcherServlet可以处理，于是调用DispatcherServlet</li>
+<li>DispatcherServlet内部，通过HandlerMappings（处理映射器）检查这个url有没有对应的Controller，如果有，则通HandlerAdapters（处理适配器）调用Controller</li>
+<li>Controller开始执行</li>
+<li>Controller执行完毕后，如果返回字符串，则ViewResolvers将字符串转化成相应的视图对象，如果返回ModelAndView对象，该对象本身就包含了视图对象信息</li>
+<li>DispatcherServlet通过ViewResolvers（视图解析器）将视图对象中的数据输出给服务器</li>
+<li>服务器将数据输出给客户端</li>
+</ol>
+<p><strong>springMVC整体调度流程</strong></p>
+<ul>
+<li>客户端发送请求给服务端，springMVC框架会通过DispatcherServlet来做一个资源的拦截（<a target="_blank" rel="noopener" href="http://localhost:8080/servlet/test%EF%BC%89">http://localhost:8080/servlet/test）</a></li>
+<li>DispatcherServlet会调用处理映射器HandlerMappings来完成对地址的解析，然后把解析的信息告诉DispacherServlet</li>
+<li>DispacherServlet调用处理适配器HandlerAdapters从容器中找到对应的资源（会找到controller对应的资源）</li>
+<li>HandlerAdapters找到对应资源之后，会去执行具体的Controller（然后会去封装数据，设置视图名称）</li>
+<li>执行完逻辑之后会将视图和模块（ModelAndView）返回给DispacherServlet</li>
+<li>继续调用视图解析器ViewResolvers视图解析器来解析ModelAndView里面视图名称，然后根据视图解析器内部的匹配规则来定位到具体的前端资源（jsp）</li>
+<li>ViewResolvers在解析完之后会将解析的信息告诉DispacherServlet，然后会去做具体的页面跳转，数据渲染等工作</li>
+</ul>
+<h3 id="配置springMVC"><a href="#配置springMVC" class="headerlink" title="配置springMVC"></a>配置springMVC</h3><p><strong>springMVC框架如何去使用，如何去配置？</strong></p>
+<p>使用控制器</p>
+<p>创建一个TestController类，实现Controller接口</p>
+<pre><code class="java">package com.os467.controller;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class TestController implements Controller &#123;
+
+    @Override
+    public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception &#123;
+
+        //创建一个模型视图对象
+        ModelAndView modelAndView = new ModelAndView();
+
+        //封装数据
+        modelAndView.addObject(&quot;name&quot;,&quot;Hello spring MVC&quot;);
+
+        //设置视图名称
+        modelAndView.setViewName(&quot;test02&quot;);
+
+        return modelAndView;
+
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>我们在定义了一个Controller之后如何通过mvc去访问这个资源？</strong></p>
+<p><strong>1、在web.xml中配置DispatcherServlet：mvc框架前端总调度器</strong></p>
+<p>具体会去完成web交互时的各自调度工作</p>
+<ul>
+<li>Spring的web框架围绕<strong>DispatcherServlet</strong>调度Servlet设计</li>
+<li>DispatcherServlet的作用是将请求分发到不同的处理器，从Spring2.5开始，使用Java5或者以上版本的用户可以采用基于注解形式进行开发</li>
+</ul>
+<p>在<strong>web.xml</strong>中配置前端总调度器，所有的访问请求都会进入此资源</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;
+         version=&quot;4.0&quot;&gt;
+    
+   &lt;!--配置前端总调度器--&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+    &lt;/servlet&gt;
+
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
+        
+        &lt;!--拦截所有的客户端的请求--&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+
+&lt;/web-app&gt;
+</code></pre>
+<p><strong>2、由于MVC框架属于spring的功能模块，所以必须得有核心容器的支持，要去创建spring配置文件springMVC.xml</strong></p>
+<p>创建<strong>springMVC.xml</strong>配置文件，引入springMVC的xml约束</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;
+    
+&lt;/beans&gt;
+</code></pre>
+<p>在<strong>web.xml</strong>中注册配置文件位置，核心容器对象可以交给DispacherServlet去创建，需要指定配置文件的位置，以及设置启动级别</p>
+<pre><code class="xml">&lt;!--配置前端总调度器--&gt;
+ &lt;servlet&gt;
+     &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
+     &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+
+     &lt;!--绑定springMVC的配置文件--&gt;
+     &lt;init-param&gt;
+         &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+         &lt;!--配置文件的路径--&gt;
+         &lt;param-value&gt;classpath:xml/springMVC.xml&lt;/param-value&gt;
+     &lt;/init-param&gt;
+
+     &lt;!--设置启动级别，需要在tomcat服务器启动的时候就去加载核心容器对象--&gt;
+     &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+
+ &lt;/servlet&gt;
+</code></pre>
+<p>继续配置<strong>springMVC.xml</strong>，注册controller组件，视图解析器实例</p>
+<pre><code class="xml">&lt;!--注册controller组件--&gt;
+&lt;bean id=&quot;/controller1&quot; class=&quot;com.os467.controller.TestController&quot;&gt;&lt;/bean&gt;
+
+&lt;!--处理映射器和适配器可以不做注册，这里仅作演示--&gt;
+&lt;!--注册一个处理映射器--&gt;
+&lt;bean id=&quot;handlerMapping&quot; class=&quot;org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping&quot;&gt;&lt;/bean&gt;
+
+&lt;!--注册一个处理适配器--&gt;
+&lt;bean id=&quot;handlerAdapter&quot; class=&quot;org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter&quot;&gt;&lt;/bean&gt;
+
+&lt;!--必须要配置视图解析器--&gt;
+&lt;!--注册一个视图解析器--&gt;
+&lt;bean id=&quot;viewResolver&quot; class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+
+    &lt;!--设置视图的前缀--&gt;
+    &lt;property name=&quot;prefix&quot; value=&quot;/jsp/&quot;&gt;&lt;/property&gt;
+
+    &lt;!--设置视图的后缀--&gt;
+    &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;&gt;&lt;/property&gt;
+
+&lt;/bean&gt;
+</code></pre>
+<h2 id="SpringMVC基于注解"><a href="#SpringMVC基于注解" class="headerlink" title="SpringMVC基于注解"></a>SpringMVC基于注解</h2><p>&lt;mvc:default-servlet-handler&#x2F;&gt;</p>
+<p>让SpringMVC不处理静态资源</p>
+<p>&lt;mvc:annotation-driven&#x2F;&gt;</p>
+<p>支持mvc注解驱动</p>
+<p>InternalResourceViewResolver</p>
+<p>视图解析器</p>
+<p><strong>配置xml，开启对注解的支持</strong></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;
+
+    &lt;!--开启扫描包--&gt;
+    &lt;context:component-scan base-package=&quot;com.os467&quot;&gt;&lt;/context:component-scan&gt;
+
+    &lt;!--过滤静态资源--&gt;
+    &lt;mvc:default-servlet-handler&gt;&lt;/mvc:default-servlet-handler&gt;
+
+    &lt;!--支持mvc注解的驱动--&gt;
+    &lt;mvc:annotation-driven&gt;&lt;/mvc:annotation-driven&gt;
+
+    &lt;!--配置视图解析器--&gt;
+    &lt;bean id=&quot;viewResolver&quot; class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+
+        &lt;!--设置前缀--&gt;
+        &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;&gt;&lt;/property&gt;
+
+        &lt;!--设置后缀--&gt;
+        &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;&gt;&lt;/property&gt;
+
+    &lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<p><strong>@Controller注解</strong></p>
+<p>这个注解如果只是在spring框架中使用的话，就是将当前类的实例存到容器中<br>但是如果在springMVC中去使用，它不仅可以存实例到容器，还能够将该类下任意一个方法的<strong>返回值是String</strong><br>的方法，返回值会作为视图名称，用于视图跳转</p>
+<p><strong>@RequestMapping注解</strong></p>
+<p>用于地址的映射，可以修饰类也可以修饰方法，也可以只在方法上使用，能够体现层级关系</p>
+<pre><code class="java">@Controller
+@RequestMapping(&quot;user&quot;)
+public class UserController &#123;
+
+    @RequestMapping(&quot;test&quot;)
+    public String getTest()&#123;
+
+        return &quot;test&quot;;
+
+    &#125;
+
+&#125;
+</code></pre>
+<p>此时在前端访问：<a target="_blank" rel="noopener" href="http://localhost:8080/springMVC/user/test">http://localhost:8080/springMVC/user/test</a> 测试资源</p>
+<p><strong>@ResponseBody注解</strong> </p>
+<p>让当前视图失效，并且会直接返回数据</p>
+<h4 id="springMVC如何去接收前端传递过来的值"><a href="#springMVC如何去接收前端传递过来的值" class="headerlink" title="springMVC如何去接收前端传递过来的值"></a>springMVC如何去接收前端传递过来的值</h4><p>​	springMVC可以支持参数接值，你在前端需要传递的数据，后端mvc可以使用参数进行接收</p>
+<p>可以在接收参数的时候接收HttpServletrequest，再接收Parameter值</p>
+<p><strong>也可以在参数中根据对应参数名接值</strong></p>
+<pre><code class="java">//前端测试:http://localhost:8080/springMVC/user/test03?username=jack001&amp;password=123456&amp;i=10&amp;d=3.14
+@RequestMapping(&quot;test03&quot;)
+public String getTest03(String username,String password,int i,double d)&#123;
+
+    System.out.println(username+&quot; &quot;+password+&quot; &quot;+i+&quot; &quot;+d);
+
+    return &quot;test&quot;;
+
+&#125;
+</code></pre>
+<p><strong>springMVC在参数列表中可以通过实体进行接值</strong></p>
+<p>mvc会根据接收实例的属性名称来接收对应的前端数据，并且封装成java对象</p>
+<pre><code class="java">@RequestMapping(&quot;test04&quot;)
+public String getTest04(MvcVo mvcVo)&#123;
+
+    System.out.println(mvcVo);
+
+    return &quot;test&quot;;
+
+&#125;
+</code></pre>
+<h4 id="springMVC如何将封装好的数据存到Model中"><a href="#springMVC如何将封装好的数据存到Model中" class="headerlink" title="springMVC如何将封装好的数据存到Model中"></a>springMVC如何将封装好的数据存到Model中</h4><p>在参数中接收一个Model接口的实例，是由springMVC提供的，底层封装了request域</p>
+<p><strong>通过返回字符串的方式</strong></p>
+<pre><code class="java">@RequestMapping(&quot;test05&quot;)
+public String getTest05(MvcVo mvcVo, Model model)&#123;
+
+    //把实体存到Model中，底层封装了一个request域
+    model.addAttribute(&quot;mcvVo&quot;,mvcVo);
+
+    return &quot;test02&quot;;
+
+&#125;
+</code></pre>
+<p><strong>通过返回ModelAndView的方式</strong></p>
+<pre><code class="java">@RequestMapping(&quot;list&quot;)
+public ModelAndView getEmpList()&#123;
+
+    ModelAndView modelAndView = new ModelAndView();
+
+    List&lt;Emp&gt; empList = empService.getEmpList();
+
+    //访问持久层查询数据
+    modelAndView.addObject(&quot;empList&quot;,empList);
+
+    //设置视图名称
+    modelAndView.setViewName(&quot;list&quot;);
+
+    return modelAndView;
+&#125;
+</code></pre>
+<h2 id="通过SpringMVC来实现转发和重定向"><a href="#通过SpringMVC来实现转发和重定向" class="headerlink" title="通过SpringMVC来实现转发和重定向"></a>通过SpringMVC来实现转发和重定向</h2><p>默认是定位视图资源</p>
+<p><strong>forward</strong> 转发</p>
+<p>在MVC框架中视图跳转<strong>默认就是请求转发</strong>   <code>forward:t8</code></p>
+<p><strong>redirect</strong> 重定向		</p>
+<p>都是根据内部资源跳转，如果不写则是要去定位视图  <code>redirect:t8</code></p>
+<pre><code class="java">//从t9重定向到t8
+@RequestMapping(&quot;/t9&quot;)
+public String test09()&#123;
+    
+    return &quot;redirect:t8&quot;
+    
+&#125;
+</code></pre>
+<h3 id="支持mvc返回对象给客户端"><a href="#支持mvc返回对象给客户端" class="headerlink" title="支持mvc返回对象给客户端"></a>支持mvc返回对象给客户端</h3><p>会自动将对象转成json，然后再响应</p>
+<p>导入下面pom坐标</p>
+<pre><code class="xml">&lt;!-- jackson依赖 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-core&lt;/artifactId&gt;
+    &lt;version&gt;2.11.3&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+    &lt;version&gt;2.11.3&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-annotations&lt;/artifactId&gt;
+    &lt;version&gt;2.11.3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><p><strong>通过spring + springMVC + jdbcTemplate 来搭建一个web项目，完成员工列表</strong></p>
+<p><strong>web.xml配置</strong></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;
+         version=&quot;4.0&quot;&gt;
+    &lt;!--配置前端总控制器--&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+
+        &lt;!--绑定核心配置容器--&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+            &lt;param-value&gt;classpath:xml/springMVC.xml&lt;/param-value&gt;
+        &lt;/init-param&gt;
+
+        &lt;!--设置启动级别--&gt;
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+
+    &lt;/servlet&gt;
+
+
+    &lt;!--拦截客户端所有请求--&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+
+&lt;/web-app&gt;
+</code></pre>
+<p><strong>springMVC.xml配置</strong></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;
+
+    &lt;!--开启扫描包--&gt;
+    &lt;context:component-scan base-package=&quot;com.os467&quot;&gt;&lt;/context:component-scan&gt;
+
+    &lt;!--过滤静态资源--&gt;
+    &lt;mvc:default-servlet-handler&gt;&lt;/mvc:default-servlet-handler&gt;
+
+    &lt;!--开启mvc注解的支持--&gt;
+    &lt;mvc:annotation-driven&gt;&lt;/mvc:annotation-driven&gt;
+
+    &lt;!--配置视图解析器--&gt;
+    &lt;bean id=&quot;viewResolver&quot; class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+        &lt;!--设置前缀--&gt;
+        &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;&gt;&lt;/property&gt;
+        &lt;!--设置后缀--&gt;
+        &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--配置一个持久层的实例--&gt;
+    &lt;bean id=&quot;empDao&quot; class=&quot;com.os467.dao.impl.EmpDaoImpl&quot;&gt;
+        
+        &lt;property name=&quot;jdbcTemplate&quot; ref=&quot;jdbcTemplate&quot;&gt;&lt;/property&gt;
+        
+    &lt;/bean&gt;
+
+    &lt;!--注册数据源实例--&gt;
+    &lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
+
+        &lt;!--注入数据源--&gt;
+        &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/web_test?serverTimezone=GMT&amp;amp;characterEncoding=utf-8&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.cj.jdbc.Driver&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;username&quot; value=&quot;root&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;password&quot; value=&quot;root&quot;&gt;&lt;/property&gt;
+
+    &lt;/bean&gt;
+
+    &lt;!--注册jdbcTemplate--&gt;
+    &lt;bean id=&quot;jdbcTemplate&quot; class=&quot;org.springframework.jdbc.core.JdbcTemplate&quot;&gt;
+
+        &lt;!--注入数据源数据--&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
+        
+    &lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<p><strong>表现层（控制器）</strong></p>
+<pre><code class="java">package com.os467.controller;
+
+import com.os467.pojo.Emp;
+import com.os467.service.EmpService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import java.util.List;
+
+@Controller
+@RequestMapping(&quot;emp&quot;)
+public class EmpController &#123;
+
+    @Autowired
+    private EmpService empService;
+
+    //建立视图层级关系，添加资源路径
+    @RequestMapping(&quot;/list&quot;)
+    public String getEmpList(Model model)&#123;
+
+        List&lt;Emp&gt; empList = empService.getEmpList();
+
+        //访问持久层查询数据
+        model.addAttribute(&quot;empList&quot;,empList);
+
+        return &quot;list&quot;;
+
+    &#125;
+
+    //建立视图层级关系，添加资源路径
+    @RequestMapping(&quot;/add&quot;)
+    public String getAddPage()&#123;
+
+        //跳转添加页面
+        return &quot;add&quot;;
+
+    &#125;
+
+    @ResponseBody
+    //建立视图层级关系，添加资源路径
+    @RequestMapping(&quot;/addSave&quot;)
+    public String addSave(Emp emp)&#123;
+
+        boolean b = empService.addSave(emp);
+
+        //返回信息
+        return b?&quot;1&quot;:&quot;0&quot;;
+    &#125;
+
+    @ResponseBody
+    //建立视图层级关系，添加资源路径
+    @RequestMapping(&quot;/deleteByEid&quot;)
+    public String deleteByEid(Integer eid)&#123;
+
+        boolean b = empService.deleteByEid(eid);
+
+        //返回信息
+        return b?&quot;1&quot;:&quot;0&quot;;
+    &#125;
+
+    //建立视图层级关系，添加资源路径
+    @RequestMapping(&quot;/getUpdate&quot;)
+    public String getUpdate(Integer eid,Model model)&#123;
+
+        Emp emp = empService.getUpdate(eid);
+
+        model.addAttribute(&quot;emp&quot;,emp);
+
+        //跳转编辑页面
+        return &quot;update&quot;;
+    &#125;
+
+    @ResponseBody
+    //建立视图层级关系，添加资源路径
+    @RequestMapping(&quot;/updateSave&quot;)
+    public String updateSave(Emp emp)&#123;
+
+        boolean b = empService.updateSave(emp);
+
+        //返回信息
+        return b?&quot;1&quot;:&quot;0&quot;;
+    &#125;
+
+
+&#125;
+</code></pre>
+<p><strong>业务层</strong></p>
+<pre><code class="java">package com.os467.service.impl;
+
+import com.os467.dao.EmpDao;
+import com.os467.pojo.Emp;
+import com.os467.service.EmpService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class EmpServiceImpl implements EmpService &#123;
+
+    @Autowired
+    private EmpDao empDao;
+
+    @Override
+    public List&lt;Emp&gt; getEmpList() &#123;
+
+        return empDao.getEmpList();
+    &#125;
+
+    @Override
+    public boolean addSave(Emp emp) &#123;
+        return empDao.addSave(emp);
+    &#125;
+
+    @Override
+    public boolean deleteByEid(Integer eid) &#123;
+        return empDao.deleteByEid(eid);
+    &#125;
+
+    @Override
+    public Emp getUpdate(Integer eid) &#123;
+        return empDao.getUpdate(eid);
+    &#125;
+
+    @Override
+    public boolean updateSave(Emp emp) &#123;
+        return empDao.updateSave(emp);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>持久层</strong></p>
+<pre><code class="java">package com.os467.dao.impl;
+
+import com.os467.dao.EmpDao;
+import com.os467.pojo.Emp;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+@Repository
+public class EmpDaoImpl implements EmpDao &#123;
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) &#123;
+        this.jdbcTemplate = jdbcTemplate;
+    &#125;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    /**
+     * 获取员工列表的方法
+     * @return
+     */
+    @Override
+    public List&lt;Emp&gt; getEmpList() &#123;
+        return jdbcTemplate.query(&quot;select * from emp&quot;, new RowMapper&lt;Emp&gt;() &#123;
+            @Override
+            public Emp mapRow(ResultSet resultSet, int i) throws SQLException &#123;
+
+                Emp emp = new Emp();
+
+                emp.setEmpName(resultSet.getString(&quot;emp_name&quot;));
+                emp.setAge(resultSet.getInt(&quot;age&quot;));
+                emp.setEid(resultSet.getInt(&quot;eid&quot;));
+                emp.setSex(resultSet.getInt(&quot;sex&quot;));
+                emp.setSalary(resultSet.getInt(&quot;salary&quot;));
+                emp.setBirthday(resultSet.getString(&quot;birthday&quot;));
+
+                return emp;
+            &#125;
+        &#125;);
+    &#125;
+
+    /**
+     * 保存用户数据
+     * @return
+     * @param emp
+     */
+    @Override
+    public boolean addSave(Emp emp) &#123;
+
+        int i = jdbcTemplate.update(&quot;insert into emp(emp_name,age,sex,salary,birthday)values(?,?,?,?,?)&quot;, emp.getEmpName(),
+                emp.getAge(), emp.getSex(), emp.getSalary(), emp.getBirthday());
+
+        return i&gt;0?true:false;
+    &#125;
+
+    @Override
+    public boolean deleteByEid(Integer eid) &#123;
+
+        int i = jdbcTemplate.update(&quot;delete from emp where eid = ?&quot;, eid);
+
+        return i&gt;0?true:false;
+    &#125;
+
+    /**
+     * 回显用户信息的方法
+     * @return
+     */
+    @Override
+    public Emp getUpdate(Integer eid) &#123;
+
+        List&lt;Emp&gt; empList = jdbcTemplate.query(&quot;select * from emp where eid = ?&quot;, new RowMapper&lt;Emp&gt;() &#123;
+
+
+            @Override
+            public Emp mapRow(ResultSet resultSet, int i) throws SQLException &#123;
+
+                Emp emp = new Emp();
+
+                emp.setEmpName(resultSet.getString(&quot;emp_name&quot;));
+                emp.setAge(resultSet.getInt(&quot;age&quot;));
+                emp.setEid(resultSet.getInt(&quot;eid&quot;));
+                emp.setSex(resultSet.getInt(&quot;sex&quot;));
+                emp.setSalary(resultSet.getInt(&quot;salary&quot;));
+                emp.setBirthday(resultSet.getString(&quot;birthday&quot;));
+
+                return emp;
+            &#125;
+        &#125;, eid);
+
+        return empList.get(0);
+    &#125;
+
+    /**
+     * 编辑用户信息的方法
+     * @return
+     */
+    @Override
+    public boolean updateSave(Emp emp) &#123;
+
+        int i = jdbcTemplate.update(&quot;update emp set emp_name = ?,age = ?,sex = ?,salary = ?,birthday = ? where eid = ?&quot;,
+                emp.getEmpName(), emp.getAge(), emp.getSex(), emp.getSalary(), emp.getBirthday(),emp.getEid());
+
+        return i&gt;0?true:false;
+    &#125;
+&#125;
+</code></pre>
+<p>springMVC能够高效的去处理请求和响应，还支持参数接值，也可以支持注解的方式来映射资源路径</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 os467
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

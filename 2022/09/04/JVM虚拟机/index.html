@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tly的博客</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Tly的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="JVM虚拟机Java在各个平台上是如何跑起来的？ 我们都知道 Java 源文件，通过编译器，能够生产相应的.Class 文件，也就是字节码文件， 而字节码文件又通过 Java 虚拟机中的解释器，编译成特定机器上的机器码   不同平台上的解释器不同，但是虚拟机环境是相同的，这就是java为什么能在各个平台上运行的原因  JVM允许一个应用并发执行多个线程 JVM 内存区域主要分为线程私有区域【程序计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tly的博客">
+<meta property="og:url" content="https://os467.github.io/2022/09/04/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/index.html">
+<meta property="og:site_name" content="Tly的博客">
+<meta property="og:description" content="JVM虚拟机Java在各个平台上是如何跑起来的？ 我们都知道 Java 源文件，通过编译器，能够生产相应的.Class 文件，也就是字节码文件， 而字节码文件又通过 Java 虚拟机中的解释器，编译成特定机器上的机器码   不同平台上的解释器不同，但是虚拟机环境是相同的，这就是java为什么能在各个平台上运行的原因  JVM允许一个应用并发执行多个线程 JVM 内存区域主要分为线程私有区域【程序计">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p1.itc.cn/q_70/images03/20220708/5b6750852c5a4e0d9fdb7577eda33a62.png">
+<meta property="article:published_time" content="2022-09-04T15:04:48.851Z">
+<meta property="article:modified_time" content="2022-08-16T06:48:09.269Z">
+<meta property="article:author" content="Os467">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p1.itc.cn/q_70/images03/20220708/5b6750852c5a4e0d9fdb7577eda33a62.png">
+
+
+<link rel="icon" href="/img/headimg.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/headimg.jpg"/>
+</a>
+<div class="author">
+    <span>Os467</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/os467"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/os467/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(34)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="34">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:48">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:48">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/MVC%E8%AE%BF%E9%97%AE%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:48">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/ElasticSearch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springCloud%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/RabbitMQ/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/Docker/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springCloud/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/dubbo/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springboot/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springMVC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/ssm%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/bootstrap/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/01/MyBatisPlus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatisPlus">MyBatisPlus</span>
+            <span class="post-date" title="2022-08-01 11:15:26">2022/08/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/31/MyBatis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatis">MyBatis</span>
+            <span class="post-date" title="2022-07-31 10:10:26">2022/07/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/28/Maven/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven">Maven</span>
+            <span class="post-date" title="2022-07-28 19:10:41">2022/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/26/spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="spring">spring</span>
+            <span class="post-date" title="2022-07-26 21:54:22">2022/07/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式">设计模式</span>
+            <span class="post-date" title="2022-07-18 19:21:50">2022/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/17/Ajax/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ajax">Ajax</span>
+            <span class="post-date" title="2022-07-17 12:07:22">2022/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/14/Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Annotation">Annotation</span>
+            <span class="post-date" title="2022-07-14 19:36:02">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/13/Reflect/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Reflect">Reflect</span>
+            <span class="post-date" title="2022-07-13 14:40:18">2022/07/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2022-07-12 12:29:58">2022/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/10/IO%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IO流">IO流</span>
+            <span class="post-date" title="2022-07-10 20:14:33">2022/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/07/javaScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="javaScript">javaScript</span>
+            <span class="post-date" title="2022-07-07 12:54:16">2022/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/06/XML/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="XML">XML</span>
+            <span class="post-date" title="2022-07-06 18:28:03">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/06/cookie%E5%92%8Csession/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="cookie和session">cookie和session</span>
+            <span class="post-date" title="2022-07-06 18:27:45">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/02/servlet/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="servlet">servlet</span>
+            <span class="post-date" title="2022-07-02 08:24:49">2022/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/01/jdbc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jdbc">jdbc</span>
+            <span class="post-date" title="2022-07-01 08:24:49">2022/07/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/06/19/SQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL">SQL</span>
+            <span class="post-date" title="2022-06-19 19:45:07">2022/06/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/28/JAVA%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JAVA入门">JAVA入门</span>
+            <span class="post-date" title="2022-05-28 00:32:07">2022/05/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/27/Linux%E4%BA%91%E8%AE%A1%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux云计算">Linux云计算</span>
+            <span class="post-date" title="2022-05-27 00:05:15">2022/05/27</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-JVM虚拟机" class="article article-type-post" itemscope itemprop="blogPost">
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-08-16 14:48:09'>2022-09-04 23:04</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">JVM虚拟机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM%E4%BB%8B%E7%BB%8D"><span class="toc-text">JVM介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83"><span class="toc-text">JVM内存分布</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E5%8C%BA-%E7%BA%BF%E7%A8%8B%E7%A7%81%E6%9C%89"><span class="toc-text">本地方法区(线程私有)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%EF%BC%88Heap-%E7%BA%BF%E7%A8%8B%E5%85%B1%E4%BA%AB%EF%BC%89-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA"><span class="toc-text">堆（Heap-线程共享）-运行时数据区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="toc-text">GC垃圾回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#finalize-%E6%96%B9%E6%B3%95"><span class="toc-text">finalize()方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA-x2F-%E6%B0%B8%E4%B9%85%E4%BB%A3%EF%BC%88%E7%BA%BF%E7%A8%8B%E5%85%B1%E4%BA%AB%EF%BC%89"><span class="toc-text">方法区&#x2F;永久代（线程共享）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#G1-%E6%94%B6%E9%9B%86%E5%99%A8"><span class="toc-text">G1 收集器</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JVM虚拟机"><a href="#JVM虚拟机" class="headerlink" title="JVM虚拟机"></a>JVM虚拟机</h1><p><strong>Java在各个平台上是如何跑起来的？</strong></p>
+<p>我们都知道 Java 源文件，通过编译器，能够生产相应的.Class 文件，也就是字节码文件， 而字节码文件又通过 Java 虚拟机中的解释器，编译成特定机器上的机器码</p>
+<blockquote>
+<p> 不同平台上的解释器不同，但是虚拟机环境是相同的，这就是java为什么能在各个平台上运行的原因</p>
+</blockquote>
+<p><strong>JVM允许一个应用并发执行多个线程</strong></p>
+<p>JVM 内存区域主要分为线程私有区域【程序计数器、虚拟机栈、本地方法区】、线程共享区 域【JAVA 堆、方法区】、直接内存</p>
+<blockquote>
+<p>JVM的多线程处理提高了程序的并行处理效率</p>
+</blockquote>
+<h2 id="JVM介绍"><a href="#JVM介绍" class="headerlink" title="JVM介绍"></a>JVM介绍</h2><p><strong>程序计数器(线程私有)</strong></p>
+<p>一块较小的内存空间, 是当前线程所执行的字节码的行号指示器，每条线程都要有一个独立的程序计数器，这类内存也称为线程私有的内存</p>
+<p>正在执行 java 方法的话，计数器记录的是虚拟机<strong>字节码指令的地址</strong>（当前指令的地址），如 果还是 Native 方法，则为空</p>
+<p>这个内存区域是唯一一个在虚拟机中没有规定任何 OutOfMemoryError 情况的区域</p>
+<blockquote>
+<p>程序计数器的作用是用于存储下一条指令（即java代码编译完成的字节码指令）的地址，方便虚拟机解释器找到这些指令并且翻译成机器码交给CPU执行</p>
+</blockquote>
+<p><strong>虚拟机栈(线程私有)</strong></p>
+<p>是描述java方法执行的内存模型，<strong>每个方法在执行的同时都会创建一个栈帧</strong>（Stack Frame） 用于存储局部变量表、操作数栈、动态链接、方法出口等信息</p>
+<p>每一个方法从调用直至执行完成 的过程，就对应着一个栈帧在<strong>虚拟机栈</strong>中<strong>入栈到出栈的过程</strong></p>
+<ul>
+<li>栈帧随着方法调用而创建，随着<strong>方法结束而销毁</strong></li>
+</ul>
+<blockquote>
+<p>一个方法域都对应一个栈帧，每次方法执行结束，栈帧内存放的变量引用都会被GC机制回收，回收结束后，对应的强引用也会消失（不可达），便于GC机制继续回收那些不可达的对象占用的堆内存</p>
+</blockquote>
+<h2 id="JVM内存分布"><a href="#JVM内存分布" class="headerlink" title="JVM内存分布"></a>JVM内存分布</h2><p><img src="https://p1.itc.cn/q_70/images03/20220708/5b6750852c5a4e0d9fdb7577eda33a62.png"></p>
+<h3 id="本地方法区-线程私有"><a href="#本地方法区-线程私有" class="headerlink" title="本地方法区(线程私有)"></a>本地方法区(线程私有)</h3><p>本地方法栈则为 Native 方法服务，调用本地其它语言的方法，例如C++，C等</p>
+<blockquote>
+<p>Java提供了本地调用需要实现的接口（JNI）<strong>Java Native Interface</strong> ，它允许Java代码和其他语言写的代码进行交互</p>
+</blockquote>
+<h3 id="堆（Heap-线程共享）-运行时数据区"><a href="#堆（Heap-线程共享）-运行时数据区" class="headerlink" title="堆（Heap-线程共享）-运行时数据区"></a>堆（Heap-线程共享）-运行时数据区</h3><p>是被线程共享的一块内存区域，创建的对象和数组都保存在 Java 堆内存中，也是垃圾收集器进行 垃圾收集的最重要的内存区域</p>
+<blockquote>
+<p>堆内存通常存放new关键字创建的对象数据</p>
+</blockquote>
+<p>堆内存分为 <strong>新生代</strong> （Eden 区、From Survivor 区和 To Survivor 区）和 <strong>老年代</strong></p>
+<p><strong>在了解堆内存内的分代回收机制前，先要了解下垃圾回收机制如何判断一个对象是否存活</strong></p>
+<ul>
+<li>宣告一个对象的死亡一般要经历两次标记</li>
+</ul>
+<p><strong>第一次标记</strong></p>
+<p>如果对象在进行可达性分析后发现没有与GC Roots（对象引用关系链，相当于一个树结构）相连接的引用链， 那它将会被第一次标记，随后进行一次筛选</p>
+<blockquote>
+<p>GCroot原理：通过对枚举GCroot对象做引用可达性分析</p>
+<p>可以作为GC root对象的有：</p>
+<ul>
+<li>局部变量（Object obj &#x3D; new Object() 中的obj）引用的对象</li>
+<li>静态属性引用的对象 （static修饰的属性）</li>
+<li>方法区常量引用的对象（static+final修饰的属性）</li>
+<li>本地方法栈中引用的对象</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>新生代（8:1:1）</strong><ul>
+<li>Eden区（伊甸区）<ul>
+<li>Java 新对象的出生地（new关键字创建的，如果新创建的对象占用内存很大，则<strong>直接分配到老年代</strong>），当 <strong>Eden 区内存不够</strong>的时候就会触发 MinorGC（复制算法），对<strong>新生代区进行 一次垃圾回收</strong></li>
+</ul>
+</li>
+<li>ServivorFrom区（幸存者1区）<ul>
+<li>存放上一次 GC 的幸存者，作为这一次 GC 的被扫描者</li>
+</ul>
+</li>
+<li>ServivorTo区（幸存者2区）<ul>
+<li>保留了一次 MinorGC（复制算法） 过程中的幸存者</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="GC垃圾回收机制"><a href="#GC垃圾回收机制" class="headerlink" title="GC垃圾回收机制"></a>GC垃圾回收机制</h4><blockquote>
+<p><strong>GC机制在新生代中的运行过程</strong></p>
+<p>1、将Eden区和ServivorFrom区中的数据复制到ServivorTo区，对象年龄+1，如果有达到老年区对象标准的移至老年区(默认15次扫描后)</p>
+<p>2、清空Eden区和ServivorFrom区数据</p>
+<p>3、替换ServivorFrom区和ServivorTo区数据内容</p>
+</blockquote>
+<p>在第一次标记的同时我们要明白GC机制还做了一件事情：</p>
+<p><strong>判断是否要执行<code>finalize()</code>方法</strong></p>
+<h5 id="finalize-方法"><a href="#finalize-方法" class="headerlink" title="finalize()方法"></a>finalize()方法</h5><p>finalize()是Object的protected方法</p>
+<p><code>finalize()</code>与C++中的析构函数不是对应的。C++中的析构函数调用的时机是<strong>确定的</strong>（对象离开作用域或delete掉），但Java中的finalize的调用<strong>具有不确定性</strong></p>
+<ul>
+<li><p>如果需要执行，那么对象需要执行完<code>finalize()</code>方法才能被回收</p>
+</li>
+<li><p>如果对象重写了<code>finalize()</code>方法，那么该对象将会被放置在一个F-Queue队列中，稍后由一个虚拟机自动建立的、<strong>低优先级</strong>的Finalizer线程去执行它</p>
+</li>
+<li><p>对象如果没有重写<code>finalize()</code>方法，或者<code>finalize()</code>方法已经被虚拟机调用过，此时会被认<br>定为没必要执行<code>finalize()</code>方法</p>
+</li>
+</ul>
+<blockquote>
+<p>对象可由两种状态，涉及到两类状态空间</p>
+<p>一是终结状态空间 F &#x3D; {unfinalized, finalizable, finalized}</p>
+<p>二是可达状态空间 R &#x3D; {reachable, finalizer-reachable, unreachable}</p>
+<p>各状态含义如下：</p>
+<p><strong>unfinalized:</strong> 新建对象会先进入此状态，GC并未准备执行其finalize方法，因为该对象是可达的<br><strong>finalizable:</strong> 表示GC可对该对象执行finalize方法，GC已检测到该对象不可达。正如前面所述，GC通过F-Queue队列和一专用线程完成finalize的执行<br><strong>finalized:</strong> 表示GC已经对该对象执行过finalize方法<br><strong>reachable:</strong> 表示GC Roots引用可达<br><strong>finalizer-reachable(f-reachable)：</strong>表示不是reachable，但可通过某个finalizable对象可达<br><strong>unreachable：</strong>对象不可通过上面两种途径可达</p>
+</blockquote>
+<p><strong>第二次标记</strong></p>
+<p>第二次标记会为执行完<code>finalize()</code>方法的对象进行最后一次标记，之后销毁该对象内存</p>
+<ul>
+<li>若JVM检测到finalized状态的对象变成unreachable，回收其内存</li>
+<li>若对象并未覆盖finalize方法，JVM会进行优化，直接回收对象</li>
+</ul>
+<p><strong>老年代</strong></p>
+<p>新时代与老年代的内存比例为<code>1:2</code></p>
+<p>老年代的对象比较稳定，所以 MajorGC 不会频繁执行</p>
+<p><strong>MajorGC（采用标记复制回收策略）触发条件</strong></p>
+<ul>
+<li>至少触发一次MinorGC（不是绝对，有策略可以选择），使得有新生代的对象晋身入老年代，导致老年代内存空间不够用时才触发MajorGC</li>
+</ul>
+<blockquote>
+<p>频繁触发MajorGC的原因一般为：新生代内存不足以存放过大内存占用率的对象，或者是没有合理分配好新生代的对象内存</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangquan1992/article/details/99679969">参考博客</a></p>
+<h3 id="方法区-x2F-永久代（线程共享）"><a href="#方法区-x2F-永久代（线程共享）" class="headerlink" title="方法区&#x2F;永久代（线程共享）"></a>方法区&#x2F;永久代（线程共享）</h3><ul>
+<li>指内存的永久保存区域，主要存放 Class 和 Meta（元数据）的信息，类在被加载的时候被放入永久区域，它和和存放实例的区域不同，GC 不会在主程序运行期对永久区域进行清理</li>
+<li>在 Java8 中，永久代已经被移除，被一个称为<strong>元数据区（方法区）</strong>的区域所取代</li>
+</ul>
+<blockquote>
+<p>元空间并不在虚拟机中，而是使用本地内存，其大小仅受本地内存限制</p>
+</blockquote>
+<h3 id="G1-收集器"><a href="#G1-收集器" class="headerlink" title="G1 收集器"></a>G1 收集器</h3><p>G1 收集器 Garbage first 垃圾收集器是目前垃圾收集器理论发展的最前沿成果，相比与 CMS 收集器，G1 收 集器两个最突出的改进是： </p>
+<ol>
+<li>基于标记-整理算法，不产生内存碎片 </li>
+<li>可以非常精确控制停顿时间，在不牺牲吞吐量前提下，实现低停顿垃圾回收</li>
+</ol>
+<p> G1 收集器避免全区域垃圾收集，它把堆内存划分为大小固定的几个独立区域，并且跟踪这些区域 的垃圾收集进度，同时在后台维护一个<strong>优先级列表</strong>，每次根据所允许的收集时间，优先回收垃圾最多的区域，区域划分和优先级区域回收机制，确保 G1 收集器可以在有限时间获得最高的垃圾收集效率</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 os467
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tly的博客</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Tly的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="JVM虚拟机Java在各个平台上是如何跑起来的？ 我们都知道 Java 源文件，通过编译器，能够生产相应的.Class 文件，也就是字节码文件， 而字节码文件又通过 Java 虚拟机中的解释器，编译成特定机器上的机器码   不同平台上的解释器不同，但是虚拟机环境是相同的，这就是java为什么能在各个平台上运行的原因  JVM允许一个应用并发执行多个线程 JVM 内存区域主要分为线程私有区域【程序计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tly的博客">
+<meta property="og:url" content="https://os467.github.io/2022/09/04/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/index.html">
+<meta property="og:site_name" content="Tly的博客">
+<meta property="og:description" content="JVM虚拟机Java在各个平台上是如何跑起来的？ 我们都知道 Java 源文件，通过编译器，能够生产相应的.Class 文件，也就是字节码文件， 而字节码文件又通过 Java 虚拟机中的解释器，编译成特定机器上的机器码   不同平台上的解释器不同，但是虚拟机环境是相同的，这就是java为什么能在各个平台上运行的原因  JVM允许一个应用并发执行多个线程 JVM 内存区域主要分为线程私有区域【程序计">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p1.itc.cn/q_70/images03/20220708/5b6750852c5a4e0d9fdb7577eda33a62.png">
+<meta property="article:published_time" content="2022-09-04T15:04:48.851Z">
+<meta property="article:modified_time" content="2022-08-16T06:48:09.269Z">
+<meta property="article:author" content="Os467">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p1.itc.cn/q_70/images03/20220708/5b6750852c5a4e0d9fdb7577eda33a62.png">
+
+
+<link rel="icon" href="/img/headimg.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/headimg.jpg"/>
+</a>
+<div class="author">
+    <span>Os467</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/os467"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/os467/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(34)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="34">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:48">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:48">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/MVC%E8%AE%BF%E9%97%AE%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:48">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/ElasticSearch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springCloud%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/RabbitMQ/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/Docker/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springCloud/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/dubbo/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springboot/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/springMVC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/ssm%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/09/04/bootstrap/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-09-04 23:04:37">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/08/01/MyBatisPlus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatisPlus">MyBatisPlus</span>
+            <span class="post-date" title="2022-08-01 11:15:26">2022/08/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/31/MyBatis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatis">MyBatis</span>
+            <span class="post-date" title="2022-07-31 10:10:26">2022/07/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/28/Maven/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven">Maven</span>
+            <span class="post-date" title="2022-07-28 19:10:41">2022/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/26/spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="spring">spring</span>
+            <span class="post-date" title="2022-07-26 21:54:22">2022/07/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式">设计模式</span>
+            <span class="post-date" title="2022-07-18 19:21:50">2022/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/17/Ajax/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ajax">Ajax</span>
+            <span class="post-date" title="2022-07-17 12:07:22">2022/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/14/Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Annotation">Annotation</span>
+            <span class="post-date" title="2022-07-14 19:36:02">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/13/Reflect/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Reflect">Reflect</span>
+            <span class="post-date" title="2022-07-13 14:40:18">2022/07/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2022-07-12 12:29:58">2022/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/10/IO%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IO流">IO流</span>
+            <span class="post-date" title="2022-07-10 20:14:33">2022/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/07/javaScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="javaScript">javaScript</span>
+            <span class="post-date" title="2022-07-07 12:54:16">2022/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/06/XML/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="XML">XML</span>
+            <span class="post-date" title="2022-07-06 18:28:03">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/06/cookie%E5%92%8Csession/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="cookie和session">cookie和session</span>
+            <span class="post-date" title="2022-07-06 18:27:45">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/02/servlet/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="servlet">servlet</span>
+            <span class="post-date" title="2022-07-02 08:24:49">2022/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/07/01/jdbc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jdbc">jdbc</span>
+            <span class="post-date" title="2022-07-01 08:24:49">2022/07/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/06/19/SQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL">SQL</span>
+            <span class="post-date" title="2022-06-19 19:45:07">2022/06/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/28/JAVA%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JAVA入门">JAVA入门</span>
+            <span class="post-date" title="2022-05-28 00:32:07">2022/05/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/27/Linux%E4%BA%91%E8%AE%A1%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux云计算">Linux云计算</span>
+            <span class="post-date" title="2022-05-27 00:05:15">2022/05/27</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-ElasticSearch" class="article article-type-post" itemscope itemprop="blogPost">
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-09-04 22:26:42'>2022-09-04 23:04</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%9C%E7%B4%A2ES"><span class="toc-text">分布式搜索ES</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Elastic-Search%E7%AE%80%E4%BB%8B"><span class="toc-text">Elastic Search简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95"><span class="toc-text">倒排索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3"><span class="toc-text">文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%EF%BC%88Index%EF%BC%89"><span class="toc-text">索引（Index）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E5%AF%B9%E6%AF%94"><span class="toc-text">概念对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85ES"><span class="toc-text">安装ES</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2Kibana"><span class="toc-text">部署Kibana</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E8%AF%8D%E5%99%A8"><span class="toc-text">分词器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IK%E5%88%86%E8%AF%8D%E5%99%A8"><span class="toc-text">IK分词器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E5%85%B8%E4%B8%AA%E6%80%A7%E5%8C%96%E8%AE%BE%E7%BD%AE"><span class="toc-text">字典个性化设置</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="分布式搜索ES"><a href="#分布式搜索ES" class="headerlink" title="分布式搜索ES"></a>分布式搜索ES</h1><h2 id="Elastic-Search简介"><a href="#Elastic-Search简介" class="headerlink" title="Elastic Search简介"></a>Elastic Search简介</h2><p><strong>什么是elasticsearch？</strong></p>
+<p>elasticsearch是一款非常强大的开源搜索引擎，可以帮助我们从海量数据中快速找到需要的内容</p>
+<p>elasticsearch结合kibana、Logstash、Beats，也就是<strong>elastic stack（ELK）</strong>，被广泛应用在日志数据分析、实时监控等领域</p>
+<p><strong>数据可视化</strong></p>
+<ul>
+<li>Kibana</li>
+</ul>
+<p><strong>存储、搜索、分析数据</strong></p>
+<ul>
+<li>elasticsearch是elastic stack的核心</li>
+</ul>
+<p><strong>数据抓取</strong></p>
+<ul>
+<li>Logstash、Beats</li>
+</ul>
+<p><strong>ElasticSearch的底层是Lucene技术（apache组织提供）</strong></p>
+<ul>
+<li>Lucene是一个Java语言的搜索引擎类库，是Apache公司的顶级项目，由DougCutting于1999年研发，官网：<a target="_blank" rel="noopener" href="https://lucene.apache.org/">https://lucene.apache.org/</a></li>
+<li>Lucene的优势：易扩展，高性能（基于倒排索引）</li>
+<li>Lucene的缺点：只限于Java语言开发，学习曲线陡峭，不支持水平扩展</li>
+</ul>
+<p><strong>Elastic Search的发展</strong></p>
+<p>2004年Shay Banon基于Lucene开发了Compass</p>
+<p>2010年Shay Banon重写了Compass，取名为Elasticsearch</p>
+<p>官网地址：<a target="_blank" rel="noopener" href="https://www.elastic.co/cn/">https://www.elastic.co/cn/</a></p>
+<p>相比与Lucene，elasticsearch具备下列优势</p>
+<ul>
+<li>支持分布式，可水平扩展</li>
+<li>提供Restful接口，可被任何语言调用</li>
+</ul>
+<p>较热门的搜索引擎技术：</p>
+<ul>
+<li>Elasticsearch 开源的分布式搜索引擎</li>
+<li>Splunk 商业项目</li>
+<li>Solr Apache的开源搜索引擎</li>
+</ul>
+<h2 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h2><p><strong>正向索引和倒排索引</strong></p>
+<p><strong>正向索引</strong>（根据文档找到词）</p>
+<p>传统数据库（如mysql）采用正向索引，例如给下表（tb_goods）中的id创建索引：</p>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">title</th>
+<th align="center">price</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">小米手机</td>
+<td align="center">3499</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">华为手机</td>
+<td align="center">4999</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">华为小米充电器</td>
+<td align="center">49</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">小米手环</td>
+<td align="center">49</td>
+</tr>
+<tr>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+</tr>
+</tbody></table>
+<p>搜索 <code>手机</code></p>
+<p><code>select * from tb_goods where title like &#39;%手机%&#39;</code></p>
+<p>逐条数据扫描，判断是否包含<code>手机</code>，如果包含则存入结果集中</p>
+<p><strong>倒排索引</strong>（根据词找文档）</p>
+<table>
+<thead>
+<tr>
+<th align="center">词条（term）</th>
+<th align="center">文档id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">小米</td>
+<td align="center">1，3，4</td>
+</tr>
+<tr>
+<td align="center">手机</td>
+<td align="center">1，2</td>
+</tr>
+<tr>
+<td align="center">华为</td>
+<td align="center">2，3</td>
+</tr>
+<tr>
+<td align="center">充电器</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">手环</td>
+<td align="center">4</td>
+</tr>
+</tbody></table>
+<p>elasticsearch采用倒排索引</p>
+<ul>
+<li>文档（document）：<strong>每条数据就是一个文档</strong></li>
+<li>词条（term）：文档<strong>按照语义分成的词语</strong>   （词条不会重复创建，具有唯一性）</li>
+</ul>
+<p>使用倒排索引搜索<code>华为手机</code></p>
+<ol>
+<li><p>分词，得到<code>华为</code>，<code>手机</code>两个词条</p>
+</li>
+<li><p><strong>根据词条去词条列表查询文档id</strong></p>
+</li>
+<li><p>得到每个词条所在文档id：</p>
+<p>华为：2，3</p>
+<p>手机：1，2</p>
+</li>
+<li><p><strong>根据文档id查询文档</strong>，得到id为1，2，3的文档，存入结果集中（2的关联度较高会放在前面）</p>
+</li>
+</ol>
+<h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><p>elasticsearch是面向文档存储的，可以是数据库中的一条商品数据，一个订单信息</p>
+<p>文档数据会被序列化为JSON格式后存储在elasticsearch中</p>
+<h3 id="索引（Index）"><a href="#索引（Index）" class="headerlink" title="索引（Index）"></a>索引（Index）</h3><p>相同类型的<strong>文档的集合</strong>，如商品索引，用户索引，订单索引（类似数据库表的概念）</p>
+<p><strong>映射（mapping）</strong>：索引中文档的<strong>字段约束信息</strong>，类似表的结构约束</p>
+<h2 id="概念对比"><a href="#概念对比" class="headerlink" title="概念对比"></a>概念对比</h2><table>
+<thead>
+<tr>
+<th><strong>MySQL</strong></th>
+<th><strong>Elasticsearch</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Table</td>
+<td>Index</td>
+<td>索引(index)，就是文档的集合，类似数据库的表(table)</td>
+</tr>
+<tr>
+<td>Row</td>
+<td>Document</td>
+<td>文档（Document），就是一条条的数据，类似数据库中的行（Row），文档都是JSON格式</td>
+</tr>
+<tr>
+<td>Column</td>
+<td>Field</td>
+<td>字段（Field），就是JSON文档中的字段，类似数据库中的列（Column）</td>
+</tr>
+<tr>
+<td>Schema</td>
+<td>Mapping</td>
+<td>Mapping（映射）是索引中文档的约束，例如字段类型约束，类似数据库的表结构（Schema）</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td>DSL</td>
+<td>DSL是elasticsearch提供的JSON风格的请求语句，用来操作elasticsearch，实现CRUD</td>
+</tr>
+</tbody></table>
+<p><strong>架构对比</strong></p>
+<ul>
+<li>Mysql：擅长事务类型操作，可以确保数据的安全和一致性（ACID原则）</li>
+<li>Elasticsearch：擅长海量数据的搜索，分析，计算</li>
+</ul>
+<p>ES承担了搜索操作，Mysql承担了写操作，mysql可以将数据同步到ES中（起到了互补的效果）</p>
+<h2 id="安装ES"><a href="#安装ES" class="headerlink" title="安装ES"></a>安装ES</h2><p><strong>部署单点es</strong></p>
+<p>1、创建网络</p>
+<p>因为我们还要部署kibana容器，因此需要让es和kibana容器互联，这里先创建一个网络：</p>
+<pre><code class="bash">docker network create es-net
+</code></pre>
+<p>2、加载镜像</p>
+<p>这里我们采用elasticsearch的1.12.1版本的镜像，这个镜像体积非常大，接近1G，不建议自己pull</p>
+<p>使用镜像tar包，上传到虚拟机使用命令加载即可</p>
+<pre><code class="bash">docker load -i es.tar
+</code></pre>
+<p>同理kibana的tar包也是如此</p>
+<p>3、运行</p>
+<p>运行docker命令，部署单点es：</p>
+<p>-e参数说明</p>
+<ul>
+<li>配置JVM内存大小（es由java实现）</li>
+<li>配置运行模式</li>
+</ul>
+<p>-v参数说明</p>
+<ul>
+<li>数据保存挂载目录</li>
+<li>插件拓展目录</li>
+</ul>
+<p><code>--network</code> ： 加入网络</p>
+<p><code>--privileged</code>：授予逻辑卷访问权</p>
+<p>-p参数说明</p>
+<p>9200端口：http端口，提供用户访问</p>
+<p>9300端口：容器之间各个节点互联端口</p>
+<pre><code class="bash">docker run -d \
+    --name es \
+    -e &quot;ES_JAVA_OPTS=-Xms512m -Xmx512m&quot; \
+    -e &quot;discovery.type=single-node&quot; \
+    -v es-data:/usr/share/elasticsearch/data \
+    -v es-plugins:/usr/share/elasticsearch/plugins \
+    --privileged \
+    --network es-net \
+    -p 9200:9200 \
+    -p 9300:9300 \
+elasticsearch:7.12.1
+</code></pre>
+<p>输入<code>192.168.119.88:9200</code>查看访问结果</p>
+<h2 id="部署Kibana"><a href="#部署Kibana" class="headerlink" title="部署Kibana"></a>部署Kibana</h2><pre><code class="bash">docker run -d \
+--name kibana \
+-e ELASTICSEARCH_HOSTS=http://es:9200 \
+--network=es-net \
+-p 5601:5601  \
+kibana:7.12.1
+</code></pre>
+<ul>
+<li><code>--network es-net</code> ：加入一个名为es-net的网络中，与elasticsearch在同一个网络中</li>
+<li><code>-e ELASTICSEARCH_HOSTS=http://es:9200&quot;</code>：设置elasticsearch的地址，因为kibana已经与elasticsearch在一个网络，因此可以用容器名直接访问elasticsearch</li>
+<li><code>-p 5601:5601</code>：端口映射配置</li>
+</ul>
+<blockquote>
+<p>kibana版本需要和es版本保持一致</p>
+</blockquote>
+<p>浏览器访问<code>192.168.119.88:5601</code>查看图形化界面</p>
+<p>使用Kibana提供的<strong>Dev Tools</strong>来发送DSL语句（本质上就是发送一个RESTFUL的请求到es当中）</p>
+<p><strong>测试es是否连接</strong></p>
+<pre><code class="json">GET /
+</code></pre>
+<h2 id="分词器"><a href="#分词器" class="headerlink" title="分词器"></a>分词器</h2><p>es在创建倒排索引时需要对文档分词，在搜索时，需要对用户输入内容分词，但<strong>默认的分词规则对中文处理并不友好</strong>，我们在kibana的DevTools中测试</p>
+<pre><code class="json">POST /_analyze
+&#123;
+    &quot;analyzer&quot;:&quot;standard&quot;,
+    &quot;text&quot;:&quot;学习分布式搜索引擎ElasticSearch&quot;
+&#125;
+</code></pre>
+<p><strong>语法说明：</strong></p>
+<p>POST：请求方式</p>
+<p>&#x2F;_analyze：请求路径，这里省略了<code>http://192.168.119.88:9200</code>，由kibana帮我们补充</p>
+<p>请求参数，json风格：</p>
+<ul>
+<li>analyzer：分词器类型，这里使用的是默认的standard分词器</li>
+<li>text：要分词的内容</li>
+</ul>
+<h3 id="IK分词器"><a href="#IK分词器" class="headerlink" title="IK分词器"></a>IK分词器</h3><p>处理中文分词，一般会使用<strong>IK分词器</strong></p>
+<p>网址：<a target="_blank" rel="noopener" href="https://github.com/medcl/elasticsearch-analysis-ik">https://github.com/medcl/elasticsearch-analysis-ik</a></p>
+<p><strong>安装IK分词器</strong></p>
+<p><strong>在线拉取</strong></p>
+<pre><code class="bash"># 进入容器内部
+docker exec -it elasticsearch /bin/bash
+
+# 在线下载并安装
+./bin/elasticsearch-plugin  install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.12.1/elasticsearch-analysis-ik-7.12.1.zip
+
+#退出
+exit
+#重启容器
+docker restart elasticsearch
+</code></pre>
+<p><strong>离线安装</strong></p>
+<p>安装插件需要知道elasticsearch的plugins目录位置，而我们用了数据卷挂载，因此需要查看elasticsearch的数据卷目录，通过下面命令查看</p>
+<pre><code class="bash">docker volume inspect es-plugins
+</code></pre>
+<p>显示结果：</p>
+<pre><code class="json">[
+    &#123;
+        &quot;CreatedAt&quot;: &quot;2022-05-06T10:06:34+08:00&quot;,
+        &quot;Driver&quot;: &quot;local&quot;,
+        &quot;Labels&quot;: null,
+        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/es-plugins/_data&quot;,
+        &quot;Name&quot;: &quot;es-plugins&quot;,
+        &quot;Options&quot;: null,
+        &quot;Scope&quot;: &quot;local&quot;
+    &#125;
+]
+</code></pre>
+<p>说明plugins目录被挂载到了：<code>/var/lib/docker/volumes/es-plugins/_data </code>这个目录中</p>
+<p><strong>重启容器</strong></p>
+<pre><code class="bash">#重启容器
+docker restart es
+#查看es日志
+docker logs -f es
+</code></pre>
+<p><strong>测试IK分词器</strong></p>
+<p>IK分词器包含两种模式：</p>
+<ul>
+<li><p><code>ik_smart</code>：最少切分（粗粒度切分，分词较少）</p>
+</li>
+<li><p><code>ik_max_word</code>：最细粒度切分（分词较多）</p>
+</li>
+</ul>
+<p>分词器都会依赖于一个<strong>字典</strong>来进行分词</p>
+<h3 id="字典个性化设置"><a href="#字典个性化设置" class="headerlink" title="字典个性化设置"></a>字典个性化设置</h3><p>ik分词器-拓展词库</p>
+<p>要拓展ik分词器的词库，需要修改ik分词器目录下config目录中的<strong>IkAnalyzer.cfg.xml</strong>文件</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE properties SYSTEM &quot;http://java.sun.com/dtd/properties.dtd&quot;&gt;
+&lt;properties&gt;
+    &lt;comment&gt;IK Analyzer 扩展配置&lt;/comment&gt;
+    
+    &lt;!--用户可以在这里配置自己的扩展字典 --&gt;
+    &lt;entry key=&quot;ext_dict&quot;&gt;&lt;/entry&gt;
+    
+    &lt;!--用户可以在这里配置自己的扩展停止词字典--&gt;
+    &lt;entry key=&quot;ext_stopwords&quot;&gt;&lt;/entry&gt;
+    
+    &lt;!--用户可以在这里配置远程扩展字典 --&gt;
+    &lt;!-- &lt;entry key=&quot;remote_ext_dict&quot;&gt;words_location&lt;/entry&gt; --&gt;
+    
+    &lt;!--用户可以在这里配置远程扩展停止词字典--&gt;
+    &lt;!-- &lt;entry key=&quot;remote_ext_stopwords&quot;&gt;words_location&lt;/entry&gt; --&gt;
+
+&lt;/properties&gt;
+</code></pre>
+<p>指定拓展词所在文件名（与当前目录同级）</p>
+<pre><code class="xml">&lt;!--用户可以在这里配置自己的扩展字典 --&gt;
+&lt;entry key=&quot;ext_dict&quot;&gt;ext.dic&lt;/entry&gt;
+ &lt;!--用户可以在这里配置自己的扩展停止词字典--&gt;
+&lt;entry key=&quot;ext_stopwords&quot;&gt;stopword.dic&lt;/entry&gt;
+</code></pre>
+<p>创建ext.dic，添加扩展词即可，一行一个词语，注意必须都是<strong>UTF-8编码格式</strong></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 os467
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
