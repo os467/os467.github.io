@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Annotation | Tly的博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Annotation | Tly的博客">
+  <title>javaScript | Tly的博客</title>
+  <meta name="keywords" content=" JAVASE基础 ">
+  <meta name="description" content="javaScript | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="分布式搜索ESElastic Search简介什么是elasticsearch？ elasticsearch是一款非常强大的开源搜索引擎，可以帮助我们从海量数据中快速找到需要的内容 elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK），被广泛应用在日志数据分析、实时监控等领域 数据可视化  Kibana  存储、搜索、分析数据  el">
 <meta property="og:type" content="article">
@@ -694,24 +694,31 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Annotation" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-jQuery" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Annotation</h1>
+        <h1 class="article-title">javaScript</h1>
     
     <div class="article-meta">
         
         
         
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">JAVASE基础</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-07-14 19:36:20'>2022-07-14 19:36</time>
+            发布时间 : <time class="date" title='最后更新: 2022-09-04 23:43:06'>2022-07-08 16:24</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.5k</span>
+        <span>字数:3.2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -730,7 +737,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3"><span class="toc-text">注解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B3%A8%E8%A7%A3"><span class="toc-text">创建一个注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%B3%A8%E8%A7%A3%E4%B8%AD%E5%A3%B0%E6%98%8E%E5%B1%9E%E6%80%A7"><span class="toc-text">在注解中声明属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3%E8%BF%90%E7%94%A8%E8%8C%83%E5%9B%B4"><span class="toc-text">注解运用范围</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK%E5%86%85%E7%BD%AE%E6%B3%A8%E8%A7%A3"><span class="toc-text">JDK内置注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E6%B3%A8%E8%A7%A3"><span class="toc-text">元注解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E8%8E%B7%E5%8F%96%E6%B3%A8%E8%A7%A3%EF%BC%9A"><span class="toc-text">如何通过反射机制获取注解：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E6%B3%A8%E8%A7%A3%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90SQL%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5"><span class="toc-text">根据注解自动生成SQL查询语句</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jQuery"><span class="toc-text">jQuery</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery%E4%B8%AD%E7%9A%84"><span class="toc-text">jQuery中的$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%85%A5jQuery%E6%8E%A7%E4%BB%B6"><span class="toc-text">引入jQuery控件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery%E6%A0%B8%E5%BF%83%E5%87%BD%E6%95%B0%EF%BC%88%E6%96%87%E6%9C%AC%E5%B0%B1%E7%BB%AA%E5%87%BD%E6%95%B0%EF%BC%89"><span class="toc-text">jQuery核心函数（文本就绪函数）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery%E5%AF%B9%E8%B1%A1%E5%92%8Cdom%E5%AF%B9%E8%B1%A1%E5%8C%BA%E5%88%86"><span class="toc-text">jQuery对象和dom对象区分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-text">jQuery对象的本质</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%8D%E5%8E%86jQuery%E5%AF%B9%E8%B1%A1"><span class="toc-text">遍历jQuery对象</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dom%E5%AF%B9%E8%B1%A1%E5%92%8CjQuery%E5%AF%B9%E8%B1%A1%E4%BA%92%E8%BD%AC"><span class="toc-text">Dom对象和jQuery对象互转</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">jQuery选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery%E7%9A%84%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C"><span class="toc-text">jQuery的属性操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87jQuery%E5%92%8Cjs%E5%8E%9F%E7%94%9F%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C%E8%A7%84%E8%8C%83%E6%8F%90%E7%A4%BA"><span class="toc-text">通过jQuery和js原生两种方法实现用户注册规范提示</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9"><span class="toc-text">DOM的增删改</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -746,230 +753,510 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h1><p><strong>什么是注解？</strong></p>
-<p>是<strong>元数据(Annotation)</strong> ，是一种对代码进行说明的数据，JDK1.5引入的新<strong>规范</strong>，是与类、接口、枚举等引用类型处于同一个层次，可以用在包、类、属性、方法、方法的参数和局部变量等的前边，<strong>不影响代码的语义</strong>，可以对其进行<strong>解析</strong></p>
-<p><strong>注解Annotation</strong>:  是一种<strong>引用数据类型</strong>(在类加载的时候会生成字节码文件)</p>
-<p><strong>注解在以后的用途:</strong></p>
-<p>​		注解的作用：</p>
-<p>​		注解只能起到一个<strong>标识</strong>的作用</p>
-<p><strong>spring框架</strong>：基于注解的开发模式</p>
-<p>​		学习了反射可以不使用new关键字去创建一个类的实例</p>
-<p>​		spring是一个容器里面会存放很多类的实例</p>
-<p><strong>我怎么知道有哪些类需要去创建实例，那些类不需要创建实例?</strong></p>
-<p>​		用注解去标识一下，需要创建实例的类，用注解去做一个标识</p>
-<p>​		在spring框架检测到该类有注解时，就会通过反射机制去创建该类的实例</p>
-<p><strong>beans</strong>： User、Student、Person、Animal</p>
-<h2 id="创建一个注解"><a href="#创建一个注解" class="headerlink" title="创建一个注解"></a>创建一个注解</h2><pre><code class="java">public @interface MyAnnotation &#123;
-    
+        <h1 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h1><ul>
+<li>jQuery也就是JavaScript和查询（Query），它就是辅助JavaScript开发的js类库</li>
+<li>它的核心思想时write less，do more（写的更少，做得更多），所以它实现了很多浏览器的兼容问题</li>
+<li>jQuery现在已经成为最流行的JavaScript库，在世界前10000个访问最多的网站中，有超过55%在使用jQuery</li>
+<li>jQuery是免费，开源的，jQuery的语法设计可以使开发更加便捷，例如操作文档对象，选择DOM元素，制作动画效果，事件处理，使用Ajax以及其他功能</li>
+</ul>
+<p>jQuery是封装了js的一个前端框架，可以写更少的代码，做更多的事情</p>
+<h2 id="jQuery中的"><a href="#jQuery中的" class="headerlink" title="jQuery中的$"></a>jQuery中的$</h2><p>jQuery中的$是一个函数</p>
+<p>为按钮添加点击响应函数</p>
+<p>1.使用jQuery查询到标签对象</p>
+<p>2.使用<code>标签对象.click(function()&#123;&#125;);</code></p>
+<p> <strong>$</strong> 是jQuery的一个核心函数，通过$可以选择元素，还可以去定义函数等等</p>
+<p>通过$来声明<strong>jQuery</strong>中的文本就绪函数:</p>
+<p>​		$(function{</p>
+<p>​		})		</p>
+<p><strong>原生js</strong>的文本就绪函数</p>
+<p>​		Window.onload &#x3D; function(){</p>
+<p>​		}</p>
+<h2 id="引入jQuery控件"><a href="#引入jQuery控件" class="headerlink" title="引入jQuery控件"></a>引入jQuery控件</h2><p>通过<strong>相对路径</strong>引入jQuery控件</p>
+<pre><code class="html">&lt;!--引入jQuery控件--&gt;
+&lt;script src=&quot;../jQuery/jquery-1.7.2.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="javascript">//jQuery中的文本就绪函数
+$(function()&#123;
+
+    let elementById = document.getElementById(&quot;id&quot;);
+
+    alert(elementById);
+
+&#125;)
+</code></pre>
+<p>通过jQuery的方式来选择html对象</p>
+<p>​	jQuery中的选择器：</p>
+<p>​	最基本的几种选择器：id选择器、class选择器、标签选择器</p>
+<pre><code class="javascript">//通过jQuery中的id选择器来选择标签
+let inputEl = $(&quot;#id&quot;)
+
+//[object Object] 这种形式的对象是jQuery对象，不是dom对象
+alert(inputEl);
+
+//通过class选择器来选择标签对象
+let classEl = $(&quot;.class&quot;);
+
+alert(classEl);
+</code></pre>
+<p>通过jQuery选择器选择的对象是一个jQuery对象，并不是dom对象，但是在jQuery底层封装的是dom对象，jQuery对象的本质就是dom对象数组</p>
+<pre><code class="javascript">//通过jQuery动态绑定的方式来绑定单击事件
+$(function ()&#123;
+
+    let clickEl = $(&quot;#click&quot;);
+
+    //绑定单击事件
+    clickEl.click(function ()&#123;
+
+        alert(&quot;通过jQuery的方式来注册单击事件&quot;)
+
+    &#125;)
+
+&#125;)
+
+-------------------------------------------------------
+
+let elementById = document.getElementById(&quot;click&quot;);
+
+elementById.onclick = function ()&#123;
+
+    alert(&quot;通过js的方式来注册单击事件&quot;)
+
 &#125;
 </code></pre>
-<p>注解中可以拥有属性，但是<strong>不能拥有方法</strong></p>
-<p>如果你给一个注解声明了属性，那么在注解<strong>修饰元素</strong>的时候，就必须要给属性<strong>赋值</strong>，除非你在声明属性的时候，给了属性默认值</p>
-<h3 id="在注解中声明属性"><a href="#在注解中声明属性" class="headerlink" title="在注解中声明属性"></a>在注解中声明属性</h3><pre><code class="java">public @interface MyAnnotation &#123;
+<p>jQuery针对dom对象的所有属性都封装了对应的方法，dom对象中 onclick属性，jQuery中就封装了click()</p>
+<p><strong>注</strong>：jQuery对象只能调用jQuery提供的方法，不能调用dom中的属性，dom对象只能调用属性，不能调用方法</p>
+<h2 id="jQuery核心函数（文本就绪函数）"><a href="#jQuery核心函数（文本就绪函数）" class="headerlink" title="jQuery核心函数（文本就绪函数）"></a>jQuery核心函数（文本就绪函数）</h2><ul>
+<li>$是jQuery的核心函数，能完成jQuery的很多功能，$()就是调用$这个函数</li>
+<li>传入参数为 <strong>函数</strong> 时：表示页面加载完成之后，相当于 <code>window.onload = function()&#123;&#125;</code></li>
+<li>传入参数为 <strong>HTML字符串</strong> 时：会为我们创建这个html标签对象</li>
+<li>传入参数为 <strong>DOM对象</strong> 时：会把这个dom对象转换为jQuery对象</li>
+</ul>
+<pre><code class="javascript">function test()&#123;
 
-    //在注解中如何去声明属性
-    String name() default &quot;&quot;;
+    let input = $(&quot;&lt;input type=&#39;button&#39; value=&#39;123456&#39;&gt;&quot;);
 
-    int i();
-
-    String[] strings() default &#123;&quot;1&quot;,&quot;2&quot;&#125;;
-
-    //枚举类型
-    Math math() default Math.Max;
-    
-    Math[] maths() default &#123;Math.Max,Math.Count,Math.Sum&#125;;
-    
-&#125;
-</code></pre>
-<p><strong>在注解中定义属性只能时八大基本数据类型、字符串类型String、枚举类型、以及主要类型所对应的数组类型</strong></p>
-<p>在定义属性时，如果属性名称是<strong>value</strong>，那在注解修饰元素，并且给属性赋值的时候，属性名称可以<strong>省略不写</strong></p>
-<pre><code class="java">@MyAnnotation(name = &quot;123&quot;,i = 100)
-</code></pre>
-<h4 id="注解运用范围"><a href="#注解运用范围" class="headerlink" title="注解运用范围"></a>注解运用范围</h4><p>注解使用时的语法格式是：</p>
-<p>​		@注解类型名</p>
-<p>注解可以出现在类上、属性上、方法上、变量上等</p>
-<p>注解可以出现在注解类型上</p>
-<h3 id="JDK内置注解"><a href="#JDK内置注解" class="headerlink" title="JDK内置注解"></a>JDK内置注解</h3><p><strong>Deprecated</strong> 用 <code>@Deprecated</code> 注释的程序元素，不鼓励程序员使用这样的元素，通过是因为它很危险或存在更好的选择</p>
-<p><strong>Override</strong>表示一个方法声明打算重写超类中的另一个方法声明</p>
-<p><strong><code>SuppressWarnings</code></strong>  指示应该在注释元素（以及包含在该注释元素中的所有程序元素）中取消显示指定的编译器警告</p>
-<h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p><strong>什么是元注解？</strong></p>
-<p>用来标注“注解类型”的“注解”，称为元注解</p>
-<p><strong>修饰注解的注解</strong></p>
-<p>在定义注解时需要通过元注解指定例如注解的使用场合、是否生成文档、是否可以继承、注解保持的策略（是否能被反射机制所获取到）</p>
-<p><strong>元注解</strong>：</p>
-<p><code>@Target(&#123;ElementType.METHOD,ElementType.TYPE&#125;)</code>	表示注解的作用域</p>
-<p>参数只能是枚举类型数组</p>
-<pre><code class="java">//使得注解能标识在类和属性前
-@Target(&#123;ElementType.TYPE,ElementType.FIELD&#125;)
-public @interface MyAnnotation &#123;
+    $(&quot;#body&quot;).append(input);
 
 &#125;
+
+//定义一个文本就绪函数
+$(function ()&#123;
+
+    let jQueryObj = $(&quot;.text&quot;);
+
+    //[object Object] jQuery对象
+    alert(jQueryObj);
+
+    let domObj = document.getElementById(&quot;text&quot;);
+
+    //[object HTMLInputElement] dom对象
+    alert(domObj);
+
+    //将dom对象转成jQuery对象
+     let jQueryObj02 = $(domObj);
+
+     //[object Object] jQuery对象,获取jQuery对象的值
+     alert(jQueryObj02.val());
+
+&#125;)
 </code></pre>
+<h3 id="jQuery对象和dom对象区分"><a href="#jQuery对象和dom对象区分" class="headerlink" title="jQuery对象和dom对象区分"></a>jQuery对象和dom对象区分</h3><p><strong>Dom对象</strong></p>
 <ul>
-<li><p><code>@Retention(RetentionPolicy.RUNTIME)</code>	</p>
-<p>注解的生命周期</p>
+<li>通过getElementById()查询出来的标签对象是Dom对象</li>
+<li>通过getElementsByName()查询出来的标签对象是Dom对象</li>
+<li>通过getElementsByTagName()查询出来的标签对象是Dom对象</li>
+<li>通过createElement()方法创建的对象，是Dom对象</li>
+</ul>
+<p><strong>jQuery对象</strong></p>
+<ul>
+<li>通过jQuery提供的API创建的对象，是jQuery对象</li>
+<li>提供jQuery包装的Dom对象，也是jQuery对象</li>
+<li>通过jQuery提供的API查询到的对象，是jQuery对象</li>
+</ul>
+<h3 id="jQuery对象的本质"><a href="#jQuery对象的本质" class="headerlink" title="jQuery对象的本质"></a>jQuery对象的本质</h3><p>jQuery对象是dom对象的<strong>数组</strong> + jQuery 提供的一系列功能<strong>函数</strong></p>
+<ul>
+<li>jQuery对象不能使用DOM对象的属性和方法</li>
+<li>DOM对象也不能使用jQuery对象的属性和方法</li>
+</ul>
+<h4 id="遍历jQuery对象"><a href="#遍历jQuery对象" class="headerlink" title="遍历jQuery对象"></a>遍历jQuery对象</h4><pre><code class="javascript">//通过属性过滤选择器选择所有被选中的多选框
+    function test01()&#123;
+
+        let $hobby = $(&quot;.hobby:checked&quot;);
+
+        //遍历被选中的多选框
+        $hobby.each(function ()&#123;
+
+            //dom对象直接通过value属性取值
+            alert(this.value);
+
+        &#125;)
+
+        //遍历方法2,for循环遍历
+        for (let i = 0; i &lt; $hobby.length; i++) &#123;
+
+            //封装成jQuery对象后取值
+            alert($($hobby[i]).val());
+
+        &#125;
+        
+        //组合选择器
+        $(&quot;input,p.myClass&quot;).each(function ()&#123;
+
+            alert(this)
+
+        &#125;)
+        
+    &#125;
+
+</code></pre>
+<h3 id="Dom对象和jQuery对象互转"><a href="#Dom对象和jQuery对象互转" class="headerlink" title="Dom对象和jQuery对象互转"></a>Dom对象和jQuery对象互转</h3><p><strong>dom对象转化为jQuery对象</strong></p>
+<ul>
+<li>先有DOM对象</li>
+<li>$(DOM)就可以转化成jQuery对象</li>
+</ul>
+<p><strong>jQuery对象转换为dom对象</strong></p>
+<ul>
+<li>先有jQuery对象</li>
+<li>jQuery对象[下标]取出相应的DOM对象</li>
+</ul>
+<h2 id="jQuery选择器"><a href="#jQuery选择器" class="headerlink" title="jQuery选择器"></a>jQuery选择器</h2><p><strong>基本选择器</strong></p>
+<ul>
+<li><p>#ID 选择器：根据id查找标签对象</p>
 </li>
-<li><p><code>RetentionPolicy(设置注解的生命周期以及保持性策略)</code>:</p>
-<p>​	<strong>SOURCE</strong>：</p>
-<p>​		当前注解只保留在源码这个层面上，在类加载的时候不会去生成字节码文件，而且不可以被反射机制所获取!</p>
-<p>​		<strong>CLASS</strong>：</p>
-<p>​		在类加载的时候会生成字节码文件，但是不可以被发射机制获取</p>
-<p>​		<strong>RUNTIME</strong>：</p>
-<p>​		在类加载的时候可以生成字节码文件，而且可以被反射机制获取工</p>
+<li><p>.class 选择器：根据class查找标签对象	</p>
 </li>
-<li><p><code>@Inherited</code></p>
-<p>标识允许子注解来继承这个注解（注意这里只能是继承不能是接口上使用，而且只能继承类上的注解，不能继承方法上的注解）</p>
+<li><p>element 选择器：根据标签名查找标签对象</p>
 </li>
-<li><p><code>@Documented</code>	</p>
-<p>生成JAVADOC时会包含注解</p>
+<li><p>* 选择器：表示任意的，所有的元素</p>
+</li>
+<li><p>selector1，selector2 组合选择器：将符合选择器1或2的结果返回 （<strong>或的关系</strong>）</p>
+</li>
+<li><p>selector1selector2 组合选择器：将符合选择器1且选择器2的结果返回(<strong>且的关系</strong>)</p>
 </li>
 </ul>
-<h2 id="如何通过反射机制获取注解："><a href="#如何通过反射机制获取注解：" class="headerlink" title="如何通过反射机制获取注解："></a>如何通过反射机制获取注解：</h2><p>​		1、创建类对应的字节码对象</p>
-<p>​		2、通过字节码对象获取注解字节码对象</p>
-<pre><code class="java">public class Annotation01 &#123;
+<p>**Tips:**jQuery的id选择器只支持，单词、阿拉伯数字、下划线、中划线，其中单词，包括英文字母、汉字，但是控件id属于客户不可见内容，实际中开发人员是不用汉字作为id的， 这里不考虑</p>
+<p><strong>层级选择器</strong></p>
+<ul>
+<li>ancestor descendant 后代选择器：在给定的祖先元素下匹配所有的后代元素</li>
+<li>parent &gt; child 子元素选择器：在给定的父元素下匹配所有的子元素</li>
+<li>prev + next 相邻元素选择器：匹配所有紧接在prev元素后面的next元素</li>
+<li>prev ~ siblings 之后的兄弟元素选择器：匹配prev元素之后所有siblings元素</li>
+</ul>
+<p><strong>过滤选择器</strong></p>
+<ul>
+<li><p>:first 获取第一个元素</p>
+</li>
+<li><p>:last 获取最后个元素</p>
+</li>
+<li><p>:not(selector) 去除所有与给定选择器匹配的元素</p>
+</li>
+<li><p>:even 匹配所有索引值为偶数的元素，从0开始计数</p>
+</li>
+<li><p>:odd 匹配所有索引值为奇数的元素，从0开始计数</p>
+</li>
+<li><p>:eq(index) 匹配一个给定索引值的元素</p>
+</li>
+<li><p>:gt(index) 匹配所有大于给定索引值的元素</p>
+</li>
+<li><p>:It(index) 匹配所有小于给定索引值的元素</p>
+</li>
+<li><p>:header 匹配如 h1，h2，h3 之类的标题元素</p>
+</li>
+<li><p>:animated 匹配所有正在执行动画效果的元素</p>
+</li>
+</ul>
+<p><strong>内容过滤器</strong></p>
+<ul>
+<li>:contains(text) 匹配包含给定文本的元素</li>
+<li>:empty 匹配所有不包含子元素或者文本的空元素</li>
+<li>:parent 匹配含有子元素或者文本的元素</li>
+<li>:has(selector) 匹配含有选择器所匹配的元素的元素</li>
+</ul>
+<p><strong>属性过滤器</strong></p>
+<ul>
+<li>[attribute] 匹配包含给定属性的元素</li>
+<li>[attribute&#x3D;value] 匹配给定的属性是某个特定值的元素</li>
+<li>[attribute!&#x3D;value] 匹配所有不含有指定的属性，或者属性不等于特定值的元素</li>
+<li>[attribute^&#x3D;value] 匹配给定的属性是以某些值开始的元素</li>
+<li>[attribute$&#x3D;value] 匹配给定的属性是以某些值结尾的元素 </li>
+<li>[attribute*&#x3D;value] 匹配给定的属性是以包含某些值的元素</li>
+<li>[attrSel1][attrSel2][attrSelN] 复合属性选择器，需要同时满足多个条件时使用</li>
+</ul>
+<pre><code class="javascript">/*属性过滤选择器*/
+$(&quot;[value]&quot;).each(function ()&#123;
 
-    public static void main(String[] args) &#123;
+    alert(this.value)
+
+&#125;)
+
+/*匹配具有value属性并且value值等于1的元素*/
+$(&quot;[value=test1]&quot;).each(function ()&#123;
+
+    alert(this.value)
+
+&#125;)
+
+/*过滤value属性值以t开头的元素*/
+$(&quot;[value^=t]&quot;).each(function ()&#123;
+
+    alert(this.value)
+    
+&#125;)
 
 
-        try &#123;
+/*过滤value属性值包含es的元素*/
+$(&quot;[value*=es]&quot;).each(function ()&#123;
 
-            //创建字节码对象
-            Class aClass = Class.forName(&quot;com.os467.pojo.User&quot;);
+    alert(this.value)
 
-            //获取类上的注解
-            MyAnnotation annotation = (MyAnnotation)aClass.getAnnotation(MyAnnotation.class);
+&#125;)
 
-            if (annotation != null)&#123;
+/*复合属性选择器，选择value包含es，并且value以1结尾的元素*/
+$(&quot;[value*=&#39;es&#39;][value$=&#39;1&#39;]&quot;).each(function ()&#123;
 
-                //获取注解上的属性
-                System.out.println(annotation.name());
+    alert(this.value)
 
-                //获取属性字节码对象
-                Field[] declaredFields = aClass.getDeclaredFields();
-
-                for (Field declaredField : declaredFields) &#123;
-
-                    MyAnnotation annotation1 = declaredField.getAnnotation(MyAnnotation.class);
-
-                    if (annotation1 != null)&#123;
-
-                        System.out.println(declaredField.getName()+&quot; 这个属性上有注解&quot;);
-
-                    &#125;
-
-                &#125;
-
-            &#125;
-
-        &#125; catch (ClassNotFoundException e) &#123;
-            e.printStackTrace();
-        &#125;
-
-
-    &#125;
-
-&#125;
+&#125;)
 </code></pre>
-<h3 id="根据注解自动生成SQL查询语句"><a href="#根据注解自动生成SQL查询语句" class="headerlink" title="根据注解自动生成SQL查询语句"></a>根据注解自动生成SQL查询语句</h3><pre><code class="java">package com.os467;
+<p><strong>表单过滤器</strong></p>
+<ul>
+<li>:input 匹配所有 input，textarea，select，和 button 元素</li>
+<li>:text 匹配所有 文本输入框</li>
+<li>:password 匹配所有的密码输入框</li>
+<li>:radio 匹配所有的单选框</li>
+<li>:checkbox 匹配所有的复选框</li>
+<li>:submit 匹配所有提交按钮</li>
+<li>:image 匹配所有img标签</li>
+<li>:reset 匹配所有重置按钮</li>
+<li>:button 匹配所有 input type&#x3D;button &lt;button&gt;按钮</li>
+<li>xxxxxxxxxx window.onload &#x3D; function (){​    &#x2F;&#x2F;返回一个dom对象    let elementBody &#x3D; document.getElementById(“body”);​    &#x2F;&#x2F;获取所有的子节点    let childNodes &#x3D; elementBody.childNodes;​    for (let i &#x3D; 0; i &lt; childNodes.length; i++) {​        alert(childNodes[i]);​    }​    let firstChild &#x3D; elementBody.firstChild;​    &#x2F;&#x2F;文本对象    alert(firstChild);​    let lastChild &#x3D; elementBody.lastChild;​    alert(lastChild);​    let elementButton &#x3D; document.getElementById(“test1”);​    let parentNode &#x3D; elementButton.parentNode;​    }javascript</li>
+<li>:hidden 匹配所有不可见元素 display:none 或 input</li>
+</ul>
+<p><strong>表单对象属性管理器</strong></p>
+<ul>
+<li>:enabled 匹配所有可用元素</li>
+<li>:disabled 匹配所有不可用元素</li>
+<li><strong>:checked</strong> 匹配所有选中的单选，复选，和下拉列表中选中的option标签对象</li>
+<li>:selected 匹配所有选中的 option</li>
+</ul>
+<p><strong>jQuery元素筛选</strong></p>
+<ul>
+<li>eq() 获取给定索引的元素 功能跟 :eq() 一样</li>
+<li>first() 获取第一个元素 功能</li>
+<li>last() 获取最后一个元素 功能跟 :last一样</li>
+<li>filter(exp) 留下匹配的元素</li>
+<li>is(exp) 判断是否匹配给定的选择器，只要有一个匹配就返回，true</li>
+<li>has(exp) 返回包含有匹配选择器的元素的元素</li>
+<li>not(exp) 删除匹配选择器的元素</li>
+<li>children(exp) 返回匹配给定选择器的子元素功能</li>
+<li>find(exp) 返回匹配给定选择器的后代元素</li>
+</ul>
+<p><strong>jQuery的属性操作</strong></p>
+<ul>
+<li>html() 它可以设置和获取起始标签和结束标签中的内容，跟dom属性innerHTML一样。</li>
+<li>text() 它可以设置和获取起始标签和结束标签中的文本，跟dom属性innerText一样。</li>
+<li>val() 它可以设置和获取表单项的value属性值，跟dom属性value一样</li>
+<li>attr() 可以设置和获取属性的值</li>
+<li>prop() 可以设置和获取属性的值</li>
+</ul>
+<p><strong>遍历jQuery对象</strong></p>
+<pre><code class="javascript">let hobbyEls = $(&quot;.hobby&quot;);
 
-import com.os467.Annotion.Table;
+alert(hobbyEls)
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
+for (let i = 0; i &lt; hobbyEls.length; i++) &#123;
 
-
-public class ORM &#123;
-
-    private ORM()&#123;
-
-    &#125;
-
-    public static String getSql(Object obj)&#123;
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        //获取obj字节码对象
-        Class aClass = obj.getClass();
-
-        Table annotation = (Table)aClass.getAnnotation(Table.class);
-
-        //表的名称
-        String table = null;
-
-        if (annotation != null)&#123;
-
-            //获取表的名称
-            table = annotation.value();
-
-            stringBuilder.append(&quot;select * from &quot;+ table +&quot; where &quot;);
-
-        &#125;
-
-        //获取属性字节码对象
-        Field[] declaredFields = aClass.getDeclaredFields();
-
-        for (Field declaredField : declaredFields) &#123;
-
-            //打破封装
-            declaredField.setAccessible(true);
-
-            com.os467.Annotion.Field annotation1 = declaredField.getAnnotation(com.os467.Annotion.Field.class);
-
-            //注解不为空的情况下拼接
-            if (annotation1 != null)&#123;
-
-                try &#123;
-
-                    //获取属性值
-                    Object o = declaredField.get(obj);
-
-                    //检查email属性是否有多个&quot;，&quot;隔开
-                    if (o != null &amp;&amp; o.toString().contains(&quot;,&quot;))&#123;
-
-                        stringBuilder.append(annotation1.value() + &quot; in(&quot; + o + &quot;) and&quot;);
-
-                    &#125;else if (o != null &amp;&amp; !o.toString().equals(&quot;0&quot;))&#123;
-
-                        stringBuilder.append(annotation1.value() + &quot; = &quot;);
-
-                        if (o instanceof String)&#123;
-
-                            stringBuilder.append(&quot;&#39;&quot; + o + &quot;&#39;&quot; + &quot; and &quot;);
-
-                        &#125;
-
-                        if (o instanceof Integer)&#123;
-
-                            stringBuilder.append(o + &quot; and &quot;);
-
-                        &#125;
-
-                    &#125;
-
-
-                &#125; catch (IllegalAccessException e) &#123;
-                    e.printStackTrace();
-                &#125;
-
-            &#125;
-
-        &#125;
-
-        String s = stringBuilder.toString();
-
-        //替换掉最后的and 
-        s = s.substring(0,s.length() - 4);
-
-        if (s.contains(&quot;=&quot;))&#123;
-
-            return s;
-
-        &#125;
-
-        return null;
-    &#125;
+    //[object HTMLInputElement]
+    alert(hobbyEls[i]);
 
 &#125;
+
+//jQuery中的遍历方法
+        hobbyEls.each(function ()&#123;
+
+            //this 是遍历时获取到的dom对象
+            //[object HTMLInputElement]
+            alert(this.value + &quot; dom&quot;);
+            
+            alert($(this).val() + &quot; jQuery&quot;);
+
+        &#125;)
+
+ //标签选择器
+        $(&quot;input&quot;).each(function ()&#123;
+
+            alert(this);
+
+        &#125;)
+</code></pre>
+<p><strong>属性过滤选择器</strong></p>
+<pre><code class="javascript">//通过属性过滤选择器选择所有被选中的多选框
+function test01()&#123;
+
+    let $hobby = $(&quot;.hobby:checked&quot;);
+
+    //遍历被选中的多选框
+    $hobby.each(function ()&#123;
+
+        alert(this.value);
+
+    &#125;)
+
+
+&#125;
+
+
+//通过属性值过滤标签
+$(&quot;[name = &#39;hobby&#39;]&quot;).each(function ()&#123;
+
+
+            alert(this)
+
+        &#125;)
+</code></pre>
+<h2 id="jQuery的属性操作"><a href="#jQuery的属性操作" class="headerlink" title="jQuery的属性操作"></a>jQuery的属性操作</h2><ul>
+<li>html() 它可以设置和获取起始标签和结束标签中的内容，跟dom属性innerHTML一样</li>
+<li>text() 它可以设置和获取起始标签和结束标签中的文本，跟dom属性innerText一样</li>
+<li>val() 它可以设置和获取表单项的value属性值，跟dom属性value一样</li>
+<li>attr() 可以设置和获取属性的值</li>
+<li>prop() 可以设置和获取属性的值</li>
+</ul>
+<p><strong>动态注册方法</strong></p>
+<pre><code class="javascript"> //文本就绪函数
+    $(function ()&#123;
+
+        //全选
+        $(&quot;[value = &#39;全选&#39;]&quot;).click(function ()&#123;
+
+            //遍历所有的多选框
+            $(&quot;.hobby&quot;).each(function ()&#123;
+
+                //将标签的checked设置为true
+                $(this).prop(&quot;checked&quot;,true)
+
+            &#125;)
+
+        &#125;)
+
+        //全不选
+        $(&quot;[value = &#39;全不选&#39;]&quot;).click(function ()&#123;
+
+            //遍历所有的多选框
+            $(&quot;.hobby&quot;).each(function ()&#123;
+
+                //将标签的checked设置为false
+                $(this).prop(&quot;checked&quot;,false)
+
+            &#125;)
+
+        &#125;)
+
+        //反选
+        $(&quot;[value = &#39;反选&#39;]&quot;).click(function ()&#123;
+
+            //遍历所有的多选框
+            $(&quot;.hobby&quot;).each(function ()&#123;
+
+                //将标签的checked设置为取非
+                $(this).prop(&quot;checked&quot;,!this.checked)
+
+            &#125;)
+
+        &#125;)
+
+    &#125;)
+</code></pre>
+<h5 id="通过jQuery和js原生两种方法实现用户注册规范提示"><a href="#通过jQuery和js原生两种方法实现用户注册规范提示" class="headerlink" title="通过jQuery和js原生两种方法实现用户注册规范提示"></a>通过jQuery和js原生两种方法实现用户注册规范提示</h5><pre><code class="javascript">$(function ()&#123;
+
+    let u = new RegExp(&quot;^[A-z][A-z0-9-_]&#123;3,16&#125;$&quot;);
+
+    let ps = new RegExp(&quot;[A-z0-9-_+*?!]&#123;3,16&#125;$&quot;);
+
+
+    /*jQuery*/
+    let usernameEl = $(&quot;#username&quot;);
+
+    usernameEl.blur(function ()&#123;
+
+        let username = $(&quot;#username&quot;).val();
+
+        if (u.test(username))&#123;
+
+            $(&quot;#usernameSpan&quot;).text(&quot;用户名合法&quot;);
+
+            $(&quot;#usernameSpan&quot;).prop(&quot;style&quot;,&quot;color:green&quot;);
+
+
+        &#125;else &#123;
+
+            $(&quot;#usernameSpan&quot;).text(&quot;用户名不合法&quot;);
+
+            $(&quot;#usernameSpan&quot;).prop(&quot;style&quot;,&quot;color:red&quot;);
+
+        &#125;
+
+        if (username.length == 0)&#123;
+
+            $(&quot;#usernameSpan&quot;).text(&quot;&quot;);
+
+        &#125;
+
+    &#125;)
+
+    /*js原生*/
+    let passwordEl = document.getElementById(&quot;password&quot;);
+
+    passwordEl.onblur = function ()&#123;
+
+        let password = passwordEl.value;
+
+        let passwordSpan = document.getElementById(&quot;passwordSpan&quot;);
+
+        if (ps.test(password))&#123;
+
+            passwordSpan.innerText = &quot;密码合法&quot;;
+
+            passwordSpan.style = &quot;color:green&quot;;
+
+        &#125;else &#123;
+
+            passwordSpan.innerText = &quot;密码不合法&quot;;
+
+            passwordSpan.style = &quot;color:red&quot;;
+
+        &#125;
+
+        if (password.length == 0)&#123;
+
+            passwordSpan.innerText = &quot;&quot;;
+
+        &#125;
+
+    &#125;
+
+&#125;)
+</code></pre>
+<h3 id="DOM的增删改"><a href="#DOM的增删改" class="headerlink" title="DOM的增删改"></a>DOM的增删改</h3><p><strong>内部插入:</strong></p>
+<ul>
+<li><code>a.appendTo(b)</code>把a插入到b子元素末尾，成为最后一个子元素</li>
+<li><code>prependTo() a.prependTo(b)</code>把a插到b所有子元素前面，成为第一个子元素</li>
+</ul>
+<pre><code class="javascript">$(&quot;body&quot;).append(&quot;&lt;input type=&#39;button&#39; value=&#39;123456&#39;&gt;&quot;)
+$(&quot;&lt;input type=&#39;button&#39; value=&#39;123456&#39;&gt;&quot;).appendTo($(&quot;span&quot;));
+</code></pre>
+<p><strong>外部插入:</strong></p>
+<ul>
+<li><code>insertAfter()	a.insertAfter(b)</code></li>
+<li><code>insertBefore() 	a.insertBefore(b)</code></li>
+</ul>
+<p><strong>替换:</strong></p>
+<p><code>replaceWith() a.replaceWith(b)</code>		用b替换掉a</p>
+<p><code>replaceAl() a.replaceAll(b)</code>		用a替换掉所有b</p>
+<p><strong>删除：</strong></p>
+<p><code>remove()	a.remove();</code>		删除a标签</p>
+<p><code>empty()	a.empty();</code>		清空a标签里的内容</p>
+<pre><code class="javascript">$(&quot;a&quot;).remove();
+$(&quot;a&quot;).empty();
 </code></pre>
 
       

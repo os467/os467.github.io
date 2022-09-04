@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Annotation | Tly的博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Annotation | Tly的博客">
+  <title>注解 | Tly的博客</title>
+  <meta name="keywords" content=" JAVASE进阶 ">
+  <meta name="description" content="注解 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="分布式搜索ESElastic Search简介什么是elasticsearch？ elasticsearch是一款非常强大的开源搜索引擎，可以帮助我们从海量数据中快速找到需要的内容 elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK），被广泛应用在日志数据分析、实时监控等领域 数据可视化  Kibana  存储、搜索、分析数据  el">
 <meta property="og:type" content="article">
@@ -694,19 +694,26 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Annotation" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-注解Annotation" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Annotation</h1>
+        <h1 class="article-title">注解</h1>
     
     <div class="article-meta">
         
         
         
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">JAVASE进阶</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-07-14 19:36:20'>2022-07-14 19:36</time>
+            发布时间 : <time class="date" title='最后更新: 2022-09-04 23:45:40'>2022-07-14 10:09</time>
         
     </div>
     <div class="article-meta">
@@ -781,7 +788,7 @@
     
 &#125;
 </code></pre>
-<p><strong>在注解中定义属性只能时八大基本数据类型、字符串类型String、枚举类型、以及主要类型所对应的数组类型</strong></p>
+<p><strong>在注解中定义属性只能是八大基本数据类型、字符串类型String、枚举类型、以及主要类型所对应的数组类型</strong></p>
 <p>在定义属性时，如果属性名称是<strong>value</strong>，那在注解修饰元素，并且给属性赋值的时候，属性名称可以<strong>省略不写</strong></p>
 <pre><code class="java">@MyAnnotation(name = &quot;123&quot;,i = 100)
 </code></pre>
@@ -810,7 +817,7 @@ public @interface MyAnnotation &#123;
 <p>注解的生命周期</p>
 </li>
 <li><p><code>RetentionPolicy(设置注解的生命周期以及保持性策略)</code>:</p>
-<p>​	<strong>SOURCE</strong>：</p>
+<p>​		<strong>SOURCE</strong>：</p>
 <p>​		当前注解只保留在源码这个层面上，在类加载的时候不会去生成字节码文件，而且不可以被反射机制所获取!</p>
 <p>​		<strong>CLASS</strong>：</p>
 <p>​		在类加载的时候会生成字节码文件，但是不可以被发射机制获取</p>
