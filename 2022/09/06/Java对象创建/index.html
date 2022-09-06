@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>注解 | Tly的博客</title>
+  <title>Java对象创建 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="注解 | Tly的博客">
+  <meta name="description" content="Java对象创建 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Java对象创建new对象过程1、类加载检查当Java虚拟机遇到一条字节码new指令时，首先将去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已被加载、解析和初始化 如果没有，那必须先执行相应的类加载过程，类加载就是在这个时候发生的  实例化对象的条件：所使用的类必须完成了类加载，连接，初始化三个阶段，能在常量池中定位到类的符号引用（全类名，字段名，描述">
 <meta property="og:type" content="article">
@@ -717,9 +717,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-注解Annotation" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Java对象创建" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">注解</h1>
+        <h1 class="article-title">Java对象创建</h1>
     
     <div class="article-meta">
         
@@ -729,7 +729,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="JAVASE进阶">JAVASE进阶</a>
+            <a  data-rel="底层学习">底层学习</a>
             
         </span>
         
@@ -737,12 +737,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-05 00:07:06'>2022-07-14 10:09</time>
+            发布时间 : <time class="date" title='最后更新: 2022-09-06 21:17:27'>2022-09-06 21:16</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.5k</span>
+        <span>字数:2.2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -761,7 +761,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3"><span class="toc-text">注解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B3%A8%E8%A7%A3"><span class="toc-text">创建一个注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%B3%A8%E8%A7%A3%E4%B8%AD%E5%A3%B0%E6%98%8E%E5%B1%9E%E6%80%A7"><span class="toc-text">在注解中声明属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3%E8%BF%90%E7%94%A8%E8%8C%83%E5%9B%B4"><span class="toc-text">注解运用范围</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK%E5%86%85%E7%BD%AE%E6%B3%A8%E8%A7%A3"><span class="toc-text">JDK内置注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E6%B3%A8%E8%A7%A3"><span class="toc-text">元注解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E8%8E%B7%E5%8F%96%E6%B3%A8%E8%A7%A3%EF%BC%9A"><span class="toc-text">如何通过反射机制获取注解：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E6%B3%A8%E8%A7%A3%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90SQL%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5"><span class="toc-text">根据注解自动生成SQL查询语句</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA"><span class="toc-text">Java对象创建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#new%E5%AF%B9%E8%B1%A1%E8%BF%87%E7%A8%8B"><span class="toc-text">new对象过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%A3%80%E6%9F%A5"><span class="toc-text">1、类加载检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98"><span class="toc-text">2、分配内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AF%B9%E8%B1%A1%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">3、对象初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%AF%B9%E8%B1%A1%E5%A4%B4%E8%AE%BE%E7%BD%AE"><span class="toc-text">4、对象头设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">5、构造函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="toc-text">对象的内存布局</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%A4%B4"><span class="toc-text">对象头</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E6%95%B0%E6%8D%AE"><span class="toc-text">实例数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E9%BD%90%E8%A1%A5%E5%85%85"><span class="toc-text">对齐补充</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OOM%E5%BC%82%E5%B8%B8"><span class="toc-text">OOM异常</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E5%A0%86%E6%BA%A2%E5%87%BA"><span class="toc-text">Java堆溢出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E6%A0%88%E6%BA%A2%E5%87%BA"><span class="toc-text">Java栈溢出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0%E6%BA%A2%E5%87%BA"><span class="toc-text">运行时常量池溢出</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -777,231 +777,187 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h1><p><strong>什么是注解？</strong></p>
-<p>是<strong>元数据(Annotation)</strong> ，是一种对代码进行说明的数据，JDK1.5引入的新<strong>规范</strong>，是与类、接口、枚举等引用类型处于同一个层次，可以用在包、类、属性、方法、方法的参数和局部变量等的前边，<strong>不影响代码的语义</strong>，可以对其进行<strong>解析</strong></p>
-<p><strong>注解Annotation</strong>:  是一种<strong>引用数据类型</strong>(在类加载的时候会生成字节码文件)</p>
-<p><strong>注解在以后的用途:</strong></p>
-<p>​		注解的作用：</p>
-<p>​		注解只能起到一个<strong>标识</strong>的作用</p>
-<p><strong>spring框架</strong>：基于注解的开发模式</p>
-<p>​		学习了反射可以不使用new关键字去创建一个类的实例</p>
-<p>​		spring是一个容器里面会存放很多类的实例</p>
-<p><strong>我怎么知道有哪些类需要去创建实例，那些类不需要创建实例?</strong></p>
-<p>​		用注解去标识一下，需要创建实例的类，用注解去做一个标识</p>
-<p>​		在spring框架检测到该类有注解时，就会通过反射机制去创建该类的实例</p>
-<p><strong>beans</strong>： User、Student、Person、Animal</p>
-<h2 id="创建一个注解"><a href="#创建一个注解" class="headerlink" title="创建一个注解"></a>创建一个注解</h2><pre><code class="java">public @interface MyAnnotation &#123;
-    
-&#125;
-</code></pre>
-<p>注解中可以拥有属性，但是<strong>不能拥有方法</strong></p>
-<p>如果你给一个注解声明了属性，那么在注解<strong>修饰元素</strong>的时候，就必须要给属性<strong>赋值</strong>，除非你在声明属性的时候，给了属性默认值</p>
-<h3 id="在注解中声明属性"><a href="#在注解中声明属性" class="headerlink" title="在注解中声明属性"></a>在注解中声明属性</h3><pre><code class="java">public @interface MyAnnotation &#123;
-
-    //在注解中如何去声明属性
-    String name() default &quot;&quot;;
-
-    int i();
-
-    String[] strings() default &#123;&quot;1&quot;,&quot;2&quot;&#125;;
-
-    //枚举类型
-    Math math() default Math.Max;
-    
-    Math[] maths() default &#123;Math.Max,Math.Count,Math.Sum&#125;;
-    
-&#125;
-</code></pre>
-<p><strong>在注解中定义属性只能是八大基本数据类型、字符串类型String、枚举类型、以及主要类型所对应的数组类型</strong></p>
-<p>在定义属性时，如果属性名称是<strong>value</strong>，那在注解修饰元素，并且给属性赋值的时候，属性名称可以<strong>省略不写</strong></p>
-<pre><code class="java">@MyAnnotation(name = &quot;123&quot;,i = 100)
-</code></pre>
-<h4 id="注解运用范围"><a href="#注解运用范围" class="headerlink" title="注解运用范围"></a>注解运用范围</h4><p>注解使用时的语法格式是：</p>
-<p>​		@注解类型名</p>
-<p>注解可以出现在类上、属性上、方法上、变量上等</p>
-<p>注解可以出现在注解类型上</p>
-<h3 id="JDK内置注解"><a href="#JDK内置注解" class="headerlink" title="JDK内置注解"></a>JDK内置注解</h3><p><strong>Deprecated</strong> 用 <code>@Deprecated</code> 注释的程序元素，不鼓励程序员使用这样的元素，通过是因为它很危险或存在更好的选择</p>
-<p><strong>Override</strong>表示一个方法声明打算重写超类中的另一个方法声明</p>
-<p><strong><code>SuppressWarnings</code></strong>  指示应该在注释元素（以及包含在该注释元素中的所有程序元素）中取消显示指定的编译器警告</p>
-<h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p><strong>什么是元注解？</strong></p>
-<p>用来标注“注解类型”的“注解”，称为元注解</p>
-<p><strong>修饰注解的注解</strong></p>
-<p>在定义注解时需要通过元注解指定例如注解的使用场合、是否生成文档、是否可以继承、注解保持的策略（是否能被反射机制所获取到）</p>
-<p><strong>元注解</strong>：</p>
-<p><code>@Target(&#123;ElementType.METHOD,ElementType.TYPE&#125;)</code>	表示注解的作用域</p>
-<p>参数只能是枚举类型数组</p>
-<pre><code class="java">//使得注解能标识在类和属性前
-@Target(&#123;ElementType.TYPE,ElementType.FIELD&#125;)
-public @interface MyAnnotation &#123;
-
-&#125;
-</code></pre>
+        <h1 id="Java对象创建"><a href="#Java对象创建" class="headerlink" title="Java对象创建"></a>Java对象创建</h1><h2 id="new对象过程"><a href="#new对象过程" class="headerlink" title="new对象过程"></a>new对象过程</h2><h3 id="1、类加载检查"><a href="#1、类加载检查" class="headerlink" title="1、类加载检查"></a>1、类加载检查</h3><p>当Java虚拟机遇到一条字节码<strong>new指令</strong>时，<strong>首先</strong>将去检查这个指令的参数是否能在常量池中定位到一个<strong>类的符号引用</strong>，并且<strong>检查</strong>这个符号引用代表的类<strong>是否已被加载、解析和初始化</strong></p>
+<p>如果没有，那必须先执行相应的<strong>类加载过程</strong>，类加载就是在这个时候发生的</p>
+<blockquote>
+<p>实例化对象的条件：所使用的类必须完成了类加载，连接，初始化三个阶段，能在常量池中定位到类的符号引用（全类名，字段名，描述符，方法名等）</p>
+</blockquote>
+<h3 id="2、分配内存"><a href="#2、分配内存" class="headerlink" title="2、分配内存"></a>2、分配内存</h3><p>在类加载检查通过后，虚拟机将为新生的对象分配内存（内存大小在类加载器加载阶段计算得出）</p>
+<blockquote>
+<p> 为对象分配内存空间的任务实际上等同于将一块确定大小的内存从java堆中分离出来</p>
+</blockquote>
+<p><strong>堆内存是否规整决定了内存的分配方式</strong></p>
+<p>如果堆内存规则，则使用<strong>“指针碰撞”</strong>分配方式</p>
+<blockquote>
+<p>将当前指针向空闲内存区域移动一段和新生对象大小相等的距离</p>
+</blockquote>
+<p>如果堆内存不规整，则使用<strong>“空闲列表”</strong>分配方式</p>
+<blockquote>
+<p>虚拟机需要维护一个列表，上面记录了哪些内存块可用，在分配时找到一块足够大的空间划分给对象实例，并更新列表记录</p>
+</blockquote>
+<p>堆内存是否规整是由垃圾收集器决定的，即垃圾回收时是否带有空间压缩整理能力</p>
+<h3 id="3、对象初始化"><a href="#3、对象初始化" class="headerlink" title="3、对象初始化"></a>3、对象初始化</h3><p>内存分配完成后，虚拟机需要将分配到的内存空间（不包括对象头）都初始化为零值</p>
+<blockquote>
+<p>这里区别于类的初始化，类的初始化是发生在类的加载检查阶段，类初始化会执行类的静态部分内容</p>
+</blockquote>
+<h3 id="4、对象头设置"><a href="#4、对象头设置" class="headerlink" title="4、对象头设置"></a>4、对象头设置</h3><p>在这一步一般会决定是否要启用对象的偏向锁，并且设置对象头信息</p>
+<blockquote>
+<p>详细阅读下文对象的内存布局</p>
+</blockquote>
+<h3 id="5、构造函数"><a href="#5、构造函数" class="headerlink" title="5、构造函数"></a>5、构造函数</h3><p>在此之前对象的所有字段都为默认零值，Class文件中<code>&lt;init&gt;()</code>方法的执行，<strong>会按照程序员的意愿对对象进行初始化，执行构造函数</strong></p>
+<blockquote>
+<p>在执行子类构造函数之前会先执行父类的构造函数</p>
+</blockquote>
+<h2 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h2><p>对象在堆内存中的存储布局可以划分为三个部分：<strong>对象头</strong>（Header），<strong>实例数据</strong>（InstanceData）和<strong>对齐填充</strong>（Padding）</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8zMzgxOTkwLWI1MzE5ZWJlNDMxZjM4NDkucG5n?x-oss-process=image/format,png"></p>
+<h4 id="对象头"><a href="#对象头" class="headerlink" title="对象头"></a>对象头</h4><p><strong>对象头包括两类信息</strong></p>
+<p>第一类是用于存储<strong>对象的运行时数据Mark Word</strong></p>
 <ul>
-<li><p><code>@Retention(RetentionPolicy.RUNTIME)</code>	</p>
-<p>注解的生命周期</p>
-</li>
-<li><p><code>RetentionPolicy(设置注解的生命周期以及保持性策略)</code>:</p>
-<p>​		<strong>SOURCE</strong>：</p>
-<p>​		当前注解只保留在源码这个层面上，在类加载的时候不会去生成字节码文件，而且不可以被反射机制所获取!</p>
-<p>​		<strong>CLASS</strong>：</p>
-<p>​		在类加载的时候会生成字节码文件，但是不可以被发射机制获取</p>
-<p>​		<strong>RUNTIME</strong>：</p>
-<p>​		在类加载的时候可以生成字节码文件，而且可以被反射机制获取工</p>
-</li>
-<li><p><code>@Inherited</code></p>
-<p>标识允许子注解来继承这个注解（注意这里只能是继承不能是接口上使用，而且只能继承类上的注解，不能继承方法上的注解）</p>
-</li>
-<li><p><code>@Documented</code>	</p>
-<p>生成JAVADOC时会包含注解</p>
-</li>
+<li>如哈希码（HashCode），GC分代年龄，锁状态标志，线程持有的锁，偏向线程ID，偏向时间戳等</li>
 </ul>
-<h2 id="如何通过反射机制获取注解："><a href="#如何通过反射机制获取注解：" class="headerlink" title="如何通过反射机制获取注解："></a>如何通过反射机制获取注解：</h2><p>​		1、创建类对应的字节码对象</p>
-<p>​		2、通过字节码对象获取注解字节码对象</p>
-<pre><code class="java">public class Annotation01 &#123;
+<p>第二类是<strong>类型指针</strong>，即<strong>对象指向它的类型元数据指针</strong>，Java虚拟机通过这个指针来<strong>确定该对象是哪个类的实例</strong></p>
+<ul>
+<li>如果对象是一个Java数组，那么在对象头中还必须有一块用于记录数组长度的数据</li>
+</ul>
+<h4 id="实例数据"><a href="#实例数据" class="headerlink" title="实例数据"></a>实例数据</h4><p>实例数据是对象真正存储的有效信息，即我们在程序代码里面所定义的各种类型的字段内容，无论是从父类继承下来的，还是在子类中定义的字段都必须记录起来</p>
+<h4 id="对齐补充"><a href="#对齐补充" class="headerlink" title="对齐补充"></a>对齐补充</h4><p>无特殊含义，仅仅起到<strong>占位符作用</strong>，虚拟机的自动内存管理系统要求对象起始地址必须是<strong>8字节的整数倍</strong></p>
+<h2 id="OOM异常"><a href="#OOM异常" class="headerlink" title="OOM异常"></a>OOM异常</h2><p>内存溢出异常与虚拟机本身的实现密切相关</p>
+<h3 id="Java堆溢出"><a href="#Java堆溢出" class="headerlink" title="Java堆溢出"></a>Java堆溢出</h3><p>Java堆用于存储对象实例，只需要不断地创建对象，并且保证GC Roots到达对象之间<strong>存在可达路径</strong>来避免GC</p>
+<p>那么随着对象数量增加，总容量触及最大堆内存容量限制后就会产生OOM异常</p>
+<p>要解决这个内存区域的异常，首先需要确认导致OOM的对象是否是必要的，也就是要分清楚是出现了<strong>内存泄漏</strong>还是<strong>内存溢出</strong></p>
+<ul>
+<li>如果是<strong>内存泄漏</strong>，我们则需要通过查找工具找到对象到GC roots的引用链，找到对象创建的位置，进而找出产生内存泄漏代码的具体位置</li>
+<li>如果是<strong>内存溢出</strong>，也就是内存中的对象确实都是必须存活的，那就应当检查Java虚拟机的<strong>堆参数</strong>（-Xms与-Xms）设置，与机器内存对比，查看是否还有向上调整的空间，再从<strong>代码上</strong>检查是否存在某些对象<strong>生命周期过长</strong>，<strong>持有状态时间过长</strong>，<strong>存储结构设计不合理</strong>等情况，尽量减少程序运行期的内存消耗</li>
+</ul>
+<pre><code class="java">public class TestDemo &#123;
+
+    static class  OOMObject&#123;
+
+    &#125;
 
     public static void main(String[] args) &#123;
 
+        List&lt;OOMObject&gt; list = new ArrayList&lt;OOMObject&gt;();
+
+        while (true)&#123;
+            list.add(new OOMObject());
+        &#125;
+
+    &#125;
+
+
+&#125;
+</code></pre>
+<p><strong>异常信息</strong></p>
+<pre><code class="java">Exception in thread &quot;main&quot; java.lang.OutOfMemoryError: Java heap space
+    at java.util.Arrays.copyOf(Arrays.java:3210)
+    at java.util.Arrays.copyOf(Arrays.java:3181)
+    at java.util.ArrayList.grow(ArrayList.java:261)
+    at java.util.ArrayList.ensureExplicitCapacity(ArrayList.java:235)
+    at java.util.ArrayList.ensureCapacityInternal(ArrayList.java:227)
+    at java.util.ArrayList.add(ArrayList.java:458)
+    at TestDemo.main(TestDemo.java:15)
+</code></pre>
+<h3 id="Java栈溢出"><a href="#Java栈溢出" class="headerlink" title="Java栈溢出"></a>Java栈溢出</h3><p>栈内存容量由-Xss参数来设定</p>
+<ul>
+<li>如果<strong>线程请求的栈深度</strong>大于虚拟机所允许的最大深度，将抛出SOF（StackOverflow）异常</li>
+<li>如果虚拟机的栈内存允许动态扩展，当<strong>扩展栈容量无法申请到足够的内存时</strong>，将抛出OOM异常</li>
+</ul>
+<pre><code class="java">/**
+* VM Args: -Xss128k
+*/
+public class JavaVMStackTest &#123;
+
+    private int stackLength = 1;
+
+    public void stackLeak()&#123;
+        stackLength++;
+        stackLeak();
+    &#125;
+
+    public static void main(String[] args) throws Throwable &#123;
+
+        JavaVMStackTest oom = new JavaVMStackTest();
 
         try &#123;
-
-            //创建字节码对象
-            Class aClass = Class.forName(&quot;com.os467.pojo.User&quot;);
-
-            //获取类上的注解
-            MyAnnotation annotation = (MyAnnotation)aClass.getAnnotation(MyAnnotation.class);
-
-            if (annotation != null)&#123;
-
-                //获取注解上的属性
-                System.out.println(annotation.name());
-
-                //获取属性字节码对象
-                Field[] declaredFields = aClass.getDeclaredFields();
-
-                for (Field declaredField : declaredFields) &#123;
-
-                    MyAnnotation annotation1 = declaredField.getAnnotation(MyAnnotation.class);
-
-                    if (annotation1 != null)&#123;
-
-                        System.out.println(declaredField.getName()+&quot; 这个属性上有注解&quot;);
-
-                    &#125;
-
-                &#125;
-
-            &#125;
-
-        &#125; catch (ClassNotFoundException e) &#123;
-            e.printStackTrace();
+            oom.stackLeak();
+        &#125;catch (Throwable e)&#123;
+            System.out.println(&quot;stack length:&quot;+oom.stackLength);
+            throw e;
         &#125;
-
 
     &#125;
 
 &#125;
 </code></pre>
-<h3 id="根据注解自动生成SQL查询语句"><a href="#根据注解自动生成SQL查询语句" class="headerlink" title="根据注解自动生成SQL查询语句"></a>根据注解自动生成SQL查询语句</h3><pre><code class="java">package com.os467;
-
-import com.os467.Annotion.Table;
-
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
-
-
-public class ORM &#123;
-
-    private ORM()&#123;
-
-    &#125;
-
-    public static String getSql(Object obj)&#123;
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        //获取obj字节码对象
-        Class aClass = obj.getClass();
-
-        Table annotation = (Table)aClass.getAnnotation(Table.class);
-
-        //表的名称
-        String table = null;
-
-        if (annotation != null)&#123;
-
-            //获取表的名称
-            table = annotation.value();
-
-            stringBuilder.append(&quot;select * from &quot;+ table +&quot; where &quot;);
-
-        &#125;
-
-        //获取属性字节码对象
-        Field[] declaredFields = aClass.getDeclaredFields();
-
-        for (Field declaredField : declaredFields) &#123;
-
-            //打破封装
-            declaredField.setAccessible(true);
-
-            com.os467.Annotion.Field annotation1 = declaredField.getAnnotation(com.os467.Annotion.Field.class);
-
-            //注解不为空的情况下拼接
-            if (annotation1 != null)&#123;
-
-                try &#123;
-
-                    //获取属性值
-                    Object o = declaredField.get(obj);
-
-                    //检查email属性是否有多个&quot;，&quot;隔开
-                    if (o != null &amp;&amp; o.toString().contains(&quot;,&quot;))&#123;
-
-                        stringBuilder.append(annotation1.value() + &quot; in(&quot; + o + &quot;) and&quot;);
-
-                    &#125;else if (o != null &amp;&amp; !o.toString().equals(&quot;0&quot;))&#123;
-
-                        stringBuilder.append(annotation1.value() + &quot; = &quot;);
-
-                        if (o instanceof String)&#123;
-
-                            stringBuilder.append(&quot;&#39;&quot; + o + &quot;&#39;&quot; + &quot; and &quot;);
-
-                        &#125;
-
-                        if (o instanceof Integer)&#123;
-
-                            stringBuilder.append(o + &quot; and &quot;);
-
-                        &#125;
-
-                    &#125;
-
-
-                &#125; catch (IllegalAccessException e) &#123;
-                    e.printStackTrace();
-                &#125;
-
-            &#125;
-
-        &#125;
-
-        String s = stringBuilder.toString();
-
-        //替换掉最后的and 
-        s = s.substring(0,s.length() - 4);
-
-        if (s.contains(&quot;=&quot;))&#123;
-
-            return s;
-
-        &#125;
-
-        return null;
-    &#125;
-
-&#125;
+<p><strong>异常信息</strong></p>
+<pre><code class="java">stack length:999
+Exception in thread &quot;main&quot; java.lang.StackOverflowError
+    at JavaVMStackTest.stackLeak(JavaVMStackTest.java:6)
+    at JavaVMStackTest.stackLeak(JavaVMStackTest.java:7)
+    at JavaVMStackTest.stackLeak(JavaVMStackTest.java:7)
+    at JavaVMStackTest.stackLeak(JavaVMStackTest.java:7)
+    .......
 </code></pre>
+<p>操作系统<strong>分配给每个进程的内存是有限制的</strong>，譬如32位Windows的单个进程最大内存限制为2GB，虚拟机提供了参数可以控制Java堆和方法区这两部分的内存最大值</p>
+<blockquote>
+<p> 如果<strong>每个线程分配到的栈内存很大</strong>，那么<strong>可以建立的线程数自然就很少</strong>，建立线程时就越容易把剩下的内存耗尽</p>
+</blockquote>
+<p><strong>内存不够导致的线程创建失败问题</strong></p>
+<pre><code class="java">Exception in thread &quot;main&quot; java.lang.OutOfMemoryError: unable to create native thread
+</code></pre>
+<ul>
+<li>发生这种情况，如果不能减少线程数和更换虚拟机的情况下，就需要通过<strong>减少最大堆和减少栈容量</strong>来换取更多线程</li>
+</ul>
+<h3 id="运行时常量池溢出"><a href="#运行时常量池溢出" class="headerlink" title="运行时常量池溢出"></a>运行时常量池溢出</h3><p>常量池作为方法区的一部分，在JDK6或更早版本，是由<strong>永久代</strong>来实现方法区内存的</p>
+<p><strong>如果以JDK6运行下面的代码</strong></p>
+<pre><code class="java">/**
+     * VM Args: -XX:PermSize=6M -XX:MaxPermSize=6M
+     * @param args
+     */
+    public static void main(String[] args)&#123;
+
+        //使用Set保持着常量池的引用，避免Full GC回收常量池行为
+        Set&lt;String&gt; set = new HashSet&lt;String&gt;();
+
+        //在short范围内足以让6M的PermSize产生OOM了
+        short i = 0;
+        while (true)&#123;
+            //intern()方法，如果常量池中不存在此字符串则添加，存在则返回
+            set.add(String.valueOf(i++).intern());
+        &#125;
+
+    &#125;
+</code></pre>
+<p><strong>异常信息</strong></p>
+<pre><code class="java">Exception in thread &quot;main&quot; java.lang.OutOfMemoryError: PermGen space
+    at java.lang.String.intern(Native Method)
+    at org.fenixsoft.oom.RuntimeConstantPoolOOM.main(RuntimeConstantPoolOOM.java: 18)
+</code></pre>
+<ul>
+<li>说明常量池确实是方法区（<strong>永久代</strong>）的一部分</li>
+</ul>
+<p><strong>而使用JDK7或8等更高级版本，并不会得到相同结果</strong></p>
+<ul>
+<li>JDK7字符串常量池被移至<strong>Java堆</strong>中</li>
+<li>JDK8<strong>字符串常量池和方法区</strong>被移动到<strong>元空间</strong>中（使用本地内存）</li>
+</ul>
+<p><strong>元空间大小限制配置</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/bolg_hero/article/details/78189621">参考博客</a></p>
+<p><code>-XX:MaxMetaspaceSize</code>：设置元空间的最大值，默认-1，即不受限制，只受限于本地内存大小</p>
+<p><code>-XX:MeataspaceSize</code>：指定元空间的初始空间大小，以<strong>字节为单位</strong>，达到该值就会触发<strong>垃圾收集进行类卸载</strong>，同时收集器会<strong>对该值进行调整</strong></p>
+<ul>
+<li>如果释放了大量空间就<strong>降低</strong>该值</li>
+<li>如果释放了很少空间，那么在不超过最大值的前提下<strong>适当提高</strong>该值</li>
+</ul>
+<p><code>-XX:MinMetaspaceFreeRatio</code>：控制最小的元空间剩余容量百分比</p>
+<ul>
+<li>如果GC后空闲空间小于此值，则发生元空间扩容</li>
+</ul>
+<p><code>-XX:MaxMetaspaceFreeRatio</code>：用于控制最大的元空间剩余容量的百分比</p>
+<ul>
+<li>如果GC后空闲空间大于此值，则发生元空间缩减</li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
