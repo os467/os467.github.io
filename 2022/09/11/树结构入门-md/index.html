@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>树结构入门.md | Tly的博客</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="树结构入门.md | Tly的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="树结构入门树（tree）是一种抽象数据类型（ADT），用来模拟具有树状结构性质的数据集合 它是由n（n&gt;0）个有限节点通过连接它们的边组成一个具有层次关系的集合 把它叫做“树”是因为它看起来像一棵倒挂的树，也就是说它是根朝上，而叶朝下的  树有很多种，向上面的一个节点有多余两个的子节点的树，称为多路树 而每个节点最多只能有两个子节点的一种形式被称为二叉树   节点：上图的圆圈，比如A，B，C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树结构入门.md">
+<meta property="og:url" content="https://os467.github.io/2022/09/11/%E6%A0%91%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8-md/index.html">
+<meta property="og:site_name" content="Tly的博客">
+<meta property="og:description" content="树结构入门树（tree）是一种抽象数据类型（ADT），用来模拟具有树状结构性质的数据集合 它是由n（n&gt;0）个有限节点通过连接它们的边组成一个具有层次关系的集合 把它叫做“树”是因为它看起来像一棵倒挂的树，也就是说它是根朝上，而叶朝下的  树有很多种，向上面的一个节点有多余两个的子节点的树，称为多路树 而每个节点最多只能有两个子节点的一种形式被称为二叉树   节点：上图的圆圈，比如A，B，C">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg-blog.csdn.net%2F20150430100125718&refer=http%3A%2F%2Fimg-blog.csdn.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1665238763&t=0a2b63c2271491f164b03f46bfdbfa47">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210203164346945.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21hd2VuemhlOTY=,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190409222157219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTQ0NTQ1Mzg=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180722220546910">
+<meta property="og:image" content="https://img-blog.csdn.net/20180722222413303">
+<meta property="og:image" content="https://image.dandelioncloud.cn/images/20211105/9bab069a73284df091a30865bebbf4cd.png">
+<meta property="og:image" content="https://image.dandelioncloud.cn/images/20211105/d8dc7b2fd295466181b21c6de0268de9.png">
+<meta property="og:image" content="https://image.dandelioncloud.cn/images/20211105/b1f61ce7f09e49109c38e0ca720b6b27.png">
+<meta property="og:image" content="https://image.dandelioncloud.cn/images/20211105/2b682a067e4743b083e0785337ea8adc.png">
+<meta property="og:image" content="https://image.dandelioncloud.cn/images/20211105/b683170c5c93402cacb97d2723b58cd4.png">
+<meta property="article:published_time" content="2022-09-10T18:27:07.000Z">
+<meta property="article:modified_time" content="2022-09-10T18:27:30.524Z">
+<meta property="article:author" content="Os467">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg-blog.csdn.net%2F20150430100125718&refer=http%3A%2F%2Fimg-blog.csdn.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1665238763&t=0a2b63c2271491f164b03f46bfdbfa47">
+
+
+<link rel="icon" href="/img/headimg.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/headimg.jpg"/>
+</a>
+<div class="author">
+    <span>Os467</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/os467"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:1300452403@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=1300452403&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/song?id=551339076&amp;userid=1571495855"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(40)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="JAVASE基础">
+                        
+                        JAVASE基础
+                        <small>(9)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="JAVASE进阶">
+                        
+                        JAVASE进阶
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="框架学习">
+                        
+                        框架学习
+                        <small>(9)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="微服务">
+                        
+                        微服务
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="容器">
+                        
+                        容器
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="项目">
+                        
+                        项目
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="底层学习">
+                        
+                        底层学习
+                        <small>(3)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="前端">
+                        
+                        前端
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="其它">
+                        
+                        其它
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="40">
+<input type="hidden" id="yelog_site_word_count" value="177.8k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://os467.github.io/mdResource">os467</a></li>
+            
+            <li><a target="_blank" href="https://www.bilibili.com/video/BV17h411k7jB?vd_source=38c37e7cf61f2c4591c73b0a37eab964">这是一个神奇的链接</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/09/11/%E6%A0%91%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8-md/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="树结构入门.md">树结构入门.md</span>
+            <span class="post-date" title="2022-09-11 02:27:07">2022/09/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/09/08/NodeJS/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NodeJS">NodeJS</span>
+            <span class="post-date" title="2022-09-08 20:18:43">2022/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/09/08/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前端入门">前端入门</span>
+            <span class="post-date" title="2022-09-08 10:21:00">2022/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/09/06/Java%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java对象创建">Java对象创建</span>
+            <span class="post-date" title="2022-09-06 21:16:42">2022/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/09/04/ElasticSearch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ElasticSearch">ElasticSearch</span>
+            <span class="post-date" title="2022-09-04 23:29:31">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/09/01/springCloud%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud项目搭建">SpringCloud项目搭建</span>
+            <span class="post-date" title="2022-09-01 22:23:21">2022/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/30/RabbitMQ/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RabbitMQ">RabbitMQ</span>
+            <span class="post-date" title="2022-08-30 20:25:33">2022/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/08/29/MVC%E8%AE%BF%E9%97%AE%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MVC多线程安全问题">MVC多线程安全问题</span>
+            <span class="post-date" title="2022-08-29 17:18:53">2022/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/08/27/JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM类加载机制">JVM类加载机制</span>
+            <span class="post-date" title="2022-08-27 18:10:23">2022/08/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/08/24/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM虚拟机">JVM虚拟机</span>
+            <span class="post-date" title="2022-08-24 18:28:03">2022/08/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 容器 "
+           href="/2022/08/23/Docker/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Docker">Docker</span>
+            <span class="post-date" title="2022-08-23 13:25:11">2022/08/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/18/springCloud/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud">SpringCloud</span>
+            <span class="post-date" title="2022-08-18 13:21:39">2022/08/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="微服务入门">微服务入门</span>
+            <span class="post-date" title="2022-08-15 15:44:35">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/15/dubbo/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="dubbo">dubbo</span>
+            <span class="post-date" title="2022-08-15 07:25:45">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/13/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Redis">Redis</span>
+            <span class="post-date" title="2022-08-13 14:25:31">2022/08/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/12/bootstrap/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Bootstrap(WEB框架)">Bootstrap(WEB框架)</span>
+            <span class="post-date" title="2022-08-12 16:23:21">2022/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/12/springboot/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot">SpringBoot</span>
+            <span class="post-date" title="2022-08-12 12:15:35">2022/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/08/ssm%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SSM项目整合">SSM项目整合</span>
+            <span class="post-date" title="2022-08-08 12:15:25">2022/08/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 项目 "
+           href="/2022/08/03/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="外卖项目">外卖项目</span>
+            <span class="post-date" title="2022-08-03 08:35:11">2022/08/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/01/MyBatisPlus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatisPlus">MyBatisPlus</span>
+            <span class="post-date" title="2022-08-01 11:15:26">2022/08/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/31/MyBatis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatis">MyBatis</span>
+            <span class="post-date" title="2022-07-31 10:10:26">2022/07/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/28/Maven/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven">Maven</span>
+            <span class="post-date" title="2022-07-28 19:10:41">2022/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/26/spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="spring">spring</span>
+            <span class="post-date" title="2022-07-26 21:54:22">2022/07/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/23/springMVC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringMVC">SpringMVC</span>
+            <span class="post-date" title="2022-07-23 21:35:21">2022/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式">设计模式</span>
+            <span class="post-date" title="2022-07-18 19:21:50">2022/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/17/Ajax/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ajax">Ajax</span>
+            <span class="post-date" title="2022-07-17 12:07:22">2022/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/14/Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Annotation">Annotation</span>
+            <span class="post-date" title="2022-07-14 19:36:02">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/14/%E6%B3%A8%E8%A7%A3Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="注解">注解</span>
+            <span class="post-date" title="2022-07-14 10:09:18">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/13/Reflect/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Reflect">Reflect</span>
+            <span class="post-date" title="2022-07-13 14:40:18">2022/07/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2022-07-12 12:29:58">2022/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/10/IO%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IO流">IO流</span>
+            <span class="post-date" title="2022-07-10 20:14:33">2022/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/08/jQuery/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jQuery">jQuery</span>
+            <span class="post-date" title="2022-07-08 16:24:33">2022/07/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/07/javaScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="javaScript">javaScript</span>
+            <span class="post-date" title="2022-07-07 12:54:16">2022/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/06/XML/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="XML">XML</span>
+            <span class="post-date" title="2022-07-06 18:28:03">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/06/cookie%E5%92%8Csession/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="cookie和session">cookie和session</span>
+            <span class="post-date" title="2022-07-06 18:27:45">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/02/servlet/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="servlet">servlet</span>
+            <span class="post-date" title="2022-07-02 08:24:49">2022/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/01/jdbc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jdbc">jdbc</span>
+            <span class="post-date" title="2022-07-01 08:24:49">2022/07/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/06/19/SQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL">SQL</span>
+            <span class="post-date" title="2022-06-19 19:45:07">2022/06/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/05/28/JAVA%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JAVA入门">JAVA入门</span>
+            <span class="post-date" title="2022-05-28 00:32:07">2022/05/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/27/Linux%E4%BA%91%E8%AE%A1%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux云计算">Linux云计算</span>
+            <span class="post-date" title="2022-05-27 00:05:15">2022/05/27</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-树结构入门-md" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">树结构入门.md</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="其它">其它</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-09-11 02:27:30'>2022-09-11 02:27</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:5.8k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8"><span class="toc-text">树结构入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-text">二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-%E6%9F%A5%E6%89%BE%E8%8A%82%E7%82%B9"><span class="toc-text">二叉搜索树-查找节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-%E6%8F%92%E5%85%A5%E8%8A%82%E7%82%B9"><span class="toc-text">二叉搜索树-插入节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-%E9%81%8D%E5%8E%86%E8%8A%82%E7%82%B9"><span class="toc-text">二叉搜索树-遍历节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-%E6%9F%A5%E6%89%BE%E6%9C%80%E5%A4%A7%E5%80%BC%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="toc-text">二叉搜索树-查找最大值最小值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9"><span class="toc-text">二叉搜索树-删除节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-text">二叉搜索树-时间复杂度分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AVL%E6%A0%91"><span class="toc-text">AVL树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91"><span class="toc-text">红黑树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A6%E6%97%8B"><span class="toc-text">左旋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%B3%E6%97%8B"><span class="toc-text">右旋</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91%E7%9A%84%E6%8F%92%E5%85%A5"><span class="toc-text">红黑树的插入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E7%BA%A2%E9%BB%91%E6%A0%91"><span class="toc-text">Java代码实现红黑树</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="树结构入门"><a href="#树结构入门" class="headerlink" title="树结构入门"></a>树结构入门</h1><p>树（tree）是一种抽象数据类型（ADT），用来模拟具有树状结构性质的数据集合</p>
+<p>它是由n（n&gt;0）个有限<strong>节点</strong>通过连接它们的边组成一个具有层次关系的集合</p>
+<p>把它叫做“树”是因为它看起来像一棵倒挂的树，也就是说它是根朝上，而叶朝下的</p>
+<ul>
+<li>树有很多种，向上面的一个节点有<strong>多余两个的子节点的树</strong>，称为<strong>多路树</strong></li>
+<li>而每个节点最多<strong>只能有两个子节点</strong>的一种形式被称为<strong>二叉树</strong></li>
+</ul>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg-blog.csdn.net%2F20150430100125718&refer=http%3A%2F%2Fimg-blog.csdn.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1665238763&t=0a2b63c2271491f164b03f46bfdbfa47"></p>
+<p><strong>节点</strong>：上图的圆圈，比如A，B，C等都是表示节点，在Java面向对象中，节点一般<strong>代表对象</strong></p>
+<p><strong>边</strong>：连接节点的“线”称为边，边表示节点的关联关系，一般从一个节点到另一个节点的唯一方法就是沿着一条顺着有边的道路前进，Java中通常代表<strong>对象的引用</strong></p>
+<p><strong>路径</strong></p>
+<p>顺着节点的边从一个节点走到另一个节点，所经过的节点的顺序排列就称为”路径”<br><strong>根</strong></p>
+<p>树顶端的节点称为根，一棵树只有一个根，如果要把一个节点和边的集合称为树，那么从根到其他任何一个节点都<strong>必须有且只有一条路径</strong>，A是根节点</p>
+<p><strong>父节点</strong></p>
+<p>若一个节点含有子节点，则这个节点称为其子节点的父节点<br><strong>子节点</strong></p>
+<p>一个节点含有的子树的节点称为该节点的子节点<br><strong>叶节点</strong></p>
+<p>没有子节点的节点称为叶节点</p>
+<p><strong>节点的层次</strong></p>
+<p>从根开始定义，根为第一层，根的子节点为第二层，以此类推<br><strong>深度</strong></p>
+<p>对于任意节点n，n的深度为从根到n的唯一路径长，根的深度为0（从上往下看）<br><strong>高度</strong></p>
+<p>对于任意节点n，n的高度为从n到一片树叶的最长路径长，所有树叶的高度为0（从下往上看）</p>
+<h2 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h2><p><img src="https://img-blog.csdnimg.cn/20210203164346945.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21hd2VuemhlOTY=,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p><strong>二叉树：</strong> 树的每个节点最多只能有两个子节点</p>
+<p>二叉搜索树的条件</p>
+<ul>
+<li>若它的<strong>左</strong>子树不空，则左子树上所有节点的值均<strong>小于</strong>它的根节点的值</li>
+<li>若它的<strong>右</strong>子树不空，则右子树上所有节点的值均<strong>大于</strong>它的根节点的值</li>
+<li>它的左、右子树也分别为<strong>二叉排序树</strong>（子树也满足搜索树条件）</li>
+</ul>
+<h3 id="二叉搜索树-查找节点"><a href="#二叉搜索树-查找节点" class="headerlink" title="二叉搜索树-查找节点"></a>二叉搜索树-查找节点</h3><p>查找某个节点，我们必须从根节点开始查找</p>
+<ul>
+<li>查找值比当前节点值大，则搜索右子树</li>
+<li>查找值等于当前节点值，停止搜索（终止条件）</li>
+<li>查找值小于当前节点值，则搜索左子树</li>
+</ul>
+<h3 id="二叉搜索树-插入节点"><a href="#二叉搜索树-插入节点" class="headerlink" title="二叉搜索树-插入节点"></a>二叉搜索树-插入节点</h3><p>要插入节点，必须先找到插入的位置，与<strong>查找操作相似</strong>，由于二叉树的特殊性，待插入的节点也需要从根节点开始进行比较，<strong>小于根节点则与根节点左子树比较</strong>，<strong>反之则与右子树比较</strong>，直到左子树<strong>为空</strong>，则插入到相应为空的位置</p>
+<h3 id="二叉搜索树-遍历节点"><a href="#二叉搜索树-遍历节点" class="headerlink" title="二叉搜索树-遍历节点"></a>二叉搜索树-遍历节点</h3><p>遍历树是根据一种特定的顺序访问树的每一个节点，比较常用的有<strong>前序遍历，中序遍历和后续遍历</strong>，而二叉搜索树最常用的是<strong>中序遍历</strong></p>
+<ul>
+<li>中序遍历：左子树→根节点→右子树</li>
+<li>前序遍历：根节点→左子树→右子树</li>
+<li>后序遍历：左子树→右子树→根节点</li>
+</ul>
+<h3 id="二叉搜索树-查找最大值最小值"><a href="#二叉搜索树-查找最大值最小值" class="headerlink" title="二叉搜索树-查找最大值最小值"></a>二叉搜索树-查找最大值最小值</h3><p>要找最小值，先找根的<strong>左节点</strong>，然后一直找这个左子树的左节点，直到找到没有左节点的节点，那么这个节点就是最小值</p>
+<p>同理要找最大值，一直找根节点的右子树，直到没有<strong>右节点</strong>，则就是最大值</p>
+<h3 id="二叉搜索树-删除节点"><a href="#二叉搜索树-删除节点" class="headerlink" title="二叉搜索树-删除节点"></a>二叉搜索树-删除节点</h3><p>删除节点是二叉搜索树中最复杂的操作，删除的节点有三种情况</p>
+<p>1、该节点是叶节点（没有子节点）</p>
+<p>2、该节点有一个子节点</p>
+<p>3、该节点有两个子节点</p>
+<ul>
+<li>删除没有子节点的节点</li>
+</ul>
+<p>要删除叶节点，只需要改变该节点的<strong>父节点引用该节点的值</strong>，即将其引用<strong>改为null</strong>即可</p>
+<ul>
+<li>删除有一个子节点的节点</li>
+</ul>
+<p>删除有一个子节点的节点，我们只需要将其<strong>父节点原本指向该节点的引用</strong>，改为指向该节点<strong>子节点</strong>即可</p>
+<ul>
+<li>删除有两个子节点的节点</li>
+</ul>
+<p>当删除的节点存在两个节点，那么删除之后，两个节点的位置我们就没办法处理了</p>
+<p>既然处理不了，我们就想到一种办法，用另一个节点来代替被删除的节点，那么用哪一个节点来代替呢？</p>
+<p>我们知道二叉搜索树中的节点是按照关键字来进行排列的，<code>大于一个节点的最小节点</code>是它的中序遍历<strong>后续节点</strong>，用<strong>后续节点来代替删除的节点</strong>，显然该二叉搜索树还是有序的</p>
+<p><strong>删除有必要吗？</strong></p>
+<p>通过上面的分析，我们发现删除其实挺复杂的，那么其实我们可以不用真正删除该节点，只需要在Node类中添加一个标识字段Delete，当该字段为true时，表示该节点已删除，反之则没有删除</p>
+<h3 id="二叉搜索树-时间复杂度分析"><a href="#二叉搜索树-时间复杂度分析" class="headerlink" title="二叉搜索树-时间复杂度分析"></a>二叉搜索树-时间复杂度分析</h3><p><strong>1、回顾经典-二分查找算法</strong></p>
+<p>[1,2,3,4,5,6,7,8….100]</p>
+<ul>
+<li><p>暴力算法：靠前的查找较快，往后的就很慢</p>
+</li>
+<li><p>二分查找算法：每次都会随机挑选与查找数比较，抛弃一半不符合条件的数据，适用条件：有序数组，性能：非常不错，每次迭代查询可以排除一半的结果</p>
+</li>
+</ul>
+<pre><code class="java">public static void main(String[] args) &#123;
+
+    int[] arr = &#123;1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20&#125;;
+
+    System.out.println(binarySearch(arr,15));
+
+&#125;
+
+/**
+ * 二分查找算法，查找到数组中某个数的索引值
+ */
+public static Integer binarySearch(int[] arr,int data)&#123;
+
+    //下界
+    int low = 0;
+    //上界
+    int height = arr.length - 1;
+
+    while (low &lt;= height)&#123;
+
+        //获得数组的中间位置
+        int mid = (height + low) / 2;
+
+        if (arr[mid] &lt; data)&#123;
+            low = mid + 1;
+        &#125; else if (arr[mid] == data)&#123;
+            return mid;
+        &#125;else &#123;
+            height = mid - 1;
+        &#125;
+
+    &#125;
+
+    //查找不到返回-1
+    return -1;
+
+&#125;
+</code></pre>
+<p>缺点：依赖<strong>有序数组</strong>，性能才能不错</p>
+<p>数组的缺陷：没有办法快速插入，也没有办法扩容</p>
+<p><strong>那怎么才能拥有二分查找的高性能又能拥有链表一样的灵活性？</strong></p>
+<p>二分查找树这一数据结构就符合特点</p>
+<p><strong>普通二叉搜索树致命缺陷：</strong></p>
+<p>如果数据形成了长链表结构，那么查询效率就会变得低下</p>
+<p>怎么解决二叉搜索树退化成线性链表的问题？</p>
+<p>如果插入元素时，树可以自动调整两边平衡，会保持不错的性能</p>
+<h3 id="AVL树"><a href="#AVL树" class="headerlink" title="AVL树"></a>AVL树</h3><p>特点：</p>
+<p>1、具有二叉查找树的全部特性</p>
+<p>2、每个节点的左子树和右子树的<strong>高度差至多等于1</strong></p>
+<p>平衡树基于这种特点就可以保证不会出现大量节点偏向于一边的情况了（插入或者删除时，会发生左旋，右旋操作，使这棵树再次左右保持一定平衡）</p>
+<p><strong>为什么有了AVL树后还要有红黑树？</strong></p>
+<p>虽然平衡树解决了二叉查找树退化为近似链表的缺点，不过却<strong>不是最佳</strong>的，因为平衡树要求每个节点的左子树和右子树的高度差至多等于这个要求实在是太严了，导致每次进行插入、删除节点的时候，<strong>几乎都会破坏平衡树的第二个规则</strong>，进而都需要进行左旋和右旋的调整，使之再次称为一颗符合要求的平衡树</p>
+<ul>
+<li>显然，如果在那种插入、删除很频繁的场景中，平衡树需要<strong>频繁的进行调整</strong>，这会使平衡树的<strong>性能大打折扣</strong>，为了解决这个问题，于是有了红黑树</li>
+</ul>
+<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><p><img src="https://img-blog.csdnimg.cn/20190409222157219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTQ0NTQ1Mzg=,size_16,color_FFFFFF,t_70"></p>
+<p><strong>性质1：</strong>每个节点要么是<strong>黑色</strong>，要么是<strong>红色</strong></p>
+<p><strong>性质2：</strong> <strong>根节点是黑色</strong></p>
+<p><strong>性质3：</strong>每个叶子节点（NIL、空节点）是黑色</p>
+<p><strong>性质4：</strong>每个<strong>红色节点</strong>的<strong>两个子节点一定都是黑色</strong></p>
+<ul>
+<li>不能有两个红色节点相连</li>
+</ul>
+<p><strong>性质5：</strong>任意一节点到每个叶子节点的路径都包含<strong>数量相同</strong>的<strong>黑节点</strong></p>
+<ul>
+<li>如果一个节点存在黑子节点，那么该节点肯定有两个子节点</li>
+</ul>
+<blockquote>
+<p>红黑树并不是一个完美平衡的二叉查找树，但左子树和右子树的黑节点的层数是相等，任意一个节点到每个叶子节点的路径都包含<strong>数量相同的黑节点</strong>，我们称红黑树这种平衡为<strong>黑色完美平衡</strong>，这棵树就是趋近于平衡状态的</p>
+</blockquote>
+<p><strong>红黑树能自平衡，它靠的是什么？</strong></p>
+<p>三种操作：左旋、右旋和变色</p>
+<p>1、变色：节点的颜色由红变黑或由黑变红</p>
+<p>2、左旋：以某个节点作为支点（旋转节点），其右子节点变为旋转节点的父节点，右子节点的左子节点，变为旋转节点的右子节点，左子节点保持不变</p>
+<p>3、右旋：以某个节点作为支点（旋转节点），其左子节点变为旋转节点的父节点，左子节点的右子节点，变为旋转节点的左子节点，右子节点保持不变</p>
+<hr>
+<h3 id="左旋"><a href="#左旋" class="headerlink" title="左旋"></a>左旋</h3><p><img src="https://img-blog.csdn.net/20180722220546910"></p>
+<hr>
+<h3 id="右旋"><a href="#右旋" class="headerlink" title="右旋"></a>右旋</h3><p><img src="https://img-blog.csdn.net/20180722222413303"></p>
+<hr>
+<h4 id="红黑树的插入"><a href="#红黑树的插入" class="headerlink" title="红黑树的插入"></a>红黑树的插入</h4><p>插入操作包括两部分工作：</p>
+<p>1、查找插入的位置</p>
+<p>2、插入后自平衡</p>
+<p><strong>注意：</strong> 插入节点，必须为<strong>红色</strong>，红色在父节点（如果存在）为黑色节点时，红黑树的平衡没被破坏，不需要做自平衡操作，但如果插入节点是黑色，那么插入位置所在的子树黑色节点总是多1，必须做自平衡</p>
+<p><strong>红黑树插入情景分析</strong></p>
+<p><strong>情景1：</strong>红黑树为空树</p>
+<ul>
+<li><p>最简单的一种情景，直接把插入节点作为根节点就行</p>
+</li>
+<li><p><strong>注意：</strong>根据红黑树的性质2：根节点是黑色，还需要把插入节点<strong>设置为黑色</strong></p>
+</li>
+</ul>
+<p><strong>情景2：</strong>插入节点的Key已存在</p>
+<p>更新当前节点的value值，为插入节点的值</p>
+<p><strong>情景3：</strong>插入节点的父节点是黑节点</p>
+<p>由于插入的节点是红色的，并不会影响红黑树的完美平衡，直接插入即可，无需做自平衡</p>
+<p><strong>情景4：</strong>插入节点的**父节点(P)**为红色</p>
+<p>如果插入节点的父节点为红色，那么该父节点不可能为根节点，所以插入节点总是存在<strong>祖父节点(PP)</strong></p>
+<ul>
+<li><p><strong>情景4.1：</strong>如果**叔叔节点(U)**存在（和父节点同一级的红色节点）</p>
+<ul>
+<li><p>因为不可以同时存在两个相连的红色节点，那么此时该插入子树的红黑层数的情况是：<code>黑红红</code>，显然最简单的处理方式是把其改为<code>红黑红</code></p>
+</li>
+<li><p><strong>处理：</strong></p>
+<p>1、将P节点和U节点改为黑色</p>
+<p>2、将PP节点改为红色</p>
+<p>3、将PP设置为当前节点，进行后续处理</p>
+<p>4、如果PP节点的父节点是黑色，那么无需处理，如果PP节点的父节点是红色，那么还需要继续做插入操作自平衡处理，直到平衡为止</p>
+<p><img src="https://image.dandelioncloud.cn/images/20211105/9bab069a73284df091a30865bebbf4cd.png"></p>
+</li>
+</ul>
+</li>
+<li><p><strong>情景4.2：</strong>如果U节点不存在或者为黑节点，并且插入节点的P节点是PP节点的左子节点，<strong>注意：</strong>单纯从插入前来看，叔叔节点非红即空（NIL节点），否则的话破坏了红黑树的性质5，此路径会比其它路径多一个黑色节点</p>
+<ul>
+<li><p><strong>情景4.2.1：</strong>新插入节点，为其父节点的左子节点（LL双红情况）</p>
+<ul>
+<li><p><strong>处理：</strong></p>
+<p>1、将P节点设置为黑色，将PP设置为红色</p>
+<p>2、对PP节点进行<strong>右旋</strong></p>
+<p><img src="https://image.dandelioncloud.cn/images/20211105/d8dc7b2fd295466181b21c6de0268de9.png"></p>
+</li>
+</ul>
+</li>
+<li><p><strong>情景4.3.2：</strong>新插入节点为P节点的右子节点（LR红色情况）</p>
+<ul>
+<li><p><strong>处理：</strong></p>
+<p>1、先对P节点进行<strong>左旋</strong></p>
+<p>2、把当前节点变黑，把PP节点变红，进行<strong>右旋</strong></p>
+</li>
+</ul>
+<p><img src="https://image.dandelioncloud.cn/images/20211105/b1f61ce7f09e49109c38e0ca720b6b27.png" alt="在这里插入图片描述"></p>
+</li>
+</ul>
+</li>
+<li><p><strong>情景4.3：</strong>U节点不存在或为黑节点，并且插入节点的P节点是PP节点的右子节点，<code>该情景对应4.2只是方向反转</code></p>
+<ul>
+<li><p><strong>情景4.3.1：</strong>新插入节点，为其父节点的右子节点（RR红色情况）</p>
+<ul>
+<li><p><strong>处理：</strong></p>
+<p>1、将P节点设置为黑色，将PP设置为红色</p>
+<p>2、对PP节点进行<strong>左旋</strong></p>
+<p><img src="https://image.dandelioncloud.cn/images/20211105/2b682a067e4743b083e0785337ea8adc.png" alt="在这里插入图片描述"></p>
+</li>
+</ul>
+<p>​				</p>
+</li>
+<li><p><strong>情景4.3.2：</strong>新插入节点为P节点的左子节点（RL红色情况）</p>
+<ul>
+<li><p><strong>处理：</strong></p>
+<p>1、先对P节点进行<strong>右旋</strong></p>
+<p>2、把当前节点变黑，把PP节点变红，进行<strong>左旋</strong></p>
+</li>
+</ul>
+<p><img src="https://image.dandelioncloud.cn/images/20211105/b683170c5c93402cacb97d2723b58cd4.png" alt="在这里插入图片描述"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Java代码实现红黑树"><a href="#Java代码实现红黑树" class="headerlink" title="Java代码实现红黑树"></a>Java代码实现红黑树</h2><pre><code class="java">package com.os467;
+
+public class RedBlackTree&lt;K extends Comparable&lt;K&gt;,V&gt; &#123;
+
+    private static final boolean RED = true;
+
+    private static final boolean BLACK = false;
+
+    //树根的引用
+    private RedBlackNode root;
+
+    public RedBlackNode getRoot() &#123;
+        return root;
+    &#125;
+
+    /**
+     * 获取当前节点的父节点
+     */
+    private RedBlackNode parentOf(RedBlackNode node)&#123;
+
+        if (node != null)&#123;
+
+            return node.parent;
+
+        &#125;
+
+        return null;
+    &#125;
+
+    /**
+     * 节点是否为红色
+     */
+
+    private boolean isRed(RedBlackNode node)&#123;
+
+        if (node != null)&#123;
+
+            return node.color == RED;
+
+        &#125;
+
+        return false;
+
+    &#125;
+
+    /**
+     * 设置节点为红色
+     */
+    private void setRed(RedBlackNode node)&#123;
+
+        if (node != null)&#123;
+
+            node.color = RED;
+
+        &#125;
+
+    &#125;
+
+    /**
+     * 节点是否为黑色
+     */
+    private boolean isBlack(RedBlackNode node)&#123;
+
+        if (node != null)&#123;
+
+            return node.color == BLACK;
+
+        &#125;
+
+        return false;
+
+    &#125;
+
+    /**
+     * 设置节点为黑色
+     */
+    private void setBlack(RedBlackNode node)&#123;
+
+        if (node != null)&#123;
+
+            node.color = BLACK;
+
+        &#125;
+
+    &#125;
+
+    /**
+     * 左旋
+     *
+     *      P                   P
+     *      |                   |
+     *      x                   y
+     *    /  \       ----&gt;    /  \
+     *   lx   y              x   ry
+     *      /  \           /  \
+     *     ly   ry        lx  ly
+     */
+    private void leftRotate(RedBlackNode x)&#123;
+
+        RedBlackNode y = x.right;
+
+        //将x的右子节点设置为y的左子节点
+        x.right = y.left;
+
+        if (y.left != null)&#123;
+            y.left.parent = x;
+        &#125;
+
+        //将y旋转到x的位置
+        if (x.parent != null)&#123;
+
+            y.parent = x.parent;
+
+            if (x == x.parent.left)&#123;
+
+                x.parent.left = y;
+
+            &#125;else &#123;
+
+                x.parent.right = y;
+
+            &#125;
+
+        &#125;else &#123;
+            
+            //x为根节点的时候，此时需要更新y为根节点引用
+            this.root = y;
+            //使得y的父节点丢失
+            y.parent = null;
+
+        &#125;
+
+        //将x的父节点设置为y
+        x.parent = y;
+        //将y的左子节点设置为x
+        y.left = x;
+
+    &#125;
+
+
+
+    /**
+     * 右旋
+     *
+     *            P                P
+     *            |                |
+     *            x     ----&gt;      y
+     *          /  \             /  \
+     *         y    rx         ly    x
+     *       /  \                   / \
+     *     ly   ry                ry   rx
+     *
+     */
+    private void rightRotate(RedBlackNode x)&#123;
+
+        RedBlackNode y = x.left;
+
+        //将x的左字节点设置为y的右子节点
+        x.left = y.right;
+
+        //设置父节点
+        if (y.right != null)&#123;
+
+            y.right.parent = x;
+
+        &#125;
+
+        //将y的右子节点设置为x
+        y.right = x;
+
+        //如果x的父节点不为空，非根
+        if (x.parent != null)&#123;
+
+            y.parent = x.parent;
+
+            //如果x为其父节点的右子节点，将其父节点的右子节点设置为y
+            if (x == x.parent.right)&#123;
+
+                x.parent.right = y;
+
+            &#125;else &#123;
+
+                x.parent.left = y;
+
+            &#125;
+
+        &#125;else &#123;
+
+            //设置根节点为y
+
+            this.root = y;
+            y.parent = null;
+
+        &#125;
+
+        //设置x的父节点为y
+        x.parent = y;
+
+
+    &#125;
+
+
+
+    /**
+     * 中序打印二叉树
+     */
+    public void inOrderPrint()&#123;
+
+        inOrderPrint(this.root);
+
+    &#125;
+
+    /**
+     * 中序打印
+     */
+    private void inOrderPrint(RedBlackNode node)&#123;
+
+        if (node != null)&#123;
+
+            inOrderPrint(node.left);
+
+            inOrderPrint(node.right);
+        &#125;
+    &#125;
+
+    /**
+     * 公开的插入方法
+     */
+    public void insert(K key,V value)&#123;
+
+        RedBlackNode node = new RedBlackNode();
+
+        node.setKey(key);
+
+        node.setValue(value);
+
+        //新节点一定是红色
+        node.setColor(RED);
+
+        //调用私有的insert方法
+        insert(node);
+
+    &#125;
+
+    /**
+     * 私有的插入方法
+     * @param node
+     */
+    private void insert(RedBlackNode node)&#123;
+
+        //第一步，查找当前node的父节点
+        RedBlackNode parent = null;
+        //x作为遍历查询的对象
+        RedBlackNode x = this.root;
+
+        //查找到合适的插入位置，应该挂在哪个节点下
+        while (x != null)&#123;
+            parent = x;
+
+            //cmp &gt; 0 说明node的key大于x的key需要到x的右子树查找
+            //cmp == 0 说明node的key等于x的key，说明需要进行替换操作
+            //cmp &lt; 0 说明node的key小于x的key，需要到x的左子树查找
+            int cmp = node.key.compareTo(x.key);
+
+            if (cmp &gt; 0)&#123;
+
+                x = x.right;
+
+            &#125;else if (cmp == 0)&#123;
+
+                x.setValue(node.getValue());
+                return;
+
+            &#125;else &#123;
+
+                x = x.left;
+
+            &#125;
+
+        &#125;
+
+        //此时的parent已经为适合的插入位置
+        node.parent = parent;
+
+        //判断应该挂在左边还是右边
+        if (parent != null)&#123;
+
+            //判断node与parent的key谁大
+            int cmp = node.key.compareTo(parent.key);
+
+            if (cmp &gt; 0)&#123;
+
+                parent.right = node;
+
+            &#125;else &#123;
+
+                parent.left = node;
+
+            &#125;
+
+        &#125;else &#123;
+
+            //当前为根
+            this.root = node;
+
+        &#125;
+
+        //需要调用修复红黑树的平衡方法
+        insertFixUp(node);
+
+    &#125;
+
+    /**
+     * 修复红黑树平衡的方法
+     *
+     * 情景1：红黑树为空树，设置插入节点为根节点为黑色
+     * 情景2：插入节点key已经存在，不需要修改
+     * 情景3：插入节点的父节点为黑色，因为插入的默认为红色节点，所以没有破坏红黑树平衡
+     *
+     * 情景4：需要调整平衡
+     *  插入的父节点为红色
+     *      4.1：叔叔节点存在并且为红色，将爸爸和叔叔染色为黑色，将爷爷染色为红色，将爷爷节点为当前节点进行下一轮处理
+     *      4.2：叔叔节点不存在或者为黑色，并且插入系欸但为父节点的左子节点
+     *          4.2.1：新插入节点，为其父节点的左子节点（LL双红情况）
+     *          4.3.2：新插入节点为父节点的右子节点（LR红色情况）
+     *      4.3：叔叔节点不存在或为黑节点，并且插入节点的父节点是祖父节点的右子节点
+     *          4.3.1：新插入节点，为其父节点的右子节点（RR红色情况）
+     *          4.3.2：新插入节点为父节点的左子节点（RL红色情况）
+     *
+     */
+
+    private void insertFixUp(RedBlackNode node)&#123;
+
+        this.root.setColor(BLACK);
+
+        RedBlackNode parent = parentOf(node);
+        RedBlackNode grandpa = parentOf(parent);
+
+        //情景4：父节点为红
+        if (parent != null &amp;&amp; isRed(parent))&#123;
+
+            //如果父节点为红则一定存在爷爷节点，根不可能为红
+            RedBlackNode uncle = null;
+
+            if (parent == grandpa.left)&#123;
+
+                uncle = grandpa.right;
+
+                //4.1：父-叔双红（左子树情况）
+                if (uncle != null &amp;&amp; isRed(uncle))&#123;
+
+                    //将爸爸节点叔叔节点变为黑色，爷爷节点变为红色
+                    setBlack(parent);
+                    setBlack(uncle);
+                    setRed(grandpa);
+
+                    //以爷爷节点为当前节点开始调节
+                    insertFixUp(grandpa);
+                    return;
+
+                &#125;
+
+                //4.2：叔叔节点不存在，或者为黑色
+                if (uncle == null || isBlack(uncle))&#123;
+
+                    //4.2.1：当前节点为父节点右子节点，将父亲节点变黑，将祖父节点变红，右旋祖父节点
+                    if (node == parent.left)&#123;
+
+                        setBlack(parent);
+                        setRed(grandpa);
+                        rightRotate(grandpa);
+                        return;
+                    &#125;
+
+                    //4.2.2：插入节点为其父节点的右子节点（LR情况）
+                    //以爸爸节点进行一次左旋，得到LL情况（4.2.1），然后指定爸爸节点为当前节点进行下一轮处理
+                    if (node == parent.right)&#123;
+
+                        leftRotate(parent);
+                        insertFixUp(parent);
+                        return;
+                    &#125;
+
+                &#125;
+
+            &#125;else &#123;//父节点为爷爷节点的右子树
+
+                uncle = grandpa.left;
+
+                //4.1：叔-父双红（右子树情况）
+                if (uncle != null &amp;&amp; isRed(uncle))&#123;
+
+                    //将爸爸节点叔叔节点变为黑色，爷爷节点变为红色
+                    setBlack(parent);
+                    setBlack(uncle);
+                    setRed(grandpa);
+
+                    //以爷爷节点为当前节点开始调节
+                    insertFixUp(grandpa);
+                    return;
+
+                &#125;
+
+                uncle = grandpa.left;
+                //情景4.3：叔叔节点不存在，或者为黑色
+                if (uncle == null || isBlack(uncle))&#123;
+
+                    //4.3.1：插入节点为父节点右子节点（RR情况）
+                    //将父节点变黑，爷爷节点变红，左旋爷爷节点
+                    if (node == parent.right)&#123;
+
+                        setBlack(parent);
+                        setRed(grandpa);
+                        leftRotate(grandpa);
+                    &#125;
+
+                    //4.3.2：插入节点为父节点左子节点（RL情况）
+                    //右旋爸爸节点，得到RR双红情况（4.3.1），然后指定爸爸节点为当前节点进行下一轮处理
+                    if (node == parent.left)&#123;
+
+                        rightRotate(parent);
+                        insertFixUp(parent);
+                        return;
+
+                    &#125;
+
+                &#125;
+
+            &#125;
+
+        &#125;
+
+    &#125;
+
+    /**
+     * 红黑树节点
+     * @param &lt;K&gt;
+     * @param &lt;V&gt;
+     */
+    static class RedBlackNode&lt;K extends Comparable&lt;K&gt;,V&gt;&#123;
+
+        //该节点的父节点
+        private RedBlackNode parent;
+
+        //该节点的左节点
+        private RedBlackNode left;
+
+        //该节点的右节点
+        private RedBlackNode right;
+
+        //该节点的key
+        private K key;
+
+        //该节点的value
+        private V value;
+
+        //该节点的颜色
+        private boolean color;
+
+        public RedBlackNode() &#123;
+        &#125;
+
+        public RedBlackNode(RedBlackNode parent, RedBlackNode left, RedBlackNode right, K key, V value, boolean color) &#123;
+            this.parent = parent;
+            this.left = left;
+            this.right = right;
+            this.key = key;
+            this.value = value;
+            this.color = color;
+        &#125;
+
+        public RedBlackNode getParent() &#123;
+            return parent;
+        &#125;
+
+        public void setParent(RedBlackNode parent) &#123;
+            this.parent = parent;
+        &#125;
+
+        public RedBlackNode getLeft() &#123;
+            return left;
+        &#125;
+
+        public void setLeft(RedBlackNode left) &#123;
+            this.left = left;
+        &#125;
+
+        public RedBlackNode getRight() &#123;
+            return right;
+        &#125;
+
+        public void setRight(RedBlackNode right) &#123;
+            this.right = right;
+        &#125;
+
+        public K getKey() &#123;
+            return key;
+        &#125;
+
+        public void setKey(K key) &#123;
+            this.key = key;
+        &#125;
+
+        public V getValue() &#123;
+            return value;
+        &#125;
+
+        public void setValue(V value) &#123;
+            this.value = value;
+        &#125;
+
+        public boolean isColor() &#123;
+            return color;
+        &#125;
+
+        public void setColor(boolean color) &#123;
+            this.color = color;
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>显示红黑树的函数（引用）</strong></p>
+<pre><code class="java">package com.os467;
+
+
+public class TreeOperation &#123;
+
+    public static int getTreeDepth(RedBlackTree.RedBlackNode root) &#123;
+        return root == null ? 0 : (1 + Math.max(getTreeDepth(root.getLeft()), getTreeDepth(root.getRight())));
+
+    &#125;
+
+    private static void writeArray(RedBlackTree.RedBlackNode currNode, int rowIndex, int columnIndex, String[][] res, int treeDepth) &#123;
+        // 保证输入的树不为空
+
+        if (currNode == null) return;
+
+        // 先将当前节点保存到二维数组中
+
+        res[rowIndex][columnIndex] = String.valueOf(currNode.getKey()+&quot;-&quot;+(currNode.isColor()? &quot;R&quot;:&quot;B&quot;)+&quot;&quot;);
+
+        // 计算当前位于树的第几层
+
+        int currLevel = ((rowIndex + 1) / 2);
+
+        // 若到了最后一层，则返回
+
+        if (currLevel == treeDepth) return;
+
+        // 计算当前行到下一行，每个元素之间的间隔(下一行的列索引与当前元素的列索引之间的间隔)
+
+        int gap = treeDepth - currLevel - 1;
+
+        // 对左儿子进行判断，若有左儿子，则记录相应的&quot;/&quot;与左儿子的值
+
+        if (currNode.getLeft() != null) &#123;
+            res[rowIndex + 1][columnIndex - gap] = &quot;/&quot;;
+
+            writeArray(currNode.getLeft(), rowIndex + 2, columnIndex - gap * 2, res, treeDepth);
+
+        &#125;
+
+        // 对右儿子进行判断，若有右儿子，则记录相应的&quot;\&quot;与右儿子的值
+
+        if (currNode.getRight() != null) &#123;
+            res[rowIndex + 1][columnIndex + gap] = &quot;\\&quot;;
+
+            writeArray(currNode.getRight(), rowIndex + 2, columnIndex + gap * 2, res, treeDepth);
+
+        &#125;
+
+    &#125;
+
+    public static void show(RedBlackTree.RedBlackNode root) &#123;
+        System.out.println(&quot;当前root&quot;+root.getKey());
+        if (root == null) System.out.println(&quot;EMPTY!&quot;);
+
+        // 得到树的深度
+        int treeDepth = getTreeDepth(root);
+        // 最后一行的宽度为2的(n - 1)次方乘3，再加1
+        // 作为整个二维数组的宽度
+        int arrayHeight = treeDepth * 2 - 1;
+        int arrayWidth = (2 &lt;&lt; (treeDepth - 2)) * 3 + 1;
+        // 用一个字符串数组来存储每个位置应显示的元素
+        String[][] res = new String[arrayHeight][arrayWidth];
+        // 对数组进行初始化，默认为一个空格
+        for (int i = 0; i &lt; arrayHeight; i ++) &#123;
+            for (int j = 0; j &lt; arrayWidth; j ++) &#123;
+                res[i][j] = &quot; &quot;;
+            &#125;
+        &#125;
+
+        // 从根节点开始，递归处理整个树
+        // res[0][(arrayWidth + 1)/ 2] = (char)(root.val + &#39;0&#39;);
+        writeArray(root, 0, arrayWidth/ 2, res, treeDepth);
+        // 此时，已经将所有需要显示的元素储存到了二维数组中，将其拼接并打印即
+        for (String[] line: res) &#123;
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i &lt; line.length; i ++) &#123;
+                sb.append(line[i]);
+                if (line[i].length() &gt; 1 &amp;&amp; i &lt;= line.length - 1) &#123;
+                    i += line[i].length() &gt; 4 ? 2: line[i].length() - 1;
+                &#125;
+            &#125;
+            System.out.println(sb.toString());
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>测试</strong></p>
+<pre><code class="java">package com.os467;
+
+import java.util.Scanner;
+
+public class RedBlackTreeDemo &#123;
+
+    public static void main(String[] args) &#123;
+
+        Scanner scanner = new Scanner(System.in);
+
+        RedBlackTree&lt;String,Object&gt; redBlackTree = new RedBlackTree&lt;&gt;();
+
+        while (true)&#123;
+            System.out.println(&quot;请输入key&quot;);
+            String key = scanner.next();
+            System.out.println();
+            redBlackTree.insert(key,null);
+
+            TreeOperation.show(redBlackTree.getRoot());
+        &#125;
+
+    &#125;
+
+&#125;
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 os467
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
