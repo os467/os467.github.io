@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>cookie和session | Tly的博客</title>
+  <title>NodeJS | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="cookie和session | Tly的博客">
+  <meta name="description" content="NodeJS | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:type" content="website">
@@ -788,9 +788,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-cookie和session" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Mysql事务隔离级别" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">cookie和session</h1>
+        <h1 class="article-title">NodeJS</h1>
     
     <div class="article-meta">
         
@@ -800,7 +800,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="JAVASE基础">JAVASE基础</a>
+            <a  data-rel="数据库">数据库</a>
             
         </span>
         
@@ -808,7 +808,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-05 00:07:55'>2022-07-06 18:27</time>
+            发布时间 : <time class="date" title='最后更新: 2022-09-16 19:52:12'>2022-09-16 19:51</time>
         
     </div>
     <div class="article-meta">
@@ -832,7 +832,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Cookie"><span class="toc-text">Cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E5%80%BC%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-text">Cookie值的修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85Cookie%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-text">封装Cookie工具类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">Cookie的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Cookie%E7%94%9F%E5%91%BD%E6%8E%A7%E5%88%B6"><span class="toc-text">Cookie生命控制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Session"><span class="toc-text">Session</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E5%9F%9F%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%8F%96"><span class="toc-text">Session域数据的存取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">Session生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Session%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%8E%A7%E5%88%B6"><span class="toc-text">Session生命周期控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEsession%E7%9A%84%E8%B6%85%E6%97%B6%E6%97%B6%E9%97%B4"><span class="toc-text">设置session的超时时间</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#session%E5%92%8Ccookie%E7%9A%84%E5%85%B3%E7%B3%BB%E5%92%8C%E5%8C%BA%E5%88%AB"><span class="toc-text">session和cookie的关系和区别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#session%E5%92%8Ccookie%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">session和cookie的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#session%E5%92%8Ccookie%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">session和cookie的区别</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mysql%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-text">Mysql事务隔离级别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84ACID%E7%89%B9%E6%80%A7"><span class="toc-text">事务的ACID特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98"><span class="toc-text">事务的并发问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%8F%E8%AF%BB"><span class="toc-text">脏读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB"><span class="toc-text">不可重复读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BB%E8%AF%BB"><span class="toc-text">幻读</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mysql%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%9B%9B%E7%A7%8D%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-text">Mysql事务的四种隔离级别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E6%9C%AA%E6%8F%90%E4%BA%A4%EF%BC%88Read-Uncommit%EF%BC%89"><span class="toc-text">读未提交（Read Uncommit）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%B7%B2%E6%8F%90%E4%BA%A4%EF%BC%88Read-Committed%EF%BC%89"><span class="toc-text">读已提交（Read Committed）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB%EF%BC%88Repeatable-Read%EF%BC%89"><span class="toc-text">可重复读（Repeatable Read）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E4%B8%B2%E8%A1%8C%E5%8C%96%EF%BC%88Serializable%EF%BC%89"><span class="toc-text">可串行化（Serializable）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySql%E7%9A%84MVCC%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="toc-text">MySql的MVCC实现机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E7%85%A7%E8%AF%BB"><span class="toc-text">快照读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%93%E5%89%8D%E8%AF%BB"><span class="toc-text">当前读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%B9%BB%E8%AF%BB%EF%BC%9F"><span class="toc-text">如何解决幻读？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E7%85%A7%E8%AF%BB%E5%92%8C%E5%BD%93%E5%89%8D%E8%AF%BB%E5%AF%BC%E8%87%B4%E7%9A%84%E5%B9%BB%E8%AF%BB"><span class="toc-text">快照读和当前读导致的幻读</span></a></li></ol></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -848,370 +848,152 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><p>Cookie 是服务器通知客户端保存键值对的一种技术</p>
-<p>客户端</p>
-<p>有了Cookie后，每次请求都发送给服务器</p>
-<p>每个Cookie的大小不能超过4kb</p>
-<p>1.什么是cookie？</p>
-<p>​	cookie是客户端保存数据的一种技术，而且保存的方式是键值对形式</p>
-<p>2.如何去创建cookie，在客户端保存数据</p>
-<p>​	cookie这个对象是servlet的jar包给我们提供的，我们只需要去创建cookie，并且通知浏览器保存cookie就可了</p>
-<p>创建cookie对象</p>
-<p><code>Cookie cookie = new Cookie(&quot;key&quot;,&quot;value&quot;);</code></p>
-<p>通知浏览器保存cookie</p>
-<p><code>response.addCookie(cookie);</code></p>
-<p>3.cookie的生命周期</p>
-<p>​	cookie默认的生命周期是一个session级别的，是浏览器的开启到关闭</p>
-<p>服务器获取Cookie</p>
-<p>​	获取cookie方法</p>
-<p>​	<code>request.getCookies()</code></p>
-<pre><code class="java">package com.os467.cookie;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
-public class CookieDemo01 extends HttpServlet &#123;
-
-    @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-
-        addCookie(request,response);
-        getCookies(request,response);
-
-        getCookieFilter(request,response);
-    &#125;
-
-    /**
-     * 向客户端添加cookie
-     * @param request
-     * @param response
-     */
-    public void addCookie(HttpServletRequest request,HttpServletResponse response)&#123;
-
-        //创建cookie对象
-        Cookie cookie1 = new Cookie(&quot;username&quot;,&quot;tom&quot;);
-        Cookie cookie2 = new Cookie(&quot;password&quot;,&quot;123&quot;);
-        Cookie cookie3 = new Cookie(&quot;address&quot;,&quot;beijing&quot;);
-        Cookie cookie4 = new Cookie(&quot;idCard&quot;,&quot;123124325&quot;);
-
-
-        //通知浏览器保存cookie
-        response.addCookie(cookie1);
-        response.addCookie(cookie2);
-        response.addCookie(cookie3);
-        response.addCookie(cookie4);
-
-    &#125;
-
-
-    /**
-     * 获取单个cookie的方式，只能通过遍历cookie数组，然后进行过滤
-     * @param request
-     * @param response
-     */
-    public void getCookieFilter(HttpServletRequest request,HttpServletResponse response)&#123;
-
-        //根据请求对象获取客户端的cookie
-        Cookie[] cookies = request.getCookies();
-
-        //遍历cookie数组
-        for (Cookie cookie : cookies) &#123;
-
-            if(cookie.getName().equals(&quot;username&quot;))&#123;
-
-                //设置响应对象支持html文本
-                response.setContentType(&quot;text/html;charset=utf-8&quot;);
-
-                //cookie.getName()获取cookie的key
-                //cookie.getValue()获取cookie的value
-                try &#123;
-                    response.getWriter().print(cookie.getName()+&quot; &quot;+cookie.getValue()+&quot;&lt;br&gt;&quot;);
-                &#125; catch (IOException e) &#123;
-                    e.printStackTrace();
-                &#125;
-
-            &#125;
-
-        &#125;
-
-    &#125;
-
-
-    /**
-     * 获取浏览器端所有的cookie
-     *
-     * 获取cookie没有提供获取单个cookie的方法，只能获取所有然后再筛选出需要的cookie
-     * @param request
-     * @param response
-     */
-    public void getCookies(HttpServletRequest request,HttpServletResponse response)&#123;
-
-        //根据请求对象获取客户端的cookie
-        Cookie[] cookies = request.getCookies();
-
-        //遍历cookie数组
-        for (Cookie cookie : cookies) &#123;
-
-            //设置响应对象支持html文本
-            response.setContentType(&quot;text/html;charset=utf-8&quot;);
-
-            //cookie.getName()获取cookie的key
-            //cookie.getValue()获取cookie的value
-            try &#123;
-                response.getWriter().print(cookie.getName()+&quot; &quot;+cookie.getValue()+&quot;&lt;br&gt;&quot;);
-            &#125; catch (IOException e) &#123;
-                e.printStackTrace();
-            &#125;
-
-        &#125;
-
-    &#125;
-
-&#125;
-</code></pre>
-<h2 id="Cookie值的修改"><a href="#Cookie值的修改" class="headerlink" title="Cookie值的修改"></a>Cookie值的修改</h2><p>方案一</p>
-<p>1.先创建一个要修改的同名Cookie对象</p>
-<p>2.再构造器，同时赋予新的Cookie值</p>
-<p>3.调用response.addCookie(Cookie)</p>
-<p>方案二</p>
-<p>1.先查找到需要修改的Cookie对象</p>
-<p>2.调用setValue()方法赋予新的Cookie值</p>
-<p>3.调用response.addCookie()通知客户端保存修改</p>
-<pre><code class="java">/**
- * 修改对象的cookie值
- * @param request
- * @param response
- */
-public void setCookie(HttpServletRequest request,HttpServletResponse response)&#123;
-
-    //把username的值改成jack
-    Cookie cookie1 = new Cookie(&quot;username&quot;, &quot;jack&quot;);
-
-    //通知浏览器保存cookie
-    response.addCookie(cookie1);
-
-    //将密码改成654321
-
-    //先获取浏览器所有的cookie
-    Cookie[] cookies = request.getCookies();
-
-    Cookie c = null;
-
-    //遍历cookie
-    for (Cookie cookie : cookies) &#123;
-
-        if (cookie.getName().equals(&quot;password&quot;))&#123;
-
-            cookie.setValue(&quot;654321&quot;);
-
-            c = cookie;
-
-        &#125;
-
-    &#125;
-
-    //通知浏览器保存cookie
-    response.addCookie(c);
-
-&#125;
-</code></pre>
-<h2 id="封装Cookie工具类"><a href="#封装Cookie工具类" class="headerlink" title="封装Cookie工具类"></a>封装Cookie工具类</h2><p>Cookie类无法获取浏览器端单个cookie，每次需要去遍历，因此我们选择把对cookie的操作封装成一个工具类</p>
-<pre><code class="java">package com.os467.utils;
-
-import javax.servlet.http.Cookie;
-
-/**
- *根据cookie的key来找到某一个具体的cookie,因为api中我们只能获取所有cookie
- * 获取单个cookie的话只能通过标识去过滤，这样就很麻烦，所以我们可以封装一个工具类
- * 来提高开发速率
- */
-public class FindCookieUtils &#123;
-
-    //构造方法私有化
-    private FindCookieUtils()&#123;
-
-    &#125;
-
-    /**
-     * 根据key来获取cookie
-     * @return
-     */
-    public static Cookie findCookie(Cookie[] cookies,String name)&#123;
-
-        if (cookies == null || cookies.length == 0 || name == null)&#123;
-
-            return null;
-
-        &#125;
-
-        //遍历cookie数组
-        for (Cookie cookie : cookies) &#123;
-
-            if (cookie.getName().equals(name))&#123;
-
-                return cookie;
-
-            &#125;
-
-        &#125;
-
-        return null;
-
-
-    &#125;
-
-
-&#125;
-</code></pre>
-<h2 id="Cookie的生命周期"><a href="#Cookie的生命周期" class="headerlink" title="Cookie的生命周期"></a>Cookie的生命周期</h2><p>cookie默认的生命周期是一个session级别的，是浏览器的开启到关闭</p>
-<h3 id="Cookie生命控制"><a href="#Cookie生命控制" class="headerlink" title="Cookie生命控制"></a>Cookie生命控制</h3><p><code>setMaxAge()</code></p>
-<p>正数，表示在指定的秒数后过期</p>
-<p>负数，表示浏览器一关，Cookie就会被删除（默认值是-1）</p>
-<p>零，表示马上删除Cookie</p>
-<p><strong>设置cookie的生命周期</strong></p>
-<pre><code class="java">/**
- * 设置cookie的生命周期
- * @param request
- * @param response
- */
-public void setMaxAgeCookie(HttpServletRequest request,HttpServletResponse response)&#123;
-
-    //1.将所有的cookie的生命周期设置为一年
-    for (Cookie cookie : request.getCookies()) &#123;
-
-        cookie.setMaxAge(60 * 60 * 24 * 365);
-
-        //通知浏览器保存cookie
-        response.addCookie(cookie);
-
-    &#125;
-
-    //将密码所对应的cookie的生命周期改为一周
-    Cookie cookie = FindCookieUtils.findCookie(request.getCookies(), &quot;password&quot;);
-
-    //修改生命周期
-    cookie.setMaxAge(60 * 60 * 24 * 7);
-
-    //通知浏览器保存
-    response.addCookie(cookie);
-
-&#125;
-</code></pre>
-<p><strong>删除一个具体的cookie</strong></p>
-<pre><code class="java">/**
- * 删除一个具体的cookie
- * @param request
- * @param response
- */
-public void deleteCookie(HttpServletRequest request,HttpServletResponse response) &#123;
-
-    //删除idCard所对应的cookie
-    Cookie cookie = FindCookieUtils.findCookie(request.getCookies(), &quot;idCard&quot;);
-
-    cookie.setMaxAge(0);
-
-    //通知浏览器保存cookie
-
-    response.addCookie(cookie);
-
-&#125;
-</code></pre>
-<h1 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h1><p>Session是一个接口（HttpSession）</p>
-<p>Session就是会话，它是用来维护一个客户端和服务器之间关联的一种技术</p>
-<p>每个客户端都有自己的一个Session会话</p>
-<p>Session会话中，我们经常用来保存用户登录之后的信息</p>
-<p>session是在服务端保存数据的一种技术，而且session可以关联客户端和服务端</p>
-<p>session跟cookie是有关系的</p>
-<p>以后会用session来保存用户登录之后的用户信息，我们之前所完成的登录功能是不完整的</p>
-<p>前端校验会话中是否有用户数据，如果有，才能登录成功</p>
-<p><strong>如何去创建session对象？</strong></p>
-<p>创建session对象，需要用到request对象</p>
-<p><code>HttpSession session = request.getSession()</code></p>
-<p>session也可以说是一个域对象，可以存取值，取值范围，是浏览器的开启到关闭</p>
-<p><code>request.getSession()</code>第一次调用是：创建Session会话</p>
-<p><code>isNew()</code>判断到底是不是刚创建出来的</p>
-<p><code>getId()</code>得到Session的会话id值</p>
-<p>session对象是一个<strong>单例</strong>的对象</p>
-<h2 id="Session域数据的存取"><a href="#Session域数据的存取" class="headerlink" title="Session域数据的存取"></a>Session域数据的存取</h2><pre><code class="java">//存数据
-request.getSession().setAttribute(&quot;key&quot;,&quot;value&quot;);
-
-//取数据
-request.getSession().getAttribute(&quot;key&quot;);
-</code></pre>
-<h2 id="Session生命周期"><a href="#Session生命周期" class="headerlink" title="Session生命周期"></a>Session生命周期</h2><h3 id="Session生命周期控制"><a href="#Session生命周期控制" class="headerlink" title="Session生命周期控制"></a>Session生命周期控制</h3><p><code>public void setMaxInactiveInterval(int interval)</code></p>
-<p>设置Session的超时时间，超过指定的时长，Session就会被销毁</p>
-<p>值为正数的时候，设定Session的超时时长，负数表示永不超时</p>
-<p><code>getMaxInactiveInterval()</code>获取Session的超时时间</p>
-<p><code>invalidate()</code>让当前Session会话马上超时无效</p>
-<p>session默认超时时间是<strong>30分钟</strong></p>
-<p><strong>设置生命周期与cookie区别：</strong></p>
-<p>负数，cookie代表浏览器关闭则删除，session代表永不超时</p>
-<p>删除cookie可以设置0，删除session不可以，需要用指定的方法</p>
-<h4 id="设置session的超时时间"><a href="#设置session的超时时间" class="headerlink" title="设置session的超时时间"></a>设置session的超时时间</h4><p><strong>设置session的超时时间</strong></p>
-<pre><code class="java">session.setMaxInactiveInterval(3600 * 24);
-</code></pre>
-<p><strong>通过配置文件设置默认超时时间</strong></p>
-<p>xml中配置是按照<strong>分钟</strong>配置的</p>
-<pre><code class="xml">&lt;!--配置默认的超时时间--&gt;
-&lt;session-config&gt;
-    &lt;session-timeout&gt;45&lt;/session-timeout&gt;
-&lt;/session-config&gt;
-</code></pre>
-<p><strong>让当前的session立即超时无效</strong></p>
-<p>这个方法在以后做注销的时候会用到</p>
-<pre><code class="java">session.invalidate();
-</code></pre>
-<pre><code class="java">public class SessionDemo01 extends HttpServlet &#123;
-
-    @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-
-        response.setContentType(&quot;text/html;charset=utf-8&quot;);
-
-        //创建session对象
-        HttpSession session = request.getSession();
-        HttpSession session2 = request.getSession();
-
-        /*session.setMaxInactiveInterval(3600 * 24);*/
-
-
-        response.getWriter().print(&quot;session是否是新创建的：&quot;+session.isNew()+&quot;&lt;br&gt;&quot;);
-
-        response.getWriter().print(&quot;session的会话id值为：&quot;+session.getId()+&quot;&lt;br&gt;&quot;);
-
-        response.getWriter().print(&quot;session对象是否是单例的：&quot;+ (session == session2)+&quot;&lt;br&gt;&quot;);
-
-        //往session域中存数据
-        session.setAttribute(&quot;key1&quot;,&quot;value1&quot;);
-        session.setAttribute(&quot;key2&quot;,&quot;value2&quot;);
-
-        //取出session中的数据
-        response.getWriter().print(&quot;取出session中key1的数据&quot;+session.getAttribute(&quot;key1&quot;)+&quot;&lt;br&gt;&quot;);
-
-        response.getWriter().print(&quot;取出session中key2的数据&quot;+session.getAttribute(&quot;key2&quot;)+&quot;&lt;br&gt;&quot;);
-
-        //获取session超时时间
-        response.getWriter().print(&quot;session默认超时时间&quot;+session.getMaxInactiveInterval()+&quot;&lt;br&gt;&quot;);
-
-    &#125;
-&#125;
-</code></pre>
-<h1 id="session和cookie的关系和区别"><a href="#session和cookie的关系和区别" class="headerlink" title="session和cookie的关系和区别"></a>session和cookie的关系和区别</h1><h2 id="session和cookie的关系"><a href="#session和cookie的关系" class="headerlink" title="session和cookie的关系"></a>session和cookie的关系</h2><p>cookie保存数据的原理就是通过http协议响应头的方式把数据传递过去</p>
-<p>在浏览器访问服务端的时候，假设我们并没有手动的去创建session对象，但是我们在响应头会发现一个现象：会有一个<strong>set-cookie : JESSIONID &#x3D; 74045E2CC5F9FA30EE9CEBE1D092E1CD</strong></p>
-<p>JSEEIONID &#x3D; session的会话id</p>
-<p>所以说要想获得会话id，就必须得有session对象</p>
-<p>总结：浏览器访问服务端的时候，会自动的去创建session会话id，自动生成会话id，然后在底层通过创建cookie对象的方式将会话id保存下来</p>
-<p><code>Cookie cookie = new Cookie(&quot;JESSIONID&quot;,session的会话id)</code></p>
-<h2 id="session和cookie的区别"><a href="#session和cookie的区别" class="headerlink" title="session和cookie的区别"></a>session和cookie的区别</h2><p><strong>cookie</strong></p>
-<p>​		cookie是客户端保存数据的技术：只能去存放一些最基本的字符串，json串，不能存放java对象</p>
-<p>​		cookie相对来说不安全，因为数据存在浏览器的内存里面，所以可以通过一些途径来获取到这些数据</p>
-<p><strong>session</strong></p>
-<p>​		session是服务端保存数据的技术，可以存放的数据类型有很多，String、List、Map、java对象</p>
-<p>​		session相对来说是安全的，但是会占用服务器的资源，cookie是不会占用服务器资源的</p>
+        <h1 id="Mysql事务隔离级别"><a href="#Mysql事务隔离级别" class="headerlink" title="Mysql事务隔离级别"></a>Mysql事务隔离级别</h1><p>介绍事务隔离级别之前，我们需要了解事务的一个概念</p>
+<h2 id="事务的ACID特性"><a href="#事务的ACID特性" class="headerlink" title="事务的ACID特性"></a>事务的ACID特性</h2><ul>
+<li><strong>原子性（Atomicity）</strong><ul>
+<li>原子性，事务是数据库中的逻辑<strong>工作单位</strong>，事务中包含的操作要么全做，要么全不做</li>
+</ul>
+</li>
+<li><strong>一致性（Consistency）</strong><ul>
+<li>事务的<strong>执行结果</strong>必须是使数据库从一个一致性状态变为另一个一致性状态</li>
+</ul>
+</li>
+<li><strong>隔离性（Isolation）</strong><ul>
+<li>一个事务的执行不能被其它事务干扰，即一个事务的内部操作以及对数据的使用<strong>对其它并发事务应当是不可见的</strong></li>
+</ul>
+</li>
+<li><strong>持久性（Durability）</strong><ul>
+<li>事务一旦提交，它对数据库中<strong>数据的改变应当是永久性的</strong>，接下来的其它操作与故障不应该对其执行结果有任何影响</li>
+</ul>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/piaobodeyun0000/p/16022456.html">参考博客</a></p>
+<h2 id="事务的并发问题"><a href="#事务的并发问题" class="headerlink" title="事务的并发问题"></a>事务的并发问题</h2><h3 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h3><p>事务A读取了事务B更新但<strong>未提交</strong>的数据，然后事务B回滚操作，那么事务A读取到的数据就是脏读</p>
+<h3 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h3><p><strong>并发更新时</strong>，事务A多次读取同一数据，事务B在事务A多次读取的过程中对数据进行了<strong>修改并提交</strong>，导致事务A<strong>多次读取同一数据时获取的结果不一致</strong></p>
+<h3 id="幻读"><a href="#幻读" class="headerlink" title="幻读"></a>幻读</h3><p><strong>并发插入、删除时</strong>，事务A第一次读取到的数据和第二次读取到的<strong>数据数量不一致</strong>，事务B在事务A两次读取的过程中对数据进行了增加或删除的操作，导致A事务中前后读取到数据的数量发生了变化</p>
+<blockquote>
+<p>四大特性中，redo log解决了持久性（Durability）问题，undo log解决了原子性（Atomicity），MVCC和锁解决了幻读问题，最终一起实现了终极目标——解决了一致性（Consistency）问题</p>
+</blockquote>
+<h2 id="Mysql事务的四种隔离级别"><a href="#Mysql事务的四种隔离级别" class="headerlink" title="Mysql事务的四种隔离级别"></a>Mysql事务的四种隔离级别</h2><h3 id="读未提交（Read-Uncommit）"><a href="#读未提交（Read-Uncommit）" class="headerlink" title="读未提交（Read Uncommit）"></a>读未提交（Read Uncommit）</h3><p>在该事务级别，<strong>所有事务都可以查询到其它未提交事务的执行结果</strong>，本隔离级别很少用于实际应用，因为性能也不比其它级别好多少</p>
+<h3 id="读已提交（Read-Committed）"><a href="#读已提交（Read-Committed）" class="headerlink" title="读已提交（Read Committed）"></a>读已提交（Read Committed）</h3><p>大多数数据库默认隔离级别（不是mysql默认的），它满足了隔离的简单定义：<strong>一个事务只能看到已经提交事务所作的改变</strong>，但是依旧会产生不可重复读，即多次查询同一数据可能会因为其它事务的提交而获得不同结果</p>
+<h3 id="可重复读（Repeatable-Read）"><a href="#可重复读（Repeatable-Read）" class="headerlink" title="可重复读（Repeatable Read）"></a>可重复读（Repeatable Read）</h3><p>这是<strong>mysql的默认事务隔离级别</strong>，在同一个事务内的查询都是事务<strong>开始时刻一致的</strong></p>
+<p>在<strong>SQL标准中</strong>，该隔离级别<strong>消除了不可重复读</strong>，<strong>但是还存在幻读现象</strong></p>
+<blockquote>
+<p> 但是innoDB解决了幻读，详细参考下文MMVC实现机制</p>
+</blockquote>
+<p><strong>RR级别如何解决不可重复度？</strong></p>
+<p>innodb采用了mvcc（多版本并发控制）来解决这一问题</p>
+<blockquote>
+<p>mvcc是利用在每条数据后面加了隐藏的两列（创建版本号和删除版本号），每个事务在开始的时候都会有一个递增的版本号</p>
+<p>查询操作为了避免查询到旧数据或已经被其他事务更改过的数据，需要满足如下条件：</p>
+<ul>
+<li><p>查询时当前事务的版本号需要大于或等于创建版本号</p>
+</li>
+<li><p>查询时当前事务的版本号需要小于删除的版本号</p>
+</li>
+</ul>
+<p>即：<code>create_version &lt;= current_version &lt; delete_version</code>，这样就可以避免查询到其他事务修改的数据</p>
+</blockquote>
+<h3 id="可串行化（Serializable）"><a href="#可串行化（Serializable）" class="headerlink" title="可串行化（Serializable）"></a>可串行化（Serializable）</h3><p>完全串行化的读，每次读都需要获得<strong>表级共享锁</strong>，读写相互都会阻塞，性能较差</p>
+<blockquote>
+<p>在MySQL中，修复幻读的时候，并没有使用到串行化的事务隔离级别，而是使用了MVCC多版本并发控制和Next key lock临键锁的方式来修复幻读问题的</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">隔离级别</th>
+<th align="center">脏读</th>
+<th align="center">不可重复读</th>
+<th align="center">幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">读未提交（Read Uncommit）</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="left">读已提交（Read Committed）</td>
+<td align="center">×</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="left">可重复读（Repeatable Read）</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="left">可串行化（Serializable）</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+</tr>
+</tbody></table>
+<h2 id="MySql的MVCC实现机制"><a href="#MySql的MVCC实现机制" class="headerlink" title="MySql的MVCC实现机制"></a>MySql的MVCC实现机制</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Studder/article/details/125998119">详细参考博客</a></p>
+<h3 id="快照读"><a href="#快照读" class="headerlink" title="快照读"></a>快照读</h3><p>单纯的<strong>SELECT</strong>语句（不加锁）都是快照读，但不包含下面两种</p>
+<p><code>SELECT ... FOR UPDATE</code></p>
+<p><code>SELECT ... LOCK IN SHARE MODE</code></p>
+<p>快照读，读取的是记录数据的可见版本，有可能是历史数据， 不加锁，是非阻塞读</p>
+<blockquote>
+<p> 快照读sql提取的数据是MVCC根据readview来选择的</p>
+</blockquote>
+<p><strong>不同隔离级别下的快照读：</strong></p>
+<ul>
+<li>Read Committed：每次select，都生成一个快照读<ul>
+<li>在事务中<strong>每一次执行</strong>快照读时生成ReadView</li>
+</ul>
+</li>
+<li>Repeatable Read：开启事务后第一个select语句才是快照读的地方<ul>
+<li>仅在事务中<strong>第一次执行</strong>快照读时生成ReadView，后续复用该ReadView</li>
+</ul>
+</li>
+<li>Serializable：快照读会退化为当前读</li>
+</ul>
+<h3 id="当前读"><a href="#当前读" class="headerlink" title="当前读"></a>当前读</h3><p>读取的是记录的<strong>最新版本</strong>，<strong>更新快照为最新的数据内容</strong></p>
+<blockquote>
+<p>所谓最新的数据内容是修改且已经提交的数据</p>
+</blockquote>
+<p>读取时需要保证其它的并发事务不能修改当前记录，会对<strong>读取的记录进行加锁操作</strong></p>
+<p>在执行以下SQL语句时，会进行当前读：</p>
+<p><code>select … lock in share mode</code></p>
+<p><code>select … for update</code></p>
+<p><code>update 、delete 、insert</code></p>
+<p><strong>MVCC</strong>是Multi-Version Concurrency Control（多版本并发控制）的缩写，MVCC没有统一的实现标准</p>
+<p>不同的存储引擎对MVCC的实现方式是不同的，典型的有乐观并发控制和悲观并发控制</p>
+<p>InnoDB对MVCC的实现采用的是乐观并发控制</p>
+<p><strong>MVCC会根据read_view中所保存的信息来构建当前事务可视版本</strong></p>
+<p><strong>RC隔离级别产生不可重复度的原因</strong></p>
+<p>对于小于或者等于RC的隔离级别，事务开启后，每次执行SQL语句都会申请一个read_view，然后在执行完这个SQL语句后，调用read_view_close_for_mysql将read view从事务中删除，每次在执行SQL语句之前都会判断trx-&gt;read_view为空（理论下必为空），然后<strong>重新申请一个read_view</strong>（这就是为什么RC隔离级别下会产生不可重复读的原因）</p>
+<p><strong>RR隔离级别实现可重复读</strong></p>
+<p>对于RR隔离级别，当申请一个read_view后，事务未提交不会删除，整个事务将不再申请新的read_view，保证事务中所<strong>使用的read_view都是同一个</strong>，从而实现可重复读的隔离级别</p>
+<h3 id="如何解决幻读？"><a href="#如何解决幻读？" class="headerlink" title="如何解决幻读？"></a>如何解决幻读？</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yyyy11119/article/details/120452355?spm=1001.2101.3001.6650.9&utm_medium=distribute.pc_relevant.none-task-blog-2~default~ESLANDING~default-9-120452355-blog-125274022.relrec_prioritylanding&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~ESLANDING~default-9-120452355-blog-125274022.relrec_prioritylanding&utm_relevant_index=15">参考博客</a></p>
+<blockquote>
+<p><strong>场景：</strong></p>
+<p>当前DB已有id 5, 10, 15三条数据。<br>事务A查询id &lt; 10的数据，可以查出一行记录id &#x3D; 5<br>事务B插入id &#x3D; 6的数据<br>事务A再查询id &lt; 10的数据，可以查出一行记录id &#x3D; 5，查不出id &#x3D; 6的数据（读场景，解决了幻读）<br>事务A可以执行更新&#x2F;删除操作，然后查询id &lt; 10 的数据，会发现可以查询到5和6两条数据（更新和删除操作进行了当前读，快照中的数据发生了变更）</p>
+</blockquote>
+<blockquote>
+<p>RR级别下，快照读每次读取的都是第一次保存的快照，因此本身解决了因为其它事务造成的数据增加，删除而产生的幻读问题</p>
+<p>但如果当前事务进行了增加，更新，删除操作之后<strong>快照中的数据发生了变化</strong>，就会在下次读取的时候出现幻读问题</p>
+</blockquote>
+<ul>
+<li>由此可见，在标准的RR下，并没有彻底解决幻读问题，但是在Mysql的innodb引擎中使用 Next-Key lock（<strong>间隙锁（Gap锁）和行锁</strong>合称 next-key lock）加锁，读数据期间不允许写操作，从而彻底解决了幻读问题</li>
+</ul>
+<h4 id="快照读和当前读导致的幻读"><a href="#快照读和当前读导致的幻读" class="headerlink" title="快照读和当前读导致的幻读"></a>快照读和当前读导致的幻读</h4><p>这里讨论RR隔离级别下的幻读问题</p>
+<blockquote>
+<p>1、如果事务中都是用快照读，那么不会产生幻读的问题</p>
+<p>2、快照读和当前读一起使用的时候就会产生幻读</p>
+</blockquote>
+<p>当前读触发的幻读问题，可以使用锁机制阻塞其它事务对间隙的操作（增加，删除），必须等待当前事务提交后，其它事务才能继续工作</p>
+<p><strong>使用MVCC+行锁+间隙锁</strong></p>
+<p><strong>正常等值条件并且值存在的情况下</strong>加的是行锁，锁住某一行的数据</p>
+<p><strong>如果等值条件值不存在的情况下加的是间隙锁，或者范围查询</strong>，加的也是间隙锁</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46416934/article/details/126113200">锁机制参考博客</a></p>
+<p><strong>行锁（Record Lock）</strong>：锁定单个行记录的锁，防止其他事务对此行进行update和delete，在RC、RR隔离级别下都支持</p>
+<p><strong>间隙锁（Gap Lock）</strong>：锁定索引记录间隙（不含该记录），确保索引记录间隙不变，防止其他事务在这个间隙进行insert，产生幻读，在RR隔离级别下都支持</p>
+<p> <strong>临键锁（Next-Key Lock）</strong>：行锁和间隙锁组合，同时锁住数据，并锁住数据前面的间隙Gap，在RR隔离级别下支持</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1225,12 +1007,12 @@ request.getSession().getAttribute(&quot;key&quot;);
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>cookie和session</p>
+    <p><span class="copy-title">文章标题:</span>NodeJS</p>
     <p><span class="copy-title">字数:</span><span class="post-count">2.3k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-07-06, 18:27:45</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-05, 00:07:55</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/07/06/cookie%E5%92%8Csession/" title="cookie和session">https://os467.github.io/2022/07/06/cookie%E5%92%8Csession/</a>
+    <p><span class="copy-title">发布时间:</span>2022-09-16, 19:51:23</p>
+    <p><span class="copy-title">最后更新:</span>2022-09-16, 19:52:12</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/09/16/Mysql%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/" title="NodeJS">https://os467.github.io/2022/09/16/Mysql%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
