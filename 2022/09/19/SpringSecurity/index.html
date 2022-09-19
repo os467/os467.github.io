@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SpringSecurity | Tly的博客</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="SpringSecurity | Tly的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tly的博客">
+<meta property="og:url" content="https://os467.github.io/about/index.html">
+<meta property="og:site_name" content="Tly的博客">
+<meta property="og:description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-05T07:48:23.998Z">
+<meta property="article:modified_time" content="2022-09-05T07:48:23.998Z">
+<meta property="article:author" content="Os467">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/headimg.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/headimg.jpg"/>
+</a>
+<div class="author">
+    <span>Os467</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/os467"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:1300452403@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=1300452403&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/song?id=551339076&amp;userid=1571495855"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(43)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="JAVASE基础">
+                        
+                        JAVASE基础
+                        <small>(9)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="JAVASE进阶">
+                        
+                        JAVASE进阶
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="框架学习">
+                        
+                        框架学习
+                        <small>(10)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="微服务">
+                        
+                        微服务
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="运维">
+                        
+                        运维
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="项目">
+                        
+                        项目
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="底层学习">
+                        
+                        底层学习
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="前端">
+                        
+                        前端
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="其它">
+                        
+                        其它
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="数据库">
+                        
+                        数据库
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="43">
+<input type="hidden" id="yelog_site_word_count" value="189.6k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://os467.github.io/mdResource">os467</a></li>
+            
+            <li><a target="_blank" href="https://www.bilibili.com/video/BV17h411k7jB?vd_source=38c37e7cf61f2c4591c73b0a37eab964">这是一个神奇的链接</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/09/19/SpringSecurity/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringSecurity">SpringSecurity</span>
+            <span class="post-date" title="2022-09-19 23:33:22">2022/09/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 "
+           href="/2022/09/16/Mysql%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mysql事务隔离级别">Mysql事务隔离级别</span>
+            <span class="post-date" title="2022-09-16 19:51:23">2022/09/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/09/15/ThreadLocal/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ThreadLocal">ThreadLocal</span>
+            <span class="post-date" title="2022-09-15 00:02:03">2022/09/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/09/11/%E6%A0%91%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8-md/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="树结构入门.md">树结构入门.md</span>
+            <span class="post-date" title="2022-09-11 02:27:07">2022/09/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/09/08/NodeJS/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NodeJS">NodeJS</span>
+            <span class="post-date" title="2022-09-08 20:18:43">2022/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/09/08/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前端入门">前端入门</span>
+            <span class="post-date" title="2022-09-08 10:21:00">2022/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/09/06/Java%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java对象创建">Java对象创建</span>
+            <span class="post-date" title="2022-09-06 21:16:42">2022/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/09/04/ElasticSearch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ElasticSearch">ElasticSearch</span>
+            <span class="post-date" title="2022-09-04 23:29:31">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/09/01/springCloud%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud项目搭建">SpringCloud项目搭建</span>
+            <span class="post-date" title="2022-09-01 22:23:21">2022/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/30/RabbitMQ/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RabbitMQ">RabbitMQ</span>
+            <span class="post-date" title="2022-08-30 20:25:33">2022/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/08/29/MVC%E8%AE%BF%E9%97%AE%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MVC多线程安全问题">MVC多线程安全问题</span>
+            <span class="post-date" title="2022-08-29 17:18:53">2022/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/08/27/JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM类加载机制">JVM类加载机制</span>
+            <span class="post-date" title="2022-08-27 18:10:23">2022/08/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/08/24/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM虚拟机">JVM虚拟机</span>
+            <span class="post-date" title="2022-08-24 18:28:03">2022/08/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 运维 "
+           href="/2022/08/23/Docker/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Docker">Docker</span>
+            <span class="post-date" title="2022-08-23 13:25:11">2022/08/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/18/springCloud/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud">SpringCloud</span>
+            <span class="post-date" title="2022-08-18 13:21:39">2022/08/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="微服务入门">微服务入门</span>
+            <span class="post-date" title="2022-08-15 15:44:35">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/15/dubbo/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="dubbo">dubbo</span>
+            <span class="post-date" title="2022-08-15 07:25:45">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/13/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Redis">Redis</span>
+            <span class="post-date" title="2022-08-13 14:25:31">2022/08/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/12/bootstrap/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Bootstrap(WEB框架)">Bootstrap(WEB框架)</span>
+            <span class="post-date" title="2022-08-12 16:23:21">2022/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/12/springboot/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot">SpringBoot</span>
+            <span class="post-date" title="2022-08-12 12:15:35">2022/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/08/ssm%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SSM项目整合">SSM项目整合</span>
+            <span class="post-date" title="2022-08-08 12:15:25">2022/08/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 项目 "
+           href="/2022/08/03/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="外卖项目">外卖项目</span>
+            <span class="post-date" title="2022-08-03 08:35:11">2022/08/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/01/MyBatisPlus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatisPlus">MyBatisPlus</span>
+            <span class="post-date" title="2022-08-01 11:15:26">2022/08/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/31/MyBatis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatis">MyBatis</span>
+            <span class="post-date" title="2022-07-31 10:10:26">2022/07/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/28/Maven/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven">Maven</span>
+            <span class="post-date" title="2022-07-28 19:10:41">2022/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/26/spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="spring">spring</span>
+            <span class="post-date" title="2022-07-26 21:54:22">2022/07/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/23/springMVC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringMVC">SpringMVC</span>
+            <span class="post-date" title="2022-07-23 21:35:21">2022/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式">设计模式</span>
+            <span class="post-date" title="2022-07-18 19:21:50">2022/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/17/Ajax/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ajax">Ajax</span>
+            <span class="post-date" title="2022-07-17 12:07:22">2022/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/14/Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Annotation">Annotation</span>
+            <span class="post-date" title="2022-07-14 19:36:02">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/14/%E6%B3%A8%E8%A7%A3Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="注解">注解</span>
+            <span class="post-date" title="2022-07-14 10:09:18">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/13/Reflect/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Reflect">Reflect</span>
+            <span class="post-date" title="2022-07-13 14:40:18">2022/07/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2022-07-12 12:29:58">2022/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/10/IO%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IO流">IO流</span>
+            <span class="post-date" title="2022-07-10 20:14:33">2022/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/08/jQuery/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jQuery">jQuery</span>
+            <span class="post-date" title="2022-07-08 16:24:33">2022/07/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/07/javaScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="javaScript">javaScript</span>
+            <span class="post-date" title="2022-07-07 12:54:16">2022/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/06/XML/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="XML">XML</span>
+            <span class="post-date" title="2022-07-06 18:28:03">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/06/cookie%E5%92%8Csession/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="cookie和session">cookie和session</span>
+            <span class="post-date" title="2022-07-06 18:27:45">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/02/servlet/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="servlet">servlet</span>
+            <span class="post-date" title="2022-07-02 08:24:49">2022/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/01/jdbc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jdbc">jdbc</span>
+            <span class="post-date" title="2022-07-01 08:24:49">2022/07/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/06/19/SQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL">SQL</span>
+            <span class="post-date" title="2022-06-19 19:45:07">2022/06/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/05/28/JAVA%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JAVA入门">JAVA入门</span>
+            <span class="post-date" title="2022-05-28 00:32:07">2022/05/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/27/Linux%E4%BA%91%E8%AE%A1%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux云计算">Linux云计算</span>
+            <span class="post-date" title="2022-05-27 00:05:15">2022/05/27</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-SpringSecurity" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">SpringSecurity</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="框架学习">框架学习</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-09-19 23:33:58'>2022-09-19 23:33</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:4.7k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-Security"><span class="toc-text">Spring Security</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">快速入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A4%E8%AF%81"><span class="toc-text">认证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringSecurity%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B"><span class="toc-text">SpringSecurity完整流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="toc-text">设计思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E5%AE%89%E5%85%A8%E6%B5%81%E7%A8%8B"><span class="toc-text">修改默认安全流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0UserDetailsService%E6%8E%A5%E5%8F%A3"><span class="toc-text">实现UserDetailsService接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E5%AD%98%E5%82%A8"><span class="toc-text">密码加密存储</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E6%8E%A5%E5%8F%A3"><span class="toc-text">登录接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="toc-text">修改核心配置类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0LoginService"><span class="toc-text">实现LoginService</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%81%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">认证过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%80%E5%87%BA%E7%99%BB%E5%BD%95"><span class="toc-text">退出登录</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Spring-Security"><a href="#Spring-Security" class="headerlink" title="Spring Security"></a>Spring Security</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>Spring Security</strong> 是 Spring 家族中的一个<strong>安全管理框架</strong>，相比于另一个安全框架<strong>Shiro</strong>，它提供了更丰富的功能，社区资源也比Shiro丰富</p>
+<p>一般来说中大型的项目都是使用SpringSecurity来做安全框架，小项目用Shiro的比较多，因为相比与SpringSecurity，Shiro的上手更加简单</p>
+<p>一般Web应用需要进行<strong>认证</strong>和<strong>授权</strong></p>
+<ul>
+<li><p><strong>认证：</strong>验证当前访问系统的<strong>是不是本系统的用户</strong>，并且要确认<strong>具体是哪个用户</strong></p>
+</li>
+<li><p><strong>授权：</strong>经过认证后判断当前用户<strong>是否有权限进行某个操作</strong></p>
+</li>
+</ul>
+<p>而认证和授权也是SpringSecurity作为安全框架的核心功能</p>
+<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><p>我们需要搭建一个简单的SpringBoot工程，引入SpringSecurity依赖</p>
+<pre><code class="xml">&lt;parent&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;version&gt;2.5.0&lt;/version&gt;
+&lt;/parent&gt;
+
+&lt;dependencies&gt;
+
+    &lt;!--引入SpringSecurity启动器依赖--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+        &lt;optional&gt;true&lt;/optional&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<p><strong>默认效果：</strong>在引入SpringSecurity启动器依赖后访问原来的某个后端资源会出现一个默认的登录界面<code>Please sign in</code>（默认跳转<code>/login</code>资源）</p>
+<ul>
+<li>默认用户名是user，密码在启动时会在控制台输出</li>
+<li>登出访问<code>/logout</code>资源</li>
+</ul>
+<h2 id="认证"><a href="#认证" class="headerlink" title="认证"></a>认证</h2><p><strong>登录校验流程</strong></p>
+<p>1、前端<strong>携带用户名密码</strong>访问登录接口</p>
+<p>2、服务端去和数据库中的用户名和密码进行<strong>校验</strong></p>
+<p>3、如果正确，服务端使用用户名&#x2F;用户名id，生成一个<strong>jwt</strong>并响应给前端</p>
+<p>4、前端在登录后访问其它请求需要在<strong>请求头中携带token</strong></p>
+<p>5、后端获取请求头中的<strong>token进行解析</strong>，获取userID</p>
+<p>6、后端<strong>根据用户id获取用户相关信息</strong>，如果有<strong>权限</strong>允许访问相关资源，访问目标资源，响应给前端</p>
+<h2 id="SpringSecurity完整流程"><a href="#SpringSecurity完整流程" class="headerlink" title="SpringSecurity完整流程"></a>SpringSecurity完整流程</h2><p>SpringSecurity的原理其实就是一个<strong>过滤器链</strong>，内部包含了提供各种功能的过滤器</p>
+<p>这里我们可以看看入门案例中的过滤器</p>
+<p><strong>UsernamePasswordAuthenticationFilter</strong></p>
+<p>负责处理我们在登陆页面填写了用户名密码后的登陆请求</p>
+<p>入门案例的<strong>认证</strong>工作主要由它负责</p>
+<p><strong>ExceptionTranslationFilter</strong></p>
+<p>处理过滤器链中抛出的任何AccessDeniedException和AuthenticationException异常 </p>
+<p><strong>FilterSecurityInterceptor</strong></p>
+<p>负责权限校验（<strong>授权</strong>）的过滤器</p>
+<p><strong>认证流程</strong></p>
+<p>1、提交用户名和密码到<strong>UsernamePasswordAuthenticationFilter</strong>类，封装Authentication对象，此时只有用户名和密码信息，还未授权</p>
+<ul>
+<li>调用<strong>AuthenticationManager</strong>的<code>authenticate</code>方法进行认证</li>
+</ul>
+<p>2、<strong>AuthenticationManager接口：</strong>定义了认证Authentication的方法</p>
+<p>实现类为<strong>ProviderManager</strong></p>
+<ul>
+<li>在此类中调用<strong>DaoAuthenticationProvider</strong>的<code>authenticate</code>方法进行认证</li>
+</ul>
+<p>3、<strong>AbstractUserDetailsAuthenticationProvider抽象类：</strong>实现类为<strong>DaoAuthenticationProvider</strong></p>
+<ul>
+<li>在此类中调用了<strong>UserDetailsService</strong>接口的<code>loadUserByUsername</code>方法查询用户</li>
+</ul>
+<p>4、<strong>UserDetailsService接口：</strong>实现类为<strong>InMemoryUserDetailsManager</strong></p>
+<ul>
+<li>在此类中根据用户名去查询对应的用户及这个用户的权限信息，此类是在内存中查找信息，之后将对应用户信息包括权限信息<strong>封装成UserDetails对象</strong>返回给Provider</li>
+</ul>
+<p>5、通过<strong>PasswordEncoder</strong>对比UserDetails中的密码和Authentication的密码是否正确，如果正确就把<strong>UserDetails中的权限信息设置到Authentication对象中</strong></p>
+<p>6、如果成功返回Authentication对象最后调用<code>SecurityContextHolder.getContext().setAuthentication</code>方法存储该对象</p>
+<p><img src="https://img-blog.csdnimg.cn/2d25baa3befe41c0b5c428283c52cf97.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5qyn5bC86YWxb3dv,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<h3 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h3><p>前端请求头携带token信息到服务器，应该添加一个Jwt认证过滤器检查用户id，根据userid查询用户的权限信息</p>
+<p>为了减少每次访问给数据库带来的查询压力，我们应该将权限信息放入redis中，userid作为key，用户信息作为value存入redis</p>
+<p><strong>登录：</strong></p>
+<ul>
+<li><p>自定义登录接口</p>
+<ul>
+<li>调用ProviderManager的方法进行认证，如果认证通过生成jwt</li>
+<li>把用户信息存入redis</li>
+</ul>
+</li>
+<li><p>自定义UserDetailsService</p>
+<ul>
+<li>在这个实现类中去查询数据库</li>
+</ul>
+</li>
+</ul>
+<p><strong>校验：</strong></p>
+<ul>
+<li>定义jwt认证过滤器<ul>
+<li>获取token，解析token，获取其中的userid</li>
+<li>从redis中获取用户信息</li>
+<li>存入SecurityContextHolder</li>
+</ul>
+</li>
+</ul>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p><strong>依赖</strong></p>
+<pre><code class="xml">    &lt;!--redis依赖--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;!--fastjson依赖--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+        &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+        &lt;version&gt;1.2.33&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;!--jwt依赖--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+        &lt;artifactId&gt;jjwt&lt;/artifactId&gt;
+        &lt;version&gt;0.9.0&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;!--mybatisplus依赖--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+        &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;
+        &lt;version&gt;3.4.3&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;!--mysql依赖--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;mysql&lt;/groupId&gt;
+        &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+</code></pre>
+<p><strong>序列化工具类</strong></p>
+<pre><code class="java">package com.os467.springsecuritydemo.utils;
+
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.type.TypeFactory;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.SerializationException;
+import com.alibaba.fastjson.parser.ParserConfig;
+import java.nio.charset.Charset;
+
+/**
+ * Redis使用FastJson序列化
+ *
+ * @author sg
+ */
+public class FastJsonRedisSerializer&lt;T&gt; implements RedisSerializer&lt;T&gt;
+&#123;
+
+    public static final Charset DEFAULT_CHARSET = Charset.forName(&quot;UTF-8&quot;);
+
+    private Class&lt;T&gt; clazz;
+
+    static
+    &#123;
+        ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
+    &#125;
+
+    public FastJsonRedisSerializer(Class&lt;T&gt; clazz)
+    &#123;
+        super();
+        this.clazz = clazz;
+    &#125;
+
+    @Override
+    public byte[] serialize(T t) throws SerializationException
+    &#123;
+        if (t == null)
+        &#123;
+            return new byte[0];
+        &#125;
+        return JSON.toJSONString(t, SerializerFeature.WriteClassName).getBytes(DEFAULT_CHARSET);
+    &#125;
+
+    @Override
+    public T deserialize(byte[] bytes) throws SerializationException
+    &#123;
+        if (bytes == null || bytes.length &lt;= 0)
+        &#123;
+            return null;
+        &#125;
+        String str = new String(bytes, DEFAULT_CHARSET);
+
+        return JSON.parseObject(str, clazz);
+    &#125;
+
+
+    protected JavaType getJavaType(Class&lt;?&gt; clazz)
+    &#123;
+        return TypeFactory.defaultInstance().constructType(clazz);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>Redis配置类</strong></p>
+<pre><code class="java">package com.os467.springsecuritydemo.config;
+
+import com.os467.springsecuritydemo.utils.FastJsonRedisSerializer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+@Configuration
+public class RedisConfig &#123;
+
+    @Bean
+    @SuppressWarnings(value = &#123; &quot;unchecked&quot;, &quot;rawtypes&quot; &#125;)
+    public RedisTemplate&lt;Object, Object&gt; redisTemplate(RedisConnectionFactory connectionFactory)
+    &#123;
+        RedisTemplate&lt;Object, Object&gt; template = new RedisTemplate&lt;&gt;();
+        template.setConnectionFactory(connectionFactory);
+
+        FastJsonRedisSerializer serializer = new FastJsonRedisSerializer(Object.class);
+
+        // 使用StringRedisSerializer来序列化和反序列化redis的key值
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(serializer);
+
+        // Hash的key也采用StringRedisSerializer的序列化方式
+        template.setHashKeySerializer(new StringRedisSerializer());
+        template.setHashValueSerializer(serializer);
+
+        template.afterPropertiesSet();
+        return template;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>响应类</strong></p>
+<pre><code class="java">import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ResponseResult&lt;T&gt; &#123;
+    /**
+     * 状态码
+     */
+    private Integer code;
+    /**
+     * 提示信息，如果有错误时，前端可以获取该字段进行提示
+     */
+    private String msg;
+    /**
+     * 查询到的结果数据，
+     */
+    private T data;
+
+    public ResponseResult(Integer code, String msg) &#123;
+        this.code = code;
+        this.msg = msg;
+    &#125;
+
+    public ResponseResult(Integer code, T data) &#123;
+        this.code = code;
+        this.data = data;
+    &#125;
+
+    public Integer getCode() &#123;
+        return code;
+    &#125;
+
+    public void setCode(Integer code) &#123;
+        this.code = code;
+    &#125;
+
+    public String getMsg() &#123;
+        return msg;
+    &#125;
+
+    public void setMsg(String msg) &#123;
+        this.msg = msg;
+    &#125;
+
+    public T getData() &#123;
+        return data;
+    &#125;
+
+    public void setData(T data) &#123;
+        this.data = data;
+    &#125;
+
+    public ResponseResult(Integer code, String msg, T data) &#123;
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>JWT工具类</strong></p>
+<pre><code class="java">
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import java.util.Base64;
+import java.util.Date;
+import java.util.UUID;
+
+/**
+ * JWT工具类
+ */
+public class JwtUtil &#123;
+
+    //有效期为
+    public static final Long JWT_TTL = 60 * 60 *1000L;// 60 * 60 *1000  一个小时
+    //设置秘钥明文
+    public static final String JWT_KEY = &quot;osz&quot;;
+
+    public static String getUUID()&#123;
+        String token = UUID.randomUUID().toString().replaceAll(&quot;-&quot;, &quot;&quot;);
+        return token;
+    &#125;
+    
+    /**
+     * 生成jtw
+     * @param subject token中要存放的数据（json格式）
+     * @return
+     */
+    public static String createJWT(String subject) &#123;
+        JwtBuilder builder = getJwtBuilder(subject, null, getUUID());// 设置过期时间
+        return builder.compact();
+    &#125;
+
+    /**
+     * 生成jtw
+     * @param subject token中要存放的数据（json格式）
+     * @param ttlMillis token超时时间
+     * @return
+     */
+    public static String createJWT(String subject, Long ttlMillis) &#123;
+        JwtBuilder builder = getJwtBuilder(subject, ttlMillis, getUUID());// 设置过期时间
+        return builder.compact();
+    &#125;
+
+    private static JwtBuilder getJwtBuilder(String subject, Long ttlMillis, String uuid) &#123;
+        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+        SecretKey secretKey = generalKey();
+        long nowMillis = System.currentTimeMillis();
+        Date now = new Date(nowMillis);
+        if(ttlMillis==null)&#123;
+            ttlMillis=JwtUtil.JWT_TTL;
+        &#125;
+        long expMillis = nowMillis + ttlMillis;
+        Date expDate = new Date(expMillis);
+        return Jwts.builder()
+                .setId(uuid)              //唯一的ID
+                .setSubject(subject)   // 主题  可以是JSON数据
+                .setIssuer(&quot;osz&quot;)     // 签发者
+                .setIssuedAt(now)      // 签发时间
+                .signWith(signatureAlgorithm, secretKey) //使用HS256对称加密算法签名, 第二个参数为秘钥
+                .setExpiration(expDate);
+    &#125;
+
+    /**
+     * 创建token
+     * @param id
+     * @param subject
+     * @param ttlMillis
+     * @return
+     */
+    public static String createJWT(String id, String subject, Long ttlMillis) &#123;
+        JwtBuilder builder = getJwtBuilder(subject, ttlMillis, id);// 设置过期时间
+        return builder.compact();
+    &#125;
+
+    public static void main(String[] args) throws Exception &#123;
+        String jwt = createJWT(&quot;1234567&quot;);
+        System.out.println(jwt);
+        Claims claims = parseJWT(&quot;eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIzOGIxZTU2MDZlOWU0YTE5OTQ5ZjczMGM2YTEzNWI2MyIsInN1YiI6IjEyMzQ1NjciLCJpc3MiOiJvc3oiLCJpYXQiOjE2NjM1MTA3MTAsImV4cCI6MTY2MzUxNDMxMH0.OQNf0sAE9ZMu0wYgkMliXvjxMie2mN0_zVcQ2ZnPAQQ&quot;);
+        String subject = claims.getSubject();
+        System.out.println(subject);
+
+    &#125;
+
+    /**
+     * 生成加密后的秘钥 secretKey
+     * 用于JWT签名时的秘钥
+     * @return
+     */
+    public static SecretKey generalKey() &#123;
+        byte[] encodedKey = Base64.getDecoder().decode(JwtUtil.JWT_KEY);
+        SecretKey key = new SecretKeySpec(encodedKey, 0, encodedKey.length, &quot;AES&quot;);
+        return key;
+    &#125;
+    
+    /**
+     * 解析
+     *
+     * @param jwt
+     * @return
+     * @throws Exception
+     */
+    public static Claims parseJWT(String jwt) throws Exception &#123;
+        SecretKey secretKey = generalKey();
+        return Jwts.parser()
+                .setSigningKey(secretKey)
+                .parseClaimsJws(jwt)
+                .getBody();
+    &#125;
+
+
+&#125;
+</code></pre>
+<p><strong>Redis工具类</strong></p>
+<pre><code class="java">
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+
+@SuppressWarnings(value = &#123; &quot;unchecked&quot;, &quot;rawtypes&quot; &#125;)
+@Component
+public class RedisCache
+&#123;
+    @Autowired
+    public RedisTemplate redisTemplate;
+
+    /**
+     * 缓存基本的对象，Integer、String、实体类等
+     *
+     * @param key 缓存的键值
+     * @param value 缓存的值
+     */
+    public &lt;T&gt; void setCacheObject(final String key, final T value)
+    &#123;
+        redisTemplate.opsForValue().set(key, value);
+    &#125;
+
+    /**
+     * 缓存基本的对象，Integer、String、实体类等
+     *
+     * @param key 缓存的键值
+     * @param value 缓存的值
+     * @param timeout 时间
+     * @param timeUnit 时间颗粒度
+     */
+    public &lt;T&gt; void setCacheObject(final String key, final T value, final Integer timeout, final TimeUnit timeUnit)
+    &#123;
+        redisTemplate.opsForValue().set(key, value, timeout, timeUnit);
+    &#125;
+
+    /**
+     * 设置有效时间
+     *
+     * @param key Redis键
+     * @param timeout 超时时间
+     * @return true=设置成功；false=设置失败
+     */
+    public boolean expire(final String key, final long timeout)
+    &#123;
+        return expire(key, timeout, TimeUnit.SECONDS);
+    &#125;
+
+    /**
+     * 设置有效时间
+     *
+     * @param key Redis键
+     * @param timeout 超时时间
+     * @param unit 时间单位
+     * @return true=设置成功；false=设置失败
+     */
+    public boolean expire(final String key, final long timeout, final TimeUnit unit)
+    &#123;
+        return redisTemplate.expire(key, timeout, unit);
+    &#125;
+
+    /**
+     * 获得缓存的基本对象。
+     *
+     * @param key 缓存键值
+     * @return 缓存键值对应的数据
+     */
+    public &lt;T&gt; T getCacheObject(final String key)
+    &#123;
+        ValueOperations&lt;String, T&gt; operation = redisTemplate.opsForValue();
+        return operation.get(key);
+    &#125;
+
+    /**
+     * 删除单个对象
+     *
+     * @param key
+     */
+    public boolean deleteObject(final String key)
+    &#123;
+        return redisTemplate.delete(key);
+    &#125;
+
+    /**
+     * 删除集合对象
+     *
+     * @param collection 多个对象
+     * @return
+     */
+    public long deleteObject(final Collection collection)
+    &#123;
+        return redisTemplate.delete(collection);
+    &#125;
+
+    /**
+     * 缓存List数据
+     *
+     * @param key 缓存的键值
+     * @param dataList 待缓存的List数据
+     * @return 缓存的对象
+     */
+    public &lt;T&gt; long setCacheList(final String key, final List&lt;T&gt; dataList)
+    &#123;
+        Long count = redisTemplate.opsForList().rightPushAll(key, dataList);
+        return count == null ? 0 : count;
+    &#125;
+
+    /**
+     * 获得缓存的list对象
+     *
+     * @param key 缓存的键值
+     * @return 缓存键值对应的数据
+     */
+    public &lt;T&gt; List&lt;T&gt; getCacheList(final String key)
+    &#123;
+        return redisTemplate.opsForList().range(key, 0, -1);
+    &#125;
+
+    /**
+     * 缓存Set
+     *
+     * @param key 缓存键值
+     * @param dataSet 缓存的数据
+     * @return 缓存数据的对象
+     */
+    public &lt;T&gt; BoundSetOperations&lt;String, T&gt; setCacheSet(final String key, final Set&lt;T&gt; dataSet)
+    &#123;
+        BoundSetOperations&lt;String, T&gt; setOperation = redisTemplate.boundSetOps(key);
+        Iterator&lt;T&gt; it = dataSet.iterator();
+        while (it.hasNext())
+        &#123;
+            setOperation.add(it.next());
+        &#125;
+        return setOperation;
+    &#125;
+
+    /**
+     * 获得缓存的set
+     *
+     * @param key
+     * @return
+     */
+    public &lt;T&gt; Set&lt;T&gt; getCacheSet(final String key)
+    &#123;
+        return redisTemplate.opsForSet().members(key);
+    &#125;
+
+    /**
+     * 缓存Map
+     *
+     * @param key
+     * @param dataMap
+     */
+    public &lt;T&gt; void setCacheMap(final String key, final Map&lt;String, T&gt; dataMap)
+    &#123;
+        if (dataMap != null) &#123;
+            redisTemplate.opsForHash().putAll(key, dataMap);
+        &#125;
+    &#125;
+
+    /**
+     * 获得缓存的Map
+     *
+     * @param key
+     * @return
+     */
+    public &lt;T&gt; Map&lt;String, T&gt; getCacheMap(final String key)
+    &#123;
+        return redisTemplate.opsForHash().entries(key);
+    &#125;
+
+    /**
+     * 往Hash中存入数据
+     *
+     * @param key Redis键
+     * @param hKey Hash键
+     * @param value 值
+     */
+    public &lt;T&gt; void setCacheMapValue(final String key, final String hKey, final T value)
+    &#123;
+        redisTemplate.opsForHash().put(key, hKey, value);
+    &#125;
+
+    /**
+     * 获取Hash中的数据
+     *
+     * @param key Redis键
+     * @param hKey Hash键
+     * @return Hash中的对象
+     */
+    public &lt;T&gt; T getCacheMapValue(final String key, final String hKey)
+    &#123;
+        HashOperations&lt;String, String, T&gt; opsForHash = redisTemplate.opsForHash();
+        return opsForHash.get(key, hKey);
+    &#125;
+
+    /**
+     * 删除Hash中的数据
+     * 
+     * @param key
+     * @param hkey
+     */
+    public void delCacheMapValue(final String key, final String hkey)
+    &#123;
+        HashOperations hashOperations = redisTemplate.opsForHash();
+        hashOperations.delete(key, hkey);
+    &#125;
+
+    /**
+     * 获取多个Hash中的数据
+     *
+     * @param key Redis键
+     * @param hKeys Hash键集合
+     * @return Hash对象集合
+     */
+    public &lt;T&gt; List&lt;T&gt; getMultiCacheMapValue(final String key, final Collection&lt;Object&gt; hKeys)
+    &#123;
+        return redisTemplate.opsForHash().multiGet(key, hKeys);
+    &#125;
+
+    /**
+     * 获得缓存的基本对象列表
+     *
+     * @param pattern 字符串前缀
+     * @return 对象列表
+     */
+    public Collection&lt;String&gt; keys(final String pattern)
+    &#123;
+        return redisTemplate.keys(pattern);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>响应工具类</strong></p>
+<pre><code class="java">import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+public class WebUtils
+&#123;
+    /**
+     * 将字符串渲染到客户端
+     * 
+     * @param response 渲染对象
+     * @param string 待渲染的字符串
+     * @return null
+     */
+    public static String renderString(HttpServletResponse response, String string) &#123;
+        try
+        &#123;
+            response.setStatus(200);
+            response.setContentType(&quot;application/json&quot;);
+            response.setCharacterEncoding(&quot;utf-8&quot;);
+            response.getWriter().print(string);
+        &#125;
+        catch (IOException e)
+        &#123;
+            e.printStackTrace();
+        &#125;
+        return null;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>实体类</strong></p>
+<pre><code class="java">import java.io.Serializable;
+import java.util.Date;
+
+
+/**
+ * 用户表(User)实体类
+ */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@TableName(value = &quot;sys_user&quot;)
+public class User implements Serializable &#123;
+    private static final long serialVersionUID = -40356785423868312L;
+    
+    /**
+    * 主键
+    */
+    private Long id;
+    /**
+    * 用户名
+    */
+    private String userName;
+    /**
+    * 昵称
+    */
+    private String nickName;
+    /**
+    * 密码
+    */
+    private String password;
+    /**
+    * 账号状态（0正常 1停用）
+    */
+    private String status;
+    /**
+    * 邮箱
+    */
+    private String email;
+    /**
+    * 手机号
+    */
+    private String phonenumber;
+    /**
+    * 用户性别（0男，1女，2未知）
+    */
+    private String sex;
+    /**
+    * 头像
+    */
+    private String avatar;
+    /**
+    * 用户类型（0管理员，1普通用户）
+    */
+    private String userType;
+    /**
+    * 创建人的用户id
+    */
+    private Long createBy;
+    /**
+    * 创建时间
+    */
+    private Date createTime;
+    /**
+    * 更新人
+    */
+    private Long updateBy;
+    /**
+    * 更新时间
+    */
+    private Date updateTime;
+    /**
+    * 删除标志（0代表未删除，1代表已删除）
+    */
+    private Integer delFlag;
+&#125;
+</code></pre>
+<p><strong>数据库校验用户</strong></p>
+<p>创建用户表</p>
+<pre><code class="mysql">CREATE TABLE `sys_user` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT &#39;主键&#39;,
+  `user_name` VARCHAR(64) NOT NULL DEFAULT &#39;NULL&#39; COMMENT &#39;用户名&#39;,
+  `nick_name` VARCHAR(64) NOT NULL DEFAULT &#39;NULL&#39; COMMENT &#39;昵称&#39;,
+  `password` VARCHAR(64) NOT NULL DEFAULT &#39;NULL&#39; COMMENT &#39;密码&#39;,
+  `status` CHAR(1) DEFAULT &#39;0&#39; COMMENT &#39;账号状态（0正常 1停用）&#39;,
+  `email` VARCHAR(64) DEFAULT NULL COMMENT &#39;邮箱&#39;,
+  `phonenumber` VARCHAR(32) DEFAULT NULL COMMENT &#39;手机号&#39;,
+  `sex` CHAR(1) DEFAULT NULL COMMENT &#39;用户性别（0男，1女，2未知）&#39;,
+  `avatar` VARCHAR(128) DEFAULT NULL COMMENT &#39;头像&#39;,
+  `user_type` CHAR(1) NOT NULL DEFAULT &#39;1&#39; COMMENT &#39;用户类型（0管理员，1普通用户）&#39;,
+  `create_by` BIGINT(20) DEFAULT NULL COMMENT &#39;创建人的用户id&#39;,
+  `create_time` DATETIME DEFAULT NULL COMMENT &#39;创建时间&#39;,
+  `update_by` BIGINT(20) DEFAULT NULL COMMENT &#39;更新人&#39;,
+  `update_time` DATETIME DEFAULT NULL COMMENT &#39;更新时间&#39;,
+  `del_flag` INT(11) DEFAULT &#39;0&#39; COMMENT &#39;删除标志（0代表未删除，1代表已删除）&#39;,
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT=&#39;用户表&#39;
+</code></pre>
+<p>创建UserMapper继承BaseMapper&lt;User&gt;</p>
+<p>在用户类上加TableName指定查询表名</p>
+<p>在启动类上加MapperScan指定Mapper包</p>
+<h2 id="修改默认安全流程"><a href="#修改默认安全流程" class="headerlink" title="修改默认安全流程"></a>修改默认安全流程</h2><h3 id="实现UserDetailsService接口"><a href="#实现UserDetailsService接口" class="headerlink" title="实现UserDetailsService接口"></a>实现UserDetailsService接口</h3><p>实现UserDetailsService接口，使得SpringSecurity不再使用默认的实现类</p>
+<pre><code class="java">@Service
+public class UserServiceImpl implements UserDetailsService &#123;
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException &#123;
+
+        //查询用户信息
+        LambdaQueryWrapper&lt;User&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        queryWrapper.eq(User::getUserName,username);
+
+        User user = userMapper.selectOne(queryWrapper);
+
+        //如果没有查询到用户，就抛出异常
+        if (Objects.isNull(user))&#123;
+            throw new RuntimeException(&quot;用户名或者密码错误&quot;);
+        &#125;
+
+        //TODO 查询对应的权限信息
+
+
+        //把数据封装成UserDetails返回
+        return new LoginUser(user);
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>注意：</strong>如果要测试，需要往用户表中写入用户数据，并且如果想让用户密码是明文存储，需要在密码前加{noop}</p>
+<h3 id="密码加密存储"><a href="#密码加密存储" class="headerlink" title="密码加密存储"></a>密码加密存储</h3><p>实际项目中我们不会把密码明文存储在数据库中</p>
+<p>默认使用的PasswordEncoder要求数据库中的密码格式为：{id}password，它会根据id去判断密码的加密方式，但是我们一般不会使用这种方式，所以需要替换PasswordEncoder</p>
+<p><strong>BCryptPasswordEncoder</strong></p>
+<p>我们一般使用SpringSecurity为我们提供的BCryptPasswordEncoder</p>
+<p>将BCryptPasswordEncoder对象<strong>注入spring容器</strong>，SpringSecurity就会使用该PasswordEncoder来进行密码校验</p>
+<p>定义SpringSecurity配置类，SpringSecurity要求这个配置类继承<strong>WebSecurityConfigurerAdapter</strong></p>
+<pre><code class="java">@Configuration
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter &#123;
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder()&#123;
+        return new BCryptPasswordEncoder();
+    &#125;
+
+&#125;
+</code></pre>
+<p>测试BCryptPasswordEncoder</p>
+<pre><code class="java">@Test
+public void testBCryptPasswordEncoder()&#123;
+
+    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+    String encode = passwordEncoder.encode(&quot;1234&quot;);
+
+    String encode1 = passwordEncoder.encode(&quot;1234&quot;);
+
+    System.out.println(encode);
+    System.out.println(encode1);
+    
+    //检验用户密码是否正确
+    boolean matches = passwordEncoder.matches(&quot;1234&quot;,
+                &quot;$2a$10$mI.pAL44nXZMQI4GndFrhuDPz9NfyyzvV0UGrgwqpUoduwZQ6vpF6&quot;);
+
+        System.out.println(matches);
+
+&#125;
+</code></pre>
+<p>使用BCrypt强哈希方法来加密，不可逆，此类每次进行加密的盐值均不相同，也就是说每次相同的明文加密后的密文均不相同，这样就能保证密码尽量小的被测出来</p>
+<blockquote>
+<p> 此时数据库中存储的应当是加密后的密文</p>
+</blockquote>
+<h2 id="登录接口"><a href="#登录接口" class="headerlink" title="登录接口"></a>登录接口</h2><p>自定义登录接口，让SpringSecurity对这个接口放行，让用户访问这个接口的时候不用登录也能访问</p>
+<h3 id="修改核心配置类"><a href="#修改核心配置类" class="headerlink" title="修改核心配置类"></a>修改核心配置类</h3><p><strong>authenticationManagerBean</strong></p>
+<p>在SpringSecurity配置类中重写<code>authenticationManagerBean</code>方法，暴露AuthenticationManager接口</p>
+<pre><code class="java">@Bean
+@Override
+public AuthenticationManager authenticationManagerBean() throws Exception &#123;
+    return super.authenticationManagerBean();
+&#125;
+</code></pre>
+<p><strong>configure</strong></p>
+<p>重写configure方法，指定需要配置安全认证的路径</p>
+<pre><code class="java">@Override
+protected void configure(HttpSecurity http) throws Exception &#123;
+    //关闭csrf
+    http.csrf().disable()
+            //不通过Session获取SecurityContext
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .authorizeRequests()
+            //对于登录接口允许匿名访问
+            .antMatchers(&quot;/user/login&quot;).anonymous()
+            //除上面外的所有请求都要权限认证
+            .anyRequest().authenticated();
+
+&#125;
+</code></pre>
+<h3 id="实现LoginService"><a href="#实现LoginService" class="headerlink" title="实现LoginService"></a>实现LoginService</h3><pre><code class="java">@Service
+public class LoginServiceImpl implements LoginService &#123;
+
+    @Autowired
+    private RedisCache redisCache;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    /**
+     * 获取authenticate进行用户认证
+     * @param user
+     * @return
+     */
+    @Override
+    public ResponseResult login(User user) &#123;
+
+        //AuthenticationManager进行用户认证
+        //封装authentication对象
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUserName(),user.getPassword());
+
+        Authentication authenticate = authenticationManager.authenticate(authenticationToken);
+
+        //认证未通过，生成提示
+        if (Objects.isNull(authenticate))&#123;
+
+            throw new RuntimeException(&quot;登录失败&quot;);
+
+        &#125;
+
+        //认证通过，根据userid生成jwt
+        LoginUser loginUser = (LoginUser)authenticate.getPrincipal();
+
+        String userid = loginUser.getUser().getId().toString();
+
+        //生成jwt
+        String jwt = JwtUtil.createJWT(userid);
+
+        //将jwt存放入map
+        Map&lt;String,String&gt; map = new HashMap&lt;&gt;();
+        map.put(&quot;token&quot;,jwt);
+
+        //将用户信息存入redis，userid为key
+        redisCache.setCacheObject(&quot;login:&quot;+userid,loginUser);
+
+        return new ResponseResult(200,&quot;登录成功&quot;,map);
+
+    &#125;
+</code></pre>
+<h3 id="认证过滤器"><a href="#认证过滤器" class="headerlink" title="认证过滤器"></a>认证过滤器</h3><p>这里我们不使用servlet的Filter接口，使用spring提供的<strong>OncePerRequestFilter</strong>，来确保一次请求<strong>不重复经过此过滤器</strong></p>
+<pre><code class="java">public class JwtAuthenticationTokenFilter extends OncePerRequestFilter &#123;
+
+    @Autowired
+    private RedisCache redisCache;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException &#123;
+
+        //获取token
+        String token = request.getHeader(&quot;token&quot;);
+
+        //判断token是否为空
+        if (!StringUtils.hasText(token)) &#123;
+            //没有token直接放行
+            filterChain.doFilter(request, response);
+            //这里必须return，因为目标请求获取资源后返回响应时会回到这一行
+            return;
+        &#125;
+
+        //解析token
+        String userid;
+        try &#123;
+            Claims claims = JwtUtil.parseJWT(token);
+            userid = claims.getSubject();
+
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+            throw new RuntimeException(&quot;token 非法&quot;);
+        &#125;
+
+        //从redis中获取用户信息
+        String redisKey = &quot;login:&quot; + userid;
+
+        LoginUser loginUser = redisCache.getCacheObject(redisKey);
+
+        if (Objects.isNull(loginUser))&#123;
+            throw new RuntimeException(&quot;用户未登录&quot;);
+        &#125;
+
+        //TODO 获取权限信息封装到authentication中
+        UsernamePasswordAuthenticationToken authentication 
+                = new UsernamePasswordAuthenticationToken(loginUser,null,null);
+
+        //存入SecurityContextHolder
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        
+        filterChain.doFilter(request, response);
+        
+    &#125;
+&#125;
+</code></pre>
+<p><strong>配置过滤器位置</strong></p>
+<p>在SpringSecurity核心配置类中设置，需要聚合一个过滤器的实例</p>
+<pre><code class="java">http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class)
+</code></pre>
+<h3 id="退出登录"><a href="#退出登录" class="headerlink" title="退出登录"></a>退出登录</h3><p>获取到SecurityContextHolder中的认证信息（userid），删除redis中的数据</p>
+<pre><code class="java">@RequestMapping(&quot;/user/logout&quot;)
+public ResponseResult logout()&#123;
+    return loginService.logout();
+&#125;
+</code></pre>
+<p><strong>service层</strong></p>
+<p>从当前请求的SecurityContextHolder中获取用户信息，根据用户id删除redis中的用户数据</p>
+<pre><code class="java">@Override
+public ResponseResult logout() &#123;
+    //获取SecurityContextHolder中的用户信息
+    UsernamePasswordAuthenticationToken authentication
+            = (UsernamePasswordAuthenticationToken)SecurityContextHolder.getContext().getAuthentication();
+
+    LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+
+    Long userid = loginUser.getUser().getId();
+
+    //删除redis中的值
+    redisCache.deleteObject(&quot;login:&quot;+userid);
+
+    return new ResponseResult(200,&quot;注销成功&quot;);
+&#125;
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>SpringSecurity</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">4.7k</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
+    <p><span class="copy-title">发布时间:</span>2022-09-19, 23:33:22</p>
+    <p><span class="copy-title">最后更新:</span>2022-09-19, 23:33:58</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/09/19/SpringSecurity/" title="SpringSecurity">https://os467.github.io/2022/09/19/SpringSecurity/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 os467
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
