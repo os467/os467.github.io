@@ -6,19 +6,17 @@
   <meta name="keywords" content="">
   <meta name="description" content="cookie和session | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Spring Security简介Spring Security 是 Spring 家族中的一个安全管理框架，相比于另一个安全框架Shiro，它提供了更丰富的功能，社区资源也比Shiro丰富 一般来说中大型的项目都是使用SpringSecurity来做安全框架，小项目用Shiro的比较多，因为相比与SpringSecurity，Shiro的上手更加简单 一般Web应用需要进行认证和授权  认证：验">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SpringSecurity">
-<meta property="og:url" content="https://os467.github.io/2022/09/19/SpringSecurity/index.html">
+<meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tly的博客">
+<meta property="og:url" content="https://os467.github.io/about/index.html">
 <meta property="og:site_name" content="Tly的博客">
-<meta property="og:description" content="Spring Security简介Spring Security 是 Spring 家族中的一个安全管理框架，相比于另一个安全框架Shiro，它提供了更丰富的功能，社区资源也比Shiro丰富 一般来说中大型的项目都是使用SpringSecurity来做安全框架，小项目用Shiro的比较多，因为相比与SpringSecurity，Shiro的上手更加简单 一般Web应用需要进行认证和授权  认证：验">
+<meta property="og:description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2d25baa3befe41c0b5c428283c52cf97.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5qyn5bC86YWxb3dv,size_20,color_FFFFFF,t_70,g_se,x_16">
-<meta property="article:published_time" content="2022-09-19T15:33:22.000Z">
-<meta property="article:modified_time" content="2022-09-19T15:33:58.779Z">
+<meta property="article:published_time" content="2022-09-05T07:48:23.998Z">
+<meta property="article:modified_time" content="2022-09-05T07:48:23.998Z">
 <meta property="article:author" content="Os467">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2d25baa3befe41c0b5c428283c52cf97.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5qyn5bC86YWxb3dv,size_20,color_FFFFFF,t_70,g_se,x_16">
 
 
 <link rel="icon" href="/img/headimg.jpg">
@@ -319,8 +317,13 @@
             
         
     
+    <!-- 新增的网易云外链播放器 -->
     <div class="music-player" style="transform: transform:translateY(-50%);">
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=160 height=52 src="//music.163.com/outchain/player?type=2&id=1919435807&auto=1&height=32"></iframe>
+        <iframe id="music-player-iframe" frameborder="no" border="0" marginwidth="0" marginheight="0" width=160 height=52 src="//music.163.com/outchain/player?type=2&id=1919435807&auto=1&height=32"></iframe>
+    </div>
+    <!-- 动态切换歌曲 -->
+    <div>
+        <input class="input" id="music-change" onclick="playNext()" value="下一首">
     </div>
 </ul>
 <div class="left-bottom">
@@ -348,6 +351,34 @@
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
 </div>
+
+
+
+<!-- 新添加的音乐切换功能 -->
+<script>
+
+    const index = 1;
+
+const musicList = [
+    "//music.163.com/outchain/player?type=2&id=1919435807&auto=1&height=32",
+    "//music.163.com/outchain/player?type=2&id=551339076&auto=1&height=32"
+]
+
+const indexMax = musicList.length -1;
+
+var playNext = function(){
+
+    var doc = document.getElementById("music-player-iframe");
+
+    if(index <= indexMax){
+        doc.setAttribute("src",musicList[index])
+        index = index + 1;
+    }else{
+        index = 0;
+        doc.setAttribute("src",musicList[index])
+    }
+}
+</script>
 
     </div>
     <div class="nav-right">
