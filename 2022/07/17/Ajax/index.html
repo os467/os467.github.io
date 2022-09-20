@@ -362,7 +362,8 @@
 
 const musicList = [
     "//music.163.com/outchain/player?type=2&id=1919435807&auto=1&height=32",
-    "//music.163.com/outchain/player?type=2&id=551339076&auto=1&height=32"
+    "//music.163.com/outchain/player?type=2&id=551339076&auto=1&height=32",
+    "//music.163.com/outchain/player?type=2&id=28287422&auto=1&height=32"
 ]
 
 const indexMax = musicList.length -1;
@@ -381,6 +382,8 @@ var playNext = function(){
 }
 
 var playPre = function(){
+    
+    var doc = document.getElementById("music-player-iframe");
 
     if(index >= 1){
         doc.setAttribute("src",musicList[index])
