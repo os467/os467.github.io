@@ -323,8 +323,8 @@
     </div>
     <!-- 动态切换歌曲 -->
     <div>
-        <input class="input" onclick="playPre()" value="上一首" style="width: -50%;">
-        <input class="input" onclick="playNext()" value="下一首" style="width: -50%;">
+        <input class="input" onclick="playPre()" value="上一首"  style="width: 80px; text-align: center;">
+        <input class="input" onclick="playNext()" value="下一首" style="width: 80px; text-align: center;">
     </div>
 </ul>
 <div class="left-bottom">
@@ -385,7 +385,7 @@ var playPre = function(){
     
     var doc = document.getElementById("music-player-iframe");
 
-    if(index >= 1){
+    if(index >= 0){
         doc.setAttribute("src",musicList[index])
         index = index - 1;
     }else{
