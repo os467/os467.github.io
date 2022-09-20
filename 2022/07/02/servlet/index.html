@@ -358,7 +358,7 @@
 <!-- 新添加的音乐切换功能 -->
 <script>
 
-    var index = 1;
+    var index = 0;
 
 const musicList = [
     "//music.163.com/outchain/player?type=2&id=1919435807&auto=1&height=32",
@@ -368,30 +368,21 @@ const musicList = [
 
 const indexMax = musicList.length -1;
 
+const musicDoc = document.getElementById("music-player-iframe");
+
 var playNext = function(){
 
-    var doc = document.getElementById("music-player-iframe");
+    index == indexMax ? index = 0 : index +=1;
 
-    if(index <= indexMax){
-        doc.setAttribute("src",musicList[index])
-        index = index + 1;
-    }else{
-        index = 0;
-        doc.setAttribute("src",musicList[index])
-    }
+    musicDoc.setAttribute("src",musicList[index]);
+
 }
 
 var playPre = function(){
-    
-    var doc = document.getElementById("music-player-iframe");
 
-    if(index >= 0){
-        doc.setAttribute("src",musicList[index])
-        index = index - 1;
-    }else{
-        index = indexMax;
-        doc.setAttribute("src",musicList[index])
-    }
+    index == 0 ? index = indexMax : index -=1;
+
+    musicDoc.setAttribute("src",musicList[index])
 }
 </script>
 
