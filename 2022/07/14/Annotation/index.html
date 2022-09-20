@@ -323,7 +323,8 @@
     </div>
     <!-- 动态切换歌曲 -->
     <div>
-        <input class="input" id="music-change" onclick="playNext()" value="下一首">
+        <input class="input" onclick="playPre()" value="上一首" style="width: -50%;">
+        <input class="input" onclick="playNext()" value="下一首" style="width: -50%;">
     </div>
 </ul>
 <div class="left-bottom">
@@ -357,7 +358,7 @@
 <!-- 新添加的音乐切换功能 -->
 <script>
 
-    const index = 1;
+    var index = 1;
 
 const musicList = [
     "//music.163.com/outchain/player?type=2&id=1919435807&auto=1&height=32",
@@ -375,6 +376,17 @@ var playNext = function(){
         index = index + 1;
     }else{
         index = 0;
+        doc.setAttribute("src",musicList[index])
+    }
+}
+
+var playPre = function(){
+
+    if(index >= 1){
+        doc.setAttribute("src",musicList[index])
+        index = index - 1;
+    }else{
+        index = indexMax;
         doc.setAttribute("src",musicList[index])
     }
 }
