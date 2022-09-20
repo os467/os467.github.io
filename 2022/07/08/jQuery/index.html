@@ -171,10 +171,13 @@
 <ul>
     <!-- 新增的网易云外链播放器 -->
     <div class="music-player" style="transform: transform:translateY(-50%);">
-        <iframe id="music-player-iframe" frameborder="no" border="0" marginwidth="0" marginheight="0" allow="autoplay" width=160 height=52 src="//music.163.com/outchain/player?type=2&id=1919435807&auto=1&height=32&muted=yes"></iframe>
+        <iframe id="music-player-iframe" frameborder="no" border="0" marginwidth="0" marginheight="0" allow="autoplay" width=160 height=52 src=""></iframe>
+            
+        <div>
             <!-- 动态切换歌曲 -->
-        <input class="input" type="button" onclick="playPre()" value="上一首"  style="width: 50px; text-align: center;">
-        <input class="input" type="button" onclick="playNext()" value="下一首" style="width: 50px; text-align: center;">
+            <input class="input" type="button" onclick="playPre()" value="上一首"  style="width: 50px; text-align: center;">
+            <input class="input" type="button" onclick="playNext()" value="下一首" style="width: 50px; text-align: center;">    
+        </div>
     </div>
 
     <li>
@@ -402,6 +405,10 @@ var playPre = function(){
 
     musicDoc.setAttribute("src",musicList[index])
 }
+
+window.onload = function(){
+    musicDoc.setAttribute("src",musicList[0]);
+    }
 </script>
 
     </div>
