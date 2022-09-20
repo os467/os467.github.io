@@ -172,12 +172,11 @@
     <!-- 新增的网易云外链播放器 -->
     <div class="music-player" style="transform: transform:translateY(-50%);">
         <iframe id="music-player-iframe" frameborder="no" border="0" marginwidth="0" marginheight="0" width=160 height=52 src="//music.163.com/outchain/player?type=2&id=1919435807&auto=1&height=32"></iframe>
+            <!-- 动态切换歌曲 -->
+        <input class="input" type="button" onclick="playPre()" value="上一首"  style="width: 50px; text-align: center;">
+        <input class="input" type="button" onclick="playNext()" value="下一首" style="width: 50px; text-align: center;">
     </div>
-    <!-- 动态切换歌曲 -->
-    <div>
-        <input class="input" type="button" onclick="playPre()" value="上一首"  style="width: 80px; text-align: center;">
-        <input class="input" type="button" onclick="playNext()" value="下一首" style="width: 80px; text-align: center;">
-    </div>
+
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
