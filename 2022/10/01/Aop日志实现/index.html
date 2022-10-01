@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>NodeJS | Tly的博客</title>
+  <title>Aop日志实现 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="NodeJS | Tly的博客">
+  <meta name="description" content="Aop日志实现 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="AOP日志实现注解方式实现AOP日志为什么要使用AOP？  通常在项目中，我们需要配置日志打印来获取服务运行时我们需要的一些基本信息，这些信息是提供给我们后期用于排查错误的基本凭据  但是如果直接在业务逻辑中添加日志打印的代码，会使得日志打印与业务逻辑产生耦合，也降低了业务代码的可读性，大量的日志打印可能都是一些重复的代码，降低了编程效率，更不便于统一管理   因此我们采用注解+AOP来配置需要被">
 <meta property="og:type" content="article">
@@ -893,9 +893,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-NodeJS" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Aop日志实现" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">NodeJS</h1>
+        <h1 class="article-title">Aop日志实现</h1>
     
     <div class="article-meta">
         
@@ -905,7 +905,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="前端">前端</a>
+            <a  data-rel="其它">其它</a>
             
         </span>
         
@@ -913,12 +913,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-08 20:19:46'>2022-09-08 20:18</time>
+            发布时间 : <time class="date" title='最后更新: 2022-10-01 23:47:50'>2022-10-01 23:47</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2.1k</span>
+        <span>字数:1.2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -937,7 +937,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NodeJS"><span class="toc-text">NodeJS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nvm"><span class="toc-text">nvm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npm"><span class="toc-text">npm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1"><span class="toc-text">搭建简单服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">启动服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E4%B8%AD%E7%9A%84API"><span class="toc-text">JS中的API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fetch-API"><span class="toc-text">Fetch API</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98"><span class="toc-text">跨域访问问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AF%BC%E5%85%A5%E5%92%8C%E5%AF%BC%E5%87%BA"><span class="toc-text">JS模块的导入和导出</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AOP%E6%97%A5%E5%BF%97%E5%AE%9E%E7%8E%B0"><span class="toc-text">AOP日志实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0AOP%E6%97%A5%E5%BF%97"><span class="toc-text">注解方式实现AOP日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%97%A5%E5%BF%97%E6%B3%A8%E8%A7%A3"><span class="toc-text">自定义日志注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%88%87%E9%9D%A2%E7%B1%BB"><span class="toc-text">配置切面类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E7%BB%95%E9%80%9A%E7%9F%A5"><span class="toc-text">环绕通知</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%88%87%E9%9D%A2"><span class="toc-text">配置切面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E6%B5%81%E7%A8%8B"><span class="toc-text">详细流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -953,333 +953,228 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Node.js 就是<strong>运行在服务端的 JavaScript</strong>， 是一个基于 Chrome JavaScript 运行时建立的一个平台</p>
-<p>Node.js 是一个事件驱动 I&#x2F;O 服务端 JavaScript 环境，基于 Google 的 V8 引擎，V8 引擎执行 Javascript 的速度非常快，性能非常好</p>
-<p>前端开发的时候也需要有一个自己的服务器，这里我们选择<strong>node.js</strong></p>
-<h2 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h2><p>nvm即（node version manager），好处是方便切换node.js版本</p>
-<p>安装注意事项</p>
-<p><strong>设置国内镜像地址</strong></p>
-<pre><code class="basic">nvm node_mirror http://npm.taobao.org/mirrors/node/
-nvm npm_mirror https://npm.taobao.org/mirrors/npm/
-</code></pre>
-<p>查看可用node版本</p>
-<pre><code class="basic">nvm list available
-</code></pre>
-<p>切换node版本（需要管理员权限）</p>
-<pre><code class="basic">nvm use 16.15.0
-</code></pre>
-<h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><p>npm是js的包管理器，类似于java的maven，要确保它使用的是国内镜像</p>
-<p>检查镜像</p>
-<pre><code class="basic">npm get registry
-</code></pre>
-<p>如果返回的不是<code>https://registry.npm.taobao.org/</code>，需要做如下设置</p>
-<pre><code class="basic">npm config set registry https://registry.npm.taobao.org/
-</code></pre>
-<h2 id="搭建简单服务"><a href="#搭建简单服务" class="headerlink" title="搭建简单服务"></a>搭建简单服务</h2><p>新建一个项目文件夹，当前目录下cmd执行npm指令，添加一个依赖，这里使用express框架</p>
-<p>VScode打开控制台快捷键<strong>ctrl+shift+&#96;</strong></p>
-<pre><code class="basic">npm install express --save-dev
-</code></pre>
-<p><strong>package.json文件</strong></p>
-<p>类似于java中的pom.xml文件</p>
-<h3 id="启动服务器"><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h3><p>编写启动express服务器的代码，这里我们选用<strong>VSCode编辑器</strong>开发</p>
-<p>修改package.json文件，添加module支持import语法</p>
-<pre><code class="json">&#123;
-  &quot;type&quot;:&quot;module&quot;,
-  &quot;devDependencies&quot;: &#123;
-    &quot;express&quot;: &quot;^4.18.1&quot;
-  &#125;
+        <h1 id="AOP日志实现"><a href="#AOP日志实现" class="headerlink" title="AOP日志实现"></a>AOP日志实现</h1><h2 id="注解方式实现AOP日志"><a href="#注解方式实现AOP日志" class="headerlink" title="注解方式实现AOP日志"></a>注解方式实现AOP日志</h2><p><strong>为什么要使用AOP？</strong></p>
+<ul>
+<li><p>通常在项目中，我们需要配置日志打印来获取服务运行时我们需要的一些基本信息，这些信息是提供给我们后期用于排查错误的基本凭据</p>
+</li>
+<li><p>但是如果直接在业务逻辑中添加日志打印的代码，会使得日志打印与业务逻辑产生耦合，也降低了业务代码的可读性，大量的日志打印可能都是一些重复的代码，降低了编程效率，更不便于统一管理</p>
+</li>
+</ul>
+<p><strong>因此我们采用注解+AOP来配置需要被记录日志的方法</strong></p>
+<blockquote>
+<p>常见的AOP场景有：日志打印，权限认证，事务处理</p>
+</blockquote>
+<h2 id="自定义日志注解"><a href="#自定义日志注解" class="headerlink" title="自定义日志注解"></a>自定义日志注解</h2><pre><code class="java">@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface SystemLog &#123;
+    //业务信息，用于存放被增强方法的业务名称信息
+    String businessName();
 &#125;
 </code></pre>
+<h2 id="配置切面类"><a href="#配置切面类" class="headerlink" title="配置切面类"></a>配置切面类</h2><p><strong>@Aspect</strong>  声明当前类是一个切面类</p>
+<p><strong>@Component</strong>  交由Spring容器管理</p>
+<p><strong>@Pointcut</strong>  配置切入点表达式</p>
 <ul>
-<li>其中的devDependencies是<code>npm install --save-dev</code>添加的</li>
+<li>这里我们使用注解的方式来配置切入点<ul>
+<li><code>@annotation(自定义注解全类名)</code>  被自定义注解注释的方法都将成为连接点</li>
 </ul>
-<p><strong>编写main.js代码</strong></p>
-<pre><code class="js">import express from &#39;express&#39;
-const app = express();
-
-app.use(express.static(&#39;./&#39;));
-app.listen(7070);
-</code></pre>
-<p>执行js代码（运行前端服务器），<strong>在工程目录下启动</strong></p>
-<pre><code class="basic">node main.js
-</code></pre>
-<p><strong>指定静态资源</strong></p>
-<p>这里指定当前目录为静态资源目录</p>
-<pre><code class="js">app.use(express.static(&#39;./&#39;))
-</code></pre>
-<p>在当前目录创建一个index.html文件，进行前端服务器测试</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;学生列表&lt;/title&gt;
-&lt;/head&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;./style.css&quot;&gt;
-&lt;body&gt;
-    &lt;div class=&quot;title&quot;&gt;学生列表&lt;/div&gt;
-    &lt;div class=&quot;thead&quot;&gt;
-        &lt;div class=&quot;row bold&quot;&gt;
-            &lt;div class=&quot;col&quot;&gt;编号&lt;/div&gt;
-            &lt;div class=&quot;col&quot;&gt;姓名&lt;/div&gt;
-            &lt;div class=&quot;col&quot;&gt;性别&lt;/div&gt;
-            &lt;div class=&quot;col&quot;&gt;年龄&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;tbody&quot;&gt;
-
-    &lt;/div&gt;
-
-    &lt;template id=&quot;tp&quot;&gt;
-        &lt;div class=&quot;row&quot;&gt;
-            &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-            &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-            &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-            &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/template&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h3 id="JS中的API"><a href="#JS中的API" class="headerlink" title="JS中的API"></a>JS中的API</h3><p><strong>通过选择器查找单个元素</strong></p>
-<p>**querySelector(‘.col’)**通过类<code>col</code>查找单个元素</p>
-<pre><code class="js">document.querySelector(&#39;.col&#39;);
-</code></pre>
-<p><strong>通过选择器查找多个元素</strong></p>
-<p>**querySelectorAll(‘.col’)**通过类<code>col</code>查找到多个元素</p>
-<pre><code class="js">document.querySelector(&#39;.thead&#39;).querySelectorAll(&#39;.col&#39;);
-</code></pre>
-<p><strong>通过template标签生成学生列表</strong></p>
-<pre><code class="html">&lt;template id=&quot;tp&quot;&gt;
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-        &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-        &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-        &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
-</code></pre>
-<p><strong>js动态生成</strong></p>
-<p><strong>importNode函数</strong> 用于复制元素</p>
-<ul>
-<li>参数1：元素变量</li>
-<li>参数2：是否复制子元素</li>
+</li>
 </ul>
-<pre><code class="js"> //假设这是后端传来的数据
-let array = [
-    &#123;id: 1,name: &quot;张三&quot;,sex: &quot;男&quot;, age:18&#125;,
-    &#123;id: 2,name: &quot;李四&quot;,sex: &quot;女&quot;, age:17&#125;
-];
+<pre><code class="java">@Component
+@Aspect
+public class LogAspect &#123;
 
-document.getElementById(&quot;tp&quot;);
+    @Pointcut(&quot;@annotation(com.os467.annotation.SystemLog)&quot;)
+    public void pt()&#123;
 
-//获取模板的内容属性
-const row = tp.content;
+    &#125;
 
-const [c1,c2,c3,c4] = row.querySelectorAll(&quot;.col&quot;);
+    @Around(&quot;pt()&quot;)
+    public Object printLog(ProceedingJoinPoint joinPoint)&#123;
 
-const tbody = document.querySelector(&#39;.tbody&#39;);
+    &#125;
 
-for(const obj of array)&#123;
-    c1.textContent = obj.id;
-    c2.textContent = obj.name;
-    c3.textContent = obj.sex;
-    c4.textContent = obj.age;
-    //拷贝元素
-    const newNode = document.importNode(row,true);
-    //添加子元素
-    tbody.appendChild(newNode);
 &#125;
 </code></pre>
-<h3 id="Fetch-API"><a href="#Fetch-API" class="headerlink" title="Fetch API"></a>Fetch API</h3><p>Fetch API 可以用来获取远程数据，它有两种方式接收结果，同步方式和异步方式</p>
-<p><strong>格式：</strong></p>
-<pre><code class="js">fetch(url,options) //返回 Promise对象
-</code></pre>
-<p><strong>同步方式</strong></p>
-<pre><code class="js">const ans = await fetch(url,options)
-//后续代码
-</code></pre>
+<h3 id="环绕通知"><a href="#环绕通知" class="headerlink" title="环绕通知"></a>环绕通知</h3><p>这里我们选择环绕通知，可以在此通知中为方法设置前置和后置通知，功能较为强大</p>
+<p>需要提供一个参数<code>ProceedingJoinPoint joinPoint</code></p>
 <ul>
-<li>await 关键字必须在一个标记了async的function内来使用</li>
-<li>后续代码不会再结果返回前执行</li>
+<li>Proceedingjoinpoint 继承了 JoinPoint，是在JoinPoint的基础上暴露出<code>proceed()</code>这个方法，proceed很重要，这个是aop代理链执行的方法</li>
 </ul>
-<p>代码示例：</p>
-<pre><code class="js"> async function findStu()&#123;
-        //获得了一个响应对象
-        const response = await fetch(&#39;students.json&#39;);
+<p><strong>joinPoint基本方法</strong></p>
+<pre><code class="java">//返回目标对象，即被代理的对象
+Object getTarget();
 
-        //获取响应体，将json格式数据转化为js数组
-        const array = await response.json();
+//返回切入点的参数
+Object[] getArgs();
 
-        const tp = document.getElementById(&quot;tp&quot;);
+//返回切入点的签名
+Signature getSignature();
 
-        //获取模板的内容属性
-        const row = tp.content;
+//返回切入的类型
+String getKind();
+</code></pre>
+<h3 id="配置切面"><a href="#配置切面" class="headerlink" title="配置切面"></a>配置切面</h3><h4 id="详细流程"><a href="#详细流程" class="headerlink" title="详细流程"></a>详细流程</h4><p><strong>配置切入点表达式</strong></p>
+<p>首先需要声明一个切入点表达式</p>
+<p>使用**@Pointcut注解**</p>
+<blockquote>
+<p>这里通过读取注解来获取到连接点</p>
+</blockquote>
+<pre><code class="java"> @Pointcut(&quot;@annotation(com.os467.annotation.SystemLog)&quot;)
+    public void pt()&#123;
 
-        const [c1,c2,c3,c4] = row.querySelectorAll(&quot;.col&quot;);
+    &#125;
+</code></pre>
+<p><strong>配置环绕通知</strong></p>
+<p><strong>@Around</strong>  指定配置切入点表达式的方法</p>
+<p><strong>ProceedingJoinPoint</strong>  连接点，即在底层动态代理能访问到的方法，调用<code>proceed()</code>来执行需要被增强的方法</p>
+<pre><code class="java">  @Around(&quot;pt()&quot;)
+    public Object printLog(ProceedingJoinPoint joinPoint)&#123;
 
-        const tbody = document.querySelector(&#39;.tbody&#39;);
+    &#125;
+</code></pre>
+<p><strong>执行目标方法</strong></p>
+<pre><code class="java">  @Around(&quot;pt()&quot;)
+    public Object printLog(ProceedingJoinPoint joinPoint)&#123;
+        
+        //前置通知...
+        
+        //执行目标方法
+        ret = joinPoint.proceed();
+        
+        //后置通知...
+        
+        //返回方法执行后的结果
+        return ret;
 
-        for(const obj of array)&#123;
-            c1.textContent = obj.id;
-            c2.textContent = obj.name;
-            c3.textContent = obj.sex;
-            c4.textContent = obj.age;
-            //拷贝元素
-            const newNode = document.importNode(row,true);
-            //添加子元素
-            tbody.appendChild(newNode);
+    &#125;
+</code></pre>
+<p><strong>通过joinPoint获取到切入点的方法签名</strong></p>
+<blockquote>
+<p>有时候我们还需要获取到自定义注解内的信息用于日志打印的凭据，因此我们在配置切面的时候还需要获取到方法的注解字节码对象</p>
+</blockquote>
+<ul>
+<li><p><code>getSignature()</code>  此方法会返回一个<strong>Signature</strong>实现类的对象，我们需要将其向下转型成<strong>MethodSignature</strong>类</p>
+</li>
+<li><p>通过<code>getMethod()</code>  获取到方法字节码，此时就可以调用<code>getAnnotation()</code>来获取到方法注解上的信息</p>
+</li>
+</ul>
+<pre><code class="java">//获取当前切入点的方法签名
+MethodSignature methodSignature = (MethodSignature)joinPoint.getSignature();
+
+//获取到修饰方法的注解字节码对象
+SystemLog systemLog = methodSignature.getMethod().getAnnotation(SystemLog.class);
+</code></pre>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><pre><code class="java">@Component
+@Aspect
+@Slf4j
+public class LogAspect &#123;
+
+    @Pointcut(&quot;@annotation(com.os467.annotation.SystemLog)&quot;)
+    public void pt()&#123;
+
+    &#125;
+
+    /**
+     * 配置切面
+     * @param joinPoint
+     * @return
+     * @throws Throwable
+     */
+    @Around(&quot;pt()&quot;)
+    public Object printLog(ProceedingJoinPoint joinPoint) throws Throwable &#123;
+
+        //获取目标方法的返回值
+        Object ret;
+        try &#123;
+
+            //前置通知
+            printBefore(joinPoint);
+
+            //执行目标方法
+            ret = joinPoint.proceed();
+
+            //后置通知
+            printAfter(ret);
+
+        &#125; finally &#123;
+            // 结束后换行，获取到当前系统的换行符
+            log.info(&quot;=======End=======&quot; + System.lineSeparator());
+
         &#125;
+
+        //返回切入点方法执行结果
+        return ret;
+
     &#125;
 
-    findStu();
-</code></pre>
-<p><strong>异步方式</strong></p>
-<pre><code class="js">fetch(url,options).then(ans =&gt;&#123;...&#125;)
-//后续代码
-</code></pre>
-<ul>
-<li>后续代码不必等待结果返回就可以执行</li>
-</ul>
-<p>代码示例：</p>
-<pre><code class="js">//获得了一个响应对象
-fetch(&#39;students.json&#39;).then(response =&gt; response.json()).then(array =&gt;&#123;
-
-    const tp = document.getElementById(&quot;tp&quot;);
-
-    //获取模板的内容属性
-    const row = tp.content;
-
-    const [c1,c2,c3,c4] = row.querySelectorAll(&quot;.col&quot;);
-
-    const tbody = document.querySelector(&#39;.tbody&#39;);
-
-    for(const obj of array)&#123;
-        c1.textContent = obj.id;
-        c2.textContent = obj.name;
-        c3.textContent = obj.sex;
-        c4.textContent = obj.age;
-        //拷贝元素
-        const newNode = document.importNode(row,true);
-        //添加子元素
-        tbody.appendChild(newNode);
+    /**
+     * 执行方法后需要打印的通知
+     * @param ret
+     */
+    private void printAfter(Object ret) &#123;
+        // 打印出参
+        log.info(&quot;Response       : &#123;&#125;&quot;,JSON.toJSONString(ret));
     &#125;
 
-&#125;);
-</code></pre>
-<h4 id="跨域访问问题"><a href="#跨域访问问题" class="headerlink" title="跨域访问问题"></a>跨域访问问题</h4><p><strong>Fetch访问后端资源，使用请求头的方式解决跨域问题</strong></p>
-<p>这里区别于之前访问前端服务器资源，会发生跨域访问问题</p>
-<p><code>只要协议、主机、端口号之一不同，就不同源</code></p>
-<ul>
-<li>浏览器会对访问进行同源检查，如果<strong>同源则数据可用</strong></li>
-<li>一般会由前端服务器携带请求的来源信息<code>Origin:http://localhost:7070</code></li>
-<li>后端服务器接收到来源信息后进行判断是否通过检查，通过则返回一个响应信息<code>Access-Control-Allow-Origin:http://localhost:7070</code></li>
-</ul>
-<pre><code class="js">fetch(&quot;http://localhost:8080/student/list&quot;)
-</code></pre>
-<p>后端加上**@CrossOrigin注解**</p>
-<ul>
-<li>注明哪些请求来源通过检查</li>
-</ul>
-<pre><code class="java">@RestController
-@RequestMapping(&quot;student&quot;)
-public class TestController &#123;
+    /**
+     * 执行方法之前需要打印的通知
+     */
+    private void printBefore(ProceedingJoinPoint joinPoint) &#123;
 
-    @Autowired
-    private StudentService studentService;
+        //获取到当前线程的请求对象
+        RequestAttributes attributes = RequestContextHolder.getRequestAttributes();
 
-    @RequestMapping(&quot;list&quot;)
-    @CrossOrigin(&quot;http://localhost:7070&quot;)
-    public List&lt;Student&gt; test()&#123;
+        HttpServletRequest request = null;
 
-        List&lt;Student&gt; studentList = studentService.getStudentList();
+        //向下转型
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes)attributes;
 
-        return studentList;
+        //获取到当前线程请求对象
+        request = requestAttributes.getRequest();
+
+        //通过反射获取被增强方法上的注解对象
+        SystemLog systemLog = getSystemLog(joinPoint);
+
+        log.info(&quot;=======Start=======&quot;);
+        // 打印请求 URL
+        log.info(&quot;URL            : &#123;&#125;&quot;,request.getRequestURL());
+        // 打印描述信息
+        log.info(&quot;BusinessName   : &#123;&#125;&quot;,systemLog.businessName());
+        // 打印 Http method
+        log.info(&quot;HTTP Method    : &#123;&#125;&quot;, request.getMethod());
+        // 打印调用 controller 的全路径以及执行方法
+        log.info(&quot;Class Method   : &#123;&#125;.&#123;&#125;&quot;, joinPoint.getSignature().getDeclaringType(),((MethodSignature)joinPoint.getSignature()).getName());
+        // 打印请求的 IP
+        log.info(&quot;IP             : &#123;&#125;&quot;,request.getRemoteHost());
+        // 打印请求入参
+        log.info(&quot;Request Args   : &#123;&#125;&quot;, JSON.toJSONString(joinPoint.getArgs()));
+
+    &#125;
+
+    /**
+     * 获取到被增强方法上的注解信息
+     * @param joinPoint
+     * @return
+     */
+    private SystemLog getSystemLog(ProceedingJoinPoint joinPoint) &#123;
+
+        MethodSignature methodSignature = (MethodSignature)joinPoint.getSignature();
+
+        SystemLog systemLog = methodSignature.getMethod().getAnnotation(SystemLog.class);
+
+        return systemLog;
 
     &#125;
 
 &#125;
 </code></pre>
-<blockquote>
-<p>同源检查时浏览器的行为，而且只针对fetch、xhr请求</p>
-<ul>
-<li>如果是其它客户端，例如java http client，postman，它们是不会做同源检查的</li>
-<li>通过表单提交，浏览器直接输入url地址这些方式发送的请求，也不会做同源检查</li>
-</ul>
-</blockquote>
-<hr>
-<p><strong>使用代理服务器解决跨域访问问题</strong></p>
-<p>一般通过<code>/api/</code>前缀来区分是<code>代理请求</code>还是<code>直接请求</code></p>
-<p>代理服务器中会通过<strong>JavaSript的Api</strong>向后端服务器发起请求获取数据</p>
-<blockquote>
-<p>这里<strong>不使用浏览器的API直接访问tomcat服务器</strong>，相当于把请求全部发送给前端express服务器，通过<strong>前端服务器的jsAPI发起请求</strong>向后端服务器请求数据，这样就不会发生浏览器的跨域访问问题</p>
-</blockquote>
-<p><strong>安装代理服务器插件</strong></p>
-<p>注意需要在工程目录下运行cmd</p>
-<pre><code class="basic">npm install http-proxy-middleware --save-dev
-</code></pre>
-<p>在express 服务器启动代码中加入</p>
-<pre><code class="js">import &#123;createProxyMiddleware&#125; from &#39;http-proxy-middleware&#39;
-
-app.use(&#39;/api&#39;,createProxyMiddleware(&#123;
-    target:&#39;http://localhost:8080&#39;,
-    //重写接口路由
-    pathRewrite:&#123;&#39;^/api&#39;:&#39;&#39;&#125;,
-    changeOrigin:true&#125;));
-
-//...
-</code></pre>
-<blockquote>
-<p>如果当实际需要请求的路径里面没有”&#x2F;api“时. 就需要 pathRewrite,用’’^&#x2F;api’’:’’, 把’&#x2F;api’去掉</p>
-</blockquote>
-<h2 id="JS模块的导入和导出"><a href="#JS模块的导入和导出" class="headerlink" title="JS模块的导入和导出"></a>JS模块的导入和导出</h2><blockquote>
-<p>import必须遵循同源策略，src引用js的方式可以不同源</p>
-</blockquote>
-<p><strong>单个导出</strong></p>
-<p><code>export</code> 需要导出的数据</p>
-<pre><code class="js">//单个导出
-export const a = 10;
-export let b = 20;
-export function c()&#123;
-    alert(&quot;c&quot;);
+<p><strong>使用注解实现日志通知</strong></p>
+<pre><code class="java">@SystemLog(businessName = &quot;用户信息修改&quot;)
+@PutMapping(&quot;/userInfo&quot;)
+public ResponseResult updateUser(@RequestBody User user)&#123;
+    return userService.updateUser(user);
 &#125;
-</code></pre>
-<p><strong>一齐导出</strong></p>
-<pre><code class="js">const a = 10;
-let b = 20;
-function c()&#123;
-    alert(&quot;c&quot;);
-&#125;
-
-//一齐导出
-export &#123;a,b,c&#125;
-</code></pre>
-<p><strong>导入</strong></p>
-<p>需要在script元素中添加type属性为<strong>module</strong></p>
-<p><code>import</code> 需要导入的数据 <code>from</code>  <code>&#39;js文件路径&#39;</code></p>
-<pre><code class="html">&lt;script type=&quot;module&quot;&gt;
-    import &#123;a,b,c&#125; from &#39;./myJS.js&#39;
-    alert(a);
-    alert(b);
-    c();
-&lt;/script&gt;
-</code></pre>
-<p><strong>导出默认</strong></p>
-<pre><code class="js">//带有default的只能出现一个
-export default b;
-
-//export default c; 例如这条如果也是default就会报错
-</code></pre>
-<p><strong>默认导入</strong></p>
-<pre><code class="js">//导入默认的名字可以随便起，这里的x其实就是b
-import x from &#39;./myJS.js&#39;
-</code></pre>
-<p><strong>整体导入</strong></p>
-<pre><code class="js">//需要用as给模块起名字
-import * as m from &#39;./myJS.js&#39;
-//使用m.c(); 可以调用模块中的函数
 </code></pre>
 
       
@@ -1294,12 +1189,12 @@ import * as m from &#39;./myJS.js&#39;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>NodeJS</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">2.1k</span></p>
+    <p><span class="copy-title">文章标题:</span>Aop日志实现</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">1.2k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-09-08, 20:18:43</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-08, 20:19:46</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/09/08/NodeJS/" title="NodeJS">https://os467.github.io/2022/09/08/NodeJS/</a>
+    <p><span class="copy-title">发布时间:</span>2022-10-01, 23:47:22</p>
+    <p><span class="copy-title">最后更新:</span>2022-10-01, 23:47:50</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/10/01/Aop%E6%97%A5%E5%BF%97%E5%AE%9E%E7%8E%B0/" title="Aop日志实现">https://os467.github.io/2022/10/01/Aop%E6%97%A5%E5%BF%97%E5%AE%9E%E7%8E%B0/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
