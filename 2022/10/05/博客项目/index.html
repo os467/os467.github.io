@@ -1,0 +1,3744 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>前后端分离博客项目 | Tly的博客</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="前后端分离博客项目 | Tly的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tly的博客">
+<meta property="og:url" content="https://os467.github.io/about/index.html">
+<meta property="og:site_name" content="Tly的博客">
+<meta property="og:description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-05T07:48:23.998Z">
+<meta property="article:modified_time" content="2022-09-05T07:48:23.998Z">
+<meta property="article:author" content="Os467">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/headimg.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/headimg.jpg"/>
+</a>
+<div class="author">
+    <span>Os467</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/os467"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:1300452403@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=1300452403&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/song?id=551339076&amp;userid=1571495855"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+  <!-- 新增的网易云外链播放器 -->
+  <div class="music-player" style="transform: transform:translateY(-50%);">
+    <iframe id="music-player-iframe" frameborder="no" border="0" marginwidth="0" marginheight="0" allow="autoplay" width=160 height=52 src=""></iframe>
+        
+    <div>
+        <!-- 动态切换歌曲 -->
+       <!--  <input class="input" type="button" onclick="playPre()" value="上一首"  style="width: 50px; text-align: center;"> -->
+        <img onclick="playPre()" style="height: 15px; width: 15px;margin-left:60px" src="/img/back.png">
+        <img onclick="playNext()" style="height: 15px; width: 15px;margin-left:5px" src="/img/next.png">
+        <!-- <input class="input" type="button" onclick="playNext()" value="下一首" style="width: 50px; text-align: center;">     -->
+    </div>
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(48)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="JAVASE基础">
+                        
+                        JAVASE基础
+                        <small>(9)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="JAVASE进阶">
+                        
+                        JAVASE进阶
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="框架学习">
+                        
+                        框架学习
+                        <small>(10)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="微服务">
+                        
+                        微服务
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="运维">
+                        
+                        运维
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="项目">
+                        
+                        项目
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="底层学习">
+                        
+                        底层学习
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="前端">
+                        
+                        前端
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="其它">
+                        
+                        其它
+                        <small>(5)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="数据库">
+                        
+                        数据库
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="48">
+<input type="hidden" id="yelog_site_word_count" value="213.9k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+
+
+<!-- 新添加的音乐切换功能 -->
+<script>
+
+    var index = 0;
+
+const musicList = [
+     /* 中文曲目 */
+    "//music.163.com/outchain/player?type=2&id=1301884692&auto=1&height=32",
+    "//music.163.com/outchain/player?type=2&id=28496172&auto=1&height=32",
+    /* 英文曲目 */
+    "//music.163.com/outchain/player?type=2&id=1919435807&auto=1&height=32",
+    "//music.163.com/outchain/player?type=2&id=411314681&auto=1&height=32",
+    "//music.163.com/outchain/player?type=2&id=1464325108&auto=1&height=32",
+    "//music.163.com/outchain/player?type=2&id=1440570723&auto=1&height=32",
+    "//music.163.com/outchain/player?type=2&id=1406067418&auto=1&height=32",
+    "//music.163.com/outchain/player?type=2&id=1313035063&auto=1&height=32",
+    "//music.163.com/outchain/player?type=2&id=500410102&auto=1&height=32",
+    "//music.163.com/outchain/player?type=2&id=31010566&auto=1&height=32",
+     /* 日语 */
+     "//music.163.com/outchain/player?type=2&id=498286345&auto=1&height=32",
+    "//music.163.com/outchain/player?type=2&id=1350330823&auto=1&height=32",
+    "//music.163.com/outchain/player?type=2&id=1358226158&auto=1&height=32",
+    "//music.163.com/outchain/player?type=2&id=28913884&auto=1&height=32",
+    /* 纯音乐 */
+    "//music.163.com/outchain/player?type=2&id=1484017437&auto=1&height=32",
+    "//music.163.com/outchain/player?type=2&id=29979829&auto=1&height=32",
+    "//music.163.com/outchain/player?type=2&id=425280053&auto=1&height=32"
+
+]
+
+const indexMax = musicList.length -1;
+
+const musicDoc = document.getElementById("music-player-iframe");
+
+var playNext = function(){
+
+    index == indexMax ? index = 0 : index +=1;
+
+    musicDoc.setAttribute("src",musicList[index]);
+
+}
+
+var playPre = function(){
+
+    index == 0 ? index = indexMax : index -=1;
+
+    musicDoc.setAttribute("src",musicList[index])
+}
+
+window.onload = function(){
+    document.getElementById("music-player-iframe").setAttribute("src",musicList[0]);
+    }
+
+</script>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://os467.github.io/mdResource">os467</a></li>
+            
+            <li><a target="_blank" href="https://www.bilibili.com/video/BV17h411k7jB?vd_source=38c37e7cf61f2c4591c73b0a37eab964">这是一个神奇的链接</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 项目 "
+           href="/2022/10/05/%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前后端分离博客项目">前后端分离博客项目</span>
+            <span class="post-date" title="2022-10-05 00:52:35">2022/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/10/05/Swagger/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Swagger">Swagger</span>
+            <span class="post-date" title="2022-10-05 00:51:35">2022/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/10/01/Aop%E6%97%A5%E5%BF%97%E5%AE%9E%E7%8E%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Aop日志实现">Aop日志实现</span>
+            <span class="post-date" title="2022-10-01 23:47:22">2022/10/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/09/24/Git/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2022-09-24 01:54:20">2022/09/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 运维 "
+           href="/2022/09/23/Linux/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux指令">Linux指令</span>
+            <span class="post-date" title="2022-09-23 21:30:12">2022/09/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/09/19/SpringSecurity/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringSecurity">SpringSecurity</span>
+            <span class="post-date" title="2022-09-19 23:33:22">2022/09/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 "
+           href="/2022/09/16/Mysql%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mysql事务隔离级别">Mysql事务隔离级别</span>
+            <span class="post-date" title="2022-09-16 19:51:23">2022/09/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/09/15/ThreadLocal/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ThreadLocal">ThreadLocal</span>
+            <span class="post-date" title="2022-09-15 00:02:03">2022/09/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/09/11/%E6%A0%91%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8-md/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="树结构入门.md">树结构入门.md</span>
+            <span class="post-date" title="2022-09-11 02:27:07">2022/09/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/09/08/NodeJS/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NodeJS">NodeJS</span>
+            <span class="post-date" title="2022-09-08 20:18:43">2022/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/09/08/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前端入门">前端入门</span>
+            <span class="post-date" title="2022-09-08 10:21:00">2022/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/09/06/Java%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java对象创建">Java对象创建</span>
+            <span class="post-date" title="2022-09-06 21:16:42">2022/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/09/04/ElasticSearch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ElasticSearch">ElasticSearch</span>
+            <span class="post-date" title="2022-09-04 23:29:31">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/09/01/springCloud%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud项目搭建">SpringCloud项目搭建</span>
+            <span class="post-date" title="2022-09-01 22:23:21">2022/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/30/RabbitMQ/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RabbitMQ">RabbitMQ</span>
+            <span class="post-date" title="2022-08-30 20:25:33">2022/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/08/29/MVC%E8%AE%BF%E9%97%AE%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MVC多线程安全问题">MVC多线程安全问题</span>
+            <span class="post-date" title="2022-08-29 17:18:53">2022/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/08/27/JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM类加载机制">JVM类加载机制</span>
+            <span class="post-date" title="2022-08-27 18:10:23">2022/08/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/08/24/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM虚拟机">JVM虚拟机</span>
+            <span class="post-date" title="2022-08-24 18:28:03">2022/08/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 运维 "
+           href="/2022/08/23/Docker/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Docker">Docker</span>
+            <span class="post-date" title="2022-08-23 13:25:11">2022/08/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/18/springCloud/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud">SpringCloud</span>
+            <span class="post-date" title="2022-08-18 13:21:39">2022/08/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="微服务入门">微服务入门</span>
+            <span class="post-date" title="2022-08-15 15:44:35">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/15/dubbo/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="dubbo">dubbo</span>
+            <span class="post-date" title="2022-08-15 07:25:45">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/13/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Redis">Redis</span>
+            <span class="post-date" title="2022-08-13 14:25:31">2022/08/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/12/bootstrap/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Bootstrap(WEB框架)">Bootstrap(WEB框架)</span>
+            <span class="post-date" title="2022-08-12 16:23:21">2022/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/12/springboot/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot">SpringBoot</span>
+            <span class="post-date" title="2022-08-12 12:15:35">2022/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/08/ssm%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SSM项目整合">SSM项目整合</span>
+            <span class="post-date" title="2022-08-08 12:15:25">2022/08/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 项目 "
+           href="/2022/08/03/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="外卖项目">外卖项目</span>
+            <span class="post-date" title="2022-08-03 08:35:11">2022/08/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/01/MyBatisPlus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatisPlus">MyBatisPlus</span>
+            <span class="post-date" title="2022-08-01 11:15:26">2022/08/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/31/MyBatis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatis">MyBatis</span>
+            <span class="post-date" title="2022-07-31 10:10:26">2022/07/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/28/Maven/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven">Maven</span>
+            <span class="post-date" title="2022-07-28 19:10:41">2022/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/26/spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="spring">spring</span>
+            <span class="post-date" title="2022-07-26 21:54:22">2022/07/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/23/springMVC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringMVC">SpringMVC</span>
+            <span class="post-date" title="2022-07-23 21:35:21">2022/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式">设计模式</span>
+            <span class="post-date" title="2022-07-18 19:21:50">2022/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/17/Ajax/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ajax">Ajax</span>
+            <span class="post-date" title="2022-07-17 12:07:22">2022/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/14/Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Annotation">Annotation</span>
+            <span class="post-date" title="2022-07-14 19:36:02">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/14/%E6%B3%A8%E8%A7%A3Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="注解">注解</span>
+            <span class="post-date" title="2022-07-14 10:09:18">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/13/Reflect/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Reflect">Reflect</span>
+            <span class="post-date" title="2022-07-13 14:40:18">2022/07/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2022-07-12 12:29:58">2022/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/10/IO%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IO流">IO流</span>
+            <span class="post-date" title="2022-07-10 20:14:33">2022/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/08/jQuery/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jQuery">jQuery</span>
+            <span class="post-date" title="2022-07-08 16:24:33">2022/07/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/07/javaScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="javaScript">javaScript</span>
+            <span class="post-date" title="2022-07-07 12:54:16">2022/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/06/XML/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="XML">XML</span>
+            <span class="post-date" title="2022-07-06 18:28:03">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/06/cookie%E5%92%8Csession/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="cookie和session">cookie和session</span>
+            <span class="post-date" title="2022-07-06 18:27:45">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/02/servlet/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="servlet">servlet</span>
+            <span class="post-date" title="2022-07-02 08:24:49">2022/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/01/jdbc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jdbc">jdbc</span>
+            <span class="post-date" title="2022-07-01 08:24:49">2022/07/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/06/19/SQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL">SQL</span>
+            <span class="post-date" title="2022-06-19 19:45:07">2022/06/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/05/28/JAVA%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JAVA入门">JAVA入门</span>
+            <span class="post-date" title="2022-05-28 00:32:07">2022/05/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/27/Linux%E4%BA%91%E8%AE%A1%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux云计算">Linux云计算</span>
+            <span class="post-date" title="2022-05-27 00:05:15">2022/05/27</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-博客项目" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">前后端分离博客项目</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="项目">项目</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-10-05 00:54:03'>2022-10-05 00:52</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:11.9k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE"><span class="toc-text">前后端分离博客项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%90%AF%E5%8A%A8%E7%B1%BB"><span class="toc-text">创建启动类</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#IDEA%E6%8F%92%E4%BB%B6%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%AE%9E%E4%BD%93%E7%B1%BB"><span class="toc-text">IDEA插件自动生成实体类</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B9%B6%E6%9F%A5%E8%AF%A2"><span class="toc-text">连接数据库并查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E7%B1%BB"><span class="toc-text">通用类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%83%AD%E9%97%A8%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8"><span class="toc-text">1.热门文章列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98"><span class="toc-text">*解决跨域访问问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E7%B1%BB"><span class="toc-text">实体类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%8E%B0%E5%B1%82"><span class="toc-text">表现层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91"><span class="toc-text">业务逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E9%9D%A2%E5%80%BC%E5%A4%84%E7%90%86"><span class="toc-text">*字面值处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9F%A5%E8%AF%A2%E5%88%86%E7%B1%BB%E5%88%97%E8%A1%A8"><span class="toc-text">2.查询分类列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E6%8B%B7%E8%B4%9D%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-text">*实体拷贝工具类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E7%B1%BB-1"><span class="toc-text">实体类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%8E%B0%E5%B1%82-1"><span class="toc-text">表现层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91-1"><span class="toc-text">业务逻辑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E6%A0%B9%E6%8D%AE%E5%88%86%E7%B1%BBid%E6%9F%A5%E8%AF%A2%E6%96%87%E7%AB%A0"><span class="toc-text">2.1根据分类id查询文章</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MybatisPlus%E5%88%86%E9%A1%B5%E9%85%8D%E7%BD%AE"><span class="toc-text">*MybatisPlus分页配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E7%B1%BB-2"><span class="toc-text">实体类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91-2"><span class="toc-text">业务逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%94%A8fastJson%E9%85%8D%E7%BD%AE"><span class="toc-text">*通用fastJson配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%96%87%E7%AB%A0%E8%AF%A6%E6%83%85"><span class="toc-text">3.文章详情</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91-3"><span class="toc-text">业务逻辑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%8F%8B%E9%93%BE%E5%8A%9F%E8%83%BD"><span class="toc-text">4.友链功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E7%B1%BB-3"><span class="toc-text">实体类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%8E%B0%E5%B1%82-2"><span class="toc-text">表现层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E5%B1%82"><span class="toc-text">业务层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-SpringSecurity%E5%AE%9E%E7%8E%B0%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81"><span class="toc-text">5.SpringSecurity实现登录认证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="toc-text">配置类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E7%B1%BB-4"><span class="toc-text">实体类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91-4"><span class="toc-text">业务逻辑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%EF%BC%88%E5%BF%85%E9%A1%BB%EF%BC%89"><span class="toc-text">*5.1异常处理（必须）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-text">5.2统一异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%B1%BB"><span class="toc-text">异常类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%8E%B0%E5%B1%82-3"><span class="toc-text">表现层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3%E7%99%BB%E5%87%BA%E6%8E%A5%E5%8F%A3"><span class="toc-text">5.3登出接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%8E%B0%E5%B1%82-4"><span class="toc-text">表现层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E5%B1%82-1"><span class="toc-text">业务层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD"><span class="toc-text">6.评论功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E7%B1%BB-5"><span class="toc-text">实体类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%8E%B0%E5%B1%82-5"><span class="toc-text">表现层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E5%B1%82-2"><span class="toc-text">业务层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%8F%91%E8%A1%A8%E8%AF%84%E8%AE%BA%E6%8E%A5%E5%8F%A3"><span class="toc-text">7.发表评论接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E7%B1%BB-6"><span class="toc-text">实体类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%8E%B0%E5%B1%82-6"><span class="toc-text">表现层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E5%B1%82-3"><span class="toc-text">业务层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MybatisPlus%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E5%8A%9F%E8%83%BD"><span class="toc-text">*MybatisPlus自动填充功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2"><span class="toc-text">8.个人信息查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E7%B1%BB-7"><span class="toc-text">实体类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%8E%B0%E5%B1%82-7"><span class="toc-text">表现层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E5%B1%82-4"><span class="toc-text">业务层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%A4%B4%E5%83%8F%E4%B8%8A%E4%BC%A0%E6%8E%A5%E5%8F%A3"><span class="toc-text">9.头像上传接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OOS"><span class="toc-text">*OOS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%8E%B0%E5%B1%82-8"><span class="toc-text">表现层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E5%B1%82-5"><span class="toc-text">业务层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E6%B3%A8%E5%86%8C%E5%8A%9F%E8%83%BD"><span class="toc-text">10.注册功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%8E%B0%E5%B1%82-9"><span class="toc-text">表现层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E5%B1%82-6"><span class="toc-text">业务层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-AOP%E5%AE%9E%E7%8E%B0%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86"><span class="toc-text">11.AOP实现日志收集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%88%87%E9%9D%A2"><span class="toc-text">配置切面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%8E%B0%E5%B1%82-10"><span class="toc-text">表现层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E6%9B%B4%E6%96%B0%E6%B5%8F%E8%A7%88%E6%AC%A1%E6%95%B0"><span class="toc-text">12.更新浏览次数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E6%B5%8F%E8%A7%88%E9%87%8F%E5%AD%98%E5%82%A8%E5%88%B0redis"><span class="toc-text">将浏览量存储到redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%8E%B0%E5%B1%82-11"><span class="toc-text">表现层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E5%B1%82-7"><span class="toc-text">业务层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="toc-text">*定时任务</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前后端分离博客项目"><a href="#前后端分离博客项目" class="headerlink" title="前后端分离博客项目"></a>前后端分离博客项目</h1><p><strong>使用技术栈</strong></p>
+<p>SpringBoot，MybatisPlus，SpringSecurity，EasyExcel，Swagger2，Redis…</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p><strong>创建工程</strong></p>
+<p><strong>多模块项目</strong></p>
+<p>博客项目的前台和后台都有相同的用户，文章等概念，如果分为两个独立的工程那么出现的重复代码会很多，代码复用性不高</p>
+<p>所以我们要创建多模块项目，两套系统可能都会用到的代码写到一个<strong>公共模块</strong>中，让前台系统和后台系统分别依赖公共模块</p>
+<p>此项目我们使用的是三个模块</p>
+<ul>
+<li>os467-framework：存放前台后台共同需要的业务与实体</li>
+<li>os467-front：前台的控制器，独立业务</li>
+<li>os467-admin：后台的控制器，以及独立业务</li>
+</ul>
+<p><strong>创建父模块</strong></p>
+<p>idea选择创建pom工程，删除此模块下的src目录</p>
+<p><strong>配置父pom文件</strong></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.os467&lt;/groupId&gt;
+    &lt;artifactId&gt;os467-blog&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+
+    &lt;properties&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+        &lt;java.version&gt;1.8&lt;/java.version&gt;
+        &lt;maven.compiler.source&gt;8&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;8&lt;/maven.compiler.target&gt;
+    &lt;/properties&gt;
+
+    &lt;!--子模块依赖版本控制，锁定子模块依赖版本--&gt;
+    &lt;dependencyManagement&gt;
+
+        &lt;dependencies&gt;
+            &lt;!-- SpringBoot的依赖配置--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;
+                &lt;version&gt;2.5.0&lt;/version&gt;
+                &lt;type&gt;pom&lt;/type&gt;
+                &lt;scope&gt;import&lt;/scope&gt;
+            &lt;/dependency&gt;
+            &lt;!--fastjson依赖--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+                &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+                &lt;version&gt;1.2.33&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;!--jwt依赖--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+                &lt;artifactId&gt;jjwt&lt;/artifactId&gt;
+                &lt;version&gt;0.9.0&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;!--mybatisPlus依赖--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+                &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;
+                &lt;version&gt;3.4.3&lt;/version&gt;
+            &lt;/dependency&gt;
+
+            &lt;!--阿里云OSS--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.aliyun.oss&lt;/groupId&gt;
+                &lt;artifactId&gt;aliyun-sdk-oss&lt;/artifactId&gt;
+                &lt;version&gt;3.11.2&lt;/version&gt;
+            &lt;/dependency&gt;
+
+
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+                &lt;artifactId&gt;easyexcel&lt;/artifactId&gt;
+                &lt;version&gt;3.0.5&lt;/version&gt;
+            &lt;/dependency&gt;
+
+            &lt;dependency&gt;
+                &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+                &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;
+                &lt;version&gt;2.9.2&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+                &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;
+                &lt;version&gt;3.0.0&lt;/version&gt;
+            &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+
+    &lt;/dependencyManagement&gt;
+
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+                &lt;version&gt;3.1&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;source&gt;$&#123;java.version&#125;&lt;/source&gt;
+                    &lt;target&gt;$&#123;java.version&#125;&lt;/target&gt;
+                    &lt;encoding&gt;$&#123;project.build.sourceEncoding&#125;&lt;/encoding&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+
+&lt;/project&gt;
+</code></pre>
+<p><strong>创建公共子模块</strong></p>
+<p><code>os467-framework</code></p>
+<p>子模块依赖添加，继承自父工程</p>
+<pre><code class="xml">&lt;dependencies&gt;
+    
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;!--lombok--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+        &lt;optional&gt;true&lt;/optional&gt;
+    &lt;/dependency&gt;
+    &lt;!--junit--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+        &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+    &lt;!--SpringSecurity启动器--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;!--redis依赖--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;!--fastjson依赖--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+        &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;!--jwt依赖--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+        &lt;artifactId&gt;jjwt&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;!--mybatisPlus依赖--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+        &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;!--mysql数据库驱动--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;mysql&lt;/groupId&gt;
+        &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;!--阿里云OSS--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.aliyun.oss&lt;/groupId&gt;
+        &lt;artifactId&gt;aliyun-sdk-oss&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;!--AOP--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-aop&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+        &lt;artifactId&gt;easyexcel&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+        &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+        &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+&lt;/dependencies&gt;
+</code></pre>
+<p><strong>为前台和后台子模块添加坐标</strong></p>
+<p><strong>前台</strong></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;parent&gt;
+        &lt;artifactId&gt;os467-blog&lt;/artifactId&gt;
+        &lt;groupId&gt;com.os467&lt;/groupId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;/parent&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;artifactId&gt;os467-front&lt;/artifactId&gt;
+
+    &lt;properties&gt;
+        &lt;maven.compiler.source&gt;8&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;8&lt;/maven.compiler.target&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.os467&lt;/groupId&gt;
+            &lt;artifactId&gt;os467-framework&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+&lt;/project&gt;
+</code></pre>
+<p><strong>后台</strong></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;parent&gt;
+        &lt;artifactId&gt;os467-blog&lt;/artifactId&gt;
+        &lt;groupId&gt;com.os467&lt;/groupId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;/parent&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;artifactId&gt;os467-admin&lt;/artifactId&gt;
+
+    &lt;properties&gt;
+        &lt;maven.compiler.source&gt;8&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;8&lt;/maven.compiler.target&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.os467&lt;/groupId&gt;
+            &lt;artifactId&gt;os467-framework&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+&lt;/project&gt;
+</code></pre>
+<h2 id="创建启动类"><a href="#创建启动类" class="headerlink" title="创建启动类"></a>创建启动类</h2><p>前台启动类创建</p>
+<pre><code class="java">@SpringBootApplication
+public class Os467FrontApplication &#123;
+
+    public static void main(String[] args) &#123;
+        SpringApplication.run(Os467FrontApplication.class,args);
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>配置文件</strong></p>
+<pre><code class="yaml">server:
+  port: 7777
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/sg_blog?characterEncoding=utf-8&amp;serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 5MB
+mybatis-plus:
+  configuration:
+    # 日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: delFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      id-type: auto
+</code></pre>
+<h6 id="IDEA插件自动生成实体类"><a href="#IDEA插件自动生成实体类" class="headerlink" title="IDEA插件自动生成实体类"></a>IDEA插件自动生成实体类</h6><blockquote>
+<p> 1、使用插件Easy Code</p>
+</blockquote>
+<blockquote>
+<p>2、使用IDEA自动生成数据库表对应实体类</p>
+</blockquote>
+<p>详细请参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34371461/article/details/80571281">https://blog.csdn.net/qq_34371461/article/details/80571281</a></p>
+<p><strong>自定义生成器</strong></p>
+<p>如果不需要对表名特殊处理，请将此代码中调用的<code>javaClassName</code>方法改为<code>javaName</code>方法</p>
+<p>注释使用mybatisPlus的注释，如果有其它需要可以自行修改</p>
+<pre><code class="groovy">import com.intellij.database.model.DasTable
+import com.intellij.database.model.ObjectKind
+import com.intellij.database.util.Case
+import com.intellij.database.util.DasUtil
+import java.io.*
+import java.text.SimpleDateFormat
+
+/*
+ * Available context bindings:
+ *   SELECTION   Iterable&lt;DasObject&gt;
+ *   PROJECT     project
+ *   FILES       files helper
+ */
+packageName = &quot;&quot;
+typeMapping = [
+        (~/(?i)tinyint|smallint|mediumint/)      : &quot;Integer&quot;,
+        (~/(?i)int/)                             : &quot;Long&quot;,
+        (~/(?i)bool|bit/)                        : &quot;Boolean&quot;,
+        (~/(?i)float|double|decimal|real/)       : &quot;Double&quot;,
+        (~/(?i)datetime|timestamp|date|time/)    : &quot;Date&quot;,
+        (~/(?i)blob|binary|bfile|clob|raw|image/): &quot;InputStream&quot;,
+        (~/(?i)/)                                : &quot;String&quot;
+]
+
+
+FILES.chooseDirectoryAndSave(&quot;Choose directory&quot;, &quot;Choose where to store generated files&quot;) &#123; dir -&gt;
+    SELECTION.filter &#123; it instanceof DasTable &amp;&amp; it.getKind() == ObjectKind.TABLE &#125;.each &#123; generate(it, dir) &#125;
+&#125;
+
+def generate(table, dir) &#123;
+    def className = javaName(table.getName(), true)
+    def fields = calcFields(table)
+    packageName = getPackageName(dir)
+    PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(new FileOutputStream(new File(dir, className + &quot;.java&quot;)), &quot;UTF-8&quot;))
+    printWriter.withPrintWriter &#123;out -&gt; generate(out, className, fields,table)&#125;
+
+//    new File(dir, className + &quot;.java&quot;).withPrintWriter &#123; out -&gt; generate(out, className, fields,table) &#125;
+&#125;
+
+// 获取包所在文件夹路径
+def getPackageName(dir) &#123;
+    return dir.toString().replaceAll(&quot;\\\\&quot;, &quot;.&quot;).replaceAll(&quot;/&quot;, &quot;.&quot;).replaceAll(&quot;^.*src(\\.main\\.java\\.)?&quot;, &quot;&quot;) + &quot;;&quot;
+&#125;
+
+def generate(out, className, fields,table) &#123;
+    out.println &quot;package $packageName&quot;
+    out.println &quot;&quot;
+    out.println &quot;import com.baomidou.mybatisplus.annotation.TableField;&quot;
+    out.println &quot;import com.baomidou.mybatisplus.annotation.TableName;&quot;
+    out.println &quot;import java.io.Serializable;&quot;
+    out.println &quot;import lombok.Getter;&quot;
+    out.println &quot;import lombok.Setter;&quot;
+    out.println &quot;import lombok.ToString;&quot;
+    Set types = new HashSet()
+
+    fields.each() &#123;
+        types.add(it.type)
+    &#125;
+
+    if (types.contains(&quot;Date&quot;)) &#123;
+        out.println &quot;import java.util.Date;&quot;
+    &#125;
+
+    if (types.contains(&quot;InputStream&quot;)) &#123;
+        out.println &quot;import java.io.InputStream;&quot;
+    &#125;
+    out.println &quot;&quot;
+    out.println &quot;/**\n&quot; +
+            &quot; * @Description  \n&quot; +
+            &quot; * @Author  os467\n&quot; +
+            &quot; * @Date &quot;+ new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).format(new Date()) + &quot; \n&quot; +
+            &quot; */&quot;
+    out.println &quot;&quot;
+    out.println &quot;@Setter&quot;
+    out.println &quot;@Getter&quot;
+    out.println &quot;@ToString&quot;
+    out.println &quot;@TableName ( value =\&quot;&quot;+table.getName() +&quot;\&quot; )&quot;
+    out.println &quot;public class $className  implements Serializable &#123;&quot;
+    out.println &quot;&quot;
+    out.println genSerialID()
+    fields.each() &#123;
+        out.println &quot;&quot;
+        // 输出注释
+        if (isNotEmpty(it.commoent)) &#123;
+            out.println &quot;\t/**&quot;
+            out.println &quot;\t * $&#123;it.commoent.toString()&#125;&quot;
+            out.println &quot;\t */&quot;
+        &#125;
+
+        if (it.annos != &quot;&quot;) out.println &quot;   $&#123;it.annos.replace(&quot;[@Id]&quot;, &quot;&quot;)&#125;&quot;
+
+        // 输出成员变量
+        out.println &quot;\tprivate $&#123;it.type&#125; $&#123;it.name&#125;;&quot;
+    &#125;
+
+    // 输出get/set方法
+//    fields.each() &#123;
+//        out.println &quot;&quot;
+//        out.println &quot;\tpublic $&#123;it.type&#125; get$&#123;it.name.capitalize()&#125;() &#123;&quot;
+//        out.println &quot;\t\treturn this.$&#123;it.name&#125;;&quot;
+//        out.println &quot;\t&#125;&quot;
+//        out.println &quot;&quot;
+//
+//        out.println &quot;\tpublic void set$&#123;it.name.capitalize()&#125;($&#123;it.type&#125; $&#123;it.name&#125;) &#123;&quot;
+//        out.println &quot;\t\tthis.$&#123;it.name&#125; = $&#123;it.name&#125;;&quot;
+//        out.println &quot;\t&#125;&quot;
+//    &#125;
+    out.println &quot;&quot;
+    out.println &quot;&#125;&quot;
+&#125;
+
+def calcFields(table) &#123;
+    DasUtil.getColumns(table).reduce([]) &#123; fields, col -&gt;
+        def spec = Case.LOWER.apply(col.getDataType().getSpecification())
+
+        def typeStr = typeMapping.find &#123; p, t -&gt; p.matcher(spec).find() &#125;.value
+        def comm =[
+                colName : col.getName(),
+                name :  javaName(col.getName(), false),
+                type : typeStr,
+                commoent: col.getComment(),
+                annos: &quot;\t@TableField(value = \&quot;&quot;+col.getName()+&quot;\&quot; )&quot;]
+        if(&quot;id&quot;.equals(Case.LOWER.apply(col.getName())))
+            comm.annos +=[&quot;@Id&quot;]
+        fields += [comm]
+    &#125;
+&#125;
+
+// 处理类名（这里是因为我的表都是以t_命名的，所以需要处理去掉生成类名时的开头的T，
+// 如果你不需要那么请查找用到了 javaClassName这个方法的地方修改为 javaName 即可）
+def javaClassName(str, capitalize) &#123;
+    def s = com.intellij.psi.codeStyle.NameUtil.splitNameIntoWords(str)
+            .collect &#123; Case.LOWER.apply(it).capitalize() &#125;
+            .join(&quot;&quot;)
+            .replaceAll(/[^\p&#123;javaJavaIdentifierPart&#125;[_]]/, &quot;_&quot;)
+    // 去除开头的T  http://developer.51cto.com/art/200906/129168.htm
+    s = s[1..s.size() - 1]
+    capitalize || s.length() == 1? s : Case.LOWER.apply(s[0]) + s[1..-1]
+&#125;
+
+def javaName(str, capitalize) &#123;
+//    def s = str.split(/(?&lt;=[^\p&#123;IsLetter&#125;])/).collect &#123; Case.LOWER.apply(it).capitalize() &#125;
+//            .join(&quot;&quot;).replaceAll(/[^\p&#123;javaJavaIdentifierPart&#125;]/, &quot;_&quot;)
+//    capitalize || s.length() == 1? s : Case.LOWER.apply(s[0]) + s[1..-1]
+    def s = com.intellij.psi.codeStyle.NameUtil.splitNameIntoWords(str)
+            .collect &#123; Case.LOWER.apply(it).capitalize() &#125;
+            .join(&quot;&quot;)
+            .replaceAll(/[^\p&#123;javaJavaIdentifierPart&#125;[_]]/, &quot;_&quot;)
+    capitalize || s.length() == 1? s : Case.LOWER.apply(s[0]) + s[1..-1]
+&#125;
+
+def isNotEmpty(content) &#123;
+    return content != null &amp;&amp; content.toString().trim().length() &gt; 0
+&#125;
+
+static String changeStyle(String str, boolean toCamel)&#123;
+    if(!str || str.size() &lt;= 1)
+        return str
+
+    if(toCamel)&#123;
+        String r = str.toLowerCase().split(&#39;_&#39;).collect&#123;cc -&gt; Case.LOWER.apply(cc).capitalize()&#125;.join(&#39;&#39;)
+        return r[0].toLowerCase() + r[1..-1]
+    &#125;else&#123;
+        str = str[0].toLowerCase() + str[1..-1]
+        return str.collect&#123;cc -&gt; ((char)cc).isUpperCase() ? &#39;_&#39; + cc.toLowerCase() : cc&#125;.join(&#39;&#39;)
+    &#125;
+&#125;
+
+static String genSerialID()
+&#123;
+    return &quot;\tprivate static final long serialVersionUID =  &quot;+Math.abs(new Random().nextLong())+&quot;L;&quot;
+&#125;
+</code></pre>
+<h2 id="连接数据库并查询"><a href="#连接数据库并查询" class="headerlink" title="连接数据库并查询"></a>连接数据库并查询</h2><p>1、创建Article实体类</p>
+<p>2、创建对应的Mapper和Service</p>
+<blockquote>
+<p>&#x3D;&#x3D;问题1：&#x3D;&#x3D;在多模块项目中，我们可能会互相引用不同模块之间的类，比如使用<code>@Autowired</code>注解时，我们需要保证其它模块的类在修改后使用maven的clean+install命令重新打包</p>
+<p>&#x3D;&#x3D;问题2：&#x3D;&#x3D;我们只需要在一个模块的启动类上加<code>@MapperScan</code>注解就能扫描到其它模块下对应的mapper包中的Mapper接口</p>
+<p>例如在前台模块中需要用到通用模块的Mapper接口</p>
+</blockquote>
+<h3 id="通用类"><a href="#通用类" class="headerlink" title="通用类"></a>通用类</h3><p><strong>响应类</strong></p>
+<pre><code class="java">package com.os467.common;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.os467.enums.AppHttpCodeEnum;
+
+import java.io.Serializable;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ResponseResult&lt;T&gt; implements Serializable &#123;
+    private Integer code;
+    private String msg;
+    private T data;
+
+    public ResponseResult() &#123;
+        this.code = AppHttpCodeEnum.SUCCESS.getCode();
+        this.msg = AppHttpCodeEnum.SUCCESS.getMsg();
+    &#125;
+
+    public ResponseResult(Integer code, T data) &#123;
+        this.code = code;
+        this.data = data;
+    &#125;
+
+    public ResponseResult(Integer code, String msg, T data) &#123;
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    &#125;
+
+    public ResponseResult(Integer code, String msg) &#123;
+        this.code = code;
+        this.msg = msg;
+    &#125;
+
+    public static ResponseResult errorResult(int code, String msg) &#123;
+        ResponseResult result = new ResponseResult();
+        return result.error(code, msg);
+    &#125;
+    public static ResponseResult okResult() &#123;
+        ResponseResult result = new ResponseResult();
+        return result;
+    &#125;
+    public static ResponseResult okResult(int code, String msg) &#123;
+        ResponseResult result = new ResponseResult();
+        return result.ok(code, null, msg);
+    &#125;
+
+    public static ResponseResult okResult(Object data) &#123;
+        ResponseResult result = setAppHttpCodeEnum(AppHttpCodeEnum.SUCCESS, AppHttpCodeEnum.SUCCESS.getMsg());
+        if(data!=null) &#123;
+            result.setData(data);
+        &#125;
+        return result;
+    &#125;
+
+    public static ResponseResult errorResult(AppHttpCodeEnum enums)&#123;
+        return setAppHttpCodeEnum(enums,enums.getMsg());
+    &#125;
+
+    public static ResponseResult errorResult(AppHttpCodeEnum enums, String msg)&#123;
+        return setAppHttpCodeEnum(enums,msg);
+    &#125;
+
+    public static ResponseResult setAppHttpCodeEnum(AppHttpCodeEnum enums)&#123;
+        return okResult(enums.getCode(),enums.getMsg());
+    &#125;
+
+    private static ResponseResult setAppHttpCodeEnum(AppHttpCodeEnum enums, String msg)&#123;
+        return okResult(enums.getCode(),msg);
+    &#125;
+
+    public ResponseResult&lt;?&gt; error(Integer code, String msg) &#123;
+        this.code = code;
+        this.msg = msg;
+        return this;
+    &#125;
+
+    public ResponseResult&lt;?&gt; ok(Integer code, T data) &#123;
+        this.code = code;
+        this.data = data;
+        return this;
+    &#125;
+
+    public ResponseResult&lt;?&gt; ok(Integer code, T data, String msg) &#123;
+        this.code = code;
+        this.data = data;
+        this.msg = msg;
+        return this;
+    &#125;
+
+    public ResponseResult&lt;?&gt; ok(T data) &#123;
+        this.data = data;
+        return this;
+    &#125;
+
+    public Integer getCode() &#123;
+        return code;
+    &#125;
+
+    public void setCode(Integer code) &#123;
+        this.code = code;
+    &#125;
+
+    public String getMsg() &#123;
+        return msg;
+    &#125;
+
+    public void setMsg(String msg) &#123;
+        this.msg = msg;
+    &#125;
+
+    public T getData() &#123;
+        return data;
+    &#125;
+
+    public void setData(T data) &#123;
+        this.data = data;
+    &#125;
+
+
+
+&#125;
+</code></pre>
+<p><strong>响应枚举类</strong></p>
+<pre><code class="java">package com.os467.enums;
+
+public enum AppHttpCodeEnum &#123;
+    // 成功
+    SUCCESS(200,&quot;操作成功&quot;),
+    // 登录
+    NEED_LOGIN(401,&quot;需要登录后操作&quot;),
+    NO_OPERATOR_AUTH(403,&quot;无权限操作&quot;),
+    SYSTEM_ERROR(500,&quot;出现错误&quot;),
+    USERNAME_EXIST(501,&quot;用户名已存在&quot;),
+     PHONENUMBER_EXIST(502,&quot;手机号已存在&quot;), EMAIL_EXIST(503, &quot;邮箱已存在&quot;),
+    REQUIRE_USERNAME(504, &quot;必需填写用户名&quot;),
+    LOGIN_ERROR(505,&quot;用户名或密码错误&quot;);
+    int code;
+    String msg;
+
+    AppHttpCodeEnum(int code, String errorMessage)&#123;
+        this.code = code;
+        this.msg = errorMessage;
+    &#125;
+
+    public int getCode() &#123;
+        return code;
+    &#125;
+
+    public String getMsg() &#123;
+        return msg;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="1-热门文章列表"><a href="#1-热门文章列表" class="headerlink" title="1.热门文章列表"></a>1.热门文章列表</h2><p>通过需求分析需要哪些字段</p>
+<p>需要查询浏览量最高的前10篇文章的信息，要求展示文章标题和浏览量，把能让用户自己点击跳转到具体的文章详情进行浏览</p>
+<p>不能把草稿展示出来，不能把删除了的文章查询出来，要按照浏览量进行降序排序</p>
+<h3 id="解决跨域访问问题"><a href="#解决跨域访问问题" class="headerlink" title="*解决跨域访问问题"></a>*解决跨域访问问题</h3><p><strong>spring允许跨域访问</strong></p>
+<pre><code class="java">@Configuration
+public class WebConfig implements WebMvcConfigurer &#123;
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) &#123;
+        // 设置允许跨域的路径
+        registry.addMapping(&quot;/**&quot;)
+                // 设置允许跨域请求的域名
+                .allowedOriginPatterns(&quot;*&quot;)
+                // 是否允许cookie
+                .allowCredentials(true)
+                // 设置允许的请求方式
+                .allowedMethods(&quot;GET&quot;, &quot;POST&quot;, &quot;DELETE&quot;, &quot;PUT&quot;)
+                // 设置允许的header属性
+                .allowedHeaders(&quot;*&quot;)
+                // 跨域允许时间
+                .maxAge(3600);
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>SpringSecurity允许跨域访问</strong></p>
+<pre><code class="java">@Configuration
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter &#123;
+
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception &#123;
+
+        http.cors().disable();
+
+    &#125;
+&#125;
+</code></pre>
+<h3 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h3><blockquote>
+<p>我们在查询文章类时，如果只需要某些字段，这时候我们可以使用vo类来封装文章类的部分字段</p>
+<p>vo类被设计出来只是为了封装提供给接口所需要的数据，<strong>一个接口对应一个vo</strong>，因此如果后期接口响应字段要修改，我们也只需要修改vo即可</p>
+</blockquote>
+<p><strong>文章类</strong></p>
+<pre><code class="java">package com.os467.entity;
+
+import java.util.Date;
+import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * 文章表(Article)表实体类
+ *
+ * @author makejava
+ * @since 2022-09-24 16:52:44
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@SuppressWarnings(&quot;serial&quot;)
+public class Article &#123;
+    
+    private Long id;
+    //标题
+    private String title;
+    //文章内容
+    private String content;
+    //文章摘要
+    private String summary;
+    //所属分类id
+    private Long categoryId;
+    //缩略图
+    private String thumbnail;
+    //是否置顶（0否，1是）
+    private String isTop;
+    //状态（0已发布，1草稿）
+    private String status;
+    //访问量
+    private Long viewCount;
+    //是否允许评论 1是，0否
+    private String isComment;
+    
+    private Long createBy;
+    
+    private Date createTime;
+    
+    private Long updateBy;
+    
+    private Date updateTime;
+    //删除标志（0代表未删除，1代表已删除）
+    private Integer delFlag;
+
+&#125;
+</code></pre>
+<p><strong>热门文章数据类</strong></p>
+<pre><code class="java">package com.os467.vo;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class HotArticleVo &#123;
+
+    /**
+     * 需要获得id
+     */
+    private Long id;
+
+    /**
+     * 标题
+     */
+    private String title;
+
+    /**
+     * 访问量
+     */
+    private Long viewCount;
+&#125;
+</code></pre>
+<h3 id="表现层"><a href="#表现层" class="headerlink" title="表现层"></a>表现层</h3><pre><code class="java">@RestController
+@RequestMapping(&quot;/article&quot;)
+public class ArticleController &#123;
+
+    @Autowired
+    ArticleService articleService;
+
+    @GetMapping(&quot;/hotArticleList&quot;)
+    public ResponseResult getHotArticleList()&#123;
+        return articleService.getHotArticleList();
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="业务逻辑"><a href="#业务逻辑" class="headerlink" title="业务逻辑"></a>业务逻辑</h3><pre><code class="java">public ResponseResult getHotArticleList() &#123;
+
+    //构造查询
+    LambdaQueryWrapper&lt;Article&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+    //查询条件，根据访问量降序排序
+    queryWrapper.orderByDesc(Article::getViewCount);
+    //不能将草稿查询出来，只查询status为0的
+    queryWrapper.eq(Article::getStatus,0);
+    //不能将已被删除的查询出来，只查询deleteFlag为0的
+    queryWrapper.eq(Article::getDelFlag,0);
+
+    //构造分页工具
+    Page&lt;Article&gt; articlePage = new Page&lt;&gt;(1,10);
+
+    //分页查询
+    articleMapper.selectPage(articlePage, queryWrapper);
+
+    //获取分页查询后的数据
+    List&lt;Article&gt; articles = articlePage.getRecords();
+
+    //存放vo数据的数组
+    List&lt;HotArticleVo&gt; articleVos = new ArrayList&lt;&gt;();
+
+    //for循环拷贝
+    for (Article article : articles) &#123;
+        //创建vo对象
+        HotArticleVo vo = new HotArticleVo();
+        //使用实体字段拷贝
+        BeanUtils.copyProperties(article,vo);
+        //将vo对象添加进vo数组中
+        articleVos.add(vo);
+    &#125;
+
+    //返回封装好的response对象
+    return ResponseResult.okResult(articleVos);
+
+&#125;
+</code></pre>
+<h3 id="字面值处理"><a href="#字面值处理" class="headerlink" title="*字面值处理"></a>*字面值处理</h3><p>实际项目中都不允许直接在代码中使用字面值，都需要定义成常量来使用，这种方式有利于提高代码的可维护性</p>
+<pre><code class="java">package com.os467.common;
+
+public class SystemConstants &#123;
+
+    public static final String ARTICLE_STATUS_DRAFT = &quot;1&quot;;
+
+    public static final String ARTICLE_STATUS_NORMAL = &quot;0&quot;;
+
+    public static final int DELETE_FLAG_TRUE = 1;
+
+    public static final int DELETE_FLAG_FALSE = 0;
+
+&#125;
+</code></pre>
+<p><strong>替换刚刚使用的字面量值</strong></p>
+<pre><code class="java">//不能将草稿查询出来，只查询status为0的
+queryWrapper.eq(Article::getStatus, SystemConstants.ARTICLE_STATUS_NORMAL);
+//不能将已被删除的查询出来，只查询deleteFlag为0的
+queryWrapper.eq(Article::getDelFlag,SystemConstants.DELETE_FLAG_FALSE);
+</code></pre>
+<h2 id="2-查询分类列表"><a href="#2-查询分类列表" class="headerlink" title="2.查询分类列表"></a>2.查询分类列表</h2><p><strong>需求：</strong></p>
+<p>页面上需要展示分类列表，用户可以点击具体的分类查看该分类下的文章列表</p>
+<p>​	注意： ①要求只展示有发布正式文章的分类</p>
+<p>​				 ②必须是正常状态的分类</p>
+<p>查询文章表，找到文章表对应的类id，获取类id列表装换为set集合</p>
+<h3 id="实体拷贝工具类"><a href="#实体拷贝工具类" class="headerlink" title="*实体拷贝工具类"></a>*实体拷贝工具类</h3><p>&#x3D;&#x3D;踩坑：使用拷贝工具必须要为两个资源都提供set和get方法！！&#x3D;&#x3D;</p>
+<pre><code class="java">public class BeanCopyUtils &#123;
+
+    private BeanCopyUtils()&#123;&#125;
+
+    public static &lt;V&gt; V copyBean(Object source,Class&lt;V&gt; clazz)&#123;
+
+        //创建目标对象
+        V result = null;
+
+        try &#123;
+            result = clazz.newInstance();
+
+            BeanUtils.copyProperties(source,result);
+
+        &#125; catch (InstantiationException e) &#123;
+            e.printStackTrace();
+        &#125; catch (IllegalAccessException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+        return result;
+
+    &#125;
+
+    /**
+    * 拷贝列表内所有对象
+    */
+    public static &lt;O,V&gt; List&lt;V&gt; copyBeanList(List&lt;O&gt; list,Class&lt;V&gt; clazz)&#123;
+
+        return list.stream().map(o -&gt;
+            copyBean(o,clazz)
+        ).collect(Collectors.toList());
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="实体类-1"><a href="#实体类-1" class="headerlink" title="实体类"></a>实体类</h3><pre><code class="java">package com.os467.entity;
+
+import java.util.Date;
+import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * 分类表(Os467Category)表实体类
+ *
+ * @author makejava
+ * @since 2022-09-25 17:58:51
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@SuppressWarnings(&quot;serial&quot;)
+public class Category &#123;
+    
+    private Long id;
+    //分类名
+    private String name;
+    //父分类id，如果没有父分类为-1
+    private Long pid;
+    //描述
+    private String description;
+    //状态0:正常,1禁用
+    private String status;
+    
+    private Long createBy;
+    
+    private Date createTime;
+    
+    private Long updateBy;
+    
+    private Date updateTime;
+    //删除标志（0代表未删除，1代表已删除）
+    private Integer delFlag;
+</code></pre>
+<h3 id="表现层-1"><a href="#表现层-1" class="headerlink" title="表现层"></a>表现层</h3><pre><code class="java">@RestController
+@RequestMapping(&quot;/category&quot;)
+public class CategoryController &#123;
+
+    @Autowired
+    private CategoryService categoryService;
+
+    @GetMapping(&quot;/getCategoryList&quot;)
+    public ResponseResult getCategoryList()&#123;
+
+        return categoryService.getCategoryList();
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="业务逻辑-1"><a href="#业务逻辑-1" class="headerlink" title="业务逻辑"></a>业务逻辑</h3><pre><code class="java">    /**
+     * 获取到分类列表，并且此分类下必须有文章
+     * @return
+     */
+    @Override
+    public ResponseResult getCategoryList() &#123;
+
+        LambdaQueryWrapper&lt;Article&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        //查询categoryId字段
+        //不能将草稿查询出来，只查询status为0的
+        queryWrapper.eq(Article::getStatus, SystemConstants.ARTICLE_STATUS_NORMAL);
+        //不能将已被删除的查询出来，只查询deleteFlag为0的
+        queryWrapper.eq(Article::getDelFlag,SystemConstants.DELETE_FLAG_FALSE);
+
+        //获取到信息
+        List&lt;Article&gt; articles = articleMapper.selectList(queryWrapper);
+
+        //将列表转换为集合，进行去重
+        Set&lt;Long&gt; categoryIds = articles.stream().map(Article::getCategoryId).collect(Collectors.toSet());
+
+        //获取查询到的分类结果
+        List&lt;Category&gt; categories = categoryMapper.selectBatchIds(categoryIds);
+
+        //筛选查询结果
+        List&lt;Category&gt; categoryList = categories.stream().filter(category -&gt; &#123;
+            //正常状态下的分类
+            return category.getStatus().equals(SystemConstants.ARTICLE_STATUS_NORMAL);
+        &#125;).collect(Collectors.toList());
+
+        List&lt;CategoryVo&gt; categoryVos = BeanCopyUtils.copyBeanList(categoryList, CategoryVo.class);
+
+        //返回查询结果
+        return ResponseResult.okResult(categoryVos);
+    &#125;
+</code></pre>
+<h2 id="2-1根据分类id查询文章"><a href="#2-1根据分类id查询文章" class="headerlink" title="2.1根据分类id查询文章"></a>2.1根据分类id查询文章</h2><p>在首页和分类页面都需要查询文章列表</p>
+<p>​	首页：查询所有的文章</p>
+<p>​	分类页面：查询对应分类下的文章</p>
+<p>​	要求：①只能查询正式发布的文章 ②置顶的文章要显示在最前面 </p>
+<h3 id="MybatisPlus分页配置"><a href="#MybatisPlus分页配置" class="headerlink" title="*MybatisPlus分页配置"></a>*MybatisPlus分页配置</h3><pre><code class="java">package com.os467.config;
+
+import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class MybatisPlusConfig &#123;
+
+    /**
+     * 3.4.0之后版本
+     * @return
+     */
+    @Bean
+    public MybatisPlusInterceptor mybatisPlusInterceptor()&#123;
+        MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
+        mybatisPlusInterceptor.addInnerInterceptor(new PaginationInnerInterceptor());
+        return mybatisPlusInterceptor;
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<h3 id="实体类-2"><a href="#实体类-2" class="headerlink" title="实体类"></a>实体类</h3><pre><code class="java">@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class PageVo &#123;
+    private List rows;
+    private Long total;
+&#125;
+</code></pre>
+<pre><code class="java">@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ArticleListVo &#123;
+
+    private Long id;
+    //标题
+    private String title;
+    //文章摘要
+    private String summary;
+    //所属分类名
+    private String categoryName;
+    //缩略图
+    private String thumbnail;
+
+
+    //访问量
+    private Long viewCount;
+
+    private Date createTime;
+
+
+&#125;
+</code></pre>
+<h3 id="业务逻辑-2"><a href="#业务逻辑-2" class="headerlink" title="业务逻辑"></a>业务逻辑</h3><p>还需要返回当前文章对应的分类信息</p>
+<pre><code class="java">    /**
+     * 根据文章分类获取文章内容
+     * @param pageNum
+     * @param pageSize
+     * @param categoryId
+     * @return
+     */
+    @Override
+    public ResponseResult getArticleList(Integer pageNum, Integer pageSize, Long categoryId) &#123;
+
+        LambdaQueryWrapper&lt;Article&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        //此分类下的非草稿，未删除文章
+        queryWrapper
+                .eq(Article::getStatus,SystemConstants.ARTICLE_STATUS_NORMAL);
+
+        //根据分类id来查询
+        queryWrapper.eq(Objects.nonNull(categoryId)&amp;&amp;categoryId &gt; 0,Article::getCategoryId,categoryId);
+
+        //根据置顶文章字段降序排序
+        queryWrapper.orderByDesc(Article::getIsTop);
+
+        //分页查询构建
+        Page&lt;Article&gt; articlePage = new Page&lt;&gt;(pageNum,pageSize);
+
+        //查询
+        List&lt;Article&gt; articleList = articleMapper.selectPage(articlePage, queryWrapper).getRecords();
+
+        //调用分类字段查询，根据文章id获取分类名
+        articleList.stream().map(
+                article -&gt; &#123;
+
+                    Category category = categoryMapper.selectById(article.getCategoryId());
+
+                    article.setCategoryName(category.getName());
+
+                    return article;
+                &#125;
+        ).collect(Collectors.toList());
+
+        //构建文章列表Vo对象
+        List&lt;ArticleListVo&gt; articleListVos = BeanCopyUtils.copyBeanList(articleList, ArticleListVo.class);
+
+        //构建pageVo对象
+        PageVo pageVo = new PageVo(articleListVos, articlePage.getTotal());
+
+        //生成响应结果对象
+        ResponseResult responseResult = ResponseResult.okResult(pageVo);
+
+        return responseResult;
+    &#125;
+</code></pre>
+<h3 id="通用fastJson配置"><a href="#通用fastJson配置" class="headerlink" title="*通用fastJson配置"></a>*通用fastJson配置</h3><p>配置在配置类中</p>
+<blockquote>
+<p><code>com.alibaba.fastjson</code>的api</p>
+</blockquote>
+<pre><code class="java">@Bean//使用@Bean注入fastJsonHttpMessageConvert
+public HttpMessageConverter fastJsonHttpMessageConverters() &#123;
+    //1.需要定义一个Convert转换消息的对象
+    FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
+    FastJsonConfig fastJsonConfig = new FastJsonConfig();
+    fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);
+    fastJsonConfig.setDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);
+    
+    SerializeConfig.globalInstance.put(Long.class, ToStringSerializer.instance);
+
+    fastJsonConfig.setSerializeConfig(SerializeConfig.globalInstance);
+    fastConverter.setFastJsonConfig(fastJsonConfig);
+    HttpMessageConverter&lt;?&gt; converter = fastConverter;
+    return converter;
+&#125;
+
+@Override
+public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) &#123;
+    converters.add(fastJsonHttpMessageConverters());
+&#125;
+</code></pre>
+<h2 id="3-文章详情"><a href="#3-文章详情" class="headerlink" title="3.文章详情"></a>3.文章详情</h2><p><strong>需求</strong></p>
+<p>要求在文章列表点击阅读全文时能够跳转到文章详情页面，可以让用户阅读文章正文。</p>
+<p>要求：①要在文章详情中展示其分类名</p>
+<table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>请求路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Get</td>
+<td>&#x2F;article&#x2F;{id}</td>
+</tr>
+</tbody></table>
+<h3 id="业务逻辑-3"><a href="#业务逻辑-3" class="headerlink" title="业务逻辑"></a>业务逻辑</h3><pre><code class="java">  /**
+     * 根据文章id获取文章详情页信息
+     * @param id
+     * @return
+     */
+    @Override
+    public ResponseResult getArticleDetail(Long id) &#123;
+
+        //获得文章信息
+        Article article = articleMapper.selectById(id);
+
+        //查询分类信息
+        Category category = categoryMapper.selectById(article.getCategoryId());
+
+        //将分类信息存放到文章信息中
+        if (category != null)&#123;
+            article.setCategoryName(category.getName());
+        &#125;
+
+        //拷贝文章信息到Vo上
+        ArticleDetailVo articleDetailVo = BeanCopyUtils.copyBean(article, ArticleDetailVo.class);
+
+        return ResponseResult.okResult(articleDetailVo);
+    &#125;
+</code></pre>
+<h2 id="4-友链功能"><a href="#4-友链功能" class="headerlink" title="4.友链功能"></a>4.友链功能</h2><h3 id="实体类-3"><a href="#实体类-3" class="headerlink" title="实体类"></a>实体类</h3><pre><code class="java">package com.os467.entity;
+
+import java.util.Date;
+import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * 友链(Link)表实体类
+ *
+ * @author makejava
+ * @since 2022-09-27 22:06:20
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@SuppressWarnings(&quot;serial&quot;)
+public class Link &#123;
+    
+    private Long id;
+    
+    private String name;
+    
+    private String logo;
+    
+    private String description;
+    //网站地址
+    private String address;
+    //审核状态 (0代表审核通过，1代表审核未通过，2代表未审核)
+    private String status;
+    
+    private Long createBy;
+    
+    private Date createTime;
+    
+    private Long updateBy;
+    
+    private Date updateTime;
+    //删除标志（0代表未删除，1代表已删除）
+    private Integer delFlag;
+
+&#125;
+</code></pre>
+<pre><code class="java">package com.os467.vo;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Date;
+
+/**
+ * 友链(Link)表实体类
+ *
+ * @author makejava
+ * @since 2022-09-27 22:06:20
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@SuppressWarnings(&quot;serial&quot;)
+public class LinkVo &#123;
+    
+    private Long id;
+    
+    private String name;
+    
+    private String logo;
+    
+    private String description;
+    //网站地址
+    private String address;
+
+&#125;
+</code></pre>
+<h3 id="表现层-2"><a href="#表现层-2" class="headerlink" title="表现层"></a>表现层</h3><pre><code class="java">@Autowired
+private CategoryService categoryService;
+
+@GetMapping(&quot;/getCategoryList&quot;)
+public ResponseResult getCategoryList()&#123;
+
+    return categoryService.getCategoryList();
+&#125;
+</code></pre>
+<h3 id="业务层"><a href="#业务层" class="headerlink" title="业务层"></a>业务层</h3><pre><code class="java">/**
+ * 获取到所有友链信息
+ * @return
+ */
+@Override
+public ResponseResult getAllLink() &#123;
+
+    LambdaQueryWrapper&lt;Link&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+    //查询审核通过的
+    queryWrapper.eq(Link::getStatus, SystemConstants.LINK_STATUS_NORMAL);
+
+    List&lt;Link&gt; linkList = linkMapper.selectList(queryWrapper);
+
+    //封装成Vo对象
+    List&lt;LinkVo&gt; linkVos = BeanCopyUtils.copyBeanList(linkList, LinkVo.class);
+
+    ResponseResult responseResult = ResponseResult.okResult(linkVos);
+
+    return responseResult;
+
+&#125;
+</code></pre>
+<h2 id="5-SpringSecurity实现登录认证"><a href="#5-SpringSecurity实现登录认证" class="headerlink" title="5.SpringSecurity实现登录认证"></a>5.SpringSecurity实现登录认证</h2><p><strong>基本流程：</strong></p>
+<p>重写配置类configure逻辑，弃用<code>UsernamePasswordAuthenticationFilter</code>过滤器</p>
+<p>为login接口配置认证流程</p>
+<p>配置认证管理器<code>AuthenticationManager</code>用于提供后续的认证业务</p>
+<p>重新配置账号解码器，改为使用<code>BCryptPasswordEncoder</code></p>
+<p>定义LoginUser实现<code>UserDetails</code>接口</p>
+<p>实现<code>UserDetailsService</code>接口，从数据库中查询用户信息并且封装用户信息（授权信息）</p>
+<p>返回封装好的<code>UserDetails</code>信息后会调用解码器进行密码校验</p>
+<p>认证成功后会在登录业务中调用<code>AuthenticationManager</code>处返回用户认证信息</p>
+<p>将用户认证信息存入缓存中，用于后续请求用token访问时能在过滤器中获取到认证信息</p>
+<p>在登录业务中根据用户认证信息获取到用户id，根据用户id生成token并封装到响应对象中返回给前端使用</p>
+<p>配置<code>JwtAuthenticationTokenFilter</code>用于每次请求的获取认证信息处理，并且将认证信息存储到存入SecurityContextHolder中去，作为此次请求的线程共享变量</p>
+<h3 id="配置类"><a href="#配置类" class="headerlink" title="配置类"></a>配置类</h3><pre><code class="java">@Configuration
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter &#123;
+
+    @Autowired
+    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception &#123;
+        return super.authenticationManagerBean();
+    &#125;
+
+    @Bean
+    public PasswordEncoder passwordEncoder()&#123;
+        return new BCryptPasswordEncoder();
+    &#125;
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception &#123;
+
+        //允许跨域
+        http.cors().and()
+                //关闭csrf
+                .csrf().disable()
+                //不从session获取SpringSecurity
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeRequests()
+                //允许匿名访问的资源
+                .antMatchers(&quot;/login&quot;).anonymous()
+                // 除上面外的所有请求全部不需要认证即可访问
+                .anyRequest().permitAll();
+
+        http.logout().disable();
+
+        //把jwtAuthenticationTokenFilter添加到SpringSecurity的过滤器链中
+        http.addFilterBefore(jwtAuthenticationTokenFilter,UsernamePasswordAuthenticationFilter.class);
+
+    &#125;
+&#125;
+</code></pre>
+<h3 id="实体类-4"><a href="#实体类-4" class="headerlink" title="实体类"></a>实体类</h3><pre><code class="java">package com.os467.vo;
+
+import lombok.Data;
+import lombok.experimental.Accessors;
+
+@Data
+@Accessors(chain = true)
+public class UserInfoVo &#123;
+    /**
+     * 主键
+     */
+    private Long id;
+
+    /**
+     * 昵称
+     */
+    private String nickName;
+
+    /**
+     * 头像
+     */
+    private String avatar;
+
+    private String sex;
+
+    private String email;
+
+
+&#125;
+</code></pre>
+<pre><code class="java">package com.os467.vo;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class BlogUserLoginVo &#123;
+
+    private String token;
+    private UserInfoVo userInfo;
+&#125;
+</code></pre>
+<h3 id="业务逻辑-4"><a href="#业务逻辑-4" class="headerlink" title="业务逻辑"></a>业务逻辑</h3><p><strong>BlogLoginService</strong></p>
+<pre><code class="java">package com.os467.service.impl;
+
+import com.os467.common.ResponseResult;
+import com.os467.entity.LoginUser;
+import com.os467.entity.User;
+import com.os467.service.BlogLoginService;
+import com.os467.utils.BeanCopyUtils;
+import com.os467.utils.JwtUtil;
+import com.os467.utils.RedisCache;
+import com.os467.vo.BlogUserLoginVo;
+import com.os467.vo.UserInfoVo;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Service;
+
+@Service
+public class BlogLoginServiceImpl implements BlogLoginService &#123;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private RedisCache redisCache;
+
+    @Override
+    public ResponseResult login(User user) &#123;
+
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword());
+
+        //开始认证
+        Authentication authenticate = authenticationManager.authenticate(authenticationToken);
+
+        //获取到LoginUser信息
+        LoginUser loginUser = (LoginUser) authenticate.getPrincipal();
+
+        //从LoginUser中获取用户信息
+        Long userid = loginUser.getUser().getId();
+
+        //生成token
+        String token = JwtUtil.createJWT(userid.toString());
+
+        //将用户信息存入redis
+        redisCache.setCacheObject(&quot;bloglogin:&quot;+userid,loginUser);
+
+        UserInfoVo userInfoVo = BeanCopyUtils.copyBean(loginUser.getUser(), UserInfoVo.class);
+
+        //将用户Vo数据封装进登录用户Vo中
+        BlogUserLoginVo loginVo = new BlogUserLoginVo(token, userInfoVo);
+
+        return ResponseResult.okResult(loginVo);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>UserDetailsService</strong></p>
+<pre><code class="java">package com.os467.service.impl;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.os467.entity.LoginUser;
+import com.os467.entity.User;
+import com.os467.mapper.UserMapper;
+import com.sun.org.apache.xerces.internal.xs.StringList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+@Service
+public class UserDetailsServiceImpl implements UserDetailsService &#123;
+
+    @SuppressWarnings(&quot;all&quot;)
+    @Autowired
+    private UserMapper userMapper;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException &#123;
+
+        LambdaQueryWrapper&lt;User&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        //根据用户名获取到用户信息
+        queryWrapper.eq(User::getUserName,username);
+
+        User user = userMapper.selectOne(queryWrapper);
+
+        if (Objects.isNull(user))&#123;
+            throw new RuntimeException(&quot;用户不存在&quot;);
+        &#125;
+
+        //封装loginUser信息
+        LoginUser loginUser = new LoginUser(user, Arrays.asList(&quot;123&quot;,&quot;22&quot;));
+
+        return loginUser;
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="5-1异常处理（必须）"><a href="#5-1异常处理（必须）" class="headerlink" title="*5.1异常处理（必须）"></a>*5.1异常处理（必须）</h2><p>目前我们的项目在<strong>认证出错或者权限不足的时</strong>候响应回来的Json是Security的异常处理结果，但是这个响应的格式肯定是不符合我们项目的接口规范的，所以需要自定义异常处理</p>
+<ul>
+<li><p>AuthenticationEntryPoint 认证失败处理器</p>
+</li>
+<li><p>AccessDeniedHandler 授权失败处理器</p>
+</li>
+</ul>
+<pre><code class="java">@Component
+public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint &#123;
+
+    @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException &#123;
+        authException.printStackTrace();
+        //InsufficientAuthenticationException
+        //BadCredentialsException
+        ResponseResult result = null;
+        if(authException instanceof BadCredentialsException)&#123;
+            result = ResponseResult.errorResult(AppHttpCodeEnum.LOGIN_ERROR.getCode(),authException.getMessage());
+        &#125;else if(authException instanceof InsufficientAuthenticationException)&#123;
+            result = ResponseResult.errorResult(AppHttpCodeEnum.NEED_LOGIN);
+        &#125;else&#123;
+            result = ResponseResult.errorResult(AppHttpCodeEnum.SYSTEM_ERROR.getCode(),&quot;认证或授权失败&quot;);
+        &#125;
+        //响应给前端
+        WebUtils.renderString(response, JSON.toJSONString(result));
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">@Component
+public class AccessDeniedHandlerImpl implements AccessDeniedHandler &#123;
+    @Override
+    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException &#123;
+        accessDeniedException.printStackTrace();
+        ResponseResult result = ResponseResult.errorResult(AppHttpCodeEnum.NO_OPERATOR_AUTH);
+        //响应给前端
+        WebUtils.renderString(response, JSON.toJSONString(result));
+    &#125;
+&#125;
+</code></pre>
+<p><strong>配置类配置</strong></p>
+<pre><code class="java">//配置异常处理器
+        http.exceptionHandling()
+                .authenticationEntryPoint(authenticationEntryPoint)
+                .accessDeniedHandler(accessDeniedHandler);
+</code></pre>
+<h2 id="5-2统一异常处理"><a href="#5-2统一异常处理" class="headerlink" title="5.2统一异常处理"></a>5.2统一异常处理</h2><p>实际我们在开发过程中可能需要做很多的判断校验，如果出现了非法情况我们是期望响应对应的提示的，但是如果我们每次都自己手动去处理就会非常麻烦，我们可以选择直接抛出异常的方式，然后对异常进行统一处理，把异常中的信息封装成ResponseResult响应给前端</p>
+<h3 id="异常类"><a href="#异常类" class="headerlink" title="异常类"></a>异常类</h3><pre><code class="java">package com.os467.exception;
+
+import com.os467.enums.AppHttpCodeEnum;
+
+public class SystemException extends RuntimeException&#123;
+
+    private int code;
+
+    private String msg;
+
+    public int getCode() &#123;
+        return code;
+    &#125;
+
+    public String getMsg() &#123;
+        return msg;
+    &#125;
+
+    public SystemException(AppHttpCodeEnum httpCodeEnum) &#123;
+        super(httpCodeEnum.getMsg());
+        this.code = httpCodeEnum.getCode();
+        this.msg = httpCodeEnum.getMsg();
+    &#125;
+    
+&#125;
+</code></pre>
+<h3 id="表现层-3"><a href="#表现层-3" class="headerlink" title="表现层"></a>表现层</h3><pre><code class="java">package com.os467.controller;
+
+import com.os467.common.ResponseResult;
+import com.os467.enums.AppHttpCodeEnum;
+import com.os467.exception.SystemException;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestController;
+
+@Slf4j
+@RestController
+public class GlobalExceptionHandler &#123;
+
+    @ExceptionHandler(SystemException.class)
+    public ResponseResult systemExceptionHandler(SystemException e)&#123;
+        log.error(&quot;出现了异常&#123;&#125;&quot;,e);
+        return ResponseResult.errorResult(e.getCode(),e.getMsg());
+    &#125;
+
+    @ExceptionHandler(Exception.class)
+    public ResponseResult exceptionHandler(SystemException e)&#123;
+        log.error(&quot;出现了异常&#123;&#125;&quot;,e);
+        return ResponseResult.errorResult(AppHttpCodeEnum.SYSTEM_ERROR,e.getMsg());
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="5-3登出接口"><a href="#5-3登出接口" class="headerlink" title="5.3登出接口"></a>5.3登出接口</h2><blockquote>
+<p>这里出现了一个异常，在登出接口时出现了fastjosn序列化的报错</p>
+<p>报错原因来自从redis反序列化工具中获取LoginUser实例时没有给LoginUser提供默认有参构造，分析可能是在底层先创建出实例再给属性注入数据</p>
+<p>解决方案：给LoginUser类加@NoArgsConstructor注解提供无参构造</p>
+</blockquote>
+<h3 id="表现层-4"><a href="#表现层-4" class="headerlink" title="表现层"></a>表现层</h3><pre><code class="java">@RestController
+public class BlogLogoutController &#123;
+
+    @Autowired
+    private BlogLogoutService blogLogoutService;
+
+    @PostMapping(&quot;/logout&quot;)
+    public ResponseResult logout()&#123;
+
+        return blogLogoutService.logout();
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="业务层-1"><a href="#业务层-1" class="headerlink" title="业务层"></a>业务层</h3><pre><code class="java">@Service
+public class BlogLogoutServiceImpl implements BlogLogoutService &#123;
+
+    @Autowired
+    private RedisCache redisCache;
+
+    /**
+     * 从SecurityContext中获取到用户信息，删除redis缓存中的用户信息
+     * @return
+     */
+    @Override
+    public ResponseResult logout() &#123;
+
+        //从SecurityContext中获取到用户认证信息
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        //获取用户认证信息
+        LoginUser loginUser = (LoginUser)authentication.getPrincipal();
+
+        //从LoginUser中获取userid
+        Long userid = loginUser.getUser().getId();
+
+        //根据userid删除redis缓存中的用户数据
+        redisCache.deleteObject(&quot;bloglogin:&quot; + userid);
+
+        return ResponseResult.okResult(&quot;登出成功&quot;);
+    &#125;
+&#125;
+</code></pre>
+<h2 id="6-评论功能"><a href="#6-评论功能" class="headerlink" title="6.评论功能"></a>6.评论功能</h2><p>评论功能，有两种评论为根评论和子评论</p>
+<p>通过根评论id可以查询子评论</p>
+<p>所有评论都需要设置其用户昵称信息</p>
+<p>如果是根评论还要查询其子评论信息</p>
+<p>如果是子评论需要查询其回复评论信息（根评论信息）</p>
+<h3 id="实体类-5"><a href="#实体类-5" class="headerlink" title="实体类"></a>实体类</h3><pre><code class="java">package com.os467.entity;
+
+import java.util.Date;
+import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * 评论表(Comment)表实体类
+ *
+ * @author makejava
+ * @since 2022-09-29 22:18:53
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@SuppressWarnings(&quot;serial&quot;)
+public class Comment &#123;
+    
+    private Long id;
+    //评论类型（0代表文章评论，1代表友链评论）
+    private String type;
+    //文章id
+    private Long articleId;
+    //根评论id
+    private Long rootId;
+    //评论内容
+    private String content;
+    //所回复的目标评论的userid
+    private Long toCommentUserId;
+    //回复目标评论id
+    private Long toCommentId;
+    
+    private Long createBy;
+    
+    private Date createTime;
+    
+    private Long updateBy;
+    
+    private Date updateTime;
+    //删除标志（0代表未删除，1代表已删除）
+    private Integer delFlag;
+
+&#125;
+</code></pre>
+<pre><code class="java">package com.os467.vo;
+
+import lombok.Data;
+
+import java.util.Date;
+import java.util.List;
+
+@Data
+public class CommentVo &#123;
+
+    private Long id;
+    //文章id
+    private Long articleId;
+    //根评论id
+    private Long rootId;
+    //评论内容
+    private String content;
+    //所回复的目标评论的userid
+    private Long toCommentUserId;
+    //回复目标评论id
+    private Long toCommentId;
+
+    private Long createBy;
+
+    private Date createTime;
+
+    private String toCommentUserName;
+
+    //用于存放用户的nickName
+    private String username;
+
+    //用于存放词条评论的子评论信息
+    private List&lt;CommentVo&gt; children;
+
+&#125;
+</code></pre>
+<h3 id="表现层-5"><a href="#表现层-5" class="headerlink" title="表现层"></a>表现层</h3><pre><code class="java">@RestController
+@RequestMapping(&quot;/comment&quot;)
+public class CommentController &#123;
+
+    @Autowired
+    private CommentService commentService;
+
+    @GetMapping(&quot;/commentList&quot;)
+    public ResponseResult commentList(Long articleId,Integer pageNum,Integer pageSize)&#123;
+        return commentService.commentList(articleId,pageNum,pageSize);
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="业务层-2"><a href="#业务层-2" class="headerlink" title="业务层"></a>业务层</h3><pre><code class="java">@Service(&quot;commentService&quot;)
+public class CommentServiceImpl extends ServiceImpl&lt;CommentMapper, Comment&gt; implements CommentService &#123;
+
+    @SuppressWarnings(&quot;all&quot;)
+    @Autowired
+    private CommentMapper commentMapper;
+
+    @SuppressWarnings(&quot;all&quot;)
+    @Autowired
+    private UserMapper userMapper;
+
+    /**
+     * 根据文章id获取文章评论信息
+     * @param articleId
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @Override
+    public ResponseResult commentList(Long articleId, Integer pageNum, Integer pageSize) &#123;
+
+        //构造查询条件
+        LambdaQueryWrapper&lt;Comment&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        //查询此文章下的评论信息
+        queryWrapper.eq(Comment::getArticleId,articleId);
+        //查询根评论
+        queryWrapper.eq(Comment::getRootId,-1);
+
+        Page&lt;Comment&gt; commentPage = new Page&lt;&gt;(pageNum, pageSize);
+
+        //分页查询到该文章下的评论信息
+        page(commentPage,queryWrapper);
+
+        //转换成评论Vo数据
+        List&lt;CommentVo&gt; commentVos = commentVoList(commentPage.getRecords());
+
+        //为根评论设置子评论信息
+        for (CommentVo commentVo : commentVos) &#123;
+
+            //根据根评论id获取子评论列表
+            List&lt;CommentVo&gt; childrenCommentList = getChildrenCommentList(commentVo.getId());
+
+            //存放子评论信息
+            commentVo.setChildren(childrenCommentList);
+
+        &#125;
+
+        //设置pageVo对象
+        PageVo pageVo = new PageVo(commentVos, commentPage.getTotal());
+
+        return ResponseResult.okResult(pageVo);
+    &#125;
+
+    /**
+     * 为所有评论数据存入用户昵称信息
+     * 如果是子评论还需要设置回复用户信息
+     * @param records
+     * @return
+     */
+    private List&lt;CommentVo&gt; commentVoList(List&lt;Comment&gt; records) &#123;
+
+        //获取评论列表信息
+        List&lt;CommentVo&gt; commentVos = BeanCopyUtils.copyBeanList(records, CommentVo.class);
+
+        for (CommentVo commentVo : commentVos) &#123;
+
+            //根据评论中的创建者userid获取对应用户昵称
+            String nickName = userMapper.selectById(commentVo.getCreateBy()).getNickName();
+
+            //设置创建评论的用户昵称信息
+            commentVo.setUsername(nickName);
+
+            //如果不是根评论还需要设置子评论所回复目标用户的名称
+            if (commentVo.getToCommentUserId() != -1)&#123;
+
+                //根据toCommentUserId查询用户并获取用户名称
+                String toCommentUserName = userMapper.selectById(commentVo.getToCommentUserId()).getNickName();
+
+                //设置回复用户名称信息
+                commentVo.setToCommentUserName(toCommentUserName);
+
+            &#125;
+
+        &#125;
+
+        return commentVos;
+    &#125;
+
+    /**
+     * 根据根评论id获取根评论对应的所有子评论信息
+     * @param id
+     * @return
+     */
+    private List&lt;CommentVo&gt; getChildrenCommentList(Long id) &#123;
+
+        LambdaQueryWrapper&lt;Comment&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+
+        //查询此根评论下的子评论，按照创建时间降序排序
+        queryWrapper.eq(Comment::getRootId,id);
+        queryWrapper.orderByDesc(Comment::getCreateTime);
+
+        List&lt;Comment&gt; childrenCommentList = commentMapper.selectList(queryWrapper);
+
+        //继续获取该评论列表的Vo信息
+        List&lt;CommentVo&gt; commentVos = commentVoList(childrenCommentList);
+
+        return commentVos;
+
+    &#125;
+&#125;
+</code></pre>
+<h2 id="7-发表评论接口"><a href="#7-发表评论接口" class="headerlink" title="7.发表评论接口"></a>7.发表评论接口</h2><p>需求：</p>
+<p>用户登录后可以对文章发表评论，也可以对评论发表回复</p>
+<p>用户登录后也可以在友链页面进行评论</p>
+<h3 id="实体类-6"><a href="#实体类-6" class="headerlink" title="实体类"></a>实体类</h3><pre><code class="java">package com.os467.entity;
+
+import java.util.Date;
+import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * 评论表(Comment)表实体类
+ *
+ * @author makejava
+ * @since 2022-09-29 22:18:53
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@SuppressWarnings(&quot;serial&quot;)
+public class Comment &#123;
+    
+    private Long id;
+    //评论类型（0代表文章评论，1代表友链评论）
+    private String type;
+    //文章id
+    private Long articleId;
+    //根评论id
+    private Long rootId;
+    //评论内容
+    private String content;
+    //所回复的目标评论的userid
+    private Long toCommentUserId;
+    //回复目标评论id
+    private Long toCommentId;
+    
+    private Long createBy;
+    
+    private Date createTime;
+    
+    private Long updateBy;
+    
+    private Date updateTime;
+    //删除标志（0代表未删除，1代表已删除）
+    private Integer delFlag;
+
+&#125;
+</code></pre>
+<pre><code class="java">package com.os467.vo;
+
+import lombok.Data;
+
+import java.util.Date;
+import java.util.List;
+
+@Data
+public class CommentVo &#123;
+
+    private Long id;
+    //文章id
+    private Long articleId;
+    //根评论id
+    private Long rootId;
+    //评论内容
+    private String content;
+    //所回复的目标评论的userid
+    private Long toCommentUserId;
+    //回复目标评论id
+    private Long toCommentId;
+
+    private Long createBy;
+
+    private Date createTime;
+
+    private String toCommentUserName;
+
+    //用于存放用户的nickName
+    private String username;
+
+    //用于存放词条评论的子评论信息
+    private List&lt;CommentVo&gt; children;
+
+&#125;
+</code></pre>
+<h3 id="表现层-6"><a href="#表现层-6" class="headerlink" title="表现层"></a>表现层</h3><pre><code class="java">@PostMapping(&quot;/comment&quot;)
+public ResponseResult comment(@RequestBody Comment comment)&#123;
+    return commentService.comment(comment);
+&#125;
+</code></pre>
+<h3 id="业务层-3"><a href="#业务层-3" class="headerlink" title="业务层"></a>业务层</h3><pre><code class="java">/**
+ * 为文章发表评论，或者回复某条评论
+ * @param comment
+ * @return
+ */
+@Override
+public ResponseResult comment(Comment comment) &#123;
+
+    //判断是否带有评论信息
+    if (!StringUtils.hasText(comment.getContent()))&#123;
+
+        throw new SystemException(AppHttpCodeEnum.CONTEXT_NOT_NULL);
+
+    &#125;
+
+    //保存评论信息到数据库
+    save(comment);
+
+    return ResponseResult.okResult();
+&#125;
+</code></pre>
+<h3 id="MybatisPlus自动填充功能"><a href="#MybatisPlus自动填充功能" class="headerlink" title="*MybatisPlus自动填充功能"></a>*MybatisPlus自动填充功能</h3><p>为实体类需要被自动填充的属性加上注解，指定在什么模式下填充字段</p>
+<pre><code class="java">    @TableField(fill = FieldFill.INSERT)
+    private Long createBy;
+
+    @TableField(fill = FieldFill.INSERT)
+    private Date createTime;
+    
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Long updateBy;
+
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date updateTime;
+</code></pre>
+<p><strong>创建元数据处理器</strong></p>
+<p>&#x3D;&#x3D;需要加上@Component注解交由Spring容器管理&#x3D;&#x3D;</p>
+<p><code>setFieldValByName</code></p>
+<p><strong>参数：</strong></p>
+<p>需要提供</p>
+<pre><code class="java">package com.os467.handler;
+
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import com.os467.utils.SecurityUtils;
+import org.apache.ibatis.reflection.MetaObject;
+
+import java.util.Date;
+
+@Component
+public class BlogMetaObjectHandler implements MetaObjectHandler &#123;
+
+    /**
+     * 插入时需要执行的代码
+     * @param metaObject
+     */
+    @Override
+    public void insertFill(MetaObject metaObject) &#123;
+
+        Long userId = SecurityUtils.getUserId();
+
+        this.setFieldValByName(&quot;createBy&quot;,userId,metaObject);
+        this.setFieldValByName(&quot;createTime&quot;,new Date(),metaObject);
+        this.setFieldValByName(&quot;updateBy&quot;,userId,metaObject);
+        this.setFieldValByName(&quot;updateTime&quot;,new Date(),metaObject);
+    &#125;
+
+    /**
+     * 更新时需要执行的代码
+     * @param metaObject
+     */
+    @Override
+    public void updateFill(MetaObject metaObject) &#123;
+        this.setFieldValByName(&quot;updateBy&quot;,SecurityUtils.getUserId(),metaObject);
+        this.setFieldValByName(&quot;updateTime&quot;,new Date(),metaObject);
+    &#125;
+&#125;
+</code></pre>
+<h2 id="8-个人信息查询"><a href="#8-个人信息查询" class="headerlink" title="8.个人信息查询"></a>8.个人信息查询</h2><h3 id="实体类-7"><a href="#实体类-7" class="headerlink" title="实体类"></a>实体类</h3><pre><code class="java">package com.os467.vo;
+
+import lombok.Data;
+import lombok.experimental.Accessors;
+
+@Data
+@Accessors(chain = true)
+public class UserInfoVo &#123;
+    /**
+     * 主键
+     */
+    private Long id;
+
+    /**
+     * 昵称
+     */
+    private String nickName;
+
+    /**
+     * 头像
+     */
+    private String avatar;
+
+    private String sex;
+
+    private String email;
+
+
+&#125;
+</code></pre>
+<h3 id="表现层-7"><a href="#表现层-7" class="headerlink" title="表现层"></a>表现层</h3><pre><code class="java">@RestController
+@RequestMapping(&quot;/user&quot;)
+public class UserController &#123;
+
+    @Autowired
+    private UserService userService;
+
+    @GetMapping(&quot;/userInfo&quot;)
+    public ResponseResult userInfo()&#123;
+        return userService.userInfo();
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="业务层-4"><a href="#业务层-4" class="headerlink" title="业务层"></a>业务层</h3><pre><code class="java">/**
+ * 用户表(User)表服务实现类
+ *
+ * @author makejava
+ * @since 2022-09-30 17:35:15
+ */
+@Service(&quot;userService&quot;)
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService &#123;
+
+    @SuppressWarnings(&quot;all&quot;)
+    @Autowired
+    private UserMapper userMapper;
+
+    /**
+     * 查询到用户信息
+     * @return
+     */
+    @Override
+    public ResponseResult userInfo() &#123;
+
+        //从SecurityContext中获取用户id
+        Long userId = SecurityUtils.getUserId();
+
+        //根据用户id查询到该用户的信息
+        LambdaQueryWrapper&lt;User&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();
+        queryWrapper.eq(User::getId,userId);
+        User user = userMapper.selectOne(queryWrapper);
+
+        //封装成Vo数据
+        UserInfoVo userInfoVo = BeanCopyUtils.copyBean(user, UserInfoVo.class);
+
+        ResponseResult result = ResponseResult.okResult(userInfoVo);
+
+        return result;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="9-头像上传接口"><a href="#9-头像上传接口" class="headerlink" title="9.头像上传接口"></a>9.头像上传接口</h2><p><strong>需求</strong></p>
+<p>​	在个人中心点击编辑的时候可以上传头像图片，上传完头像后，可以用于更新个人信息接口</p>
+<h3 id="OOS"><a href="#OOS" class="headerlink" title="*OOS"></a>*OOS</h3><p>​		因为如果把图片视频等文件上传到自己的应用的Web服务器，在读取图片的时候会占用比较多的资源，影响应用服务器的性能</p>
+<p>所以我们一般使用OSS(Object Storage Service对象存储服务)存储图片或视频</p>
+<p><strong>引入maven坐标</strong></p>
+<pre><code class="xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.qiniu&lt;/groupId&gt;
+    &lt;artifactId&gt;qiniu-java-sdk&lt;/artifactId&gt;
+    &lt;version&gt;[7.7.0, 7.7.99]&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><pre><code class="yaml">spring:
+  servlet:
+    multipart:
+      max-file-size: 2MB #文件最大大小限制
+      max-request-size: 5MB #请求大小限制
+oss:
+  accessKey: xxxx
+  secretKey: xxxx
+  bucket: os467-blog-img #对应七牛云的命名空间
+</code></pre>
+<h3 id="表现层-8"><a href="#表现层-8" class="headerlink" title="表现层"></a>表现层</h3><pre><code class="java">@RestController
+public class UploadController &#123;
+
+    @Autowired
+    private UploadService uploadService;
+
+    @RequestMapping(&quot;/upload&quot;)
+    public ResponseResult uploadImg(MultipartFile img)&#123;
+        return uploadService.uploadImg(img);
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="业务层-5"><a href="#业务层-5" class="headerlink" title="业务层"></a>业务层</h3><blockquote>
+<p> 使用ConfigurationProperties注解来为类的属性注入配置的属性值</p>
+<p> <strong>必须提供set方法</strong></p>
+</blockquote>
+<pre><code class="java">@Service
+@Data
+@ConfigurationProperties(prefix = &quot;oss&quot;)
+public class UploadServiceImpl implements UploadService &#123;
+
+    private String accessKey;
+    private String secretKey;
+    private String bucket;
+    private String domainName;
+
+    /**
+     * 上传图片
+     * @param img
+     * @return
+     */
+    @Override
+    public ResponseResult uploadImg(MultipartFile img) &#123;
+
+        //判断原始文件名
+        String originalFilename = img.getOriginalFilename();
+
+        if (!originalFilename.endsWith(&quot;.png&quot;))&#123;
+
+            throw new SystemException(AppHttpCodeEnum.FILE_TYPE_ERROR);
+
+        &#125;
+
+        //通过文件校验则上传到oss
+        String filePath = PathUtils.generateFilePath(originalFilename);
+
+        String url = uploadOSS(img,filePath);
+
+        return ResponseResult.okResult(url);
+    &#125;
+
+    /**
+     * 上传到oss
+     * @param img
+     * @param filePath
+     * @return
+     */
+    private String uploadOSS(MultipartFile img, String filePath) &#123;
+
+        //构造一个带指定Region对象的配置类
+        Configuration cfg = new Configuration(Region.autoRegion());
+
+        UploadManager uploadManager = new UploadManager(cfg);
+        //...生成上传凭证，然后准备上传
+
+        String key = filePath;
+
+        try &#123;
+
+            //获得输入流对象
+            InputStream inputStream = img.getInputStream();
+
+            //创建上传凭证信息
+            Auth auth = Auth.create(accessKey, secretKey);
+
+            String uploadToken = auth.uploadToken(bucket);
+
+            Response response = uploadManager.put(inputStream, key, uploadToken, null, null);
+
+            //解析上传成功的结果
+            DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
+            System.out.println(putRet.key);
+            System.out.println(putRet.hash);
+        &#125; catch (QiniuException ex) &#123;
+            Response r = ex.response;
+            System.err.println(r.toString());
+            try &#123;
+                System.err.println(r.bodyString());
+            &#125; catch (QiniuException ex2) &#123;
+                //ignore
+            &#125;
+
+        &#125; catch (IOException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+        //返回图片所在网址
+        return domainName+&quot;/&quot;+key;
+
+    &#125;
+&#125;
+</code></pre>
+<h2 id="10-注册功能"><a href="#10-注册功能" class="headerlink" title="10.注册功能"></a>10.注册功能</h2><p><strong>需求</strong></p>
+<p>要求用户能够在注册界面完成用户的注册，要求用户名，昵称，邮箱不能和数据库中原有的数据重复</p>
+<p>如果某项重复了注册失败并且要有对应的提示，并且要求用户名，密码，昵称，邮箱都不能为空</p>
+<p>密码明文加密为秘文后存入数据库</p>
+<h3 id="表现层-9"><a href="#表现层-9" class="headerlink" title="表现层"></a>表现层</h3><pre><code class="java">@PostMapping(&quot;/register&quot;)
+public ResponseResult register(@RequestBody User user)&#123;
+    return userService.register(user);
+&#125;
+</code></pre>
+<h3 id="业务层-6"><a href="#业务层-6" class="headerlink" title="业务层"></a>业务层</h3><pre><code class="java">/**
+ * 注册用户信息
+ * @param user
+ * @return
+ */
+@Override
+public ResponseResult register(User user) &#123;
+
+    //对数据进行非空判断
+    if (!StringUtils.hasText(user.getUserName()))&#123;
+        throw new SystemException(AppHttpCodeEnum.USERNAME_NOT_NULL);
+    &#125;
+    if (!StringUtils.hasText(user.getEmail()))&#123;
+        throw new SystemException(AppHttpCodeEnum.EMAIL_NOT_NULL);
+    &#125;
+    if (!StringUtils.hasText(user.getPassword()))&#123;
+        throw new SystemException(AppHttpCodeEnum.PASSWORD_NOT_NULL);
+    &#125;
+    if (!StringUtils.hasText(user.getNickName()))&#123;
+        throw new SystemException(AppHttpCodeEnum.NICKNAME_NOT_NULL);
+    &#125;
+
+
+    //对数据是否存在进行判断
+    if (userNameExist(user.getUserName()))&#123;
+        throw new SystemException(AppHttpCodeEnum.USERNAME_EXIST);
+    &#125;
+
+    if (nickNameExist(user.getNickName()))&#123;
+        throw new SystemException(AppHttpCodeEnum.NICKNAME_EXIST);
+    &#125;
+
+    //使用BCrypt加密原始密码
+    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    String encodePassword = passwordEncoder.encode(user.getPassword());
+
+    //将加密好的密码存入数据库
+    user.setPassword(encodePassword);
+
+    //存入数据库
+    save(user);
+
+    return ResponseResult.okResult();
+&#125;
+
+/**
+ * 查询判断用户昵称是否存在
+ * @param nickName
+ * @return
+ */
+private boolean nickNameExist(String nickName) &#123;
+
+    User user = userMapper.selectOne(new LambdaQueryWrapper&lt;User&gt;().eq(User::getNickName, nickName));
+
+    if (Objects.nonNull(user))&#123;
+        return true;
+    &#125;
+
+    return false;
+
+&#125;
+
+/**
+ * 查询判断用户名是否存在
+ * @param userName
+ * @return
+ */
+private boolean userNameExist(String userName) &#123;
+
+    User user = userMapper.selectOne(new LambdaQueryWrapper&lt;User&gt;().eq(User::getUserName, userName));
+
+    if (Objects.nonNull(user))&#123;
+        return true;
+    &#125;
+
+    return false;
+
+&#125;
+</code></pre>
+<h2 id="11-AOP实现日志收集"><a href="#11-AOP实现日志收集" class="headerlink" title="11.AOP实现日志收集"></a>11.AOP实现日志收集</h2><p>需要通过日志记录接口调用信息，便于后期调试排查，并且可能有很多接口都需要进行日志的记录</p>
+<p><strong>日志打印格式</strong></p>
+<pre><code class="java">    log.info(&quot;=======Start=======&quot;);
+    // 打印请求 URL
+    log.info(&quot;URL            : &#123;&#125;&quot;,);
+    // 打印描述信息
+    log.info(&quot;BusinessName   : &#123;&#125;&quot;, );
+    // 打印 Http method
+    log.info(&quot;HTTP Method    : &#123;&#125;&quot;, );
+    // 打印调用 controller 的全路径以及执行方法
+    log.info(&quot;Class Method   : &#123;&#125;.&#123;&#125;&quot;, );
+    // 打印请求的 IP
+    log.info(&quot;IP             : &#123;&#125;&quot;,);
+    // 打印请求入参
+    log.info(&quot;Request Args   : &#123;&#125;&quot;,);
+    // 打印出参
+    log.info(&quot;Response       : &#123;&#125;&quot;, );
+    // 结束后换行
+    log.info(&quot;=======End=======&quot; + System.lineSeparator());
+</code></pre>
+<p>实现aop通常我们可以通过切入点表达式或者自定义注解的方式来配置切面</p>
+<p><strong>自定义注解</strong></p>
+<pre><code class="java">@Pointcut(&quot;@annotation(com.os467.annotation.SystemLog)&quot;)
+public void pt()&#123;
+
+&#125;
+</code></pre>
+<h3 id="配置切面"><a href="#配置切面" class="headerlink" title="配置切面"></a>配置切面</h3><pre><code class="java">package com.os467.ascept;
+
+import com.alibaba.fastjson.JSON;
+import com.os467.annotation.SystemLog;
+import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.FieldSignature;
+import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.context.request.ServletWebRequest;
+import sun.reflect.generics.tree.ClassSignature;
+
+import javax.servlet.http.HttpServletRequest;
+
+@Component
+@Aspect
+@Slf4j
+public class LogAspect &#123;
+
+    @Pointcut(&quot;@annotation(com.os467.annotation.SystemLog)&quot;)
+    public void pt()&#123;
+
+    &#125;
+
+    /**
+     * 配置切面
+     * @param joinPoint
+     * @return
+     * @throws Throwable
+     */
+    @Around(&quot;pt()&quot;)
+    public Object printLog(ProceedingJoinPoint joinPoint) throws Throwable &#123;
+
+        //获取目标方法的返回值
+        Object ret;
+        try &#123;
+
+            //前置通知
+            printBefore(joinPoint);
+
+            //执行目标方法
+            ret = joinPoint.proceed();
+
+            //后置通知
+            printAfter(ret);
+
+        &#125; finally &#123;
+            // 结束后换行，获取到当前系统的换行符
+            log.info(&quot;=======End=======&quot; + System.lineSeparator());
+
+        &#125;
+
+        //返回切入点方法执行结果
+        return ret;
+
+    &#125;
+
+    /**
+     * 执行方法后需要打印的通知
+     * @param ret
+     */
+    private void printAfter(Object ret) &#123;
+        // 打印出参
+        log.info(&quot;Response       : &#123;&#125;&quot;,JSON.toJSONString(ret));
+    &#125;
+
+    /**
+     * 执行方法之前需要打印的通知
+     */
+    private void printBefore(ProceedingJoinPoint joinPoint) &#123;
+
+        //获取到当前线程的请求对象
+        RequestAttributes attributes = RequestContextHolder.getRequestAttributes();
+
+        HttpServletRequest request = null;
+
+        //向下转型
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes)attributes;
+
+        //获取到当前线程请求对象
+        request = requestAttributes.getRequest();
+
+        //通过反射获取被增强方法上的注解对象
+        SystemLog systemLog = getSystemLog(joinPoint);
+
+        log.info(&quot;=======Start=======&quot;);
+        // 打印请求 URL
+        log.info(&quot;URL            : &#123;&#125;&quot;,request.getRequestURL());
+        // 打印描述信息
+        log.info(&quot;BusinessName   : &#123;&#125;&quot;,systemLog.businessName());
+        // 打印 Http method
+        log.info(&quot;HTTP Method    : &#123;&#125;&quot;, request.getMethod());
+        // 打印调用 controller 的全路径以及执行方法
+        log.info(&quot;Class Method   : &#123;&#125;.&#123;&#125;&quot;, joinPoint.getSignature().getDeclaringType(),((MethodSignature)joinPoint.getSignature()).getName());
+        // 打印请求的 IP
+        log.info(&quot;IP             : &#123;&#125;&quot;,request.getRemoteHost());
+        // 打印请求入参
+        log.info(&quot;Request Args   : &#123;&#125;&quot;, JSON.toJSONString(joinPoint.getArgs()));
+
+    &#125;
+
+    /**
+     * 获取到被增强方法上的注解信息
+     * @param joinPoint
+     * @return
+     */
+    private SystemLog getSystemLog(ProceedingJoinPoint joinPoint) &#123;
+
+        MethodSignature methodSignature = (MethodSignature)joinPoint.getSignature();
+
+        SystemLog systemLog = methodSignature.getMethod().getAnnotation(SystemLog.class);
+
+        return systemLog;
+
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="表现层-10"><a href="#表现层-10" class="headerlink" title="表现层"></a>表现层</h3><pre><code class="java">@SystemLog(businessName = &quot;用户信息修改&quot;)
+    @PutMapping(&quot;/userInfo&quot;)
+    public ResponseResult updateUser(@RequestBody User user)&#123;
+        return userService.updateUser(user);
+    &#125;
+</code></pre>
+<h2 id="12-更新浏览次数"><a href="#12-更新浏览次数" class="headerlink" title="12.更新浏览次数"></a>12.更新浏览次数</h2><p><strong>Question：</strong>在用户浏览博文时需要对博客浏览量进行新增，但是如果在高并发场景下，每次浏览对数据库数据的更新会产生写锁，会对其它用户的访问造成影响</p>
+<p>因此我们选择用redis来缓存我们的浏览量数据</p>
+<p>为了防止redis关闭造成的数据流失，我们需要定时将redis中的数据同步到mysql数据库中</p>
+<p><strong>需求</strong></p>
+<p>①在应用启动时把博客的浏览量存储到redis中</p>
+<p>②更新浏览量时去更新redis中的数据</p>
+<p>③每隔10分钟把Redis中的浏览量更新到数据库中</p>
+<p>④读取文章浏览量时从redis读取</p>
+<h3 id="将浏览量存储到redis"><a href="#将浏览量存储到redis" class="headerlink" title="将浏览量存储到redis"></a>将浏览量存储到redis</h3><p>实现CommandLineRunner接口，在应用启动时初始化缓存</p>
+<pre><code class="java">@Component
+public class BlogCommendLineRunner implements CommandLineRunner &#123;
+
+    @SuppressWarnings(&quot;all&quot;)
+    @Autowired
+    private ArticleMapper articleMapper;
+
+    @Autowired
+    private RedisCache redisCache;
+
+    /**
+     * springboot项目启动后执行的方法
+     * @param args
+     * @throws Exception
+     */
+    @Override
+    public void run(String... args) throws Exception &#123;
+        //获取浏览数据列表
+        List&lt;Article&gt; articles = articleMapper.selectList(null);
+
+        //存储为map集合
+        Map&lt;String, Integer&gt; map = articles.stream().collect(Collectors
+                .toMap(article -&gt; article.getId().toString(),
+                        article -&gt; article.getViewCount().intValue()));
+
+        //存入redis缓存
+        redisCache.setCacheMap(&quot;article:viewCount&quot;,map);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>redis缓存工具类添加方法</strong></p>
+<p><code>increment()</code>  为某个指定key的long或double型数据加减多少数值</p>
+<pre><code class="java">/**
+ * 更新缓存中的集合数据
+ * @param key
+ * @param hKey
+ * @param value
+ */
+public void incrementCacheMap(String key,String hKey,Long value)&#123;
+    redisTemplate.boundHashOps(key).increment(hKey,value);
+&#125;
+</code></pre>
+<h3 id="表现层-11"><a href="#表现层-11" class="headerlink" title="表现层"></a>表现层</h3><pre><code class="java">@PutMapping(&quot;/updateViewCount/&#123;id&#125;&quot;)
+public ResponseResult updateViewCount(@PathVariable(&quot;id&quot;) Long id)&#123;
+    return articleService.updateViewCount(id);
+&#125;
+</code></pre>
+<h3 id="业务层-7"><a href="#业务层-7" class="headerlink" title="业务层"></a>业务层</h3><pre><code class="java">/**
+ * 上传更新数据
+ * @param id
+ * @return
+ */
+@Override
+public ResponseResult updateViewCount(Long id) &#123;
+
+    //更新缓存内数据
+    redisCache.incrementCacheMap(&quot;article:viewCount&quot;,id.toString(),1L);
+
+    return ResponseResult.okResult();
+&#125;
+</code></pre>
+<p><strong>修改文章查询时浏览量数据</strong></p>
+<pre><code class="java">//根据缓存中的数据更新浏览量
+article.setViewCount(redisCache.getCacheMapValue(&quot;article:viewCount&quot;,article.getId().toString()));
+</code></pre>
+<p>&#x3D;&#x3D;这里其实有问题，因为redis在存入long类型数据的时候会转化为int类型，所以取出数据的时候需要进行强转&#x3D;&#x3D;</p>
+<p><strong>修改方案</strong></p>
+<pre><code class="java">article.setViewCount(getViewCount(article.getId().toString()));
+</code></pre>
+<pre><code class="java">    /**
+     * 根据文章id从redis获取浏览量
+     * @param articleId
+     * @return
+     */
+    private Long getViewCount(String articleId) &#123;
+        Object viewCount = redisCache.getCacheMapValue(&quot;article:viewCount&quot;, articleId);
+        return Long.parseLong(viewCount.toString());
+    &#125;
+</code></pre>
+<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="*定时任务"></a>*定时任务</h3><p>定时任务的实现方式有很多，比如XXL-job，但是其核心功能和概念都是类似的，很多情况下只是调用的API不同而已</p>
+<p>使用Springboot提供的定时任务API来实现一个简单的定时任务</p>
+<p>在配置类上加上注释 <strong>@EnableScheduling</strong>  开启定时任务功能</p>
+<pre><code class="java">@Component
+public class BlogScheduleJob &#123;
+
+    @Autowired
+    private ArticleService articleService;
+
+    @Autowired
+    private RedisCache redisCache;
+
+    @Scheduled(cron = &quot;0 0/10 * * * ?&quot;)
+    public void scheduleJob()&#123;
+
+        //从缓存中获取到文章浏览量数据
+        Map&lt;String, Object&gt; map = redisCache.getCacheMap(&quot;article:viewCount&quot;);
+
+        //获取id集合
+        Set&lt;String&gt; idSet = map.keySet();
+
+        //构建用于存放文章浏览信息的数组
+        List&lt;Article&gt; articles = new ArrayList&lt;&gt;();
+
+        //获取id集合迭代对象
+        Iterator&lt;String&gt; ids = idSet.iterator();
+
+        //遍历id集合
+        while (ids.hasNext())&#123;
+            String id = ids.next();
+
+            Article article = new Article(Long.parseLong(id),Long.parseLong(map.get(id).toString()));
+            //向数组中添加文章数据
+            articles.add(article);
+        &#125;
+
+        //更新数据库中的数据
+        articleService.updateBatchById(articles);
+
+
+    &#125;
+
+&#125;
+</code></pre>
+<p>这里还有一种更加简洁的写法</p>
+<pre><code class="java">//也可以采用下面的方式
+List&lt;Article&gt; articles = map.entrySet().stream().map((item) -&gt; &#123;
+    String key = item.getKey();
+    Object value = item.getValue();
+    return new Article(Long.valueOf(key), Long.valueOf(value.toString()));
+&#125;).collect(Collectors.toList());
+</code></pre>
+<blockquote>
+<p>注意从redis中取出的int数据需要强转为long型，集合需要获取其迭代对象来遍历集合</p>
+<p>&#x3D;&#x3D;知识点&#x3D;&#x3D;： ValueOf方法得到的是Long包装类，parseLong方法得到的是long数据类型</p>
+</blockquote>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>前后端分离博客项目</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">11.9k</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
+    <p><span class="copy-title">发布时间:</span>2022-10-05, 00:52:35</p>
+    <p><span class="copy-title">最后更新:</span>2022-10-05, 00:54:03</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/10/05/%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE/" title="前后端分离博客项目">https://os467.github.io/2022/10/05/%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 os467
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 582px;
+    }
+    .nav.fullscreen {
+        margin-left: -582px;
+    }
+    .nav-left {
+        width: 160px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 592px;
+        }
+        .nav.fullscreen {
+            margin-left: -592px;
+        }
+        .nav-left {
+            width: 200px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 592px;
+            margin-left: -592px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

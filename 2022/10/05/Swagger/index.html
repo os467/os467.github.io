@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>多线程 | Tly的博客</title>
+  <title>Swagger | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="多线程 | Tly的博客">
+  <meta name="description" content="Swagger | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:type" content="website">
@@ -911,9 +911,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-多线程" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Swagger" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">多线程</h1>
+        <h1 class="article-title">Swagger</h1>
     
     <div class="article-meta">
         
@@ -923,7 +923,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="JAVASE进阶">JAVASE进阶</a>
+            <a  data-rel="其它">其它</a>
             
         </span>
         
@@ -931,12 +931,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-05 00:06:56'>2022-07-12 12:29</time>
+            发布时间 : <time class="date" title='最后更新: 2022-10-05 00:53:10'>2022-10-05 00:51</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:4.3k</span>
+        <span>字数:1k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -955,7 +955,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Thread"><span class="toc-text">Thread</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%A6%82%E8%BF%B0"><span class="toc-text">线程概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F"><span class="toc-text">关于线程的创建方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BFThread%E7%B1%BB"><span class="toc-text">继承Thread类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%90%8D%E7%A7%B0"><span class="toc-text">设置线程的名称</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0Runnable%E6%8E%A5%E5%8F%A3"><span class="toc-text">实现Runnable接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB%E6%9D%A5%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E5%AF%B9%E8%B1%A1"><span class="toc-text">通过匿名内部类来创建线程对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">线程的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%8A%E7%9A%84%E5%88%86%E5%B8%83%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-text">线程在内存上的分布，以及执行流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#yield-%E8%AE%A9%E4%BD%8D%E6%96%B9%E6%B3%95"><span class="toc-text">yield()让位方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%B6%E5%AE%83%E6%96%B9%E6%B3%95"><span class="toc-text">多线程其它方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#join-%E6%96%B9%E6%B3%95"><span class="toc-text">join()方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%88%E6%8A%A4%E7%BA%BF%E7%A8%8B"><span class="toc-text">守护线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%AC%AC%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%88Callable%E7%BB%93%E5%90%88Task%EF%BC%89"><span class="toc-text">实现线程的第三种方式（Callable结合Task）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-text">线程同步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%81%E6%B1%A0%E5%92%8C%E7%AD%89%E5%BE%85%E6%B1%A0"><span class="toc-text">锁池和等待池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Object%E7%B1%BB%E4%B8%AD%E7%9A%84wait%E5%92%8Cnotify%E6%96%B9%E6%B3%95"><span class="toc-text">Object类中的wait和notify方法</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swagger2"><span class="toc-text">Swagger2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8"><span class="toc-text">为什么使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="toc-text">引入依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E7%94%A8Swagger2"><span class="toc-text">启用Swagger2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E9%85%8D%E7%BD%AE"><span class="toc-text">具体配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Controller%E9%85%8D%E7%BD%AE"><span class="toc-text">Controller配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E9%85%8D%E7%BD%AE"><span class="toc-text">接口配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E7%B1%BB%E9%85%8D%E7%BD%AE"><span class="toc-text">实体类配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E4%BF%A1%E6%81%AF%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="toc-text">文档信息配置类</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -971,819 +971,126 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h1><h2 id="线程概述"><a href="#线程概述" class="headerlink" title="线程概述"></a>线程概述</h2><ul>
-<li><p>进程:是操作系统中一个程序及其数据在处理机上顺序执行时所发生的活动</p>
-</li>
-<li><p>线程:也成轻量进程，是进程中某个<strong>单一顺序</strong>的控制流（进程中的某一新单元）</p>
-</li>
-<li><p>多进程:在<strong>操作系统</strong>中同时运行多个任务(程序)</p>
-</li>
-<li><p>多线程:在同一应用<strong>程序</strong>中有多个顺序流同时执行</p>
-</li>
-<li><p>线程的生命周期:一个线程从创建到执行完的整个过程</p>
-</li>
-</ul>
-<p><strong>线程与进程的区别</strong>：</p>
-<p>​		进程对应的是一个服务，线程是进程中的执行单元</p>
-<p>​		一个进程可以包含多个线程，一个线程一定属于某个进程</p>
-<p>​		多线程特点：线程是<strong>异步</strong>的，线程是<strong>并发</strong>的，多个线程同时工作，线程与线程之间是互不干扰的</p>
-<p>​		例子：火车站（进程）和售票窗口（线程）火车站 的关系</p>
-<h2 id="关于线程的创建方式"><a href="#关于线程的创建方式" class="headerlink" title="关于线程的创建方式"></a>关于线程的创建方式</h2><p><strong>三种方法</strong>：</p>
+        <h1 id="Swagger2"><a href="#Swagger2" class="headerlink" title="Swagger2"></a>Swagger2</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Swagger是一套基于 OpenAPI 规范构建的开源工具，可以帮助我们设计，构建，记录以及使用Rest API</p>
+<h2 id="为什么使用"><a href="#为什么使用" class="headerlink" title="为什么使用"></a>为什么使用</h2><p>当今大部分公司都采用前后端分离的模式来开发项目，前端和后端的工作由不同的工程师来完成，这种开发模式下，维持一份及时更新且完善的Rest API 文档将会极大的提高我们的工作效率</p>
+<p>传统意义上的文档都是后端开发人员手动编写的，这种方式很难保证文档的及时性，这种文档久而久之也会失去参考意义，反而还会增加沟通成本，而Swagger给我们提供了一个全新的API文档维护方式</p>
+<p><strong>优点：</strong></p>
 <ul>
-<li><p>继承Thread类</p>
-</li>
-<li><p>实现Runnable接口 &#x2F; 通过匿名内部类来创建线程对象</p>
-</li>
-<li><p>使用Callable结合Task实现多线程</p>
-</li>
+<li>代码变，文档变，只需要少量的注解，Swagger就可以根据代码自动生成API文档，保证了文档的及时性</li>
+<li>跨语言性，Swagger支持40多种语言</li>
+<li>Swagger UI呈现出来的是一份可交互式的API文档，我们可以直接在文档中尝试API的调用，省略了复杂的参数调用过程</li>
 </ul>
-<h3 id="继承Thread类"><a href="#继承Thread类" class="headerlink" title="继承Thread类"></a>继承Thread类</h3><p><strong>方法一</strong>：继承<strong>Thread</strong>类，重写<code>run()</code>方法</p>
-<pre><code class="java">package com.os467.thread;
-
-public class ThreadDemo01 &#123;
-
-    public static void main(String[] args) &#123;
-
-        //创建线程对象
-        ThreadImpl01 threadImpl01 = new ThreadImpl01();
-        ThreadImpl01 threadImpl02 = new ThreadImpl01();
-
-        //开启线程
-        threadImpl01.start();
-        threadImpl02.start();
-
-    &#125;
-
-&#125;
-
-
-class ThreadImpl01 extends Thread&#123;
-
-    /**
-     * 让程序跑起来的方法
-     */
-    @Override
-    public void run() &#123;
-
-        for (int i = 0; i &lt; 10; i++) &#123;
-
-            System.out.println(&quot;第&quot;+(i + 1)+&quot;个数为&quot;+i);
-
-        &#125;
-
-
-    &#125;
-&#125;
+<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><pre><code class="xml">&lt;!-- swagger2 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+    &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;
+    &lt;version&gt;2.7.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+    &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;
+    &lt;version&gt;2.7.0&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
-<h4 id="设置线程的名称"><a href="#设置线程的名称" class="headerlink" title="设置线程的名称"></a>设置线程的名称</h4><pre><code class="java">//设置线程的名称
-threadImpl01.setName(&quot;t1&quot;);
-threadImpl02.setName(&quot;t2&quot;);
-</code></pre>
-<p><strong>获取当前正在运行的线程</strong></p>
-<pre><code class="java">class ThreadImpl01 extends Thread&#123;
-
-     //获取当前正在运行的线程
-    Thread thread = Thread.currentThread(); 
-    
-    System.out.println(thread.getName()+&quot;正在执行&quot;);
-
-&#125;
-</code></pre>
-<h3 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h3><p><strong>方法二</strong>：实现一个Runnable接口</p>
-<p>此方法的实现类只是一个<strong>可运行类</strong>，不能被称为线程类</p>
-<pre><code class="java">package com.os467.thread;
-
-public class ThreadDemo02 &#123;
-
-    public static void main(String[] args) &#123;
-
-        //创建线程对象
-        RunnableImpl02 runnableImpl02 = new RunnableImpl02();
-
-        //创建线程类
-        Thread thread1 = new Thread(runnableImpl02);
-
-        Thread thread2 = new Thread(runnableImpl02);
-
-
-        //设置线程名称
-        thread1.setName(&quot;t1&quot;);
-
-        //设置线程名称
-        thread2.setName(&quot;t2&quot;);
-
-        //开启线程
-        thread1.start();
-
-        //开启线程
-        thread2.start();
-
-
-    &#125;
-
-&#125;
-
-/**
- * 可运行类
- */
-class RunnableImpl02 implements Runnable&#123;
-
-
-    @Override
-    public void run() &#123;
-
-        for (int i = 0; i &lt; 10; i++) &#123;
-
-            //获取当前正在运行的线程
-            Thread thread = Thread.currentThread();
-
-            System.out.println(thread.getName()+&quot;正在执行：&quot;+(i + 1)+&quot;个数为&quot;+i);
-
-        &#125;
-
-    &#125;
-
-&#125;
-</code></pre>
-<h3 id="通过匿名内部类来创建线程对象"><a href="#通过匿名内部类来创建线程对象" class="headerlink" title="通过匿名内部类来创建线程对象"></a>通过匿名内部类来创建线程对象</h3><pre><code class="java">package com.os467.thread;
-
-public class ThreadDemo03 &#123;
-
-    public static void main(String[] args) &#123;
-
-        //创建线程对象
-        Thread thread1 = new Thread(new Runnable() &#123;
-            @Override
-            public void run() &#123;
-
-                for (int i = 0; i &lt; 10; i++) &#123;
-
-                    System.out.println(Thread.currentThread().getName()+&quot; : &quot;+i);
-
-                &#125;
-
-            &#125;
-        &#125;);
-
-        //创建线程对象
-        Thread thread2 = new Thread(new Runnable() &#123;
-            @Override
-            public void run() &#123;
-
-                for (int i = 0; i &lt; 10; i++) &#123;
-
-                    System.out.println(Thread.currentThread().getName()+&quot; : &quot;+i);
-
-                &#125;
-
-            &#125;
-        &#125;);
-
-        thread1.setName(&quot;t1&quot;);
-        thread2.setName(&quot;t2&quot;);
-
-        //开启线程
-        thread1.start();
-        thread2.start();
-
-    &#125;
-
-&#125;
-</code></pre>
-<h2 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h2><ul>
-<li><p>新建状态</p>
-<p>​	创建出线程对象之后，线程就处于新建状态</p>
-</li>
-<li><p>就绪状态</p>
-</li>
-</ul>
-<p>​			当一个线程调用了<code>start()</code>方法之后，该线程处于就绪状态，处于就绪状态的线程拥有争夺CPU资源的使用权力</p>
+<h3 id="启用Swagger2"><a href="#启用Swagger2" class="headerlink" title="启用Swagger2"></a>启用Swagger2</h3><p>在启动类上或者配置类加 <strong>@EnableSwagger2 注解</strong></p>
+<p>访问swagger文档： <a target="_blank" rel="noopener" href="http://localhost:8080/swagger-ui.html">http://localhost:8080/swagger-ui.html</a></p>
+<blockquote>
+<p><strong>注意：</strong> 其中的localhost:8080在项目中都要改为真实域名+端口号</p>
+</blockquote>
+<h3 id="具体配置"><a href="#具体配置" class="headerlink" title="具体配置"></a>具体配置</h3><h4 id="Controller配置"><a href="#Controller配置" class="headerlink" title="Controller配置"></a>Controller配置</h4><p><strong>@Api注解</strong></p>
+<p><strong>属性：</strong></p>
 <ul>
-<li>运行状态</li>
+<li>tags  设置标签</li>
+<li>description 设置描述信息</li>
 </ul>
-<p>​			当一个线程<strong>争夺到了CPU使用权</strong>之后，就回去执行线程，运行run方法，这个时候的线程处于运行状态</p>
+<pre><code class="java">@RestController
+@RequestMapping(&quot;/comment&quot;)
+@Api(tags = &quot;评论&quot;,description = &quot;评论相关接口&quot;)
+public class CommentController &#123;
+&#125;
+</code></pre>
+<h4 id="接口配置"><a href="#接口配置" class="headerlink" title="接口配置"></a>接口配置</h4><ul>
+<li><strong>@ApiOperation</strong>  接口描述</li>
+</ul>
+<pre><code class="java">@GetMapping(&quot;/linkCommentList&quot;)
+@ApiOperation(value = &quot;友链评论列表&quot;,notes = &quot;获取一页友链评论信息&quot;)
+public ResponseResult linkCommentList(Integer pageNum,Integer pageSize)&#123;
+    return commentService.linkCommentList(pageNum,pageSize);
+&#125;
+</code></pre>
 <ul>
-<li>阻塞状态</li>
+<li><strong>@ApiImplicitParam ** 用于描述接口的非对象参数，但是一个接口可能有多个参数，所以一般与</strong>@ApiImplicitParams **组合使用</li>
 </ul>
-<p>​			当线程在运行的过程中出现了控制台打印、睡眠sleep等需要等待的操作，这个时候线程会处于阻塞状态，处于阻塞状态的线程，会释放CPU使用权</p>
+<pre><code class="java">@GetMapping(&quot;/linkCommentList&quot;)
+@ApiOperation(value = &quot;友链评论列表&quot;,notes = &quot;获取一页友链评论信息&quot;)
+@ApiImplicitParams(&#123;
+        @ApiImplicitParam(name = &quot;pageNum&quot;,value = &quot;页号&quot;),
+        @ApiImplicitParam(name = &quot;pageSize&quot;,value = &quot;每页大小&quot;)
+&#125;)
+public ResponseResult linkCommentList(Integer pageNum,Integer pageSize)&#123;
+    return commentService.linkCommentList(pageNum,pageSize);
+&#125;
+</code></pre>
+<h4 id="实体类配置"><a href="#实体类配置" class="headerlink" title="实体类配置"></a>实体类配置</h4><p><strong>@ApiModel</strong>  用于描述实体类</p>
+<p><strong>@ApiModelProperty</strong>   用于描述实体的属性</p>
+<pre><code class="java">@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ApiModel(description = &quot;添加评论Dto&quot;)
+public class AddCommentDto &#123;
+
+    private Long id;
+    //评论类型（0代表文章评论，1代表友链评论）
+    @ApiModelProperty(notes = &quot;评论类型（0代表文章评论，1代表友链评论）&quot;)
+    private String type;
+    //文章id
+    @ApiModelProperty(notes = &quot;文章id&quot;)
+    private Long articleId;
+    //...   
+&#125;
+</code></pre>
+<blockquote>
+<p>在实际开发中，我们一般不会用与数据库建立表关系的对象来接收前端传输的数据，接收参数和实际数据库中的表字段也不一定完全相同</p>
+<p>这样子在使用Swagger注解的时候也会和不同的方法需要接收的参数产生耦合</p>
+<p>因此我们一般会封装一层DTO对象（Data  Transaction Object数据传输对象，数据事务对象）</p>
+</blockquote>
+<p><strong>修改表现层参数</strong></p>
+<pre><code class="java">@PostMapping
+public ResponseResult comment(@RequestBody AddCommentDto addCommentDto)&#123;
+    Comment comment = BeanCopyUtils.copyBean(addCommentDto, Comment.class);
+    return commentService.comment(comment);
+&#125;
+</code></pre>
+<blockquote>
+<p>这里接收到的CommentDto对象再拷贝成Comment对象即可</p>
+</blockquote>
+<h3 id="文档信息配置类"><a href="#文档信息配置类" class="headerlink" title="文档信息配置类"></a>文档信息配置类</h3><p>加上**@Configuration注解**</p>
+<p>需要返回一个Docket对象，加上**@bean注解**</p>
+<p>使用了构造器模式创建了<code>Docket和apiInfo</code></p>
 <ul>
-<li>死亡状态</li>
+<li>配置当前项目的一些基本信息</li>
 </ul>
-<p>​			当一个线程执行完run方法中所有的代码就会跳出run方法，这个时候线程处于死亡状态   <code>isAlive()方法</code>可以判断线程是否存活</p>
-<pre><code class="java">package com.os467.thread;
+<pre><code class="java">@Configuration
+public class SwaggerConfig &#123;
 
-public class ThreadDemo04 &#123;
-
-    public static void main(String[] args) &#123;
-
-        //创建线程对象,该线程处于新建状态
-        ThreadImpl02 threadImpl01 = new ThreadImpl02();
-        ThreadImpl02 threadImpl02 = new ThreadImpl02();
-
-        threadImpl01.setName(&quot;t1&quot;);
-        threadImpl02.setName(&quot;t2&quot;);
-
-        //该线程处于就绪状态
-        threadImpl01.start();
-        threadImpl02.start();
-
+    @Bean
+    public Docket customDocket()&#123;
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .select()
+                //扫描的包
+                .apis(RequestHandlerSelectors.basePackage(&quot;com.os467.controller&quot;))
+                .build();
     &#125;
 
-&#125;
-
-
-class ThreadImpl02 extends Thread&#123;
-
-    @Override
-    public void run() &#123;//当某一个线程争夺到cpu使用权后才会进入run方法
-
-        for (int i = 0; i &lt; 10; i++) &#123;
-
-            System.out.println(Thread.currentThread().getName() + &quot;======&gt;&quot;+i);
-
-            //睡眠的方法，可以让程序处于阻塞状态
-            try &#123;
-                Thread.sleep(500);
-            &#125; catch (InterruptedException e) &#123;
-                e.printStackTrace();
-            &#125;
-
-        &#125;
-
-    &#125;
-
-    //当某一线程执行完了run方法，那该线程处于死亡状态
-&#125;
-</code></pre>
-<p><strong>Run方法和start方法的区别</strong></p>
-<p>Run是执行方法，start是启动方法</p>
-<p>start启动不一定执行run方法</p>
-<p><strong>线程调度模型</strong></p>
-<ul>
-<li>抢占式调度模式</li>
-</ul>
-<p>​		哪个线程的优先级比较高，抢到的CPU时间片的概率就多一些，java采用的就是抢占式调度模型			</p>
-<ul>
-<li>均分式调度模型</li>
-</ul>
-<p>​		平均分配CPU时间片，每个线程占用的CPU时间片时间长度一样，平均分配，一切平等，有一些编程语言，线程调度模型采用		的是这种方式</p>
-<p>使用哪种方式<strong>创建线程</strong>比较好？</p>
-<p>​		实现runnable接口，因为我们以后是面向接口开发</p>
-<p>​		因为如果继承了Thread类，那么类的可扩展性就降低了</p>
-<p>​		以后我们在写程序，尽量使用Runnable接口方式来创建线程对象，面向接口开发，程序的可扩展性会提高</p>
-<p><strong>问题</strong>:以下代码一共开启了<strong>几个</strong>线程？</p>
-<pre><code class="java">package com.os467.thread;
-
-public class ThreadDemo05 &#123;
-
-    public static void main(String[] args) &#123;
-
-        //创建线程对象
-        Thread thread1 = new Thread(new MyRunnable());
-        Thread thread2 = new Thread(new MyRunnable());
-        Thread thread3 = new Thread(new MyRunnable());
-
-        thread1.setName(&quot;t1&quot;);
-        thread3.setName(&quot;t3&quot;);
-
-        thread1.start();
-        thread2.run();
-        thread3.start();
-
-        for (int i = 0; i &lt; 10; i++) &#123;
-
-            System.out.println(Thread.currentThread().getName() + &quot; ==&gt; &quot;+i);
-
-        &#125;
-
-    &#125;
-
-
-&#125;
-
-
-class MyRunnable implements Runnable&#123;
-
-    @Override
-    public void run() &#123;
-
-
-        for (int i = 0; i &lt; 10; i++) &#123;
-
-            System.out.println(Thread.currentThread().getName() + &quot; ==&gt; &quot;+i);
-
-        &#125;
-
-        try &#123;
-            Thread.sleep(100);
-        &#125; catch (InterruptedException e) &#123;
-            e.printStackTrace();
-        &#125;
-
-
-    &#125;
-
-
-&#125;
-</code></pre>
-<p><strong>答案</strong>:一共开启了4个线程：</p>
-<p>​		两个普通线程	调用了<code>start()</code>方法</p>
-<p>​		守护线程（后台线程）：垃圾回收线程</p>
-<p>​		主线程（<code>main线程</code>）：JVM调用主函数</p>
-<h4 id="线程在内存上的分布，以及执行流程"><a href="#线程在内存上的分布，以及执行流程" class="headerlink" title="线程在内存上的分布，以及执行流程"></a>线程在内存上的分布，以及执行流程</h4><ul>
-<li>​		每一个线程都会去对应一个栈，创建的每个线程，JVM都会去开辟出一个分支栈</li>
-<li>​		main中 针对于某个线程调用了start方法，这个时候，JVM会为这个线程单独的开辟出一个分支栈</li>
-<li>​		假如程序中开启了t1、t2、t3 三个线程，<strong>栈与栈之间的资源是不共享的</strong></li>
-<li>​		比如 t1对应的分支栈声明了一个集合对象List，这个集合的引用在别的栈是访问不到的</li>
-</ul>
-<p>在主线程调用了start方法之后，会开辟分支栈，每个栈都会去执行不同的任务，栈与栈之间的资源是不共享的</p>
-<p>堆的资源是共享的，因为JVM上只有一个堆，只要你去创建引用数据类型的实例，都是在堆中开辟空间</p>
-<p>方法区中的资源也是共享的，因为内存中只能有一个方法区</p>
-<p><strong>获取、设置线程优先级方法</strong></p>
-<pre><code class="java">//获取某个线程的优先级,java默认情况下线程优先级是5
-int priority1 = thread1.getPriority();
-</code></pre>
-<pre><code class="java">//设置线程优先级方法，1-10，1优先级最低，10最高
-thread1.setPriority(1);
-</code></pre>
-<h4 id="yield-让位方法"><a href="#yield-让位方法" class="headerlink" title="yield()让位方法"></a>yield()让位方法</h4><p>暂停当前正在执行的线程对象，并执行其他线程</p>
-<p><code>yield()</code>方法的执行会让当前线程从”运行状态”回到”就绪状态”</p>
-<p><code>Thread.yield();</code></p>
-<h2 id="多线程其它方法"><a href="#多线程其它方法" class="headerlink" title="多线程其它方法"></a>多线程其它方法</h2><h4 id="join-方法"><a href="#join-方法" class="headerlink" title="join()方法"></a>join()方法</h4><p><code>join()</code>当前线程进入阻塞，指定线程执行，直到指定<strong>线程结束</strong>当前线程才可以继续</p>
-<p>线程a{</p>
-<p>​		线程b.join()</p>
-<p>}</p>
-<p>将线程b合并入线程a，线程a等待线程b<strong>结束</strong>后才继续运行</p>
-<p><strong>注意</strong>：线程合并必须要有两个不同的线程</p>
-<hr>
-<p><code>suspend()</code>线程自己把自己挂起</p>
-<p><code>resume</code>线程自己把自己唤醒</p>
-<p><strong>龟兔赛跑案例</strong></p>
-<p>兔子线程类</p>
-<pre><code class="java">package com.os467.game;
-
-//兔子线程
-public class Rabbit extends Thread &#123;
-
-    private String name;
-
-    public Rabbit(String name) &#123;
-        //给当前的线程实例设置名称
-        super(name);
-        this.name = name;
-    &#125;
-
-
-    @Override
-    public void run() &#123;
-
-        //模拟整个赛道跑步的过程
-        for (int i = 0; i &lt;= 900; i+=100) &#123;
-
-            if(i == 800)&#123;
-
-                System.out.println(Thread.currentThread().getName()+&quot;开始睡觉&quot;);
-
-                //自己把自己挂起
-                Thread.currentThread().suspend();
-
-            &#125;
-
-            System.out.println(Thread.currentThread().getName() + &quot;跑了&quot;+(i+100)+&quot;米&quot;);
-
-            try&#123;
-
-                //模拟睡眠
-                Thread.sleep(1000);
-
-
-            &#125;catch (Exception e)&#123;
-
-                e.printStackTrace();
-
-            &#125;
-
-        &#125;
-
-
-        System.out.println(Thread.currentThread().getName()+&quot;跑完了全程,最终比赛失败&quot;);
-
-    &#125;
-
-&#125;
-</code></pre>
-<p>乌龟线程类</p>
-<pre><code class="java">package com.os467.game;
-
-//乌龟线程类
-public class Tortoise extends Thread &#123;
-
-    private String name;
-
-    //兔子的引用
-    private Rabbit rabbit;
-
-    public Tortoise(String name, Rabbit rabbit) &#123;
-        //给当前的线程实例设置名称
-        super(name);
-        this.name = name;
-        this.rabbit = rabbit;
-    &#125;
-
-    //唤醒兔子的方法
-    public void resumeRabbit()&#123;
-
-        System.out.println(Thread.currentThread().getName()+&quot; 唤醒了 &quot;+rabbit.getName());
-
-        //调用唤醒的方法
-        this.rabbit.resume();
-
-    &#125;
-
-    @Override
-    public void run() &#123;
-
-        //模拟整个赛道跑步的过程
-        for (int i = 0; i &lt;= 950; i+=50) &#123;
-
-            System.out.println(Thread.currentThread().getName() + &quot;跑了&quot;+(i+50)+&quot;米&quot;);
-
-            try&#123;
-
-                //模拟睡眠
-                Thread.sleep(1000);
-
-
-            &#125;catch (Exception e)&#123;
-
-                e.printStackTrace();
-
-            &#125;
-
-        &#125;
-
-        //乌龟唤醒兔子
-        this.resumeRabbit();
-
-        System.out.println(Thread.currentThread().getName()+&quot;跑完了全程,取得了胜利&quot;);
-
-    &#125;
-&#125;
-</code></pre>
-<p>测试类</p>
-<pre><code class="java">package com.os467.game;
-
-public class Test &#123;
-
-    public static void main(String[] args) &#123;
-
-        //创建兔子线程
-        Rabbit rabbit = new Rabbit(&quot;兔子&quot;);
-
-        //创建乌龟线程
-        Tortoise tortoise = new Tortoise(&quot;乌龟&quot;,rabbit);
-
-        //开启线程
-        rabbit.start();
-        tortoise.start();
-
-    &#125;
-
-&#125;
-</code></pre>
-<hr>
-<p>&#x2F;&#x2F;<code>tl.stop()</code>中断线程</p>
-<p>&#x2F;&#x2F;<code>interrupt</code>中断睡眠</p>
-<p>&#x2F;&#x2F;<code>tl.isAlive()</code>判断指定线程是否处于活动状态</p>
-<h2 id="守护线程"><a href="#守护线程" class="headerlink" title="守护线程"></a>守护线程</h2><ul>
-<li>java语言中线程分为两大类</li>
-</ul>
-<p>用户线程</p>
-<p>守护线程（后台线程）</p>
-<ul>
-<li>守护线程的特点</li>
-</ul>
-<p>一般守护线程是一个死循环，所有的用户线程只要结束，守护线程自动结束</p>
-<p>守护线程一般指的是后台线程，守护线程一般会去守护一个用户线程，用户线程启动，守护线程随之启动，用户线程结束，守护线程也结束，例如垃圾回收线程</p>
-<p>设置守护线程<strong>方法</strong>:<code>普通线程对象.setDaemon(true)</code></p>
-<pre><code class="java">package com.os467;
-
-public class ThreadDemo01 &#123;
-
-    public static void main(String[] args) &#123;
-
-        //创建线程对象
-        Thread t1 = new Thread(new createThread());
-
-        //将一个普通线程设置为守护线程
-        t1.setDaemon(true);
-
-        //开启线程
-        t1.start();
-
-        for (int i = 0; i &lt; 10; i++) &#123;
-
-            System.out.println(Thread.currentThread().getName()+&quot; ===&gt; &quot;+i);
-
-            try &#123;
-                Thread.sleep(500);
-            &#125; catch (InterruptedException e) &#123;
-                e.printStackTrace();
-            &#125;
-
-        &#125;
-
-    &#125;
-
-&#125;
-
-class createThread implements Runnable&#123;
-
-
-    @Override
-    public void run() &#123;
-
-        //守护线程一般就是一个死循环
-        while (true)&#123;
-
-            System.out.println(&quot;守护线程正在执行&quot;);
-
-            try &#123;
-                Thread.sleep(1000);
-            &#125; catch (InterruptedException e) &#123;
-                e.printStackTrace();
-            &#125;
-        &#125;
-    &#125;
-&#125;
-</code></pre>
-<p><strong>定时器</strong></p>
-<ul>
-<li>定时器的作用：间隔特定的时间，执行特定的程序</li>
-</ul>
-<p>​	在java的类库中已经写好了一个定时器：<code>java.util.Timer</code></p>
-<h3 id="实现线程的第三种方式（Callable结合Task）"><a href="#实现线程的第三种方式（Callable结合Task）" class="headerlink" title="实现线程的第三种方式（Callable结合Task）"></a>实现线程的第三种方式（Callable结合Task）</h3><ul>
-<li>使用Callable结合Task实现多线程编程</li>
-</ul>
-<p><code>FutureTask futureTask = new FutureTask(new Callable())</code></p>
-<pre><code class="java">public class ThreadDemo02 &#123;
-
-    public static void main(String[] args) &#123;
-
-        //这个类官方称之为未来任务类，不是线程类
-        FutureTask futureTask = new FutureTask(new Callable() &#123;
-
-            //作用类似于run方法
-            @Override
-            public Object call() throws Exception &#123;
-
-                int num = 0;
-
-                for (int i = 0; i &lt; 10; i++) &#123;
-
-                    num += i;
-
-                    System.out.println(Thread.currentThread().getName() + &quot;===&gt;&quot; + i);
-
-                    Thread.sleep(500);
-
-                &#125;
-
-                return num;
-
-            &#125;
-        &#125;);
-
-        //创建线程对象
-        Thread thread = new Thread(futureTask);
-
-        //设置线程名称
-        thread.setName(&quot;t1&quot;);
-
-        //开启线程
-        thread.start();
-
-        //线程结束之后获取线程的返回值
-        try &#123;
-
-            Object o = futureTask.get();
-
-            System.out.println(&quot;最终累加的结果为:&quot;+o);
-        &#125; catch (InterruptedException e) &#123;
-            e.printStackTrace();
-        &#125; catch (ExecutionException e) &#123;
-            e.printStackTrace();
-        &#125;
-
-
-
-    &#125;
-
-&#125;
-</code></pre>
-<p><strong>缺点</strong>：由于需要获取返回值，此方法会造成原线程的阻塞</p>
-<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><ul>
-<li><strong>异步编程模型</strong></li>
-</ul>
-<p>​		线程A和线程B,各自执行各自的，A不管B，B不管A，谁也不需要等谁，这种编程模型叫做:异步编程模型，其实就是：多线程<strong>并发</strong>，效率较高</p>
-<ul>
-<li><strong>同步编程模型</strong></li>
-</ul>
-<p>​		线程A和线程B，在线程A执行的时候，必须等待B线程执行结束，或者说在A线程执行的时候，必须等待B线程执行结束，两个线程之间发生了等待关系，这就是同步程模型，效率较低</p>
-<h2 id="锁池和等待池"><a href="#锁池和等待池" class="headerlink" title="锁池和等待池"></a>锁池和等待池</h2><ul>
-<li><p><strong>锁池</strong></p>
-<p>​		假设线程A已经拥有了某个<strong>对象</strong>(不是类)的锁，而其它线程B,C想要调用这个对象的某个<strong>synchronized方法</strong>(或者块)之前必须获得该对象锁的<strong>拥有权</strong>，而恰巧该对象的锁目前正被A所<strong>占有</strong>，此时B，C线程就会被<strong>阻塞</strong>，进入一个地方去<strong>等待</strong>锁的释放，这个地方便是该对象的锁池</p>
-</li>
-<li><p><strong>等待池</strong></p>
-</li>
-</ul>
-<p>​		假设线程A调用了某个对象的<strong>wait方法</strong>，线程A就会<strong>释放</strong>该对象的锁，同时线程A就进入到了该对象的<strong>等待池</strong>中，进入等待池中的线程<strong>不会去竞争</strong>该对象的锁</p>
-<h2 id="Object类中的wait和notify方法"><a href="#Object类中的wait和notify方法" class="headerlink" title="Object类中的wait和notify方法"></a>Object类中的wait和notify方法</h2><ul>
-<li><code>wait()</code> 让正在该对象上活动的线程进入等待状态，无期限等待，直到被唤醒为止。<code>wait()</code>方法的调用，会让正在改对象的当前线程进入等待状态</li>
-</ul>
-<p>此对象其实就是多线程中的<strong>共享对象</strong></p>
-<p>使用此方法必须保证当前多线程处于<strong>线程同步状态</strong></p>
-<p>当共享对象是类的实例的时候，可以直接在类的方法中写<code>wait</code>和<code>notify</code>方法</p>
-<p><strong>notify()方法作用</strong></p>
-<p>​		只会随机选取一个处于等待池中的线程进入锁池去竞争获取锁的机会</p>
-<p><strong><code>notifyAll()</code>方法的作用</strong></p>
-<p>​		会让所有处于等待池的线程全部进入锁池去竞争获取锁的机会</p>
-<p><strong>需求：生产者和消费者关系</strong>：</p>
-<p><strong>仓库</strong></p>
-<p>仓库里面存放的就是生产者生产出来的商品，需要交给消费者去消费</p>
-<p>要保证生产者与消费者均衡的状态：</p>
-<p>如果仓库中没有产品了，这个时候消费者线程就不能再进行消费了，需要交给生产者线程去生产，如果仓库已经满了，仓库已经有产品的情况下，生产者线程就不用再生产了，要交由消费者线程去消费</p>
-<p>生产者与消费者wait、notify</p>
-<p>​		要想使用wait和notify方法，必须是在<strong>线程同步</strong>的前提下</p>
-<p><strong>Consumer</strong></p>
-<pre><code class="java">package com.os467.wait;
-
-public class Consumer extends Thread &#123;
-
-    private House house;
-
-    public Consumer(String name,House house)&#123;
-
-        super(name);
-        this.house = house;
-
-    &#125;
-
-    @Override
-    public void run() &#123;
-
-        //模拟一直生产
-        while (true) &#123;
-
-            synchronized (this.house) &#123;
-
-                if (this.house.getObjects().size() == 0) &#123;
-
-                    //消费者不能再消费，要让这个消费者处于等待状态
-                    try &#123;
-
-                        //让处于该对象上活跃的线程处于等待状态
-                        this.house.wait();
-
-                    &#125; catch (InterruptedException e) &#123;
-                        e.printStackTrace();
-                    &#125;
-
-                &#125;
-
-                //仓库中有产品，消费者就要去消费
-                Object obj = this.house.getObjects().remove(0);
-
-                System.out.println(Thread.currentThread().getName() + &quot;消费了一个产品，产品实例为&quot; + obj);
-
-                try &#123;
-                    //模拟睡眠
-                    Thread.sleep(1000);
-                &#125; catch (InterruptedException e) &#123;
-                    e.printStackTrace();
-                &#125;
-
-                //唤醒生产者去生产
-                this.house.notifyAll();
-
-            &#125;
-        &#125;
-    &#125;
-&#125;
-</code></pre>
-<p><strong>House</strong></p>
-<pre><code class="java">package com.os467.wait;
-
-import java.util.List;
-
-//仓库，用于存放产品的
-public class House &#123;
-
-    private List&lt;Object&gt; objects;
-
-    public House(List&lt;Object&gt; objects) &#123;
-        this.objects = objects;
-    &#125;
-
-    public List&lt;Object&gt; getObjects() &#123;
-        return objects;
-    &#125;
-
-    public void setObjects(List&lt;Object&gt; objects) &#123;
-        this.objects = objects;
-    &#125;
-
-&#125;
-</code></pre>
-<p><strong>Producer</strong></p>
-<pre><code class="java">package com.os467.wait;
-
-/**
- * 需求：
- *      生产者线程在什么情况下不需要生产产品？
- *      当仓库中的产品满足一定数量之后，就不用再生产了
- *
- *      只要当仓库中有产品，就要交由消费者去消费，消费者消费完了，仓库中没产品了，就继续交由生产者去生产
- */
-public class Producer extends Thread &#123;
-
-    //创建仓库的引用
-    private House house;
-
-    public Producer(String name,House house)&#123;
-
-        super(name);
-        this.house = house;
-
-    &#125;
-
-    @Override
-    public void run() &#123;
-
-        //模拟一直生产
-        while (true) &#123;
-
-            synchronized (this.house) &#123;
-
-                if (this.house.getObjects().size() &gt; 0) &#123;
-
-                    //生产者不能再生产，要让这个生产者处于等待状态
-                    try &#123;
-
-                        //让处于该对象上活跃的线程处于等待状态
-                        this.house.wait();
-
-                    &#125; catch (InterruptedException e) &#123;
-                        e.printStackTrace();
-                    &#125;
-
-                &#125;
-
-                //如果仓库中没有产品，生产者要继续生产
-                this.house.getObjects().add(new Object());
-
-                System.out.println(Thread.currentThread().getName() + &quot;生产了一个产品，产品实例为&quot; + this.house.getObjects().get(0));
-
-                try &#123;
-                    //模拟睡眠
-                    Thread.sleep(1000);
-                &#125; catch (InterruptedException e) &#123;
-                    e.printStackTrace();
-                &#125;
-
-                //唤醒此对象的消费者线程去消费
-                this.house.notifyAll();
-
-            &#125;
-        &#125;
-
-    &#125;
-
-&#125;
-</code></pre>
-<p><strong>WaitDemo</strong></p>
-<pre><code class="java">package com.os467.wait;
-
-import java.util.ArrayList;
-
-public class WaitDemo &#123;
-
-    public static void main(String[] args) &#123;
-
-        //创建仓库对象
-        House house = new House(new ArrayList&lt;&gt;());
-
-        //创建生产者线程
-        Producer producer = new Producer(&quot;生产者&quot;,house);
-
-        //创建消费者线程
-        Consumer consumer = new Consumer(&quot;消费者&quot;,house);
-
-        //启动线程
-        producer.start();
-        consumer.start();
-
-
+    private ApiInfo apiInfo() &#123;
+        Contact contact = new Contact(&quot;团队名&quot;,&quot;http://www.my.com&quot;,&quot;my@my.com&quot;);
+        return new ApiInfoBuilder()
+                .title(&quot;文档标题&quot;)
+                .description(&quot;文档描述&quot;)
+                .contact(&quot;联系方式&quot;)
+                .version(&quot;1.1.0&quot;)
+                .build();
     &#125;
 
 &#125;
@@ -1801,12 +1108,12 @@ public class WaitDemo &#123;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>多线程</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">4.3k</span></p>
+    <p><span class="copy-title">文章标题:</span>Swagger</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">1k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-07-12, 12:29:58</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-05, 00:06:56</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/07/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="多线程">https://os467.github.io/2022/07/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</a>
+    <p><span class="copy-title">发布时间:</span>2022-10-05, 00:51:35</p>
+    <p><span class="copy-title">最后更新:</span>2022-10-05, 00:53:10</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/10/05/Swagger/" title="Swagger">https://os467.github.io/2022/10/05/Swagger/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
