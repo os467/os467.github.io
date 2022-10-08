@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Tly的博客</title>
+  <title>请求限流 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Tly的博客">
+  <meta name="description" content="请求限流 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="后端接口限流如果有人使用token+postman多次调用服务端某个接口，那么会造成服务繁忙，因此我们需要设置来自同一用户的请求时间间隔 使用AOP+redis进行请求冷却设置 设计思路：  使用AOP+自定义注解对需要限流的服务进行切面配置  在切面中获得当前请求的用户id  将用户id作为key存入redis缓存中，value可以不设置，通过读取注解上的请求限流时间来设置key的失效时间  下">
 <meta property="og:type" content="article">
@@ -56,7 +56,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -918,12 +918,53 @@ window.onload = function(){
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-请求限流" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#OS467%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-text">OS467个人博客</span></a></li></ol>
+        <h1 class="article-title">请求限流</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="其它">其它</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-10-08 19:57:07'>2022-10-08 19:57</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:779</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81"><span class="toc-text">后端接口限流</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E6%AD%A5%E6%96%B9%E6%A1%88"><span class="toc-text">初步方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%BC%BA%E6%96%B9%E6%A1%88"><span class="toc-text">增强方案</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -936,19 +977,143 @@ window.onload = function(){
     }
 </style>
 </div>
-            <h2 id="OS467个人博客"><a href="#OS467个人博客" class="headerlink" title="OS467个人博客"></a>OS467个人博客</h2><p>你好，我是os467，一名正在学习java后端的小白</p>
-<p>本博客长期持续，分享了我个人学习java的笔记</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<p>引用博客主题来自：<a target="_blank" rel="noopener" href="https://yelog.org/">叶落阁 (yelog.org)</a></p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端接口限流"><a href="#后端接口限流" class="headerlink" title="后端接口限流"></a>后端接口限流</h1><p>如果有人使用token+postman多次调用服务端某个接口，那么会造成服务繁忙，因此我们需要设置来自同一用户的请求时间间隔</p>
+<p>使用AOP+redis进行请求冷却设置</p>
+<p><strong>设计思路：</strong></p>
+<ul>
+<li><p>使用AOP+自定义注解对需要限流的服务进行切面配置</p>
+</li>
+<li><p>在切面中获得当前请求的用户id</p>
+</li>
+<li><p>将用户id作为key存入redis缓存中，value可以不设置，通过读取注解上的请求限流时间来设置key的失效时间</p>
+</li>
+<li><p>下一次请求被AOP拦截到则进行一次获取key的操作，如果key失效不存在则服务器受理请求，否则直接返回拒绝服务</p>
+</li>
+</ul>
+<h2 id="初步方案"><a href="#初步方案" class="headerlink" title="初步方案"></a>初步方案</h2><p><strong>配置切面</strong></p>
+<pre><code class="java">@Component
+@Aspect
+public class ApiAspect &#123;
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+    @Autowired
+    private RedisCache redisCache;
+
+    @Pointcut(&quot;@annotation(com.os467.annotation.ApiLimit)&quot;)
+    public void pt()&#123;
+
+    &#125;
+
+    @Around(&quot;pt()&quot;)
+    public Object limitRequest(ProceedingJoinPoint joinPoint) throws Throwable &#123;
+
+        Long userId = SecurityUtils.getUserId();
+
+        if (redisCache.getCacheObject(&quot;apiLimit:&quot; + userId) == null) &#123;
+            //记录正在发生请求
+            redisCache.setCacheObject(&quot;apiLimit:&quot; + userId, &quot;&quot;);
+
+            //获取当前增强方法的标签信息
+            MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+            Method method = methodSignature.getMethod();
+            //获取超时时间
+            int timeout = method.getAnnotation(ApiLimit.class).timeout();
+
+            redisCache.expire(&quot;apiLimit:&quot; + userId,timeout, TimeUnit.SECONDS);
+        &#125; else &#123;
+            //上一个请求还未结束，拒绝服务
+            return ResponseResult.errorResult(AppHttpCodeEnum.SYSTEM_ERROR, &quot;请勿重复操作&quot;);
+        &#125;
+
+        //增强方法的返回值
+        Object ret = null;
+        try &#123;
+            ret = joinPoint.proceed();
+        &#125; catch (Throwable throwable) &#123;
+            throw throwable;
+        &#125;
+
+        return ret;
+    &#125;
+
+&#125;
+</code></pre>
+<blockquote>
+<p>此方案可以初步排除更新操作的重复操作，但是在<strong>添加操作中失效了</strong></p>
+<p>分析原因可能是因为多个线程<strong>同时判断冷却标记为null</strong>从而导致AOP拦截失效</p>
+</blockquote>
+<h2 id="增强方案"><a href="#增强方案" class="headerlink" title="增强方案"></a>增强方案</h2><p><strong>解决方案</strong></p>
+<p>使用<strong>双重if判断+线程同步代码块</strong>的方案 来保证只有一个请求被受理</p>
+<pre><code class="java">//第一次检查缓存中是否有冷却标记
+if (redisCache.getCacheObject(&quot;apiLimit:&quot;+userId) != null)&#123;
+    //上一个请求还未结束，拒绝服务
+    return ResponseResult.errorResult(AppHttpCodeEnum.SYSTEM_ERROR, &quot;请勿重复操作&quot;);
+&#125;else &#123;
+    //静态代码块，持有当前切面类的对象锁
+    synchronized (this) &#123;
+        if (redisCache.getCacheObject(&quot;apiLimit:&quot; + userId) == null) &#123;
+
+            //记录冷却标记
+            redisCache.setCacheObject(&quot;apiLimit:&quot; + userId, &quot;&quot;);
+
+            //获取当前增强方法的标签信息
+            MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+            Method method = methodSignature.getMethod();
+            //获取超时时间
+            int timeout = method.getAnnotation(ApiLimit.class).timeout();
+
+            //设置冷却标记失效时间
+            redisCache.expire(&quot;apiLimit:&quot; + userId,timeout, TimeUnit.SECONDS);
+        &#125; else &#123;
+            //上一个请求还未结束，拒绝服务
+            return ResponseResult.errorResult(AppHttpCodeEnum.SYSTEM_ERROR, &quot;请勿重复操作&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<blockquote>
+<p> 此时对用户A的多次重复请求已经做了冷却限制，保证服务器在5秒内只受理一次用户A的请求</p>
+</blockquote>
+<p><strong>此时有一个问题</strong></p>
+<p>当前线程同步代码块使用的是AOP监视器的对象锁，因此思考是否会对其它线程请求造成阻塞影响？</p>
+<ul>
+<li>答案显然是不会的，经过测试AOP监视器是多例模式的，因此不会因为同步代码块造成不同请求线程之间的阻塞</li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>请求限流</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">779</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
+    <p><span class="copy-title">发布时间:</span>2022-10-08, 19:57:03</p>
+    <p><span class="copy-title">最后更新:</span>2022-10-08, 19:57:07</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/10/08/%E8%AF%B7%E6%B1%82%E9%99%90%E6%B5%81/" title="请求限流">https://os467.github.io/2022/10/08/%E8%AF%B7%E6%B1%82%E9%99%90%E6%B5%81/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -957,11 +1122,11 @@ window.onload = function(){
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>
