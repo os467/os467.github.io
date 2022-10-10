@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Reflect | Tly的博客</title>
+  <title>Vue2 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Reflect | Tly的博客">
+  <meta name="description" content="Vue2 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Vue2简介Vue是一套用于构建用户界面的渐进式框架，与其它大型框架不同的是，Vue被设计为可以自底层向上逐层应用 Vue的核心库只关注视图，不仅易于上手，还便于与第三方库或既有项目整合  VUE是一款由数据驱动视图的前端框架，它基于MVVM(Model View View Model)模式,实现数据与视图的双向绑定  VUE是渐进式框架，VUE提供了一个核心库，用于渲染视图，它占空间小，能完成V">
 <meta property="og:type" content="article">
@@ -929,9 +929,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Reflect" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Vue2" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Reflect</h1>
+        <h1 class="article-title">Vue2</h1>
     
     <div class="article-meta">
         
@@ -941,7 +941,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="JAVASE进阶">JAVASE进阶</a>
+            <a  data-rel="前端">前端</a>
             
         </span>
         
@@ -949,12 +949,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-05 00:09:07'>2022-07-13 14:40</time>
+            发布时间 : <time class="date" title='最后更新: 2022-10-10 22:15:44'>2022-10-10 22:15</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2.5k</span>
+        <span>字数:2.6k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -973,7 +973,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84Reflect"><span class="toc-text">反射Reflect</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%8E%BB%E8%8E%B7%E5%8F%96%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E5%AD%97%E8%8A%82%E7%A0%81%E5%AF%B9%E8%B1%A1%EF%BC%88Class%EF%BC%89"><span class="toc-text">如何去获取一个类的字节码对象（Class）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">获取类中的属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E4%B8%AD%E5%85%AC%E5%85%B1%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">获取类中公共的属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E4%B8%AD%E6%89%80%E6%9C%89%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">获取类中所有的属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">获取类中的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E4%B8%AD%E5%85%AC%E6%9C%89%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">获取类中公有的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E4%B8%AD%E6%89%80%E6%9C%89%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">获取类中所有的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89%E7%9A%84%E6%9E%84%E9%80%A0"><span class="toc-text">获取所有的构造</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E5%B7%A5%E5%85%B7%E7%B1%BBReflectUtils"><span class="toc-text">反射工具类ReflectUtils</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E6%9D%A5%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="toc-text">如何通过反射机制来创建一个类的实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E6%9D%A5%E7%BB%99%E5%B1%9E%E6%80%A7%E8%B5%8B%E5%80%BC"><span class="toc-text">如何通过反射来给属性赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7%E5%80%BC"><span class="toc-text">如何通过反射获取属性值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E8%B0%83%E7%94%A8%E7%B1%BB%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">通过反射调用类中的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E5%9C%A8%E4%BB%A5%E5%90%8E%E7%9A%84%E7%94%A8%E9%80%94"><span class="toc-text">反射在以后的用途</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue2"><span class="toc-text">Vue2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-text">环境准备</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-text">创建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE"><span class="toc-text">跨域访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-text">Vue项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue%E7%BB%84%E4%BB%B6"><span class="toc-text">Vue组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E7%BA%A6%E5%AE%9A%E2%80%94%E2%80%94options"><span class="toc-text">Vue约定——options</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue%E7%BB%91%E5%AE%9A"><span class="toc-text">Vue绑定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E6%96%87%E6%9C%AC"><span class="toc-text">绑定文本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%98%85vue%E6%A0%87%E7%AD%BE%E5%B1%9E%E6%80%A7%E7%BB%91%E5%AE%9A"><span class="toc-text">★vue标签属性绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%98%85vue%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A"><span class="toc-text">★vue事件绑定</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#this"><span class="toc-text">this</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%98%85%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A"><span class="toc-text">★双向绑定</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="toc-text">计算属性</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -989,442 +989,448 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="反射Reflect"><a href="#反射Reflect" class="headerlink" title="反射Reflect"></a>反射Reflect</h1><p><strong>反射机制是干什么的</strong>：</p>
+        <h1 id="Vue2"><a href="#Vue2" class="headerlink" title="Vue2"></a>Vue2</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Vue是一套用于构建用户界面的<strong>渐进式框架</strong>，与其它大型框架不同的是，Vue被设计为可以自底层向上逐层应用</p>
+<p>Vue的核心库只关注视图，不仅易于上手，还便于与第三方库或既有项目整合</p>
 <ul>
-<li>可以在类加载的时候去获取类的相关信息（属性、方法、实现的接口、继承的类）</li>
-<li>反射可以通过字节码的方式来创建实例</li>
-</ul>
-<p><strong>反射在以后开发中的作用</strong>：</p>
-<p>​		我们设计程序最终是要提高程序的执行效率，我们在开发一个模块的时候，要不停的去创建对象 <code>User user = new User();</code> 使用<strong>new</strong>关键字，会使得程序之间产生耦合，以后new关键字使用多了，耦合就会变高，程序的执行效率就会很差</p>
-<p>​		这个时候我们能不能换一种方式去创建实例，尽量避免使用new关键字，反射机制就可以在<strong>不使用</strong>new的情况下去创建实例</p>
-<p>​		反射是各大java框架的<strong>底层</strong>：框架就是帮助程序解耦，提高程序的执行效率，提高开发人员的开发效率</p>
-<p>spring  框架：容器</p>
-<ul>
-<li>通过java语言中的反射机制可以操作字节码文件</li>
-<li>通过反射机制可以操作代码片段</li>
-<li><code>java.lang.reflect</code></li>
-</ul>
-<p><strong>什么是反射</strong>：</p>
-<p>​		反射是java中比较偏底层的一种机制，通过反射可以在类加载时去获取类相关的信息</p>
-<h2 id="如何去获取一个类的字节码对象（Class）"><a href="#如何去获取一个类的字节码对象（Class）" class="headerlink" title="如何去获取一个类的字节码对象（Class）"></a>如何去获取一个类的字节码对象（Class）</h2><p>​	<code>对象.getClass()</code></p>
-<p>​	<code>类.class属性</code></p>
-<p>​	<code>Class.forName(&quot;全类名&quot;)</code></p>
-<ul>
-<li><p><strong><code>java.lang.Class：</code></strong> </p>
-<p>代表整个字节码，代表一个类型，代表整个<strong>类</strong></p>
+<li><p>VUE是一款由<code>数据驱动视图</code>的前端框架，它基于MVVM(Model View View Model)模式,实现<strong>数据与视图的双向绑定</strong></p>
 </li>
-<li><p><strong><code>java.lang.reflect.Method</code>：</strong></p>
-<p>代表字节码中的方法字节码，代表类中的<strong>方法</strong></p>
-</li>
-<li><p><strong><code>java.lang.reflect.Constructor：</code></strong></p>
-<p>代表字节码中的<strong>构造方法</strong>字节码，代表类中的构造方法</p>
-</li>
-<li><p><strong><code>java.lang.reflect.Field：</code></strong></p>
-<p>代表字节码中的<strong>属性</strong>字节码，代表类中的成员变量（静态变量+实例变量）</p>
+<li><p>VUE是渐进式框架，VUE提供了一个核心库，用于渲染视图，它占空间小，能完成VUE中的常规基础操作</p>
 </li>
 </ul>
-<h2 id="获取类中的属性"><a href="#获取类中的属性" class="headerlink" title="获取类中的属性"></a>获取类中的属性</h2><h3 id="获取类中公共的属性"><a href="#获取类中公共的属性" class="headerlink" title="获取类中公共的属性"></a>获取类中公共的属性</h3><p><code>getField()</code></p>
-<pre><code class="java">//获取字节码对象
- Class stuClass = Class.forName(&quot;com.os467.pojo.Student&quot;);
-
- //getField()这个方法只能去获取公共的属性
- Field address = stuClass.getField(&quot;address&quot;);
-
- System.out.println(address);
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>启动<strong>powershell</strong>，安装vue脚手架</p>
+<pre><code class="shell">npm install -g @vue/cli
 </code></pre>
-<h3 id="获取类中所有的属性"><a href="#获取类中所有的属性" class="headerlink" title="获取类中所有的属性"></a>获取类中所有的属性</h3><p><code>getDeclaredField()</code></p>
-<pre><code class="java">//getDeclaredField()这个方法可以去获取一个类中所有的属性
-Field id = stuClass.getDeclaredField(&quot;id&quot;);
-
-System.out.println(id);
+<p>创建一个空文件夹作为项目工程目录</p>
+<p><strong>当前目录下启动cmd</strong>，打开vue工程的图形管理界面</p>
+<pre><code class="basic">vue ui
 </code></pre>
-<p><code>getDeclaredFields()</code></p>
-<pre><code class="java">//获取一个类中所有属性，封装成字节码数组
-Field[] declaredFields = stuClass.getDeclaredFields();
+<p>如果未打开浏览器，访问：<code>http://localhost:8000/project/select</code> 查看图形界面</p>
+<h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><p>包管理器选用npm，选择手动配置项目，添加功能<code>Router</code>和<code>Vuex</code></p>
+<p>vue版本改成2.x，Lint错误集点选择第一项即可</p>
+<blockquote>
+<p>使用此向导创建的vue工程自带git功能</p>
+</blockquote>
+<p><strong>安装vue开发者工具devtools</strong></p>
+<p>开发工具下载：<a target="_blank" rel="noopener" href="https://devtools.vuejs.org/guide/installation.html">https://devtools.vuejs.org/guide/installation.html</a></p>
+<p>在项目目录下启动cmd，输入<code>npm run serve</code>，启动前端服务器</p>
+<p>官网配置信息参考：<a target="_blank" rel="noopener" href="https://webpack.js.org/configuration/dev-server/">https://webpack.js.org/configuration/dev-server/</a></p>
+<p><strong>修改服务端口</strong></p>
+<p>在vue.config.js文件下添加配置</p>
+<pre><code class="js">/*引入vue配置*/
+const &#123; defineConfig &#125; = require(&#39;@vue/cli-service&#39;)
+module.exports = defineConfig(&#123;
+  transpileDependencies: true,
+  devServer: &#123;
+    port: 7070
+  &#125;
+&#125;)
 </code></pre>
-<p><strong>获取全类名</strong></p>
-<pre><code class="java">String name = stuClass.getName();
-</code></pre>
-<p><strong>获取简类名</strong></p>
-<pre><code class="java">String simpleName = stuClass.getSimpleName();
-</code></pre>
-<p><strong>获取属性的类型</strong></p>
-<p><code>declaredField.getType()</code></p>
-<p><strong>获取属性的修饰符</strong></p>
-<pre><code class="java">//获取属性的修饰符代号
-int modifiers = declaredField.getModifiers();
-
-//将代号转成修饰符字符串
-String string = Modifier.toSring(modifiers);
-
-System.out.println(string);
-</code></pre>
-<p>在学习反射时，获取类的<strong>信息</strong>都是通过<strong>get方法</strong>去获取的</p>
-<h2 id="获取类中的方法"><a href="#获取类中的方法" class="headerlink" title="获取类中的方法"></a><strong>获取类中的方法</strong></h2><p>由于java类中的方法支持重载，所以在调用<code>getMethod(方法名称,参数类型)</code>方法时需要将方法的<strong>参数类型</strong>传入，不传入则默认获取<strong>无参</strong>的方法</p>
-<h3 id="获取类中公有的方法"><a href="#获取类中公有的方法" class="headerlink" title="获取类中公有的方法"></a>获取类中公有的方法</h3><pre><code class="java">public class ReflectDemo03 &#123;
-
-    public static void main(String[] args) throws Exception &#123;
-
-        //获取字节码对象
-        Class stuClass = Student.class;
-
-        //获取一个类中的方法
-        Method setAge = stuClass.getMethod(&quot;setAge&quot;,Integer.class);
-
-        System.out.println(setAge);
-
-        Method study = stuClass.getMethod(&quot;study&quot;, int.class, double.class, String.class);
-
-        System.out.println(study);
-
+<h2 id="跨域访问"><a href="#跨域访问" class="headerlink" title="跨域访问"></a>跨域访问</h2><p><strong>在前端服务器中添加代理</strong></p>
+<p>防止跨域问题</p>
+<pre><code class="js">devServer: &#123;
+    proxy: &#123;
+        &#39;/api&#39;: &#123;
+          //目标服务器
+          target: &#39;http://localhost:8080&#39;,
+          changeOrigin: true,
+          /*去除路径中的 /api */
+          pathRewrite: &#123; &#39;^/api&#39;: &#39;&#39; &#125;,
+        &#125;,
     &#125;
 &#125;
 </code></pre>
-<h3 id="获取类中所有的方法"><a href="#获取类中所有的方法" class="headerlink" title="获取类中所有的方法"></a>获取类中所有的方法</h3><pre><code class="java">public class ReflectDemo03 &#123;
-
-    public static void main(String[] args) throws Exception &#123;
-
-        //获取字节码对象
-        Class stuClass = Student.class;
-
-        //获取一个类中所有的方法
-        Method[] declaredMethods = stuClass.getDeclaredMethods();
-
-        for (Method declaredMethod : declaredMethods) &#123;
-
-            System.out.println(declaredMethod);
-
-        &#125;
-
-    &#125;
-&#125;
-</code></pre>
-<p><strong>其它的方法</strong></p>
-<pre><code class="java">for (Method method : declaredMethods) &#123;
-
-    //获取方法名称
-    System.out.println(&quot;方法名称&quot;+method.getName());
-
-    //获取方法返回值类型
-    System.out.println(&quot;返回值类型&quot;+method.getReturnType().getSimpleName());
-
-    //获取方法的参数
-    for (Class&lt;?&gt; parameterType : method.getParameterTypes()) &#123;
-
-        System.out.println(&quot;方法的参数类型&quot;+parameterType);
-
-
-    &#125;
-
-    //获取修饰符
-    int modifiers = method.getModifiers();
-
-    //将修饰符代号转成字符串
-    String s = Modifier.toString(modifiers);
-
-    System.out.println(&quot;修饰符&quot;+s);
-
-&#125;
-</code></pre>
-<h3 id="获取所有的构造"><a href="#获取所有的构造" class="headerlink" title="获取所有的构造"></a>获取所有的构造</h3><pre><code class="java">public static void main(String[] args) throws Exception &#123;
-
-
-    //获取字节码对象
-    Class aClass = Class.forName(&quot;com.os467.pojo.Student&quot;);
-
-    //获取所有的构造
-    Constructor[] declaredConstructors = aClass.getDeclaredConstructors();
-
-    //遍历数组
-    for (Constructor declaredConstructor : declaredConstructors) &#123;
-
-        System.out.println(declaredConstructor);
-
-    &#125;
-
-&#125;
-</code></pre>
-<h2 id="反射工具类ReflectUtils"><a href="#反射工具类ReflectUtils" class="headerlink" title="反射工具类ReflectUtils"></a>反射工具类ReflectUtils</h2><p>写一个工具类，写一个静态方法，方法传入一个类的全类名，然后反编译（可以获取这个类中所有的信息）这个类工具类要适用于所有的类</p>
-<p><strong>根据反射获取类的信息</strong></p>
+<p>前端测试通过代理访问后端服务器：<code>http://localhost:7070/api/demo</code></p>
+<p>此时真实访问地址：localhost:8080&#x2F;demo</p>
+<blockquote>
+<p> <strong>原理：</strong></p>
+<p> <strong>浏览器端不允许跨域，但是服务器允许</strong>，在本地npm run serve等命令时实际上用了node运行了一个前端服务器，我们的请求先由浏览器发送给了<strong>前端服务器</strong>，然后通过前端服务器根据我们自己的<strong>proxy配置</strong>来将请求发送给后端服务器</p>
+</blockquote>
+<h2 id="Vue项目结构"><a href="#Vue项目结构" class="headerlink" title="Vue项目结构"></a>Vue项目结构</h2><p><strong>基本模块有：</strong></p>
 <ul>
-<li>1、根据流对象先读取配置文件中的全类名数据</li>
-<li>2、根据全类名创建字节码对象</li>
-<li>3、根据字节码对象去获取类的信息，完成类的反编译</li>
+<li><strong>assets</strong>   静态资源</li>
+<li><strong>components</strong>  可重用组件</li>
+<li><strong>router</strong>  路由</li>
+<li><strong>store</strong>  数据共享</li>
+<li><strong>views</strong>  视图组件</li>
 </ul>
-<pre><code class="java">package com.os467.utils;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.Properties;
-
-/**
- * 反编译工具类
- */
-public class ReflectUtils &#123;
-
-    //构造私有化
-    private ReflectUtils()&#123;
-
-    &#125;
-
-    /**
-     * 根据反射获取类的信息
-     * 1、根据流对象先读取配置文件中的全类名数据
-     * 2、根据全类名创建字节码对象
-     * 3、根据字节码对象去获取类的信息，完成类的反编译
-     * @return
-     */
-    public static String getTypeMessageByReflect()&#123;
-
-        //用于字符串的追加,效率要比String高
-        StringBuilder stringBuilder = new StringBuilder();
-
-        try &#123;
-
-            //创建流对象
-            FileReader fileReader = new FileReader(&quot;className.properties&quot;);
-
-            //创建集合对象
-            Properties properties = new Properties();
-
-            //将配置文件中的数据装载到集合里面
-            properties.load(fileReader);
-
-            //根据全类名创建字节码对象
-            Class aClass = Class.forName(properties.getProperty(&quot;className&quot;));
-
-            stringBuilder.append(&quot;public class &quot;);
-            stringBuilder.append(aClass.getSimpleName()+&quot; &#123; \n&quot;);
-            //获取类中所有的属性
-            Field[] declaredFields = aClass.getDeclaredFields();
-
-            for (Field declaredField : declaredFields) &#123;
-
-                stringBuilder.append(&quot;\n\t&quot;);
-
-                //获取属性的修饰符
-                int modifiers = declaredField.getModifiers();
-
-                //转成修饰符字符串
-                String s = Modifier.toString(modifiers);
-
-                //获取属性类型
-                String simpleName = declaredField.getType().getSimpleName();
-
-                //获取属性的名称
-                String name = declaredField.getName();
-
-                stringBuilder.append(s+&quot; &quot;+simpleName+&quot; &quot;+name+&quot;;&quot;);
-                stringBuilder.append(&quot;\n&quot;);
-
-            &#125;
-
-            //获取类的所有构造
-            Constructor[] declaredConstructors = aClass.getDeclaredConstructors();
-
-            //遍历数组
-            for (Constructor declaredConstructor : declaredConstructors) &#123;
-
-                stringBuilder.append(&quot;\n\t&quot;);
-
-                //获取构造的修饰符
-                int modifiers = declaredConstructor.getModifiers();
-
-                //转成修饰符字符串
-                String s = Modifier.toString(modifiers);
-
-                //获取构造名称
-                String name = aClass.getSimpleName();
-
-                stringBuilder.append(s + &quot; &quot; + name + &quot;(&quot;);
-
-                //获取参数列表
-                Class[] parameterTypes = declaredConstructor.getParameterTypes();
-
-                //遍历参数列表
-                for (Class parameterType : parameterTypes) &#123;
-
-                    //获取参数名
-                    stringBuilder.append(parameterType.getSimpleName()+&quot;,&quot;);
-
-                &#125;
-
-                //判断有参的还是无参的
-                if (parameterTypes.length &gt; 0)&#123;
-
-                    //删除具体下标下面的字符
-                    stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-
-                &#125;
-
-                stringBuilder.append(&quot;) &#123;&#125;&quot;);
-
-                stringBuilder.append(&quot;\n&quot;);
-
-                //获取所有的普通方法
-                Method[] declaredMethods = aClass.getDeclaredMethods();
-
-                //遍历数组
-                for (Method declaredMethod : declaredMethods) &#123;
-
-                    stringBuilder.append(&quot;\n\t&quot;);
-
-                    //获取方法的修饰符
-                    int modifiers1 = declaredMethod.getModifiers();
-
-                    //转成修饰符字符串
-                    String s1 = Modifier.toString(modifiers1);
-
-                    //获取返回值类型
-                    String simpleName = declaredMethod.getReturnType().getSimpleName();
-
-                    stringBuilder.append(s1 + &quot; &quot; +simpleName + &quot; &quot; + declaredMethod.getName()+&quot;(&quot;);
-
-                    //获取普通方法的参数列表
-                    Class[] parameterTypes1 = declaredMethod.getParameterTypes();
-
-                    //遍历参数
-                    for (Class parameterType : parameterTypes1) &#123;
-
-                        stringBuilder.append(parameterType.getSimpleName()+&quot;,&quot;);
-
-                        if (parameterTypes.length &gt; 0)&#123;
-
-                            //删除最后一个逗号
-                            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-
-                        &#125;
-
-                    &#125;
-                    stringBuilder.append(&quot;)&#123;&#125;&quot;);
-
-                    stringBuilder.append(&quot;\n&quot;);
-
-                &#125;
-
-            &#125;
-
-            stringBuilder.append(&quot;\n&#125;&quot;);
-
-        &#125; catch (Exception e) &#123;
-            e.printStackTrace();
-        &#125;
-
-
-        return stringBuilder.toString();
-    &#125;
-
-
-&#125;
-</code></pre>
-<p><strong>反射</strong></p>
+<p>可能还会有的模块：</p>
 <ul>
-<li>通过反射机制访问对象的某个属性</li>
-<li>通过反射机制调用对象的某个方法</li>
-<li>通过反射机制调用某个构造方法实例化对象</li>
-<li>通过反射机制获取父类及父类型接口</li>
+<li><p><strong>api</strong> 负责和后端api交互，发送fetch，xhr<strong>请求</strong>，接收<strong>响应</strong>等</p>
+</li>
+<li><p><strong>plugins</strong>  插件</p>
+</li>
 </ul>
-<p>获取父类</p>
-<pre><code class="java">Class superclass = aClass.getSuperclass();
+<h2 id="Vue组件"><a href="#Vue组件" class="headerlink" title="Vue组件"></a>Vue组件</h2><p>vue组件一般都以<code>.vue</code>结尾</p>
+<p>每个组件一般由三个部分组成</p>
+<pre><code class="html">&lt;template&gt;&lt;/template&gt;
+
+&lt;script&gt;&lt;/script&gt;
+
+&lt;style&gt;&lt;/style&gt;
 </code></pre>
-<p>获取实现的接口</p>
-<pre><code class="java">Class[] interfaces = aClass.getInterfaces();
+<ul>
+<li>template 模板部分，由它生成html代码</li>
+<li>script 代码部分，控制模块的数据来源和行为</li>
+<li>style 样式部分</li>
+</ul>
+<p><strong>App.vue</strong></p>
+<p>vue的最顶层组件</p>
+<p>app.vue是主组件，是页面入口文件，是vue页面资源的<strong>首加载项</strong></p>
+<p>所有的页面<strong>都是在app.vue中进行切换的</strong></p>
+<p>可以理解为<strong>所有的路由都是app.vue的子组件</strong></p>
+<blockquote>
+<p>app.vue中不但可以当做是网站首页，也可以写所有页面中<strong>公共需要的动画或者样式</strong>，不在上面写代码也可以</p>
+</blockquote>
+<p>我们也可以改写此组件，可以发现实时更新到了浏览器中</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;h1&gt;Hello,world&lt;/h1&gt;
+&lt;/template&gt;
+
+&lt;script&gt;&lt;/script&gt;
 </code></pre>
-<h2 id="如何通过反射机制来创建一个类的实例"><a href="#如何通过反射机制来创建一个类的实例" class="headerlink" title="如何通过反射机制来创建一个类的实例"></a>如何通过反射机制来创建一个类的实例</h2><p><strong>无参构造实例</strong></p>
-<p><strong><code>newInstance()</code></strong></p>
-<pre><code class="java"> //获取字节码对象
-Class aClass = Student.class;
+<p>我们可以通过JavaScript动态获取后端数据来渲染到模板上</p>
+<h3 id="Vue约定——options"><a href="#Vue约定——options" class="headerlink" title="Vue约定——options"></a>Vue约定——options</h3><p>在Vue框架中，所有的JavaScript代码都需要导出一个<strong>options对象</strong></p>
+<p>options对象内部可以带有data属性，用于返回数据</p>
+<ul>
+<li><code>&#123;&#123;msg&#125;&#125;</code>  两个大括号嵌套用于获取<strong>data属性</strong>中的数据</li>
+</ul>
+<pre><code class="vue">&lt;template&gt;
+  &lt;h1&gt;&#123;&#123;msg&#125;&#125;&lt;/h1&gt;
+&lt;/template&gt;
 
-//如何通过反射机制来创建一个类的实例
-//默认情况下调用的是无参构造
-Object o = aClass.newInstance();
+&lt;script&gt;
+const options = &#123;
+  data: function()&#123;
+    return &#123;msg:&quot;Hello Vue!&quot;&#125;;
+  &#125;
+&#125;;
 
-if (o instanceof Student)&#123;
+export default options;
 
-    Student student = (Student)o;
-
-    System.out.println(student);
-
-&#125;
+&lt;/script&gt;
 </code></pre>
-<p><strong>有参构造实例</strong></p>
-<p><code>getDeclaredConstructor()</code>	不传参数就是获取无参构造实例</p>
-<pre><code class="java">public static void main(String[] args) throws Exception &#123;
+<p>通过代码我们可以发现，vue通过main.js来调用app.vue这个组件</p>
+<pre><code class="js">import Vue from &#39;vue&#39;
+import App from &#39;./App.vue&#39;
+import router from &#39;./router&#39;
+import store from &#39;./store&#39;
 
-    //创建字节码对象
-    Class aClass = User.class;
+Vue.config.productionTip = false
 
-    //获取构造字节码对象
-    Constructor constructor = aClass.getDeclaredConstructor(String.class,String.class);
+new Vue(&#123;
+  router,
+  store,
+  render: h =&gt; h(App)
+&#125;).$mount(&#39;#app&#39;)
+</code></pre>
+<blockquote>
+<p>通过vue提供的<code>h</code>函数来解析app.vue里面的内容，形成虚拟节点</p>
+<p>然后通过<code>$mount</code>函数整合到html中，这里通过id选择器绑定到原始页面index.html中去</p>
+</blockquote>
+<p>我们如果想替换原始App.vue组件，只需要修改import语句即可</p>
+<p>例如：<code>import App from &#39;./views/ExampleView1.vue&#39;</code></p>
+<h2 id="Vue绑定"><a href="#Vue绑定" class="headerlink" title="Vue绑定"></a>Vue绑定</h2><p>一般来说标签内容用 <code>&#123;&#123;&#125;&#125;</code>绑定</p>
+<p>标签属性内容用<code>:</code>绑定</p>
+<p>标签属性事件用<code>@</code>绑定</p>
+<p>表单属性一般才会使用双向绑定</p>
+<h4 id="绑定文本"><a href="#绑定文本" class="headerlink" title="绑定文本"></a>绑定文本</h4><p>template内只能有一个顶层根元素</p>
+<pre><code class="vue">&lt;!--这种写法是错误的--&gt;
+&lt;template&gt;
+    &lt;h1&gt;&#123;&#123;name&#125;&#125;&#123;&#123;age&#125;&#125;&lt;/h1&gt;
+&lt;/template&gt;
+&lt;!--这种写法是正确的--&gt;
+&lt;template&gt;
+    &lt;div&gt;
+        &lt;h1&gt;&#123;&#123;name&#125;&#125;&lt;/h1&gt;
+        &lt;h1&gt;&#123;&#123;age&#125;&#125;&lt;/h1&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
 
-    Object obj02 = constructor.newInstance(&quot;root&quot;, &quot;123456&quot;);
+&lt;script&gt;
+const options = &#123;
+  data: function()&#123;
+    return &#123;name:&quot;张三&quot;,age:20&#125;;
+  &#125;
+&#125;;
 
-    System.out.println(obj02);
+export default options;
+
+&lt;/script&gt;
+</code></pre>
+<h4 id="★vue标签属性绑定"><a href="#★vue标签属性绑定" class="headerlink" title="★vue标签属性绑定"></a>★vue标签属性绑定</h4><p>使用<strong>v-bind</strong>绑定标签属性</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;div&gt;
     
+    &lt;div&gt;&lt;input type=&quot;text&quot; v-bind:value=&quot;msg&quot;/&gt;&lt;/div&gt;
+    
+    &lt;div&gt;&lt;input type=&quot;date&quot; v-bind:value=&quot;date&quot;/&gt;&lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+const options = &#123;
+  data: function()&#123;
+    return &#123;
+            msg:&quot;Hello Vue!&quot;,
+            date:&quot;2022-10-1&quot;
+  &#125;;
+  &#125;
+&#125;;
+
+export default options;
+
+&lt;/script&gt;
+</code></pre>
+<blockquote>
+<p>由于v-bind经常被使用到因此也可以省略只保留 <strong>:value&#x3D;”xxx”</strong></p>
+</blockquote>
+<pre><code class="vue">&lt;div&gt;&lt;input type=&quot;text&quot; :value=&quot;age&quot;/&gt;&lt;/div&gt;
+</code></pre>
+<h4 id="★vue事件绑定"><a href="#★vue事件绑定" class="headerlink" title="★vue事件绑定"></a>★vue事件绑定</h4><p>提供一个<strong>methods</strong>属性，里面可以存放一些方法</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;div&gt;
+      &lt;input type=&quot;button&quot; value=&quot;点我&quot; v-on:click=&quot;m1&quot;/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+const options = &#123;
+  data: function()&#123;
+    return &#123;&#125;;
+  &#125;,
+  methods : &#123;
+    m1: function()&#123;
+      alert(&quot;m1&quot;);
+    &#125;,
+    /* 可以省略function简写 */
+    m2() &#123;
+      alert(&quot;m2&quot;);
+    &#125;
+  &#125;
+&#125;;
+
+export default options;
+
+&lt;/script&gt;
+</code></pre>
+<blockquote>
+<p><strong>v-on</strong>也有简写模式 例如可以改成 <strong>@click&#x3D;”m1”</strong></p>
+</blockquote>
+<h5 id="this"><a href="#this" class="headerlink" title="this"></a>this</h5><p><strong>数字加减操作</strong></p>
+<p>在函数中的this代表返回的data属性</p>
+<p>如果要在methods中操作data中某个属性的值就需要用this来引用这个属性</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;div&gt;
+      &lt;input type=&quot;button&quot; value=&quot;加1&quot; @click=&quot;m1&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;input type=&quot;button&quot; value=&quot;减1&quot; @click=&quot;m2&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div&gt;&#123;&#123;count&#125;&#125;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+const options = &#123;
+  data: function()&#123;
+    return &#123;count: 0&#125;;
+  &#125;,
+  methods : &#123;
+    m1()&#123;
+      this.count ++;
+    &#125;,
+    m2() &#123;
+      this.count --;
+    &#125;
+  &#125;
+&#125;;
+
+export default options;
+
+&lt;/script&gt;
+</code></pre>
+<h4 id="★双向绑定"><a href="#★双向绑定" class="headerlink" title="★双向绑定"></a>★双向绑定</h4><p>原来我们只是将js中的数据绑定到了标签属性上，但是用户输入的属性并不会绑定到js的属性上，因此我们利用双向绑定来实现用户输入数据绑定到js</p>
+<pre><code class="vue">&lt;template&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+         &lt;label for=&quot;&quot;&gt;请输入姓名&lt;/label&gt;
+         &lt;input type=&quot;text&quot; v-model=&quot;name&quot;/&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;label for=&quot;&quot;&gt;请输入年龄&lt;/label&gt;
+        &lt;input type=&quot;text&quot; v-model=&quot;age&quot;/&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+const options = &#123;
+  data: function()&#123;
+    return &#123;
+      name:&quot;张三&quot;,
+      age:20
+    &#125;;
+  &#125;,
+  methods : &#123;&#125;
+&#125;;
+
+export default options;
+
+&lt;/script&gt;
+</code></pre>
+<p>在浏览器中修改数据，发现调试工具中js中的数据也改变了</p>
+<blockquote>
+<p> 利用vue调试工具来查看js中数据的变更</p>
+</blockquote>
+<p><strong>单选框</strong></p>
+<pre><code class="vue">&lt;template&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+        &lt;label for=&quot;&quot;&gt;请选择性别&lt;/label&gt;
+        男 &lt;input type=&quot;radio&quot; value=&quot;男&quot; v-model=&quot;sex&quot;/&gt;
+        女 &lt;input type=&quot;radio&quot; value=&quot;女&quot; v-model=&quot;sex&quot;/&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+const options = &#123;
+  data: function()&#123;
+    return &#123;
+      sex:&#39;男&#39;
+    &#125;;
+  &#125;,
+  methods : &#123;&#125;
+&#125;;
+
+export default options;
+
+&lt;/script&gt;
+</code></pre>
+<p><strong>多选框</strong></p>
+<p>此时js中的数据用数组存储</p>
+<pre><code class="vue">&lt;template&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+        &lt;label for=&quot;&quot;&gt;请选择爱好&lt;/label&gt;
+        游泳 &lt;input type=&quot;checkbox&quot; value=&quot;游泳&quot; v-model=&quot;hobby&quot;/&gt;
+        跳舞 &lt;input type=&quot;checkbox&quot; value=&quot;跳舞&quot; v-model=&quot;hobby&quot;/&gt;
+        打篮球 &lt;input type=&quot;checkbox&quot; value=&quot;打篮球&quot; v-model=&quot;hobby&quot;/&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+const options = &#123;
+  data: function()&#123;
+    return &#123;
+      hobby: []
+    &#125;;
+  &#125;,
+  methods : &#123;&#125;
+&#125;;
+
+export default options;
+
+&lt;/script&gt;
+</code></pre>
+<p><strong>下拉框</strong></p>
+<pre><code class="vue">&lt;template&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+        &lt;label for=&quot;&quot;&gt;请选择你的专业&lt;/label&gt;
+        &lt;select v-model=&quot;subject&quot;&gt;
+          &lt;option value=&quot;计科&quot;&gt;计科&lt;/option&gt;
+          &lt;option value=&quot;软件&quot;&gt;软件&lt;/option&gt;
+          &lt;option value=&quot;物联网&quot;&gt;物联网&lt;/option&gt;
+          &lt;option value=&quot;信息安全&quot;&gt;信息安全&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+const options = &#123;
+  data: function()&#123;
+    return &#123;
+      subject: []
+    &#125;;
+  &#125;,
+  methods : &#123;&#125;
+&#125;;
+
+export default options;
+
+&lt;/script&gt;
+</code></pre>
+<h3 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h3><p><strong>文本拼值</strong></p>
+<p>可以使用 + 将两个字符串拼接，当然我们也可以直接调用方法</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;div&gt;
+      &lt;h2&gt;&#123;&#123;fullName()&#125;&#125;&lt;/h2&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+const options = &#123;
+  data: function()&#123;
+    return &#123;
+      firstName:&quot;三&quot;,
+      lastName:&quot;张&quot;
+    &#125;;
+  &#125;,
+  methods : &#123;
+    fullName()&#123;
+      return this.lastName + this.firstName;
+    &#125;
+  &#125;
+&#125;;
+
+export default options;
+
+&lt;/script&gt;
+</code></pre>
+<blockquote>
+<p>这种方法的弊端是每次取值都要调用方法</p>
+</blockquote>
+<p><strong>这种方法不是最好的，我们可以使用计算属性来取值</strong></p>
+<ul>
+<li>写法和methods类似，当然这种方法就不用加括号了</li>
+<li>计算属性是具有缓存的，如果第一次使用了此属性，那么之后再用到便不会重复进入方法加载属性</li>
+</ul>
+<pre><code class="vue">&lt;template&gt;
+  &lt;div&gt;
+      &lt;h2&gt;&#123;&#123;fullName&#125;&#125;&lt;/h2&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import &#123; computed &#125; from &#39;vue&#39;;
+
+const options = &#123;
+  data: function()&#123;
+    return &#123;
+      firstName:&quot;三&quot;,
+      lastName:&quot;张&quot;
+    &#125;;
+  &#125;,
+  methods : &#123;
+  &#125;,
+  computed: &#123;
+    fullName() &#123;
+      return this.lastName + this.firstName;
+  &#125;
 &#125;
+&#125;;
+
+export default options;
+
+&lt;/script&gt;
 </code></pre>
-<h3 id="如何通过反射来给属性赋值"><a href="#如何通过反射来给属性赋值" class="headerlink" title="如何通过反射来给属性赋值"></a>如何通过反射来给属性赋值</h3><pre><code class="java">//获取属性，返回属性字节码对象
-Field addressFiled = aClass.getDeclaredField(&quot;address&quot;);
-
-//给属性进行一个赋值操作
-//Object obj 属性所在类的实例
-//Object value 具体要赋的值
-addressFiled.set(o,&quot;南京市&quot;);
-
-//通过反射获取属性具体的值
-System.out.println(addressFiled.get(o));
-
-System.out.println(o);
-</code></pre>
-<h3 id="如何通过反射获取属性值"><a href="#如何通过反射获取属性值" class="headerlink" title="如何通过反射获取属性值"></a>如何通过反射获取属性值</h3><p><strong>方法一</strong>：</p>
-<p>先打破封装，再通过set方法给属性赋值</p>
-<pre><code class="java">//获取属性字节码对象
-Field declaredFieldName = aClass.getDeclaredField(&quot;name&quot;);
-
-//打破封装
-declaredFieldName.setAccessible(true);
-
-//通过反射机制来创建一个类的实例
-//采用的无参构造创建的实例
-Object o = aClass.newInstance();
-
-//调用set方法给属性赋值
-declaredFieldName.set(o,&quot;张三&quot;);
-
-System.out.println(o);
-</code></pre>
-<p><strong>方法二</strong>：</p>
-<p>通过反射调用这个<strong>属性</strong>所对应的set方法给属性赋值</p>
-<h2 id="通过反射调用类中的方法"><a href="#通过反射调用类中的方法" class="headerlink" title="通过反射调用类中的方法"></a>通过反射调用类中的方法</h2><pre><code class="java">public static void main(String[] args) throws Exception &#123;
-
-    //获取字节码对象
-    Class userClass = User.class;
-
-    //获取方法字节码对象
-    Method declaredMethod = userClass.getDeclaredMethod(&quot;login&quot;,String.class,String.class);
-
-    //通过反射创建实例
-    Object o = userClass.newInstance();
-
-    //调用方法
-    //通过反射调用方法的方法
-    //Object var1 当前方法所在类的实例
-    //Object... var2 你需要传的参数
-    Object invoke = declaredMethod.invoke(o, &quot;zs001&quot;, &quot;123456&quot;);
-
-    System.out.println(invoke);
-
-
-&#125;
-</code></pre>
-<p><strong>注意</strong>：操作私有的方法需要打破封装</p>
-<pre><code class="java">declaredMethod.setAccessible(true);
-</code></pre>
-<h4 id="反射在以后的用途"><a href="#反射在以后的用途" class="headerlink" title="反射在以后的用途"></a>反射在以后的用途</h4><p>反射最重要的用途就是开发各种通用框架，比如在spring中，我们将所有的类Bean交给spring容器管理，无论是XML配置Bean还是注解配置，当我们从容器中获取Bean来依赖注入时，容器会读取配置，而配置中给的就是类的信息，spring根据这些信息，需要创建那些Bean，spring就动态的创建这些类，还有在struts2的struts.xml中配置action，也是通过反射调用的action</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1438,12 +1444,12 @@ System.out.println(o);
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Reflect</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">2.5k</span></p>
+    <p><span class="copy-title">文章标题:</span>Vue2</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">2.6k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-07-13, 14:40:18</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-05, 00:09:07</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/07/13/Reflect/" title="Reflect">https://os467.github.io/2022/07/13/Reflect/</a>
+    <p><span class="copy-title">发布时间:</span>2022-10-10, 22:15:06</p>
+    <p><span class="copy-title">最后更新:</span>2022-10-10, 22:15:44</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/10/10/Vue2/" title="Vue2">https://os467.github.io/2022/10/10/Vue2/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
