@@ -388,6 +388,8 @@ const musicList = [
 
 ]
 
+
+
 const indexMax = musicList.length -1;
 
 const musicDoc = document.getElementById("music-player-iframe");
@@ -407,8 +409,11 @@ var playPre = function(){
     musicDoc.setAttribute("src",musicList[index])
 }
 
+//随机初始值
+let ranIndex = Math.floor(Math.random() * indexMax);
+
 window.onload = function(){
-    document.getElementById("music-player-iframe").setAttribute("src",musicList[0]);
+    document.getElementById("music-player-iframe").setAttribute("src",musicList[ranIndex]);
     }
 
 </script>
