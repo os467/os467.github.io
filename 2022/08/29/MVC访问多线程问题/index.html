@@ -6,19 +6,17 @@
   <meta name="keywords" content="">
   <meta name="description" content="MVC多线程安全问题 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Synchronized底层剖析Synchronized俗称对象锁，是一种悲观锁实现，要了解Synchronized的底层机制我们就需要了解象头锁记录的作用，以及jvm是如何去实现不同锁，何时使用不同锁 简单来说，jvm在执行某个线程的时候必然是在某个对象上活跃的，Synchronized作为锁必然离不开某个特定的对象 jdk1.5之前的Synchronized实现在jdk1.5之前，Synchr">
-<meta property="og:type" content="article">
-<meta property="og:title" content="synchronized与锁机制">
-<meta property="og:url" content="https://os467.github.io/2022/11/05/synchronized%E4%B8%8E%E9%94%81%E6%9C%BA%E5%88%B6/index.html">
+<meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tly的博客">
+<meta property="og:url" content="https://os467.github.io/about/index.html">
 <meta property="og:site_name" content="Tly的博客">
-<meta property="og:description" content="Synchronized底层剖析Synchronized俗称对象锁，是一种悲观锁实现，要了解Synchronized的底层机制我们就需要了解象头锁记录的作用，以及jvm是如何去实现不同锁，何时使用不同锁 简单来说，jvm在执行某个线程的时候必然是在某个对象上活跃的，Synchronized作为锁必然离不开某个特定的对象 jdk1.5之前的Synchronized实现在jdk1.5之前，Synchr">
+<meta property="og:description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190412114613367.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbmd4aWFvMTk5Mw==,size_16,color_FFFFFF,t_70">
-<meta property="article:published_time" content="2022-11-05T15:46:13.000Z">
-<meta property="article:modified_time" content="2022-11-05T15:47:06.616Z">
+<meta property="article:published_time" content="2022-09-05T07:48:23.998Z">
+<meta property="article:modified_time" content="2022-09-05T07:48:23.998Z">
 <meta property="article:author" content="Os467">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190412114613367.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbmd4aWFvMTk5Mw==,size_16,color_FFFFFF,t_70">
 
 
 <link rel="icon" href="/img/headimg.jpg">
@@ -352,7 +350,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="53">
-<input type="hidden" id="yelog_site_word_count" value="225.9k">
+<input type="hidden" id="yelog_site_word_count" value="225.7k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
