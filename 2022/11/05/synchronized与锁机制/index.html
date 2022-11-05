@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>NodeJS | Tly的博客</title>
+  <title>synchronized与锁机制 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="NodeJS | Tly的博客">
+  <meta name="description" content="synchronized与锁机制 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Synchronized底层剖析Synchronized俗称对象锁，是一种悲观锁实现，要了解Synchronized的底层机制我们就需要了解象头锁记录的作用，以及jvm是如何去实现不同锁，何时使用不同锁 简单来说，jvm在执行某个线程的时候必然是在某个对象上活跃的，Synchronized作为锁必然离不开某个特定的对象 jdk1.5之前的Synchronized实现在jdk1.5之前，Synchr">
 <meta property="og:type" content="article">
@@ -963,9 +963,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-NodeJS" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-synchronized与锁机制" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">NodeJS</h1>
+        <h1 class="article-title">synchronized与锁机制</h1>
     
     <div class="article-meta">
         
@@ -975,7 +975,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="前端">前端</a>
+            <a  data-rel="底层学习">底层学习</a>
             
         </span>
         
@@ -983,12 +983,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-08 20:19:46'>2022-09-08 20:18</time>
+            发布时间 : <time class="date" title='最后更新: 2022-11-05 23:47:06'>2022-11-05 23:46</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2.1k</span>
+        <span>字数:2.2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1007,7 +1007,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NodeJS"><span class="toc-text">NodeJS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nvm"><span class="toc-text">nvm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npm"><span class="toc-text">npm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1"><span class="toc-text">搭建简单服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">启动服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E4%B8%AD%E7%9A%84API"><span class="toc-text">JS中的API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fetch-API"><span class="toc-text">Fetch API</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98"><span class="toc-text">跨域访问问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AF%BC%E5%85%A5%E5%92%8C%E5%AF%BC%E5%87%BA"><span class="toc-text">JS模块的导入和导出</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Synchronized%E5%BA%95%E5%B1%82%E5%89%96%E6%9E%90"><span class="toc-text">Synchronized底层剖析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jdk1-5%E4%B9%8B%E5%89%8D%E7%9A%84Synchronized%E5%AE%9E%E7%8E%B0"><span class="toc-text">jdk1.5之前的Synchronized实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jdk1-5%E4%B9%8B%E5%90%8E%E7%9A%84Synchronized%E5%AE%9E%E7%8E%B0"><span class="toc-text">jdk1.5之后的Synchronized实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CAS%E6%93%8D%E4%BD%9C"><span class="toc-text">CAS操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E9%94%81%E7%8A%B6%E6%80%81"><span class="toc-text">无锁状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%8F%E5%90%91%E9%94%81"><span class="toc-text">偏向锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81"><span class="toc-text">轻量级锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E6%97%8B%E9%94%81-x2F-%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81"><span class="toc-text">自旋锁&#x2F;重量级锁</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1023,334 +1023,123 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Node.js 就是<strong>运行在服务端的 JavaScript</strong>， 是一个基于 Chrome JavaScript 运行时建立的一个平台</p>
-<p>Node.js 是一个事件驱动 I&#x2F;O 服务端 JavaScript 环境，基于 Google 的 V8 引擎，V8 引擎执行 Javascript 的速度非常快，性能非常好</p>
-<p>前端开发的时候也需要有一个自己的服务器，这里我们选择<strong>node.js</strong></p>
-<h2 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h2><p>nvm即（node version manager），好处是方便切换node.js版本</p>
-<p>安装注意事项</p>
-<p><strong>设置国内镜像地址</strong></p>
-<pre><code class="basic">nvm node_mirror http://npm.taobao.org/mirrors/node/
-nvm npm_mirror https://npm.taobao.org/mirrors/npm/
-</code></pre>
-<p>查看可用node版本</p>
-<pre><code class="basic">nvm list available
-</code></pre>
-<p>切换node版本（需要管理员权限）</p>
-<pre><code class="basic">nvm use 16.15.0
-</code></pre>
-<h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><p>npm是js的包管理器，类似于java的maven，要确保它使用的是国内镜像</p>
-<p>检查镜像</p>
-<pre><code class="basic">npm get registry
-</code></pre>
-<p>如果返回的不是<code>https://registry.npm.taobao.org/</code>，需要做如下设置</p>
-<pre><code class="basic">npm config set registry https://registry.npm.taobao.org/
-</code></pre>
-<h2 id="搭建简单服务"><a href="#搭建简单服务" class="headerlink" title="搭建简单服务"></a>搭建简单服务</h2><p>新建一个项目文件夹，当前目录下cmd执行npm指令，添加一个依赖，这里使用express框架</p>
-<p>VScode打开控制台快捷键<strong>ctrl+shift+&#96;</strong></p>
-<pre><code class="basic">npm install express --save-dev
-</code></pre>
-<p><strong>package.json文件</strong></p>
-<p>类似于java中的pom.xml文件</p>
-<h3 id="启动服务器"><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h3><p>编写启动express服务器的代码，这里我们选用<strong>VSCode编辑器</strong>开发</p>
-<p>修改package.json文件，添加module支持import语法</p>
-<pre><code class="json">&#123;
-  &quot;type&quot;:&quot;module&quot;,
-  &quot;devDependencies&quot;: &#123;
-    &quot;express&quot;: &quot;^4.18.1&quot;
-  &#125;
-&#125;
-</code></pre>
+        <h1 id="Synchronized底层剖析"><a href="#Synchronized底层剖析" class="headerlink" title="Synchronized底层剖析"></a>Synchronized底层剖析</h1><p>Synchronized俗称对象锁，是一种<strong>悲观锁</strong>实现，要了解Synchronized的底层机制我们就需要了解象头锁记录的作用，以及jvm是如何去实现不同锁，何时使用不同锁</p>
+<p>简单来说，jvm在执行某个线程的时候必然是在某个对象上活跃的，Synchronized作为锁必然离不开某个特定的对象</p>
+<h2 id="jdk1-5之前的Synchronized实现"><a href="#jdk1-5之前的Synchronized实现" class="headerlink" title="jdk1.5之前的Synchronized实现"></a>jdk1.5之前的Synchronized实现</h2><p>在jdk1.5之前，Synchronized的实现十分简单，其底层是通过内部一个叫做<strong>Monitor的监视器</strong>实现的，当线程在某个对象上活跃的时候，如果遇到Synchronized关键字就会<strong>为这段代码块或是方法上锁</strong>，监视器检查到了需要上锁的位置就会调用<strong>底层操作系统的Mutex Lock（互斥锁）</strong>为需要上锁的资源加锁，<strong>此资源的访问就会形成互斥操作</strong></p>
 <ul>
-<li>其中的devDependencies是<code>npm install --save-dev</code>添加的</li>
+<li><blockquote>
+<p><strong>注意：</strong>同一时刻，只能有一个线程原有该锁</p>
+</blockquote>
+</li>
+<li><p>如果A线程访问某个需要上锁的资源，Monitor就会通过操作系统互斥锁上锁</p>
+</li>
+<li><p>当B线程访问此资源时<strong>就会尝试加锁，只有加锁成功了才能操作</strong>，<strong>如果不成功，则线程阻塞</strong></p>
+</li>
+<li><p>当A线程释放资源时就会唤醒在此锁上阻塞的所有线程，根据线程优先级获取到新锁（默认：先阻塞，先唤醒）</p>
+</li>
 </ul>
-<p><strong>编写main.js代码</strong></p>
-<pre><code class="js">import express from &#39;express&#39;
-const app = express();
-
-app.use(express.static(&#39;./&#39;));
-app.listen(7070);
-</code></pre>
-<p>执行js代码（运行前端服务器），<strong>在工程目录下启动</strong></p>
-<pre><code class="basic">node main.js
-</code></pre>
-<p><strong>指定静态资源</strong></p>
-<p>这里指定当前目录为静态资源目录</p>
-<pre><code class="js">app.use(express.static(&#39;./&#39;))
-</code></pre>
-<p>在当前目录创建一个index.html文件，进行前端服务器测试</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;学生列表&lt;/title&gt;
-&lt;/head&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;./style.css&quot;&gt;
-&lt;body&gt;
-    &lt;div class=&quot;title&quot;&gt;学生列表&lt;/div&gt;
-    &lt;div class=&quot;thead&quot;&gt;
-        &lt;div class=&quot;row bold&quot;&gt;
-            &lt;div class=&quot;col&quot;&gt;编号&lt;/div&gt;
-            &lt;div class=&quot;col&quot;&gt;姓名&lt;/div&gt;
-            &lt;div class=&quot;col&quot;&gt;性别&lt;/div&gt;
-            &lt;div class=&quot;col&quot;&gt;年龄&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;tbody&quot;&gt;
-
-    &lt;/div&gt;
-
-    &lt;template id=&quot;tp&quot;&gt;
-        &lt;div class=&quot;row&quot;&gt;
-            &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-            &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-            &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-            &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/template&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h3 id="JS中的API"><a href="#JS中的API" class="headerlink" title="JS中的API"></a>JS中的API</h3><p><strong>通过选择器查找单个元素</strong></p>
-<p>**querySelector(‘.col’)**通过类<code>col</code>查找单个元素</p>
-<pre><code class="js">document.querySelector(&#39;.col&#39;);
-</code></pre>
-<p><strong>通过选择器查找多个元素</strong></p>
-<p>**querySelectorAll(‘.col’)**通过类<code>col</code>查找到多个元素</p>
-<pre><code class="js">document.querySelector(&#39;.thead&#39;).querySelectorAll(&#39;.col&#39;);
-</code></pre>
-<p><strong>通过template标签生成学生列表</strong></p>
-<pre><code class="html">&lt;template id=&quot;tp&quot;&gt;
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-        &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-        &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-        &lt;div class=&quot;col&quot;&gt;xx&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
-</code></pre>
-<p><strong>js动态生成</strong></p>
-<p><strong>importNode函数</strong> 用于复制元素</p>
+<p>很显然，在jdk1.5之前的这种上锁机制效率很低，只要遇到资源被占用，线程就会被阻塞，并且通过<strong>操作系统实现互斥锁需要从用户态切换到核心态</strong>，<strong>十分耗费系统资源，会带来重大的性能损失</strong></p>
+<h2 id="jdk1-5之后的Synchronized实现"><a href="#jdk1-5之后的Synchronized实现" class="headerlink" title="jdk1.5之后的Synchronized实现"></a>jdk1.5之后的Synchronized实现</h2><p>jdk1.5之后的Synchronized实现是基于对象实现的</p>
+<p>我们知道Java对象中的<strong>markword</strong>有存放锁的信息，这段信息就是jvm识别在该对象上是否有线程占用的凭据</p>
 <ul>
-<li>参数1：元素变量</li>
-<li>参数2：是否复制子元素</li>
+<li>简单来说markword上的锁信息有以下几种状态<ul>
+<li><strong>无锁状态</strong></li>
+<li><strong>偏向锁</strong></li>
+<li><strong>轻量级锁</strong></li>
+<li><strong>重量级锁</strong></li>
 </ul>
-<pre><code class="js"> //假设这是后端传来的数据
-let array = [
-    &#123;id: 1,name: &quot;张三&quot;,sex: &quot;男&quot;, age:18&#125;,
-    &#123;id: 2,name: &quot;李四&quot;,sex: &quot;女&quot;, age:17&#125;
-];
-
-document.getElementById(&quot;tp&quot;);
-
-//获取模板的内容属性
-const row = tp.content;
-
-const [c1,c2,c3,c4] = row.querySelectorAll(&quot;.col&quot;);
-
-const tbody = document.querySelector(&#39;.tbody&#39;);
-
-for(const obj of array)&#123;
-    c1.textContent = obj.id;
-    c2.textContent = obj.name;
-    c3.textContent = obj.sex;
-    c4.textContent = obj.age;
-    //拷贝元素
-    const newNode = document.importNode(row,true);
-    //添加子元素
-    tbody.appendChild(newNode);
-&#125;
-</code></pre>
-<h3 id="Fetch-API"><a href="#Fetch-API" class="headerlink" title="Fetch API"></a>Fetch API</h3><p>Fetch API 可以用来获取远程数据，它有两种方式接收结果，同步方式和异步方式</p>
-<p><strong>格式：</strong></p>
-<pre><code class="js">fetch(url,options) //返回 Promise对象
-</code></pre>
-<p><strong>同步方式</strong></p>
-<pre><code class="js">const ans = await fetch(url,options)
-//后续代码
-</code></pre>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20190412114613367.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbmd4aWFvMTk5Mw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><a href="%5B(33%E6%9D%A1%E6%B6%88%E6%81%AF">参考博客</a> Java中的偏向锁，轻量级锁， 重量级锁解析_萧萧九宸的博客-CSDN博客_重量级锁](<a target="_blank" rel="noopener" href="https://blog.csdn.net/lengxiao1993/article/details/81568130">https://blog.csdn.net/lengxiao1993/article/details/81568130</a>))</p>
+<p><a href="%5B(33%E6%9D%A1%E6%B6%88%E6%81%AF">参考博客</a> 锁升级过程（偏向锁&#x2F;轻量级锁&#x2F;重量级锁）_Perkinl的博客-CSDN博客_锁升级过程](<a target="_blank" rel="noopener" href="https://blog.csdn.net/lp284558195/article/details/115547269?spm=1001.2101.3001.6661.1&amp;utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromBaidu~Rate-1-115547269-blog-120847886.pc_relevant_3mothn_strategy_and_data_recovery&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromBaidu~Rate-1-115547269-blog-120847886.pc_relevant_3mothn_strategy_and_data_recovery&amp;utm_relevant_index=1">https://blog.csdn.net/lp284558195/article/details/115547269?spm=1001.2101.3001.6661.1&amp;utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromBaidu~Rate-1-115547269-blog-120847886.pc_relevant_3mothn_strategy_and_data_recovery&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromBaidu~Rate-1-115547269-blog-120847886.pc_relevant_3mothn_strategy_and_data_recovery&amp;utm_relevant_index=1</a>))</p>
+<p><a href="%5B(33%E6%9D%A1%E6%B6%88%E6%81%AF">参考博客</a> Java—synchronized锁的优化_会飞的猪zhu的博客-CSDN博客_synchronized锁的优化](<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_58196614/article/details/126475182">https://blog.csdn.net/m0_58196614/article/details/126475182</a>))</p>
+<h4 id="CAS操作"><a href="#CAS操作" class="headerlink" title="CAS操作"></a>CAS操作</h4><p><strong>Compare And Swap</strong></p>
+<p><strong>比较后交换</strong>，CAS 是一种无锁的解决方案，是一种基于<strong>乐观锁</strong>的操作，解决多了线程并行情况下使用锁造成性能损耗</p>
+<p>CAS 原子操作包含三个操作数——内存位置（V）、预期原值（A）和新值(B)</p>
 <ul>
-<li>await 关键字必须在一个标记了async的function内来使用</li>
-<li>后续代码不会再结果返回前执行</li>
+<li><p>如果内存位置的值与<strong>预期原值一致，则将该值更新为新值</strong></p>
+</li>
+<li><p>否则，<strong>不做任何操作</strong></p>
+</li>
 </ul>
-<p>代码示例：</p>
-<pre><code class="js"> async function findStu()&#123;
-        //获得了一个响应对象
-        const response = await fetch(&#39;students.json&#39;);
-
-        //获取响应体，将json格式数据转化为js数组
-        const array = await response.json();
-
-        const tp = document.getElementById(&quot;tp&quot;);
-
-        //获取模板的内容属性
-        const row = tp.content;
-
-        const [c1,c2,c3,c4] = row.querySelectorAll(&quot;.col&quot;);
-
-        const tbody = document.querySelector(&#39;.tbody&#39;);
-
-        for(const obj of array)&#123;
-            c1.textContent = obj.id;
-            c2.textContent = obj.name;
-            c3.textContent = obj.sex;
-            c4.textContent = obj.age;
-            //拷贝元素
-            const newNode = document.importNode(row,true);
-            //添加子元素
-            tbody.appendChild(newNode);
-        &#125;
-    &#125;
-
-    findStu();
-</code></pre>
-<p><strong>异步方式</strong></p>
-<pre><code class="js">fetch(url,options).then(ans =&gt;&#123;...&#125;)
-//后续代码
-</code></pre>
+<h3 id="无锁状态"><a href="#无锁状态" class="headerlink" title="无锁状态"></a>无锁状态</h3><blockquote>
+<p> markword锁标识位01</p>
+</blockquote>
 <ul>
-<li>后续代码不必等待结果返回就可以执行</li>
+<li>即对象未被任何线程访问过，锁记录threadId为空</li>
 </ul>
-<p>代码示例：</p>
-<pre><code class="js">//获得了一个响应对象
-fetch(&#39;students.json&#39;).then(response =&gt; response.json()).then(array =&gt;&#123;
-
-    const tp = document.getElementById(&quot;tp&quot;);
-
-    //获取模板的内容属性
-    const row = tp.content;
-
-    const [c1,c2,c3,c4] = row.querySelectorAll(&quot;.col&quot;);
-
-    const tbody = document.querySelector(&#39;.tbody&#39;);
-
-    for(const obj of array)&#123;
-        c1.textContent = obj.id;
-        c2.textContent = obj.name;
-        c3.textContent = obj.sex;
-        c4.textContent = obj.age;
-        //拷贝元素
-        const newNode = document.importNode(row,true);
-        //添加子元素
-        tbody.appendChild(newNode);
-    &#125;
-
-&#125;);
-</code></pre>
-<h4 id="跨域访问问题"><a href="#跨域访问问题" class="headerlink" title="跨域访问问题"></a>跨域访问问题</h4><p><strong>Fetch访问后端资源，使用请求头的方式解决跨域问题</strong></p>
-<p>这里区别于之前访问前端服务器资源，会发生跨域访问问题</p>
-<p><code>只要协议、主机、端口号之一不同，就不同源</code></p>
+<h3 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h3><blockquote>
+<p>markword锁标识位01，偏向锁1</p>
+</blockquote>
+<p>jvm在开启4s后才会开启偏向锁模式，偏向锁模式下markword的ThreadId为0（匿名偏向状态），偏向锁是一种针对加锁操作的优化手段，在大多数情况下，锁不仅不存在多线程竞争，而且总是由同一线程多次获得，因此为了消除数据在无竞争情况下锁重入（CAS操作）的开销而引入偏向锁</p>
 <ul>
-<li>浏览器会对访问进行同源检查，如果<strong>同源则数据可用</strong></li>
-<li>一般会由前端服务器携带请求的来源信息<code>Origin:http://localhost:7070</code></li>
-<li>后端服务器接收到来源信息后进行判断是否通过检查，通过则返回一个响应信息<code>Access-Control-Allow-Origin:http://localhost:7070</code></li>
-</ul>
-<pre><code class="js">fetch(&quot;http://localhost:8080/student/list&quot;)
-</code></pre>
-<p>后端加上**@CrossOrigin注解**</p>
+<li><p>当线程A在一个对象上活跃时，先判断markword是否为无锁状态，偏向锁是否可用，如果无锁jvm会<strong>在此对象markword锁记录上记下线程A的threadId</strong>，此时我们可以说锁偏向线程A</p>
+</li>
+<li><p>此线程再次进入的时候只需要<strong>判断对象上的锁记录和线程threadId是否相同</strong>，相同则线程直接获取锁</p>
+</li>
+<li><p>如果有线程B访问此对象，则通过<strong>CAS操作</strong>竞争锁，如果竞争成功，则将对象头锁记录<strong>更新为线程B的threadId</strong>（<strong>偏向锁的再偏向机制</strong>）</p>
 <ul>
-<li>注明哪些请求来源通过检查</li>
+<li>如果竞争失败，则说明有已经有别的线程获取到锁了，当达到全局安全点时（在这个时间点上没有字节码正在执行），<strong>获取偏向锁的线程被挂起</strong>，<strong>偏向锁被撤销，然后升级为轻量级锁</strong>，然后被阻塞在安全点的线程继续往下执行同步代码块</li>
 </ul>
-<pre><code class="java">@RestController
-@RequestMapping(&quot;student&quot;)
-public class TestController &#123;
-
-    @Autowired
-    private StudentService studentService;
-
-    @RequestMapping(&quot;list&quot;)
-    @CrossOrigin(&quot;http://localhost:7070&quot;)
-    public List&lt;Student&gt; test()&#123;
-
-        List&lt;Student&gt; studentList = studentService.getStudentList();
-
-        return studentList;
-
-    &#125;
-
-&#125;
-</code></pre>
+</li>
+</ul>
 <blockquote>
-<p>同源检查时浏览器的行为，而且只针对fetch、xhr请求</p>
+<p>只有在其它线程通过CAS操作竞争偏向锁的时候，持有该锁的线程才会主动释放偏向锁，从而<strong>恢复到无锁状态</strong>，尝试锁升级</p>
+</blockquote>
+<h3 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h3><blockquote>
+<p> markword锁标识位00</p>
+</blockquote>
+<p>轻量级锁是相对于传统通过操作系统互斥量（互斥锁）而言的，它的本意就是在没有多线程竞争的前提下减少传统的重量级锁产生的性能消耗</p>
+<p><strong>更新LockRecord和MarkWord</strong></p>
 <ul>
-<li>如果是其它客户端，例如java http client，postman，它们是不会做同源检查的</li>
-<li>通过表单提交，浏览器直接输入url地址这些方式发送的请求，也不会做同源检查</li>
+<li><p>当线程进入同步代码块时，如果对象锁状态为<strong>无锁状态</strong>，偏向锁标识位为0，则jvm在当前线程栈帧中建立一个名为（Lock Record）的空间，用于存储该对象目前的markword拷贝</p>
+</li>
+<li><p>拷贝对象头中的Mark Word复制到锁记录中，将对象MarkWord更新为指向Lock Record的指针，并将Lock Record里的owner指针指向对象Mark Word（<strong>互指</strong>）</p>
+</li>
+<li><p>如果以上操作成功了，则此线程就拥有了该对象的锁（轻量级锁）</p>
+</li>
+<li><p>如果更新操作失败，则检查MarkWord是否指向该线程，<strong>如果指向该线程</strong>则说明该线程<strong>已经拥有轻量级锁</strong>，直接放行</p>
+</li>
+<li><p>如果不指向该线程则说明存在多个线程同时竞争该锁，轻量级锁就需要<strong>膨胀为重量级锁</strong>，而当前线程尝试使用<strong>自旋来获取锁</strong></p>
+<blockquote>
+<p>自旋是为了不让线程直接阻塞，采用循环的方式去获取</p>
+<p>如果竞争不激烈且锁占用时间非常短，则自旋锁能<strong>提高系统性能</strong></p>
+<p>如果自旋时间过长则会使得大量线程处于CAS重试状态，<strong>占用CPU资源</strong></p>
+<ul>
+<li>自适应自旋：通过自旋成功的次数调整，成功则次数增加</li>
 </ul>
 </blockquote>
-<hr>
-<p><strong>使用代理服务器解决跨域访问问题</strong></p>
-<p>一般通过<code>/api/</code>前缀来区分是<code>代理请求</code>还是<code>直接请求</code></p>
-<p>代理服务器中会通过<strong>JavaSript的Api</strong>向后端服务器发起请求获取数据</p>
+</li>
+</ul>
+<p>轻量级锁的解锁，在执行完毕同步代码块时，jvm会将Lock Record之前存储的markword锁记录与当前对象头中的<strong>锁记录比较</strong>，如果相同则将Lock Record中的锁记录替换回对象头，并且释放轻量级锁</p>
+<p>如果<strong>不同则表示存在竞争，锁升级为重量级锁</strong></p>
 <blockquote>
-<p>这里<strong>不使用浏览器的API直接访问tomcat服务器</strong>，相当于把请求全部发送给前端express服务器，通过<strong>前端服务器的jsAPI发起请求</strong>向后端服务器请求数据，这样就不会发生浏览器的跨域访问问题</p>
+<p>首先只有作为锁的对象处于未被锁定并且CAS成功或者锁被当前线程持有（可重入）时才可以进入同步块，否则都会进入inflate方法，注意在进入inflate方法将mark word中锁标志进行了修改</p>
 </blockquote>
-<p><strong>安装代理服务器插件</strong></p>
-<p>注意需要在工程目录下运行cmd</p>
-<pre><code class="basic">npm install http-proxy-middleware --save-dev
-</code></pre>
-<p>在express 服务器启动代码中加入</p>
-<pre><code class="js">import &#123;createProxyMiddleware&#125; from &#39;http-proxy-middleware&#39;
-
-app.use(&#39;/api&#39;,createProxyMiddleware(&#123;
-    target:&#39;http://localhost:8080&#39;,
-    //重写接口路由
-    pathRewrite:&#123;&#39;^/api&#39;:&#39;&#39;&#125;,
-    changeOrigin:true&#125;));
-
-//...
-</code></pre>
-<blockquote>
-<p>如果当实际需要请求的路径里面没有”&#x2F;api“时. 就需要 pathRewrite,用’’^&#x2F;api’’:’’, 把’&#x2F;api’去掉</p>
+<h3 id="自旋锁-x2F-重量级锁"><a href="#自旋锁-x2F-重量级锁" class="headerlink" title="自旋锁&#x2F;重量级锁"></a>自旋锁&#x2F;重量级锁</h3><blockquote>
+<p> markword锁标识位10</p>
 </blockquote>
-<h2 id="JS模块的导入和导出"><a href="#JS模块的导入和导出" class="headerlink" title="JS模块的导入和导出"></a>JS模块的导入和导出</h2><blockquote>
-<p>import必须遵循同源策略，src引用js的方式可以不同源</p>
-</blockquote>
-<p><strong>单个导出</strong></p>
-<p><code>export</code> 需要导出的数据</p>
-<pre><code class="js">//单个导出
-export const a = 10;
-export let b = 20;
-export function c()&#123;
-    alert(&quot;c&quot;);
-&#125;
-</code></pre>
-<p><strong>一齐导出</strong></p>
-<pre><code class="js">const a = 10;
-let b = 20;
-function c()&#123;
-    alert(&quot;c&quot;);
-&#125;
-
-//一齐导出
-export &#123;a,b,c&#125;
-</code></pre>
-<p><strong>导入</strong></p>
-<p>需要在script元素中添加type属性为<strong>module</strong></p>
-<p><code>import</code> 需要导入的数据 <code>from</code>  <code>&#39;js文件路径&#39;</code></p>
-<pre><code class="html">&lt;script type=&quot;module&quot;&gt;
-    import &#123;a,b,c&#125; from &#39;./myJS.js&#39;
-    alert(a);
-    alert(b);
-    c();
-&lt;/script&gt;
-</code></pre>
-<p><strong>导出默认</strong></p>
-<pre><code class="js">//带有default的只能出现一个
-export default b;
-
-//export default c; 例如这条如果也是default就会报错
-</code></pre>
-<p><strong>默认导入</strong></p>
-<pre><code class="js">//导入默认的名字可以随便起，这里的x其实就是b
-import x from &#39;./myJS.js&#39;
-</code></pre>
-<p><strong>整体导入</strong></p>
-<pre><code class="js">//需要用as给模块起名字
-import * as m from &#39;./myJS.js&#39;
-//使用m.c(); 可以调用模块中的函数
-</code></pre>
+<p>在轻量级锁膨胀为重量级锁前会<strong>尝试使用自旋锁</strong>，<strong>jdk1.7后默认开启</strong></p>
+<ul>
+<li><p>轻量级锁CAS抢占失败，线程将尝试自旋获取锁，如果次数过多则线程挂起进入<strong>阻塞</strong>，如果占用线程在<strong>短时间内释放锁</strong>，则阻塞线程被唤醒重新尝试抢占资源</p>
+</li>
+<li><p>如果多次获取自旋锁失败，<strong>同步锁将会升级为重量级锁</strong></p>
+</li>
+<li><p>未抢到锁的线程都会<strong>进入Monitor</strong>，之后会被阻塞在<strong>WaitSet</strong>中</p>
+</li>
+</ul>
+<p><strong>下面是一些例子</strong></p>
+<ul>
+<li><p>A先进入同步代码块，B随后进入，A执行完毕同步代码块，此时<strong>偏向锁属于A且闲置</strong>，B尝试获取偏向锁，A在<strong>安全点</strong>撤销偏向锁，B获取到偏向锁，此时<strong>偏向锁属于B</strong></p>
+</li>
+<li><p>A进入同步代码块，B也进入同步代码块，A先获取到偏向锁，此时A未执行完同步代码块，B尝试获取偏向锁，A达到<strong>安全点撤销偏向锁并升级锁为轻量级锁</strong>，此时B自旋尝试获取锁</p>
+<ul>
+<li>如果A短时间内执行完毕，则轻量级锁撤销为无锁状态，B重新获取到轻量级锁</li>
+<li>如果A长时间未执行完毕，则轻量级锁膨胀为重量级锁，B阻塞，直到重量级锁撤销，B重新获取轻量级锁</li>
+</ul>
+</li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1364,12 +1153,12 @@ import * as m from &#39;./myJS.js&#39;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>NodeJS</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">2.1k</span></p>
+    <p><span class="copy-title">文章标题:</span>synchronized与锁机制</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">2.2k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-09-08, 20:18:43</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-08, 20:19:46</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/09/08/NodeJS/" title="NodeJS">https://os467.github.io/2022/09/08/NodeJS/</a>
+    <p><span class="copy-title">发布时间:</span>2022-11-05, 23:46:13</p>
+    <p><span class="copy-title">最后更新:</span>2022-11-05, 23:47:06</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/11/05/synchronized%E4%B8%8E%E9%94%81%E6%9C%BA%E5%88%B6/" title="synchronized与锁机制">https://os467.github.io/2022/11/05/synchronized%E4%B8%8E%E9%94%81%E6%9C%BA%E5%88%B6/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
