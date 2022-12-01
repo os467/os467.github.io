@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>synchronized与锁机制 | Tly的博客</title>
+  <title>Ascii码加密编码 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="synchronized与锁机制 | Tly的博客">
+  <meta name="description" content="Ascii码加密编码 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Ascii码加密编码前言最近在做字符串工具类的时候发现可以封装下SHA256加密算法，但发现好像不太会用 突发奇想自己是不是也可以做一个简单的加密算法，相比于非对称加密，对称加密的规则还是比较好制定的。 由于每个字符都对应着一个Ascii码值(0 ~ 65535) ，因此对字符进行逻辑算术运算是很轻松的。 既然如此，我们可以想象一下，如果要保证信息不丢失，我们的密文只需要带有先前的信息进行加密并且">
 <meta property="og:type" content="article">
@@ -988,9 +988,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-synchronized与锁机制" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Ascii编码加密" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">synchronized与锁机制</h1>
+        <h1 class="article-title">Ascii码加密编码</h1>
     
     <div class="article-meta">
         
@@ -1000,7 +1000,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="底层学习">底层学习</a>
+            <a  data-rel="其它">其它</a>
             
         </span>
         
@@ -1008,12 +1008,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-11-05 23:54:36'>2022-11-05 23:46</time>
+            发布时间 : <time class="date" title='最后更新: 2022-12-01 15:03:28'>2022-12-01 15:02</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2k</span>
+        <span>字数:2.2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1032,7 +1032,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Synchronized%E5%BA%95%E5%B1%82%E5%89%96%E6%9E%90"><span class="toc-text">Synchronized底层剖析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jdk1-5%E4%B9%8B%E5%89%8D%E7%9A%84Synchronized%E5%AE%9E%E7%8E%B0"><span class="toc-text">jdk1.5之前的Synchronized实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jdk1-5%E4%B9%8B%E5%90%8E%E7%9A%84Synchronized%E5%AE%9E%E7%8E%B0"><span class="toc-text">jdk1.5之后的Synchronized实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CAS%E6%93%8D%E4%BD%9C"><span class="toc-text">CAS操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E9%94%81%E7%8A%B6%E6%80%81"><span class="toc-text">无锁状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%8F%E5%90%91%E9%94%81"><span class="toc-text">偏向锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81"><span class="toc-text">轻量级锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E6%97%8B%E9%94%81-x2F-%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81"><span class="toc-text">自旋锁&#x2F;重量级锁</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Ascii%E7%A0%81%E5%8A%A0%E5%AF%86%E7%BC%96%E7%A0%81"><span class="toc-text">Ascii码加密编码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1"><span class="toc-text">算法设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%AF%86"><span class="toc-text">解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%87%E5%85%A5%E5%AF%86%E7%A0%81"><span class="toc-text">织入密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">代码实现</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1048,123 +1048,217 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Synchronized底层剖析"><a href="#Synchronized底层剖析" class="headerlink" title="Synchronized底层剖析"></a>Synchronized底层剖析</h1><p>Synchronized俗称对象锁，是一种<strong>悲观锁</strong>实现，要了解Synchronized的底层机制我们就需要了解象头锁记录的作用，以及jvm是如何去实现不同锁，何时使用不同锁</p>
-<p>简单来说，jvm在执行某个线程的时候必然是在某个对象上活跃的，Synchronized作为锁必然离不开某个特定的对象</p>
-<h2 id="jdk1-5之前的Synchronized实现"><a href="#jdk1-5之前的Synchronized实现" class="headerlink" title="jdk1.5之前的Synchronized实现"></a>jdk1.5之前的Synchronized实现</h2><p>在jdk1.5之前，Synchronized的实现十分简单，其底层是通过内部一个叫做<strong>Monitor的监视器</strong>实现的，当线程在某个对象上活跃的时候，如果遇到Synchronized关键字就会<strong>为这段代码块或是方法上锁</strong>，监视器检查到了需要上锁的位置就会调用<strong>底层操作系统的Mutex Lock（互斥锁）</strong>为需要上锁的资源加锁，<strong>此资源的访问就会形成互斥操作</strong></p>
+        <h1 id="Ascii码加密编码"><a href="#Ascii码加密编码" class="headerlink" title="Ascii码加密编码"></a>Ascii码加密编码</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在做字符串工具类的时候发现可以封装下SHA256加密算法，但发现好像不太会用</p>
+<p>突发奇想自己是不是也可以做一个简单的加密算法，相比于非对称加密，对称加密的规则还是比较好制定的。</p>
+<p>由于每个字符都对应着一个Ascii码值(0 ~ 65535) ，因此对字符进行逻辑算术运算是很轻松的。</p>
+<p>既然如此，我们可以想象一下，如果要保证信息不丢失，我们的密文只需要带有先前的信息进行加密并且不造成信息损失即可。</p>
+<p>信息损失都有哪些？比如精度的丢失，多对一的映射关系等</p>
+<h2 id="算法设计"><a href="#算法设计" class="headerlink" title="算法设计"></a>算法设计</h2><p><strong>现在要解决的是如何设计算法</strong></p>
 <ul>
-<li><blockquote>
-<p><strong>注意：</strong>同一时刻，只能有一个线程原有该锁</p>
-</blockquote>
+<li><p>想象一下，平常我们的文件是否经常出现乱码的问题，那就是因为我们解码的算法有错误，或者是没有找到合适的密码进行解密</p>
 </li>
-<li><p>如果A线程访问某个需要上锁的资源，Monitor就会通过操作系统互斥锁上锁</p>
+<li><p>类比一下，我们可以这样设计算法，将当前的字符串进行遍历，每个字符都通过<strong>某个规则</strong>映射到ascii码表中的另一个字符，当我们需要解密时，只需要逆着这个规则反推，即可从加密后的乱码推回原来的明文了</p>
 </li>
-<li><p>当B线程访问此资源时<strong>就会尝试加锁，只有加锁成功了才能操作</strong>，<strong>如果不成功，则线程阻塞</strong></p>
+<li><p>那么接下来只需要制定规则即可</p>
 </li>
-<li><p>当A线程释放资源时就会唤醒在此锁上阻塞的所有线程，根据线程优先级获取到新锁（默认：先阻塞，先唤醒）</p>
+<li><p>我们希望加密的过程是<strong>动态的</strong>，即每一步加密<strong>都依赖于上一次加密的数据</strong>，这样的好处在于<strong>只要明文的内容中间有增删改都会对整体的加密效果产生影响</strong></p>
 </li>
-</ul>
-<p>很显然，在jdk1.5之前的这种上锁机制效率很低，只要遇到资源被占用，线程就会被阻塞，并且通过<strong>操作系统实现互斥锁需要从用户态切换到核心态</strong>，<strong>十分耗费系统资源，会带来重大的性能损失</strong></p>
-<h2 id="jdk1-5之后的Synchronized实现"><a href="#jdk1-5之后的Synchronized实现" class="headerlink" title="jdk1.5之后的Synchronized实现"></a>jdk1.5之后的Synchronized实现</h2><p>jdk1.5之后的Synchronized实现是基于对象实现的</p>
-<p>我们知道Java对象中的<strong>markword</strong>有存放锁的信息，这段信息就是jvm识别在该对象上是否有线程占用的凭据</p>
+<li><p>如何实现动态的加密？</p>
 <ul>
-<li>简单来说markword上的锁信息有以下几种状态<ul>
-<li><strong>无锁状态</strong></li>
-<li><strong>偏向锁</strong></li>
-<li><strong>轻量级锁</strong></li>
-<li><strong>重量级锁</strong></li>
-</ul>
+<li><p>其实也不难想，我们在第一次加密的时候使用原始数据对第一个字符进行加密，此时我们就拥有了一个经过算法加密后的字符</p>
 </li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20190412114613367.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbmd4aWFvMTk5Mw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lengxiao1993/article/details/81568130">参考博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lp284558195/article/details/115547269?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromBaidu~Rate-1-115547269-blog-120847886.pc_relevant_3mothn_strategy_and_data_recovery&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromBaidu~Rate-1-115547269-blog-120847886.pc_relevant_3mothn_strategy_and_data_recovery&utm_relevant_index=1">参考博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_58196614/article/details/126475182">参考博客</a></p>
-<h4 id="CAS操作"><a href="#CAS操作" class="headerlink" title="CAS操作"></a>CAS操作</h4><p><strong>Compare And Swap</strong></p>
-<p><strong>比较后交换</strong>，CAS 是一种无锁的解决方案，是一种基于<strong>乐观锁</strong>的操作，解决多了线程并行情况下使用锁造成性能损耗</p>
-<p>CAS 原子操作包含三个操作数——内存位置（V）、预期原值（A）和新值(B)</p>
-<ul>
-<li><p>如果内存位置的值与<strong>预期原值一致，则将该值更新为新值</strong></p>
-</li>
-<li><p>否则，<strong>不做任何操作</strong></p>
-</li>
-</ul>
-<h3 id="无锁状态"><a href="#无锁状态" class="headerlink" title="无锁状态"></a>无锁状态</h3><blockquote>
-<p> markword锁标识位01</p>
-</blockquote>
-<ul>
-<li>即对象未被任何线程访问过，锁记录threadId为空</li>
-</ul>
-<h3 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h3><blockquote>
-<p>markword锁标识位01，偏向锁1</p>
-</blockquote>
-<p>jvm在开启4s后才会开启偏向锁模式，偏向锁模式下markword的ThreadId为0（匿名偏向状态），偏向锁是一种针对加锁操作的优化手段，在大多数情况下，锁不仅不存在多线程竞争，而且总是由同一线程多次获得，因此为了消除数据在无竞争情况下锁重入（CAS操作）的开销而引入偏向锁</p>
-<ul>
-<li><p>当线程A在一个对象上活跃时，先判断markword是否为无锁状态，偏向锁是否可用，如果无锁jvm会<strong>在此对象markword锁记录上记下线程A的threadId</strong>，此时我们可以说锁偏向线程A</p>
-</li>
-<li><p>此线程再次进入的时候只需要<strong>判断对象上的锁记录和线程threadId是否相同</strong>，相同则线程直接获取锁</p>
-</li>
-<li><p>如果有线程B访问此对象，则通过<strong>CAS操作</strong>竞争锁，如果竞争成功，则将对象头锁记录<strong>更新为线程B的threadId</strong>（<strong>偏向锁的再偏向机制</strong>）</p>
-<ul>
-<li>如果竞争失败，则说明有已经有别的线程获取到锁了，当达到全局安全点时（在这个时间点上没有字节码正在执行），<strong>获取偏向锁的线程被挂起</strong>，<strong>偏向锁被撤销，然后升级为轻量级锁</strong>，然后被阻塞在安全点的线程继续往下执行同步代码块</li>
-</ul>
-</li>
-</ul>
+<li><p>加密第二个字符的时候我们就可以不使用原始数据了，为了实现动态加密，我们可以使用上一个<strong>已经被加密的字符</strong>作为<strong>本次字符加密的映射规则变量</strong></p>
 <blockquote>
-<p>只有在其它线程通过CAS操作竞争偏向锁的时候，持有该锁的线程才会主动释放偏向锁，从而<strong>恢复到无锁状态</strong>，尝试锁升级</p>
+<p><strong>映射规则变量：</strong> 我们的ascii码映射规则可以通过简单的基本运算对明码进行ascii码偏移，从而得到密码，而映射规则变量就作为改规则基本运算的变量使用</p>
 </blockquote>
-<h3 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h3><blockquote>
-<p> markword锁标识位00</p>
-</blockquote>
-<p>轻量级锁是相对于传统通过操作系统互斥量（互斥锁）而言的，它的本意就是在没有多线程竞争的前提下减少传统的重量级锁产生的性能消耗</p>
-<p><strong>更新LockRecord和MarkWord</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>因此我们可以设计出简单的流程</strong></p>
+<p>​	我们要加密的字符串为 java</p>
+<p>​	取第一个字符<code>j</code> 和最后一个 字符 <code>a</code>，让<code>j</code> (ascii 106) 在ascii码表上向<strong>右偏移</strong> <code>a对应ascii码</code> (ascii 97) 个位置</p>
+<p>​	此时我们我们得到新的密文所对应ascii码值应该为 106 + 97 &#x3D; 203，将此字符放在<code>j</code> 所对应的索引位置即可（可以新建一个数组来存放密文ascii值），此时我们继续加密第二个<code>a</code> ，<strong>为了使得逻辑具备复杂性</strong>，我们可以在这次加密使用<strong>左偏移</strong>，<code>a</code> 字符在ascii表上向左<code>203</code> 个位置，得到新字符ascii值 </p>
+<p><strong>溢出范围问题</strong></p>
+<p>​    此时我们发现了一个问题（ascii码的值只在0~65535间），这次左偏移明显会得到 93 - 203 &#x3D; -110 的负值，其实也不用担心，我们可以假想一下我们的ascii码存在于这样一条纸带上 … 0,1,2…65535,0,1,2….65535… ，这样不断循环纸带上即可将负数部分的映射关系转换为 -1 → 65535,-2 → 65534 ….，这样我们就得到了 -110 → 65535 + 1 - 110 &#x3D; 65426 对应ascii的字符，同理，在超出65535的部分我们也可以这样映射， 65536 → 1 ，65537 → 2</p>
+<p>解决完溢出问题后，我们就使用了第一个字符加密后的值作为<strong>新的映射规则变量</strong>成功加密了第二个字符<code>a</code></p>
+<p>接着我们加密<code>v</code>，然后加密<code>a</code></p>
+<p>此时我们得到了加密的密文ascii数组 <code>203 65430 12 85 </code>，我们可以使用第一轮加密的密文作为新的明文进行新一轮加密，多轮加密后复杂度就得到了提升</p>
+<p>3轮加密下的ascii值偏移</p>
 <ul>
-<li><p>当线程进入同步代码块时，如果对象锁状态为<strong>无锁状态</strong>，偏向锁标识位为0，则jvm在当前线程栈帧中建立一个名为（Lock Record）的空间，用于存储该对象目前的markword拷贝</p>
-</li>
-<li><p>拷贝对象头中的Mark Word复制到锁记录中，将对象MarkWord更新为指向Lock Record的指针，并将Lock Record里的owner指针指向对象Mark Word（<strong>互指</strong>）</p>
-</li>
-<li><p>如果以上操作成功了，则此线程就拥有了该对象的锁（轻量级锁）</p>
-</li>
-<li><p>如果更新操作失败，则检查MarkWord是否指向该线程，<strong>如果指向该线程</strong>则说明该线程<strong>已经拥有轻量级锁</strong>，直接放行</p>
-</li>
-<li><p>如果不指向该线程则说明存在多个线程同时竞争该锁，轻量级锁就需要<strong>膨胀为重量级锁</strong>，而当前线程尝试使用<strong>自旋来获取锁</strong></p>
+<li><code>203 65430 12 85 </code></li>
+<li><code>288 65142 65154 467</code> </li>
+<li><code>755 64387 64005 1998 </code></li>
+</ul>
+<p><code>java</code> 进行 加密后变为 <code>˳ ﮃ 洞 ߎ </code></p>
+<h2 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h2><p>解密就是一个逻辑的逆向过程，只要编码过程中没有出现信息损失，我们只要逆着逻辑来就能反推回原来的信息</p>
+<p>我们从密文最后一个位置的字符开始解密，判断之前此位置字符是左移还是右移过来的，我们通过倒数第二个字符就能知道偏移量是多少</p>
 <blockquote>
-<p>自旋是为了不让线程直接阻塞，采用循环的方式去获取</p>
-<p>如果竞争不激烈且锁占用时间非常短，则自旋锁能<strong>提高系统性能</strong></p>
-<p>如果自旋时间过长则会使得大量线程处于CAS重试状态，<strong>占用CPU资源</strong></p>
-<ul>
-<li>自适应自旋：通过自旋成功的次数调整，成功则次数增加</li>
-</ul>
+<p>由于是先加密完倒数第二个字符然后再加密倒数第一个字符，因此倒数第二个字符即为倒数第一个字符的偏移信息</p>
 </blockquote>
-</li>
-</ul>
-<p>轻量级锁的解锁，在执行完毕同步代码块时，jvm会将Lock Record之前存储的markword锁记录与当前对象头中的<strong>锁记录比较</strong>，如果相同则将Lock Record中的锁记录替换回对象头，并且释放轻量级锁</p>
-<p>如果<strong>不同则表示存在竞争，锁升级为重量级锁</strong></p>
+<p>逆向偏移后我们就解密了一次字符，然后再解密倒数第二个字符…依次解密到第一个字符，此时解密完的只是第一层密文，我们还需要逆推多次才能得到最初始的明文。</p>
+<h2 id="织入密码"><a href="#织入密码" class="headerlink" title="织入密码"></a>织入密码</h2><p>当然这种加密也仅仅只是一种动态编码的方法，并没有真正织入密码，其实织入密码的方法也很容易，我们将事先提供的密码明文经过编码后将密码编码值经过运算得到新的偏移量，从而实现加密处理</p>
 <blockquote>
-<p>首先只有作为锁的对象处于未被锁定并且CAS成功或者锁被当前线程持有（可重入）时才可以进入同步块，否则都会进入inflate方法，注意在进入inflate方法将mark word中锁标志进行了修改</p>
+<p>当然这种加密在理论上可能会存在撞库解析的风险</p>
 </blockquote>
-<h3 id="自旋锁-x2F-重量级锁"><a href="#自旋锁-x2F-重量级锁" class="headerlink" title="自旋锁&#x2F;重量级锁"></a>自旋锁&#x2F;重量级锁</h3><blockquote>
-<p> markword锁标识位10</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>基于字符串类型的加密</p>
+<blockquote>
+<p> 之后实现比特类型的加密</p>
 </blockquote>
-<p>在轻量级锁膨胀为重量级锁前会<strong>尝试使用自旋锁</strong>，<strong>jdk1.7后默认开启</strong></p>
-<ul>
-<li><p>轻量级锁CAS抢占失败，线程将尝试自旋获取锁，如果次数过多则线程挂起进入<strong>阻塞</strong>，如果占用线程在<strong>短时间内释放锁</strong>，则阻塞线程被唤醒重新尝试抢占资源</p>
-</li>
-<li><p>如果多次获取自旋锁失败，<strong>同步锁将会升级为重量级锁</strong></p>
-</li>
-<li><p>未抢到锁的线程都会<strong>进入Monitor</strong>，之后会被阻塞在<strong>WaitSet</strong>中</p>
-</li>
-</ul>
-<p><strong>下面是一些例子</strong></p>
-<ul>
-<li><p>A先进入同步代码块，B随后进入，A执行完毕同步代码块，此时<strong>偏向锁属于A且闲置</strong>，B尝试获取偏向锁，A在<strong>安全点</strong>撤销偏向锁，B获取到偏向锁，此时<strong>偏向锁属于B</strong></p>
-</li>
-<li><p>A进入同步代码块，B也进入同步代码块，A先获取到偏向锁，此时A未执行完同步代码块，B尝试获取偏向锁，A达到<strong>安全点撤销偏向锁并升级锁为轻量级锁</strong>，此时B自旋尝试获取锁</p>
-<ul>
-<li>如果A短时间内执行完毕，则轻量级锁撤销为无锁状态，B重新获取到轻量级锁</li>
-<li>如果A长时间未执行完毕，则轻量级锁膨胀为重量级锁，B阻塞，直到重量级锁撤销，B重新获取轻量级锁</li>
-</ul>
-</li>
-</ul>
+<pre><code class="java">
+public class AsciiEncodingStringUtils extends StringUtilsImpl &#123;
+
+    public static final int MAX_CHARACTER = Integer.valueOf(Character.MAX_VALUE);
+
+    public static final int MIN_CHARACTER = Integer.valueOf(Character.MIN_VALUE);
+
+    public static final int ROOT_VALUE = 467;
+
+    public AsciiEncodingStringUtils(String str) &#123;
+        super(str);
+    &#125;
+
+    //密钥加密
+    public String encode(String code)&#123;
+        String key = &quot;&quot;;
+        return encode(code,key);
+    &#125;
+
+    //密钥加密
+    public String encode(String code,String key)&#123;
+        double k = 0;
+        if(key.length() &gt; 0) &#123;
+            char[] chars = encode(key).toCharArray();
+            for (int i = 0; i &lt; chars.length; i++) &#123;
+                k += (double)((int) chars[i])/100;
+            &#125;
+        &#125;
+        int k1 = (int) k;
+        return encode(code,k1);
+    &#125;
+
+    public String decode(String code)&#123;
+        String key = &quot;&quot;;
+        return decode(code,key);
+    &#125;
+
+    //密钥加密
+    public String decode(String code,String key)&#123;
+        double k = 0;
+        if(key.length() &gt; 0) &#123;
+            char[] chars = encode(key).toCharArray();
+            for (int i = 0; i &lt; chars.length; i++) &#123;
+                k += (double)((int) chars[i])/100;
+            &#125;
+        &#125;
+        int k1 = (int) k;
+        return decode(code,k1);
+    &#125;
+
+    private static String decode(String code,int k)&#123;
+        char[] chars = code.toCharArray();
+        int[] ints = new int[chars.length];
+        for (int i = 0; i &lt; chars.length; i++) &#123;
+            char c = chars[i];
+            ints[i] = (int) c;
+        &#125;
+        int v;
+        //向左传播解密
+        for (int i = 0; i &lt; Math.sin(k) * 3 + 3; i++) &#123;
+            for (int j = ints.length - 1; j &gt; 0; j--) &#123;
+                if (j % 2 == 0)&#123;
+                    v = ints[j] - ints[j - 1] - k;
+                    ints[j] = (v &lt; MIN_CHARACTER) ? MAX_CHARACTER + 1 + v : v;
+                &#125;else &#123;
+                    v = ints[j] + ints[j - 1] + k;
+                    ints[j] = (v &gt; MAX_CHARACTER)?v - MAX_CHARACTER - 1: v;
+                &#125;
+            &#125;
+            //第一项
+            v = (ints.length == 1)?ints[0] - ROOT_VALUE - k:ints[0] - ints[ints.length - 1] - k;
+            ints[0] = (v &lt; MIN_CHARACTER) ? MAX_CHARACTER + 1 + v : v;
+        &#125;
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int anInt : ints) &#123;
+            stringBuilder.append((char) anInt);
+        &#125;
+        return stringBuilder.toString();
+    &#125;
+
+    private static String encode(String code,int k)&#123;
+        String string = code;
+        char[] chars = string.toCharArray();
+        //用于存放ascii的数组
+        int[] ints = new int[chars.length];
+        for (int i = 0; i &lt; chars.length; i++) &#123;
+            ints[i] = Integer.valueOf(chars[i]);
+        &#125;
+        //向右传播加密
+        for (int i = 0; i &lt; Math.sin(k) * 3 + 3; i++) &#123;
+            int v;
+            //第一项
+            try &#123;
+                 v = (ints.length == 1)?ints[0] + ROOT_VALUE + k:ints[0] + ints[ints.length - 1] + k;
+            &#125;catch (ArrayIndexOutOfBoundsException e)&#123;
+                return &quot;&quot;;
+            &#125;
+            ints[0] = (v &gt; MAX_CHARACTER)?v - MAX_CHARACTER - 1 : v;
+            for (int j = 1; j &lt; ints.length; j++) &#123;
+                if (j % 2 == 0)&#123;
+                    v = ints[j] + ints[j - 1] + k;
+                    ints[j] = (v &gt; MAX_CHARACTER)?v - MAX_CHARACTER - 1 : v;
+                &#125;else &#123;
+                    v = ints[j] - ints[j - 1] - k;
+                    ints[j] = (v &lt; MIN_CHARACTER)? MAX_CHARACTER + 1 + v : v;
+                &#125;
+            &#125;
+        &#125;
+
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int anInt : ints) &#123;
+            stringBuilder.append((char) anInt);
+        &#125;
+        return stringBuilder.toString();
+    &#125;
+
+&#125;
+</code></pre>
+<pre><code class="java">package com.wy.demo4;
+
+import sun.nio.cs.UTF_32;
+
+import java.util.Scanner;
+import java.util.UUID;
+
+public class Test2 &#123;
+
+    public static void main(String[] args) &#123;
+
+        String text = &quot;牡蛎是真的好吃!!!为什么这么好吃因为牡蛎具有光滑的外表，鲜嫩的口感，看见了就让人垂延三尺，无法自拔!!!&quot;;
+
+        //使用工具类
+        StringUtils stringUtils = new AsciiEncodingStringUtils(text);
+
+        //向下转型
+        AsciiEncodingStringUtils asciiEncodingStringUtils = (AsciiEncodingStringUtils) stringUtils;
+
+        long startTime=System.currentTimeMillis(); //获取开始时间
+        String code = asciiEncodingStringUtils.encode(text,&quot;os467&quot;);
+        long endTime=System.currentTimeMillis(); //获取结束时间
+        System.out.println(&quot;加密程序运行时间： &quot;+(endTime-startTime)+&quot;ms&quot;);
+        System.out.println(code);
+
+        startTime=System.currentTimeMillis(); //获取开始时间
+        String deCode = asciiEncodingStringUtils.decode(code,&quot;os467&quot;);
+        endTime=System.currentTimeMillis(); //获取结束时间
+        System.out.println(&quot;解密程序运行时间： &quot;+(endTime-startTime)+&quot;ms&quot;);
+
+        System.out.println(deCode);
+
+    &#125;
+
+&#125;
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1178,12 +1272,12 @@ window.onload = function(){
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>synchronized与锁机制</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">2k</span></p>
+    <p><span class="copy-title">文章标题:</span>Ascii码加密编码</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">2.2k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-11-05, 23:46:13</p>
-    <p><span class="copy-title">最后更新:</span>2022-11-05, 23:54:36</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/11/05/synchronized%E4%B8%8E%E9%94%81%E6%9C%BA%E5%88%B6/" title="synchronized与锁机制">https://os467.github.io/2022/11/05/synchronized%E4%B8%8E%E9%94%81%E6%9C%BA%E5%88%B6/</a>
+    <p><span class="copy-title">发布时间:</span>2022-12-01, 15:02:11</p>
+    <p><span class="copy-title">最后更新:</span>2022-12-01, 15:03:28</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/12/01/Ascii%E7%BC%96%E7%A0%81%E5%8A%A0%E5%AF%86/" title="Ascii码加密编码">https://os467.github.io/2022/12/01/Ascii%E7%BC%96%E7%A0%81%E5%8A%A0%E5%AF%86/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
