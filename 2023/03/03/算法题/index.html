@@ -2,19 +2,19 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>算法题.md | Tly的博客</title>
+  <title>算法题 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="算法题.md | Tly的博客">
+  <meta name="description" content="算法题 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tly的博客">
-<meta property="og:url" content="https://os467.github.io/about/index.html">
+<meta name="description" content="题目一 大矩阵3x3查找给你一个大小为 n x n 的整数矩阵 grid 。 生成一个大小为 (n - 2) x (n - 2) 的整数矩阵  maxLocal ，并满足： maxLocal[i][j] 等于 grid 中以 i + 1 行和 j + 1 列为中心的 3 x 3 矩阵中的 最大值 。换句话说，我们希望找出 grid 中每个 3 x 3 矩阵中的最大值。 返回生成的矩阵。 class">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法题">
+<meta property="og:url" content="https://os467.github.io/2023/03/03/%E7%AE%97%E6%B3%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="Tly的博客">
-<meta property="og:description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
+<meta property="og:description" content="题目一 大矩阵3x3查找给你一个大小为 n x n 的整数矩阵 grid 。 生成一个大小为 (n - 2) x (n - 2) 的整数矩阵  maxLocal ，并满足： maxLocal[i][j] 等于 grid 中以 i + 1 行和 j + 1 列为中心的 3 x 3 矩阵中的 最大值 。换句话说，我们希望找出 grid 中每个 3 x 3 矩阵中的最大值。 返回生成的矩阵。 class">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-05T07:48:23.998Z">
-<meta property="article:modified_time" content="2022-09-05T07:48:23.998Z">
+<meta property="article:published_time" content="2023-03-03T04:49:07.000Z">
+<meta property="article:modified_time" content="2023-03-03T04:55:51.860Z">
 <meta property="article:author" content="Os467">
 <meta name="twitter:card" content="summary">
 
@@ -471,7 +471,7 @@ window.onload = function(){
            href="/2023/03/03/%E7%AE%97%E6%B3%95%E9%A2%98/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="算法题.md">算法题.md</span>
+            <span class="post-title" title="算法题">算法题</span>
             <span class="post-date" title="2023-03-03 12:49:07">2023/03/03</span>
         </a>
         
@@ -1008,7 +1008,7 @@ window.onload = function(){
     <div class="pjax">
         <article id="post-算法题" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">算法题.md</h1>
+        <h1 class="article-title">算法题</h1>
     
     <div class="article-meta">
         
@@ -1026,12 +1026,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-03-03 12:49:57'>2023-03-03 12:49</time>
+            发布时间 : <time class="date" title='最后更新: 2023-03-03 12:55:51'>2023-03-03 12:49</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2.4k</span>
+        <span>字数:2.5k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1208,51 +1208,54 @@ window.onload = function(){
 <p>同时给你两个节点 node1 和 node2 。</p>
 <p>请你返回一个从 node1 和 node2 都能到达节点的编号，使节点 node1 和节点 node2 到这个节点的距离 较大值最小化。如果有多个答案，请返回 最小 的节点编号。如果答案不存在，返回 -1 。</p>
 <p>注意 edges 可能包含环</p>
-<pre><code class="java">class Solution &#123;
+<pre><code class="java">class Solution5 &#123;
     public int closestMeetingNode(int[] edges, int node1, int node2) &#123;
-        if(node1 == node2)
-            return node1;
 
-        int n = edges.length;
-        boolean[] visited1 = new boolean[n], visited2 = new boolean[n];
-        visited1[node1] = true;
-        visited2[node2] = true;
-        boolean flag1 = false, flag2 = false;
+        int deep = 0;
 
-        while(node1 &gt;= 0 || node2 &gt;= 0) &#123;
-            if(node1 &gt;= 0) &#123;
-                node1 = edges[node1];
-                if(node1 &gt;= 0) &#123;
-                    if(visited2[node1])
-                        flag1 = true;
-                    else if(visited1[node1])
-                        node1 = -1;
-                    else
-                        visited1[node1] = true;
+        HashMap&lt;Integer, Integer&gt; n1 = new HashMap&lt;&gt;();
+        HashMap&lt;Integer, Integer&gt; n2 = new HashMap&lt;&gt;();
+
+        checkPathNode(edges,node1,n1,deep);
+        checkPathNode(edges,node2,n2,deep);
+
+        Set&lt;Integer&gt; nodeSet = n1.keySet();
+        Set&lt;Integer&gt; nodeSet2 = n2.keySet();
+
+        int min=-1;
+        int minNode=-1;
+
+        for (Integer i1 : nodeSet) &#123;
+            for (Integer i2 : nodeSet2) &#123;
+                if (i1.equals(i2))&#123;
+                    int more = n1.get(i1) &gt; n2.get(i2)?n1.get(i1):n2.get(i2);
+                    if (more &lt; min || min == -1)&#123;
+                        minNode = i1;
+                        min = more;
+                    &#125;
                 &#125;
             &#125;
-            if(node2 &gt;= 0) &#123;
-                node2 = edges[node2];
-                if(node2 &gt;= 0) &#123;
-                    if(visited1[node2])
-                        flag2 = true;
-                    else if(visited2[node2])
-                        node2 = -1;
-                    else
-                        visited2[node2] = true;
-                &#125;
-            &#125;
-            if(flag1) &#123;
-                if(flag2) &#123;
-                    return Math.min(node1, node2);
-                &#125;
-                return node1;
-            &#125;
-            else if(flag2)
-                return node2;
         &#125;
 
-        return -1;
+        return minNode;
+    &#125;
+
+    private void checkPathNode(int[] edges, int node1, HashMap&lt;Integer, Integer&gt; n1,int deep) &#123;
+        int node = node1;
+        while (true)&#123;
+            if (edges[node] == -1)&#123;
+                n1.put(node,deep);
+                return;
+            &#125;
+            if (n1.containsKey(node))&#123;
+                return;
+            &#125;
+            n1.put(node,deep);
+
+            node = edges[node];
+            deep++;
+        &#125;
+
     &#125;
 &#125;
 </code></pre>
@@ -1382,12 +1385,12 @@ class Solution7 &#123;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>算法题.md</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">2.4k</span></p>
+    <p><span class="copy-title">文章标题:</span>算法题</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">2.5k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
     <p><span class="copy-title">发布时间:</span>2023-03-03, 12:49:07</p>
-    <p><span class="copy-title">最后更新:</span>2023-03-03, 12:49:57</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/03/03/%E7%AE%97%E6%B3%95%E9%A2%98/" title="算法题.md">https://os467.github.io/2023/03/03/%E7%AE%97%E6%B3%95%E9%A2%98/</a>
+    <p><span class="copy-title">最后更新:</span>2023-03-03, 12:55:51</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/03/03/%E7%AE%97%E6%B3%95%E9%A2%98/" title="算法题">https://os467.github.io/2023/03/03/%E7%AE%97%E6%B3%95%E9%A2%98/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
