@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="算法2 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="常规算法思想整理滑动窗口法滑动窗口法，也叫尺取法，可以用来解决一些查找满足一定条件的连续区间的性质（长度等）的问题。 由于区间连续，因此当区间发生变化时，可以通过旧有的计算结果对搜索空间进行剪枝，这样便减少了重复计算，降低了时间复杂度。往往类似于“请找到满足 xx 的最 x 的区间(子串、子数组)的 xx”这类问题都可以使用该方法进行解决 一般使用双指针来维护滑块窗口，通常会设置一个左指针p1和一">
+<meta name="description" content="多模块项目打包父工程 pom.xml &lt;packaging&gt;pom&lt;&#x2F;packaging&gt;   打包方式指定为pom  &lt;modules&gt;     &lt;module&gt;xxx1&lt;&#x2F;module&gt;     &lt;module&gt;xxx2&lt;&#x2F;module&gt; &lt;&#x2F;modules&gt;   添加子模块  父模块打包插件 &amp;l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法思想整理">
-<meta property="og:url" content="https://os467.github.io/2023/03/09/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3%E6%95%B4%E7%90%86/index.html">
+<meta property="og:title" content="项目上线部署经验">
+<meta property="og:url" content="https://os467.github.io/2023/03/13/%E9%A1%B9%E7%9B%AE%E4%B8%8A%E7%BA%BF/index.html">
 <meta property="og:site_name" content="Tly的博客">
-<meta property="og:description" content="常规算法思想整理滑动窗口法滑动窗口法，也叫尺取法，可以用来解决一些查找满足一定条件的连续区间的性质（长度等）的问题。 由于区间连续，因此当区间发生变化时，可以通过旧有的计算结果对搜索空间进行剪枝，这样便减少了重复计算，降低了时间复杂度。往往类似于“请找到满足 xx 的最 x 的区间(子串、子数组)的 xx”这类问题都可以使用该方法进行解决 一般使用双指针来维护滑块窗口，通常会设置一个左指针p1和一">
+<meta property="og:description" content="多模块项目打包父工程 pom.xml &lt;packaging&gt;pom&lt;&#x2F;packaging&gt;   打包方式指定为pom  &lt;modules&gt;     &lt;module&gt;xxx1&lt;&#x2F;module&gt;     &lt;module&gt;xxx2&lt;&#x2F;module&gt; &lt;&#x2F;modules&gt;   添加子模块  父模块打包插件 &amp;l">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-03-09T11:43:10.000Z">
-<meta property="article:modified_time" content="2023-03-09T11:44:45.153Z">
+<meta property="article:published_time" content="2023-03-13T15:20:12.000Z">
+<meta property="article:modified_time" content="2023-03-13T15:20:50.359Z">
 <meta property="article:author" content="Os467">
 <meta name="twitter:card" content="summary">
 
@@ -184,7 +184,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(60)</small>
+                <small>(61)</small>
             
         </div>
     </li>
@@ -307,7 +307,7 @@
                     <div data-rel="其它">
                         
                         其它
-                        <small>(8)</small>
+                        <small>(9)</small>
                         
                     </div>
                     
@@ -363,8 +363,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="60">
-<input type="hidden" id="yelog_site_word_count" value="243.9k">
+<input type="hidden" id="yelog_site_posts_number" value="61">
+<input type="hidden" id="yelog_site_word_count" value="246.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -479,6 +479,15 @@ window.onload = function(){
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/03/13/%E9%A1%B9%E7%9B%AE%E4%B8%8A%E7%BA%BF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="项目上线部署经验">项目上线部署经验</span>
+            <span class="post-date" title="2023-03-13 23:20:12">2023/03/13</span>
+        </a>
         
         
         <a  class="全部文章 算法 "
@@ -1058,12 +1067,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-03-09 19:43:51'>2023-03-09 19:43</time>
+            发布时间 : <time class="date" title='最后更新: 2023-03-13 23:19:17'>2023-03-09 19:43</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.5k</span>
+        <span>字数:2.9k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1082,7 +1091,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E4%B8%80-%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B9%B3%E8%A1%A1%E7%9A%84%E6%9C%80%E5%B0%91%E5%88%A0%E9%99%A4%E6%AC%A1%E6%95%B0"><span class="toc-text">题目十一  使字符串平衡的最少删除次数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E4%BA%8C-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2"><span class="toc-text">题目十二  最长回文子串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E4%B8%89-%E7%A4%BC%E7%89%A9%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC"><span class="toc-text">题目十三 礼物的最大价值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E5%9B%9B-%E5%BE%97%E5%88%B0-K-%E4%B8%AA%E9%BB%91%E5%9D%97%E7%9A%84%E6%9C%80%E5%B0%91%E6%B6%82%E8%89%B2%E6%AC%A1%E6%95%B0"><span class="toc-text">题目十四  得到 K 个黑块的最少涂色次数</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E4%B8%80-%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B9%B3%E8%A1%A1%E7%9A%84%E6%9C%80%E5%B0%91%E5%88%A0%E9%99%A4%E6%AC%A1%E6%95%B0"><span class="toc-text">题目十一  使字符串平衡的最少删除次数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E4%BA%8C-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2"><span class="toc-text">题目十二  最长回文子串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E4%B8%89-%E7%A4%BC%E7%89%A9%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC"><span class="toc-text">题目十三 礼物的最大价值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E5%9B%9B-%E5%BE%97%E5%88%B0-K-%E4%B8%AA%E9%BB%91%E5%9D%97%E7%9A%84%E6%9C%80%E5%B0%91%E6%B6%82%E8%89%B2%E6%AC%A1%E6%95%B0"><span class="toc-text">题目十四  得到 K 个黑块的最少涂色次数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E4%BA%94-%E4%BD%BF%E6%95%B0%E7%BB%84%E5%92%8C%E8%83%BD%E8%A2%AB-P-%E6%95%B4%E9%99%A4"><span class="toc-text">题目十五 使数组和能被 P 整除</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E5%85%AD-N-%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2"><span class="toc-text">题目十六 N 字形变换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E4%B8%83-%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC"><span class="toc-text">题目十七 整数反转</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E5%85%AB-%E8%B5%A2%E5%BE%97%E6%AF%94%E8%B5%9B%E9%9C%80%E8%A6%81%E7%9A%84%E6%9C%80%E5%B0%91%E8%AE%AD%E7%BB%83%E6%97%B6%E9%95%BF"><span class="toc-text">题目十八 赢得比赛需要的最少训练时长</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1275,6 +1284,196 @@ window.onload = function(){
 <blockquote>
 <p>使用<strong>滑动窗口法</strong>，由于我们需要的结果为k个连续B字符串，因此只需要使用一个长度为k的滑块遍历字符串，当滑块中的B的数量最多时，则表明需要操作的次数越少。因此给出方案，先统计前k个字符串B的数量，左指针指向滑块首，右指针指向滑块右，如果左指针为B则表明下次移动会减少B的数量，如果右指针+1为B则表明会增加B的数量，统计滑块滑动过程中b数量的最大值，返回k-b最大值即为需要操作的最小次数</p>
 </blockquote>
+<h1 id="题目十五-使数组和能被-P-整除"><a href="#题目十五-使数组和能被-P-整除" class="headerlink" title="题目十五 使数组和能被 P 整除"></a>题目十五 使数组和能被 P 整除</h1><p>给你一个正整数数组 nums，请你移除 最短 子数组（可以为 空），使得剩余元素的 和 能被 p 整除。 不允许 将整个数组都移除。</p>
+<p>请你返回你需要移除的最短子数组的长度，如果无法满足题目要求，返回 -1 。</p>
+<p>子数组 定义为原数组中连续的一组元素。</p>
+<pre><code class="java">class Solution17 &#123;
+    public int minSubarray(int[] nums, int p) &#123;
+
+        int p1,p2;
+
+        //先查看总和能否被整除，然后尝试滑块内数的和,长度一个数的和,二个数的和，三个数的和...，当总和减去滑块内的和满足能被p整除即可
+
+        long nSum = 0;
+
+        for (int i = 0; i &lt; nums.length; i++) &#123;
+            nSum += nums[i];
+        &#125;
+
+        if (nSum &lt; p)&#123;
+            return -1;
+        &#125;
+
+        //长度为0
+        if (nSum % p == 0)&#123;
+            return 0;
+        &#125;
+
+        //长度为一
+        for (int i = 0; i &lt; nums.length; i++) &#123;
+            if ((nSum - nums[i]) % p == 0)&#123;
+                return 1;
+            &#125;
+        &#125;
+
+        int ll = nums.length - 1;
+
+        //k为右边界
+        for (int k = 0; k &lt; ll; k++) &#123;
+
+            //滑块内和
+            long sum = 0;
+            //先统计0到k区间滑块内的和
+            for (int i = 0; i &lt;= k; i++) &#123;
+                sum+=nums[i];
+            &#125;
+            if ((nSum - sum) % p == 0)&#123;
+                return k + 1;
+            &#125;
+
+            //滑块向后移动
+            for(p1 = 1,p2 = 1+k;p2 &lt; nums.length;p1++,p2++)&#123;
+                //统计相对上一步更新的被删除的和
+                sum -= nums[p1 - 1];
+                sum += nums[p2];
+                if ((nSum - sum) % p == 0)&#123;
+                    return k + 1;
+                &#125;
+            &#125;
+        &#125;
+
+        return -1;
+    &#125;
+&#125;
+</code></pre>
+<blockquote>
+<p>滑块法：先查看总和能否被整除，然后尝试滑块内数的和,长度一个数的和,二个数的和，三个数的和…，当总和减去滑块内的和满足能被p整除即可</p>
+</blockquote>
+<h1 id="题目十六-N-字形变换"><a href="#题目十六-N-字形变换" class="headerlink" title="题目十六 N 字形变换"></a>题目十六 N 字形变换</h1><p>将一个给定字符串 <code>s</code> 根据给定的行数 <code>numRows</code> ，以从上往下、从左到右进行 Z 字形排列。</p>
+<pre><code class="java">class Solution18 &#123;
+    public String convert(String s, int numRows) &#123;
+        //单个字符或指定为一行则直接返回
+        if (s.length() == 1 || numRows == 1)&#123;
+            return s;
+        &#125;
+
+        StringBuffer[] ms = new StringBuffer[numRows];
+
+        //初始化
+        for (int i = 0; i &lt; numRows; i++) &#123;
+            ms[i] = new StringBuffer();
+        &#125;
+
+        int length = s.length();
+        int k = 1,up = 1;
+        ms[0].append(s.charAt(0));
+        for (int i = 1; i &lt; length; i++) &#123;
+            char c = s.charAt(i);
+            //向下移动填入
+            ms[k].append(c);
+
+            //反向索引
+            if (k == numRows - 1 || k == 0) &#123;
+                up = -up;
+            &#125;
+
+            k+=up;
+        &#125;
+
+        StringBuffer ss = new StringBuffer();
+
+        for (StringBuffer m : ms) &#123;
+            ss.append(m);
+        &#125;
+
+        return ss.toString();
+    &#125;
+&#125;
+</code></pre>
+<blockquote>
+<p>题目的关键在于使用合理的数据结构，由于变换后的格式符合变长的二维矩阵，因此我们使用StringBuffer来构建答案，找到移动的规律，也就是当遇到0或numRows-1时才进行移动方向变换</p>
+</blockquote>
+<h1 id="题目十七-整数反转"><a href="#题目十七-整数反转" class="headerlink" title="题目十七 整数反转"></a>题目十七 整数反转</h1><p>给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。</p>
+<p>如果反转后整数超过 32 位的有符号整数的范围 [−231,  231 − 1] ，就返回 0。</p>
+<p>假设环境不允许存储 64 位整数（有符号或无符号）。</p>
+<pre><code class="java">class Solution &#123;
+    public int reverse(int x) &#123;
+        int ans = 0;
+
+        if (x &lt; 10 &amp;&amp; x&gt; -10)&#123;
+            return x;
+        &#125;
+
+        while (x != 0)&#123;
+            //取末尾数字
+            int i = x % 10;
+            if (ans &gt; Integer.MAX_VALUE/10 || i &gt; 7 &amp;&amp; ans == Integer.MAX_VALUE/10)&#123;
+                return 0;
+            &#125;
+            if (ans &lt; Integer.MIN_VALUE/10 || i &lt; -8 &amp;&amp; ans == Integer.MIN_VALUE/10)&#123;
+                return 0;
+            &#125;
+            ans = ans *10 + i;
+            x/=10;
+        &#125;
+
+        return ans;
+    &#125;
+&#125;
+</code></pre>
+<blockquote>
+<p>本题的算法为：通过mod运算取末尾，添加到ans，ans乘10进位，通过div运算去x最高位，当x为0时结束循环</p>
+<p>因为条件限制，还需要在大于2^31-1 和小于 -2^31的答案进行限制，由于int类型存储数量限制，需要进行提前判断</p>
+</blockquote>
+<h1 id="题目十八-赢得比赛需要的最少训练时长"><a href="#题目十八-赢得比赛需要的最少训练时长" class="headerlink" title="题目十八 赢得比赛需要的最少训练时长"></a>题目十八 赢得比赛需要的最少训练时长</h1><p>你正在参加一场比赛，给你两个 正 整数 initialEnergy 和 initialExperience 分别表示你的初始精力和初始经验。</p>
+<p>另给你两个下标从 0 开始的整数数组 energy 和 experience，长度均为 n 。</p>
+<p>你将会 依次 对上 n 个对手。第 i 个对手的精力和经验分别用 energy[i] 和 experience[i] 表示。当你对上对手时，需要在经验和精力上都 严格 超过对手才能击败他们，然后在可能的情况下继续对上下一个对手。</p>
+<p>击败第 i 个对手会使你的经验 增加 experience[i]，但会将你的精力 减少  energy[i] 。</p>
+<p>在开始比赛前，你可以训练几个小时。每训练一个小时，你可以选择将增加经验增加 1 或者 将精力增加 1 。</p>
+<p>返回击败全部 n 个对手需要训练的 最少 小时数目。</p>
+<pre><code class="java">class Solution20 &#123;
+    public int minNumberOfHours(int initialEnergy, int initialExperience, int[] energy, int[] experience) &#123;
+
+        //末状态体力一定为1最节约时间，由1开始逆推即可
+
+        //经验从第一条开始，计算需要附加的值即可
+
+        int tL = 1;
+
+        for (int i = energy.length-1; i &gt;=0 ; i--) &#123;
+            tL += energy[i];
+        &#125;
+
+        int exp = 0;
+
+        int nowExp = 0;
+
+        for (int i = 0; i &lt; experience.length; i++) &#123;
+
+            if (nowExp &gt; experience[i])&#123;
+                //直接加上i的经验
+                nowExp += experience[i];
+            &#125;else &#123;
+                //需要额外携带的经验
+                exp += experience[i] + 1 - nowExp;
+                //当前经验正好变为比i经验多1再加上i的经验
+                nowExp = 2 * experience[i] + 1;
+            &#125;
+
+        &#125;
+
+        int ans = 0;
+
+        ans += initialEnergy &gt;= tL ? 0 : tL - initialEnergy;
+        ans += initialExperience &gt;= exp ? 0 : exp - initialExperience;
+        return ans;
+    &#125;
+&#125;
+</code></pre>
+<blockquote>
+<p>本题关键在于从结果逆推即可，体力只需要想到最后一定是正好用完只剩1时，即最后一次恰好大于对手体力值，一开始训练的时间最少。</p>
+<p>经验则也从恰好大于1的角度考虑，只需要在不足时才进行累加，也就是计算一开始需要额外附带多少经验</p>
+</blockquote>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1289,10 +1488,10 @@ window.onload = function(){
 
 <div class="article_copyright">
     <p><span class="copy-title">文章标题:</span>算法2</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">1.5k</span></p>
+    <p><span class="copy-title">字数:</span><span class="post-count">2.9k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
     <p><span class="copy-title">发布时间:</span>2023-03-09, 19:43:02</p>
-    <p><span class="copy-title">最后更新:</span>2023-03-09, 19:43:51</p>
+    <p><span class="copy-title">最后更新:</span>2023-03-13, 23:19:17</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/03/09/%E7%AE%97%E6%B3%952/" title="算法2">https://os467.github.io/2023/03/09/%E7%AE%97%E6%B3%952/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
