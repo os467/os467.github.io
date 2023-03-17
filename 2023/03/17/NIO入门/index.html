@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Swagger | Tly的博客</title>
+  <title>NIO入门 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Swagger | Tly的博客">
+  <meta name="description" content="NIO入门 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="NIO入门Netty网络框架致力于开发高性能的服务器程序、高性能的客户端程序。 Netty底层-NIONIO： none-blocking io 非阻塞IO 非阻塞体现在当线程需要去进行IO操作而尚未获取到数据时，并不让线程阻塞，而是让线程继续去执行其它事件 Channel &amp; BufferChannel：数据传输通道 Channel是一个对象，作用是用于源节点和目标节点的连接，在java">
 <meta property="og:type" content="article">
@@ -1056,9 +1056,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Swagger" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-NIO入门" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Swagger</h1>
+        <h1 class="article-title">NIO入门</h1>
     
     <div class="article-meta">
         
@@ -1068,7 +1068,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="其它">其它</a>
+            <a  data-rel="JAVASE进阶">JAVASE进阶</a>
             
         </span>
         
@@ -1076,12 +1076,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-10-05 00:53:10'>2022-10-05 00:51</time>
+            发布时间 : <time class="date" title='最后更新: 2023-03-17 21:26:53'>2023-03-17 21:25</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1k</span>
+        <span>字数:2.1k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1100,7 +1100,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swagger2"><span class="toc-text">Swagger2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8"><span class="toc-text">为什么使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="toc-text">引入依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E7%94%A8Swagger2"><span class="toc-text">启用Swagger2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E9%85%8D%E7%BD%AE"><span class="toc-text">具体配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Controller%E9%85%8D%E7%BD%AE"><span class="toc-text">Controller配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E9%85%8D%E7%BD%AE"><span class="toc-text">接口配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E7%B1%BB%E9%85%8D%E7%BD%AE"><span class="toc-text">实体类配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E4%BF%A1%E6%81%AF%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="toc-text">文档信息配置类</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NIO%E5%85%A5%E9%97%A8"><span class="toc-text">NIO入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Netty%E5%BA%95%E5%B1%82-NIO"><span class="toc-text">Netty底层-NIO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Channel-amp-Buffer"><span class="toc-text">Channel &amp; Buffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Selector"><span class="toc-text">Selector</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%85%A5Netty%E4%BE%9D%E8%B5%96"><span class="toc-text">引入Netty依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ByteBuffer%E7%BB%93%E6%9E%84"><span class="toc-text">ByteBuffer结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E4%B8%BAByteBuffer"><span class="toc-text">字符串转换为ByteBuffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Channel%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93"><span class="toc-text">Channel之间的数据传输</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%BC%96%E7%A8%8B"><span class="toc-text">文件编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Path"><span class="toc-text">Path</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Files"><span class="toc-text">Files</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1116,127 +1116,345 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Swagger2"><a href="#Swagger2" class="headerlink" title="Swagger2"></a>Swagger2</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Swagger是一套基于 OpenAPI 规范构建的开源工具，可以帮助我们设计，构建，记录以及使用Rest API</p>
-<h2 id="为什么使用"><a href="#为什么使用" class="headerlink" title="为什么使用"></a>为什么使用</h2><p>当今大部分公司都采用前后端分离的模式来开发项目，前端和后端的工作由不同的工程师来完成，这种开发模式下，维持一份及时更新且完善的Rest API 文档将会极大的提高我们的工作效率</p>
-<p>传统意义上的文档都是后端开发人员手动编写的，这种方式很难保证文档的及时性，这种文档久而久之也会失去参考意义，反而还会增加沟通成本，而Swagger给我们提供了一个全新的API文档维护方式</p>
-<p><strong>优点：</strong></p>
-<ul>
-<li>代码变，文档变，只需要少量的注解，Swagger就可以根据代码自动生成API文档，保证了文档的及时性</li>
-<li>跨语言性，Swagger支持40多种语言</li>
-<li>Swagger UI呈现出来的是一份可交互式的API文档，我们可以直接在文档中尝试API的调用，省略了复杂的参数调用过程</li>
-</ul>
-<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><pre><code class="xml">&lt;!-- swagger2 --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;io.springfox&lt;/groupId&gt;
-    &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;
-    &lt;version&gt;2.7.0&lt;/version&gt;
+        <h1 id="NIO入门"><a href="#NIO入门" class="headerlink" title="NIO入门"></a>NIO入门</h1><p>Netty网络框架致力于开发高性能的服务器程序、高性能的客户端程序。</p>
+<h2 id="Netty底层-NIO"><a href="#Netty底层-NIO" class="headerlink" title="Netty底层-NIO"></a>Netty底层-NIO</h2><p><strong>NIO：</strong> none-blocking io <strong>非阻塞IO</strong></p>
+<p>非阻塞体现在当线程需要去进行IO操作而尚未获取到数据时，并不让线程阻塞，而是让线程继续去执行其它事件</p>
+<h3 id="Channel-amp-Buffer"><a href="#Channel-amp-Buffer" class="headerlink" title="Channel &amp; Buffer"></a>Channel &amp; Buffer</h3><p><strong>Channel：</strong>数据传输通道</p>
+<p>Channel是一个<strong>对象</strong>，作用是用于<strong>源节点和目标节点的连接</strong>，在javaNIO中负责缓冲区数据的传递，Channel本身不存储数据，因此需要配合缓冲区进行传输</p>
+<p><strong>Buffer：</strong> 缓冲区，暂存数据的区域</p>
+<p>NIO的Buffer（缓冲区）本质上是一个<strong>内存块</strong>，既可以写入数据，也可以从中读取数据</p>
+<p>Java NIO中代表缓冲区的Buffer类是一个抽象类，位于java.nio包中</p>
+<h3 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a>Selector</h3><p>Selector中能够检测到一到多个 NIO 通道，并能够知道通道是否为读写</p>
+<p>事件做好准备</p>
+<p>这样，一个单独的线程可以管理多个 Channel，从而管理多个网络连接</p>
+<blockquote>
+<p>原来的设计一个线程只管理一个socket，这样子会造成线程开销的内存浪费，线程上下文切换成本高，只适合连接数少的场景</p>
+<p>因此我们要让一个线程管理多个连接就需要使用Selector，适合连接数多，但是流量低的场景</p>
+</blockquote>
+<p>由于阻塞模式下，线程只能处理一个socket连接，导致了线程利用率不高</p>
+<p>引入selector可以实现单线程的非阻塞式多信道管理，实现了<strong>多路复用</strong></p>
+<h2 id="引入Netty依赖"><a href="#引入Netty依赖" class="headerlink" title="引入Netty依赖"></a>引入Netty依赖</h2><pre><code class="xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.netty&lt;/groupId&gt;
+    &lt;artifactId&gt;netty-all&lt;/artifactId&gt;
+    &lt;version&gt;4.0.23.Final&lt;/version&gt;
 &lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;io.springfox&lt;/groupId&gt;
-    &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;
-    &lt;version&gt;2.7.0&lt;/version&gt;
-&lt;/dependency&gt;
 </code></pre>
-<h3 id="启用Swagger2"><a href="#启用Swagger2" class="headerlink" title="启用Swagger2"></a>启用Swagger2</h3><p>在启动类上或者配置类加 <strong>@EnableSwagger2 注解</strong></p>
-<p>访问swagger文档： <a target="_blank" rel="noopener" href="http://localhost:8080/swagger-ui.html">http://localhost:8080/swagger-ui.html</a></p>
+<p><strong>使用FileChannel</strong></p>
 <blockquote>
-<p><strong>注意：</strong> 其中的localhost:8080在项目中都要改为真实域名+端口号</p>
+<p>FileChannel只能工作在阻塞模式下，无法和Selector一起用</p>
+<p>必须通过FileInputStream，FileOutputStream或者RandomAccessFile来获取FileChannel，它们都有getChannel的方法</p>
+<ul>
+<li>RandomAccessFile可以指定读写模式,”rw”即可以读写</li>
+</ul>
 </blockquote>
-<h3 id="具体配置"><a href="#具体配置" class="headerlink" title="具体配置"></a>具体配置</h3><h4 id="Controller配置"><a href="#Controller配置" class="headerlink" title="Controller配置"></a>Controller配置</h4><p><strong>@Api注解</strong></p>
-<p><strong>属性：</strong></p>
-<ul>
-<li>tags  设置标签</li>
-<li>description 设置描述信息</li>
-</ul>
-<pre><code class="java">@RestController
-@RequestMapping(&quot;/comment&quot;)
-@Api(tags = &quot;评论&quot;,description = &quot;评论相关接口&quot;)
-public class CommentController &#123;
-&#125;
-</code></pre>
-<h4 id="接口配置"><a href="#接口配置" class="headerlink" title="接口配置"></a>接口配置</h4><ul>
-<li><strong>@ApiOperation</strong>  接口描述</li>
-</ul>
-<pre><code class="java">@GetMapping(&quot;/linkCommentList&quot;)
-@ApiOperation(value = &quot;友链评论列表&quot;,notes = &quot;获取一页友链评论信息&quot;)
-public ResponseResult linkCommentList(Integer pageNum,Integer pageSize)&#123;
-    return commentService.linkCommentList(pageNum,pageSize);
-&#125;
-</code></pre>
-<ul>
-<li><strong>@ApiImplicitParam ** 用于描述接口的非对象参数，但是一个接口可能有多个参数，所以一般与</strong>@ApiImplicitParams **组合使用</li>
-</ul>
-<pre><code class="java">@GetMapping(&quot;/linkCommentList&quot;)
-@ApiOperation(value = &quot;友链评论列表&quot;,notes = &quot;获取一页友链评论信息&quot;)
-@ApiImplicitParams(&#123;
-        @ApiImplicitParam(name = &quot;pageNum&quot;,value = &quot;页号&quot;),
-        @ApiImplicitParam(name = &quot;pageSize&quot;,value = &quot;每页大小&quot;)
-&#125;)
-public ResponseResult linkCommentList(Integer pageNum,Integer pageSize)&#123;
-    return commentService.linkCommentList(pageNum,pageSize);
-&#125;
-</code></pre>
-<h4 id="实体类配置"><a href="#实体类配置" class="headerlink" title="实体类配置"></a>实体类配置</h4><p><strong>@ApiModel</strong>  用于描述实体类</p>
-<p><strong>@ApiModelProperty</strong>   用于描述实体的属性</p>
-<pre><code class="java">@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@ApiModel(description = &quot;添加评论Dto&quot;)
-public class AddCommentDto &#123;
+<pre><code class="java">//fileChannel
+        //获取输入流
+        try &#123;
+            FileChannel channel = new FileInputStream(&quot;data.txt&quot;).getChannel();
 
-    private Long id;
-    //评论类型（0代表文章评论，1代表友链评论）
-    @ApiModelProperty(notes = &quot;评论类型（0代表文章评论，1代表友链评论）&quot;)
-    private String type;
-    //文章id
-    @ApiModelProperty(notes = &quot;文章id&quot;)
-    private Long articleId;
-    //...   
-&#125;
-</code></pre>
-<blockquote>
-<p>在实际开发中，我们一般不会用与数据库建立表关系的对象来接收前端传输的数据，接收参数和实际数据库中的表字段也不一定完全相同</p>
-<p>这样子在使用Swagger注解的时候也会和不同的方法需要接收的参数产生耦合</p>
-<p>因此我们一般会封装一层DTO对象（Data  Transaction Object数据传输对象，数据事务对象）</p>
-</blockquote>
-<p><strong>修改表现层参数</strong></p>
-<pre><code class="java">@PostMapping
-public ResponseResult comment(@RequestBody AddCommentDto addCommentDto)&#123;
-    Comment comment = BeanCopyUtils.copyBean(addCommentDto, Comment.class);
-    return commentService.comment(comment);
-&#125;
-</code></pre>
-<blockquote>
-<p>这里接收到的CommentDto对象再拷贝成Comment对象即可</p>
-</blockquote>
-<h3 id="文档信息配置类"><a href="#文档信息配置类" class="headerlink" title="文档信息配置类"></a>文档信息配置类</h3><p>加上**@Configuration注解**</p>
-<p>需要返回一个Docket对象，加上**@bean注解**</p>
-<p>使用了构造器模式创建了<code>Docket和apiInfo</code></p>
-<ul>
-<li>配置当前项目的一些基本信息</li>
-</ul>
-<pre><code class="java">@Configuration
-public class SwaggerConfig &#123;
+            //准备缓冲区 10bytes Buffer
+            ByteBuffer byteBuffer = ByteBuffer.allocate(10);
 
-    @Bean
-    public Docket customDocket()&#123;
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .select()
-                //扫描的包
-                .apis(RequestHandlerSelectors.basePackage(&quot;com.os467.controller&quot;))
-                .build();
+            while (true)&#123;
+                //读取channel数据，即写入Buffer
+                int read = channel.read(byteBuffer);
+
+                if (read == -1)&#123;
+                    break;//无内容读取则退出循环
+                &#125;
+
+                //打印buffer内容
+                //切换到缓冲区读模式
+                byteBuffer.flip();
+
+                //检查是否还有数据
+                while (byteBuffer.hasRemaining())&#123;
+                    //每次读一个字节
+                    byte b = byteBuffer.get();
+                    System.out.println((char) b);
+                &#125;
+                
+                //切换回写模式
+                byteBuffer.clear();
+            &#125;
+
+        &#125; catch (IOException e) &#123;
+
+        &#125;
+</code></pre>
+<p><strong>缓冲区使用步骤</strong></p>
+<p>1.向Buffer写入数据，如调用channel.read(buffer)</p>
+<p>2.调用flip()切换至<strong>读模式</strong></p>
+<p>3.从buffer读取数据，如调用buffer.get()</p>
+<p>4.调用clear()或compact()切换至<strong>写模式</strong></p>
+<p>5.重复以上步骤，直到读空为止</p>
+<h3 id="ByteBuffer结构"><a href="#ByteBuffer结构" class="headerlink" title="ByteBuffer结构"></a>ByteBuffer结构</h3><p><strong>属性</strong></p>
+<ul>
+<li>Capacity  数据容量</li>
+<li>position  读写指针</li>
+<li>limit  读写限制</li>
+</ul>
+<p>开始Buffer为空</p>
+<p>Position处于0，Limit &#x3D; 容量大小</p>
+<p>当写入4个字节后，调用flip，position从4回到0，Limit指向4，Buffer处于读模式</p>
+<p>clear调用后，容器回到Buffer为空的写模式状态</p>
+<p>compact调用后，则是把未读完的部分向前压缩，然后切换至写模式</p>
+<p><strong>常用方法:</strong></p>
+<ul>
+<li>分配空间</li>
+</ul>
+<pre><code class="java">Bytebuffer buf = ByteBuffer.allocate(16);
+</code></pre>
+<ul>
+<li>读取channel数据到buffer中</li>
+</ul>
+<pre><code class="java">int read = channel.read(buf);
+
+buf.put((byte)127);
+</code></pre>
+<ul>
+<li>向channel写入buffer中的数据</li>
+</ul>
+<pre><code class="java">int writeBytes = channel.write(buf);
+//get方法会使得position指针向后走
+//get(int i)会获取索引i的内容，指针不移动
+byte b = buf.get();
+</code></pre>
+<h3 id="字符串转换为ByteBuffer"><a href="#字符串转换为ByteBuffer" class="headerlink" title="字符串转换为ByteBuffer"></a>字符串转换为ByteBuffer</h3><pre><code class="java">public class StringToByteBuffer &#123;
+
+    public static void main(String[] args) &#123;
+
+        //方法一
+        //创建缓冲区
+        ByteBuffer buffer = ByteBuffer.allocate(16);
+
+        //变为字节数组写入数据
+        buffer.put(&quot;hello&quot;.getBytes());
+
+        //方法二，使用标准字符集来编码字符串为byte数组
+        ByteBuffer byteBuffer = StandardCharsets.UTF_8.encode(&quot;hello&quot;);
+
+        //方法三，包装
+        ByteBuffer byteBuffer1 = ByteBuffer.wrap(&quot;hello&quot;.getBytes());
+
     &#125;
 
-    private ApiInfo apiInfo() &#123;
-        Contact contact = new Contact(&quot;团队名&quot;,&quot;http://www.my.com&quot;,&quot;my@my.com&quot;);
-        return new ApiInfoBuilder()
-                .title(&quot;文档标题&quot;)
-                .description(&quot;文档描述&quot;)
-                .contact(&quot;联系方式&quot;)
-                .version(&quot;1.1.0&quot;)
-                .build();
+&#125;
+</code></pre>
+<blockquote>
+<p>使用charset方法后buffer会自动切换到读模式</p>
+</blockquote>
+<p><strong>Scattering Reads</strong></p>
+<p>分散读取</p>
+<pre><code class="java">channel.read(new ByteBuffer[]&#123;b1,b2,b3&#125;);
+</code></pre>
+<p><strong>GatheringWrites</strong></p>
+<p>整合写入</p>
+<pre><code class="java">channel.write(new ByteBuffer[]&#123;b1,b2,b3&#125;);
+</code></pre>
+<blockquote>
+<p>不需要合并多个buffer，这样子可以减少数据在ByteBuffer之间的拷贝复制，一次性写入</p>
+</blockquote>
+<blockquote>
+<p>粘包和半包问题</p>
+<p>粘包发送数据是因为这样能一次性发送多个包，提高了网络传输的效率</p>
+<p>半包现象是由于服务器缓冲区存在大小限制因此必须拆分发送</p>
+</blockquote>
+<pre><code class="java">public static void main(String[] args) &#123;
+
+    ByteBuffer source = ByteBuffer.allocate(32);
+
+    source.put(&quot;Hello,world\nI&#39;m zhangsan\nHo&quot;.getBytes());
+    split(source);
+    source.put(&quot;w are you?\n&quot;.getBytes());
+    split(source);
+&#125;
+
+private static void split(ByteBuffer source) &#123;
+    //切换为写模式
+    source.flip();
+
+    //这种解决方案每次都需要匹配换行符，存在效率低下的问题
+    for (int i = 0;i &lt; source.limit() ; i++) &#123;
+        if (source.get(i) == &#39;\n&#39;)&#123;
+            int length = i - source.position() + 1;
+            ByteBuffer target = ByteBuffer.allocate(length);
+            for (int j = 0; j &lt; length; j++) &#123;
+                target.put(source.get());
+            &#125;
+        &#125;
     &#125;
+
+    source.compact();
+&#125;
+</code></pre>
+<blockquote>
+<p>compact()：使得未读完的数据前移，切换为写模式</p>
+<p>limit()：buffer存储写入数据的大小，即limit指针索引</p>
+<p>position()：当前读取的索引位置，即position指针索引</p>
+</blockquote>
+<h3 id="Channel之间的数据传输"><a href="#Channel之间的数据传输" class="headerlink" title="Channel之间的数据传输"></a>Channel之间的数据传输</h3><pre><code class="java">try &#123;
+    FileChannel from = new FileInputStream(&quot;data.txt&quot;).getChannel();
+    FileChannel to = new FileOutputStream(&quot;to.txt&quot;).getChannel();
+
+    //这种方法效率高，底层会利用操作系统的零拷贝进行优化
+    from.transferTo(0,from.size(),to);
+
+&#125; catch (FileNotFoundException e) &#123;
+    e.printStackTrace();
+&#125; catch (IOException e) &#123;
+    e.printStackTrace();
+&#125;
+</code></pre>
+<p><strong>改进后</strong></p>
+<pre><code class="java">try &#123;
+    FileChannel from = new FileInputStream(&quot;data.txt&quot;).getChannel();
+    FileChannel to = new FileOutputStream(&quot;to.txt&quot;).getChannel();
+
+    //这种方法效率高，底层会利用操作系统的零拷贝进行优化，上限为2G数据
+    long size = from.size();
+    for (long left = size; left &gt; 0;)&#123;
+        left -= from.transferTo(size - left, left, to);
+    &#125;
+
+&#125; catch (FileNotFoundException e) &#123;
+    e.printStackTrace();
+&#125; catch (IOException e) &#123;
+    e.printStackTrace();
+&#125;
+</code></pre>
+<blockquote>
+<p>这种可以支持更大数据的传输</p>
+</blockquote>
+<h2 id="文件编程"><a href="#文件编程" class="headerlink" title="文件编程"></a>文件编程</h2><h3 id="Path"><a href="#Path" class="headerlink" title="Path"></a>Path</h3><p>jdk7引入了Path和Paths类</p>
+<ul>
+<li>Path用来表示文件路径</li>
+<li>Paths是工具类，用来获取Path实例</li>
+</ul>
+<pre><code class="java">Path source = Paths.get(&quot;1.txt&quot;); //相对路径
+Path source = Paths.get(&quot;d:\\1.txt&quot;); //绝对路径
+Path source = Paths.get(&quot;d:/1.txt&quot;);
+</code></pre>
+<h3 id="Files"><a href="#Files" class="headerlink" title="Files"></a>Files</h3><p><strong>检查文件是否存在</strong></p>
+<pre><code class="java">Path path = Paths.get(&quot;helloword/data.txt&quot;);
+System.out.println(Files.exists(path));
+</code></pre>
+<p><strong>创建一级目录</strong></p>
+<pre><code class="java">//目录已存在会抛出异常
+//只能创建一级目录
+Path path = Paths.get(&quot;helloword/d1&quot;);
+Files.createDirectory(path);
+</code></pre>
+<p><strong>创建多级目录</strong></p>
+<pre><code class="java">Path path = Paths.get(&quot;helloword/d1/d2&quot;);
+Files.createDirectories(path);
+</code></pre>
+<p><strong>拷贝文件</strong></p>
+<pre><code class="java">Path source = Path.get(&quot;helloword/data.txt&quot;);
+Path target = Path.get(&quot;helloword/target.txt&quot;);
+
+//高效率，使用的是操作系统的底层实现
+//文件已存在则抛出异常
+Files.copy(source,target);
+//覆盖已存在
+Files.copy(source,target,StandardCopyOption.REPLACE_EXISTING);
+</code></pre>
+<p><strong>移动文件</strong></p>
+<pre><code class="java">//保证文件移动原子性
+Files.move(source,target,StandardCopyOption.ATOMIC_MOVE);
+</code></pre>
+<p><strong>删除文件</strong></p>
+<pre><code class="java">Path target = Path.get(&quot;helloword/target.txt&quot;);
+//文件不存在则会报出异常
+Files.delete(target);
+</code></pre>
+<p><strong>删除目录（空目录）</strong></p>
+<pre><code class="java">Path target = Path.get(&quot;helloword/d1&quot;);
+
+Files.delete(target);
+</code></pre>
+<p><strong>更加方便的删除非空目录方法</strong></p>
+<p>walkFileTree访问多级目录</p>
+<pre><code class="java"> public static void main(String[] args) throws IOException &#123;
+
+        //由于匿名内部类对外部引用都需要复制一份拷贝，为了保持一致性
+        //默认为final，因此不能用int类型变量作为计数器
+        AtomicInteger dirCount = new AtomicInteger();
+        AtomicInteger fileCount = new AtomicInteger();
+
+         //参数一为起点文件位置，参数二为设定的遍历规则，需要重写内部类方法
+        Path path = Files.walkFileTree(Paths.get(&quot;D://xxx/xxx&quot;), new SimpleFileVisitor&lt;Path&gt;() &#123;
+            @Override
+            public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException &#123;
+                //此处添加逻辑即可
+                System.out.println(&quot;====&gt;&quot;+dir);
+                dirCount.incrementAndGet();
+                return super.preVisitDirectory(dir, attrs);
+            &#125;
+
+            @Override
+            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException &#123;
+                //此处添加逻辑即可
+                System.out.println(file);
+
+                fileCount.incrementAndGet();
+
+                return super.visitFile(file, attrs);
+            &#125;
+        &#125;);
+
+        System.out.println(&quot;dir count:&quot; + dirCount);
+        System.out.println(&quot;file count:&quot;+ fileCount);
+
+    &#125;
+</code></pre>
+<blockquote>
+<p>使用了访问者设计模式</p>
+<p>相比于我们自己写递归访问更加的方便</p>
+</blockquote>
+<p><strong>删除多级目录</strong></p>
+<pre><code class="java">public static void main(String[] args) throws IOException &#123;
+
+        Path path = Files.walkFileTree(Paths.get(&quot;D://xxx/xxx&quot;), new SimpleFileVisitor&lt;Path&gt;() &#123;
+
+            @Override
+            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException &#123;
+                Files.delete(file);
+                return super.visitFile(file, attrs);
+            &#125;
+
+            @Override
+            public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException &#123;
+                Files.delete(dir);
+                return super.postVisitDirectory(dir, exc);
+            &#125;
+
+        &#125;);
+
+    &#125;
+</code></pre>
+<p><strong>拷贝文件</strong></p>
+<pre><code class="java">public static void main(String[] args) throws IOException &#123;
+
+    String source = &quot;D:\\xxx1&quot;;
+    String target = &quot;D:\\xxx2&quot;;
+
+    Files.walk(Paths.get(source)).forEach(path -&gt; &#123;
+        try &#123;
+            String targetName = path.toString().replace(source,target);
+
+            //是目录
+            if (Files.isDirectory(path))&#123;
+                Files.createDirectory(Paths.get(targetName));
+            &#125;
+            //是普通文件
+            else if (Files.isRegularFile(path))&#123;
+                Files.copy(path,Paths.get(targetName));
+            &#125;
+        &#125;catch (IOException e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;);
 
 &#125;
 </code></pre>
@@ -1253,12 +1471,12 @@ public class SwaggerConfig &#123;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Swagger</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">1k</span></p>
+    <p><span class="copy-title">文章标题:</span>NIO入门</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">2.1k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-10-05, 00:51:35</p>
-    <p><span class="copy-title">最后更新:</span>2022-10-05, 00:53:10</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/10/05/Swagger/" title="Swagger">https://os467.github.io/2022/10/05/Swagger/</a>
+    <p><span class="copy-title">发布时间:</span>2023-03-17, 21:25:10</p>
+    <p><span class="copy-title">最后更新:</span>2023-03-17, 21:26:53</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/03/17/NIO%E5%85%A5%E9%97%A8/" title="NIO入门">https://os467.github.io/2023/03/17/NIO%E5%85%A5%E9%97%A8/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
