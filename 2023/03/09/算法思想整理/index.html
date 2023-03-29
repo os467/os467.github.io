@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="算法思想整理 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tly的博客">
-<meta property="og:url" content="https://os467.github.io/about/index.html">
+<meta name="description" content="题目十九  最长公共前缀编写一个函数来查找字符串数组中的最长公共前缀。 如果不存在公共前缀，返回空字符串 &quot;&quot;。 class Solution &amp;#123;     public String longestCommonPrefix(String[] strs) &amp;#123;   String ans &#x3D; strs[0];  if(strs.length&#x3D;&#x3D;1)&amp;#123;re">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法3">
+<meta property="og:url" content="https://os467.github.io/2023/03/29/%E7%AE%97%E6%B3%953/index.html">
 <meta property="og:site_name" content="Tly的博客">
-<meta property="og:description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
+<meta property="og:description" content="题目十九  最长公共前缀编写一个函数来查找字符串数组中的最长公共前缀。 如果不存在公共前缀，返回空字符串 &quot;&quot;。 class Solution &amp;#123;     public String longestCommonPrefix(String[] strs) &amp;#123;   String ans &#x3D; strs[0];  if(strs.length&#x3D;&#x3D;1)&amp;#123;re">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-05T07:48:23.998Z">
-<meta property="article:modified_time" content="2022-09-05T07:48:23.998Z">
+<meta property="article:published_time" content="2023-03-29T08:07:12.000Z">
+<meta property="article:modified_time" content="2023-03-29T08:08:35.401Z">
 <meta property="article:author" content="Os467">
 <meta name="twitter:card" content="summary">
 
@@ -364,7 +364,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="64">
-<input type="hidden" id="yelog_site_word_count" value="252.4k">
+<input type="hidden" id="yelog_site_word_count" value="252.7k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1094,12 +1094,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-03-09 19:44:45'>2023-03-09 19:43</time>
+            发布时间 : <time class="date" title='最后更新: 2023-03-29 16:30:14'>2023-03-09 19:43</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:598</span>
+        <span>字数:888</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1118,7 +1118,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%84%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3%E6%95%B4%E7%90%86"><span class="toc-text">常规算法思想整理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%B3%95"><span class="toc-text">滑动窗口法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%AD%E5%BF%83%E6%89%A9%E6%95%A3%E6%B3%95"><span class="toc-text">中心扩散法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-text">哈希表</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%84%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3%E6%95%B4%E7%90%86"><span class="toc-text">常规算法思想整理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%B3%95"><span class="toc-text">滑动窗口法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95"><span class="toc-text">双指针法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%AD%E5%BF%83%E6%89%A9%E6%95%A3%E6%B3%95"><span class="toc-text">中心扩散法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-text">哈希表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%88"><span class="toc-text">栈</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B4%E5%9E%8B%E5%8F%98%E9%87%8F"><span class="toc-text">整型变量</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1137,12 +1137,43 @@ window.onload = function(){
         <h1 id="常规算法思想整理"><a href="#常规算法思想整理" class="headerlink" title="常规算法思想整理"></a>常规算法思想整理</h1><h1 id="滑动窗口法"><a href="#滑动窗口法" class="headerlink" title="滑动窗口法"></a>滑动窗口法</h1><p>滑动窗口法，也叫尺取法，可以用来解决一些查找满足一定条件的连续区间的性质（长度等）的问题。</p>
 <p>由于区间连续，因此当区间发生变化时，可以通过旧有的计算结果对搜索空间进行剪枝，这样便减少了重复计算，降低了时间复杂度。往往类似于“<strong>请找到满足 xx 的最 x 的区间(子串、子数组)的 xx</strong>”这类问题都可以使用该方法进行解决</p>
 <p>一般使用双指针来维护滑块窗口，通常会设置一个左指针p1和一个右指针p2都指向0，[p1,p2],则为滑块维护的大小，滑块的移动规则可以根据题目自己定义，但每次移动都需要更新一次结果然后与旧的结果进行比较来决定是否更新记录</p>
+<p><strong>经典问题</strong></p>
+<ul>
+<li>无重复字符最长字串</li>
+<li>得到 K 个黑块的最少涂色次数</li>
+</ul>
+<h1 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h1><p>双指针法与滑动窗口法有异曲同工之处，都是维护两个指针。可以通过移动指针来不断减小问题规模。</p>
+<p><strong>经典问题</strong></p>
+<ul>
+<li>盛最多水的容器</li>
+</ul>
 <h1 id="中心扩散法"><a href="#中心扩散法" class="headerlink" title="中心扩散法"></a>中心扩散法</h1><p>中心扩散法的思路是：<strong>遍历每一个索引，以这个索引为中心，利用“回文串”中心对称的特点，往两边扩散，看最多能扩散多远</strong></p>
 <p>当然回文串问题中存在奇偶串的问题，可能还需要从两个索引的中心位置开始扩散</p>
 <p>时间复杂度一般为O(n^2)</p>
+<p><strong>经典问题</strong></p>
+<ul>
+<li>最长回文子串</li>
+</ul>
 <h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><p>当存在多个未知变量的值需要被<strong>记录</strong>时，我们会使用哈希表，哈希表是一个十分方便的字典，可以帮助我们快速查找某个已经计算过的值</p>
 <p>我们还可以用哈希表制作<strong>记忆化容器</strong>，当遇到某个需要复杂计算量的问题时（比如动态规划），我们可以使用参数命名问题的方式为当前问题命名，将第一次计算过的结果存入表中，当下次遇到重复问题时，先判断是否计算过，如果计算过直接取结果即可，这样便避免了重复计算的时间浪费</p>
 <p>如果遇到多重循环<strong>结果有边界</strong>问题，哈希表还可以将几次的计算结果存储，通过初步计算结果再与后面的条件进行计算，这样便减少了因为问题规模扩大而造成的时间复杂度的扩大</p>
+<p><strong>经典问题</strong></p>
+<ul>
+<li>青蛙过河</li>
+<li>保证文件名唯一</li>
+</ul>
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>具有记忆性，先进后出的特点。解决因符合特定条件而引发的递归问题，通常由<strong>一个指针维护列表即可</strong>。</p>
+<p><strong>经典问题</strong></p>
+<ul>
+<li>有效的括号</li>
+</ul>
+<h1 id="整型变量"><a href="#整型变量" class="headerlink" title="整型变量"></a>整型变量</h1><p>整型变量的作用比布尔变量更有优势，当我们需要处理的问题存在三个或多个状态时，可以用整型变量来标识不同状态。</p>
+<p>如以下三种状态可以用0，1，-1来记录。正状态(1)，负状态(0)，未处理状态(-1)。</p>
+<p>当问题存在的状态是可枚举的时候，适当的引入整型变量记录状态是十分有效的。</p>
+<p><strong>经典问题</strong></p>
+<ul>
+<li>字符串转换整数 (atoi)</li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1157,10 +1188,10 @@ window.onload = function(){
 
 <div class="article_copyright">
     <p><span class="copy-title">文章标题:</span>算法思想整理</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">598</span></p>
+    <p><span class="copy-title">字数:</span><span class="post-count">888</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
     <p><span class="copy-title">发布时间:</span>2023-03-09, 19:43:10</p>
-    <p><span class="copy-title">最后更新:</span>2023-03-09, 19:44:45</p>
+    <p><span class="copy-title">最后更新:</span>2023-03-29, 16:30:14</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/03/09/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3%E6%95%B4%E7%90%86/" title="算法思想整理">https://os467.github.io/2023/03/09/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3%E6%95%B4%E7%90%86/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
