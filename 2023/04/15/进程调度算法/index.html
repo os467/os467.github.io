@@ -1,0 +1,2772 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tly的博客</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Tly的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="进程调度实验一 进程调度 一、实验目的 多道程序设计中，经常是若干个进程同时处于就绪状态，必须依照某种策略来决定那个进程优先占有处理机。因而引起进程调度。本实验模拟在单处理机情况下的处理机调度问题，加深对进程调度的理解。 二、实验内容 1．优先权法、轮转法 简化假设 1） 进程为计算型的（无I&#x2F;O） 2） 进程状态：ready、running、finish 3） 进程需要的CPU时间以时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tly的博客">
+<meta property="og:url" content="https://os467.github.io/2023/04/15/%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Tly的博客">
+<meta property="og:description" content="进程调度实验一 进程调度 一、实验目的 多道程序设计中，经常是若干个进程同时处于就绪状态，必须依照某种策略来决定那个进程优先占有处理机。因而引起进程调度。本实验模拟在单处理机情况下的处理机调度问题，加深对进程调度的理解。 二、实验内容 1．优先权法、轮转法 简化假设 1） 进程为计算型的（无I&#x2F;O） 2） 进程状态：ready、running、finish 3） 进程需要的CPU时间以时">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://os467.github.io/images/clip_image002.png">
+<meta property="og:image" content="https://os467.github.io/images/clip_image004.png">
+<meta property="og:image" content="https://os467.github.io/images/clip_image006.jpg">
+<meta property="og:image" content="https://os467.github.io/images/clip_image008.jpg">
+<meta property="og:image" content="https://os467.github.io/images/clip_image010.jpg">
+<meta property="article:published_time" content="2023-04-15T05:36:13.446Z">
+<meta property="article:modified_time" content="2023-04-15T05:30:13.964Z">
+<meta property="article:author" content="Os467">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://os467.github.io/images/clip_image002.png">
+
+
+<link rel="icon" href="/img/headimg.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/headimg.jpg"/>
+</a>
+<div class="author">
+    <span>Os467</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/os467"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:1300452403@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=1300452403&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/song?id=551339076&amp;userid=1571495855"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+  <!-- 新增的网易云外链播放器 -->
+  <div class="music-player" style="transform: transform:translateY(-50%);">
+    <iframe id="music-player-iframe" frameborder="no" border="0" marginwidth="0" marginheight="0" allow="autoplay" width=160 height=52 src=""></iframe>
+        
+    <div>
+        <!-- 动态切换歌曲 -->
+       <!--  <input class="input" type="button" onclick="playPre()" value="上一首"  style="width: 50px; text-align: center;"> -->
+        <img onclick="playPre()" style="height: 15px; width: 15px;margin-left:60px" src="/img/back.png">
+        <img onclick="playNext()" style="height: 15px; width: 15px;margin-left:5px" src="/img/next.png">
+        <!-- <input class="input" type="button" onclick="playNext()" value="下一首" style="width: 50px; text-align: center;">     -->
+    </div>
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(67)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="JAVASE基础">
+                        
+                        JAVASE基础
+                        <small>(9)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="JAVASE进阶">
+                        
+                        JAVASE进阶
+                        <small>(8)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="框架学习">
+                        
+                        框架学习
+                        <small>(10)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="微服务">
+                        
+                        微服务
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="运维">
+                        
+                        运维
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="项目">
+                        
+                        项目
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="底层学习">
+                        
+                        底层学习
+                        <small>(5)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="前端">
+                        
+                        前端
+                        <small>(7)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="其它">
+                        
+                        其它
+                        <small>(10)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="算法">
+                        
+                        算法
+                        <small>(5)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="数据库">
+                        
+                        数据库
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="67">
+<input type="hidden" id="yelog_site_word_count" value="271.4k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+
+
+<!-- 新添加的音乐切换功能 -->
+<script>
+
+    var index = 0;
+
+const musicList = [
+     /* 中文曲目 */
+    "//music.163.com/outchain/player?type=2&id=1301884692&height=32",
+    "//music.163.com/outchain/player?type=2&id=28496172&height=32",
+    /* 英文曲目 */
+    "//music.163.com/outchain/player?type=2&id=1919435807&height=32",
+    "//music.163.com/outchain/player?type=2&id=411314681&height=32",
+    "//music.163.com/outchain/player?type=2&id=1464325108&height=32",
+    "//music.163.com/outchain/player?type=2&id=1440570723&height=32",
+    "//music.163.com/outchain/player?type=2&id=1406067418&height=32",
+    "//music.163.com/outchain/player?type=2&id=1313035063&height=32",
+    "//music.163.com/outchain/player?type=2&id=500410102&height=32",
+    "//music.163.com/outchain/player?type=2&id=31010566&height=32",
+     /* 日语 */
+     "//music.163.com/outchain/player?type=2&id=498286345&height=32",
+    "//music.163.com/outchain/player?type=2&id=1350330823&height=32",
+    "//music.163.com/outchain/player?type=2&id=1358226158&height=32",
+    "//music.163.com/outchain/player?type=2&id=28913884&height=32",
+    /* 纯音乐 */
+    "//music.163.com/outchain/player?type=2&id=1484017437&height=32",
+    "//music.163.com/outchain/player?type=2&id=29979829&height=32",
+    "//music.163.com/outchain/player?type=2&id=425280053&height=32"
+
+]
+
+
+
+const indexMax = musicList.length -1;
+
+const musicDoc = document.getElementById("music-player-iframe");
+
+var playNext = function(){
+
+    index == indexMax ? index = 0 : index +=1;
+
+    musicDoc.setAttribute("src",musicList[index]+"&auto=1");
+
+}
+
+var playPre = function(){
+
+    index == 0 ? index = indexMax : index -=1;
+
+    musicDoc.setAttribute("src",musicList[index]+"&auto=1")
+}
+
+//随机初始值
+let ranIndex = Math.floor(Math.random() * indexMax);
+
+window.onload = function(){
+    document.getElementById("music-player-iframe").setAttribute("src",musicList[ranIndex]+"&auto=0");
+    }
+
+</script>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://os467.github.io/mdResource">os467</a></li>
+            
+            <li><a target="_blank" href="https://www.bilibili.com/video/BV17h411k7jB?vd_source=38c37e7cf61f2c4591c73b0a37eab964">这是一个神奇的链接</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 "
+           href="/2023/04/15/%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2023-04-15 13:36:13">2023/04/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2023/04/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据结构">数据结构</span>
+            <span class="post-date" title="2023-04-05 17:42:05">2023/04/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2023/03/29/NIO%E5%9F%BA%E7%A1%80/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NIO基础">NIO基础</span>
+            <span class="post-date" title="2023-03-29 21:31:10">2023/03/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2023/03/29/%E7%AE%97%E6%B3%953/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="算法3">算法3</span>
+            <span class="post-date" title="2023-03-29 16:07:12">2023/03/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/03/20/javaSwing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Swing入门">Swing入门</span>
+            <span class="post-date" title="2023-03-20 20:07:33">2023/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2023/03/17/NIO%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NIO入门">NIO入门</span>
+            <span class="post-date" title="2023-03-17 21:25:10">2023/03/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/03/13/%E9%A1%B9%E7%9B%AE%E4%B8%8A%E7%BA%BF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="项目上线部署经验">项目上线部署经验</span>
+            <span class="post-date" title="2023-03-13 23:20:12">2023/03/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2023/03/09/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3%E6%95%B4%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="算法思想整理">算法思想整理</span>
+            <span class="post-date" title="2023-03-09 19:43:10">2023/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2023/03/09/%E7%AE%97%E6%B3%952/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="算法2">算法2</span>
+            <span class="post-date" title="2023-03-09 19:43:02">2023/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2023/03/03/%E7%AE%97%E6%B3%951/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="算法1">算法1</span>
+            <span class="post-date" title="2023-03-03 12:49:07">2023/03/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/12/07/Java%E6%A6%82%E5%BF%B5%E5%A4%8D%E4%B9%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java概念复习">Java概念复习</span>
+            <span class="post-date" title="2022-12-07 19:54:23">2022/12/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/12/01/Ascii%E7%BC%96%E7%A0%81%E5%8A%A0%E5%AF%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ascii码加密编码">Ascii码加密编码</span>
+            <span class="post-date" title="2022-12-01 15:02:11">2022/12/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/11/22/TypeScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="TypeScript">TypeScript</span>
+            <span class="post-date" title="2022-11-22 22:13:06">2022/11/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/11/17/ThreeJS/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ThreeJS">ThreeJS</span>
+            <span class="post-date" title="2022-11-17 00:07:03">2022/11/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/11/05/synchronized%E4%B8%8E%E9%94%81%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="synchronized与锁机制">synchronized与锁机制</span>
+            <span class="post-date" title="2022-11-05 23:46:13">2022/11/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/10/18/ElementUI/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ElementUI">ElementUI</span>
+            <span class="post-date" title="2022-10-18 21:17:36">2022/10/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/10/13/Axios/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Axios">Axios</span>
+            <span class="post-date" title="2022-10-13 00:16:19">2022/10/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/10/10/Vue2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Vue2">Vue2</span>
+            <span class="post-date" title="2022-10-10 22:15:06">2022/10/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/10/08/%E8%AF%B7%E6%B1%82%E9%99%90%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="请求限流">请求限流</span>
+            <span class="post-date" title="2022-10-08 19:57:03">2022/10/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 项目 "
+           href="/2022/10/05/%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前后端分离博客项目">前后端分离博客项目</span>
+            <span class="post-date" title="2022-10-05 00:52:35">2022/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/10/05/Swagger/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Swagger">Swagger</span>
+            <span class="post-date" title="2022-10-05 00:51:35">2022/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/10/01/Aop%E6%97%A5%E5%BF%97%E5%AE%9E%E7%8E%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Aop日志实现">Aop日志实现</span>
+            <span class="post-date" title="2022-10-01 23:47:22">2022/10/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/09/24/Git/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2022-09-24 01:54:20">2022/09/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 运维 "
+           href="/2022/09/23/Linux/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux指令">Linux指令</span>
+            <span class="post-date" title="2022-09-23 21:30:12">2022/09/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/09/19/SpringSecurity/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringSecurity">SpringSecurity</span>
+            <span class="post-date" title="2022-09-19 23:33:22">2022/09/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 "
+           href="/2022/09/16/Mysql%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mysql事务隔离级别">Mysql事务隔离级别</span>
+            <span class="post-date" title="2022-09-16 19:51:23">2022/09/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/09/15/ThreadLocal/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ThreadLocal">ThreadLocal</span>
+            <span class="post-date" title="2022-09-15 00:02:03">2022/09/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/09/11/%E6%A0%91%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="树结构入门.md">树结构入门.md</span>
+            <span class="post-date" title="2022-09-11 02:27:07">2022/09/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/09/08/NodeJS/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NodeJS">NodeJS</span>
+            <span class="post-date" title="2022-09-08 20:18:43">2022/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/09/08/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前端入门">前端入门</span>
+            <span class="post-date" title="2022-09-08 10:21:00">2022/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/09/06/Java%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java对象创建">Java对象创建</span>
+            <span class="post-date" title="2022-09-06 21:16:42">2022/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/09/04/ElasticSearch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ElasticSearch">ElasticSearch</span>
+            <span class="post-date" title="2022-09-04 23:29:31">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/09/01/springCloud%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud项目搭建">SpringCloud项目搭建</span>
+            <span class="post-date" title="2022-09-01 22:23:21">2022/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/30/RabbitMQ/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RabbitMQ">RabbitMQ</span>
+            <span class="post-date" title="2022-08-30 20:25:33">2022/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/08/29/MVC%E8%AE%BF%E9%97%AE%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MVC多线程安全问题">MVC多线程安全问题</span>
+            <span class="post-date" title="2022-08-29 17:18:53">2022/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/08/27/JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM类加载机制">JVM类加载机制</span>
+            <span class="post-date" title="2022-08-27 18:10:23">2022/08/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/08/24/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM虚拟机">JVM虚拟机</span>
+            <span class="post-date" title="2022-08-24 18:28:03">2022/08/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 运维 "
+           href="/2022/08/23/Docker/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Docker">Docker</span>
+            <span class="post-date" title="2022-08-23 13:25:11">2022/08/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/18/springCloud/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud">SpringCloud</span>
+            <span class="post-date" title="2022-08-18 13:21:39">2022/08/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="微服务入门">微服务入门</span>
+            <span class="post-date" title="2022-08-15 15:44:35">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/15/dubbo/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="dubbo">dubbo</span>
+            <span class="post-date" title="2022-08-15 07:25:45">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/13/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Redis">Redis</span>
+            <span class="post-date" title="2022-08-13 14:25:31">2022/08/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/12/bootstrap/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Bootstrap(WEB框架)">Bootstrap(WEB框架)</span>
+            <span class="post-date" title="2022-08-12 16:23:21">2022/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/12/springboot/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot">SpringBoot</span>
+            <span class="post-date" title="2022-08-12 12:15:35">2022/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/08/ssm%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SSM项目整合">SSM项目整合</span>
+            <span class="post-date" title="2022-08-08 12:15:25">2022/08/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 项目 "
+           href="/2022/08/03/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="外卖项目">外卖项目</span>
+            <span class="post-date" title="2022-08-03 08:35:11">2022/08/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/01/MyBatisPlus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatisPlus">MyBatisPlus</span>
+            <span class="post-date" title="2022-08-01 11:15:26">2022/08/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/31/MyBatis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatis">MyBatis</span>
+            <span class="post-date" title="2022-07-31 10:10:26">2022/07/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/28/Maven/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven">Maven</span>
+            <span class="post-date" title="2022-07-28 19:10:41">2022/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/26/spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="spring">spring</span>
+            <span class="post-date" title="2022-07-26 21:54:22">2022/07/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/23/springMVC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringMVC">SpringMVC</span>
+            <span class="post-date" title="2022-07-23 21:35:21">2022/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式">设计模式</span>
+            <span class="post-date" title="2022-07-18 19:21:50">2022/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/17/Ajax/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ajax">Ajax</span>
+            <span class="post-date" title="2022-07-17 12:07:22">2022/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/14/Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Annotation">Annotation</span>
+            <span class="post-date" title="2022-07-14 19:36:02">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/14/%E6%B3%A8%E8%A7%A3Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="注解">注解</span>
+            <span class="post-date" title="2022-07-14 10:09:18">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/13/Reflect/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Reflect">Reflect</span>
+            <span class="post-date" title="2022-07-13 14:40:18">2022/07/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2022-07-12 12:29:58">2022/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/10/IO%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IO流">IO流</span>
+            <span class="post-date" title="2022-07-10 20:14:33">2022/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/08/jQuery/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jQuery">jQuery</span>
+            <span class="post-date" title="2022-07-08 16:24:33">2022/07/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/07/javaScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="javaScript">javaScript</span>
+            <span class="post-date" title="2022-07-07 12:54:16">2022/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/06/XML/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="XML">XML</span>
+            <span class="post-date" title="2022-07-06 18:28:03">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/06/cookie%E5%92%8Csession/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="cookie和session">cookie和session</span>
+            <span class="post-date" title="2022-07-06 18:27:45">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/02/servlet/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="servlet">servlet</span>
+            <span class="post-date" title="2022-07-02 08:24:49">2022/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/01/jdbc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jdbc">jdbc</span>
+            <span class="post-date" title="2022-07-01 08:24:49">2022/07/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/06/19/SQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL">SQL</span>
+            <span class="post-date" title="2022-06-19 19:45:07">2022/06/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/05/28/JAVA%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JAVA入门">JAVA入门</span>
+            <span class="post-date" title="2022-05-28 00:32:07">2022/05/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/27/Linux%E4%BA%91%E8%AE%A1%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux云计算">Linux云计算</span>
+            <span class="post-date" title="2022-05-27 00:05:15">2022/05/27</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-进程调度算法" class="article article-type-post" itemscope itemprop="blogPost">
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2023-04-15 13:30:13'>2023-04-15 13:36</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:5.8k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="toc-text">进程调度</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h1><p><strong>实验一 进程调度</strong></p>
+<p><strong>一、实验目的</strong></p>
+<p>多道程序设计中，经常是若干个进程同时处于就绪状态，必须依照某种策略来决定那个进程优先占有处理机。因而引起进程调度。本实验模拟在单处理机情况下的处理机调度问题，加深对进程调度的理解。</p>
+<p><strong>二、实验内容</strong></p>
+<p>1．优先权法、轮转法</p>
+<p>简化假设</p>
+<p>1） 进程为计算型的（无I&#x2F;O）</p>
+<p>2） 进程状态：ready、running、finish</p>
+<p>3） 进程需要的CPU时间以时间片为单位确定</p>
+<p>2．算法描述</p>
+<p>1） 优先权法——动态优先权</p>
+<p>当前运行进程用完时间片后，其优先权减去一个常数。</p>
+<p>2） 轮转法</p>
+<p><strong>三、实验要求</strong></p>
+<p>1．如采用随机数，随机数的取值范围应加以限制，如所需的CPU时间限制在1~20之间。</p>
+<p>2．进程数n不要太大通常取4~8个</p>
+<p>3．独立编程</p>
+<p>4．二种调度算法</p>
+<p>5．若有可能请在图形方式下，将PCB的调度用图形成动画显示。</p>
+<p><strong>四、实验方案</strong></p>
+<p>为了更好的使用JavaSwing框架来构建UI界面，可以自己制定一套JavaSwing框架的小型封装组件。这里的JframeBuilder用于构建通用的窗体模板。</p>
+<p>创建我的自定义菜单模板，采用了前端路由选择的思想，制定一套通用的路由-界面替换预设窗口。</p>
+<p>使用此预设架构Jframe窗体，实现三个页面：配置页面，优先级调度算法渲染页面，轮转法调度算法渲染页面。</p>
+<p>使用者需要预先在配置页面选择好进程数量和轮转时间片长度，设置完成后即可选择两种方法对应的菜单执行渲染动画并获取对应的数据。</p>
+<p><strong>优先级法</strong></p>
+<p>未到达的任务暂时缓存在一个waitList数组里</p>
+<p>每次系统先检测waitList里面是否有任务要加入就绪队列（已获得全部资源）</p>
+<p>检查就绪队列和执行位是否存在任务，若都不存在任务则系统进入下一时刻且进入下一循环</p>
+<p>从就绪队列中拿到最高优先级任务</p>
+<p>判断是否抵达系统优先级抢占时刻</p>
+<p>若抵达，则将此最高优先级任务与执行位任务优先级比较，若高于则置换。若执行位无任务（上一次任务完成）则直接换入。</p>
+<p>若未抵达，则判断是否拿到了最高优先级任务</p>
+<p>若未拿到则不做操作</p>
+<p>若拿到则判断执行位是否为空，若为空则换入任务，为之执行，且优先级-1</p>
+<p>最后判断就绪队列，等待队列，执行位是否都为空（无未完成任务）</p>
+<p>若都为空则结束循环</p>
+<p>否则继续循环</p>
+<p><strong>轮转法</strong></p>
+<p>检查等待队列是否有任务抵达，加入抵达任务到就绪队列末尾</p>
+<p>将上一次执行位任务（未完成）加入就绪队列末尾</p>
+<p>检查就绪队列是否存在任务，若不存在任务则系统进入下一时刻，继续循环</p>
+<p>获取就绪队列队头任务，并弹出队列</p>
+<p>放入执行位，为之执行一个时间片</p>
+<p>检查所有任务是否执行完毕，若执行完毕则结束循环，否则继续循环</p>
+<p><strong>项目地址：</strong><a target="_blank" rel="noopener" href="https://github.com/os467/JavaOs467">GitHub - os467&#x2F;JavaOs467: My java progaram(demo) hub.</a></p>
+<p>优先级调度算法流程图</p>
+<p><img src="/images/clip_image002.png" alt="img"></p>
+<p>轮转调度算法流程图</p>
+<p><img src="/images/clip_image004.png" alt="img"></p>
+<p><strong>运行结果展示</strong></p>
+<p><strong>优先级法</strong> <strong>线程数</strong><strong>&#x3D;4</strong> <strong>系统优先权检测时间</strong> <strong>&#x3D; 3</strong></p>
+<p><img src="/images/clip_image006.jpg" alt="img"></p>
+<p><strong>轮转法</strong> <strong>线程数</strong><strong>&#x3D;4**<strong>，时间片</strong></strong>&#x3D;1**</p>
+<p><img src="/images/clip_image008.jpg" alt="img"></p>
+<p><strong>线程数</strong><strong>&#x3D;8**<strong>，时间片</strong></strong>&#x3D; 4**</p>
+<p><img src="/images/clip_image010.jpg" alt="img"></p>
+<p><strong>五、实验代码</strong></p>
+<p><strong>使用UI界面组件： JavaSwing</strong></p>
+<p><strong>使用编辑器：</strong> <strong>idea</strong></p>
+<p><strong>package com.os467.project.core包</strong></p>
+<p><strong>作业进程类</strong></p>
+<pre><code class="java">package com.os467.project.core;
+
+/** 
+ *作业进程
+ * 
+ */
+public class HomeWork &#123;
+
+        //抵达时间
+        private Integer arriveTime;
+
+        //作业名
+        private Character name;
+
+        //当前优先级
+        private Integer level;
+
+        //作业所需完成时间
+        private Integer endTime;
+
+        //作业已执行时间
+        private Integer nowTime = 0;
+
+        //当前状态 0 就绪 1 执行 2 结束
+        private Integer status;
+
+        public Integer getArriveTime() &#123;
+            return arriveTime;
+        &#125;
+
+        public Character getName() &#123;
+            return name;
+        &#125;
+
+        public void setName(Character name) &#123;
+            this.name = name;
+        &#125;
+
+        public Integer getLevel() &#123;
+            return level;
+        &#125;
+
+        public void setLevel(Integer level) &#123;
+            this.level = level;
+        &#125;
+
+        public Integer getEndTime() &#123;
+            return endTime;
+        &#125;
+
+        public void setEndTime(Integer endTime) &#123;
+            this.endTime = endTime;
+        &#125;
+
+        public Integer getNowTime() &#123;
+            return nowTime;
+        &#125;
+
+        public void setNowTime(Integer nowTime) &#123;
+            this.nowTime = nowTime;
+        &#125;
+
+        public Integer getStatus() &#123;
+            return status;
+        &#125;
+
+        public void setStatus(Integer status) &#123;
+            this.status = status;
+        &#125;
+
+        public void setArriveTime(Integer arriveTime) &#123;
+            this.arriveTime = arriveTime;
+        &#125;
+    &#125;
+</code></pre>
+<p><strong>弹窗类</strong></p>
+<pre><code class="java">package com.os467.project.core;
+
+import javax.swing.*;
+import java.awt.*;
+
+
+/** 
+ *运行结果弹窗
+ * 
+ */
+public class MyDialog extends JDialog &#123;
+    public MyDialog(Frame owner, String title, String msg) &#123;
+        super(owner, title);// 调用JDialog父类的构造方法
+        setVisible(true);
+        // 创建一个具有指定标题和指定所有者的对话框。
+        JTextArea jTextArea = new JTextArea();
+        jTextArea.setEditable(false);
+        jTextArea.setText(msg);
+        jTextArea.setFont(new Font(&quot;dialog&quot;,0,18));
+        JScrollPane jsp = new JScrollPane(jTextArea);
+        //设置矩形大小.参数依次为(矩形左上角横坐标x,矩形左上角纵坐标y，矩形长度，矩形宽度)
+        jsp.setBounds(13, 10, owner.getWidth()/3, owner.getHeight());
+        add(jsp);
+        setSize(owner.getWidth()/3, owner.getHeight());//大小
+        // setModal(true);//设置为模态
+        setLocationRelativeTo(null);//居中
+        setDefaultCloseOperation(JDialog.*DISPOSE_ON_CLOSE*);//当点击对话框右上角的关闭按钮时,销毁该对话框
+
+    &#125;
+&#125;
+</code></pre>
+<p><strong>操作系统进程调度优先级法数据渲染器类</strong></p>
+<pre><code class="java">package com.os467.project.core;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
+
+public class SystemMonitorX extends Thread&#123;
+
+    //等待队列
+    private List&lt;HomeWork&gt; waitList;
+
+    //就绪队列
+    private List&lt;HomeWork&gt; readyList;
+
+    //执行中的作业
+    private HomeWork execution;
+
+    private JPanel systemXPage;
+
+    //作业数量
+    private Integer num;
+
+    //单位时间长度
+    private Integer unitLength;
+
+    //累计系统运行时间
+    private Integer sumSystemRunTime = 0;
+
+    //累计长度
+    private Integer sumLength = 20;
+
+    //抵达计数器
+    private Integer arriveCount = 0;
+
+    //系统运行时间
+    private Integer systemRunTime = 0;
+
+    //消息收集器
+    private StringBuilder msg = new StringBuilder();
+
+    int testC = 0;
+
+    private List&lt;ExecuteMsg&gt; executeMsgList = new ArrayList&lt;&gt;();
+
+    class ExecuteMsg&#123;
+        Integer executeTime;
+        Character workName;
+
+        public ExecuteMsg(Integer executeTime, Character name) &#123;
+            this.executeTime = executeTime;
+            this.workName = name;
+        &#125;
+    &#125;
+
+    @Override
+    public void run() &#123;
+
+        waitList = new ArrayList&lt;&gt;();
+        readyList = new ArrayList&lt;&gt;();
+
+        init();
+
+        //模拟操作系统运作
+        while (true)&#123;
+
+            //检查等待队列任务
+            checkWaitList();
+
+            //检查就绪队列是否存在作业
+            if (readyList.size() &lt;= 0 &amp;&amp; execution == null)&#123;
+                systemRunTime += WorkContent.*SYSTEM_RUN_TIME_UNIT*;
+                executeMsgList.add(new ExecuteMsg(WorkContent.*SYSTEM_RUN_TIME_UNIT*,null));
+                continue;
+            &#125;
+
+            //从就绪队列中获取最高优先级任务
+            HomeWork homeWork = selectHighestLevelWork();
+
+            HomeWork executionWorkCache;
+            if (systemRunTime % WorkContent.*SYSTEM_CHECK_LEVEL_TIME_INTERVAL* == 0 &amp;&amp; homeWork != null)&#123;
+                if (execution == null)&#123;
+                    //将其从就绪队列中删除
+                    removeAndExecute(homeWork);
+                &#125;else if ( homeWork.getLevel() &gt; execution.getLevel())&#123;
+                    //抢占当前任务
+                    msg.append(&quot;进程-&quot;+homeWork.getName()+&quot;,优先级：&quot;+homeWork.getLevel()+&quot;,抢占进程-&quot;+execution.getName()+&quot;,优先级：&quot;+execution.getLevel()+&quot;\n&quot;);
+                    readyList.add(execution);
+                    removeAndExecute(homeWork);
+                &#125;
+
+            &#125;else if (homeWork != null)&#123;
+                if (execution == null)&#123;
+                    //将其从就绪队列中删除
+                    removeAndExecute(homeWork);
+                &#125;
+            &#125;
+
+            executionWorkCache = execution;
+            //执行，获取执行时间
+            Integer executeTime = execute(execution);
+
+            //增加系统运行时间
+            for (int i = 0; i &lt; executeTime; i++) &#123;
+                systemRunTime += WorkContent.*SYSTEM_RUN_TIME_UNIT*;
+                checkWaitList();
+
+            &#125;
+
+
+            executeMsgList.add(new ExecuteMsg(executeTime,executionWorkCache.getName()));
+
+
+            msg.append(&quot;========当前系统时间：&quot;+systemRunTime+&quot;========\n&quot;);
+            if (executionWorkCache.getStatus().equals(WorkContent.*FINISH_STATUS*))&#123;
+                msg.append(&quot;进程-&quot;+executionWorkCache.getName()+&quot;已完成，服务时间：&quot;+executionWorkCache.getEndTime()+&quot;\n&quot;);
+            &#125;else if (execution != null)&#123;
+                msg.append(&quot;进程-&quot;+execution.getName()+&quot;，进度：(&quot;+execution.getNowTime()+&quot;/&quot;+execution.getEndTime()+&quot;)，&quot;+&quot;优先级：&quot;+execution.getLevel()+&quot;\n&quot;);
+            &#125;
+
+            for (HomeWork work : readyList) &#123;
+                msg.append(&quot;进程-&quot;+work.getName()+&quot;，进度：(&quot;+work.getNowTime()+&quot;/&quot;+work.getEndTime()+&quot;)，&quot;+&quot;优先级：&quot;+work.getLevel()+&quot;\n&quot;);
+            &#125;
+
+            msg.append(&quot;=============================\n&quot;);
+
+            //检查是否都执行完毕
+            if (readyList.size()&lt;=0 &amp;&amp; waitList.size() &lt;= 0 &amp;&amp; execution == null)&#123;
+                break;
+            &#125;
+        &#125;
+
+        //产生基准长度
+        unitLength = (int)((systemXPage.getWidth()*0.85)/(double)(systemRunTime));
+
+        for (ExecuteMsg executeMsg : executeMsgList) &#123;
+
+            System.*out*.println(executeMsg.executeTime+executeMsg.workName);
+            //构建页面新数据
+            updatePageInfo(executeMsg.executeTime,executeMsg.workName);
+
+            //模拟执行时间
+            try &#123;
+                Thread.*sleep*(100 * executeMsg.executeTime);
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
+            &#125;
+
+            //更新界面数据
+            SwingUtilities.*updateComponentTreeUI*(systemXPage);
+
+        &#125;
+
+        JFrame parent = (JFrame)SwingUtilities.*getRootPane*(systemXPage).getParent();
+        new MyDialog(parent,&quot;运行结果&quot;,msg.toString());
+        System.*out*.println(msg.toString());
+
+    &#125;
+
+    private void removeAndExecute(HomeWork homeWork) &#123;
+        removeFromReadyList(homeWork);
+        execution = homeWork;
+    &#125;
+
+    */**
+   ** *检查等待作业入队
+\*   **/
+        \*
+        private void checkWaitList() &#123;
+        Iterator&lt;HomeWork&gt; iterator = waitList.iterator();
+        while (iterator.hasNext()) &#123;
+            HomeWork work = iterator.next();
+            if (work.getArriveTime().equals(systemRunTime)) &#123;
+                iterator.remove();
+                readyList.add(work);
+                msg.append(&quot;========当前系统时间：&quot;+systemRunTime+&quot;========\n&quot;);
+                msg.append(&quot;进程-&quot;+work.getName()+&quot;已抵达\n&quot;);
+                msg.append(&quot;=============================\n&quot;);
+            &#125;
+        &#125;
+
+    &#125;
+
+    private void init() &#123;
+        //创建作业，加入就绪队列，优先级依次排列
+        for (int i = 0; i &lt; num; i++) &#123;
+            HomeWork homeWork = new HomeWork();
+            homeWork.setArriveTime(arriveCount++*2);
+            homeWork.setName((char)(i+48+17));
+            homeWork.setEndTime(3+new Random().nextInt(5));
+
+            //产生优先级 0优先级最低
+            homeWork.setLevel(10+new Random().nextInt(20));
+            //就绪状态
+            homeWork.setStatus(WorkContent.*READY_STATUS*);
+            homeWork.setNowTime(0);
+
+            msg.append(&quot;进程-&quot;+homeWork.getName()+&quot;创建，预计用时：&quot;+homeWork.getEndTime()+&quot;\n&quot;);
+
+            //添加到等待队列
+            waitList.add(homeWork);
+        &#125;
+
+    &#125;
+
+    */**
+   ** *更新页面数据
+\*   ** **@param*** *executeTime
+\*   **/
+        \*   
+        private void updatePageInfo(Integer executeTime, Character workName) &#123;
+
+        sumSystemRunTime += executeTime;
+
+        JPanel page = systemXPage;
+
+        Character name = workName;
+
+        int boxWidth = executeTime * unitLength;
+        if (name != null)&#123;
+            Integer pageIndex = (int)(name)-48-17;
+
+            int height = page.getHeight();
+
+            JButton homeWorkLabel = new JButton();
+            homeWorkLabel.setBackground(new Color(0,0,0));
+            int boxHeight = height/(num+2)/9;
+
+
+            int x = sumLength;
+            int y = height/(num+2)*(pageIndex)+boxHeight*4;
+
+            homeWorkLabel.setBounds(
+                x,
+                y,
+                boxWidth,
+                boxHeight);
+            //添加进度条
+            page.add(homeWorkLabel);
+
+            //添加当前系统时间
+            JLabel jLabel = new JLabel(sumSystemRunTime.toString());
+            jLabel.setFont(new Font(&quot;dialog&quot;,1,10));
+            jLabel.setBounds(
+                x+boxWidth,
+                y+boxHeight,
+                boxWidth*2,
+                boxHeight
+            );
+            page.add(jLabel);
+        &#125;
+
+        sumLength+=boxWidth;
+
+    &#125;
+
+    */**
+   ** *操作系统为任务执行
+\*   ** **@param*** *homeWork
+\*   **/
+        \*   
+        private Integer execute(HomeWork homeWork) &#123;
+        //结束时间
+        Integer endTime = homeWork.getEndTime();
+        //当前执行时间
+        Integer nowTime = homeWork.getNowTime();
+
+        //实际执行时间
+        Integer executeTime = WorkContent.*SYSTEM_RUN_TIME_UNIT*;
+
+        //降低优先级
+        execution.setLevel(execution.getLevel() - WorkContent.*LEVEL_DOWN_UNIT*);
+
+        if (nowTime + WorkContent.*SYSTEM_RUN_TIME_UNIT* &gt;= endTime)&#123;
+            executeTime = endTime - nowTime;
+            //作业完成
+            homeWork.setStatus(WorkContent.*FINISH_STATUS*);
+            execution = null;
+        &#125;
+
+        //更新当前时间
+        homeWork.setNowTime(nowTime + WorkContent.*SYSTEM_RUN_TIME_UNIT*);
+
+        return executeTime;
+    &#125;
+
+    */**
+    ** *从就绪队列中删除
+\*   ** **@param*** *homeWork
+\*   **/
+        \*   private void removeFromReadyList(HomeWork homeWork) &#123;
+        readyList.remove(homeWork);
+    &#125;
+
+
+
+    */**
+   ** *选择最高优先权的就绪状态作业
+\*   ** **@return
+**   \*/
+        \*   
+        private HomeWork selectHighestLevelWork() &#123;
+        Integer index = null;
+        Integer level = null;
+        //获取最高优先权就绪状态任务索引
+        for (int i = 0; i &lt; readyList.size(); i++) &#123;
+            HomeWork homeWork = readyList.get(i);
+            if (index == null &amp;&amp; homeWork.getStatus().equals(WorkContent.*READY_STATUS*))&#123;
+                index = i;
+                level = homeWork.getLevel();
+            &#125;else if (homeWork.getStatus().equals(WorkContent.*READY_STATUS*))&#123;
+                Integer nl = homeWork.getLevel();
+                if (nl &gt; level)&#123;
+                    level = nl;
+                    index = i;
+                &#125;
+            &#125;
+        &#125;
+
+        if (index != null)&#123;
+            return readyList.get(index);
+        &#125;else &#123;
+            return null;
+        &#125;
+    &#125;
+
+    public List&lt;HomeWork&gt; getReadyList() &#123;
+        return readyList;
+    &#125;
+
+    public void setPage(JPanel systemXPage) &#123;
+        this.systemXPage = systemXPage;
+    &#125;
+
+    public void setNum(Integer num) &#123;
+        this.num = num;
+    &#125;
+
+
+&#125;
+</code></pre>
+<p><strong>操作系统进程调度轮转法数据渲染器类</strong></p>
+<pre><code class="java">package com.os467.project.core;
+ 
+ import javax.swing.*;
+ import java.awt.*;
+ import java.util.ArrayList;
+ import java.util.Iterator;
+ import java.util.List;
+ import java.util.Random;
+ 
+ public class SystemMonitorY extends Thread&#123;
+ 
+   //等待队列
+   private List&lt;HomeWork&gt; waitList;
+ 
+   //就绪队列
+   private List&lt;HomeWork&gt; readyList;
+ 
+   //执行中的作业
+   private HomeWork execution;
+ 
+   private JPanel systemYPage;
+ 
+   //作业数量
+   private Integer num;
+ 
+   //时间片
+   private Integer runTime = 1;
+ 
+   //时间进度条基数
+   private Integer sumTime=0;
+ 
+   //单位时间长度
+   private Integer unitLength;
+ 
+   //累计系统运行时间
+   private Integer sumSystemRunTime = 0;
+ 
+   //累计长度
+   private Integer sumLength = 20;
+ 
+   //系统运行时间
+   private Integer systemRunTime = 0;
+ 
+   //抵达计数器
+   private Integer arriveCount = 0;
+ 
+   //消息收集器
+   private StringBuilder msg = new StringBuilder();
+ 
+   private List&lt;ExecuteMsg&gt; executeMsgList = new ArrayList&lt;&gt;();
+ 
+   class ExecuteMsg&#123;
+     Integer executeTime;
+     Character workName;
+ 
+     public ExecuteMsg(Integer executeTime, Character name) &#123;
+       this.executeTime = executeTime;
+       this.workName = name;
+     &#125;
+   &#125;
+ 
+   @Override
+   public void run() &#123;
+ 
+     waitList = new ArrayList&lt;&gt;();
+     readyList = new ArrayList&lt;&gt;();
+ 
+     init();
+ 
+     //模拟操作系统运作
+     while (true)&#123;
+ 
+       //检查等待队列任务
+       checkWaitList();
+ 
+       //检查就绪队列是否存在作业
+       if (readyList.size() &lt;= 0)&#123;
+         systemRunTime += WorkContent.*SYSTEM_RUN_TIME_UNIT*;
+         executeMsgList.add(new ExecuteMsg(WorkContent.*SYSTEM_RUN_TIME_UNIT*,null));
+         continue;
+       &#125;
+ 
+       //从就绪队列中获取队头作业
+       HomeWork homeWork = getWork();
+ 
+       //将其从就绪队列中删除
+       removeFromReadyList(homeWork);
+ 
+       //加入执行位
+       execution = homeWork;
+ 
+       //执行
+       Integer executeTime = execute(execution);
+ 
+       //增加系统运行时间
+       for (int i = 0; i &lt; executeTime; i++) &#123;
+         checkWaitList();
+         systemRunTime += WorkContent.*SYSTEM_RUN_TIME_UNIT*;
+       &#125;
+ 
+       executeMsgList.add(new ExecuteMsg(executeTime,homeWork.getName()));
+ 
+ 
+       msg.append(&quot;========当前系统时间：&quot;+systemRunTime+&quot;========\n&quot;);
+ 
+       if (homeWork.getStatus().equals(WorkContent.*FINISH_STATUS*))&#123;
+         msg.append(&quot;进程-&quot;+homeWork.getName()+&quot;已完成，服务时间：&quot;+homeWork.getEndTime()+&quot;\n&quot;);
+       &#125;else if (execution != null) &#123;
+         msg.append(&quot;进程-&quot;+homeWork.getName()+&quot;，进度：(&quot;+homeWork.getNowTime()+&quot;/&quot;+homeWork.getEndTime()+&quot;)\n&quot;);
+       &#125;
+ 
+ 
+       for (HomeWork work : readyList) &#123;
+         msg.append(&quot;进程-&quot;+work.getName()+&quot;，进度：(&quot;+work.getNowTime()+&quot;/&quot;+work.getEndTime()+&quot;)\n&quot;);
+       &#125;
+       msg.append(&quot;=============================\n&quot;);
+ 
+       //检查是否都执行完毕
+       if (readyList.size()&lt;=0 &amp;&amp; waitList.size() &lt;= 0 &amp;&amp; execution == null)&#123;
+         break;
+       &#125;
+     &#125;
+ 
+     //产生基准长度
+     unitLength = (int)((systemYPage.getWidth()*0.85)/(double)(systemRunTime));
+ 
+     for (ExecuteMsg executeMsg : executeMsgList) &#123;
+ 
+       //构建页面新数据
+       updatePageInfo(executeMsg.executeTime,executeMsg.workName);
+ 
+       //模拟执行时间
+       try &#123;
+         Thread.*sleep*(100 * executeMsg.executeTime);
+       &#125; catch (InterruptedException e) &#123;
+         e.printStackTrace();
+       &#125;
+ 
+       //更新界面数据
+       SwingUtilities.*updateComponentTreeUI*(systemYPage);
+ 
+     &#125;
+ 
+ 
+     JFrame parent = (JFrame)SwingUtilities.*getRootPane*(systemYPage).getParent();
+     new MyDialog(parent,&quot;运行结果&quot;,msg.toString());
+     System.*out*.println(msg.toString());
+ 
+ 
+   &#125;
+ 
+   */**
+   ** *检查等待作业入队
+\*   **/
+\*   private void checkWaitList() &#123;
+     Iterator&lt;HomeWork&gt; iterator = waitList.iterator();
+     while (iterator.hasNext()) &#123;
+       HomeWork work = iterator.next();
+       if (work.getArriveTime().equals(systemRunTime)) &#123;
+         iterator.remove();
+         readyList.add(work);
+         msg.append(&quot;========当前系统时间：&quot;+systemRunTime+&quot;========\n&quot;);
+         msg.append(&quot;进程-&quot;+work.getName()+&quot;已抵达\n&quot;);
+         msg.append(&quot;=============================\n&quot;);
+       &#125;
+     &#125;
+ 
+     if (execution != null)&#123;
+       readyList.add(execution);
+       execution = null;
+     &#125;
+ 
+   &#125;
+ 
+   */**
+   ** *更新页面数据
+\*   **/
+\*   private void updatePageInfo(Integer executeTime, Character workName) &#123;
+ 
+     sumSystemRunTime+=executeTime;
+ 
+     JPanel page = systemYPage;
+ 
+     Character name = workName;
+ 
+     int boxWidth = executeTime * unitLength;
+ 
+     if (name != null) &#123;
+       Integer pageIndex = (int) (name) - 48 - 17;
+ 
+       int height = page.getHeight();
+ 
+       JButton homeWorkLabel = new JButton();
+       homeWorkLabel.setBackground(new Color(0, 0, 0));
+       int boxHeight = height / (num + 2) / 9;
+ 
+       int x = sumLength;
+       int y = height / (num + 2) * (pageIndex) + boxHeight * 4;
+ 
+       homeWorkLabel.setBounds(
+           x,
+           y,
+           boxWidth,
+           boxHeight);
+       //添加进度条
+       page.add(homeWorkLabel);
+ 
+       //添加当前系统时间
+       JLabel jLabel = new JLabel(sumSystemRunTime.toString());
+       jLabel.setFont(new Font(&quot;dialog&quot;, 1, 10));
+       jLabel.setBounds(
+           x + boxWidth,
+           y + boxHeight,
+           boxWidth * 2,
+           boxHeight
+       );
+       page.add(jLabel);
+     &#125;
+ 
+     sumLength+=boxWidth;
+ 
+   &#125;
+ 
+   */**
+   ** *操作系统为任务执行一个时间片
+\*   ** **@param*** *homeWork
+\*   **/
+\*   private Integer execute(HomeWork homeWork) &#123;
+     //结束时间
+     Integer endTime = homeWork.getEndTime();
+     //当前执行时间
+     Integer nowTime = homeWork.getNowTime();
+ 
+     //实际执行时间
+     Integer executeTime = 0;
+ 
+     if (nowTime + runTime &gt;= endTime)&#123;
+       executeTime = endTime - nowTime;
+       //作业完成
+       homeWork.setStatus(WorkContent.*FINISH_STATUS*);
+       execution = null;
+     &#125;else &#123;
+       //时间片用完
+       executeTime = runTime;
+     &#125;
+ 
+     //更新当前时间
+     homeWork.setNowTime(nowTime + runTime);
+ 
+     return executeTime;
+   &#125;
+ 
+   */**
+   ** *获取队头任务
+\*   ** **@return
+**   \*/
+\*   private HomeWork getWork() &#123;
+     return readyList.get(0);
+   &#125;
+ 
+   */**
+   ** *从就绪队列中删除
+\*   ** **@param*** *homeWork
+\*   **/
+       \*   
+       private void removeFromReadyList(HomeWork homeWork) &#123;
+       readyList.remove(homeWork);
+   &#125;
+
+     private void init() &#123;
+         //创建作业，加入就绪队列
+         for (int i = 0; i &lt; num; i++) &#123;
+             HomeWork homeWork = new HomeWork();
+             homeWork.setArriveTime(arriveCount++*runTime);
+             homeWork.setName((char)(i+48+17));
+             homeWork.setEndTime(3+new Random().nextInt(5));
+
+             sumTime+=homeWork.getEndTime();
+
+             //就绪状态
+             homeWork.setStatus(WorkContent.*READY_STATUS*);
+             homeWork.setNowTime(0);
+
+             msg.append(&quot;进程-&quot;+homeWork.getName()+&quot;创建，预计用时：&quot;+homeWork.getEndTime()+&quot;\n&quot;);
+
+             //添加到等待队列
+             waitList.add(homeWork);
+         &#125;
+
+         //产生基准长度
+         unitLength = (int)((systemYPage.getWidth()*0.85)/(double)(sumTime));
+     &#125;
+
+     public void setPage(JPanel systemYPage) &#123;
+         this.systemYPage = systemYPage;
+     &#125;
+
+     public void setNum(Integer num) &#123;
+         this.num = num;
+     &#125;
+
+     public void setRunTime(Integer runTime) &#123;
+         this.runTime = runTime;
+     &#125;
+ &#125;
+</code></pre>
+<p><strong>全局常量类</strong></p>
+<pre><code class="java">package com.os467.project.core;
+ 
+ public class WorkContent &#123;
+   public static final int *READY_STATUS* = 1;
+   public static final int *FINISH_STATUS* = 2;
+   public static final int *LEVEL_DOWN_UNIT* = 1;
+   public static final int *SYSTEM_RUN_TIME_UNIT* = 1;
+   public static final int *SYSTEM_CHECK_LEVEL_TIME_INTERVAL* = 3;
+ &#125;
+</code></pre>
+<p><strong>package com.os467.project.init****包</strong></p>
+<p><strong>窗口初始化类</strong></p>
+<pre><code class="java">package com.os467.project.init;
+ 
+ import JFrameBuilder.WindowBuilder;
+ import JFrameBuilder.defaultImpl.DefaultJFrameBuilder;
+ import com.os467.project.jFrameBuild.JFrameContentMakerImpl;
+ 
+ public class Init &#123;
+ 
+   public static void main(String[] args) &#123;
+ 
+     new WindowBuilder().
+         register(new DefaultJFrameBuilder())
+         .register(new JFrameContentMakerImpl())
+         .getFrame();
+   &#125;
+ 
+ &#125;
+</code></pre>
+<p><strong>package com.os467.project.jFrameBuild****包</strong></p>
+<p><strong>窗体内容制作者实现类</strong></p>
+<pre><code class="java">package com.os467.project.jFrameBuild;
+ 
+ import JFrameBuilder.JFrameContentMaker;
+ import JFrameBuilder.component.LeftSelectMenu;
+ import com.os467.project.core.SystemMonitorX;
+ import com.os467.project.core.SystemMonitorY;
+ 
+ 
+ import javax.swing.*;
+ import java.awt.*;
+ import java.awt.event.ActionEvent;
+ import java.awt.event.ActionListener;
+ 
+ 
+ public class JFrameContentMakerImpl implements JFrameContentMaker &#123;
+ 
+ 
+   //线程数量
+   private Integer num = 4;
+ 
+   //时间片
+   private Integer runTime = 1;
+ 
+   private LeftSelectMenu leftSelectMenu;
+ 
+   private JPanel systemXPage;
+ 
+   private JPanel systemYPage;
+ 
+   private Thread runMonitor;
+ 
+   @Override
+   public void make(JFrame jFrame) &#123;
+ 
+     jFrame.getContentPane();
+ 
+     leftSelectMenu = new LeftSelectMenu(jFrame, 3);
+ 
+     leftSelectMenu.setDefaultPage(getDefaultPage());
+ 
+     leftSelectMenu.name(0,&quot;配置界面&quot;);
+     leftSelectMenu.name(1,&quot;优先权法&quot;);
+     leftSelectMenu.name(2,&quot;轮转法&quot;);
+ 
+     systemXPage = leftSelectMenu.getPage(1);
+     systemYPage = leftSelectMenu.getPage(2);
+ 
+     systemPageBuild(leftSelectMenu.getPage(0));
+ 
+   &#125;
+ 
+   */**
+   ** *创建介绍页面
+\*   ** **@return
+**   \*/
+\*   private JPanel getDefaultPage() &#123;
+     JPanel jPanel = new JPanel();
+     jPanel.setLayout(null);
+     jPanel.setBackground(new Color(234, 234, 234));
+     JTextPane jTextPane = new JTextPane();
+     jTextPane.setBounds(50,50,300,300);
+     jTextPane.setFont(new Font(&quot;dialog&quot;,0,25));
+     jTextPane.setText(&quot; 点击左侧菜单栏配置界面，配置完毕后再点击对应的方法&quot;);
+     jTextPane.setEnabled(false);
+     jPanel.add(jTextPane);
+     return jPanel;
+   &#125;
+ 
+   */**
+   ** *配置界面
+\*   ** **@param*** *page
+\*   **/
+\*   private void systemPageBuild(JPanel page) &#123;
+     int width = page.getWidth();
+     int height = page.getHeight();
+ 
+     page.setLayout(null);
+ 
+     JTextField numField = new JTextField(&quot;4&quot;);
+     numField.setBackground(new Color(255, 255, 255));
+     numField.setBounds(10,height/(num+2),width/10,height/10);
+     page.add(numField);
+ 
+     JButton startButton = new JButton(&quot;设置线程数量&quot;);
+     startButton.setBackground(new Color(255, 255, 255));
+     startButton.setBounds(width/10 + 10,height/(num+2),width/7,height/10);
+ 
+     JTextField runTimeField = new JTextField(&quot;1&quot;);
+     runTimeField.setBackground(new Color(255, 255, 255));
+     runTimeField.setBounds(10,height/(num+2)*2,width/10,height/10);
+     page.add(runTimeField);
+ 
+     JButton runTimeButton = new JButton(&quot;设置时间片&quot;);
+     runTimeButton.setBackground(new Color(255, 255, 255));
+     runTimeButton.setBounds(width/10 + 10,height/(num+2)*2,width/7,height/10);
+ 
+ 
+     ActionListener actionListener = new ActionListener() &#123;
+       @Override
+       public void actionPerformed(ActionEvent e) &#123;
+         String numFieldText = numField.getText();
+         String runTimeText = runTimeField.getText();
+         num = Integer.*parseInt*(numFieldText);
+         runTime = Integer.*parseInt*(runTimeText);
+         systemPageClear(systemXPage);
+         systemXPageBuild(systemXPage);
+ 
+         systemPageClear(systemYPage);
+         systemYPageBuild(systemYPage);
+       &#125;
+     &#125;;
+ 
+     //线程数更新监听事件
+     startButton.addActionListener(actionListener);
+     runTimeButton.addActionListener(actionListener);
+     page.add(startButton);
+     page.add(runTimeButton);
+ 
+   &#125;
+ 
+   */**
+   ** *清除页面
+\*    ** **@param*** *page
+\*   **/
+\*   public void systemPageClear(JPanel page) &#123;
+     page.removeAll();
+   &#125;
+ 
+   */**
+   ** *优先权法渲染界面实现
+\*   ** **@param*** *page
+\*   **/
+\*   public void systemXPageBuild(JPanel page) &#123;
+ 
+     int width = page.getWidth();
+     int height = page.getHeight();
+ 
+     page.setLayout(null);
+ 
+     for (int i = 0; i &lt; num; i++) &#123;
+       JLabel homeWorkLabel = new JLabel(&quot;&quot;+(char)(i+48+17));
+       homeWorkLabel.setBounds(10,height/(num+2)*i,width,height/(num+2));
+       page.add(homeWorkLabel);
+     &#125;
+ 
+     JButton startButton = new JButton(&quot;开始&quot;);
+     startButton.setBackground(new Color(255, 255, 255));
+     startButton.setBounds(10,height/(num+2)*num,width/10,height/10);
+     page.add(startButton);
+ 
+ 
+     //绑定监听事件
+     startButton.addActionListener(new SystemXStarter());
+ 
+ 
+   &#125;
+ 
+   */**
+   ** *系统**Y**执行监听事件
+\*   **/
+\*   class SystemYStarter implements ActionListener&#123;
+ 
+     @Override
+     public void actionPerformed(ActionEvent e) &#123;
+       if (runMonitor != null &amp;&amp; runMonitor.isAlive())&#123;
+         runMonitor.stop();
+       &#125;
+       systemPageClear(systemYPage);
+       systemYPageBuild(systemYPage);
+       SystemMonitorY systemMonitorY = new SystemMonitorY();
+       runMonitor = systemMonitorY;
+       systemMonitorY.setPage(systemYPage);
+       systemMonitorY.setNum(num);
+       systemMonitorY.setRunTime(runTime);
+ 
+       //启动
+       systemMonitorY.start();
+     &#125;
+   &#125;
+ 
+   */**
+   ** *系统**X**执行监听事件
+\*   **/
+\*   class SystemXStarter implements ActionListener&#123;
+ 
+     @Override
+     public void actionPerformed(ActionEvent e) &#123;
+       if (runMonitor != null &amp;&amp; runMonitor.isAlive())&#123;
+         runMonitor.stop();
+       &#125;
+       systemPageClear(systemXPage);
+       systemXPageBuild(systemXPage);
+       SystemMonitorX systemMonitorX = new SystemMonitorX();
+       runMonitor = systemMonitorX;
+       systemMonitorX.setPage(systemXPage);
+       systemMonitorX.setNum(num);
+ 
+       //启动
+       systemMonitorX.start();
+     &#125;
+   &#125;
+ 
+ 
+ 
+   */**
+   ** *轮转法渲染界面实现
+\*   ** **@param*** *page
+\*   **/
+\*   public void systemYPageBuild(JPanel page) &#123;
+ 
+     int width = page.getWidth();
+     int height = page.getHeight();
+ 
+     page.setLayout(null);
+ 
+     for (int i = 0; i &lt; num; i++) &#123;
+       JLabel homeWorkLabel = new JLabel(&quot;&quot;+(char)(i+48+17));
+       homeWorkLabel.setBounds(10,height/(num+2)*i,width,height/(num+2));
+       page.add(homeWorkLabel);
+     &#125;
+ 
+     JButton startButton = new JButton(&quot;开始&quot;);
+     startButton.setBackground(new Color(255, 255, 255));
+     startButton.setBounds(10,height/(num+2)*num,width/10,height/10);
+     page.add(startButton);
+ 
+ 
+     startButton.addActionListener(new SystemYStarter());
+   &#125;
+ &#125;
+</code></pre>
+<p><strong>自制框架包</strong></p>
+<p><strong>左侧选择式路由菜单模板类</strong></p>
+<pre><code class="java">package JFrameBuilder.component;
+ 
+ import javax.swing.*;
+ import java.awt.*;
+ import java.awt.event.ActionEvent;
+ import java.awt.event.ActionListener;
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+ 
+ public class LeftSelectMenu extends JPanel &#123;
+ 
+   private Integer routerNum;
+ 
+   private List&lt;JPanel&gt; pageList;
+ 
+   private JPanel selector;
+ 
+   private Color selectorColor;
+ 
+   private JPanel defaultPage;
+ 
+ 
+   public LeftSelectMenu(JFrame jFrame, Integer routerNum)&#123;
+     if (routerNum &gt;=8)&#123;
+       routerNum = 8;
+     &#125;
+     jFrame.setResizable(false);
+     this.routerNum = routerNum;
+     setLayout(null);
+     this.setSize(jFrame.getSize());
+ 
+     buildSelector(routerNum,0.2);
+     buildPage();
+ 
+     add(selector);
+ 
+     //add FirstPage
+     defaultPage = new JPanel();
+     defaultPage.setLayout(new BorderLayout());
+     defaultPage.setBackground(new Color(0,0,0));
+     defaultPage.setBounds(selector.getWidth(),0,(int)(getWidth()*0.8),getHeight());
+     add(defaultPage);
+ 
+     Container contentPane = jFrame.getContentPane();
+     contentPane.add(this);
+   &#125;
+ 
+   protected List&lt;JPanel&gt; getPageList() &#123;
+     return this.pageList;
+   &#125;
+ 
+   private void buildPage() &#123;
+     pageList = new ArrayList&lt;&gt;();
+     for (int i = 0; i &lt; routerNum; i++) &#123;
+       JPanel page = new JPanel();
+       page.setLayout(null);
+       page.setBounds(selector.getWidth(),0,(int)(getWidth()*0.8),getHeight());
+       pageList.add(page);
+     &#125;
+   &#125;
+ 
+   */**
+   \* build selectorJPanel
+   \* **@param*** *routerNum
+\*   ** **@param*** *leftPercent
+\*   **/
+\*   private void buildSelector(Integer routerNum, double leftPercent) &#123;
+     selectorColor = new Color(237, 235, 235);
+     selector = new JPanel();
+     selector.setLayout(null);
+     selector.setBackground(selectorColor);
+ 
+     setLeftPercent(0.2);
+ 
+     int width = selector.getWidth();
+     int height = selector.getHeight();
+ 
+     ActionListener monitor = new SelectorChangeMonitor(this);
+     //build selectMenu
+     for (int i = 0; i &lt; routerNum; i++) &#123;
+       JButton button = new JButton();
+       button.setBackground(selectorColor);
+       button.setBounds(0,(int)(height/8)*i,width,(int)(height/8));
+       button.setName(&quot;&quot;+i);
+       button.addActionListener(monitor);
+       selector.add(button);
+     &#125;
+ 
+     //build selectorContent by os467
+     JPanel selectorContent = new JPanel();
+     selectorContent.setLayout(new BorderLayout());
+     selectorContent.add(new JLabel(&quot;made by os467&quot;),BorderLayout.*CENTER*);
+     selectorContent.setBounds(0,(height/8)*routerNum,width,getHeight()-(height/8)*routerNum);
+     selectorContent.setBackground(new Color(77, 77, 77));
+     selector.add(selectorContent);
+   &#125;
+ 
+   */**
+   \* name the selectorButton
+   \* **@param*** *index
+\*   ** **@param*** *name
+\*   **/
+\*   public void name(Integer index, String name)&#123;
+     if (index &gt;= routerNum)&#123;
+       return;
+     &#125;
+     JButton button = (JButton)selector.getComponent(index);
+     button.setText(name);
+   &#125;
+ 
+   */**
+   \* set Selector leftPercent
+   \* **@param*** *leftPercent
+\*   **/
+\*   public void setLeftPercent(double leftPercent)&#123;
+     selector.setSize((int)(getWidth()*leftPercent),getHeight());
+   &#125;
+ 
+   */**
+   \* get Page
+   \* **@param*** *index
+\*    ** **@return
+**   \*/
+\*   public JPanel getPage(Integer index)&#123;
+     if (index &gt;= routerNum)&#123;
+       return null;
+     &#125;
+     return this.pageList.get(index);
+   &#125;
+ 
+   */**
+   \* set default page
+   \* **@param*** *defaultPage
+\*   **/
+\*   public void setDefaultPage(JPanel defaultPage) &#123;
+     remove(this.defaultPage);
+     this.defaultPage = defaultPage;
+     this.defaultPage.setBounds(selector.getWidth(),0,(int)(getWidth()*0.8),getHeight());
+     add(this.defaultPage);
+   &#125;
+ &#125;
+ 
+ class SelectorChangeMonitor implements ActionListener&#123;
+ 
+   private LeftSelectMenu leftSelectMenu;
+ 
+   public SelectorChangeMonitor(LeftSelectMenu leftSelectMenu)&#123;
+     this.leftSelectMenu = leftSelectMenu;
+   &#125;
+ 
+   @Override
+   public void actionPerformed(ActionEvent e) &#123;
+     JButton btn = (JButton) e.getSource();
+     leftSelectMenu.remove(1);
+     List&lt;JPanel&gt; pageList = leftSelectMenu.getPageList();
+     JPanel panel = pageList.get(Integer.*parseInt*(btn.getName()));
+     leftSelectMenu.add(panel);
+     SwingUtilities.*updateComponentTreeUI*(leftSelectMenu);
+   &#125;
+ &#125;
+</code></pre>
+<p><strong>窗体构建者接口</strong></p>
+<pre><code class="java">package JFrameBuilder;
+ 
+ import javax.swing.*;
+ 
+ */**
+ \* Implement build method and make your own jFrame window
+ \*/
+\* public interface JFrameBuilder &#123;
+   JFrame build();
+ &#125;
+</code></pre>
+<p><strong>窗体内容构建者接口</strong></p>
+<pre><code class="java">package JFrameBuilder;
+ 
+ import javax.swing.*;
+ import java.awt.*;
+ 
+ public interface JFrameContentMaker &#123;
+ 
+   void make(JFrame jFrame);
+ 
+ &#125;
+</code></pre>
+<p><strong>默认窗体构建者实现类</strong></p>
+<pre><code class="java">package JFrameBuilder.defaultImpl;
+ 
+ import JFrameBuilder.*;
+ 
+ import javax.swing.*;
+ import java.awt.*;
+ 
+ public class DefaultJFrameBuilder implements JFrameBuilder &#123;
+ 
+   protected JFrame jFrame;
+ 
+   @Override
+   public JFrame build() &#123;
+     jFrame = new JFrame();
+     jFrame.setVisible(true);
+     Dimension screenSize = Toolkit.*getDefaultToolkit*().getScreenSize();
+     double width = screenSize.getWidth();
+     double height = screenSize.getHeight();
+     jFrame.setBounds((int)(width*0.2),(int)(height*0.2),(int)(width*0.618),(int)(height*0.618));
+     jFrame.setBackground(new Color(0,0,0));
+     jFrame.setDefaultCloseOperation(WindowConstants.*EXIT_ON_CLOSE*);
+     return jFrame;
+   &#125;
+ &#125;
+</code></pre>
+<p><strong>默认窗体内容制作者实现类</strong></p>
+<pre><code class="java">package JFrameBuilder.defaultImpl;
+ 
+ import JFrameBuilder.JFrameContentMaker;
+ 
+ import javax.swing.*;
+ 
+ public class DefaultJFrameContentMaker implements JFrameContentMaker &#123;
+   @Override
+   public void make(JFrame jFrame) &#123;
+   &#125;
+ &#125;
+</code></pre>
+<p><strong>窗体构建工具类</strong></p>
+<pre><code class="java">package JFrameBuilder;
+ 
+ import javax.swing.*;
+ import java.awt.*;
+ 
+ public class JFrameUtils &#123;
+ 
+   private JFrameUtils()&#123;
+ 
+   &#125;
+ 
+   public static void batchAddCenterJLabel(Container contentPane,JLabel... labels)&#123;
+     for (JLabel label : labels) &#123;
+       label.setHorizontalAlignment(SwingUtilities.*CENTER*);
+     &#125;
+     batchAdd(contentPane,labels);
+   &#125;
+ 
+   public static void batchAdd(Container contentPane,Component... components)&#123;
+     for (Component component : components) &#123;
+       contentPane.add(component);
+     &#125;
+   &#125;
+ &#125;
+</code></pre>
+<p><strong>窗口构建者类</strong></p>
+<pre><code class="java">package JFrameBuilder;
+ 
+ import JFrameBuilder.defaultImpl.DefaultJFrameBuilder;
+ import JFrameBuilder.defaultImpl.DefaultJFrameContentMaker;
+ 
+ import javax.swing.*;
+ import java.awt.*;
+ 
+ public class WindowBuilder &#123;
+ 
+   private JFrameBuilder jFrameBuilder;
+ 
+   private JFrameContentMaker jFrameContentMaker;
+ 
+   public JFrame getFrame()&#123;
+     return buildFrame();
+   &#125;
+ 
+   public WindowBuilder() &#123;
+     jFrameBuilder = new DefaultJFrameBuilder();
+     jFrameContentMaker = new DefaultJFrameContentMaker();
+   &#125;
+ 
+   */**
+   \* register builder
+   \* **@param*** *jFrameBuilder
+\*   ** **@return
+**   \*/
+\*   public WindowBuilder register(JFrameBuilder jFrameBuilder)&#123;
+     this.jFrameBuilder = jFrameBuilder;
+     return this;
+   &#125;
+ 
+   */**
+   \* register contentMaker
+   \* **@param*** *jFrameContentMaker
+\*   ** **@return
+**   \*/
+\*   public WindowBuilder register(JFrameContentMaker jFrameContentMaker)&#123;
+     this.jFrameContentMaker = jFrameContentMaker;
+     return this;
+   &#125;
+ 
+   */**
+   \* build the frame
+   \* **@return
+**   \*/
+\*   private JFrame buildFrame() &#123;
+     JFrame frame = jFrameBuilder.build();
+     jFrameContentMaker.make(frame);
+     return frame;
+   &#125;
+ 
+ &#125;
+</code></pre>
+<p><strong>六、预习中的问题及对应思考</strong></p>
+<p>图像渲染问题，一开始采用了一遍进行算法数据生成，一边进行数据渲染的方法。存在数据与渲染的耦合。</p>
+<p><strong>解决方案：</strong></p>
+<p>先生成数据，使用一个消息收集器msg进行数据收集，使用Msg对象对每次的数据进行格式化封装。</p>
+<p>再渲染图形，通过对Msg对象队列进行解析后再生成数据。</p>
+<p>同时解决了因为无法提前获取的运行总时间问题</p>
+<p><strong>提前获取运行总时间问题</strong></p>
+<p>由于渲染的窗口大小固定，因此单位时间渲染的像素长度也要根据运行总时间计算确定，原先通过累加任务时间的方式确定总时间是有问题的。（可能存在就绪队列暂无任务，系统等待的问题）</p>
+<p>而实际通过算法运行得到数据后，再进行渲染，即可解决无法提前获取运行总时间的问题。</p>
+<p><strong>UI****设计</strong></p>
+<p>采用了路由绑定页面的侧边栏选择菜单设计，提前定制了一套API，可以快速上手使用。</p>
+<p>预设类LeftSelectMenu</p>
+<p><strong>算法设计</strong></p>
+<p>轮转算法本身较为容易实现，就不用说了。但需要注意的是每次执行完毕任务后应当先将达到任务加入就绪队列，再将此任务加入就绪队列（未完成），模拟操作系统撤离任务时间开销。</p>
+<p>优先级算法，存在多种实现机制。非抢占式最为容易实现，但缺点也很明显，若存在高优先级别的长作业，则对低优先级的短作业不太公平，这里选择了抢占式的动态优先级算法。</p>
+<p>抢占式动态优先级算法可以引入操作系统优先级调度时间间隔的概念，即固定一小段时间再进行优先级的判断。</p>
+<p>防止了相同优先级任务互相抢占造成的调度时间开销的问题。</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span></p>
+    <p><span class="copy-title">字数:</span><span class="post-count">5.8k</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
+    <p><span class="copy-title">发布时间:</span>2023-04-15, 13:36:13</p>
+    <p><span class="copy-title">最后更新:</span>2023-04-15, 13:30:13</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/04/15/%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" title="">https://os467.github.io/2023/04/15/%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 os467
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 582px;
+    }
+    .nav.fullscreen {
+        margin-left: -582px;
+    }
+    .nav-left {
+        width: 160px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 592px;
+        }
+        .nav.fullscreen {
+            margin-left: -592px;
+        }
+        .nav-left {
+            width: 200px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 592px;
+            margin-left: -592px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
