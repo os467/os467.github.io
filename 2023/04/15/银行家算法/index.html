@@ -1,0 +1,3358 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>银行家算法 | Tly的博客</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="银行家算法 | Tly的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tly的博客">
+<meta property="og:url" content="https://os467.github.io/about/index.html">
+<meta property="og:site_name" content="Tly的博客">
+<meta property="og:description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-05T07:48:23.998Z">
+<meta property="article:modified_time" content="2022-09-05T07:48:23.998Z">
+<meta property="article:author" content="Os467">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/headimg.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/headimg.jpg"/>
+</a>
+<div class="author">
+    <span>Os467</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/os467"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:1300452403@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=1300452403&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/song?id=551339076&amp;userid=1571495855"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+  <!-- 新增的网易云外链播放器 -->
+  <div class="music-player" style="transform: transform:translateY(-50%);">
+    <iframe id="music-player-iframe" frameborder="no" border="0" marginwidth="0" marginheight="0" allow="autoplay" width=160 height=52 src=""></iframe>
+        
+    <div>
+        <!-- 动态切换歌曲 -->
+       <!--  <input class="input" type="button" onclick="playPre()" value="上一首"  style="width: 50px; text-align: center;"> -->
+        <img onclick="playPre()" style="height: 15px; width: 15px;margin-left:60px" src="/img/back.png">
+        <img onclick="playNext()" style="height: 15px; width: 15px;margin-left:5px" src="/img/next.png">
+        <!-- <input class="input" type="button" onclick="playNext()" value="下一首" style="width: 50px; text-align: center;">     -->
+    </div>
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(68)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="JAVASE基础">
+                        
+                        JAVASE基础
+                        <small>(9)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="JAVASE进阶">
+                        
+                        JAVASE进阶
+                        <small>(8)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="框架学习">
+                        
+                        框架学习
+                        <small>(10)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="微服务">
+                        
+                        微服务
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="运维">
+                        
+                        运维
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="项目">
+                        
+                        项目
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="底层学习">
+                        
+                        底层学习
+                        <small>(5)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="前端">
+                        
+                        前端
+                        <small>(7)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="其它">
+                        
+                        其它
+                        <small>(12)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="算法">
+                        
+                        算法
+                        <small>(5)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="数据库">
+                        
+                        数据库
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="68">
+<input type="hidden" id="yelog_site_word_count" value="282.6k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+
+
+<!-- 新添加的音乐切换功能 -->
+<script>
+
+    var index = 0;
+
+const musicList = [
+     /* 中文曲目 */
+    "//music.163.com/outchain/player?type=2&id=1301884692&height=32",
+    "//music.163.com/outchain/player?type=2&id=28496172&height=32",
+    /* 英文曲目 */
+    "//music.163.com/outchain/player?type=2&id=1919435807&height=32",
+    "//music.163.com/outchain/player?type=2&id=411314681&height=32",
+    "//music.163.com/outchain/player?type=2&id=1464325108&height=32",
+    "//music.163.com/outchain/player?type=2&id=1440570723&height=32",
+    "//music.163.com/outchain/player?type=2&id=1406067418&height=32",
+    "//music.163.com/outchain/player?type=2&id=1313035063&height=32",
+    "//music.163.com/outchain/player?type=2&id=500410102&height=32",
+    "//music.163.com/outchain/player?type=2&id=31010566&height=32",
+     /* 日语 */
+     "//music.163.com/outchain/player?type=2&id=498286345&height=32",
+    "//music.163.com/outchain/player?type=2&id=1350330823&height=32",
+    "//music.163.com/outchain/player?type=2&id=1358226158&height=32",
+    "//music.163.com/outchain/player?type=2&id=28913884&height=32",
+    /* 纯音乐 */
+    "//music.163.com/outchain/player?type=2&id=1484017437&height=32",
+    "//music.163.com/outchain/player?type=2&id=29979829&height=32",
+    "//music.163.com/outchain/player?type=2&id=425280053&height=32"
+
+]
+
+
+
+const indexMax = musicList.length -1;
+
+const musicDoc = document.getElementById("music-player-iframe");
+
+var playNext = function(){
+
+    index == indexMax ? index = 0 : index +=1;
+
+    musicDoc.setAttribute("src",musicList[index]+"&auto=1");
+
+}
+
+var playPre = function(){
+
+    index == 0 ? index = indexMax : index -=1;
+
+    musicDoc.setAttribute("src",musicList[index]+"&auto=1")
+}
+
+//随机初始值
+let ranIndex = Math.floor(Math.random() * indexMax);
+
+window.onload = function(){
+    document.getElementById("music-player-iframe").setAttribute("src",musicList[ranIndex]+"&auto=0");
+    }
+
+</script>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://os467.github.io/mdResource">os467</a></li>
+            
+            <li><a target="_blank" href="https://www.bilibili.com/video/BV17h411k7jB?vd_source=38c37e7cf61f2c4591c73b0a37eab964">这是一个神奇的链接</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/04/15/%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="进程调度">进程调度</span>
+            <span class="post-date" title="2023-04-15 13:43:20">2023/04/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/04/15/%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="银行家算法">银行家算法</span>
+            <span class="post-date" title="2023-04-15 13:43:18">2023/04/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2023/04/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据结构">数据结构</span>
+            <span class="post-date" title="2023-04-05 17:42:05">2023/04/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2023/03/29/NIO%E5%9F%BA%E7%A1%80/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NIO基础">NIO基础</span>
+            <span class="post-date" title="2023-03-29 21:31:10">2023/03/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2023/03/29/%E7%AE%97%E6%B3%953/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="算法3">算法3</span>
+            <span class="post-date" title="2023-03-29 16:07:12">2023/03/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/03/20/javaSwing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Swing入门">Swing入门</span>
+            <span class="post-date" title="2023-03-20 20:07:33">2023/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2023/03/17/NIO%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NIO入门">NIO入门</span>
+            <span class="post-date" title="2023-03-17 21:25:10">2023/03/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/03/13/%E9%A1%B9%E7%9B%AE%E4%B8%8A%E7%BA%BF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="项目上线部署经验">项目上线部署经验</span>
+            <span class="post-date" title="2023-03-13 23:20:12">2023/03/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2023/03/09/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3%E6%95%B4%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="算法思想整理">算法思想整理</span>
+            <span class="post-date" title="2023-03-09 19:43:10">2023/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2023/03/09/%E7%AE%97%E6%B3%952/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="算法2">算法2</span>
+            <span class="post-date" title="2023-03-09 19:43:02">2023/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2023/03/03/%E7%AE%97%E6%B3%951/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="算法1">算法1</span>
+            <span class="post-date" title="2023-03-03 12:49:07">2023/03/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/12/07/Java%E6%A6%82%E5%BF%B5%E5%A4%8D%E4%B9%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java概念复习">Java概念复习</span>
+            <span class="post-date" title="2022-12-07 19:54:23">2022/12/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/12/01/Ascii%E7%BC%96%E7%A0%81%E5%8A%A0%E5%AF%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ascii码加密编码">Ascii码加密编码</span>
+            <span class="post-date" title="2022-12-01 15:02:11">2022/12/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/11/22/TypeScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="TypeScript">TypeScript</span>
+            <span class="post-date" title="2022-11-22 22:13:06">2022/11/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/11/17/ThreeJS/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ThreeJS">ThreeJS</span>
+            <span class="post-date" title="2022-11-17 00:07:03">2022/11/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/11/05/synchronized%E4%B8%8E%E9%94%81%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="synchronized与锁机制">synchronized与锁机制</span>
+            <span class="post-date" title="2022-11-05 23:46:13">2022/11/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/10/18/ElementUI/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ElementUI">ElementUI</span>
+            <span class="post-date" title="2022-10-18 21:17:36">2022/10/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/10/13/Axios/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Axios">Axios</span>
+            <span class="post-date" title="2022-10-13 00:16:19">2022/10/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/10/10/Vue2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Vue2">Vue2</span>
+            <span class="post-date" title="2022-10-10 22:15:06">2022/10/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/10/08/%E8%AF%B7%E6%B1%82%E9%99%90%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="请求限流">请求限流</span>
+            <span class="post-date" title="2022-10-08 19:57:03">2022/10/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 项目 "
+           href="/2022/10/05/%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前后端分离博客项目">前后端分离博客项目</span>
+            <span class="post-date" title="2022-10-05 00:52:35">2022/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/10/05/Swagger/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Swagger">Swagger</span>
+            <span class="post-date" title="2022-10-05 00:51:35">2022/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/10/01/Aop%E6%97%A5%E5%BF%97%E5%AE%9E%E7%8E%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Aop日志实现">Aop日志实现</span>
+            <span class="post-date" title="2022-10-01 23:47:22">2022/10/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/09/24/Git/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2022-09-24 01:54:20">2022/09/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 运维 "
+           href="/2022/09/23/Linux/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux指令">Linux指令</span>
+            <span class="post-date" title="2022-09-23 21:30:12">2022/09/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/09/19/SpringSecurity/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringSecurity">SpringSecurity</span>
+            <span class="post-date" title="2022-09-19 23:33:22">2022/09/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 "
+           href="/2022/09/16/Mysql%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mysql事务隔离级别">Mysql事务隔离级别</span>
+            <span class="post-date" title="2022-09-16 19:51:23">2022/09/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/09/15/ThreadLocal/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ThreadLocal">ThreadLocal</span>
+            <span class="post-date" title="2022-09-15 00:02:03">2022/09/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/09/11/%E6%A0%91%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="树结构入门.md">树结构入门.md</span>
+            <span class="post-date" title="2022-09-11 02:27:07">2022/09/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/09/08/NodeJS/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NodeJS">NodeJS</span>
+            <span class="post-date" title="2022-09-08 20:18:43">2022/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/09/08/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前端入门">前端入门</span>
+            <span class="post-date" title="2022-09-08 10:21:00">2022/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/09/06/Java%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java对象创建">Java对象创建</span>
+            <span class="post-date" title="2022-09-06 21:16:42">2022/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/09/04/ElasticSearch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ElasticSearch">ElasticSearch</span>
+            <span class="post-date" title="2022-09-04 23:29:31">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/09/01/springCloud%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud项目搭建">SpringCloud项目搭建</span>
+            <span class="post-date" title="2022-09-01 22:23:21">2022/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/30/RabbitMQ/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RabbitMQ">RabbitMQ</span>
+            <span class="post-date" title="2022-08-30 20:25:33">2022/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/08/29/MVC%E8%AE%BF%E9%97%AE%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MVC多线程安全问题">MVC多线程安全问题</span>
+            <span class="post-date" title="2022-08-29 17:18:53">2022/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/08/27/JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM类加载机制">JVM类加载机制</span>
+            <span class="post-date" title="2022-08-27 18:10:23">2022/08/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/08/24/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM虚拟机">JVM虚拟机</span>
+            <span class="post-date" title="2022-08-24 18:28:03">2022/08/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 运维 "
+           href="/2022/08/23/Docker/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Docker">Docker</span>
+            <span class="post-date" title="2022-08-23 13:25:11">2022/08/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/18/springCloud/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud">SpringCloud</span>
+            <span class="post-date" title="2022-08-18 13:21:39">2022/08/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="微服务入门">微服务入门</span>
+            <span class="post-date" title="2022-08-15 15:44:35">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/15/dubbo/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="dubbo">dubbo</span>
+            <span class="post-date" title="2022-08-15 07:25:45">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/13/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Redis">Redis</span>
+            <span class="post-date" title="2022-08-13 14:25:31">2022/08/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/12/bootstrap/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Bootstrap(WEB框架)">Bootstrap(WEB框架)</span>
+            <span class="post-date" title="2022-08-12 16:23:21">2022/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/12/springboot/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot">SpringBoot</span>
+            <span class="post-date" title="2022-08-12 12:15:35">2022/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/08/ssm%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SSM项目整合">SSM项目整合</span>
+            <span class="post-date" title="2022-08-08 12:15:25">2022/08/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 项目 "
+           href="/2022/08/03/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="外卖项目">外卖项目</span>
+            <span class="post-date" title="2022-08-03 08:35:11">2022/08/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/01/MyBatisPlus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatisPlus">MyBatisPlus</span>
+            <span class="post-date" title="2022-08-01 11:15:26">2022/08/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/31/MyBatis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatis">MyBatis</span>
+            <span class="post-date" title="2022-07-31 10:10:26">2022/07/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/28/Maven/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven">Maven</span>
+            <span class="post-date" title="2022-07-28 19:10:41">2022/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/26/spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="spring">spring</span>
+            <span class="post-date" title="2022-07-26 21:54:22">2022/07/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/23/springMVC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringMVC">SpringMVC</span>
+            <span class="post-date" title="2022-07-23 21:35:21">2022/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式">设计模式</span>
+            <span class="post-date" title="2022-07-18 19:21:50">2022/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/17/Ajax/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ajax">Ajax</span>
+            <span class="post-date" title="2022-07-17 12:07:22">2022/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/14/Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Annotation">Annotation</span>
+            <span class="post-date" title="2022-07-14 19:36:02">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/14/%E6%B3%A8%E8%A7%A3Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="注解">注解</span>
+            <span class="post-date" title="2022-07-14 10:09:18">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/13/Reflect/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Reflect">Reflect</span>
+            <span class="post-date" title="2022-07-13 14:40:18">2022/07/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2022-07-12 12:29:58">2022/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/10/IO%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IO流">IO流</span>
+            <span class="post-date" title="2022-07-10 20:14:33">2022/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/08/jQuery/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jQuery">jQuery</span>
+            <span class="post-date" title="2022-07-08 16:24:33">2022/07/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/07/javaScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="javaScript">javaScript</span>
+            <span class="post-date" title="2022-07-07 12:54:16">2022/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/06/XML/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="XML">XML</span>
+            <span class="post-date" title="2022-07-06 18:28:03">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/06/cookie%E5%92%8Csession/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="cookie和session">cookie和session</span>
+            <span class="post-date" title="2022-07-06 18:27:45">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/02/servlet/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="servlet">servlet</span>
+            <span class="post-date" title="2022-07-02 08:24:49">2022/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/01/jdbc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jdbc">jdbc</span>
+            <span class="post-date" title="2022-07-01 08:24:49">2022/07/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/06/19/SQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL">SQL</span>
+            <span class="post-date" title="2022-06-19 19:45:07">2022/06/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/05/28/JAVA%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JAVA入门">JAVA入门</span>
+            <span class="post-date" title="2022-05-28 00:32:07">2022/05/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/27/Linux%E4%BA%91%E8%AE%A1%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux云计算">Linux云计算</span>
+            <span class="post-date" title="2022-05-27 00:05:15">2022/05/27</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-银行家算法" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">银行家算法</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="其它">其它</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2023-04-15 13:44:01'>2023-04-15 13:43</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:11.2k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95"><span class="toc-text">银行家算法</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a><strong>银行家算法</strong></h1><p><strong>一、实验目的</strong></p>
+<p>死锁会引起计算机工作僵死，因此操作系统中必须防止。本实验的目的在于让 学生独立的使用高级语言编写和调试一个系统动态分配资源的简单模拟程序，了解 死锁产生的条件和原因，并采用银行家算法有效地防止死锁的发生，以加深对课堂 上所讲授的知识的理解。</p>
+<p><strong>二、实验要求</strong></p>
+<p>设计有 n 个进程共享 m 个系统资源的系统，进程可动态的申请和释放资源，系统按各进程的申请动态的分配资源。 系统能显示各个进程申请和释放资源，以及系统动态分配资源的过程，便于用 户观察和分析；</p>
+<p><strong>三、数据结构</strong></p>
+<p>\1. 可利用资源向量 Available ，它是一个含有 m 个元素的数组，其中的每一个元素 代表一类可利用的资源的数目，其初始值是系统中所配置的该类全部可用资源数 目。其数值随该类资源的分配和回收而动态地改变。如果 Available（j）&#x3D;k，标是 系统中现有 Rj 类资源 k 个。 </p>
+<p>2．最大需求矩阵 Max，这是一个 n×m 的矩阵，它定义了系统中 n 个进程中的每一 个进程对 m 类资源的最大需求。如果 Max（i，j）&#x3D;k，表示进程 i 需要 Rj 类资源 的最大数目为 k。 </p>
+<p>3．分配矩阵 Allocation，这是一个 n×m 的矩阵，它定义了系统中的每类资源当前 一分配到每一个进程的资源数。如果 Allocation（i，j）&#x3D;k，表示进程 i 当前已经 分到 Rj 类资源的数目为 k。Allocation i表示进程 i 的分配向量，有矩阵 Allocation 7 的第 i 行构成。</p>
+<p>4．需求矩阵 Need，这是一个 n×m 的矩阵，用以表示每个进程还需要的各类资源的 数目。如果 Need（i，j）&#x3D;k，表示进程 i 还需要 Rj 类资源 k 个，才能完成其任 务。Need i表示进程 i 的需求向量，由矩阵 Need 的第 i 行构成。 上述三个矩阵间存在关系：Need（i，j）&#x3D;Max（i，j）-Allocation（i，j）；</p>
+<p>5.任务完成标记位finishStatus，它是一个含有n个布尔元素的一维数组，用来标记第i个进程是否执行完毕。false为未执行完毕，true为执行完毕。</p>
+<p><strong>四、银行家算法</strong></p>
+<p>设Request.是进程P的请求向量，如果Request:[j]&#x3D;K. 则表示进程P需要K个R类型的资源。当使用random使得P发出资源请求后，系统会按下列步骤进行检查。</p>
+<p> (1)如果Request[j] ≤ Need[i][j]. 则转向步骤(2) ;否则认为出错，因为它所需要的资源数已超过它所宣布的最大值。</p>
+<p> (2)如果Rquest[j] ≤ Available[j] 则转向步骤(3);否则表示尚无足够资源，P须等待。</p>
+<p>(3)系统试探着把资源分配给进程P，并修改下列数据结构中的数值:</p>
+<p> Available[j] &#x3D; Available[j]- Request[j] ;</p>
+<p> Allocation[j] &#x3D; Allocation[i][j]+ Request[j] ;</p>
+<p> Need[i][j] &#x3D; Need[i][j]- Request[j]。</p>
+<p> (4)系统执行安全性算法，检查此次资源分配后系统是否处于安全状态。若是，则正式将资源分配给进程P.以完成本次分配:否则， 将本次的试探分配作废，恢复原来的资源分配，让进程P等待。</p>
+<p>(5)不断循环以上步骤，直到finfishStatus标记的所有进程任务全部结束后停止循环。</p>
+<p><strong>五、安全性算法</strong> </p>
+<p>1．设置两个向量。 AvailableCopy：它表示系统可提供给进程继续运行的各类资源数目，它包含 m 个元素， 开始执行安全性算法时，AvailableCopy &#x3D; Available - request。 Finish：它表示系统是否有足够的资源分配给进程，使之运行完成，开始finishStatus[i] &#x3D;false；当有足够资源分配给进程 Pi 时，令 finishStatus[i]&#x3D;true； </p>
+<p>2．从进程集合中找到下一个能满足下述条件的进程。 finishStatus[i] &#x3D;&#x3D; false； Need [i] ≤ AvailableCopy； 如找到则执行步骤 3；否则，执行步骤 4； </p>
+<p>3．当进程 Pi 获得资源后，可顺利执行直到完成，并释放出分配给它的资源，故应 执行 AvailableCopy &#x3D; AvailableCopy + Allocation[i] </p>
+<p>finishStatus[i]&#x3D;true；转向步骤 2； </p>
+<p>4．若所有进程的 finishStatus[i]&#x3D;true都为 true，则表示系统处于安全状态；否则，系统处于不安全状态。</p>
+<p><strong>六、参考流程（仅作一种参考）</strong></p>
+<p><strong><img src="/images/clip_image002-16815370513031.png" alt="img"></strong></p>
+<p><strong>七、实验报告</strong></p>
+<p><strong>测试数据</strong></p>
+<p><strong>1****组</strong></p>
+<pre><code class="java">请输入资源数量： 
+
+5 
+
+请输入系统资源总数(用&#39;,&#39;隔开)： 
+
+5,3,4,6,2 
+
+请输入进程数量： 
+
+6 
+
+请输入进程1需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+1,2,3,3,1 
+
+请输入进程2需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+3,2,1,4,1 
+
+请输入进程3需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+4,1,2,1,1 
+
+请输入进程4需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+2,2,2,4,2 
+
+请输入进程5需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+1,2,1,1,1 
+
+请输入进程6需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+3,2,1,3,1 
+</code></pre>
+<p><strong>2****组</strong></p>
+<pre><code class="java">请输入资源数量： 
+
+3 
+
+请输入系统资源总数(用&#39;,&#39;隔开)： 
+
+4,5,6 
+
+请输入进程数量： 
+
+4 
+
+请输入进程1需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+4,1,1 
+
+请输入进程2需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+1,4,1 
+
+请输入进程3需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+1,1,6 
+
+请输入进程4需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+1,1,1 
+</code></pre>
+<p><strong>3****组</strong></p>
+<pre><code class="java">请输入资源数量： 
+
+2 
+
+请输入系统资源总数(用&#39;,&#39;隔开)： 
+
+1,2 
+
+请输入进程数量： 
+
+8 
+
+请输入进程1需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+1,1 
+
+请输入进程2需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+0,1 
+
+请输入进程3需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+1,0 
+
+请输入进程4需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+0,2 
+
+请输入进程5需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+1,1 
+
+请输入进程6需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+0,1 
+
+请输入进程7需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+1,2 
+
+请输入进程8需要的资源总数MAX(用&#39;,&#39;隔开)： 
+
+1,1 
+</code></pre>
+<p><strong>运行结果</strong></p>
+<p><strong>1****组</strong></p>
+<pre><code class="java">================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     0,0,0,0,0        1,2,3,3,1 
+
+进程2：     3,2,1,4,1     0,0,0,0,0        3,2,1,4,1 
+
+进程3：     4,1,2,1,1     0,0,0,0,0        4,1,2,1,1 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     0,0,0,0,0        1,2,1,1,1 
+
+进程6：     3,2,1,3,1     0,0,0,0,0        3,2,1,3,1 
+
+进程2向操作系统申请资源：3;2;1;1;1; 
+
+系统目前资源数量：5;3;4;6;2; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程2;进程3;进程4;进程5;进程6;进程1;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     0,0,0,0,0        1,2,3,3,1 
+
+进程2：     3,2,1,4,1     3,2,1,1,1        0,0,0,3,0 
+
+进程3：     4,1,2,1,1     0,0,0,0,0        4,1,2,1,1 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     0,0,0,0,0        1,2,1,1,1 
+
+进程6：     3,2,1,3,1     0,0,0,0,0        3,2,1,3,1 
+
+进程1向操作系统申请资源：1;2;2;3;1; 
+
+系统目前资源数量：2;1;3;5;1; 拒绝受理 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     0,0,0,0,0        1,2,3,3,1 
+
+进程2：     3,2,1,4,1     3,2,1,1,1        0,0,0,3,0 
+
+进程3：     4,1,2,1,1     0,0,0,0,0        4,1,2,1,1 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     0,0,0,0,0        1,2,1,1,1 
+
+进程6：     3,2,1,3,1     0,0,0,0,0        3,2,1,3,1 
+
+进程3向操作系统申请资源：2;1;1;1;1; 
+
+系统目前资源数量：2;1;3;5;1; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程2;进程3;进程4;进程5;进程6;进程1;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     0,0,0,0,0        1,2,3,3,1 
+
+进程2：     3,2,1,4,1     3,2,1,1,1        0,0,0,3,0 
+
+进程3：     4,1,2,1,1     2,1,1,1,1        2,0,1,0,0 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     0,0,0,0,0        1,2,1,1,1 
+
+进程6：     3,2,1,3,1     0,0,0,0,0        3,2,1,3,1 
+
+进程1向操作系统申请资源：1;1;1;3;1; 
+
+系统目前资源数量：0;0;2;4;0; 拒绝受理 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     0,0,0,0,0        1,2,3,3,1 
+
+进程2：     3,2,1,4,1     3,2,1,1,1        0,0,0,3,0 
+
+进程3：     4,1,2,1,1     2,1,1,1,1        2,0,1,0,0 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     0,0,0,0,0        1,2,1,1,1 
+
+进程6：     3,2,1,3,1     0,0,0,0,0        3,2,1,3,1 
+
+进程2向操作系统申请资源：0;0;0;3;0; 
+
+系统目前资源数量：0;0;2;4;0; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程2;进程3;进程4;进程5;进程6;进程1;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     0,0,0,0,0        1,2,3,3,1 
+
+进程2：     3,2,1,4,1     3,2,1,4,1        0,0,0,0,0 
+
+进程3：     4,1,2,1,1     2,1,1,1,1        2,0,1,0,0 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     0,0,0,0,0        1,2,1,1,1 
+
+进程6：     3,2,1,3,1     0,0,0,0,0        3,2,1,3,1 
+
+进程6向操作系统申请资源：2;1;1;1;1; 
+
+系统目前资源数量：3;2;3;5;1; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程6;进程1;进程3;进程4;进程5;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     0,0,0,0,0        1,2,3,3,1 
+
+进程2：     3,2,1,4,1     3,2,1,4,1        0,0,0,0,0 
+
+进程3：     4,1,2,1,1     2,1,1,1,1        2,0,1,0,0 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     0,0,0,0,0        1,2,1,1,1 
+
+进程6：     3,2,1,3,1     2,1,1,1,1        1,1,0,2,0 
+
+进程6向操作系统申请资源：1;1;0;2;0; 
+
+系统目前资源数量：1;1;2;4;0; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程6;进程1;进程3;进程4;进程5;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     0,0,0,0,0        1,2,3,3,1 
+
+进程2：     3,2,1,4,1     3,2,1,4,1        0,0,0,0,0 
+
+进程3：     4,1,2,1,1     2,1,1,1,1        2,0,1,0,0 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     0,0,0,0,0        1,2,1,1,1 
+
+进程6：     3,2,1,3,1     3,2,1,3,1        0,0,0,0,0 
+
+进程5向操作系统申请资源：1;1;1;1;1; 
+
+系统目前资源数量：3;2;3;5;1; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程3;进程5;进程1;进程4;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     0,0,0,0,0        1,2,3,3,1 
+
+进程2：     3,2,1,4,1     3,2,1,4,1        0,0,0,0,0 
+
+进程3：     4,1,2,1,1     2,1,1,1,1        2,0,1,0,0 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     1,1,1,1,1        0,1,0,0,0 
+
+进程6：     3,2,1,3,1     3,2,1,3,1        0,0,0,0,0 
+
+进程5向操作系统申请资源：0;1;0;0;0; 
+
+系统目前资源数量：2;1;2;4;0; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程3;进程5;进程1;进程4;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     0,0,0,0,0        1,2,3,3,1 
+
+进程2：     3,2,1,4,1     3,2,1,4,1        0,0,0,0,0 
+
+进程3：     4,1,2,1,1     2,1,1,1,1        2,0,1,0,0 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     1,2,1,1,1        0,0,0,0,0 
+
+进程6：     3,2,1,3,1     3,2,1,3,1        0,0,0,0,0 
+
+进程3向操作系统申请资源：1;0;1;0;0; 
+
+系统目前资源数量：3;2;3;5;1; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程3;进程4;进程1;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     0,0,0,0,0        1,2,3,3,1 
+
+进程2：     3,2,1,4,1     3,2,1,4,1        0,0,0,0,0 
+
+进程3：     4,1,2,1,1     3,1,2,1,1        1,0,0,0,0 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     1,2,1,1,1        0,0,0,0,0 
+
+进程6：     3,2,1,3,1     3,2,1,3,1        0,0,0,0,0 
+
+进程1向操作系统申请资源：1;1;2;2;1; 
+
+系统目前资源数量：2;2;2;5;1; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程3;进程1;进程4;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     1,1,2,2,1        0,1,1,1,0 
+
+进程2：     3,2,1,4,1     3,2,1,4,1        0,0,0,0,0 
+
+进程3：     4,1,2,1,1     3,1,2,1,1        1,0,0,0,0 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     1,2,1,1,1        0,0,0,0,0 
+
+进程6：     3,2,1,3,1     3,2,1,3,1        0,0,0,0,0 
+
+进程4向操作系统申请资源：1;1;1;4;1; 
+
+系统目前资源数量：1;1;0;3;0; 拒绝受理 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     1,1,2,2,1        0,1,1,1,0 
+
+进程2：     3,2,1,4,1     3,2,1,4,1        0,0,0,0,0 
+
+进程3：     4,1,2,1,1     3,1,2,1,1        1,0,0,0,0 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     1,2,1,1,1        0,0,0,0,0 
+
+进程6：     3,2,1,3,1     3,2,1,3,1        0,0,0,0,0 
+
+进程1向操作系统申请资源：0;1;1;1;0; 
+
+系统目前资源数量：1;1;0;3;0; 拒绝受理 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     1,1,2,2,1        0,1,1,1,0 
+
+进程2：     3,2,1,4,1     3,2,1,4,1        0,0,0,0,0 
+
+进程3：     4,1,2,1,1     3,1,2,1,1        1,0,0,0,0 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     1,2,1,1,1        0,0,0,0,0 
+
+进程6：     3,2,1,3,1     3,2,1,3,1        0,0,0,0,0 
+
+进程1向操作系统申请资源：0;1;1;1;0; 
+
+系统目前资源数量：1;1;0;3;0; 拒绝受理 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     1,1,2,2,1        0,1,1,1,0 
+
+进程2：     3,2,1,4,1     3,2,1,4,1        0,0,0,0,0 
+
+进程3：     4,1,2,1,1     3,1,2,1,1        1,0,0,0,0 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     1,2,1,1,1        0,0,0,0,0 
+
+进程6：     3,2,1,3,1     3,2,1,3,1        0,0,0,0,0 
+
+进程3向操作系统申请资源：1;0;0;0;0; 
+
+系统目前资源数量：1;1;0;3;0; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程3;进程1;进程4;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     1,1,2,2,1        0,1,1,1,0 
+
+进程2：     3,2,1,4,1     3,2,1,4,1        0,0,0,0,0 
+
+进程3：     4,1,2,1,1     4,1,2,1,1        0,0,0,0,0 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     1,2,1,1,1        0,0,0,0,0 
+
+进程6：     3,2,1,3,1     3,2,1,3,1        0,0,0,0,0 
+
+进程4向操作系统申请资源：2;1;1;1;2; 
+
+系统目前资源数量：4;2;2;4;1; 拒绝受理 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     1,1,2,2,1        0,1,1,1,0 
+
+进程2：     3,2,1,4,1     3,2,1,4,1        0,0,0,0,0 
+
+进程3：     4,1,2,1,1     4,1,2,1,1        0,0,0,0,0 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     1,2,1,1,1        0,0,0,0,0 
+
+进程6：     3,2,1,3,1     3,2,1,3,1        0,0,0,0,0 
+
+进程1向操作系统申请资源：0;1;1;1;0; 
+
+系统目前资源数量：4;2;2;4;1; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程1;进程4;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     1,2,3,3,1        0,0,0,0,0 
+
+进程2：     3,2,1,4,1     3,2,1,4,1        0,0,0,0,0 
+
+进程3：     4,1,2,1,1     4,1,2,1,1        0,0,0,0,0 
+
+进程4：     2,2,2,4,2     0,0,0,0,0        2,2,2,4,2 
+
+进程5：     1,2,1,1,1     1,2,1,1,1        0,0,0,0,0 
+
+进程6：     3,2,1,3,1     3,2,1,3,1        0,0,0,0,0 
+
+进程4向操作系统申请资源：1;2;1;4;1; 
+
+系统目前资源数量：5;3;4;6;2; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程4;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,2,3,3,1     1,2,3,3,1        0,0,0,0,0 
+
+进程2：     3,2,1,4,1     3,2,1,4,1        0,0,0,0,0 
+
+进程3：     4,1,2,1,1     4,1,2,1,1        0,0,0,0,0 
+
+进程4：     2,2,2,4,2     1,2,1,4,1        1,0,1,0,1 
+
+进程5：     1,2,1,1,1     1,2,1,1,1        0,0,0,0,0 
+
+进程6：     3,2,1,3,1     3,2,1,3,1        0,0,0,0,0 
+
+进程4向操作系统申请资源：1;0;1;0;1; 
+
+系统目前资源数量：4;1;3;2;1; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程4;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+模拟结束 
+
+系统目前资源数量：5;3;4;6;2; 
+</code></pre>
+<p><strong>2****组</strong></p>
+<pre><code class="java">================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     4,1,1       0,0,0          4,1,1 
+
+进程2：     1,4,1       0,0,0          1,4,1 
+
+进程3：     1,1,6       0,0,0          1,1,6 
+
+进程4：     1,1,1       0,0,0          1,1,1 
+
+进程3向操作系统申请资源：1;1;5; 
+
+系统目前资源数量：4;5;6; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程2;进程3;进程4;进程1;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     4,1,1       0,0,0          4,1,1 
+
+进程2：     1,4,1       0,0,0          1,4,1 
+
+进程3：     1,1,6       1,1,5          0,0,1 
+
+进程4：     1,1,1       0,0,0          1,1,1 
+
+进程4向操作系统申请资源：1;1;1; 
+
+系统目前资源数量：3;4;1; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程4;进程2;进程3;进程1;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     4,1,1       0,0,0          4,1,1 
+
+进程2：     1,4,1       0,0,0          1,4,1 
+
+进程3：     1,1,6       1,1,5          0,0,1 
+
+进程4：     1,1,1       1,1,1          0,0,0 
+
+进程1向操作系统申请资源：1;1;1; 
+
+系统目前资源数量：3;4;1; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：无法找到安全序列,系统不安全 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     4,1,1       0,0,0          4,1,1 
+
+进程2：     1,4,1       0,0,0          1,4,1 
+
+进程3：     1,1,6       1,1,5          0,0,1 
+
+进程4：     1,1,1       1,1,1          0,0,0 
+
+进程3向操作系统申请资源：0;0;1; 
+
+系统目前资源数量：3;4;1; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程3;进程1;进程2;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     4,1,1       0,0,0          4,1,1 
+
+进程2：     1,4,1       0,0,0          1,4,1 
+
+进程3：     1,1,6       1,1,6          0,0,0 
+
+进程4：     1,1,1       1,1,1          0,0,0 
+
+进程2向操作系统申请资源：1;4;1; 
+
+系统目前资源数量：4;5;6; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程2;进程1;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     4,1,1       0,0,0          4,1,1 
+
+进程2：     1,4,1       1,4,1          0,0,0 
+
+进程3：     1,1,6       1,1,6          0,0,0 
+
+进程4：     1,1,1       1,1,1          0,0,0 
+
+进程1向操作系统申请资源：2;1;1; 
+
+系统目前资源数量：4;5;6; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程1;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     4,1,1       2,1,1          2,0,0 
+
+进程2：     1,4,1       1,4,1          0,0,0 
+
+进程3：     1,1,6       1,1,6          0,0,0 
+
+进程4：     1,1,1       1,1,1          0,0,0 
+
+进程1向操作系统申请资源：1;0;0; 
+
+系统目前资源数量：2;4;5; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程1;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     4,1,1       3,1,1          1,0,0 
+
+进程2：     1,4,1       1,4,1          0,0,0 
+
+进程3：     1,1,6       1,1,6          0,0,0 
+
+进程4：     1,1,1       1,1,1          0,0,0 
+
+进程1向操作系统申请资源：1;0;0; 
+
+系统目前资源数量：1;4;5; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程1;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+模拟结束 
+
+系统目前资源数量：4;5;6; 
+</code></pre>
+<p><strong>3****组</strong></p>
+<pre><code class="java">================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        0,0           1,1 
+
+进程2：     0,1        0,0           0,1 
+
+进程3：     1,0        0,0           1,0 
+
+进程4：     0,2        0,0           0,2 
+
+进程5：     1,1        0,0           1,1 
+
+进程6：     0,1        0,0           0,1 
+
+进程7：     1,2        0,0           1,2 
+
+进程8：     1,1        0,0           1,1 
+
+进程6向操作系统申请资源：0;1; 
+
+系统目前资源数量：1;2; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程1;进程2;进程3;进程5;进程6;进程7;进程8;进程4;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        0,0           1,1 
+
+进程2：     0,1        0,0           0,1 
+
+进程3：     1,0        0,0           1,0 
+
+进程4：     0,2        0,0           0,2 
+
+进程5：     1,1        0,0           1,1 
+
+进程6：     0,1        0,1           0,0 
+
+进程7：     1,2        0,0           1,2 
+
+进程8：     1,1        0,0           1,1 
+
+进程8向操作系统申请资源：1;1; 
+
+系统目前资源数量：1;2; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程2;进程8;进程1;进程3;进程4;进程5;进程7;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        0,0           1,1 
+
+进程2：     0,1        0,0           0,1 
+
+进程3：     1,0        0,0           1,0 
+
+进程4：     0,2        0,0           0,2 
+
+进程5：     1,1        0,0           1,1 
+
+进程6：     0,1        0,1           0,0 
+
+进程7：     1,2        0,0           1,2 
+
+进程8：     1,1        1,1           0,0 
+
+进程5向操作系统申请资源：1;1; 
+
+系统目前资源数量：1;2; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程2;进程5;进程7;进程1;进程3;进程4;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        0,0           1,1 
+
+进程2：     0,1        0,0           0,1 
+
+进程3：     1,0        0,0           1,0 
+
+进程4：     0,2        0,0           0,2 
+
+进程5：     1,1        1,1           0,0 
+
+进程6：     0,1        0,1           0,0 
+
+进程7：     1,2        0,0           1,2 
+
+进程8：     1,1        1,1           0,0 
+
+进程1向操作系统申请资源：1;1; 
+
+系统目前资源数量：1;2; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程1;进程2;进程3;进程4;进程7;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        1,1           0,0 
+
+进程2：     0,1        0,0           0,1 
+
+进程3：     1,0        0,0           1,0 
+
+进程4：     0,2        0,0           0,2 
+
+进程5：     1,1        1,1           0,0 
+
+进程6：     0,1        0,1           0,0 
+
+进程7：     1,2        0,0           1,2 
+
+进程8：     1,1        1,1           0,0 
+
+进程2向操作系统申请资源：0;1; 
+
+系统目前资源数量：1;2; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程2;进程3;进程4;进程7;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        1,1           0,0 
+
+进程2：     0,1        0,1           0,0 
+
+进程3：     1,0        0,0           1,0 
+
+进程4：     0,2        0,0           0,2 
+
+进程5：     1,1        1,1           0,0 
+
+进程6：     0,1        0,1           0,0 
+
+进程7：     1,2        0,0           1,2 
+
+进程8：     1,1        1,1           0,0 
+
+进程7向操作系统申请资源：1;1; 
+
+系统目前资源数量：1;2; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程7;进程3;进程4;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        1,1           0,0 
+
+进程2：     0,1        0,1           0,0 
+
+进程3：     1,0        0,0           1,0 
+
+进程4：     0,2        0,0           0,2 
+
+进程5：     1,1        1,1           0,0 
+
+进程6：     0,1        0,1           0,0 
+
+进程7：     1,2        1,1           0,1 
+
+进程8：     1,1        1,1           0,0 
+
+进程4向操作系统申请资源：0;1; 
+
+系统目前资源数量：0;1; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：无法找到安全序列,系统不安全 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        1,1           0,0 
+
+进程2：     0,1        0,1           0,0 
+
+进程3：     1,0        0,0           1,0 
+
+进程4：     0,2        0,0           0,2 
+
+进程5：     1,1        1,1           0,0 
+
+进程6：     0,1        0,1           0,0 
+
+进程7：     1,2        1,1           0,1 
+
+进程8：     1,1        1,1           0,0 
+
+进程4向操作系统申请资源：0;1; 
+
+系统目前资源数量：0;1; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：无法找到安全序列,系统不安全 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        1,1           0,0 
+
+进程2：     0,1        0,1           0,0 
+
+进程3：     1,0        0,0           1,0 
+
+进程4：     0,2        0,0           0,2 
+
+进程5：     1,1        1,1           0,0 
+
+进程6：     0,1        0,1           0,0 
+
+进程7：     1,2        1,1           0,1 
+
+进程8：     1,1        1,1           0,0 
+
+进程4向操作系统申请资源：0;2; 
+
+系统目前资源数量：0;1; 拒绝受理 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        1,1           0,0 
+
+进程2：     0,1        0,1           0,0 
+
+进程3：     1,0        0,0           1,0 
+
+进程4：     0,2        0,0           0,2 
+
+进程5：     1,1        1,1           0,0 
+
+进程6：     0,1        0,1           0,0 
+
+进程7：     1,2        1,1           0,1 
+
+进程8：     1,1        1,1           0,0 
+
+进程3向操作系统申请资源：1;0; 
+
+系统目前资源数量：0;1; 拒绝受理 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        1,1           0,0 
+
+进程2：     0,1        0,1           0,0 
+
+进程3：     1,0        0,0           1,0 
+
+进程4：     0,2        0,0           0,2 
+
+进程5：     1,1        1,1           0,0 
+
+进程6：     0,1        0,1           0,0 
+
+进程7：     1,2        1,1           0,1 
+
+进程8：     1,1        1,1           0,0 
+
+进程3向操作系统申请资源：1;0; 
+
+系统目前资源数量：0;1; 拒绝受理 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        1,1           0,0 
+
+进程2：     0,1        0,1           0,0 
+
+进程3：     1,0        0,0           1,0 
+
+进程4：     0,2        0,0           0,2 
+
+进程5：     1,1        1,1           0,0 
+
+进程6：     0,1        0,1           0,0 
+
+进程7：     1,2        1,1           0,1 
+
+进程8：     1,1        1,1           0,0 
+
+进程4向操作系统申请资源：0;2; 
+
+系统目前资源数量：0;1; 拒绝受理 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        1,1           0,0 
+
+进程2：     0,1        0,1           0,0 
+
+进程3：     1,0        0,0           1,0 
+
+进程4：     0,2        0,0           0,2 
+
+进程5：     1,1        1,1           0,0 
+
+进程6：     0,1        0,1           0,0 
+
+进程7：     1,2        1,1           0,1 
+
+进程8：     1,1        1,1           0,0 
+
+进程7向操作系统申请资源：0;1; 
+
+系统目前资源数量：0;1; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程7;进程3;进程4;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        1,1           0,0 
+
+进程2：     0,1        0,1           0,0 
+
+进程3：     1,0        0,0           1,0 
+
+进程4：     0,2        0,0           0,2 
+
+进程5：     1,1        1,1           0,0 
+
+进程6：     0,1        0,1           0,0 
+
+进程7：     1,2        1,2           0,0 
+
+进程8：     1,1        1,1           0,0 
+
+进程3向操作系统申请资源：1;0; 
+
+系统目前资源数量：1;2; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程3;进程4;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        1,1           0,0 
+
+进程2：     0,1        0,1           0,0 
+
+进程3：     1,0        1,0           0,0 
+
+进程4：     0,2        0,0           0,2 
+
+进程5：     1,1        1,1           0,0 
+
+进程6：     0,1        0,1           0,0 
+
+进程7：     1,2        1,2           0,0 
+
+进程8：     1,1        1,1           0,0 
+
+进程4向操作系统申请资源：0;1; 
+
+系统目前资源数量：1;2; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程4;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+==================================== 
+
+当前系统进程资源分配情况 
+
+进程名称    Max        Allocation        Need 
+
+进程1：     1,1        1,1           0,0 
+
+进程2：     0,1        0,1           0,0 
+
+进程3：     1,0        1,0           0,0 
+
+进程4：     0,2        0,1           0,1 
+
+进程5：     1,1        1,1           0,0 
+
+进程6：     0,1        0,1           0,0 
+
+进程7：     1,2        1,2           0,0 
+
+进程8：     1,1        1,1           0,0 
+
+进程4向操作系统申请资源：0;1; 
+
+系统目前资源数量：1;1; 可满足 
+
+---------------系统将检查本次分配后的安全状态--------------- 
+
+检查安全序列为：进程4;系统安全，确认资源分配 
+
+\--------------------------------------------------------- 
+
+==================================== 
+
+ 
+
+模拟结束 
+
+系统目前资源数量：1;2; 
+
+ 
+</code></pre>
+<p><strong>代码</strong></p>
+<p><strong>系统资源分配类****Runner</strong></p>
+<pre><code class="java">package com.os467;
+ 
+ import com.os467.processMatrix.AllocationMatrix;
+ import com.os467.processMatrix.MaxMatrix;
+ import com.os467.processMatrix.NeedMatrix;
+ 
+ import java.util.Random;
+ import java.util.Scanner;
+ 
+ public class Runner &#123;
+ 
+   //进程最大资源
+   private MaxMatrix max;
+ 
+   //进程已获得资源
+   private AllocationMatrix allocation;
+ 
+   //进程需要资源
+   private NeedMatrix need;
+ 
+   //当前系统资源
+   private AvailableMatrix available;
+ 
+   //资源类型总数
+   private Integer resourceTotal;
+ 
+   //进程数量
+   private Integer processNum;
+ 
+   //已完成进程数量
+   private Integer finishProcessNum = 0;
+ 
+   //进程结束标识位(false未结束/true结束)
+   private Boolean[] finishStatus;
+ 
+   private Integer systemRunTime = 0;
+ 
+   //初始化
+   public void init()&#123;
+     Scanner scanner = new Scanner(System.*in*);
+     register(scanner);
+   &#125;
+ 
+   public void run()&#123;
+     Random random = new Random(processNum);
+     while (true)&#123;
+ 
+       //进程结束
+       if (finishProcessNum.equals(processNum))&#123;
+         break;
+       &#125;
+       //随机获取一个进程
+       int processIndex = random.nextInt(processNum);
+ 
+       //判断进程是否结束
+       if (finishStatus[processIndex])&#123;
+         continue;
+       &#125;
+ 
+       System.*out*.println(&quot;====================================&quot;);
+       System.*out*.println(&quot;当前系统进程资源分配情况&quot;);
+       System.*out*.println(&quot;进程名称    Max        Allocation        Need&quot;);
+       for (int i = 0; i &lt; processNum; i++) &#123;
+         System.*out*.print(&quot;进程&quot;+(i+1)+&quot;：     &quot;);
+         max.printMax(i);
+         for (int j = 0; j &lt; 19 - resourceTotal * 2; j++) &#123;
+           System.*out*.print(&quot; &quot;);
+         &#125;
+         allocation.printAllocation(i);
+         for (int j = 0; j &lt; 26 - resourceTotal * 2; j++) &#123;
+           System.*out*.print(&quot; &quot;);
+         &#125;
+         need.printNeed(i);
+         System.*out*.println();
+       &#125;
+       if (!requestCheck(processIndex))&#123;
+         //无法满足该进程需求
+         continue;
+       &#125;
+       System.*out*.println(&quot;====================================\n&quot;);
+ 
+       if (finish(finishStatus))&#123;
+         break;
+       &#125;
+ 
+       systemRunTime++;
+       if (systemRunTime &gt; 1000)&#123;
+         throw new RuntimeException(&quot;系统运行超时&quot;);
+       &#125;
+     &#125;
+     System.*out*.println(&quot;模拟结束&quot;);
+     System.*out*.print(&quot;系统目前资源数量：&quot;);
+     Integer[] resources = available.getResources();
+     for (Integer resource : resources) &#123;
+       System.*out*.print(resource+&quot;;&quot;);
+     &#125;
+   &#125;
+ 
+   */**
+   ** *资源申请检查
+\*   ** **@param*** *processIndex
+\*   **/
+\*   private boolean requestCheck(int processIndex) &#123;
+     Integer[] request = need.getRandomResourcesRequest(processIndex, resourceTotal);
+ 
+     System.*out*.print(&quot;进程&quot;+(processIndex+1)+&quot;向操作系统申请资源：&quot;);
+     for (int i = 0; i &lt; request.length; i++) &#123;
+       System.*out*.print(request[i]+&quot;;&quot;);
+     &#125;
+     System.*out*.println();
+ 
+     System.*out*.print(&quot;系统目前资源数量：&quot;);
+     Integer[] resources = available.getResources();
+     for (Integer resource : resources) &#123;
+       System.*out*.print(resource+&quot;;&quot;);
+     &#125;
+     //判断是否可以满足此次申请
+     if (!requestAvailable(available,request))&#123;
+       System.*out*.println(&quot; 拒绝受理&quot;);
+       return false;
+     &#125;else &#123;
+       System.*out*.println(&quot; 可满足&quot;);
+     &#125;
+ 
+     System.*out*.println(&quot;---------------系统将检查本次分配后的安全状态---------------&quot;);
+     //判断满足此次请求后系统是否安全
+     if (!checkSafety(processIndex, request))&#123;
+       return false;
+     &#125;
+     System.*out*.println(&quot;---------------------------------------------------------&quot;);
+ 
+     //可以满足，且系统安全
+     request(processIndex,request);
+     return true;
+   &#125;
+ 
+   */**
+   ** *满足进程随机申请的资源
+\*   ** **@param*** *processIndex
+\*   ** **@param*** *request
+\*   **/
+\*   private void request(int processIndex,Integer[] request)&#123;
+     this.need.remove(processIndex,request);
+     this.allocation.add(processIndex,request);
+     if (allocation.satisfy(processIndex,max,resourceTotal))&#123;
+       allocation.releaseAllocation(processIndex,available);
+       finishStatus[processIndex] = true;
+     &#125;
+     available.remove(request);
+   &#125;
+ 
+   */**
+   ** *请求资源是否可满足
+\*   ** **@return
+**   \*/
+\*   private boolean requestAvailable(AvailableMatrix availableMatrix, Integer[] request) &#123;
+     return availableMatrix.requestAvailable(request);
+   &#125;
+ 
+   */**
+   ** *测试系统安全性
+\*   ** **@param*** *processIndex
+\*   ** **@param*** *request
+\*   **/
+\*   private boolean checkSafety(int processIndex, Integer[] request) &#123;
+ 
+     AvailableMatrix availableCopy = new AvailableMatrix(available);
+ 
+     //满足后资源状态
+     availableCopy.remove(request);
+ 
+     //拷贝当前系统状态
+     NeedMatrix needCopy = new NeedMatrix(need, resourceTotal);
+     AllocationMatrix allocationCopy = new AllocationMatrix(allocation, resourceTotal);
+ 
+     //更新满足需求后的状态
+     needCopy.remove(processIndex,request);
+     allocationCopy.add(processIndex,request);
+ 
+     Boolean[] finishCopy = new Boolean[finishStatus.length];
+     for (int i = 0; i &lt; finishCopy.length; i++) &#123;
+       finishCopy[i] = finishStatus[i];
+     &#125;
+ 
+     int start = 0;
+     int point = 0;
+     //检查安全序列
+     System.*out*.print(&quot;检查安全序列为：&quot;);
+     while (true)&#123;
+       if (!finishCopy[point])&#123;
+         //未分配
+         if (needCopy.satisfy(point,availableCopy))&#123;
+           //分配
+           finishCopy[point] = true;
+           //获取到allocation
+           allocationCopy.releaseAllocation(point,availableCopy);
+           //记录成功分配的位置
+           start = point;
+           System.*out*.print(&quot;进程&quot;+(point+1)+&quot;;&quot;);
+         &#125;
+       &#125;
+ 
+       if (point == processNum-1)&#123;
+         point = 0;
+       &#125;else &#123;
+         point++;
+       &#125;
+ 
+       if (start == point)&#123;
+         //回到上一次成功分配的位置
+         System.*out*.println(&quot;无法找到安全序列,系统不安全&quot;);
+         return false;
+       &#125;
+ 
+       if (finish(finishCopy))&#123;
+         break;
+       &#125;
+     &#125;
+ 
+     System.*out*.println(&quot;系统安全，确认资源分配&quot;);
+     return true;
+   &#125;
+ 
+   */**
+   ** *是否全部执行完毕
+\*   ** **@param*** *finishStatus
+\*   ** **@return
+**   \*/
+\*   private boolean finish(Boolean[] finishStatus) &#123;
+     for (Boolean f : finishStatus) &#123;
+       if (!f)&#123;
+         return false;
+       &#125;
+     &#125;
+     return true;
+   &#125;
+ 
+   private void register(Scanner scanner)&#123;
+     System.*out*.println(&quot;请输入资源数量：&quot;);
+     //注册资源类型数量
+     resourceTotal = scanner.nextInt();
+     available = new AvailableMatrix(resourceTotal);
+     //注册资源对应总数
+     System.*out*.println(&quot;请输入系统资源总数(用&#39;,&#39;隔开)：&quot;);
+     String s = scanner.next();
+     String[] inputs = s.split(&quot;,&quot;);
+ 
+     for (int i = 0; i &lt; resourceTotal; i++) &#123;
+       available.register(i,Integer.*parseInt*(inputs[i]));
+     &#125;
+ 
+     while (true)&#123;
+       System.*out*.println(&quot;请输入进程数量：&quot;);
+       processNum = scanner.nextInt();
+       if (processNum &lt;= 1)&#123;
+         System.*out*.println(&quot;进程数量过少，请重新输入&quot;);
+         continue;
+       &#125;
+       break;
+     &#125;
+     //最大资源数量
+     max = new MaxMatrix(processNum,resourceTotal);
+     //已获得资源数量
+     allocation = new AllocationMatrix(processNum,resourceTotal);
+     //需要资源数量
+     need = new NeedMatrix(processNum,resourceTotal);
+     //初始化进程标识位
+     finishStatus = new Boolean[processNum];
+     for (int i = 0; i &lt; processNum; i++) &#123;
+       finishStatus[i] = false;
+     &#125;
+     //输入需要最大资源数量
+     for (int i = 0; i &lt; processNum; i++) &#123;
+       inputMax: while (true)&#123;
+         System.*out*.println(&quot;请输入进程&quot;+(i+1)+&quot;需要的资源总数MAX(用&#39;,&#39;隔开)：&quot;);
+         String ss = scanner.next();
+         String[] maxInput = ss.split(&quot;,&quot;);
+         for (int j = 0; j &lt; resourceTotal; j++) &#123;
+           int parseInt = Integer.*parseInt*(maxInput[j]);
+           if (available.get(j) &lt; parseInt)&#123;
+             System.*out*.println(&quot;大于系统资源总数，请重新输入&quot;);
+             continue inputMax;
+           &#125;
+           max.register(i,j,parseInt);
+           allocation.register(i,j,0);
+           need.register(i,j,parseInt);
+         &#125;
+         break;
+       &#125;
+     &#125;
+   &#125;
+ 
+ &#125;
+</code></pre>
+<p><strong>系统当前资源类****AvailableMatrix</strong></p>
+<pre><code class="java">package com.os467;
+ 
+ 
+ public class AvailableMatrix &#123;
+   private Integer[] resources;
+ 
+   public AvailableMatrix(int resourceTotal) &#123;
+     resources = new Integer[resourceTotal];
+   &#125;
+ 
+   public AvailableMatrix(AvailableMatrix available) &#123;
+     int length = available.resources.length;
+     this.resources = new Integer[length];
+     for (int i = 0; i &lt; length; i++) &#123;
+       this.resources[i] = available.resources[i];
+     &#125;
+   &#125;
+ 
+   public void register(int index,int resourceNum)&#123;
+     this.resources[index] = resourceNum;
+   &#125;
+ 
+   public Integer get(int i) &#123;
+     return resources[i];
+   &#125;
+ 
+   public void remove(Integer[] request) &#123;
+     int length = request.length;
+     for (int i = 0; i &lt; length; i++) &#123;
+       resources[i] -= request[i];
+     &#125;
+   &#125;
+ 
+   public void add(int i, Integer num) &#123;
+     this.resources[i] += num;
+   &#125;
+ 
+   public boolean requestAvailable(Integer[] request) &#123;
+     for (int i = 0; i &lt; this.resources.length; i++) &#123;
+       if (this.resources[i] &lt; request[i])&#123;
+         return false;
+       &#125;
+     &#125;
+     return true;
+   &#125;
+ 
+   public Integer[] getResources() &#123;
+     return resources;
+   &#125;
+ &#125;
+</code></pre>
+<p><strong>进程当前已获得资源类</strong></p>
+<pre><code class="java">package com.os467.processMatrix;
+ 
+ import com.os467.AvailableMatrix;
+ 
+ public class AllocationMatrix &#123;
+   private Integer[][] resources;
+   public AllocationMatrix(int processNum,int resourceTotal)&#123;
+     resources = new Integer[processNum][resourceTotal];
+   &#125;
+ 
+   public AllocationMatrix(AllocationMatrix allocation, Integer resourceTotal) &#123;
+     this.resources = new Integer[allocation.resources.length][resourceTotal];
+     for (int i = 0; i &lt; resources.length; i++) &#123;
+       for (int j = 0; j &lt; resourceTotal; j++) &#123;
+         this.resources[i][j] = allocation.resources[i][j];
+       &#125;
+     &#125;
+   &#125;
+ 
+   public void register(int i, int j, int parseInt) &#123;
+     resources[i][j] = parseInt;
+   &#125;
+ 
+   */**
+   ** *释放**allocation
+   \* **@param*** *index
+\*   ** **@param*** *availableCopy
+\*   **/
+\*   public void releaseAllocation(int index, AvailableMatrix availableCopy) &#123;
+     int length = this.resources[index].length;
+     for (int i = 0; i &lt; length; i++) &#123;
+       availableCopy.add(i,resources[index][i]);
+     &#125;
+   &#125;
+ 
+   public void add(int processIndex, Integer[] request) &#123;
+     int length = this.resources[processIndex].length;
+     for (int i = 0; i &lt; length; i++) &#123;
+       this.resources[processIndex][i] += request[i];
+     &#125;
+   &#125;
+ 
+   public boolean satisfy(int processIndex, MaxMatrix max, Integer resourceTotal) &#123;
+     Integer[][] maxResources = max.getResources();
+     for (int i = 0; i &lt; resourceTotal; i++) &#123;
+       if (maxResources[processIndex][i] &gt; this.resources[processIndex][i])&#123;
+         return false;
+       &#125;
+     &#125;
+     return true;
+   &#125;
+ 
+   public void printAllocation(int i) &#123;
+     int length = resources[i].length;
+     for (int j = 0; j &lt; length-1; j++) &#123;
+       System.*out*.print(resources[i][j]+&quot;,&quot;);
+     &#125;
+     System.*out*.print(resources[i][length-1]);
+   &#125;
+ &#125;
+</code></pre>
+<p><strong>进程总共需要资源类</strong></p>
+<pre><code class="java">package com.os467.processMatrix;
+ 
+ public class MaxMatrix &#123;
+   private Integer[][] resources;
+ 
+   public MaxMatrix(int processNum, int resourceTotal) &#123;
+     resources = new Integer[processNum][resourceTotal];
+   &#125;
+ 
+   public void register(int i, int j, Integer maxInput) &#123;
+     resources[i][j] = maxInput;
+   &#125;
+ 
+   public Integer[][] getResources() &#123;
+     return resources;
+   &#125;
+ 
+   public void printMax(int i) &#123;
+     int length = resources[i].length;
+     for (int j = 0; j &lt; length-1; j++) &#123;
+       System.*out*.print(resources[i][j]+&quot;,&quot;);
+     &#125;
+     System.*out*.print(resources[i][length-1]);
+   &#125;
+ &#125;
+</code></pre>
+<p><strong>进程还需要资源类</strong></p>
+<pre><code class="java">package com.os467.processMatrix;
+ 
+ import com.os467.AvailableMatrix;
+ 
+ import java.util.Random;
+ 
+ public class NeedMatrix &#123;
+   private Integer[][] resources;
+   public NeedMatrix(int processNum,int resourceTotal)&#123;
+     resources = new Integer[processNum][resourceTotal];
+   &#125;
+ 
+   public NeedMatrix(NeedMatrix need, Integer resourceTotal) &#123;
+     this.resources = new Integer[need.resources.length][resourceTotal];
+     for (int i = 0; i &lt; need.resources.length; i++) &#123;
+       for (int j = 0; j &lt; resourceTotal; j++) &#123;
+         this.resources[i][j] = need.resources[i][j];
+       &#125;
+     &#125;
+   &#125;
+ 
+   public void register(int i, int j, int parseInt) &#123;
+     resources[i][j] = parseInt;
+   &#125;
+ 
+   public Integer[] getRandomResourcesRequest(Integer index,Integer resourceTotal) &#123;
+     Integer[] randomResourcesRequest = new Integer[resourceTotal];
+     Random random = new Random();
+     for (int i = 0; i &lt; resourceTotal; i++) &#123;
+       Integer needNum = resources[index][i];
+       if (needNum &gt; 0)&#123;
+         randomResourcesRequest[i] = 1 + random.nextInt(resources[index][i]);
+       &#125;else &#123;
+         randomResourcesRequest[i] = 0;
+       &#125;
+     &#125;
+     return randomResourcesRequest;
+   &#125;
+ 
+   */**
+   ** *判断**available**能否满足对应**index**进程的**need
+   \* **@param*** *index
+\*   ** **@param*** *availableMatrix
+\*   ** **@return
+
+**   \*/
+\*   public boolean satisfy(int index, AvailableMatrix availableMatrix) &#123;
+     int length = resources[index].length;
+     for (int i = 0; i &lt; length; i++) &#123;
+       if (resources[index][i] &gt; availableMatrix.get(i))&#123;
+         return false;
+       &#125;
+     &#125;
+     return true;
+   &#125;
+ 
+   public void remove(int processIndex, Integer[] request) &#123;
+     int length = this.resources[processIndex].length;
+     for (int i = 0; i &lt; length; i++) &#123;
+       this.resources[processIndex][i] -= request[i];
+     &#125;
+   &#125;
+ 
+   public void printNeed(int i) &#123;
+     int length = resources[i].length;
+     for (int j = 0; j &lt; length-1; j++) &#123;
+       System.*out*.print(resources[i][j]+&quot;,&quot;);
+     &#125;
+     System.*out*.print(resources[i][length-1]);
+   &#125;
+ &#125;
+
+ 
+</code></pre>
+<p><strong>启动类</strong></p>
+<pre><code class="java">package com.os467;
+ 
+ public class InitProgram &#123;
+   public static void main(String[] args) &#123;
+     Runner runner = new Runner();
+     runner.init();
+     runner.run();
+   &#125;
+ &#125;
+
+ 
+</code></pre>
+<p><strong>思考与总结</strong></p>
+<p><strong>关键</strong></p>
+<p>模拟银行家算法的关键是在于确保每一次满足分配的同时使得系统处于安全状态(避免死锁的发生)，需要对一次资源的请求做严格的判断，即在系统资源足够满足本次请求的同时也要保证可以寻找到安全序列。</p>
+<p><strong>场景优势</strong></p>
+<p>对于模拟过程，我采用了每次都随机挑选进程进行随机资源申请。即进程可以不一次拿到所有资源，这种场景很明显会有进程资源抢占的问题。即各个进程都拿到一定资源，但不能运行，所以很可能会发生死锁。</p>
+<p>显然银行家算法在这种场景下就能发挥重要优势，因此我们只需要确保每次系统处于安全状态即可，就算本次请求系统有足够资源可以满足，但也必须严格满足安全性检查策略。</p>
+<p><strong>如何完成算法</strong></p>
+<p>只需要提前定义好数据结构并设计好流程图，对算法进行功能拆解和粒度的细化即可保证编程过程的严谨与流畅。</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>银行家算法</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">11.2k</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
+    <p><span class="copy-title">发布时间:</span>2023-04-15, 13:43:18</p>
+    <p><span class="copy-title">最后更新:</span>2023-04-15, 13:44:01</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/04/15/%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95/" title="银行家算法">https://os467.github.io/2023/04/15/%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 os467
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 582px;
+    }
+    .nav.fullscreen {
+        margin-left: -582px;
+    }
+    .nav-left {
+        width: 160px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 592px;
+        }
+        .nav.fullscreen {
+            margin-left: -592px;
+        }
+        .nav-left {
+            width: 200px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 592px;
+            margin-left: -592px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
