@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>SpringMVC | Tly的博客</title>
+  <title>Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="SpringMVC | Tly的博客">
+  <meta name="description" content="Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="NettyNetty简介Netty是一个异步的，基于事件驱动的网络应用框架，可用于开发可维护，高性能的网络服务器和客户端  采用的是Selector模式（多路复用），这里的异步表示的是负责不同工作的线程使用的是不同线程  Netty在java网络应用框架中的地位就好比：Spring在javaEE开发中的地位 用到netty的常见框架：  Spark Hadoop ElasticSearch Zoo">
 <meta property="og:type" content="article">
@@ -1122,32 +1122,22 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-springMVC" class="article article-type-post" itemscope itemprop="blogPost">
-    
-        <h1 class="article-title">SpringMVC</h1>
+        <article id="post-Netty" class="article article-type-post" itemscope itemprop="blogPost">
     
     <div class="article-meta">
         
         
         
-        <span class="book">
-            <i class="iconfont icon-category"></i>
-            
-            
-            <a  data-rel="框架学习">框架学习</a>
-            
-        </span>
-        
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-05 00:09:26'>2022-07-23 21:35</time>
+            发布时间 : <time class="date" title='最后更新: 2023-04-22 20:53:16'>2023-04-22 20:54</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:4.4k</span>
+        <span>字数:1.6k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1166,7 +1156,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%98%85springMVC%E8%A1%A8%E7%8E%B0%E5%B1%82%E6%A1%86%E6%9E%B6"><span class="toc-text">★springMVC表现层框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringMVC"><span class="toc-text">SpringMVC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#springMVC%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="toc-text">springMVC核心原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEspringMVC"><span class="toc-text">配置springMVC</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringMVC%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3"><span class="toc-text">SpringMVC基于注解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#springMVC%E5%A6%82%E4%BD%95%E5%8E%BB%E6%8E%A5%E6%94%B6%E5%89%8D%E7%AB%AF%E4%BC%A0%E9%80%92%E8%BF%87%E6%9D%A5%E7%9A%84%E5%80%BC"><span class="toc-text">springMVC如何去接收前端传递过来的值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#springMVC%E5%A6%82%E4%BD%95%E5%B0%86%E5%B0%81%E8%A3%85%E5%A5%BD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AD%98%E5%88%B0Model%E4%B8%AD"><span class="toc-text">springMVC如何将封装好的数据存到Model中</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87SpringMVC%E6%9D%A5%E5%AE%9E%E7%8E%B0%E8%BD%AC%E5%8F%91%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">通过SpringMVC来实现转发和重定向</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E6%8C%81mvc%E8%BF%94%E5%9B%9E%E5%AF%B9%E8%B1%A1%E7%BB%99%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">支持mvc返回对象给客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE"><span class="toc-text">项目</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Netty"><span class="toc-text">Netty</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Netty%E7%AE%80%E4%BB%8B"><span class="toc-text">Netty简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Netty%E7%BB%84%E6%88%90"><span class="toc-text">Netty组成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Channel"><span class="toc-text">Channel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Callback-%E5%9B%9E%E8%B0%83"><span class="toc-text">Callback (回调)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Future"><span class="toc-text">Future</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Event-%E5%92%8C-Handler"><span class="toc-text">Event 和 Handler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Netty%E5%BC%82%E6%AD%A5%E5%AE%9E%E7%8E%B0-Handler"><span class="toc-text">Netty异步实现 Handler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8-Selector"><span class="toc-text">多路复用 Selector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF-EventLoop"><span class="toc-text">事件循环 EventLoop</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1182,654 +1172,153 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="★springMVC表现层框架"><a href="#★springMVC表现层框架" class="headerlink" title="★springMVC表现层框架"></a>★springMVC表现层框架</h1><p><strong>什么是MVC？</strong></p>
+        <h1 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h1><h2 id="Netty简介"><a href="#Netty简介" class="headerlink" title="Netty简介"></a>Netty简介</h2><p>Netty是一个异步的，基于事件驱动的网络应用框架，可用于开发可维护，高性能的网络服务器和客户端</p>
+<blockquote>
+<p>采用的是<strong>Selector模式</strong>（多路复用），这里的异步表示的是<strong>负责不同工作的线程</strong>使用的是不同线程</p>
+</blockquote>
+<p>Netty在java网络应用框架中的地位就好比：Spring在javaEE开发中的地位</p>
+<p>用到netty的常见框架：</p>
 <ul>
-<li><p>MVC是模型（Model）、视图（View）、控制器（Controller）的简写，是一种软件设计规范</p>
-</li>
-<li><p>是将业务逻辑、数据、显示分离的方法来组织代码</p>
-</li>
-<li><p>MVC主要作用是<strong>降低了视图与业务逻辑间的双向耦合</strong></p>
-</li>
-<li><p>MVC不是一种设计模式，<strong>MVC是一种架构模式</strong>，不同的MVC存在差异</p>
-</li>
+<li>Spark</li>
+<li>Hadoop</li>
+<li>ElasticSearch</li>
+<li>Zookeeper</li>
 </ul>
-<p>Model（模型）：数据模型，<strong>提供前端要展示的数据</strong>，因此包含数据和行为，可以认为是领域模型或JavaBean组件（包含数据和行为），不过现在一般都分离开来：Value Object（数据Dao）和服务层（行为Service），也就是模型提供了模型数据查询和模型数据的状态更新等功能，包括数据和业务</p>
-<p>View（视图）：负责进行模型的展示，一般就是我们见到的用户界面，客户想看到的东西</p>
-<p>Controller（控制器）：接收用户请求，委托给模型进行处理（状态改变），处理完毕后把返回的模型数据返回给视图，由视图负责展示，也就是说控制器做了个调度员的工作</p>
-<h2 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h2><p>Spring MVC是Spring Framework的一部分，是基于Java实现MVC的轻量级Web框架</p>
-<p>Spring MVC的特点：</p>
-<p>​	1、轻量级，简单易学</p>
-<p>​	2、高效，基于请求响应的MVC框架</p>
-<p>​	3、与Spring兼容性好，无缝结合</p>
-<p>​	4、约定优于配置</p>
-<p>​	5、功能强大：RESTful、数据验证、格式化、本地化、主题化等</p>
-<p>​	6、简洁灵活</p>
-<p>最开始我们在处理请求和响应是基于servlet的，那servlet是一个规范，不属于框架，springMVC是一个表现层的框架，在底层封装了servlet</p>
-<p><strong>MVC实现了视图和业务代码的分离</strong></p>
-<h3 id="springMVC核心原理"><a href="#springMVC核心原理" class="headerlink" title="springMVC核心原理"></a>springMVC核心原理</h3><ol>
-<li>用户发送请求给服务器，url：user.do</li>
-<li>服务器收到请求，发现DispatcherServlet可以处理，于是调用DispatcherServlet</li>
-<li>DispatcherServlet内部，通过HandlerMappings（处理映射器）检查这个url有没有对应的Controller，如果有，则通HandlerAdapters（处理适配器）调用Controller</li>
-<li>Controller开始执行</li>
-<li>Controller执行完毕后，如果返回字符串，则ViewResolvers将字符串转化成相应的视图对象，如果返回ModelAndView对象，该对象本身就包含了视图对象信息</li>
-<li>DispatcherServlet通过ViewResolvers（视图解析器）将视图对象中的数据输出给服务器</li>
-<li>服务器将数据输出给客户端</li>
-</ol>
-<p><strong>springMVC整体调度流程</strong></p>
-<ul>
-<li>客户端发送请求给服务端，springMVC框架会通过DispatcherServlet来做一个资源的拦截（<a target="_blank" rel="noopener" href="http://localhost:8080/servlet/test%EF%BC%89">http://localhost:8080/servlet/test）</a></li>
-<li>DispatcherServlet会调用处理映射器HandlerMappings来完成对地址的解析，然后把解析的信息告诉DispacherServlet</li>
-<li>DispacherServlet调用处理适配器HandlerAdapters从容器中找到对应的资源（会找到controller对应的资源）</li>
-<li>HandlerAdapters找到对应资源之后，会去执行具体的Controller（然后会去封装数据，设置视图名称）</li>
-<li>执行完逻辑之后会将视图和模块（ModelAndView）返回给DispacherServlet</li>
-<li>继续调用视图解析器ViewResolvers视图解析器来解析ModelAndView里面视图名称，然后根据视图解析器内部的匹配规则来定位到具体的前端资源（jsp）</li>
-<li>ViewResolvers在解析完之后会将解析的信息告诉DispacherServlet，然后会去做具体的页面跳转，数据渲染等工作</li>
-</ul>
-<h3 id="配置springMVC"><a href="#配置springMVC" class="headerlink" title="配置springMVC"></a>配置springMVC</h3><p><strong>springMVC框架如何去使用，如何去配置？</strong></p>
-<p>使用控制器</p>
-<p>创建一个TestController类，实现Controller接口</p>
-<pre><code class="java">package com.os467.controller;
-
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-public class TestController implements Controller &#123;
-
-    @Override
-    public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception &#123;
-
-        //创建一个模型视图对象
-        ModelAndView modelAndView = new ModelAndView();
-
-        //封装数据
-        modelAndView.addObject(&quot;name&quot;,&quot;Hello spring MVC&quot;);
-
-        //设置视图名称
-        modelAndView.setViewName(&quot;test02&quot;);
-
-        return modelAndView;
-
-    &#125;
-
-&#125;
-</code></pre>
-<p><strong>我们在定义了一个Controller之后如何通过mvc去访问这个资源？</strong></p>
-<p><strong>1、在web.xml中配置DispatcherServlet：mvc框架前端总调度器</strong></p>
-<p>具体会去完成web交互时的各自调度工作</p>
-<ul>
-<li>Spring的web框架围绕<strong>DispatcherServlet</strong>调度Servlet设计</li>
-<li>DispatcherServlet的作用是将请求分发到不同的处理器，从Spring2.5开始，使用Java5或者以上版本的用户可以采用基于注解形式进行开发</li>
-</ul>
-<p>在<strong>web.xml</strong>中配置前端总调度器，所有的访问请求都会进入此资源</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;
-         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;
-         version=&quot;4.0&quot;&gt;
-    
-   &lt;!--配置前端总调度器--&gt;
-    &lt;servlet&gt;
-        &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
-        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
-    &lt;/servlet&gt;
-
-    &lt;servlet-mapping&gt;
-        &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
-        
-        &lt;!--拦截所有的客户端的请求--&gt;
-        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
-    &lt;/servlet-mapping&gt;
-
-&lt;/web-app&gt;
-</code></pre>
-<p><strong>2、由于MVC框架属于spring的功能模块，所以必须得有核心容器的支持，要去创建spring配置文件springMVC.xml</strong></p>
-<p>创建<strong>springMVC.xml</strong>配置文件，引入springMVC的xml约束</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;
-        http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;
-    
-&lt;/beans&gt;
-</code></pre>
-<p>在<strong>web.xml</strong>中注册配置文件位置，核心容器对象可以交给DispacherServlet去创建，需要指定配置文件的位置，以及设置启动级别</p>
-<pre><code class="xml">&lt;!--配置前端总调度器--&gt;
- &lt;servlet&gt;
-     &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
-     &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
-
-     &lt;!--绑定springMVC的配置文件--&gt;
-     &lt;init-param&gt;
-         &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
-         &lt;!--配置文件的路径--&gt;
-         &lt;param-value&gt;classpath:xml/springMVC.xml&lt;/param-value&gt;
-     &lt;/init-param&gt;
-
-     &lt;!--设置启动级别，需要在tomcat服务器启动的时候就去加载核心容器对象--&gt;
-     &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-
- &lt;/servlet&gt;
-</code></pre>
-<p>继续配置<strong>springMVC.xml</strong>，注册controller组件，视图解析器实例</p>
-<pre><code class="xml">&lt;!--注册controller组件--&gt;
-&lt;bean id=&quot;/controller1&quot; class=&quot;com.os467.controller.TestController&quot;&gt;&lt;/bean&gt;
-
-&lt;!--处理映射器和适配器可以不做注册，这里仅作演示--&gt;
-&lt;!--注册一个处理映射器--&gt;
-&lt;bean id=&quot;handlerMapping&quot; class=&quot;org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping&quot;&gt;&lt;/bean&gt;
-
-&lt;!--注册一个处理适配器--&gt;
-&lt;bean id=&quot;handlerAdapter&quot; class=&quot;org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter&quot;&gt;&lt;/bean&gt;
-
-&lt;!--必须要配置视图解析器--&gt;
-&lt;!--注册一个视图解析器--&gt;
-&lt;bean id=&quot;viewResolver&quot; class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
-
-    &lt;!--设置视图的前缀--&gt;
-    &lt;property name=&quot;prefix&quot; value=&quot;/jsp/&quot;&gt;&lt;/property&gt;
-
-    &lt;!--设置视图的后缀--&gt;
-    &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;&gt;&lt;/property&gt;
-
-&lt;/bean&gt;
-</code></pre>
-<h2 id="SpringMVC基于注解"><a href="#SpringMVC基于注解" class="headerlink" title="SpringMVC基于注解"></a>SpringMVC基于注解</h2><p>&lt;mvc:default-servlet-handler&#x2F;&gt;</p>
-<p>让SpringMVC不处理静态资源</p>
-<p>&lt;mvc:annotation-driven&#x2F;&gt;</p>
-<p>支持mvc注解驱动</p>
-<p>InternalResourceViewResolver</p>
-<p>视图解析器</p>
-<p><strong>配置xml，开启对注解的支持</strong></p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;
-        http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;
-
-    &lt;!--开启扫描包--&gt;
-    &lt;context:component-scan base-package=&quot;com.os467&quot;&gt;&lt;/context:component-scan&gt;
-
-    &lt;!--过滤静态资源--&gt;
-    &lt;mvc:default-servlet-handler&gt;&lt;/mvc:default-servlet-handler&gt;
-
-    &lt;!--支持mvc注解的驱动--&gt;
-    &lt;mvc:annotation-driven&gt;&lt;/mvc:annotation-driven&gt;
-
-    &lt;!--配置视图解析器--&gt;
-    &lt;bean id=&quot;viewResolver&quot; class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
-
-        &lt;!--设置前缀--&gt;
-        &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;&gt;&lt;/property&gt;
-
-        &lt;!--设置后缀--&gt;
-        &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;&gt;&lt;/property&gt;
-
-    &lt;/bean&gt;
-
-&lt;/beans&gt;
-</code></pre>
-<p><strong>@Controller注解</strong></p>
-<p>这个注解如果只是在spring框架中使用的话，就是将当前类的实例存到容器中<br>但是如果在springMVC中去使用，它不仅可以存实例到容器，还能够将该类下任意一个方法的<strong>返回值是String</strong><br>的方法，返回值会作为视图名称，用于视图跳转</p>
-<p><strong>@RequestMapping注解</strong></p>
-<p>用于地址的映射，可以修饰类也可以修饰方法，也可以只在方法上使用，能够体现层级关系</p>
-<pre><code class="java">@Controller
-@RequestMapping(&quot;user&quot;)
-public class UserController &#123;
-
-    @RequestMapping(&quot;test&quot;)
-    public String getTest()&#123;
-
-        return &quot;test&quot;;
-
-    &#125;
-
-&#125;
-</code></pre>
-<p>此时在前端访问：<a target="_blank" rel="noopener" href="http://localhost:8080/springMVC/user/test">http://localhost:8080/springMVC/user/test</a> 测试资源</p>
-<p><strong>@ResponseBody注解</strong> </p>
-<p>让当前视图失效，并且会直接返回数据</p>
-<h4 id="springMVC如何去接收前端传递过来的值"><a href="#springMVC如何去接收前端传递过来的值" class="headerlink" title="springMVC如何去接收前端传递过来的值"></a>springMVC如何去接收前端传递过来的值</h4><p>​	springMVC可以支持参数接值，你在前端需要传递的数据，后端mvc可以使用参数进行接收</p>
-<p>可以在接收参数的时候接收HttpServletrequest，再接收Parameter值</p>
-<p><strong>也可以在参数中根据对应参数名接值</strong></p>
-<pre><code class="java">//前端测试:http://localhost:8080/springMVC/user/test03?username=jack001&amp;password=123456&amp;i=10&amp;d=3.14
-@RequestMapping(&quot;test03&quot;)
-public String getTest03(String username,String password,int i,double d)&#123;
-
-    System.out.println(username+&quot; &quot;+password+&quot; &quot;+i+&quot; &quot;+d);
-
-    return &quot;test&quot;;
-
-&#125;
-</code></pre>
-<p><strong>springMVC在参数列表中可以通过实体进行接值</strong></p>
-<p>mvc会根据接收实例的属性名称来接收对应的前端数据，并且封装成java对象</p>
-<pre><code class="java">@RequestMapping(&quot;test04&quot;)
-public String getTest04(MvcVo mvcVo)&#123;
-
-    System.out.println(mvcVo);
-
-    return &quot;test&quot;;
-
-&#125;
-</code></pre>
-<h4 id="springMVC如何将封装好的数据存到Model中"><a href="#springMVC如何将封装好的数据存到Model中" class="headerlink" title="springMVC如何将封装好的数据存到Model中"></a>springMVC如何将封装好的数据存到Model中</h4><p>在参数中接收一个Model接口的实例，是由springMVC提供的，底层封装了request域</p>
-<p><strong>通过返回字符串的方式</strong></p>
-<pre><code class="java">@RequestMapping(&quot;test05&quot;)
-public String getTest05(MvcVo mvcVo, Model model)&#123;
-
-    //把实体存到Model中，底层封装了一个request域
-    model.addAttribute(&quot;mcvVo&quot;,mvcVo);
-
-    return &quot;test02&quot;;
-
-&#125;
-</code></pre>
-<p><strong>通过返回ModelAndView的方式</strong></p>
-<pre><code class="java">@RequestMapping(&quot;list&quot;)
-public ModelAndView getEmpList()&#123;
-
-    ModelAndView modelAndView = new ModelAndView();
-
-    List&lt;Emp&gt; empList = empService.getEmpList();
-
-    //访问持久层查询数据
-    modelAndView.addObject(&quot;empList&quot;,empList);
-
-    //设置视图名称
-    modelAndView.setViewName(&quot;list&quot;);
-
-    return modelAndView;
-&#125;
-</code></pre>
-<h2 id="通过SpringMVC来实现转发和重定向"><a href="#通过SpringMVC来实现转发和重定向" class="headerlink" title="通过SpringMVC来实现转发和重定向"></a>通过SpringMVC来实现转发和重定向</h2><p>默认是定位视图资源</p>
-<p><strong>forward</strong> 转发</p>
-<p>在MVC框架中视图跳转<strong>默认就是请求转发</strong>   <code>forward:t8</code></p>
-<p><strong>redirect</strong> 重定向		</p>
-<p>都是根据内部资源跳转，如果不写则是要去定位视图  <code>redirect:t8</code></p>
-<pre><code class="java">//从t9重定向到t8
-@RequestMapping(&quot;/t9&quot;)
-public String test09()&#123;
-    
-    return &quot;redirect:t8&quot;
-    
-&#125;
-</code></pre>
-<h3 id="支持mvc返回对象给客户端"><a href="#支持mvc返回对象给客户端" class="headerlink" title="支持mvc返回对象给客户端"></a>支持mvc返回对象给客户端</h3><p>会自动将对象转成json，然后再响应</p>
-<p>导入下面pom坐标</p>
-<pre><code class="xml">&lt;!-- jackson依赖 --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
-    &lt;artifactId&gt;jackson-core&lt;/artifactId&gt;
-    &lt;version&gt;2.11.3&lt;/version&gt;
-&lt;/dependency&gt;
-
-&lt;dependency&gt;
-    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
-    &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
-    &lt;version&gt;2.11.3&lt;/version&gt;
-&lt;/dependency&gt;
-
-&lt;dependency&gt;
-    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
-    &lt;artifactId&gt;jackson-annotations&lt;/artifactId&gt;
-    &lt;version&gt;2.11.3&lt;/version&gt;
+<p><strong>引入依赖</strong></p>
+<pre><code class="java">&lt;dependency&gt;
+    &lt;groupId&gt;io.netty&lt;/groupId&gt;
+    &lt;artifactId&gt;netty-all&lt;/artifactId&gt;
+    &lt;version&gt;4.0.23.Final&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
-<h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><p><strong>通过spring + springMVC + jdbcTemplate 来搭建一个web项目，完成员工列表</strong></p>
-<p><strong>web.xml配置</strong></p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;
-         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;
-         version=&quot;4.0&quot;&gt;
-    &lt;!--配置前端总控制器--&gt;
-    &lt;servlet&gt;
-        &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
-        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
-
-        &lt;!--绑定核心配置容器--&gt;
-        &lt;init-param&gt;
-            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
-            &lt;param-value&gt;classpath:xml/springMVC.xml&lt;/param-value&gt;
-        &lt;/init-param&gt;
-
-        &lt;!--设置启动级别--&gt;
-        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-
-    &lt;/servlet&gt;
-
-
-    &lt;!--拦截客户端所有请求--&gt;
-    &lt;servlet-mapping&gt;
-        &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
-        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
-    &lt;/servlet-mapping&gt;
-
-&lt;/web-app&gt;
-</code></pre>
-<p><strong>springMVC.xml配置</strong></p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;
-        http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;
-
-    &lt;!--开启扫描包--&gt;
-    &lt;context:component-scan base-package=&quot;com.os467&quot;&gt;&lt;/context:component-scan&gt;
-
-    &lt;!--过滤静态资源--&gt;
-    &lt;mvc:default-servlet-handler&gt;&lt;/mvc:default-servlet-handler&gt;
-
-    &lt;!--开启mvc注解的支持--&gt;
-    &lt;mvc:annotation-driven&gt;&lt;/mvc:annotation-driven&gt;
-
-    &lt;!--配置视图解析器--&gt;
-    &lt;bean id=&quot;viewResolver&quot; class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
-        &lt;!--设置前缀--&gt;
-        &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;&gt;&lt;/property&gt;
-        &lt;!--设置后缀--&gt;
-        &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;&gt;&lt;/property&gt;
-    &lt;/bean&gt;
-
-    &lt;!--配置一个持久层的实例--&gt;
-    &lt;bean id=&quot;empDao&quot; class=&quot;com.os467.dao.impl.EmpDaoImpl&quot;&gt;
-        
-        &lt;property name=&quot;jdbcTemplate&quot; ref=&quot;jdbcTemplate&quot;&gt;&lt;/property&gt;
-        
-    &lt;/bean&gt;
-
-    &lt;!--注册数据源实例--&gt;
-    &lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
-
-        &lt;!--注入数据源--&gt;
-        &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/web_test?serverTimezone=GMT&amp;amp;characterEncoding=utf-8&quot;&gt;&lt;/property&gt;
-        &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.cj.jdbc.Driver&quot;&gt;&lt;/property&gt;
-        &lt;property name=&quot;username&quot; value=&quot;root&quot;&gt;&lt;/property&gt;
-        &lt;property name=&quot;password&quot; value=&quot;root&quot;&gt;&lt;/property&gt;
-
-    &lt;/bean&gt;
-
-    &lt;!--注册jdbcTemplate--&gt;
-    &lt;bean id=&quot;jdbcTemplate&quot; class=&quot;org.springframework.jdbc.core.JdbcTemplate&quot;&gt;
-
-        &lt;!--注入数据源数据--&gt;
-        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
-        
-    &lt;/bean&gt;
-
-&lt;/beans&gt;
-</code></pre>
-<p><strong>表现层（控制器）</strong></p>
-<pre><code class="java">package com.os467.controller;
-
-import com.os467.pojo.Emp;
-import com.os467.service.EmpService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-
-import java.util.List;
-
-@Controller
-@RequestMapping(&quot;emp&quot;)
-public class EmpController &#123;
-
-    @Autowired
-    private EmpService empService;
-
-    //建立视图层级关系，添加资源路径
-    @RequestMapping(&quot;/list&quot;)
-    public String getEmpList(Model model)&#123;
-
-        List&lt;Emp&gt; empList = empService.getEmpList();
-
-        //访问持久层查询数据
-        model.addAttribute(&quot;empList&quot;,empList);
-
-        return &quot;list&quot;;
-
-    &#125;
-
-    //建立视图层级关系，添加资源路径
-    @RequestMapping(&quot;/add&quot;)
-    public String getAddPage()&#123;
-
-        //跳转添加页面
-        return &quot;add&quot;;
-
-    &#125;
-
-    @ResponseBody
-    //建立视图层级关系，添加资源路径
-    @RequestMapping(&quot;/addSave&quot;)
-    public String addSave(Emp emp)&#123;
-
-        boolean b = empService.addSave(emp);
-
-        //返回信息
-        return b?&quot;1&quot;:&quot;0&quot;;
-    &#125;
-
-    @ResponseBody
-    //建立视图层级关系，添加资源路径
-    @RequestMapping(&quot;/deleteByEid&quot;)
-    public String deleteByEid(Integer eid)&#123;
-
-        boolean b = empService.deleteByEid(eid);
-
-        //返回信息
-        return b?&quot;1&quot;:&quot;0&quot;;
-    &#125;
-
-    //建立视图层级关系，添加资源路径
-    @RequestMapping(&quot;/getUpdate&quot;)
-    public String getUpdate(Integer eid,Model model)&#123;
-
-        Emp emp = empService.getUpdate(eid);
-
-        model.addAttribute(&quot;emp&quot;,emp);
-
-        //跳转编辑页面
-        return &quot;update&quot;;
-    &#125;
-
-    @ResponseBody
-    //建立视图层级关系，添加资源路径
-    @RequestMapping(&quot;/updateSave&quot;)
-    public String updateSave(Emp emp)&#123;
-
-        boolean b = empService.updateSave(emp);
-
-        //返回信息
-        return b?&quot;1&quot;:&quot;0&quot;;
-    &#125;
-
-
-&#125;
-</code></pre>
-<p><strong>业务层</strong></p>
-<pre><code class="java">package com.os467.service.impl;
-
-import com.os467.dao.EmpDao;
-import com.os467.pojo.Emp;
-import com.os467.service.EmpService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-
-@Service
-public class EmpServiceImpl implements EmpService &#123;
-
-    @Autowired
-    private EmpDao empDao;
+<h2 id="Netty组成"><a href="#Netty组成" class="headerlink" title="Netty组成"></a>Netty组成</h2><h3 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h3><p>Channel 是 NIO 基本的结构。它代表了一个用于<strong>连接到实体</strong>如硬件设备、文件、网络套接字或程序组件，能够执行一个或多个不同的 I&#x2F;O 操作（例如读或写）的<strong>开放连接</strong>。</p>
+<p>现在，把 Channel 想象成一个可以“打开”或“关闭”，“连接”或“断开”和作为传入和传出数据的运输工具。</p>
+<h3 id="Callback-回调"><a href="#Callback-回调" class="headerlink" title="Callback (回调)"></a>Callback (回调)</h3><p>callback (回调)是一个简单的方法，提供给另一种方法作为引用，这样后者就可以在某个合适的时间调用前者。这种技术被广泛使用在各种编程的情况下,最常见的方法之一通知给其他人操作已完成。</p>
+<p>Netty 内部使用回调处理事件时。一旦这样的回调被触发，事件可以由接口 <strong>ChannelHandler</strong> 的实现来处理。</p>
+<p>当连接建立时，将会调用channelActive方法</p>
+<pre><code class="java">class ConnectHandler extends ChannelInboundHandlerAdapter &#123;
 
     @Override
-    public List&lt;Emp&gt; getEmpList() &#123;
-
-        return empDao.getEmpList();
-    &#125;
-
-    @Override
-    public boolean addSave(Emp emp) &#123;
-        return empDao.addSave(emp);
-    &#125;
-
-    @Override
-    public boolean deleteByEid(Integer eid) &#123;
-        return empDao.deleteByEid(eid);
-    &#125;
-
-    @Override
-    public Emp getUpdate(Integer eid) &#123;
-        return empDao.getUpdate(eid);
-    &#125;
-
-    @Override
-    public boolean updateSave(Emp emp) &#123;
-        return empDao.updateSave(emp);
+    public void channelActive(ChannelHandlerContext ctx) throws Exception &#123;
+        System.out.println(&quot;remoteAddress: &quot;+ctx.channel().remoteAddress()+&quot; connect success!&quot;);
     &#125;
 &#125;
 </code></pre>
-<p><strong>持久层</strong></p>
-<pre><code class="java">package com.os467.dao.impl;
+<h3 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h3><p>Future 提供了另外一种通知应用操作已经完成的方式。这个对象作为一个异步操作结果的占位符，它将在将来的某个时候完成并提供结果。</p>
+<p>JDK 附带接口 java.util.concurrent.Future ，但所提供的实现只允许<strong>手动检查</strong>操作是否完成或阻塞了。这是很麻烦的，所以 Netty 提供自己了的实现ChannelFuture（实现Future），用于在执行异步操作时使用。</p>
+<p>每个 Netty 的 outbound I&#x2F;O 操作都会返回一个 ChannelFuture，这样就不会阻塞。这就是 Netty 所谓的“自底向上的异步和事件驱动”。</p>
+<pre><code class="java">//不会阻塞
+ChannelFuture future = channel.connect(new InetSocketAddress(&quot;localhost&quot;,8080));
+</code></pre>
+<p>ChannelFuture 提供多个附件方法来允许一个或者多个ChannelFutureListener 实例。这个回调方法<code>operationComplete()</code>会在操作完成时调用。事件监听者能够确认这个操作是否成功或者是错误。如果是后者,我们可以检索到产生的 Throwable。简而言之, ChannelFutureListener 提供的通知机制不需要手动检查操作是否完成的。</p>
+<p>当调用 connect() 将会直接是非阻塞的，并且调用在背后完成。由于线程是非阻塞的，所以无需等待操作完成，而可以去干其他事，因此这令资源利用更高效。</p>
+<pre><code class="java">public class ChannelFutureDemo &#123;
 
-import com.os467.dao.EmpDao;
-import com.os467.pojo.Emp;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
+    public static void main(String[] args) &#123;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
+        Bootstrap bootstrap = new Bootstrap();
 
-@Repository
-public class EmpDaoImpl implements EmpDao &#123;
+        ChannelFuture channelFuture = bootstrap
+                .group(new NioEventLoopGroup())
+                .channel(NioSocketChannel.class)
+                .handler(new ChannelInitializer&lt;NioSocketChannel&gt;() &#123;
+                    @Override
+                    protected void initChannel(NioSocketChannel ch) throws Exception &#123;
+                        ch.pipeline().addLast(new StringEncoder(Charset.defaultCharset()));
+                    &#125;
+                &#125;)
+                .connect(&quot;localhost&quot;, 8080);
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) &#123;
-        this.jdbcTemplate = jdbcTemplate;
-    &#125;
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-    /**
-     * 获取员工列表的方法
-     * @return
-     */
-    @Override
-    public List&lt;Emp&gt; getEmpList() &#123;
-        return jdbcTemplate.query(&quot;select * from emp&quot;, new RowMapper&lt;Emp&gt;() &#123;
+        channelFuture.addListener(new ChannelFutureListener() &#123;
             @Override
-            public Emp mapRow(ResultSet resultSet, int i) throws SQLException &#123;
-
-                Emp emp = new Emp();
-
-                emp.setEmpName(resultSet.getString(&quot;emp_name&quot;));
-                emp.setAge(resultSet.getInt(&quot;age&quot;));
-                emp.setEid(resultSet.getInt(&quot;eid&quot;));
-                emp.setSex(resultSet.getInt(&quot;sex&quot;));
-                emp.setSalary(resultSet.getInt(&quot;salary&quot;));
-                emp.setBirthday(resultSet.getString(&quot;birthday&quot;));
-
-                return emp;
+            public void operationComplete(ChannelFuture future) throws Exception &#123;
+                if (future.isSuccess())&#123;
+                    //成功建立连接
+                    ByteBuf byteBuf = Unpooled.copiedBuffer(&quot;hello&quot;, Charset.defaultCharset());
+                    future.channel().writeAndFlush(byteBuf);
+                &#125;else &#123;
+                    Throwable cause = future.cause();
+                    cause.printStackTrace();
+                &#125;
             &#125;
         &#125;);
+
     &#125;
 
-    /**
-     * 保存用户数据
-     * @return
-     * @param emp
-     */
-    @Override
-    public boolean addSave(Emp emp) &#123;
+&#125;
+</code></pre>
+<blockquote>
+<p>连接建立后就会通过监听器触发回调函数</p>
+</blockquote>
+<h3 id="Event-和-Handler"><a href="#Event-和-Handler" class="headerlink" title="Event 和 Handler"></a>Event 和 Handler</h3><p>Netty 使用不同的事件来通知我们更改的状态或操作的状态。</p>
+<p>状态变化通常有</p>
+<ul>
+<li>活动或非活动连接</li>
+<li>数据的读取</li>
+<li>用户事件</li>
+<li>错误</li>
+</ul>
+<p><img src="https://atts.w3cschool.cn/attachments/image/20170808/1502159113476213.jpg"></p>
+<p>Netty 的 ChannelHandler 是各种处理程序的基本抽象。想象下，每个处理器实例就是一个回调，用于执行对各种事件的响应。</p>
+<h3 id="Netty异步实现-Handler"><a href="#Netty异步实现-Handler" class="headerlink" title="Netty异步实现 Handler"></a>Netty异步实现 Handler</h3><p>Netty 的异步编程模型是建立在 future 和 callback 的概念上的。所有这些元素的协同为自己的设计提供了强大的力量。</p>
+<p>拦截操作和转换入站或出站数据只需要您提供回调或利用 future 操作返回的。这使得链操作简单、高效,促进编写可重用的、通用的代码。</p>
+<p>一个 Netty 的设计的主要目标是促进“<strong>关注点分离</strong>”：业务逻辑从网络基础设施应用程序中分离。</p>
+<blockquote>
+<p>下面是多线程的异步实现</p>
+</blockquote>
+<p>使用Callable + Future实现异步任务（多线程）基于接口回调技术</p>
+<pre><code class="java">public class CallBackTest &#123;
 
-        int i = jdbcTemplate.update(&quot;insert into emp(emp_name,age,sex,salary,birthday)values(?,?,?,?,?)&quot;, emp.getEmpName(),
-                emp.getAge(), emp.getSex(), emp.getSalary(), emp.getBirthday());
+    public static void main(String[] args) throws ExecutionException, InterruptedException &#123;
+        Callback callback = new Callback();
+        FutureTask futureTask = new FutureTask&lt;&gt;(callback);
 
-        return i&gt;0?true:false;
+        //执行异步任务
+        Thread thread = new Thread(futureTask);
+        thread.start();
+
+        Thread.sleep(200);
+        System.out.println(&quot;主函数任务&quot;);
+
+        System.out.println(&quot;获取回调结果&quot;+futureTask.get());
+
     &#125;
 
+&#125;
+
+class Callback implements Callable &#123;
+
     @Override
-    public boolean deleteByEid(Integer eid) &#123;
-
-        int i = jdbcTemplate.update(&quot;delete from emp where eid = ?&quot;, eid);
-
-        return i&gt;0?true:false;
-    &#125;
-
-    /**
-     * 回显用户信息的方法
-     * @return
-     */
-    @Override
-    public Emp getUpdate(Integer eid) &#123;
-
-        List&lt;Emp&gt; empList = jdbcTemplate.query(&quot;select * from emp where eid = ?&quot;, new RowMapper&lt;Emp&gt;() &#123;
-
-
-            @Override
-            public Emp mapRow(ResultSet resultSet, int i) throws SQLException &#123;
-
-                Emp emp = new Emp();
-
-                emp.setEmpName(resultSet.getString(&quot;emp_name&quot;));
-                emp.setAge(resultSet.getInt(&quot;age&quot;));
-                emp.setEid(resultSet.getInt(&quot;eid&quot;));
-                emp.setSex(resultSet.getInt(&quot;sex&quot;));
-                emp.setSalary(resultSet.getInt(&quot;salary&quot;));
-                emp.setBirthday(resultSet.getString(&quot;birthday&quot;));
-
-                return emp;
-            &#125;
-        &#125;, eid);
-
-        return empList.get(0);
-    &#125;
-
-    /**
-     * 编辑用户信息的方法
-     * @return
-     */
-    @Override
-    public boolean updateSave(Emp emp) &#123;
-
-        int i = jdbcTemplate.update(&quot;update emp set emp_name = ?,age = ?,sex = ?,salary = ?,birthday = ? where eid = ?&quot;,
-                emp.getEmpName(), emp.getAge(), emp.getSex(), emp.getSalary(), emp.getBirthday(),emp.getEid());
-
-        return i&gt;0?true:false;
+    public Object call() throws Exception &#123;
+        System.out.println(&quot;执行异步任务&quot;);
+        Thread.sleep(1000);
+        System.out.println(&quot;异步任务结束&quot;);
+        return &quot;异步任务完成&quot;;
     &#125;
 &#125;
 </code></pre>
-<p>springMVC能够高效的去处理请求和响应，还支持参数接值，也可以支持注解的方式来映射资源路径</p>
+<h3 id="多路复用-Selector"><a href="#多路复用-Selector" class="headerlink" title="多路复用 Selector"></a>多路复用 Selector</h3><p>Netty的多路复用是通过引入Selector来实现的，Selector是一个用于注册各种事件的选择器机构。</p>
+<p>在工人线程中，Netty通过为每个channel在Selector中注册与之绑定的SelectedKeys来实现关注事件的注册。这样就能在一个线程中注册多个与之关联的channel，同时可以通过Selecotr来监视不同channel的不同事件，实现了多路复用，解决了原来网络编程中只能一个线程负责一个channel造成的资源浪费问题。</p>
+<h3 id="事件循环-EventLoop"><a href="#事件循环-EventLoop" class="headerlink" title="事件循环 EventLoop"></a>事件循环 EventLoop</h3><p>EventLoop 分配给每个 Channel 来处理所有的事件，包括</p>
+<ul>
+<li>注册感兴趣的事件</li>
+<li>调度事件到 ChannelHandler</li>
+<li>安排进一步行动</li>
+</ul>
+<blockquote>
+<p>因此，我们只需要在ChannelHandler中关注具体的事件逻辑实现即可</p>
+</blockquote>
+<p>EventLoop使用到了反应器模型Reactor。</p>
+<p><strong>select事件轮询</strong></p>
+<p>Netty 也同样遵循 Reactor 线程模型的运行机制，下面我们来了解一下 Netty 是如何实现 Reactor 线程模型的。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210302141704840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h4eWFzY3g=,size_16,color_FFFFFF,t_70"></p>
+<ul>
+<li>连接注册：Channel 建立后，注册至 Reactor 线程中的 Selector 选择器。</li>
+<li>事件轮询：轮询 Selector 选择器中已注册的所有 Channel 的 I&#x2F;O 事件。</li>
+<li>事件分发：为准备就绪的 I&#x2F;O 事件分配相应的处理线程。</li>
+<li>任务处理：Reactor 线程还负责任务队列中的非 I&#x2F;O 任务，每个 Worker 线程从各自维护的任务队列中取出任务异步执行。</li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1843,12 +1332,12 @@ public class EmpDaoImpl implements EmpDao &#123;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>SpringMVC</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">4.4k</span></p>
+    <p><span class="copy-title">文章标题:</span></p>
+    <p><span class="copy-title">字数:</span><span class="post-count">1.6k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-07-23, 21:35:21</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-05, 00:09:26</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/07/23/springMVC/" title="SpringMVC">https://os467.github.io/2022/07/23/springMVC/</a>
+    <p><span class="copy-title">发布时间:</span>2023-04-22, 20:54:08</p>
+    <p><span class="copy-title">最后更新:</span>2023-04-22, 20:53:16</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/04/22/Netty/" title="">https://os467.github.io/2023/04/22/Netty/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>

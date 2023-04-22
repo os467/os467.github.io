@@ -6,17 +6,20 @@
   <meta name="keywords" content="">
   <meta name="description" content="MVC多线程安全问题 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
-<meta property="og:type" content="website">
+<meta name="description" content="NettyNetty简介Netty是一个异步的，基于事件驱动的网络应用框架，可用于开发可维护，高性能的网络服务器和客户端  采用的是Selector模式（多路复用），这里的异步表示的是负责不同工作的线程使用的是不同线程  Netty在java网络应用框架中的地位就好比：Spring在javaEE开发中的地位 用到netty的常见框架：  Spark Hadoop ElasticSearch Zoo">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Tly的博客">
-<meta property="og:url" content="https://os467.github.io/about/index.html">
+<meta property="og:url" content="https://os467.github.io/2023/04/22/Netty/index.html">
 <meta property="og:site_name" content="Tly的博客">
-<meta property="og:description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
+<meta property="og:description" content="NettyNetty简介Netty是一个异步的，基于事件驱动的网络应用框架，可用于开发可维护，高性能的网络服务器和客户端  采用的是Selector模式（多路复用），这里的异步表示的是负责不同工作的线程使用的是不同线程  Netty在java网络应用框架中的地位就好比：Spring在javaEE开发中的地位 用到netty的常见框架：  Spark Hadoop ElasticSearch Zoo">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-05T07:48:23.998Z">
-<meta property="article:modified_time" content="2022-09-05T07:48:23.998Z">
+<meta property="og:image" content="https://atts.w3cschool.cn/attachments/image/20170808/1502159113476213.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210302141704840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h4eWFzY3g=,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2023-04-22T12:54:08.661Z">
+<meta property="article:modified_time" content="2023-04-22T12:53:16.235Z">
 <meta property="article:author" content="Os467">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://atts.w3cschool.cn/attachments/image/20170808/1502159113476213.jpg">
 
 
 <link rel="icon" href="/img/headimg.jpg">
@@ -184,7 +187,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(68)</small>
+                <small>(69)</small>
             
         </div>
     </li>
@@ -363,8 +366,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="68">
-<input type="hidden" id="yelog_site_word_count" value="282.6k">
+<input type="hidden" id="yelog_site_posts_number" value="69">
+<input type="hidden" id="yelog_site_word_count" value="286.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -479,6 +482,15 @@ window.onload = function(){
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 "
+           href="/2023/04/22/Netty/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2023-04-22 20:54:08">2023/04/22</span>
+        </a>
         
         
         <a  class="全部文章 其它 "
