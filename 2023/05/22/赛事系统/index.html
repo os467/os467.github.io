@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Reflect | Tly的博客</title>
+  <title>数据结构课设 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Reflect | Tly的博客">
+  <meta name="description" content="数据结构课设 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="数据结构课程设计基于JavaSwing的赛事管理系统【引入】本次课程设计要求协助中国大学生计算机设计大赛江苏省组委会，设计一款赛事管理系统，实现赛务相关的数据管理及信息服务，该系统能够为省级赛事管理解决以下问题： 信息管理​		能够管理各参赛队的基本信息（包含参赛队编号，参赛作品名称，参赛学校，赛事类别，参赛者，指导老师），赛事类别共11项（参见大赛官网jsjds.blcu.edu.cn）；包括增">
 <meta property="og:type" content="article">
@@ -1128,9 +1128,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Reflect" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-赛事系统" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Reflect</h1>
+        <h1 class="article-title">数据结构课设</h1>
     
     <div class="article-meta">
         
@@ -1140,7 +1140,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="JAVASE进阶">JAVASE进阶</a>
+            <a  data-rel="项目">项目</a>
             
         </span>
         
@@ -1148,12 +1148,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-05 00:09:07'>2022-07-13 14:40</time>
+            发布时间 : <time class="date" title='最后更新: 2023-05-22 23:16:00'>2023-05-22 23:15</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2.5k</span>
+        <span>字数:3.5k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1172,7 +1172,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84Reflect"><span class="toc-text">反射Reflect</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%8E%BB%E8%8E%B7%E5%8F%96%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E5%AD%97%E8%8A%82%E7%A0%81%E5%AF%B9%E8%B1%A1%EF%BC%88Class%EF%BC%89"><span class="toc-text">如何去获取一个类的字节码对象（Class）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">获取类中的属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E4%B8%AD%E5%85%AC%E5%85%B1%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">获取类中公共的属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E4%B8%AD%E6%89%80%E6%9C%89%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">获取类中所有的属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">获取类中的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E4%B8%AD%E5%85%AC%E6%9C%89%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">获取类中公有的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E4%B8%AD%E6%89%80%E6%9C%89%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">获取类中所有的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89%E7%9A%84%E6%9E%84%E9%80%A0"><span class="toc-text">获取所有的构造</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E5%B7%A5%E5%85%B7%E7%B1%BBReflectUtils"><span class="toc-text">反射工具类ReflectUtils</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E6%9D%A5%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="toc-text">如何通过反射机制来创建一个类的实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E6%9D%A5%E7%BB%99%E5%B1%9E%E6%80%A7%E8%B5%8B%E5%80%BC"><span class="toc-text">如何通过反射来给属性赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7%E5%80%BC"><span class="toc-text">如何通过反射获取属性值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E8%B0%83%E7%94%A8%E7%B1%BB%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">通过反射调用类中的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E5%9C%A8%E4%BB%A5%E5%90%8E%E7%9A%84%E7%94%A8%E9%80%94"><span class="toc-text">反射在以后的用途</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1"><span class="toc-text">数据结构课程设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EJavaSwing%E7%9A%84%E8%B5%9B%E4%BA%8B%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-text">基于JavaSwing的赛事管理系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E5%BC%95%E5%85%A5%E3%80%91"><span class="toc-text">【引入】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86"><span class="toc-text">信息管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2"><span class="toc-text">信息查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E6%9F%A5%E8%AF%A2"><span class="toc-text">详细查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%9B%E4%BA%8B%E6%A8%A1%E6%8B%9F"><span class="toc-text">赛事模拟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9B%BE%E6%A8%A1%E6%8B%9F"><span class="toc-text">地图模拟</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82%E3%80%91"><span class="toc-text">【设计要求】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4%E6%8F%90%E7%A4%BA%E3%80%91"><span class="toc-text">【实现步骤提示】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E3%80%91"><span class="toc-text">【测试数据】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B"><span class="toc-text">开发过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#UI%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1"><span class="toc-text">UI界面设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UI%E5%AE%9E%E7%8E%B0"><span class="toc-text">UI实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E9%80%BB%E8%BE%91"><span class="toc-text">信息管理页面逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99"><span class="toc-text">文件读写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E4%BF%A1%E6%81%AF"><span class="toc-text">增加信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%EF%BC%8C%E4%BF%AE%E6%94%B9%E6%8C%89%E9%92%AE%E7%9B%91%E5%90%AC%E5%99%A8%E7%BB%91%E5%AE%9A"><span class="toc-text">删除，修改按钮监听器绑定</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%A8%A1%E5%9D%97"><span class="toc-text">查询模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E7%9A%84%E9%98%9F%E5%8F%B7%E6%9F%A5%E6%89%BE"><span class="toc-text">基于二叉排序树的队号查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E5%AD%A6%E6%A0%A1%E5%90%8D%E7%A7%B0%E7%9A%84%E8%81%9A%E7%B1%BB%E6%9F%A5%E6%89%BE%EF%BC%8C%E5%AE%9E%E7%8E%B0%E6%8C%89%E8%B5%9B%E4%BA%8B%E7%B1%BB%E5%88%AB%E6%8E%92%E5%BA%8F"><span class="toc-text">按学校名称的聚类查找，实现按赛事类别排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E4%BE%9B%E4%B8%80%E4%B8%AA%E5%AD%97%E5%85%B8%E5%BA%8F%E6%AF%94%E8%BE%83%E6%8E%A5%E5%8F%A3"><span class="toc-text">提供一个字典序比较接口</span></a></li></ol></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1188,442 +1188,622 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="反射Reflect"><a href="#反射Reflect" class="headerlink" title="反射Reflect"></a>反射Reflect</h1><p><strong>反射机制是干什么的</strong>：</p>
+        <h1 id="数据结构课程设计"><a href="#数据结构课程设计" class="headerlink" title="数据结构课程设计"></a>数据结构课程设计</h1><h2 id="基于JavaSwing的赛事管理系统"><a href="#基于JavaSwing的赛事管理系统" class="headerlink" title="基于JavaSwing的赛事管理系统"></a>基于JavaSwing的赛事管理系统</h2><h2 id="【引入】"><a href="#【引入】" class="headerlink" title="【引入】"></a>【引入】</h2><p>本次课程设计要求协助中国大学生计算机设计大赛江苏省组委会，设计一款赛事管理系统，实现赛务相关的数据管理及信息服务，该系统能够为省级赛事管理解决以下问题：</p>
+<h3 id="信息管理"><a href="#信息管理" class="headerlink" title="信息管理"></a>信息管理</h3><p>​		能够管理各参赛队的基本信息（包含参赛队编号，参赛作品名称，参赛学校，赛事类别，参赛者，指导老师），赛事类别共11项（参见大赛官网<a target="_blank" rel="noopener" href="https://www.so.com/link?m=esKXA8ezYxyE3q4YMZQnhoLvXcg/iKlGjC8l0QSHtCM7KU6irI48Vnz+kgjCMn0ugnceLdWAA0PKjX/SVMGlIjX5+rSbW7zFj">jsjds.blcu.edu.cn</a>）；包括增加、删除、修改参赛队伍的信息。</p>
+<h3 id="信息查询"><a href="#信息查询" class="headerlink" title="信息查询"></a>信息查询</h3><p>​		从team.txt中读取参赛队伍的基本信息，实现基于二叉排序树的查找。根据提示输入参赛队编号，若查找成功，输出该赛事类别对应的基本信息（参赛作品名称、参赛学校、赛事类别、参赛者和指导老师信息），同时，输出查找成功时的平均查找长度ASL；否则，输出“查找失败！”。</p>
+<h3 id="详细查询"><a href="#详细查询" class="headerlink" title="详细查询"></a>详细查询</h3><p>​		能够提供按参赛学校查询参赛团队（或根据赛事类别查询参赛团队），即，根据提示输入参赛学校名称（赛事类别），若查找成功，输出该学校参赛的（该赛事类别的）所有团队的基本信息，输出的参赛团队按赛事类别有序输出。（排序算法可从选择排序、插入排序、希尔排序、归并排序、堆排序中任意选择，并为选择算法的原因做出说明。）</p>
+<h3 id="赛事模拟"><a href="#赛事模拟" class="headerlink" title="赛事模拟"></a>赛事模拟</h3><p>​		为省赛现场设计一个决赛叫号系统。所有参赛队按赛事组织文件中的赛事类别分到9个决赛室，决赛室按顺序叫号，被叫号参赛队进场，比赛结束后，下一参赛队才能进赛场。请模拟决赛叫号系统，演示省赛现场各决赛室的参赛队进场情况。（模拟时，要能直观展示叫号顺序与进场秩序一致）</p>
+<h3 id="地图模拟"><a href="#地图模拟" class="headerlink" title="地图模拟"></a>地图模拟</h3><p>​		赛事系统为参赛者提供赛地的校园导游程序,为参赛者提供各种路径导航的查询服务。以我校长山校区提供比赛场地为例，（请为参赛者提供不少于10个目标地的导航。可为参赛者提供校园地图中任意目标地（建筑物）相关信息的查询；提供任意两个目标地（建筑物）的导航查询，即查询任意两个目的地（建筑物）之间的一条最短路径。</p>
+<h2 id="【设计要求】"><a href="#【设计要求】" class="headerlink" title="【设计要求】"></a>【设计要求】</h2><ol>
+<li>赛事数据要求存入文件（txt或excel）并能读入查询；</li>
+<li>赛地目的地查询,需提供目的地（建筑物）名称、代号、简介、两地之间路径长度等信息；</li>
+<li>输入数据形式和范围：赛事相关数据可从键盘输入，或自文件导入。</li>
+<li>界面要求：交互设计要合理，每个功能可以设计菜单，用户根据提示，完成相关功能的要求。</li>
+</ol>
+<h2 id="【实现步骤提示】"><a href="#【实现步骤提示】" class="headerlink" title="【实现步骤提示】"></a>【实现步骤提示】</h2><ol>
+<li>分析任务，进行模块划分。</li>
+<li>定义数据结构，建议按照抽象数据类型的定义、表示和实现来描述，用类C语言（伪代码）来描述数据的存储表示和相应操作的具体实现过程。</li>
+<li>设计合适的算法来实现其功能，并绘制函数调用关系图。</li>
+</ol>
+<h2 id="【测试数据】"><a href="#【测试数据】" class="headerlink" title="【测试数据】"></a>【测试数据】</h2><p> 要求使用全部合法数据，整体非法数据，局部非法数据。进行程序测试，以保证程序的健壮性。</p>
+<h2 id="开发过程"><a href="#开发过程" class="headerlink" title="开发过程"></a>开发过程</h2><h3 id="UI界面设计"><a href="#UI界面设计" class="headerlink" title="UI界面设计"></a>UI界面设计</h3><p>基于JavaSwing的赛事管理系统，在需求分析后我们先考虑UI界面的布局。</p>
+<p>按照需求分析，我们可以得出本次赛事系统大概需要5个界面进行展示不同业务。</p>
 <ul>
-<li>可以在类加载的时候去获取类的相关信息（属性、方法、实现的接口、继承的类）</li>
-<li>反射可以通过字节码的方式来创建实例</li>
+<li>信息管理<ul>
+<li>信息模块主要展示赛事全部队伍的表单，每个表单项记录了一行的队伍详细信息，且提供对应的删除和修改的操作按钮。</li>
 </ul>
-<p><strong>反射在以后开发中的作用</strong>：</p>
-<p>​		我们设计程序最终是要提高程序的执行效率，我们在开发一个模块的时候，要不停的去创建对象 <code>User user = new User();</code> 使用<strong>new</strong>关键字，会使得程序之间产生耦合，以后new关键字使用多了，耦合就会变高，程序的执行效率就会很差</p>
-<p>​		这个时候我们能不能换一种方式去创建实例，尽量避免使用new关键字，反射机制就可以在<strong>不使用</strong>new的情况下去创建实例</p>
-<p>​		反射是各大java框架的<strong>底层</strong>：框架就是帮助程序解耦，提高程序的执行效率，提高开发人员的开发效率</p>
-<p>spring  框架：容器</p>
-<ul>
-<li>通过java语言中的反射机制可以操作字节码文件</li>
-<li>通过反射机制可以操作代码片段</li>
-<li><code>java.lang.reflect</code></li>
+</li>
+<li>查询模块<ul>
+<li>查询模块主要负责精确查询和按校查询两个业务。<ul>
+<li>按队号查询需要一行文本框和查询按钮（页面顶部）</li>
+<li>按学校名称查询需要一行文本框和查询按钮（页面顶部）</li>
+<li>需要一个展示查询结果的表单（占页面2&#x2F;3，页面中间）</li>
+<li>需要一个显示精确查询ASL失败和成功次数的文本显示区域(页面底部)</li>
 </ul>
-<p><strong>什么是反射</strong>：</p>
-<p>​		反射是java中比较偏底层的一种机制，通过反射可以在类加载时去获取类相关的信息</p>
-<h2 id="如何去获取一个类的字节码对象（Class）"><a href="#如何去获取一个类的字节码对象（Class）" class="headerlink" title="如何去获取一个类的字节码对象（Class）"></a>如何去获取一个类的字节码对象（Class）</h2><p>​	<code>对象.getClass()</code></p>
-<p>​	<code>类.class属性</code></p>
-<p>​	<code>Class.forName(&quot;全类名&quot;)</code></p>
-<ul>
-<li><p><strong><code>java.lang.Class：</code></strong> </p>
-<p>代表整个字节码，代表一个类型，代表整个<strong>类</strong></p>
-</li>
-<li><p><strong><code>java.lang.reflect.Method</code>：</strong></p>
-<p>代表字节码中的方法字节码，代表类中的<strong>方法</strong></p>
-</li>
-<li><p><strong><code>java.lang.reflect.Constructor：</code></strong></p>
-<p>代表字节码中的<strong>构造方法</strong>字节码，代表类中的构造方法</p>
-</li>
-<li><p><strong><code>java.lang.reflect.Field：</code></strong></p>
-<p>代表字节码中的<strong>属性</strong>字节码，代表类中的成员变量（静态变量+实例变量）</p>
 </li>
 </ul>
-<h2 id="获取类中的属性"><a href="#获取类中的属性" class="headerlink" title="获取类中的属性"></a>获取类中的属性</h2><h3 id="获取类中公共的属性"><a href="#获取类中公共的属性" class="headerlink" title="获取类中公共的属性"></a>获取类中公共的属性</h3><p><code>getField()</code></p>
-<pre><code class="java">//获取字节码对象
- Class stuClass = Class.forName(&quot;com.os467.pojo.Student&quot;);
+</li>
+<li>参赛登记<ul>
+<li>需要提供5行文本框和对应提示符，用于收集登记信息</li>
+<li>需要一个登记按钮，用于提交登记的信息</li>
+</ul>
+</li>
+<li>赛事模拟<ul>
+<li>需要一个模拟按钮，用于启动本次赛事模拟</li>
+<li>需要一个文本输出域来显示赛事模拟文字结果</li>
+</ul>
+</li>
+<li>地图模拟<ul>
+<li>需要一个模拟按钮，用于启动本次赛事地图模拟</li>
+<li>需要一个文本输出域来显示地图模拟文字结果</li>
+</ul>
+</li>
+</ul>
+<h3 id="UI实现"><a href="#UI实现" class="headerlink" title="UI实现"></a>UI实现</h3><p>使用自定义的选项卡式页面切换UI</p>
+<p>左侧为菜单栏，右侧为具体显示页面</p>
+<pre><code class="java">package com.os467.management;
 
- //getField()这个方法只能去获取公共的属性
- Field address = stuClass.getField(&quot;address&quot;);
+import JFrameBuilder.WindowBuilder;
 
- System.out.println(address);
-</code></pre>
-<h3 id="获取类中所有的属性"><a href="#获取类中所有的属性" class="headerlink" title="获取类中所有的属性"></a>获取类中所有的属性</h3><p><code>getDeclaredField()</code></p>
-<pre><code class="java">//getDeclaredField()这个方法可以去获取一个类中所有的属性
-Field id = stuClass.getDeclaredField(&quot;id&quot;);
+public class init &#123;
 
-System.out.println(id);
-</code></pre>
-<p><code>getDeclaredFields()</code></p>
-<pre><code class="java">//获取一个类中所有属性，封装成字节码数组
-Field[] declaredFields = stuClass.getDeclaredFields();
-</code></pre>
-<p><strong>获取全类名</strong></p>
-<pre><code class="java">String name = stuClass.getName();
-</code></pre>
-<p><strong>获取简类名</strong></p>
-<pre><code class="java">String simpleName = stuClass.getSimpleName();
-</code></pre>
-<p><strong>获取属性的类型</strong></p>
-<p><code>declaredField.getType()</code></p>
-<p><strong>获取属性的修饰符</strong></p>
-<pre><code class="java">//获取属性的修饰符代号
-int modifiers = declaredField.getModifiers();
+    public static void main(String[] args) &#123;
 
-//将代号转成修饰符字符串
-String string = Modifier.toSring(modifiers);
-
-System.out.println(string);
-</code></pre>
-<p>在学习反射时，获取类的<strong>信息</strong>都是通过<strong>get方法</strong>去获取的</p>
-<h2 id="获取类中的方法"><a href="#获取类中的方法" class="headerlink" title="获取类中的方法"></a><strong>获取类中的方法</strong></h2><p>由于java类中的方法支持重载，所以在调用<code>getMethod(方法名称,参数类型)</code>方法时需要将方法的<strong>参数类型</strong>传入，不传入则默认获取<strong>无参</strong>的方法</p>
-<h3 id="获取类中公有的方法"><a href="#获取类中公有的方法" class="headerlink" title="获取类中公有的方法"></a>获取类中公有的方法</h3><pre><code class="java">public class ReflectDemo03 &#123;
-
-    public static void main(String[] args) throws Exception &#123;
-
-        //获取字节码对象
-        Class stuClass = Student.class;
-
-        //获取一个类中的方法
-        Method setAge = stuClass.getMethod(&quot;setAge&quot;,Integer.class);
-
-        System.out.println(setAge);
-
-        Method study = stuClass.getMethod(&quot;study&quot;, int.class, double.class, String.class);
-
-        System.out.println(study);
-
+        new WindowBuilder().
+                register(new JFrameMakerImpl())
+                .getFrame();
     &#125;
+
 &#125;
 </code></pre>
-<h3 id="获取类中所有的方法"><a href="#获取类中所有的方法" class="headerlink" title="获取类中所有的方法"></a>获取类中所有的方法</h3><pre><code class="java">public class ReflectDemo03 &#123;
+<blockquote>
+<p>采用自己封装的窗体构建者类创建窗口</p>
+</blockquote>
+<p><strong>窗体内容构建者</strong></p>
+<pre><code class="java">package com.os467.management;
 
-    public static void main(String[] args) throws Exception &#123;
+import JFrameBuilder.JFrameContentMaker;
+import JFrameBuilder.component.menu.LeftSelectMenu;
+import JFrameBuilder.component.menu.Menu;
+import com.os467.management.servicePage.AddInfoPageBuilder;
+import com.os467.management.servicePage.FileService;
+import com.os467.management.servicePage.InfoPageBuilder;
+import com.os467.management.servicePage.SearchPageBuilder;
+import com.os467.management.servicePage.impl.AddInfoPageBuilderImpl;
+import com.os467.management.servicePage.impl.InfoPageBuilderImpl;
+import com.os467.management.servicePage.impl.SearchPageBuilderImpl;
 
-        //获取字节码对象
-        Class stuClass = Student.class;
+import javax.swing.*;
 
-        //获取一个类中所有的方法
-        Method[] declaredMethods = stuClass.getDeclaredMethods();
 
-        for (Method declaredMethod : declaredMethods) &#123;
+public class JFrameMakerImpl implements JFrameContentMaker &#123;
 
-            System.out.println(declaredMethod);
+    private FileService fileService = new FileService();
 
+    private InfoPageBuilder infoPageBuilder = new InfoPageBuilderImpl();
+
+    private SearchPageBuilder searchPageBuilder = new SearchPageBuilderImpl();
+
+    private AddInfoPageBuilder addInfoPageBuilder = new AddInfoPageBuilderImpl();
+
+    @Override
+    public void make(JFrame jFrame) &#123;
+        jFrame.setTitle(&quot;赛事管理系统&quot;);
+        Menu leftSelectMenu = new LeftSelectMenu(jFrame, 5);
+
+        leftSelectMenu.name(0,&quot;信息管理&quot;);
+        leftSelectMenu.name(1,&quot;查询模块&quot;);
+        leftSelectMenu.name(2,&quot;参赛登记&quot;);
+        leftSelectMenu.name(3,&quot;赛事模拟&quot;);
+        leftSelectMenu.name(4,&quot;地图模拟&quot;);
+
+        //注入依赖
+        infoPageBuilder.setFileService(fileService);
+        searchPageBuilder.setFileService(fileService);
+        addInfoPageBuilder.setFileService(fileService);
+        addInfoPageBuilder.setInfoPageBuilder(infoPageBuilder);
+
+        //构建页面
+        infoPageBuilder.buildPage(leftSelectMenu.getPage(0));
+        searchPageBuilder.buildPage(leftSelectMenu.getPage(1));
+        addInfoPageBuilder.buildPage(leftSelectMenu.getPage(2));
+
+        //设置默认页
+        leftSelectMenu.setDefaultPage(leftSelectMenu.getPage(0));
+    &#125;
+
+
+
+
+&#125;
+</code></pre>
+<blockquote>
+<p>快速构建页面模块，将具体的页面实现交给对应的页面构建类即可</p>
+</blockquote>
+<h3 id="信息管理页面逻辑"><a href="#信息管理页面逻辑" class="headerlink" title="信息管理页面逻辑"></a>信息管理页面逻辑</h3><h4 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h4><p>根据相对路径获取到文件位置</p>
+<p>使用包装输入输出流读取文件信息</p>
+<p>具体信息交由对应的页面处理即可</p>
+<pre><code class="java">package com.os467.management.servicePage;
+
+import javax.swing.*;
+import java.io.*;
+
+public class FileService &#123;
+
+    private String title;
+
+    private String context;
+
+    private JTable jTable;
+
+    public String readFile() &#123;
+        //读取文件
+        String property = System.getProperty(&quot;user.dir&quot;) + &quot;\\src\\main\\resources\\team.txt&quot;;
+
+        StringBuilder stringBuilder = null;
+        BufferedReader bufferedReader = null;
+        try &#123;
+            FileReader fileReader = new FileReader(property);
+            bufferedReader = new BufferedReader(fileReader);
+            stringBuilder = new StringBuilder();
+            int read;
+            while ((read = bufferedReader.read()) != -1)&#123;
+                if (read == -1)&#123;
+                    break;
+                &#125;
+                stringBuilder.append((char)read);
+            &#125;
+        &#125; catch (FileNotFoundException e) &#123;
+            e.printStackTrace();
+        &#125; catch (IOException e) &#123;
+            e.printStackTrace();
+        &#125;finally &#123;
+            try &#123;
+                bufferedReader.close();
+            &#125; catch (IOException e) &#123;
+                e.printStackTrace();
+            &#125;
         &#125;
 
+        String context = stringBuilder.toString();
+        this.context = context;
+        return context;
+    &#125;
+
+    public void writeFileWithJTable() &#123;
+        int rowCount = jTable.getRowCount();
+        int columnCount = jTable.getColumnCount() - 2;
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(title);
+        for (int i = 0; i &lt; rowCount; i++) &#123;
+            for (int j = 0; j &lt; columnCount - 1; j++) &#123;
+                Object s = jTable.getValueAt(i, j);
+                stringBuilder.append(s);
+                stringBuilder.append(&quot;\t#\t&quot;);
+            &#125;
+            Object s = jTable.getValueAt(i, columnCount - 1);
+            stringBuilder.append(s);
+            stringBuilder.append(&quot;\n&quot;);
+        &#125;
+        String context = stringBuilder.toString();
+
+        writeFileWithContext(context);
+    &#125;
+
+    public void writeFileWithContext(String context)&#123;
+        //文件位置
+        String property = System.getProperty(&quot;user.dir&quot;) + &quot;\\src\\main\\resources\\team.txt&quot;;
+
+        BufferedWriter bufferedWriter = null;
+        try &#123;
+            bufferedWriter = new BufferedWriter(new FileWriter(property));
+            bufferedWriter.write(context);
+        &#125; catch (IOException e) &#123;
+            e.printStackTrace();
+        &#125;finally &#123;
+            try &#123;
+                this.context = context;
+                bufferedWriter.flush();
+                bufferedWriter.close();
+            &#125; catch (IOException e) &#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+    &#125;
+
+    public String getTitle() &#123;
+        return title;
+    &#125;
+
+    public void setTitle(String title) &#123;
+        this.title = title;
+    &#125;
+
+    public String getContext() &#123;
+        return context;
+    &#125;
+
+    public void setContext(String context) &#123;
+        this.context = context;
+    &#125;
+
+    public JTable getjTable() &#123;
+        return jTable;
+    &#125;
+
+    public void setjTable(JTable jTable) &#123;
+        this.jTable = jTable;
     &#125;
 &#125;
 </code></pre>
-<p><strong>其它的方法</strong></p>
-<pre><code class="java">for (Method method : declaredMethods) &#123;
+<h4 id="增加信息"><a href="#增加信息" class="headerlink" title="增加信息"></a>增加信息</h4><p>队伍编号生成问题，需要获取到当前列表最大编号，新增编号为当前最大编号+1</p>
+<pre><code class="java">//获取到当前最大序列号
+String[] split = context.split(&quot;\n&quot;);
+int max = 0;
 
-    //获取方法名称
-    System.out.println(&quot;方法名称&quot;+method.getName());
-
-    //获取方法返回值类型
-    System.out.println(&quot;返回值类型&quot;+method.getReturnType().getSimpleName());
-
-    //获取方法的参数
-    for (Class&lt;?&gt; parameterType : method.getParameterTypes()) &#123;
-
-        System.out.println(&quot;方法的参数类型&quot;+parameterType);
-
-
+for (int i = 1; i &lt; split.length; i++) &#123;
+    int num = Integer.parseInt(split[i].split(&quot;\t#\t&quot;)[0]);
+    if (num &gt; max)&#123;
+        max = num;
     &#125;
-
-    //获取修饰符
-    int modifiers = method.getModifiers();
-
-    //将修饰符代号转成字符串
-    String s = Modifier.toString(modifiers);
-
-    System.out.println(&quot;修饰符&quot;+s);
-
 &#125;
 </code></pre>
-<h3 id="获取所有的构造"><a href="#获取所有的构造" class="headerlink" title="获取所有的构造"></a>获取所有的构造</h3><pre><code class="java">public static void main(String[] args) throws Exception &#123;
-
-
-    //获取字节码对象
-    Class aClass = Class.forName(&quot;com.os467.pojo.Student&quot;);
-
-    //获取所有的构造
-    Constructor[] declaredConstructors = aClass.getDeclaredConstructors();
-
-    //遍历数组
-    for (Constructor declaredConstructor : declaredConstructors) &#123;
-
-        System.out.println(declaredConstructor);
-
-    &#125;
-
-&#125;
+<p><strong>用StringBuilder构建新加入的信息，重新写回文件</strong></p>
+<pre><code class="java">//序列号增加
+++max;
+StringBuilder stringBuilder = new StringBuilder();
+stringBuilder.append(context);
+stringBuilder.append(max);
+stringBuilder.append(&quot;\t#\t&quot;);
+stringBuilder.append(subjectField.getText());
+subjectField.setText(&quot;&quot;);
+stringBuilder.append(&quot;\t#\t&quot;);
+stringBuilder.append(schoolField.getText());
+schoolField.setText(&quot;&quot;);
+stringBuilder.append(&quot;\t#\t&quot;);
+stringBuilder.append(eventField.getText());
+eventField.setText(&quot;&quot;);
+stringBuilder.append(&quot;\t#\t&quot;);
+stringBuilder.append(contestantField.getText());
+contestantField.setText(&quot;&quot;);
+stringBuilder.append(&quot;\t#\t&quot;);
+stringBuilder.append(teacherField.getText());
+teacherField.setText(&quot;&quot;);
+stringBuilder.append(&quot;\t#\t&quot;);
+stringBuilder.append(&quot;\n&quot;);
 </code></pre>
-<h2 id="反射工具类ReflectUtils"><a href="#反射工具类ReflectUtils" class="headerlink" title="反射工具类ReflectUtils"></a>反射工具类ReflectUtils</h2><p>写一个工具类，写一个静态方法，方法传入一个类的全类名，然后反编译（可以获取这个类中所有的信息）这个类工具类要适用于所有的类</p>
-<p><strong>根据反射获取类的信息</strong></p>
-<ul>
-<li>1、根据流对象先读取配置文件中的全类名数据</li>
-<li>2、根据全类名创建字节码对象</li>
-<li>3、根据字节码对象去获取类的信息，完成类的反编译</li>
-</ul>
-<pre><code class="java">package com.os467.utils;
+<p><strong>写回文件，更新列表页面</strong></p>
+<pre><code class="java">fileService.writeFileWithContext(stringBuilder.toString());
+infoPageBuilder.reBuildPage();
+</code></pre>
+<h4 id="删除，修改按钮监听器绑定"><a href="#删除，修改按钮监听器绑定" class="headerlink" title="删除，修改按钮监听器绑定"></a>删除，修改按钮监听器绑定</h4><pre><code class="java">TableCellButton tableCellButton = new TableCellButton(strings.length,tableModel.getRowCount(), fileService.getjTable());
+tableCellButton.registerOperation(&quot;修改&quot;,new ActionListener() &#123;
+    @Override
+    public void actionPerformed(ActionEvent e) &#123;
+        fileService.writeFileWithJTable();
+    &#125;
+&#125;,new Color(236, 195, 114));
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.Properties;
+//绑定表单项
+tableCellButton = new TableCellButton(strings.length+1,tableModel.getRowCount(), fileService.getjTable());
+tableCellButton.registerOperation(&quot;删除&quot;,new ActionListener() &#123;
+    @Override
+    public void actionPerformed(ActionEvent e) &#123;
+        String actionCommand = e.getActionCommand();
+        DefaultTableModel tableModel = (DefaultTableModel)fileService.getjTable().getModel();
+        tableModel.removeRow(Integer.parseInt(actionCommand));
+        fileService.writeFileWithJTable();
+    &#125;
+&#125;,new Color(255, 88, 88));
+</code></pre>
+<blockquote>
+<p>封装了一个tableCellButton组件，用于自动添加表列操作按钮，内部进行自动封装，省略了开发步骤</p>
+</blockquote>
+<h3 id="查询模块"><a href="#查询模块" class="headerlink" title="查询模块"></a>查询模块</h3><h4 id="基于二叉排序树的队号查找"><a href="#基于二叉排序树的队号查找" class="headerlink" title="基于二叉排序树的队号查找"></a>基于二叉排序树的队号查找</h4><p>本类提供了基本的<code>create</code>方法，会根据提供的键-值数组自动构建二叉排序树</p>
+<p>提供<code>get</code>方法，进行比较查找，若查找为空则返回null</p>
+<p>提供了<code>ASL</code>失败和成功的算法，通过栈实现非递归的ASL计算</p>
+<pre><code class="java">package com.os467.management.dataStruct;
 
-/**
- * 反编译工具类
- */
-public class ReflectUtils &#123;
+import java.util.List;
+import java.util.Stack;
 
-    //构造私有化
-    private ReflectUtils()&#123;
+public class MyTreeMap&lt;K, V&gt; &#123;
 
+    private TreeNode root;
+
+    private Integer nodeNum = 0;
+
+    private Integer leafNum = 0;
+
+    private Double aslSuccess;
+
+    private Double aslFailed;
+
+    public void create(List&lt;K&gt; keys, List&lt;V&gt; values) &#123;
+        if (values.get(0) != null)&#123;
+            root = new TreeNode(keys.get(0),values.get(0),1);
+            incNodeNum();
+        &#125;
+        for (int i = 1; i &lt; values.size(); i++) &#123;
+            put(keys.get(i),values.get(i));
+        &#125;
     &#125;
 
     /**
-     * 根据反射获取类的信息
-     * 1、根据流对象先读取配置文件中的全类名数据
-     * 2、根据全类名创建字节码对象
-     * 3、根据字节码对象去获取类的信息，完成类的反编译
+     * 构建二叉排序树
+     * @param k
+     * @param v
+     */
+    private void put(K k, V v) &#123;
+        Integer key = (Integer) k;
+        String value = (String) v;
+        TreeNode p = root;
+        Integer level = 1;
+        while (true)&#123;
+            ++level;
+            if (key &gt; (Integer) (p.key))&#123;
+                if (p.rChild == null)&#123;
+                    p.rChild = new TreeNode(key,value,level);
+                    incNodeNum();
+                    break;
+                &#125;else &#123;
+                    p = p.rChild;
+                &#125;
+            &#125;else&#123;
+                if (p.lChild == null)&#123;
+                    p.lChild = new TreeNode(key,value,level);
+                    incNodeNum();
+                    break;
+                &#125;else &#123;
+                    p = p.lChild;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+
+    private void incNodeNum()&#123;
+        nodeNum++;
+        incLeafNum();
+    &#125;
+
+    private void incLeafNum() &#123;
+        leafNum = nodeNum + 1;
+    &#125;
+
+    /**
+     * 二叉查找
+     * @param key
      * @return
      */
-    public static String getTypeMessageByReflect()&#123;
-
-        //用于字符串的追加,效率要比String高
-        StringBuilder stringBuilder = new StringBuilder();
-
-        try &#123;
-
-            //创建流对象
-            FileReader fileReader = new FileReader(&quot;className.properties&quot;);
-
-            //创建集合对象
-            Properties properties = new Properties();
-
-            //将配置文件中的数据装载到集合里面
-            properties.load(fileReader);
-
-            //根据全类名创建字节码对象
-            Class aClass = Class.forName(properties.getProperty(&quot;className&quot;));
-
-            stringBuilder.append(&quot;public class &quot;);
-            stringBuilder.append(aClass.getSimpleName()+&quot; &#123; \n&quot;);
-            //获取类中所有的属性
-            Field[] declaredFields = aClass.getDeclaredFields();
-
-            for (Field declaredField : declaredFields) &#123;
-
-                stringBuilder.append(&quot;\n\t&quot;);
-
-                //获取属性的修饰符
-                int modifiers = declaredField.getModifiers();
-
-                //转成修饰符字符串
-                String s = Modifier.toString(modifiers);
-
-                //获取属性类型
-                String simpleName = declaredField.getType().getSimpleName();
-
-                //获取属性的名称
-                String name = declaredField.getName();
-
-                stringBuilder.append(s+&quot; &quot;+simpleName+&quot; &quot;+name+&quot;;&quot;);
-                stringBuilder.append(&quot;\n&quot;);
-
-            &#125;
-
-            //获取类的所有构造
-            Constructor[] declaredConstructors = aClass.getDeclaredConstructors();
-
-            //遍历数组
-            for (Constructor declaredConstructor : declaredConstructors) &#123;
-
-                stringBuilder.append(&quot;\n\t&quot;);
-
-                //获取构造的修饰符
-                int modifiers = declaredConstructor.getModifiers();
-
-                //转成修饰符字符串
-                String s = Modifier.toString(modifiers);
-
-                //获取构造名称
-                String name = aClass.getSimpleName();
-
-                stringBuilder.append(s + &quot; &quot; + name + &quot;(&quot;);
-
-                //获取参数列表
-                Class[] parameterTypes = declaredConstructor.getParameterTypes();
-
-                //遍历参数列表
-                for (Class parameterType : parameterTypes) &#123;
-
-                    //获取参数名
-                    stringBuilder.append(parameterType.getSimpleName()+&quot;,&quot;);
-
-                &#125;
-
-                //判断有参的还是无参的
-                if (parameterTypes.length &gt; 0)&#123;
-
-                    //删除具体下标下面的字符
-                    stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-
-                &#125;
-
-                stringBuilder.append(&quot;) &#123;&#125;&quot;);
-
-                stringBuilder.append(&quot;\n&quot;);
-
-                //获取所有的普通方法
-                Method[] declaredMethods = aClass.getDeclaredMethods();
-
-                //遍历数组
-                for (Method declaredMethod : declaredMethods) &#123;
-
-                    stringBuilder.append(&quot;\n\t&quot;);
-
-                    //获取方法的修饰符
-                    int modifiers1 = declaredMethod.getModifiers();
-
-                    //转成修饰符字符串
-                    String s1 = Modifier.toString(modifiers1);
-
-                    //获取返回值类型
-                    String simpleName = declaredMethod.getReturnType().getSimpleName();
-
-                    stringBuilder.append(s1 + &quot; &quot; +simpleName + &quot; &quot; + declaredMethod.getName()+&quot;(&quot;);
-
-                    //获取普通方法的参数列表
-                    Class[] parameterTypes1 = declaredMethod.getParameterTypes();
-
-                    //遍历参数
-                    for (Class parameterType : parameterTypes1) &#123;
-
-                        stringBuilder.append(parameterType.getSimpleName()+&quot;,&quot;);
-
-                        if (parameterTypes.length &gt; 0)&#123;
-
-                            //删除最后一个逗号
-                            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-
-                        &#125;
-
+    public V get(K key) &#123;
+        TreeNode p = root;
+        Integer key0 = (Integer) key;
+        while (true)&#123;
+            if (p != null)&#123;
+                if (!key0.equals(p.key))&#123;
+                    if (key0 &gt; (Integer) (p.key))&#123;
+                        p = p.rChild;
+                    &#125;else&#123;
+                        p = p.lChild;
                     &#125;
-                    stringBuilder.append(&quot;)&#123;&#125;&quot;);
-
-                    stringBuilder.append(&quot;\n&quot;);
-
+                &#125;else &#123;
+                    return (V) p.value;
                 &#125;
-
+            &#125;else &#123;
+                return null;
             &#125;
+        &#125;
+    &#125;
 
-            stringBuilder.append(&quot;\n&#125;&quot;);
+    class TreeNode&lt;K,V&gt;&#123;
+        K key;
+        V value;
+        Integer level;
+        TreeNode lChild;
+        TreeNode rChild;
 
-        &#125; catch (Exception e) &#123;
-            e.printStackTrace();
+        public TreeNode(K v, V v1,Integer level) &#123;
+            key = v;
+            value = v1;
+            this.level = level;
+        &#125;
+    &#125;
+
+    /**
+     * 获取成功ASL
+     * @return
+     */
+    public double getAslSuccess() &#123;
+        if (aslSuccess == null)&#123;
+            calculate();
+        &#125;
+        return aslSuccess;
+    &#125;
+
+    /**
+     * 计算ASL
+     */
+    private void calculate() &#123;
+        Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();
+        stack.push(root);
+        Integer successTime = 0;
+        Integer levelSum = 0;
+        Integer failedLevelSum = 0;
+        TreeNode treeNode = stack.peek();
+        while (treeNode != null || !stack.empty())&#123;
+            while (treeNode != null)&#123;
+                //访问左，入栈
+                stack.push(treeNode);
+                treeNode = treeNode.lChild;
+            &#125;
+            //访问到叶，失败次数+1
+            failedLevelSum += stack.peek().level;
+
+            treeNode = stack.peek();
+            //访问根，判断是否为终端
+            if (treeNode != null)&#123;
+                levelSum += treeNode.level;
+                successTime++;
+            &#125;
+            //栈顶元素弹出
+            stack.pop();
+            TreeNode last = treeNode;
+            //访问右
+            treeNode = treeNode.rChild;
+            if (treeNode == null)&#123;
+                //访问到叶，失败次数+1
+                failedLevelSum += last.level;
+            &#125;
         &#125;
 
+        aslFailed = (double)failedLevelSum/(double)leafNum;
+        aslSuccess = (double)levelSum / (double)successTime;
+    &#125;
 
-        return stringBuilder.toString();
+    /**
+     * 获取失败ASL
+     * @return
+     */
+    public double getAslFailed() &#123;
+        if (aslFailed == null)&#123;
+            calculate();
+        &#125;
+        return aslFailed;
+    &#125;
+&#125;
+</code></pre>
+<h4 id="按学校名称的聚类查找，实现按赛事类别排序"><a href="#按学校名称的聚类查找，实现按赛事类别排序" class="headerlink" title="按学校名称的聚类查找，实现按赛事类别排序"></a>按学校名称的聚类查找，实现按赛事类别排序</h4><p>基于递归的并归排序算法实现，sort方法调用的并归排序，对ArrayList的内部对象进行重新排序</p>
+<p>由于赛事类别是字符串类型无法直接比较大小，因此需要实现比较器接口实现字典序比较</p>
+<pre><code class="java">package com.os467.management.dataStruct;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+
+public class MyArrayList&lt;E&gt; &#123;
+
+    private ArrayList&lt;E&gt; arrayList;
+
+    private Comparator comparator;
+
+    public MyArrayList() &#123;
+        this.arrayList = new ArrayList&lt;&gt;();
+    &#125;
+
+    public void add(E e)&#123;
+        arrayList.add(e);
+    &#125;
+
+    public E get(Integer i)&#123;
+        return arrayList.get(i);
+    &#125;
+
+    /**
+     * 使用二路归并排序，最差与最好时间复杂度相对较好且相同 O(n*log_2(n))，比较稳定
+     * @param comparator
+     */
+    public void sort(Comparator&lt;E&gt; comparator) &#123;
+        this.comparator = comparator;
+        Object[] r = new Object[arrayList.size()];
+        for (int i = 0; i &lt; arrayList.size(); i++) &#123;
+            r[i] = arrayList.get(i);
+        &#125;
+        Object[] r1 = new Object[arrayList.size()];
+
+        //排序算法
+        mergeSort(r,r1,0,r.length-1);
+
+
+        for (int i = 0; i &lt; r.length; i++) &#123;
+            arrayList.set(i, (E) r[i]);
+        &#125;
     &#125;
 
 
+    /**
+     * 递归二路归并
+     * @param r
+     * @param r1
+     * @param left
+     * @param right
+     */
+    private void mergeSort(Object[] r, Object[] r1, int left, int right) &#123;
+        if (left &lt; right)&#123;
+            int mid = (left + right) /2;
+            mergeSort(r,r1,left,mid);
+            mergeSort(r,r1,mid+1,right);
+            merge(r,r1,left,mid,right);
+            for (int j = left; j &lt; right; j++) &#123;
+                r[j] = r1[j];
+            &#125;
+        &#125;
+    &#125;
+
+    /**
+     * 将相邻两段归并
+     * @param r
+     * @param r1
+     * @param s
+     * @param m
+     * @param t
+     */
+    private void merge(Object[] r, Object[] r1, int s, int m, int t) &#123;
+        //r[s~m]
+        int i = s, j = m + 1, k = s;
+        while (i &lt;= m &amp;&amp; j &lt;= t)&#123;
+            //r[i] &lt;= r[j]
+            if (comparator.compare(r[i],r[j]) != 1)&#123;
+                r1[k++] = r[i++];
+            &#125;else &#123;
+                r1[k++] = r[j++];
+            &#125;
+        &#125;
+        while (i &lt;= m)&#123;
+            r1[k++] = r[i++];
+        &#125;
+        while (j &lt;= t)&#123;
+            r1[k++] = r[j++];
+        &#125;
+    &#125;
+
+    public int size() &#123;
+        return arrayList.size();
+    &#125;
 &#125;
 </code></pre>
-<p><strong>反射</strong></p>
-<ul>
-<li>通过反射机制访问对象的某个属性</li>
-<li>通过反射机制调用对象的某个方法</li>
-<li>通过反射机制调用某个构造方法实例化对象</li>
-<li>通过反射机制获取父类及父类型接口</li>
-</ul>
-<p>获取父类</p>
-<pre><code class="java">Class superclass = aClass.getSuperclass();
+<h4 id="提供一个字典序比较接口"><a href="#提供一个字典序比较接口" class="headerlink" title="提供一个字典序比较接口"></a>提供一个字典序比较接口</h4><pre><code class="java">teams.sort(new Comparator&lt;Team&gt;() &#123;
+    @Override
+    public int compare(Team o1, Team o2) &#123;
+        char[] e1 = new char[0];
+        char[] e2 = new char[0];
+        e1 = o1.getEventCategory().toCharArray();
+        e2 = o2.getEventCategory().toCharArray();
+        int len = e1.length;
+        int ret = -1;
+        if (e1.length &gt; e2.length)&#123;
+            len = e2.length;
+            ret = 1;
+        &#125;
+        for (int i = 0; i &lt; len; i++) &#123;
+            int i1 = e1[i];
+            int i2 = e2[i];
+            if (i1 == i2)&#123;
+                continue;
+            &#125;else if (i1 &gt; i2)&#123;
+                return 1;
+            &#125;else &#123;
+                return -1;
+            &#125;
+        &#125;
+        if (e1.length == e2.length)&#123;
+            return 0;
+        &#125;
+        return ret;
+    &#125;
+&#125;);
 </code></pre>
-<p>获取实现的接口</p>
-<pre><code class="java">Class[] interfaces = aClass.getInterfaces();
-</code></pre>
-<h2 id="如何通过反射机制来创建一个类的实例"><a href="#如何通过反射机制来创建一个类的实例" class="headerlink" title="如何通过反射机制来创建一个类的实例"></a>如何通过反射机制来创建一个类的实例</h2><p><strong>无参构造实例</strong></p>
-<p><strong><code>newInstance()</code></strong></p>
-<pre><code class="java"> //获取字节码对象
-Class aClass = Student.class;
-
-//如何通过反射机制来创建一个类的实例
-//默认情况下调用的是无参构造
-Object o = aClass.newInstance();
-
-if (o instanceof Student)&#123;
-
-    Student student = (Student)o;
-
-    System.out.println(student);
-
-&#125;
-</code></pre>
-<p><strong>有参构造实例</strong></p>
-<p><code>getDeclaredConstructor()</code>	不传参数就是获取无参构造实例</p>
-<pre><code class="java">public static void main(String[] args) throws Exception &#123;
-
-    //创建字节码对象
-    Class aClass = User.class;
-
-    //获取构造字节码对象
-    Constructor constructor = aClass.getDeclaredConstructor(String.class,String.class);
-
-    Object obj02 = constructor.newInstance(&quot;root&quot;, &quot;123456&quot;);
-
-    System.out.println(obj02);
-    
-&#125;
-</code></pre>
-<h3 id="如何通过反射来给属性赋值"><a href="#如何通过反射来给属性赋值" class="headerlink" title="如何通过反射来给属性赋值"></a>如何通过反射来给属性赋值</h3><pre><code class="java">//获取属性，返回属性字节码对象
-Field addressFiled = aClass.getDeclaredField(&quot;address&quot;);
-
-//给属性进行一个赋值操作
-//Object obj 属性所在类的实例
-//Object value 具体要赋的值
-addressFiled.set(o,&quot;南京市&quot;);
-
-//通过反射获取属性具体的值
-System.out.println(addressFiled.get(o));
-
-System.out.println(o);
-</code></pre>
-<h3 id="如何通过反射获取属性值"><a href="#如何通过反射获取属性值" class="headerlink" title="如何通过反射获取属性值"></a>如何通过反射获取属性值</h3><p><strong>方法一</strong>：</p>
-<p>先打破封装，再通过set方法给属性赋值</p>
-<pre><code class="java">//获取属性字节码对象
-Field declaredFieldName = aClass.getDeclaredField(&quot;name&quot;);
-
-//打破封装
-declaredFieldName.setAccessible(true);
-
-//通过反射机制来创建一个类的实例
-//采用的无参构造创建的实例
-Object o = aClass.newInstance();
-
-//调用set方法给属性赋值
-declaredFieldName.set(o,&quot;张三&quot;);
-
-System.out.println(o);
-</code></pre>
-<p><strong>方法二</strong>：</p>
-<p>通过反射调用这个<strong>属性</strong>所对应的set方法给属性赋值</p>
-<h2 id="通过反射调用类中的方法"><a href="#通过反射调用类中的方法" class="headerlink" title="通过反射调用类中的方法"></a>通过反射调用类中的方法</h2><pre><code class="java">public static void main(String[] args) throws Exception &#123;
-
-    //获取字节码对象
-    Class userClass = User.class;
-
-    //获取方法字节码对象
-    Method declaredMethod = userClass.getDeclaredMethod(&quot;login&quot;,String.class,String.class);
-
-    //通过反射创建实例
-    Object o = userClass.newInstance();
-
-    //调用方法
-    //通过反射调用方法的方法
-    //Object var1 当前方法所在类的实例
-    //Object... var2 你需要传的参数
-    Object invoke = declaredMethod.invoke(o, &quot;zs001&quot;, &quot;123456&quot;);
-
-    System.out.println(invoke);
-
-
-&#125;
-</code></pre>
-<p><strong>注意</strong>：操作私有的方法需要打破封装</p>
-<pre><code class="java">declaredMethod.setAccessible(true);
-</code></pre>
-<h4 id="反射在以后的用途"><a href="#反射在以后的用途" class="headerlink" title="反射在以后的用途"></a>反射在以后的用途</h4><p>反射最重要的用途就是开发各种通用框架，比如在spring中，我们将所有的类Bean交给spring容器管理，无论是XML配置Bean还是注解配置，当我们从容器中获取Bean来依赖注入时，容器会读取配置，而配置中给的就是类的信息，spring根据这些信息，需要创建那些Bean，spring就动态的创建这些类，还有在struts2的struts.xml中配置action，也是通过反射调用的action</p>
+<blockquote>
+<p>此算法实现了字典序字符串比较</p>
+</blockquote>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1637,12 +1817,12 @@ System.out.println(o);
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Reflect</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">2.5k</span></p>
+    <p><span class="copy-title">文章标题:</span>数据结构课设</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">3.5k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-07-13, 14:40:18</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-05, 00:09:07</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/07/13/Reflect/" title="Reflect">https://os467.github.io/2022/07/13/Reflect/</a>
+    <p><span class="copy-title">发布时间:</span>2023-05-22, 23:15:11</p>
+    <p><span class="copy-title">最后更新:</span>2023-05-22, 23:16:00</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/05/22/%E8%B5%9B%E4%BA%8B%E7%B3%BB%E7%BB%9F/" title="数据结构课设">https://os467.github.io/2023/05/22/%E8%B5%9B%E4%BA%8B%E7%B3%BB%E7%BB%9F/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
