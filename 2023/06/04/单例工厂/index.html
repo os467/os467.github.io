@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>算法2 | Tly的博客</title>
+  <title>单例工厂 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="算法2 | Tly的博客">
+  <meta name="description" content="单例工厂 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="单例工厂单例模式下的类在内存中应当只存在一个实例，我们可以自己通过反射机制创建一个单例工厂来创建我们需要的单例对象。在我们需要的时候取出即可。 以下是一个创建单例工厂的简单思路。 通过注解标注单例，通过注解自动注入单例。 被@SingletonObject标注的类将被工厂托管，并创建单例。 被托管的类中若有被@SingletonInjection标注的属性，将会自动注入单例。 需要解决的依赖问题有">
 <meta property="og:type" content="article">
@@ -1146,9 +1146,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-算法2" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-单例工厂" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">算法2</h1>
+        <h1 class="article-title">单例工厂</h1>
     
     <div class="article-meta">
         
@@ -1158,7 +1158,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="算法">算法</a>
+            <a  data-rel="其它">其它</a>
             
         </span>
         
@@ -1166,12 +1166,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-05-26 23:13:54'>2023-03-09 19:43</time>
+            发布时间 : <time class="date" title='最后更新: 2023-06-04 22:53:05'>2023-06-04 22:52</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:3.9k</span>
+        <span>字数:968</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1190,7 +1190,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E4%B8%80-%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B9%B3%E8%A1%A1%E7%9A%84%E6%9C%80%E5%B0%91%E5%88%A0%E9%99%A4%E6%AC%A1%E6%95%B0"><span class="toc-text">题目十一  使字符串平衡的最少删除次数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E4%BA%8C-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2"><span class="toc-text">题目十二  最长回文子串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E4%B8%89-%E7%A4%BC%E7%89%A9%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC"><span class="toc-text">题目十三 礼物的最大价值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E5%9B%9B-%E5%BE%97%E5%88%B0-K-%E4%B8%AA%E9%BB%91%E5%9D%97%E7%9A%84%E6%9C%80%E5%B0%91%E6%B6%82%E8%89%B2%E6%AC%A1%E6%95%B0"><span class="toc-text">题目十四  得到 K 个黑块的最少涂色次数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E4%BA%94-%E4%BD%BF%E6%95%B0%E7%BB%84%E5%92%8C%E8%83%BD%E8%A2%AB-P-%E6%95%B4%E9%99%A4"><span class="toc-text">题目十五 使数组和能被 P 整除</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E5%85%AD-N-%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2"><span class="toc-text">题目十六 N 字形变换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E4%B8%83-%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC"><span class="toc-text">题目十七 整数反转</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E5%85%AB-%E8%B5%A2%E5%BE%97%E6%AF%94%E8%B5%9B%E9%9C%80%E8%A6%81%E7%9A%84%E6%9C%80%E5%B0%91%E8%AE%AD%E7%BB%83%E6%97%B6%E9%95%BF"><span class="toc-text">题目十八 赢得比赛需要的最少训练时长</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8D%81%E4%B9%9D-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80"><span class="toc-text">题目十九  最长公共前缀</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E4%BA%8C%E5%8D%81-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0-atoi"><span class="toc-text">题目二十  字符串转换整数 (atoi)</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E5%B7%A5%E5%8E%82"><span class="toc-text">单例工厂</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1206,486 +1206,141 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="题目十一-使字符串平衡的最少删除次数"><a href="#题目十一-使字符串平衡的最少删除次数" class="headerlink" title="题目十一  使字符串平衡的最少删除次数"></a>题目十一  使字符串平衡的最少删除次数</h1><p>给你一个字符串 s ，它仅包含字符 ‘a’ 和 ‘b’ 。</p>
-<p>你可以删除 s 中任意数目的字符，使得 s 平衡 。当不存在下标对 (i,j) 满足 i &lt; j ，且 s[i] &#x3D; ‘b’ 的同时 s[j]&#x3D; ‘a’ ，此时认为 s 是 平衡 的。</p>
-<p>请你返回使 s 平衡 的 最少 删除次数。</p>
-<pre><code class="java">class Solution12 &#123;
-    public int minimumDeletions(String s) &#123;
+        <h1 id="单例工厂"><a href="#单例工厂" class="headerlink" title="单例工厂"></a>单例工厂</h1><p>单例模式下的类在内存中应当只存在一个实例，我们可以自己通过反射机制创建一个单例工厂来创建我们需要的单例对象。在我们需要的时候取出即可。</p>
+<p>以下是一个创建单例工厂的简单思路。</p>
+<p>通过注解标注单例，通过注解自动注入单例。</p>
+<p>被@SingletonObject标注的类将被工厂托管，并创建单例。</p>
+<p>被托管的类中若有被@SingletonInjection标注的属性，将会自动注入单例。</p>
+<p>需要解决的依赖问题有如下几种：</p>
+<p>循环依赖： A依赖B，同时B依赖A</p>
+<p>依赖其本身：A依赖A</p>
+<p>单向依赖： A依赖C</p>
+<p><strong>下面的思路解决了以上三种场景的依赖模式</strong></p>
+<ul>
+<li>第一次扫描所有被@SingletonObject注解标注的类，生成类的半成品实例。</li>
+<li>首先半成品实例会去缓存中获取其需要的实例，若该实例尚未被创建，则需要为该实例注册一个需求清单，在需求清单中存放当前半成品类名。</li>
+<li>检查该实例是否存在需求清单，若存在，则需要从缓存中获取到需求清单上的半成品实例。为获取到的半成品实例装配此实例，然后从需求清单上移除此项，直到解决完清单所有需求。</li>
+<li>最后将当前半成品放入缓存中。</li>
+</ul>
+<p><strong>代码</strong></p>
+<pre><code class="java">package com.os467;
 
-        int t = 0;
 
-        int length = s.length();
+import com.os467.annotation.SingletonInjection;
+import com.os467.annotation.SingletonObject;
 
-        //统计a数量
-        for (int i = 0; i &lt; length; i++) &#123;
-            if (s.charAt(i) == &#39;a&#39;)&#123;
-                t++;
+import java.lang.reflect.Field;
+import java.util.*;
+
+/**
+ * The first scan of all classes annotated with the @SingletonObject annotation
+ * generates a half-finished instance of the class.
+ * 
+ * First the semi-finished instance goes to the cache to get the instance it needs,
+ * and if that instance has not been created yet, a requirement list is registered 
+ * for that instance.
+ * In the requirements list the current semi-finished class name is stored.
+ * 
+ * Check if the requirement list exists for the instance, and if so, 
+ * fetch the semi-finished instance from the cache to the requirement list.
+ * Assemble this instance for the obtained semi-finished instance and then 
+ * remove this item from the requirements list until all requirements 
+ * in the list have been resolved.
+ *
+ * Finally the current semi-finished product is placed in the cache.
+ *
+ */
+public class SingletonFactory &#123;
+
+    //First Scan produce all @Singleton object&#39;s half product
+    //half product register a list of the Objects that it needs but haven&#39;t create and put it to the map
+    //Product -&gt; List&lt;half Product&gt; event in the map
+    //if create the next Product ,we need check the list,give this product&#39;s instance reference to the needed Product on the list
+    //remove the Product -&gt; List&lt;half Product&gt; event in the map
+
+    //类扫描器
+    public static ClassScanner classScanner = new ClassScanner();
+
+    //产品缓存
+    private static Map productCache = new HashMap();
+
+    //引用清单
+    private static Map&lt;String,List&lt;String&gt;&gt; referenceMap = new HashMap();
+
+    public static void produce()&#123;
+        List&lt;String&gt; classNameList = classScanner.getClassNameList();
+        for (String productClassName : classNameList) &#123;
+            try &#123;
+                Class&lt;?&gt; aClass = Class.forName(productClassName);
+                SingletonObject singletonObject = aClass.getDeclaredAnnotation(SingletonObject.class);
+                if (singletonObject != null)&#123;
+                    try &#123;
+                        Object o = aClass.newInstance();
+                        //创建后放入缓存
+                        productCache.put(productClassName,o);
+                        //检查属性
+                        Field[] declaredFields = aClass.getDeclaredFields();
+                        for (Field declaredField : declaredFields) &#123;
+                            SingletonInjection singletonInjection = declaredField.getDeclaredAnnotation(SingletonInjection.class);
+                            if (singletonInjection != null)&#123;
+                                //去缓存中获取引用对象(全类名查找)
+                                String typeName = declaredField.getGenericType().getTypeName();
+                                Object need = productCache.get(typeName);
+                                if (need != null)&#123;
+                                    declaredField.setAccessible(true);
+                                    declaredField.set(o,need);
+                                &#125;else &#123;
+                                    //在引用清单中添加此类型的新引用对象全类名
+                                    List&lt;String&gt; referenceList = referenceMap.get(typeName);
+                                    if (referenceList == null)&#123;
+                                        referenceList = new ArrayList&lt;&gt;();
+                                    &#125;
+                                    referenceList.add(o.getClass().getName());
+                                    //返回缓存
+                                    referenceMap.put(typeName,referenceList);
+                                &#125;
+                            &#125;
+                        &#125;
+                        //检查被引用的清单
+                        List&lt;String&gt; referenceList = referenceMap.get(productClassName);
+                        if (referenceList != null)&#123;
+                            Iterator&lt;String&gt; iterator = referenceList.iterator();
+                            while (iterator.hasNext()) &#123;
+                                String referenceClassName = iterator.next();
+                                //遍历引用清单，去缓存中取引用对象
+                                Object referenceProduct = productCache.get(referenceClassName);
+                                //遍历引用对象属性
+                                Field[] declaredField = referenceProduct.getClass().getDeclaredFields();
+                                for (Field field : declaredField) &#123;
+                                    //此属性与当前对象匹配
+                                    if (field.getGenericType().getTypeName().equals(productClassName))&#123;
+                                        field.setAccessible(true);
+                                        field.set(referenceProduct,o);
+                                        //清除该需求项
+                                        iterator.remove();
+                                        break;
+                                    &#125;
+                                &#125;
+                            &#125;
+                        &#125;
+                    &#125; catch (InstantiationException e) &#123;
+                        e.printStackTrace();
+                    &#125; catch (IllegalAccessException e) &#123;
+                        e.printStackTrace();
+                    &#125;
+                &#125;
+            &#125; catch (ClassNotFoundException e) &#123;
+                e.printStackTrace();
             &#125;
         &#125;
-        int ans = t;
+    &#125;
 
-        for (int i = 0; i &lt; length; i++) &#123;
-            if (s.charAt(i) == &#39;a&#39;)&#123;
-                t--;
-            &#125;else &#123;
-                t++;
-            &#125;
-            ans =Math.min(ans,t);
-        &#125;
-        return ans;
+
+    public static &lt;T&gt;T getSingletonObject(Class&lt;T&gt; aClass) &#123;
+        return (T)productCache.get(aClass.getName());
     &#125;
 &#125;
 </code></pre>
-<blockquote>
-<p>使用<strong>前后缀分解法</strong>，由于结果必然是以a|b为分界线划分为前后缀，第一次遍历统计完s中a的值，当循环开始，单词作为后缀就需要删除所有的a，也就是删除值，划分后移一位，则判断新出现的字母是a还是b，如果是a则作为前缀，减少需要删除的值，如果出现的是b则说明b出现在前缀中，需要增加一次删除次数，直到遍历完字符串，记录过程中最小删除值即可</p>
-</blockquote>
-<h1 id="题目十二-最长回文子串"><a href="#题目十二-最长回文子串" class="headerlink" title="题目十二  最长回文子串"></a>题目十二  最长回文子串</h1><p>给你一个字符串 <code>s</code>，找到 <code>s</code> 中最长的回文子串。</p>
-<p>如果字符串的反序与原始字符串相同，则该字符串称为回文字符串。</p>
-<pre><code class="java">class Solution13 &#123;
-    public String longestPalindrome(String s) &#123;
-
-        int l = s.length();
-        String ans = &quot;&quot;;
-        int n = 0;
-
-        boolean b = true;
-
-        //中心扩散法
-        if (l == 1)&#123;
-            return s;
-        &#125;
-
-        //复杂度为n
-        for (int i = 0; i &lt; l; i=(b)?i:++i,b=!b) &#123;
-
-            String ss = &quot;&quot;+s.charAt(i);
-            int nn = 1;
-            int p1 = i-1,p2 = i+1;
-
-            if (b)&#123;
-                ss = &quot;&quot;;
-                nn = 0;
-                p1 = i;
-                p2 = i+1;
-            &#125;
-
-            for (; p1 &gt;=0 &amp;&amp; p2 &lt; l ; p1--,p2++) &#123;
-                char c1 = s.charAt(p1);
-                char c2 = s.charAt(p2);
-                if (c1 == c2)&#123;
-                    ss = c1 + ss + c2;
-                    nn+=2;
-                &#125;else &#123;
-                    break;
-                &#125;
-            &#125;
-
-            //更新记录
-            if (nn &gt; n)&#123;
-                ans = ss;
-                n = nn;
-            &#125;
-
-        &#125;
-
-        return ans;
-    &#125;
-&#125;
-</code></pre>
-<blockquote>
-<p>使用<strong>中心扩散法</strong>的思想，回文串可能为奇数串也可能为偶数串，因此有从两个字母之间开始扩散和某个字母两边的字母开始扩散两种，如果是长度为1的字符串则默认回文返回其本身，时间复杂度因为O(n^2)</p>
-</blockquote>
-<h1 id="题目十三-礼物的最大价值"><a href="#题目十三-礼物的最大价值" class="headerlink" title="题目十三 礼物的最大价值"></a>题目十三 礼物的最大价值</h1><p>在一个 m*n 的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向右或者向下移动一格、直到到达棋盘的右下角。给定一个棋盘及其上面的礼物的价值，请计算你最多能拿到多少价值的礼物？</p>
-<pre><code class="java">class Solution15 &#123;
-    public int maxValue(int[][] grid) &#123;
-
-        int m = grid.length;
-
-        int n = grid[0].length;
-
-        int[][] v = new int[m][n];
-
-        for (int i = 0; i &lt; m; i++) &#123;
-            for (int j = 0; j &lt; n; j++) &#123;
-                if (i == 0 &amp;&amp; j == 0)&#123;
-                    v[i][j] = grid[0][0];
-                    continue;
-                &#125;
-
-                //边界条件只能通过单方向携带价值
-                if (i == 0)&#123;
-                    v[i][j] = grid[i][j] + v[i][j-1];
-                    continue;
-                &#125;
-                if (j == 0)&#123;
-                    v[i][j] = grid[i][j] + v[i-1][j];
-                    continue;
-                &#125;
-
-                //选择上一步的携带价值的来源,附加本次携带价值
-                v[i][j] = grid[i][j] + Math.max(v[i][j-1],v[i-1][j]);
-            &#125;
-        &#125;
-
-        return v[m-1][n-1];
-    &#125;
-&#125;
-</code></pre>
-<blockquote>
-<p>使用动态规划思想可知，当前价值来源只能是i-1 或者是 j-1，因此我们只需要累计整个表中的价值，通过比较i-1，j-1价值的大小来选择累加到当前价值上，使用一张二位数组表来存放累计价值，通过m*n次循环遍历二位数组，当遍历到末尾时即可得到累计的最大价值的值</p>
-</blockquote>
-<h1 id="题目十四-得到-K-个黑块的最少涂色次数"><a href="#题目十四-得到-K-个黑块的最少涂色次数" class="headerlink" title="题目十四  得到 K 个黑块的最少涂色次数"></a>题目十四  得到 K 个黑块的最少涂色次数</h1><p>给你一个长度为 n 下标从 0 开始的字符串 blocks ，blocks[i] 要么是 ‘W’ 要么是 ‘B’ ，表示第 i 块的颜色。字符 ‘W’ 和 ‘B’ 分别表示白色和黑色。</p>
-<p>给你一个整数 k ，表示想要 连续 黑色块的数目。</p>
-<p>每一次操作中，你可以选择一个白色块将它 涂成 黑色块。</p>
-<p>请你返回至少出现 一次 连续 k 个黑色块的 最少 操作次数。</p>
-<pre><code class="java">class Solution16 &#123;
-    public int minimumRecolors(String blocks, int k) &#123;
-
-        //使用滑块法，滑块为k长度，统计每次滑块中黑色块的数量，要求记录滑块中黑色块数量最多的情况
-        int p1 = 0,p2 = k-1;
-
-        int length = blocks.length();
-
-        //k个中黑色块最多数量
-        int bN = 0;
-
-        //统计前k个值黑色数量
-        for (int i = 0; i &lt; k; i++) &#123;
-            char c = blocks.charAt(i);
-            if (c == &#39;B&#39;)&#123;
-                bN++;
-            &#125;
-        &#125;
-
-        int t = bN;
-
-        //向后滑动
-        for (;p2 &lt; length-1;p1++,p2++)&#123;
-            //左滑块移动时为黑则数量减少
-            if (blocks.charAt(p1) == &#39;B&#39;)&#123;
-                t--;
-            &#125;
-
-            //右滑块移动后为黑则数量增加
-            if (blocks.charAt(p2+1) == &#39;B&#39;)&#123;
-                t++;
-            &#125;
-
-            if (t &gt; bN)&#123;
-                bN = t;
-            &#125;
-        &#125;
-
-        return k - bN;
-    &#125;
-&#125;
-</code></pre>
-<blockquote>
-<p>使用<strong>滑动窗口法</strong>，由于我们需要的结果为k个连续B字符串，因此只需要使用一个长度为k的滑块遍历字符串，当滑块中的B的数量最多时，则表明需要操作的次数越少。因此给出方案，先统计前k个字符串B的数量，左指针指向滑块首，右指针指向滑块右，如果左指针为B则表明下次移动会减少B的数量，如果右指针+1为B则表明会增加B的数量，统计滑块滑动过程中b数量的最大值，返回k-b最大值即为需要操作的最小次数</p>
-</blockquote>
-<h1 id="题目十五-使数组和能被-P-整除"><a href="#题目十五-使数组和能被-P-整除" class="headerlink" title="题目十五 使数组和能被 P 整除"></a>题目十五 使数组和能被 P 整除</h1><p>给你一个正整数数组 nums，请你移除 最短 子数组（可以为 空），使得剩余元素的 和 能被 p 整除。 不允许 将整个数组都移除。</p>
-<p>请你返回你需要移除的最短子数组的长度，如果无法满足题目要求，返回 -1 。</p>
-<p>子数组 定义为原数组中连续的一组元素。</p>
-<pre><code class="java">class Solution17 &#123;
-    public int minSubarray(int[] nums, int p) &#123;
-
-        int p1,p2;
-
-        //先查看总和能否被整除，然后尝试滑块内数的和,长度一个数的和,二个数的和，三个数的和...，当总和减去滑块内的和满足能被p整除即可
-
-        long nSum = 0;
-
-        for (int i = 0; i &lt; nums.length; i++) &#123;
-            nSum += nums[i];
-        &#125;
-
-        if (nSum &lt; p)&#123;
-            return -1;
-        &#125;
-
-        //长度为0
-        if (nSum % p == 0)&#123;
-            return 0;
-        &#125;
-
-        //长度为一
-        for (int i = 0; i &lt; nums.length; i++) &#123;
-            if ((nSum - nums[i]) % p == 0)&#123;
-                return 1;
-            &#125;
-        &#125;
-
-        int ll = nums.length - 1;
-
-        //k为右边界
-        for (int k = 0; k &lt; ll; k++) &#123;
-
-            //滑块内和
-            long sum = 0;
-            //先统计0到k区间滑块内的和
-            for (int i = 0; i &lt;= k; i++) &#123;
-                sum+=nums[i];
-            &#125;
-            if ((nSum - sum) % p == 0)&#123;
-                return k + 1;
-            &#125;
-
-            //滑块向后移动
-            for(p1 = 1,p2 = 1+k;p2 &lt; nums.length;p1++,p2++)&#123;
-                //统计相对上一步更新的被删除的和
-                sum -= nums[p1 - 1];
-                sum += nums[p2];
-                if ((nSum - sum) % p == 0)&#123;
-                    return k + 1;
-                &#125;
-            &#125;
-        &#125;
-
-        return -1;
-    &#125;
-&#125;
-</code></pre>
-<blockquote>
-<p>滑块法：先查看总和能否被整除，然后尝试滑块内数的和,长度一个数的和,二个数的和，三个数的和…，当总和减去滑块内的和满足能被p整除即可</p>
-</blockquote>
-<h1 id="题目十六-N-字形变换"><a href="#题目十六-N-字形变换" class="headerlink" title="题目十六 N 字形变换"></a>题目十六 N 字形变换</h1><p>将一个给定字符串 <code>s</code> 根据给定的行数 <code>numRows</code> ，以从上往下、从左到右进行 Z 字形排列。</p>
-<pre><code class="java">class Solution18 &#123;
-    public String convert(String s, int numRows) &#123;
-        //单个字符或指定为一行则直接返回
-        if (s.length() == 1 || numRows == 1)&#123;
-            return s;
-        &#125;
-
-        StringBuffer[] ms = new StringBuffer[numRows];
-
-        //初始化
-        for (int i = 0; i &lt; numRows; i++) &#123;
-            ms[i] = new StringBuffer();
-        &#125;
-
-        int length = s.length();
-        int k = 1,up = 1;
-        ms[0].append(s.charAt(0));
-        for (int i = 1; i &lt; length; i++) &#123;
-            char c = s.charAt(i);
-            //向下移动填入
-            ms[k].append(c);
-
-            //反向索引
-            if (k == numRows - 1 || k == 0) &#123;
-                up = -up;
-            &#125;
-
-            k+=up;
-        &#125;
-
-        StringBuffer ss = new StringBuffer();
-
-        for (StringBuffer m : ms) &#123;
-            ss.append(m);
-        &#125;
-
-        return ss.toString();
-    &#125;
-&#125;
-</code></pre>
-<blockquote>
-<p>题目的关键在于使用合理的数据结构，由于变换后的格式符合变长的二维矩阵，因此我们使用StringBuffer来构建答案，找到移动的规律，也就是当遇到0或numRows-1时才进行移动方向变换</p>
-</blockquote>
-<h1 id="题目十七-整数反转"><a href="#题目十七-整数反转" class="headerlink" title="题目十七 整数反转"></a>题目十七 整数反转</h1><p>给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。</p>
-<p>如果反转后整数超过 32 位的有符号整数的范围 [−231,  231 − 1] ，就返回 0。</p>
-<p>假设环境不允许存储 64 位整数（有符号或无符号）。</p>
-<pre><code class="java">class Solution &#123;
-    public int reverse(int x) &#123;
-        int ans = 0;
-
-        if (x &lt; 10 &amp;&amp; x&gt; -10)&#123;
-            return x;
-        &#125;
-
-        while (x != 0)&#123;
-            //取末尾数字
-            int i = x % 10;
-            if (ans &gt; Integer.MAX_VALUE/10 || i &gt; 7 &amp;&amp; ans == Integer.MAX_VALUE/10)&#123;
-                return 0;
-            &#125;
-            if (ans &lt; Integer.MIN_VALUE/10 || i &lt; -8 &amp;&amp; ans == Integer.MIN_VALUE/10)&#123;
-                return 0;
-            &#125;
-            ans = ans *10 + i;
-            x/=10;
-        &#125;
-
-        return ans;
-    &#125;
-&#125;
-</code></pre>
-<blockquote>
-<p>本题的算法为：通过mod运算取末尾，添加到ans，ans乘10进位，通过div运算去x最高位，当x为0时结束循环</p>
-<p>因为条件限制，还需要在大于2^31-1 和小于 -2^31的答案进行限制，由于int类型存储数量限制，需要进行提前判断</p>
-</blockquote>
-<h1 id="题目十八-赢得比赛需要的最少训练时长"><a href="#题目十八-赢得比赛需要的最少训练时长" class="headerlink" title="题目十八 赢得比赛需要的最少训练时长"></a>题目十八 赢得比赛需要的最少训练时长</h1><p>你正在参加一场比赛，给你两个 正 整数 initialEnergy 和 initialExperience 分别表示你的初始精力和初始经验。</p>
-<p>另给你两个下标从 0 开始的整数数组 energy 和 experience，长度均为 n 。</p>
-<p>你将会 依次 对上 n 个对手。第 i 个对手的精力和经验分别用 energy[i] 和 experience[i] 表示。当你对上对手时，需要在经验和精力上都 严格 超过对手才能击败他们，然后在可能的情况下继续对上下一个对手。</p>
-<p>击败第 i 个对手会使你的经验 增加 experience[i]，但会将你的精力 减少  energy[i] 。</p>
-<p>在开始比赛前，你可以训练几个小时。每训练一个小时，你可以选择将增加经验增加 1 或者 将精力增加 1 。</p>
-<p>返回击败全部 n 个对手需要训练的 最少 小时数目。</p>
-<pre><code class="java">class Solution20 &#123;
-    public int minNumberOfHours(int initialEnergy, int initialExperience, int[] energy, int[] experience) &#123;
-
-        //末状态体力一定为1最节约时间，由1开始逆推即可
-
-        //经验从第一条开始，计算需要附加的值即可
-
-        int tL = 1;
-
-        for (int i = energy.length-1; i &gt;=0 ; i--) &#123;
-            tL += energy[i];
-        &#125;
-
-        int exp = 0;
-
-        int nowExp = 0;
-
-        for (int i = 0; i &lt; experience.length; i++) &#123;
-
-            if (nowExp &gt; experience[i])&#123;
-                //直接加上i的经验
-                nowExp += experience[i];
-            &#125;else &#123;
-                //需要额外携带的经验
-                exp += experience[i] + 1 - nowExp;
-                //当前经验正好变为比i经验多1再加上i的经验
-                nowExp = 2 * experience[i] + 1;
-            &#125;
-
-        &#125;
-
-        int ans = 0;
-
-        ans += initialEnergy &gt;= tL ? 0 : tL - initialEnergy;
-        ans += initialExperience &gt;= exp ? 0 : exp - initialExperience;
-        return ans;
-    &#125;
-&#125;
-</code></pre>
-<blockquote>
-<p>本题关键在于从结果逆推即可，体力只需要想到最后一定是正好用完只剩1时，即最后一次恰好大于对手体力值，一开始训练的时间最少。</p>
-<p>经验则也从恰好大于1的角度考虑，只需要在不足时才进行累加，也就是计算一开始需要额外附带多少经验</p>
-</blockquote>
-<h1 id="题目十九-最长公共前缀"><a href="#题目十九-最长公共前缀" class="headerlink" title="题目十九  最长公共前缀"></a>题目十九  最长公共前缀</h1><p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
-<p>如果不存在公共前缀，返回空字符串 <code>&quot;&quot;</code>。</p>
-<pre><code class="java">class Solution &#123;
-    public String longestCommonPrefix(String[] strs) &#123;
-
-
-        String ans = strs[0];
-
-        if(strs.length==1)&#123;return ans;&#125;
-
-        int end =strs[0].length();
-
-        for(int i=1;i&lt;strs.length;i++)&#123;
-
-            boolean s= true;
-
-            int a =strs[i].length();
-            int b=end;
-
-            //依次与后续字符串比较
-            for(int j=0;j&lt;a&amp;&amp;j&lt;b;j++)&#123;
-
-                if(ans.charAt(j) != strs[i].charAt(j))&#123;
-                    s=false;
-                    end=j;
-                    break;
-                &#125;
-            &#125;
-
-            if(s)&#123;
-                if(b&gt;a)&#123;ans=strs[i];end=a;&#125;
-            &#125;
-
-
-        &#125;
-
-        ans=ans.substring(0,end);
-
-        return ans;
-
-    &#125;
-&#125;
-</code></pre>
-<blockquote>
-<p>选取第一个字符串为比较字符串，与后面的字符串不断取交即可，每次更新新的公共部分长度，用一个值end来维护即可</p>
-</blockquote>
-<h1 id="题目二十-字符串转换整数-atoi"><a href="#题目二十-字符串转换整数-atoi" class="headerlink" title="题目二十  字符串转换整数 (atoi)"></a>题目二十  字符串转换整数 (atoi)</h1><p>请你来实现一个 myAtoi(string s) 函数，使其能将字符串转换成一个 32 位有符号整数（类似 C&#x2F;C++ 中的 atoi 函数）。</p>
-<p>函数 myAtoi(string s) 的算法如下：</p>
-<p>读入字符串并丢弃无用的前导空格<br>检查下一个字符（假设还未到字符末尾）为正还是负号，读取该字符（如果有）。 确定最终结果是负数还是正数。 如果两者都不存在，则假定结果为正。<br>读入下一个字符，直到到达下一个非数字字符或到达输入的结尾。字符串的其余部分将被忽略。<br>将前面步骤读入的这些数字转换为整数（即，”123” -&gt; 123， “0032” -&gt; 32）。如果没有读入数字，则整数为 0 。必要时更改符号（从步骤 2 开始）。<br>如果整数数超过 32 位有符号整数范围 [−231,  231 − 1] ，需要截断这个整数，使其保持在这个范围内。具体来说，小于 −231 的整数应该被固定为 −231 ，大于 231 − 1 的整数应该被固定为 231 − 1 。<br>返回整数作为最终结果。<br>注意：</p>
-<p>本题中的空白字符只包括空格字符 ‘ ‘ 。<br>除前导空格或数字后的其余字符串外，请勿忽略 任何其他字符。</p>
-<pre><code class="java">class Solution &#123;
-    public int myAtoi(String s) &#123;
-
-        int lZ = -1;
-        int k =0;
-        int max =Integer.MAX_VALUE;
-        int min =Integer.MIN_VALUE;
-        int sN=-1;
-
-        //记录前置空格
-        for(int i =0;i&lt;s.length();i++)&#123;
-            char c = s.charAt(i);
-            if(c==&#39; &#39;)&#123;
-                sN++;
-            &#125;else&#123;break;&#125;
-        &#125;
-
-        for(int i =sN+1;i&lt;s.length();i++)&#123;
-
-            char c = s.charAt(i);
-            if(c&gt;=&#39;0&#39;&amp;&amp;c&lt;=&#39;9&#39;)&#123;
-                if(lZ==-1)&#123;
-                    lZ=0;
-                &#125;
-                if(k &gt; max/10 || k == max/10 &amp;&amp; c &gt;&#39;7&#39;)&#123;
-                    k = max;break;
-                &#125;
-                if(k &lt; min /10 || k== min/10&amp;&amp; c &gt; &#39;8&#39;)&#123;
-                    k = min;break;
-                &#125;
-                //1判断为负数，其它默认为正
-                if(lZ==1)&#123;
-                    k*=10;
-                    k-=Character.getNumericValue(c);
-                &#125;else&#123;
-                    k*=10; k+=Character.getNumericValue(c);
-                &#125;
-            &#125;else if(c == &#39;-&#39;)&#123;
-                //再次遇到符号位则退出循环
-                if(lZ!=-1)&#123;
-                    break;
-                &#125;else&#123;
-                    lZ=1;
-                &#125;
-            &#125;else if(c== &#39;+&#39;)&#123;
-                //再次遇到符号位则退出循环
-                if(lZ!=-1)&#123;
-                    break;
-                &#125;else&#123;
-                    lZ=0;
-                &#125;
-            &#125;else&#123;break;&#125;//其它符号退出循环
-        &#125;
-
-        return k;
-    &#125;
-&#125;
-</code></pre>
-<blockquote>
-<p>先用一个计数器<strong>sN</strong>来过滤空格，从sN+1开始判断符号位，如果存在符号位则用一个int值<strong>lZ</strong>来维护正负(0&#x2F;1)，如果无符号为则lZ值为-1，每次将数字字符转换为整型值累加到k上并且k进位，判断是否满足取值边界。</p>
-<p>如果第一次遇到符号位则更新符号标识<strong>lZ</strong>，否则退出循环，如果遇到其它非数字符号则也退出循环。</p>
-<p>无符号位则检查到数字时则默认符号位为正（0）</p>
-</blockquote>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1699,12 +1354,12 @@ window.onload = function(){
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>算法2</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">3.9k</span></p>
+    <p><span class="copy-title">文章标题:</span>单例工厂</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">968</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2023-03-09, 19:43:02</p>
-    <p><span class="copy-title">最后更新:</span>2023-05-26, 23:13:54</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/03/09/%E7%AE%97%E6%B3%952/" title="算法2">https://os467.github.io/2023/03/09/%E7%AE%97%E6%B3%952/</a>
+    <p><span class="copy-title">发布时间:</span>2023-06-04, 22:52:03</p>
+    <p><span class="copy-title">最后更新:</span>2023-06-04, 22:53:05</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/06/04/%E5%8D%95%E4%BE%8B%E5%B7%A5%E5%8E%82/" title="单例工厂">https://os467.github.io/2023/06/04/%E5%8D%95%E4%BE%8B%E5%B7%A5%E5%8E%82/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
