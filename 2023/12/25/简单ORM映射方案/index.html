@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>cookie和session | Tly的博客</title>
+  <title>简单ORM映射方案(JDBC) | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="cookie和session | Tly的博客">
+  <meta name="description" content="简单ORM映射方案(JDBC) | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="简单ORM映射方案(JDBC)代码package orm.factory;  import orm.annotation.TableColumn; import orm.handler.TableColumnGetter; import orm.handler.TableHandler;  import java.lang.reflect.Field; import java.lang.refle">
 <meta property="og:type" content="article">
@@ -1164,9 +1164,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-cookie和session" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-简单ORM映射方案" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">cookie和session</h1>
+        <h1 class="article-title">简单ORM映射方案(JDBC)</h1>
     
     <div class="article-meta">
         
@@ -1176,7 +1176,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="JAVASE基础">JAVASE基础</a>
+            <a  data-rel="数据库">数据库</a>
             
         </span>
         
@@ -1184,12 +1184,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-05 00:07:55'>2022-07-06 18:27</time>
+            发布时间 : <time class="date" title='最后更新: 2023-12-25 18:43:49'>2023-12-25 18:43</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2.3k</span>
+        <span>字数:3k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1208,7 +1208,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Cookie"><span class="toc-text">Cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E5%80%BC%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-text">Cookie值的修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85Cookie%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-text">封装Cookie工具类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">Cookie的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Cookie%E7%94%9F%E5%91%BD%E6%8E%A7%E5%88%B6"><span class="toc-text">Cookie生命控制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Session"><span class="toc-text">Session</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E5%9F%9F%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%8F%96"><span class="toc-text">Session域数据的存取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">Session生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Session%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%8E%A7%E5%88%B6"><span class="toc-text">Session生命周期控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEsession%E7%9A%84%E8%B6%85%E6%97%B6%E6%97%B6%E9%97%B4"><span class="toc-text">设置session的超时时间</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#session%E5%92%8Ccookie%E7%9A%84%E5%85%B3%E7%B3%BB%E5%92%8C%E5%8C%BA%E5%88%AB"><span class="toc-text">session和cookie的关系和区别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#session%E5%92%8Ccookie%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">session和cookie的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#session%E5%92%8Ccookie%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">session和cookie的区别</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E5%8D%95ORM%E6%98%A0%E5%B0%84%E6%96%B9%E6%A1%88-JDBC"><span class="toc-text">简单ORM映射方案(JDBC)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E6%88%90INSERT%EF%BC%8CUPDATE%E8%87%AA%E5%8A%A8%E7%BB%84%E8%A3%85"><span class="toc-text">集成INSERT，UPDATE自动组装</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1224,370 +1224,746 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><p>Cookie 是服务器通知客户端保存键值对的一种技术</p>
-<p>客户端</p>
-<p>有了Cookie后，每次请求都发送给服务器</p>
-<p>每个Cookie的大小不能超过4kb</p>
-<p>1.什么是cookie？</p>
-<p>​	cookie是客户端保存数据的一种技术，而且保存的方式是键值对形式</p>
-<p>2.如何去创建cookie，在客户端保存数据</p>
-<p>​	cookie这个对象是servlet的jar包给我们提供的，我们只需要去创建cookie，并且通知浏览器保存cookie就可了</p>
-<p>创建cookie对象</p>
-<p><code>Cookie cookie = new Cookie(&quot;key&quot;,&quot;value&quot;);</code></p>
-<p>通知浏览器保存cookie</p>
-<p><code>response.addCookie(cookie);</code></p>
-<p>3.cookie的生命周期</p>
-<p>​	cookie默认的生命周期是一个session级别的，是浏览器的开启到关闭</p>
-<p>服务器获取Cookie</p>
-<p>​	获取cookie方法</p>
-<p>​	<code>request.getCookies()</code></p>
-<pre><code class="java">package com.os467.cookie;
+        <h1 id="简单ORM映射方案-JDBC"><a href="#简单ORM映射方案-JDBC" class="headerlink" title="简单ORM映射方案(JDBC)"></a>简单ORM映射方案(JDBC)</h1><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="java">package orm.factory;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import orm.annotation.TableColumn;
+import orm.handler.TableColumnGetter;
+import orm.handler.TableHandler;
 
-public class CookieDemo01 extends HttpServlet &#123;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.sql.ResultSet;
+import java.util.*;
 
-    @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+public class TableObjectFactory &#123;
 
-        addCookie(request,response);
-        getCookies(request,response);
+    private static final String STRING = &quot;java.lang.String&quot;;
 
-        getCookieFilter(request,response);
+    private static final String INTEGER = &quot;java.lang.Integer&quot;;
+
+    private static final String DOUBLE = &quot;java.lang.Double&quot;;
+    
+    private static final String CHARACTER = &quot;java.lang.Character&quot;;
+
+    private static final String BOOLEAN = &quot;java.lang.Boolean&quot;;
+
+    private static final String SHORT = &quot;java.lang.Short&quot;;
+
+    private static final String BYTE = &quot;java.lang.Byte&quot;;
+
+    private static final String LONG = &quot;java.lang.Long&quot;;
+
+    private static final String FLOAT = &quot;java.lang.Float&quot;;
+
+    private static final String DATE = &quot;java.util.Date&quot;;
+
+    private static final Map&lt;String,Class&gt; TYPE_MAP = new HashMap&lt;&gt;();
+
+    private static final Map&lt;String,String&gt; METHOD_MAP = new HashMap&lt;&gt;();
+
+    static &#123;
+        TYPE_MAP.put(STRING,String.class);
+        TYPE_MAP.put(INTEGER,Integer.class);
+        TYPE_MAP.put(DOUBLE,Double.class);
+        TYPE_MAP.put(BOOLEAN,Boolean.class);
+        TYPE_MAP.put(SHORT,Short.class);
+        TYPE_MAP.put(BYTE,Byte.class);
+        TYPE_MAP.put(LONG,Long.class);
+        TYPE_MAP.put(FLOAT,Float.class);
+        TYPE_MAP.put(DATE, Date.class);
+
+        METHOD_MAP.put(STRING,&quot;String&quot;);
+        METHOD_MAP.put(INTEGER,&quot;Int&quot;);
+        METHOD_MAP.put(DOUBLE,&quot;Double&quot;);
+        METHOD_MAP.put(BOOLEAN,&quot;Boolean&quot;);
+        METHOD_MAP.put(SHORT,&quot;Short&quot;);
+        METHOD_MAP.put(BYTE,&quot;Byte&quot;);
+        METHOD_MAP.put(LONG,&quot;Long&quot;);
+        METHOD_MAP.put(FLOAT,&quot;Float&quot;);
+        METHOD_MAP.put(DATE,&quot;Date&quot;);
+
     &#125;
 
-    /**
-     * 向客户端添加cookie
-     * @param request
-     * @param response
-     */
-    public void addCookie(HttpServletRequest request,HttpServletResponse response)&#123;
-
-        //创建cookie对象
-        Cookie cookie1 = new Cookie(&quot;username&quot;,&quot;tom&quot;);
-        Cookie cookie2 = new Cookie(&quot;password&quot;,&quot;123&quot;);
-        Cookie cookie3 = new Cookie(&quot;address&quot;,&quot;beijing&quot;);
-        Cookie cookie4 = new Cookie(&quot;idCard&quot;,&quot;123124325&quot;);
-
-
-        //通知浏览器保存cookie
-        response.addCookie(cookie1);
-        response.addCookie(cookie2);
-        response.addCookie(cookie3);
-        response.addCookie(cookie4);
-
-    &#125;
-
 
     /**
-     * 获取单个cookie的方式，只能通过遍历cookie数组，然后进行过滤
-     * @param request
-     * @param response
+     * 自动解析result为对应持久对象数组
+     * @param resultSet 结果集
+     * @param tClass 持久对象字节码
+     * @param &lt;T&gt; 持久对象泛型
+     * @return
      */
-    public void getCookieFilter(HttpServletRequest request,HttpServletResponse response)&#123;
+    public static &lt;T&gt;List&lt;T&gt; toObjectList(ResultSet resultSet, Class&lt;T&gt; tClass)&#123;
 
-        //根据请求对象获取客户端的cookie
-        Cookie[] cookies = request.getCookies();
+        List&lt;TableColumnGetter&gt; tableColumnGetterList = new ArrayList&lt;&gt;();
 
-        //遍历cookie数组
-        for (Cookie cookie : cookies) &#123;
-
-            if(cookie.getName().equals(&quot;username&quot;))&#123;
-
-                //设置响应对象支持html文本
-                response.setContentType(&quot;text/html;charset=utf-8&quot;);
-
-                //cookie.getName()获取cookie的key
-                //cookie.getValue()获取cookie的value
+        Class tableClass = tClass;
+        //获取属性标注的字段值，自动解析字段
+        Field[] fields = tableClass.getDeclaredFields();
+        if (tableClass == null)&#123;
+            return new ArrayList&lt;&gt;();
+        &#125;
+        for (Field field : fields) &#123;
+            TableColumn tableColumn = field.getAnnotation(TableColumn.class);
+            if (tableColumn != null)&#123;
+                //获取属性名
+                String propertyName = field.getName();
+                //set函数名
+                String setMethodName = &quot;set&quot; + propertyName.substring(0,1).toUpperCase() + propertyName.substring(1);
+                //字段名
+                String columnLabel = tableColumn.value();
+                //获取属性类型
+                String typeName = field.getGenericType().getTypeName();
                 try &#123;
-                    response.getWriter().print(cookie.getName()+&quot; &quot;+cookie.getValue()+&quot;&lt;br&gt;&quot;);
-                &#125; catch (IOException e) &#123;
+                    //获取到类型字节码
+                    Class typeClass = TYPE_MAP.get(typeName);
+                    //获取到set方法
+                    Method objectFieldSet = tableClass.getMethod(setMethodName,typeClass);
+                    //获取到字段对应的值
+                    Class&lt;? extends ResultSet&gt; resultSetClass = resultSet.getClass();
+                    //组装resultSet的get函数名称
+                    String getMethodName = &quot;get&quot; + METHOD_MAP.get(typeName);
+                    //获取到对应解析函数字节码
+                    Method resultSetGet = resultSetClass.getMethod(getMethodName, String.class);
+                    //创建获取字段注入器
+                    TableColumnGetter tableColumnGetter = new TableColumnGetter(objectFieldSet, resultSetGet, columnLabel);
+                    //整合字段注入器列表
+                    tableColumnGetterList.add(tableColumnGetter);
+                &#125; catch (NoSuchMethodException e) &#123;
                     e.printStackTrace();
                 &#125;
-
             &#125;
-
         &#125;
-
+        //创建表处理器
+        TableHandler tableHandler = new TableHandler(tableClass,tableColumnGetterList);
+        //获取表java实例列表
+        List objectList = tableHandler.getObjectList(resultSet);
+        return objectList;
     &#125;
 
 
-    /**
-     * 获取浏览器端所有的cookie
-     *
-     * 获取cookie没有提供获取单个cookie的方法，只能获取所有然后再筛选出需要的cookie
-     * @param request
-     * @param response
-     */
-    public void getCookies(HttpServletRequest request,HttpServletResponse response)&#123;
 
-        //根据请求对象获取客户端的cookie
-        Cookie[] cookies = request.getCookies();
+&#125;
+</code></pre>
+<blockquote>
+<ol>
+<li>首先，从<code>tableClassMap</code>的映射中获取<code>T</code>类对应的表类（<code>tableClass</code>）。</li>
+<li>然后，获取<code>tableClass</code>的所有字段，并对每个字段进行检查。如果字段上有<code>TableColumn</code>注解，那么就创建一个<code>TableColumnGetter</code>对象，这个对象包含了字段的set方法、对应的<code>ResultSet</code>的get方法以及字段名。</li>
+<li>创建<code>TableColumnGetter</code>对象的过程中，会根据字段的类型从<code>TYPE_MAP</code>和<code>METHOD_MAP</code>两个映射中获取相应的类型类和方法名。</li>
+<li>最后，使用<code>tableClass</code>和<code>tableColumnGetterList</code>创建一个<code>TableHandler</code>对象，并调用其<code>getObjectList</code>方法来获取对象列表。</li>
+</ol>
+</blockquote>
+<pre><code class="java">package orm.handler;
 
-        //遍历cookie数组
-        for (Cookie cookie : cookies) &#123;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.sql.ResultSet;
 
-            //设置响应对象支持html文本
-            response.setContentType(&quot;text/html;charset=utf-8&quot;);
 
-            //cookie.getName()获取cookie的key
-            //cookie.getValue()获取cookie的value
+public class TableColumnGetter &#123;
+
+    //持久对象属性set方法字节码
+    private Method objectFieldSet;
+
+    //resultSet对象get方法字节码
+    private Method resultSetGet;
+
+    //数据库字段名
+    private String columnLabel;
+
+    public TableColumnGetter(Method objectFieldSet, Method resultSetGet,String columnLabel) &#123;
+        this.objectFieldSet = objectFieldSet;
+        this.resultSetGet = resultSetGet;
+        this.columnLabel = columnLabel;
+    &#125;
+
+
+    //为持久对象对应属性注入值
+    public &lt;T&gt; void inject(ResultSet resultSet, T object) &#123;
+        try &#123;
+            Object result = resultSetGet.invoke(resultSet, columnLabel);
+            objectFieldSet.invoke(object, result);
+        &#125; catch (IllegalAccessException e) &#123;
+            e.printStackTrace();
+        &#125; catch (InvocationTargetException e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<blockquote>
+<p><code>TableColumnGetter</code>类是一个字段注入器，它包含一个Java对象的set方法、一个<code>ResultSet</code>的get方法和一个数据库字段名。它的<code>inject</code>方法用于将<code>ResultSet</code>中的值注入到Java对象的属性中。</p>
+</blockquote>
+<pre><code class="java">package orm.handler;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TableHandler&lt;T&gt; &#123;
+
+    //持久化对象列表
+    private List&lt;T&gt; objectList;
+
+    //持久化对象字节码
+    private Class tableClass;
+
+    //表列值获取器列表
+    private List&lt;TableColumnGetter&gt; tableColumnGetterList;
+
+    public TableHandler(Class tableClass, List&lt;TableColumnGetter&gt; tableColumnGetterList)&#123;
+        this.tableClass = tableClass;
+        this.tableColumnGetterList = tableColumnGetterList;
+    &#125;
+
+    //获取持久对象列表
+    public List&lt;T&gt; getObjectList(ResultSet resultSet) &#123;
+        if (objectList == null)&#123;
+            objectList = new ArrayList&lt;&gt;();
+        &#125;
+        while (true)&#123;
             try &#123;
-                response.getWriter().print(cookie.getName()+&quot; &quot;+cookie.getValue()+&quot;&lt;br&gt;&quot;);
-            &#125; catch (IOException e) &#123;
+                if (!resultSet.next()) break;
+
+                T object = (T)tableClass.newInstance();
+
+                for (TableColumnGetter tableColumnGetter : tableColumnGetterList) &#123;
+                    tableColumnGetter.inject(resultSet,object);
+                &#125;
+
+                objectList.add(object);
+
+            &#125; catch (SQLException throwables) &#123;
+                throwables.printStackTrace();
+            &#125; catch (IllegalAccessException e) &#123;
+                e.printStackTrace();
+            &#125; catch (InstantiationException e) &#123;
                 e.printStackTrace();
             &#125;
 
         &#125;
-
+        return objectList;
     &#125;
+&#125;
 
+</code></pre>
+<blockquote>
+<p><code>TableHandler</code>类是一个表处理器，它包含一个Java对象列表、一个Java对象的类和一个字段注入器列表。它的<code>getObjectList</code>方法用于从<code>ResultSet</code>中获取Java对象列表。这个方法首先创建一个新的Java对象，然后使用字段注入器列表中的每一个注入器将<code>ResultSet</code>中的值注入到Java对象的属性中，最后将Java对象添加到列表中。</p>
+</blockquote>
+<pre><code class="java">package orm.annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface TableColumn &#123;
+    String value();
 &#125;
 </code></pre>
-<h2 id="Cookie值的修改"><a href="#Cookie值的修改" class="headerlink" title="Cookie值的修改"></a>Cookie值的修改</h2><p>方案一</p>
-<p>1.先创建一个要修改的同名Cookie对象</p>
-<p>2.再构造器，同时赋予新的Cookie值</p>
-<p>3.调用response.addCookie(Cookie)</p>
-<p>方案二</p>
-<p>1.先查找到需要修改的Cookie对象</p>
-<p>2.调用setValue()方法赋予新的Cookie值</p>
-<p>3.调用response.addCookie()通知客户端保存修改</p>
-<pre><code class="java">/**
- * 修改对象的cookie值
- * @param request
- * @param response
- */
-public void setCookie(HttpServletRequest request,HttpServletResponse response)&#123;
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre><code class="java">package com;
 
-    //把username的值改成jack
-    Cookie cookie1 = new Cookie(&quot;username&quot;, &quot;jack&quot;);
+import orm.annotation.TableColumn;
 
-    //通知浏览器保存cookie
-    response.addCookie(cookie1);
+import java.util.Date;
 
-    //将密码改成654321
+public class TravelWay &#123;
 
-    //先获取浏览器所有的cookie
-    Cookie[] cookies = request.getCookies();
+    @TableColumn(&quot;wid&quot;)
+    private Integer wid;
 
-    Cookie c = null;
+    @TableColumn(&quot;way_name&quot;)
+    private String wayName;
 
-    //遍历cookie
-    for (Cookie cookie : cookies) &#123;
+    @TableColumn(&quot;info&quot;)
+    private String info1;
 
-        if (cookie.getName().equals(&quot;password&quot;))&#123;
+    @TableColumn(&quot;sign_begin&quot;)
+    private Date sb;
 
-            cookie.setValue(&quot;654321&quot;);
+    public Integer getWid() &#123;
+        return wid;
+    &#125;
 
-            c = cookie;
+    public void setWid(Integer wid) &#123;
+        this.wid = wid;
+    &#125;
 
+    public String getWayName() &#123;
+        return wayName;
+    &#125;
+
+    public void setWayName(String wayName) &#123;
+        this.wayName = wayName;
+    &#125;
+
+    public String getInfo1() &#123;
+        return info1;
+    &#125;
+
+    public void setInfo1(String info1) &#123;
+        this.info1 = info1;
+    &#125;
+
+    public Date getSb() &#123;
+        return sb;
+    &#125;
+
+    public void setSb(Date sb) &#123;
+        this.sb = sb;
+    &#125;
+
+    @Override
+    public String toString() &#123;
+        return &quot;TravelWay&#123;&quot; +
+                &quot;wid=&quot; + wid +
+                &quot;, wayName=&#39;&quot; + wayName + &#39;\&#39;&#39; +
+                &quot;, info1=&#39;&quot; + info1 + &#39;\&#39;&#39; +
+                &quot;, sb=&quot; + sb +
+                &#39;&#125;&#39;;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">package com;
+
+import orm.utils.ORMUtils;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+
+public class Test &#123;
+
+    public static void main(String[] args) &#123;
+
+        try &#123;
+            Connection connection = JdbcUtils.getConnection();
+
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(&quot;select * from tb_travel_way&quot;);
+
+            List&lt;TravelWay&gt; travelWays = ORMUtils.toObjectList(resultSet, TravelWay.class);
+
+            for (TravelWay travelWay : travelWays) &#123;
+
+                System.out.println(travelWay);
+            &#125;
+
+        &#125; catch (SQLException throwables) &#123;
+            throwables.printStackTrace();
         &#125;
 
     &#125;
 
-    //通知浏览器保存cookie
-    response.addCookie(c);
-
 &#125;
 </code></pre>
-<h2 id="封装Cookie工具类"><a href="#封装Cookie工具类" class="headerlink" title="封装Cookie工具类"></a>封装Cookie工具类</h2><p>Cookie类无法获取浏览器端单个cookie，每次需要去遍历，因此我们选择把对cookie的操作封装成一个工具类</p>
-<pre><code class="java">package com.os467.utils;
+<h2 id="集成INSERT，UPDATE自动组装"><a href="#集成INSERT，UPDATE自动组装" class="headerlink" title="集成INSERT，UPDATE自动组装"></a>集成INSERT，UPDATE自动组装</h2><pre><code class="java">package orm.utils;
 
-import javax.servlet.http.Cookie;
+import orm.annotation.Key;
+import orm.annotation.Table;
+import orm.annotation.TableColumn;
+import orm.handler.TableColumnGetter;
+import orm.handler.TableHandler;
 
-/**
- *根据cookie的key来找到某一个具体的cookie,因为api中我们只能获取所有cookie
- * 获取单个cookie的话只能通过标识去过滤，这样就很麻烦，所以我们可以封装一个工具类
- * 来提高开发速率
- */
-public class FindCookieUtils &#123;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
-    //构造方法私有化
-    private FindCookieUtils()&#123;
+public class ORMUtils &#123;
+
+    private static final String STRING = &quot;java.lang.String&quot;;
+
+    private static final String INTEGER = &quot;java.lang.Integer&quot;;
+
+    private static final String DOUBLE = &quot;java.lang.Double&quot;;
+
+    private static final String CHARACTER = &quot;java.lang.Character&quot;;
+
+    private static final String BOOLEAN = &quot;java.lang.Boolean&quot;;
+
+    private static final String SHORT = &quot;java.lang.Short&quot;;
+
+    private static final String BYTE = &quot;java.lang.Byte&quot;;
+
+    private static final String LONG = &quot;java.lang.Long&quot;;
+
+    private static final String FLOAT = &quot;java.lang.Float&quot;;
+
+    private static final String DATE = &quot;java.util.Date&quot;;
+
+    private static final Map&lt;String,Class&gt; TYPE_MAP = new HashMap&lt;&gt;();
+
+    private static final Map&lt;String,String&gt; METHOD_MAP = new HashMap&lt;&gt;();
+
+    static &#123;
+        TYPE_MAP.put(STRING,String.class);
+        TYPE_MAP.put(INTEGER,Integer.class);
+        TYPE_MAP.put(DOUBLE,Double.class);
+        TYPE_MAP.put(BOOLEAN,Boolean.class);
+        TYPE_MAP.put(SHORT,Short.class);
+        TYPE_MAP.put(BYTE,Byte.class);
+        TYPE_MAP.put(LONG,Long.class);
+        TYPE_MAP.put(FLOAT,Float.class);
+        TYPE_MAP.put(DATE, Date.class);
+
+        METHOD_MAP.put(STRING,&quot;String&quot;);
+        METHOD_MAP.put(INTEGER,&quot;Int&quot;);
+        METHOD_MAP.put(DOUBLE,&quot;Double&quot;);
+        METHOD_MAP.put(BOOLEAN,&quot;Boolean&quot;);
+        METHOD_MAP.put(SHORT,&quot;Short&quot;);
+        METHOD_MAP.put(BYTE,&quot;Byte&quot;);
+        METHOD_MAP.put(LONG,&quot;Long&quot;);
+        METHOD_MAP.put(FLOAT,&quot;Float&quot;);
+        METHOD_MAP.put(DATE,&quot;Date&quot;);
+
+    &#125;
+
+    private static final String EMPTY = &quot;&quot;;
+    private static final String SPACE = &quot; &quot;;
+    private static final String BASE_UPDATE = &quot;UPDATE &quot;;
+    private static final String BASE_SET = &quot; SET &quot;;
+    private static final String BASE_WHERE = &quot; WHERE 1 = 1 &quot;;
+    private static final String AND = &quot; AND &quot;;
+    private static final String BASE_INSERT = &quot;INSERT INTO &quot;;
+    private static final String START = &quot;(&quot;;
+    private static final String END = &quot;)&quot;;
+    private static final String BASE_VALUES = &quot;VALUES&quot;;
+
+    private static final String COLUMN_FLAG = &quot;`&quot;;
+
+    private static final String STRING_FLAG = &quot;&#39;&quot;;
+
+    private static final String SPLIT = &quot;,&quot;;
+
+    private static final String EQUAL = &quot; = &quot;;
+
+    private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
+
+    public static &lt;T&gt;boolean update(T t,Connection connection)&#123;
+        return update(EMPTY,t,connection);
+    &#125;
+
+    /**
+     *
+     * @param sqlAppend 拼接到 WHERE 之后的语句
+     * @param t 更新对象
+     * @param connection 连接对象
+     * @param &lt;T&gt;
+     * @return
+     */
+    public static &lt;T&gt;boolean update(String sqlAppend,T t, Connection connection)&#123;
+        Class tableClass = t.getClass();
+
+        if (tableClass == null)&#123;
+            return false;
+        &#125;
+
+        Table table = (Table)tableClass.getAnnotation(Table.class);
+
+        if (table == null)&#123;
+            return false;
+        &#125;
+
+        String sql = BASE_UPDATE + table.value() + BASE_SET;
+        String where = BASE_WHERE;
+
+        //获取属性标注的字段值，自动解析字段
+        Field[] fields = tableClass.getDeclaredFields();
+
+        StringBuilder sqlSB = new StringBuilder();
+        StringBuilder keySB = new StringBuilder();
+        sqlSB.append(sql);
+        keySB.append(where);
+        for (Field field : fields) &#123;
+            TableColumn tableColumn = field.getAnnotation(TableColumn.class);
+            if (tableColumn != null)&#123;
+                //获取属性名
+                String propertyName = field.getName();
+                //get函数名
+                String getMethodName = &quot;get&quot; + propertyName.substring(0,1).toUpperCase() + propertyName.substring(1);
+                //字段名
+                String columnLabel = tableColumn.value();
+                //获取属性类型
+                String typeName = field.getGenericType().getTypeName();
+                try &#123;
+                    //获取到类型字节码
+                    Class typeClass = TYPE_MAP.get(typeName);
+                    //获取到set方法
+                    Method objectFieldGet = tableClass.getMethod(getMethodName);
+                    Object value = objectFieldGet.invoke(t);
+                    if (value != null)&#123;
+
+                        Key key = field.getAnnotation(Key.class);
+
+                        boolean isKey = false;
+                        StringBuilder sb;
+                        if (key != null)&#123;
+                            keySB.append(AND);
+                            isKey = true;
+                            sb = keySB;
+                        &#125;else &#123;
+                            sb = sqlSB;
+                        &#125;
+
+                        //拼接表字段名
+                        sb.append(COLUMN_FLAG);
+                        sb.append(columnLabel);
+                        sb.append(COLUMN_FLAG);
+                        sb.append(EQUAL);
+
+                        //拼接值
+                        if (typeClass.getTypeName().equals(STRING))&#123;
+                            sb.append(STRING_FLAG);
+                            sb.append(value);
+                            sb.append(STRING_FLAG);
+                        &#125;else if (typeClass.getTypeName().equals(DATE))&#123;
+                            sb.append(STRING_FLAG);
+                            sb.append(SIMPLE_DATE_FORMAT.format(value));
+                            sb.append(STRING_FLAG);
+                        &#125;else &#123;
+                            sb.append(value);
+                        &#125;
+                        if (!isKey)&#123;
+                            sb.append(SPLIT);
+                        &#125;
+                    &#125;
+                &#125; catch (NoSuchMethodException e) &#123;
+                    e.printStackTrace();
+                &#125; catch (IllegalAccessException e) &#123;
+                    e.printStackTrace();
+                &#125; catch (InvocationTargetException e) &#123;
+                    e.printStackTrace();
+                &#125;
+            &#125;
+        &#125;
+
+        sql = sqlSB.toString();
+        where = keySB.toString();
+
+        //整理
+        if (sql.endsWith(SPLIT))&#123;
+            sql = sql.substring(0,sql.length()-1);
+        &#125;
+
+        //更新语句整合
+        String updateSql = sql + SPACE + where;
+        if (sqlAppend != EMPTY)&#123;
+            updateSql += AND + sqlAppend;
+        &#125;
+        //执行
+        boolean execute = false;
+        try &#123;
+            Statement statement = connection.createStatement();
+
+            execute = statement.execute(updateSql);
+        &#125; catch (SQLException throwables) &#123;
+            throwables.printStackTrace();
+        &#125;
+        return execute;
+
+    &#125;
+
+
+    /**
+     *
+     * @param t
+     * @param connection
+     * @param &lt;T&gt;
+     * @return
+     */
+    public static &lt;T&gt;boolean insert(T t, Connection connection)&#123;
+        Class tableClass = t.getClass();
+
+        if (tableClass == null)&#123;
+            return false;
+        &#125;
+
+        Table table = (Table)tableClass.getAnnotation(Table.class);
+
+        if (table == null)&#123;
+            return false;
+        &#125;
+
+        String sql = BASE_INSERT + table.value() + START;
+        String values = BASE_VALUES + START;
+
+        //获取属性标注的字段值，自动解析字段
+        Field[] fields = tableClass.getDeclaredFields();
+
+        StringBuilder sqlSB = new StringBuilder();
+        sqlSB.append(sql);
+        StringBuilder valueSB = new StringBuilder();
+        valueSB.append(values);
+        for (Field field : fields) &#123;
+            TableColumn tableColumn = field.getAnnotation(TableColumn.class);
+            if (tableColumn != null)&#123;
+                //获取属性名
+                String propertyName = field.getName();
+                //get函数名
+                String getMethodName = &quot;get&quot; + propertyName.substring(0,1).toUpperCase() + propertyName.substring(1);
+                //字段名
+                String columnLabel = tableColumn.value();
+                //获取属性类型
+                String typeName = field.getGenericType().getTypeName();
+                try &#123;
+                    //获取到类型字节码
+                    Class typeClass = TYPE_MAP.get(typeName);
+                    //获取到set方法
+                    Method objectFieldGet = tableClass.getMethod(getMethodName);
+                    Object value = objectFieldGet.invoke(t);
+                    if (value != null)&#123;
+
+                        //拼接表字段名
+                        sqlSB.append(COLUMN_FLAG);
+                        sqlSB.append(columnLabel);
+                        sqlSB.append(COLUMN_FLAG);
+                        sqlSB.append(SPLIT);
+
+                        //拼接值
+                        if (typeClass.getTypeName().equals(STRING))&#123;
+                            valueSB.append(STRING_FLAG);
+                            valueSB.append(value);
+                            valueSB.append(STRING_FLAG);
+                        &#125;else if (typeClass.getTypeName().equals(DATE))&#123;
+                            valueSB.append(STRING_FLAG);
+                            valueSB.append(SIMPLE_DATE_FORMAT.format(value));
+                            valueSB.append(STRING_FLAG);
+                        &#125;else &#123;
+                            valueSB.append(value);
+                        &#125;
+                        valueSB.append(SPLIT);
+                    &#125;
+                &#125; catch (NoSuchMethodException e) &#123;
+                    e.printStackTrace();
+                &#125; catch (IllegalAccessException e) &#123;
+                    e.printStackTrace();
+                &#125; catch (InvocationTargetException e) &#123;
+                    e.printStackTrace();
+                &#125;
+            &#125;
+        &#125;
+
+        sql = sqlSB.toString();
+        values = valueSB.toString();
+
+        //整理
+        if (sql.endsWith(SPLIT))&#123;
+            sql = sql.substring(0,sql.length()-1) + END;
+        &#125;
+        //整理
+        if (values.endsWith(SPLIT))&#123;
+            values = values.substring(0,values.length()-1) + END;
+        &#125;
+        //插入语句整合
+        String insertSql = sql + values;
+        System.out.println(insertSql);
+        //执行
+        boolean execute = false;
+        try &#123;
+            Statement statement = connection.createStatement();
+
+            execute = statement.execute(insertSql);
+        &#125; catch (SQLException throwables) &#123;
+            throwables.printStackTrace();
+        &#125;
+        return execute;
 
     &#125;
 
     /**
-     * 根据key来获取cookie
+     * 自动解析result为对应持久对象数组
+     * @param resultSet 结果集
+     * @param tClass 持久对象字节码
+     * @param &lt;T&gt; 持久对象泛型
      * @return
      */
-    public static Cookie findCookie(Cookie[] cookies,String name)&#123;
+    public static &lt;T&gt;List&lt;T&gt; toObjectList(ResultSet resultSet, Class&lt;T&gt; tClass)&#123;
 
-        if (cookies == null || cookies.length == 0 || name == null)&#123;
+        List&lt;TableColumnGetter&gt; tableColumnGetterList = new ArrayList&lt;&gt;();
 
-            return null;
-
+        Class tableClass = tClass;
+        if (tableClass == null)&#123;
+            return new ArrayList&lt;&gt;();
         &#125;
-
-        //遍历cookie数组
-        for (Cookie cookie : cookies) &#123;
-
-            if (cookie.getName().equals(name))&#123;
-
-                return cookie;
-
+        //获取属性标注的字段值，自动解析字段
+        Field[] fields = tableClass.getDeclaredFields();
+        for (Field field : fields) &#123;
+            TableColumn tableColumn = field.getAnnotation(TableColumn.class);
+            if (tableColumn != null)&#123;
+                //获取属性名
+                String propertyName = field.getName();
+                //set函数名
+                String setMethodName = &quot;set&quot; + propertyName.substring(0,1).toUpperCase() + propertyName.substring(1);
+                //字段名
+                String columnLabel = tableColumn.value();
+                //获取属性类型
+                String typeName = field.getGenericType().getTypeName();
+                try &#123;
+                    //获取到类型字节码
+                    Class typeClass = TYPE_MAP.get(typeName);
+                    //获取到set方法
+                    Method objectFieldSet = tableClass.getMethod(setMethodName,typeClass);
+                    //获取到字段对应的值
+                    Class&lt;? extends ResultSet&gt; resultSetClass = resultSet.getClass();
+                    //组装resultSet的get函数名称
+                    String getMethodName = &quot;get&quot; + METHOD_MAP.get(typeName);
+                    //获取到对应解析函数字节码
+                    Method resultSetGet = resultSetClass.getMethod(getMethodName, String.class);
+                    //创建获取字段注入器
+                    TableColumnGetter tableColumnGetter = new TableColumnGetter(objectFieldSet, resultSetGet, columnLabel);
+                    //整合字段注入器列表
+                    tableColumnGetterList.add(tableColumnGetter);
+                &#125; catch (NoSuchMethodException e) &#123;
+                    e.printStackTrace();
+                &#125;
             &#125;
-
         &#125;
-
-        return null;
-
-
+        //创建表处理器
+        TableHandler tableHandler = new TableHandler(tableClass,tableColumnGetterList);
+        //获取表java实例列表
+        List objectList = tableHandler.getObjectList(resultSet);
+        return objectList;
     &#125;
 
-
 &#125;
 </code></pre>
-<h2 id="Cookie的生命周期"><a href="#Cookie的生命周期" class="headerlink" title="Cookie的生命周期"></a>Cookie的生命周期</h2><p>cookie默认的生命周期是一个session级别的，是浏览器的开启到关闭</p>
-<h3 id="Cookie生命控制"><a href="#Cookie生命控制" class="headerlink" title="Cookie生命控制"></a>Cookie生命控制</h3><p><code>setMaxAge()</code></p>
-<p>正数，表示在指定的秒数后过期</p>
-<p>负数，表示浏览器一关，Cookie就会被删除（默认值是-1）</p>
-<p>零，表示马上删除Cookie</p>
-<p><strong>设置cookie的生命周期</strong></p>
-<pre><code class="java">/**
- * 设置cookie的生命周期
- * @param request
- * @param response
- */
-public void setMaxAgeCookie(HttpServletRequest request,HttpServletResponse response)&#123;
+<pre><code class="java">package orm.annotation;
 
-    //1.将所有的cookie的生命周期设置为一年
-    for (Cookie cookie : request.getCookies()) &#123;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-        cookie.setMaxAge(60 * 60 * 24 * 365);
-
-        //通知浏览器保存cookie
-        response.addCookie(cookie);
-
-    &#125;
-
-    //将密码所对应的cookie的生命周期改为一周
-    Cookie cookie = FindCookieUtils.findCookie(request.getCookies(), &quot;password&quot;);
-
-    //修改生命周期
-    cookie.setMaxAge(60 * 60 * 24 * 7);
-
-    //通知浏览器保存
-    response.addCookie(cookie);
-
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Key &#123;
 &#125;
 </code></pre>
-<p><strong>删除一个具体的cookie</strong></p>
-<pre><code class="java">/**
- * 删除一个具体的cookie
- * @param request
- * @param response
- */
-public void deleteCookie(HttpServletRequest request,HttpServletResponse response) &#123;
+<pre><code class="java">package orm.annotation;
 
-    //删除idCard所对应的cookie
-    Cookie cookie = FindCookieUtils.findCookie(request.getCookies(), &quot;idCard&quot;);
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-    cookie.setMaxAge(0);
-
-    //通知浏览器保存cookie
-
-    response.addCookie(cookie);
-
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Table &#123;
+    String value();
 &#125;
 </code></pre>
-<h1 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h1><p>Session是一个接口（HttpSession）</p>
-<p>Session就是会话，它是用来维护一个客户端和服务器之间关联的一种技术</p>
-<p>每个客户端都有自己的一个Session会话</p>
-<p>Session会话中，我们经常用来保存用户登录之后的信息</p>
-<p>session是在服务端保存数据的一种技术，而且session可以关联客户端和服务端</p>
-<p>session跟cookie是有关系的</p>
-<p>以后会用session来保存用户登录之后的用户信息，我们之前所完成的登录功能是不完整的</p>
-<p>前端校验会话中是否有用户数据，如果有，才能登录成功</p>
-<p><strong>如何去创建session对象？</strong></p>
-<p>创建session对象，需要用到request对象</p>
-<p><code>HttpSession session = request.getSession()</code></p>
-<p>session也可以说是一个域对象，可以存取值，取值范围，是浏览器的开启到关闭</p>
-<p><code>request.getSession()</code>第一次调用是：创建Session会话</p>
-<p><code>isNew()</code>判断到底是不是刚创建出来的</p>
-<p><code>getId()</code>得到Session的会话id值</p>
-<p>session对象是一个<strong>单例</strong>的对象</p>
-<h2 id="Session域数据的存取"><a href="#Session域数据的存取" class="headerlink" title="Session域数据的存取"></a>Session域数据的存取</h2><pre><code class="java">//存数据
-request.getSession().setAttribute(&quot;key&quot;,&quot;value&quot;);
-
-//取数据
-request.getSession().getAttribute(&quot;key&quot;);
-</code></pre>
-<h2 id="Session生命周期"><a href="#Session生命周期" class="headerlink" title="Session生命周期"></a>Session生命周期</h2><h3 id="Session生命周期控制"><a href="#Session生命周期控制" class="headerlink" title="Session生命周期控制"></a>Session生命周期控制</h3><p><code>public void setMaxInactiveInterval(int interval)</code></p>
-<p>设置Session的超时时间，超过指定的时长，Session就会被销毁</p>
-<p>值为正数的时候，设定Session的超时时长，负数表示永不超时</p>
-<p><code>getMaxInactiveInterval()</code>获取Session的超时时间</p>
-<p><code>invalidate()</code>让当前Session会话马上超时无效</p>
-<p>session默认超时时间是<strong>30分钟</strong></p>
-<p><strong>设置生命周期与cookie区别：</strong></p>
-<p>负数，cookie代表浏览器关闭则删除，session代表永不超时</p>
-<p>删除cookie可以设置0，删除session不可以，需要用指定的方法</p>
-<h4 id="设置session的超时时间"><a href="#设置session的超时时间" class="headerlink" title="设置session的超时时间"></a>设置session的超时时间</h4><p><strong>设置session的超时时间</strong></p>
-<pre><code class="java">session.setMaxInactiveInterval(3600 * 24);
-</code></pre>
-<p><strong>通过配置文件设置默认超时时间</strong></p>
-<p>xml中配置是按照<strong>分钟</strong>配置的</p>
-<pre><code class="xml">&lt;!--配置默认的超时时间--&gt;
-&lt;session-config&gt;
-    &lt;session-timeout&gt;45&lt;/session-timeout&gt;
-&lt;/session-config&gt;
-</code></pre>
-<p><strong>让当前的session立即超时无效</strong></p>
-<p>这个方法在以后做注销的时候会用到</p>
-<pre><code class="java">session.invalidate();
-</code></pre>
-<pre><code class="java">public class SessionDemo01 extends HttpServlet &#123;
-
-    @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-
-        response.setContentType(&quot;text/html;charset=utf-8&quot;);
-
-        //创建session对象
-        HttpSession session = request.getSession();
-        HttpSession session2 = request.getSession();
-
-        /*session.setMaxInactiveInterval(3600 * 24);*/
-
-
-        response.getWriter().print(&quot;session是否是新创建的：&quot;+session.isNew()+&quot;&lt;br&gt;&quot;);
-
-        response.getWriter().print(&quot;session的会话id值为：&quot;+session.getId()+&quot;&lt;br&gt;&quot;);
-
-        response.getWriter().print(&quot;session对象是否是单例的：&quot;+ (session == session2)+&quot;&lt;br&gt;&quot;);
-
-        //往session域中存数据
-        session.setAttribute(&quot;key1&quot;,&quot;value1&quot;);
-        session.setAttribute(&quot;key2&quot;,&quot;value2&quot;);
-
-        //取出session中的数据
-        response.getWriter().print(&quot;取出session中key1的数据&quot;+session.getAttribute(&quot;key1&quot;)+&quot;&lt;br&gt;&quot;);
-
-        response.getWriter().print(&quot;取出session中key2的数据&quot;+session.getAttribute(&quot;key2&quot;)+&quot;&lt;br&gt;&quot;);
-
-        //获取session超时时间
-        response.getWriter().print(&quot;session默认超时时间&quot;+session.getMaxInactiveInterval()+&quot;&lt;br&gt;&quot;);
-
-    &#125;
-&#125;
-</code></pre>
-<h1 id="session和cookie的关系和区别"><a href="#session和cookie的关系和区别" class="headerlink" title="session和cookie的关系和区别"></a>session和cookie的关系和区别</h1><h2 id="session和cookie的关系"><a href="#session和cookie的关系" class="headerlink" title="session和cookie的关系"></a>session和cookie的关系</h2><p>cookie保存数据的原理就是通过http协议响应头的方式把数据传递过去</p>
-<p>在浏览器访问服务端的时候，假设我们并没有手动的去创建session对象，但是我们在响应头会发现一个现象：会有一个<strong>set-cookie : JESSIONID &#x3D; 74045E2CC5F9FA30EE9CEBE1D092E1CD</strong></p>
-<p>JSEEIONID &#x3D; session的会话id</p>
-<p>所以说要想获得会话id，就必须得有session对象</p>
-<p>总结：浏览器访问服务端的时候，会自动的去创建session会话id，自动生成会话id，然后在底层通过创建cookie对象的方式将会话id保存下来</p>
-<p><code>Cookie cookie = new Cookie(&quot;JESSIONID&quot;,session的会话id)</code></p>
-<h2 id="session和cookie的区别"><a href="#session和cookie的区别" class="headerlink" title="session和cookie的区别"></a>session和cookie的区别</h2><p><strong>cookie</strong></p>
-<p>​		cookie是客户端保存数据的技术：只能去存放一些最基本的字符串，json串，不能存放java对象</p>
-<p>​		cookie相对来说不安全，因为数据存在浏览器的内存里面，所以可以通过一些途径来获取到这些数据</p>
-<p><strong>session</strong></p>
-<p>​		session是服务端保存数据的技术，可以存放的数据类型有很多，String、List、Map、java对象</p>
-<p>​		session相对来说是安全的，但是会占用服务器的资源，cookie是不会占用服务器资源的</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1601,12 +1977,12 @@ request.getSession().getAttribute(&quot;key&quot;);
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>cookie和session</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">2.3k</span></p>
+    <p><span class="copy-title">文章标题:</span>简单ORM映射方案(JDBC)</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">3k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-07-06, 18:27:45</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-05, 00:07:55</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/07/06/cookie%E5%92%8Csession/" title="cookie和session">https://os467.github.io/2022/07/06/cookie%E5%92%8Csession/</a>
+    <p><span class="copy-title">发布时间:</span>2023-12-25, 18:43:30</p>
+    <p><span class="copy-title">最后更新:</span>2023-12-25, 18:43:49</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/12/25/%E7%AE%80%E5%8D%95ORM%E6%98%A0%E5%B0%84%E6%96%B9%E6%A1%88/" title="简单ORM映射方案(JDBC)">https://os467.github.io/2023/12/25/%E7%AE%80%E5%8D%95ORM%E6%98%A0%E5%B0%84%E6%96%B9%E6%A1%88/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
