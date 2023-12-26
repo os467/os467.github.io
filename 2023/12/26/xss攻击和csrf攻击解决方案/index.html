@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>请求限流 | Tly的博客</title>
+  <title>XSS和CSRF解决方案 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="请求限流 | Tly的博客">
+  <meta name="description" content="XSS和CSRF解决方案 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:type" content="website">
@@ -1173,9 +1173,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-请求限流" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-xss攻击和csrf攻击解决方案" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">请求限流</h1>
+        <h1 class="article-title">XSS和CSRF解决方案</h1>
     
     <div class="article-meta">
         
@@ -1193,12 +1193,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-10-08 19:57:07'>2022-10-08 19:57</time>
+            发布时间 : <time class="date" title='最后更新: 2023-12-26 17:49:03'>2023-12-26 17:48</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:779</span>
+        <span>字数:944</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1217,7 +1217,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81"><span class="toc-text">后端接口限流</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E6%AD%A5%E6%96%B9%E6%A1%88"><span class="toc-text">初步方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%BC%BA%E6%96%B9%E6%A1%88"><span class="toc-text">增强方案</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#XSS-x2F-CSRF"><span class="toc-text">XSS&#x2F;CSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS"><span class="toc-text">XSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSRF%E6%94%BB%E5%87%BB%EF%BC%88%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99%EF%BC%89"><span class="toc-text">CSRF攻击（钓鱼网站）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-text">相关工具类</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1233,107 +1233,161 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="后端接口限流"><a href="#后端接口限流" class="headerlink" title="后端接口限流"></a>后端接口限流</h1><p>如果有人使用token+postman多次调用服务端某个接口，那么会造成服务繁忙，因此我们需要设置来自同一用户的请求时间间隔</p>
-<p>使用AOP+redis进行请求冷却设置</p>
-<p><strong>设计思路：</strong></p>
-<ul>
-<li><p>使用AOP+自定义注解对需要限流的服务进行切面配置</p>
-</li>
-<li><p>在切面中获得当前请求的用户id</p>
-</li>
-<li><p>将用户id作为key存入redis缓存中，value可以不设置，通过读取注解上的请求限流时间来设置key的失效时间</p>
-</li>
-<li><p>下一次请求被AOP拦截到则进行一次获取key的操作，如果key失效不存在则服务器受理请求，否则直接返回拒绝服务</p>
-</li>
-</ul>
-<h2 id="初步方案"><a href="#初步方案" class="headerlink" title="初步方案"></a>初步方案</h2><p><strong>配置切面</strong></p>
-<pre><code class="java">@Component
-@Aspect
-public class ApiAspect &#123;
+        <h1 id="XSS-x2F-CSRF"><a href="#XSS-x2F-CSRF" class="headerlink" title="XSS&#x2F;CSRF"></a>XSS&#x2F;CSRF</h1><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6945277278347591688">XSS 和 CSRF 攻击详解 - 掘金 (juejin.cn)</a></p>
+<p><strong>针对以上两种攻击设计解决方案如下</strong></p>
+<h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><p>XSS攻击主要利用的是JavaScript获取浏览器信息，只要token值无法被JavaScript获取即可。</p>
+<p><strong>设置HttpOnlyCookie</strong></p>
+<pre><code class="java">//  设置Cookie值的方法
+public static void setHttpOnlyCookieValue(HttpServletResponse response, String cookieName, String cookieValue)&#123;
 
-    @Autowired
-    private RedisCache redisCache;
+    Cookie cookie = new Cookie(cookieName, cookieValue);
+    cookie.setMaxAge(maxAge); // Cookie的存活时间（自定义）
+    cookie.setPath(&quot;/&quot;); // 默认路径
+    cookie.setHttpOnly(true);
+    response.addCookie(cookie);
+&#125;
+</code></pre>
+<h2 id="CSRF攻击（钓鱼网站）"><a href="#CSRF攻击（钓鱼网站）" class="headerlink" title="CSRF攻击（钓鱼网站）"></a>CSRF攻击（钓鱼网站）</h2><p>主要利用了浏览器携带的cookie，虽然无法直接获取cookie内部隐私信息，但可以利用cookie伪造请求。</p>
+<p><strong>解决方案</strong></p>
+<p>设置Cookie的SameSite属性</p>
+<p><strong>Strict</strong></p>
+<p>这意味浏览器仅对同一站点的请求发送 cookie，即请求来自设置 cookie 的站点。如果请求来自不同的域名或协议（即使是相同域名），则携带有 <code>SameSite=Strict</code> 属性的 cookie 不会被发送。</p>
+<p><strong>Lax</strong></p>
+<p>这意味着 cookie 不会在跨站请求中被发送，如：加载图像或框架（frame）的请求。但 cookie 在用户从外部站点导航到源站时，cookie 也会被发送（例如，访问一个链接）。这是 <code>SameSite</code> 属性未被设置时的默认行为。</p>
+<p><strong>None</strong></p>
+<p>这意味着浏览器在跨站和同站请求中均会发送 cookie。在设置这一属性值时，必须同时设置 <code>Secure</code> 属性，就像这样：<code>SameSite=None; Secure</code>。</p>
+<pre><code class="java">//设置Cookie值的方法 提供sameSite策略
+public static void setHttpOnlyCookieValue(HttpServletResponse response, String cookieName, String cookieValue,String sameSite)&#123;
+    ResponseCookie cookie = ResponseCookie.from(cookieName, cookieValue).sameSite(sameSite)
+            .httpOnly(true)
+            .maxAge(maxAge)
+            .path(&quot;/&quot;)
+            .build();
+    response.setHeader(HttpHeaders.SET_COOKIE,cookie.toString());
+&#125;
+</code></pre>
+<p><strong>设置csrfToken</strong></p>
+<p>解析请求头中的csrfToken和session中的是否相同</p>
+<pre><code class="java">//csrf-token
+String csrf = (String)request.getSession().getAttribute(Constant.CSRF_TOKEN);
+String headerCsrf = request.getHeader(Constant.CSRF_TOKEN);
+if (csrf == null || headerCsrf == null || !csrf.equals(headerCsrf))&#123;
+    //csrfToken不匹配，拒绝服务
+    return;
+&#125;
+</code></pre>
+<p><strong>前端请求头设置csrfToken</strong></p>
+<pre><code class="js">// http request拦截器 添加一个请求拦截器
+axios.interceptors.request.use(function (config) &#123;
+    
+    let token = sessionStorage.getItem(CSRF_TOKEN)
+    if (token != null) &#123;
+        //将token放到请求头发送给服务器
+        config.headers.csrf = token;
+        return config;
+    &#125;
+    return config;
+&#125;, function (error) &#123;
+    // Do something with request error
+    return Promise.reject(error);
+&#125;);
+</code></pre>
+<h2 id="相关工具类"><a href="#相关工具类" class="headerlink" title="相关工具类"></a>相关工具类</h2><pre><code class="java">package pers.os467.management.utils;
 
-    @Pointcut(&quot;@annotation(com.os467.annotation.ApiLimit)&quot;)
-    public void pt()&#123;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+/**
+ *根据cookie的key来找到某一个具体的cookie,因为api中我们只能获取所有cookie
+ * 获取单个cookie的话只能通过标识去过滤，这样就很麻烦，所以我们可以封装一个工具类
+ * 来提高开发速率
+ * by os467
+ */
+public class CookieUtils &#123;
+
+    private static final Integer maxAge = 60 * 60 * 24;
+
+    //构造方法私有化
+    private CookieUtils()&#123;
 
     &#125;
 
-    @Around(&quot;pt()&quot;)
-    public Object limitRequest(ProceedingJoinPoint joinPoint) throws Throwable &#123;
+    /**
+     * 根据key来获取cookie
+     * @return
+     */
+    public static Cookie findCookie(Cookie[] cookies,String cookieName)&#123;
 
-        Long userId = SecurityUtils.getUserId();
-
-        if (redisCache.getCacheObject(&quot;apiLimit:&quot; + userId) == null) &#123;
-            //记录正在发生请求
-            redisCache.setCacheObject(&quot;apiLimit:&quot; + userId, &quot;&quot;);
-
-            //获取当前增强方法的标签信息
-            MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-            Method method = methodSignature.getMethod();
-            //获取超时时间
-            int timeout = method.getAnnotation(ApiLimit.class).timeout();
-
-            redisCache.expire(&quot;apiLimit:&quot; + userId,timeout, TimeUnit.SECONDS);
-        &#125; else &#123;
-            //上一个请求还未结束，拒绝服务
-            return ResponseResult.errorResult(AppHttpCodeEnum.SYSTEM_ERROR, &quot;请勿重复操作&quot;);
+        if (cookies == null || cookies.length == 0 || cookieName == null)&#123;
+            return null;
         &#125;
 
-        //增强方法的返回值
-        Object ret = null;
+        //遍历cookie数组
+        for (Cookie cookie : cookies) &#123;
+            if (cookie.getName().equals(cookieName))&#123;
+                return cookie;
+            &#125;
+        &#125;
+        return null;
+
+    &#125;
+
+    //	设置Cookie值的方法
+    public static void setHttpCookieValue(HttpServletResponse response, String cookieName, String cookieValue)&#123;
+
+        Cookie cookie = new Cookie(cookieName, cookieValue);
+        cookie.setMaxAge(maxAge); // Cookie的存活时间（自定义）
+        cookie.setPath(&quot;/&quot;); // 默认路径
+        response.addCookie(cookie);
+    &#125;
+
+    public static void setHttpCookieValue(HttpServletResponse response, String cookieName, String cookieValue,Integer maxAge)&#123;
+
+        Cookie cookie = new Cookie(cookieName, cookieValue);
+        cookie.setMaxAge(maxAge); // Cookie的存活时间（自定义）
+        cookie.setPath(&quot;/&quot;); // 默认路径
+        response.setHeader(&quot;set-cookie&quot;,&quot;SameSite=strict&quot;);
+        response.addCookie(cookie);
+    &#125;
+
+    //	设置Cookie值的方法
+    public static void setHttpOnlyCookieValue(HttpServletResponse response, String cookieName, String cookieValue)&#123;
+
+        Cookie cookie = new Cookie(cookieName, cookieValue);
+        cookie.setMaxAge(maxAge); // Cookie的存活时间（自定义）
+        cookie.setPath(&quot;/&quot;); // 默认路径
+        cookie.setHttpOnly(true);
+        response.addCookie(cookie);
+    &#125;
+
+
+    //设置Cookie值的方法 提供sameSite策略
+    public static void setHttpOnlyCookieValue(HttpServletResponse response, String cookieName, String cookieValue,String sameSite)&#123;
+        ResponseCookie cookie = ResponseCookie.from(cookieName, cookieValue).sameSite(sameSite)
+                .httpOnly(true)
+                .maxAge(maxAge)
+                .path(&quot;/&quot;)
+                .build();
+        response.setHeader(HttpHeaders.SET_COOKIE,cookie.toString());
+    &#125;
+
+
+
+    public static void deleteCookie(HttpServletResponse response, String cookieName) &#123;
         try &#123;
-            ret = joinPoint.proceed();
-        &#125; catch (Throwable throwable) &#123;
-            throw throwable;
-        &#125;
-
-        return ret;
-    &#125;
-
-&#125;
-</code></pre>
-<blockquote>
-<p>此方案可以初步排除更新操作的重复操作，但是在<strong>添加操作中失效了</strong></p>
-<p>分析原因可能是因为多个线程<strong>同时判断冷却标记为null</strong>从而导致AOP拦截失效</p>
-</blockquote>
-<h2 id="增强方案"><a href="#增强方案" class="headerlink" title="增强方案"></a>增强方案</h2><p><strong>解决方案</strong></p>
-<p>使用<strong>双重if判断+线程同步代码块</strong>的方案 来保证只有一个请求被受理</p>
-<pre><code class="java">//第一次检查缓存中是否有冷却标记
-if (redisCache.getCacheObject(&quot;apiLimit:&quot;+userId) != null)&#123;
-    //上一个请求还未结束，拒绝服务
-    return ResponseResult.errorResult(AppHttpCodeEnum.SYSTEM_ERROR, &quot;请勿重复操作&quot;);
-&#125;else &#123;
-    //静态代码块，持有当前切面类的对象锁
-    synchronized (this) &#123;
-        if (redisCache.getCacheObject(&quot;apiLimit:&quot; + userId) == null) &#123;
-
-            //记录冷却标记
-            redisCache.setCacheObject(&quot;apiLimit:&quot; + userId, &quot;&quot;);
-
-            //获取当前增强方法的标签信息
-            MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-            Method method = methodSignature.getMethod();
-            //获取超时时间
-            int timeout = method.getAnnotation(ApiLimit.class).timeout();
-
-            //设置冷却标记失效时间
-            redisCache.expire(&quot;apiLimit:&quot; + userId,timeout, TimeUnit.SECONDS);
-        &#125; else &#123;
-            //上一个请求还未结束，拒绝服务
-            return ResponseResult.errorResult(AppHttpCodeEnum.SYSTEM_ERROR, &quot;请勿重复操作&quot;);
+            String deleteValue = URLEncoder.encode(&quot;&quot;, &quot;utf-8&quot;);
+            CookieUtils.setHttpCookieValue(response,cookieName,deleteValue,0);
+        &#125; catch (UnsupportedEncodingException e) &#123;
+            e.printStackTrace();
         &#125;
     &#125;
 &#125;
 </code></pre>
-<blockquote>
-<p> 此时对用户A的多次重复请求已经做了冷却限制，保证服务器在5秒内只受理一次用户A的请求</p>
-</blockquote>
-<p><strong>此时有一个问题</strong></p>
-<p>当前线程同步代码块使用的是AOP监视器的对象锁，因此思考是否会对其它线程请求造成阻塞影响？</p>
-<ul>
-<li>答案显然是不会的，经过测试AOP监视器是多例模式的，因此不会因为同步代码块造成不同请求线程之间的阻塞</li>
-</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1347,12 +1401,12 @@ if (redisCache.getCacheObject(&quot;apiLimit:&quot;+userId) != null)&#123;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>请求限流</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">779</span></p>
+    <p><span class="copy-title">文章标题:</span>XSS和CSRF解决方案</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">944</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-10-08, 19:57:03</p>
-    <p><span class="copy-title">最后更新:</span>2022-10-08, 19:57:07</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/10/08/%E8%AF%B7%E6%B1%82%E9%99%90%E6%B5%81/" title="请求限流">https://os467.github.io/2022/10/08/%E8%AF%B7%E6%B1%82%E9%99%90%E6%B5%81/</a>
+    <p><span class="copy-title">发布时间:</span>2023-12-26, 17:48:10</p>
+    <p><span class="copy-title">最后更新:</span>2023-12-26, 17:49:03</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/12/26/xss%E6%94%BB%E5%87%BB%E5%92%8Ccsrf%E6%94%BB%E5%87%BB%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" title="XSS和CSRF解决方案">https://os467.github.io/2023/12/26/xss%E6%94%BB%E5%87%BB%E5%92%8Ccsrf%E6%94%BB%E5%87%BB%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
