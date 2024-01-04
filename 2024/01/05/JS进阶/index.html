@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Docker | Tly的博客</title>
+  <title>JS进阶 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Docker | Tly的博客">
+  <meta name="description" content="JS进阶 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="JS进阶子线程处理问题：今天做到一个需求要求前端上传文件时检查MD5值，这里使用了spark-md5来分块计算MD5值。在小文件计算时非常顺利，在上传一个700MB文件的时候就出现了线程明显的卡断，导致整个Vue页面未响应了几秒才开始上传文件。 原因剖析 JavaScript在前端是异步单线程的，如果要计算一个大文件md5值会导致主线程直接被阻塞掉，UI界面自然会未响应。 这里采用创建子js线程的">
 <meta property="og:type" content="article">
@@ -1182,9 +1182,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Docker" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-JS进阶" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Docker</h1>
+        <h1 class="article-title">JS进阶</h1>
     
     <div class="article-meta">
         
@@ -1194,7 +1194,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="运维">运维</a>
+            <a  data-rel="前端">前端</a>
             
         </span>
         
@@ -1202,12 +1202,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-16 19:53:14'>2022-08-23 13:25</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-05 02:36:53'>2024-01-05 02:36</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2.9k</span>
+        <span>字数:509</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1226,7 +1226,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker"><span class="toc-text">Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E7%AE%80%E4%BB%8B"><span class="toc-text">Docker简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E4%B8%89%E5%B1%82%E7%BB%93%E6%9E%84"><span class="toc-text">Linux三层结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DockerHub"><span class="toc-text">DockerHub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">Docker基本操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%8D%B7"><span class="toc-text">数据卷</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%8D%B7"><span class="toc-text">操作数据卷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E6%95%B0%E6%8D%AE%E5%8D%B7"><span class="toc-text">挂载数据卷</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dockerfile%E8%87%AA%E5%AE%9A%E4%B9%89%E9%95%9C%E5%83%8F"><span class="toc-text">Dockerfile自定义镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DockerCompose"><span class="toc-text">DockerCompose</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CentOS7%E5%AE%89%E8%A3%85DockerCompose"><span class="toc-text">CentOS7安装DockerCompose</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93"><span class="toc-text">Docker镜像仓库</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JS%E8%BF%9B%E9%98%B6"><span class="toc-text">JS进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%90%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86"><span class="toc-text">子线程处理</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1242,302 +1242,77 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="Docker简介"><a href="#Docker简介" class="headerlink" title="Docker简介"></a>Docker简介</h2><p>Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的<strong>镜像</strong>中，然后发布到任何流行的 <strong>Linux</strong>或<strong>Windows</strong>操作系统的机器上，也可以实现虚拟化，容器是完全使用<strong>沙箱</strong>机制，相互之间不会有任何接口</p>
-<p><strong>项目部署的问题</strong></p>
-<p>大型项目组件较多，运行环境也较为复杂，部署时会碰到一些问题：</p>
+        <h1 id="JS进阶"><a href="#JS进阶" class="headerlink" title="JS进阶"></a>JS进阶</h1><h2 id="子线程处理"><a href="#子线程处理" class="headerlink" title="子线程处理"></a>子线程处理</h2><p><strong>问题：</strong>今天做到一个需求要求前端上传文件时检查MD5值，这里使用了spark-md5来分块计算MD5值。在小文件计算时非常顺利，在上传一个700MB文件的时候就出现了线程明显的卡断，导致整个Vue页面未响应了几秒才开始上传文件。</p>
+<p><strong>原因剖析</strong></p>
+<p>JavaScript在前端是异步单线程的，如果要计算一个大文件md5值会导致主线程直接被阻塞掉，UI界面自然会未响应。</p>
+<p>这里采用创建子js线程的方式，并且以Promise的方式来异步的获取结果。</p>
 <ul>
-<li>依赖关系复杂，容易出现兼容性问题</li>
-<li>开发、测试、生产环境有差异</li>
+<li><code>var myWorker = new Worker(&#39;../js/md5Worker.js&#39;);</code>  创建一个MD5工作线程对象</li>
+<li><code>myWorker.postMessage([file]);</code>  需要传入线程的参数数组，这里传递了文件信息。</li>
+<li><code>myWorker.onmessage = onMessage;</code>  绑定回调方法</li>
 </ul>
-<p>不同环境的操作系统不同，Docker如何解决？我们先来了解下操作系统结构</p>
-<h3 id="Linux三层结构"><a href="#Linux三层结构" class="headerlink" title="Linux三层结构"></a>Linux三层结构</h3><p>系统应用：centos、ubuntu</p>
-<p>内核：linux</p>
-<p>计算机硬件</p>
-<ul>
-<li>内核与硬件交互，提供操作硬件的指令</li>
-<li>系统应用封装内核指令为函数，便于程序员调用</li>
-</ul>
-<p><strong>Docker的作用</strong></p>
-<ul>
-<li><p>Docker将用户程序与所需要调用的<strong>系统函数库</strong>一起打包</p>
-</li>
-<li><p>Docker运行到不同操作系统时，直接基于打包的函数库，借助于操作系统的linux内核来运行</p>
-</li>
-<li><p>Docker允许开发中将应用、依赖、函数库、配置一起<strong>打包</strong>，形成可移植镜像</p>
-</li>
-<li><p>Docker应用运行在容器中，使用沙箱机制，相互<strong>隔离</strong></p>
-</li>
-</ul>
-<p><strong>Docker如何解决开发、测试、生存环境有差异的问题</strong></p>
-<p>Docker镜像中包含完整运行环境，包括系统函数库，仅依赖系统的Linux内核，因此可以在任意Linux操作系统上运行</p>
-<p>Docker就是一个快速交付应用、运行应用的技术</p>
-<p><strong>镜像（Image）：</strong>  Docker将应用程序及其所需的依赖、函数库、环境、配置等文件打包在一起，成为镜像 </p>
-<p><strong>容器（Container）：</strong>镜像中的应用程序运行后形成的进程就是容器，只是Docker会给容器做隔离，对外不可见</p>
-<h2 id="DockerHub"><a href="#DockerHub" class="headerlink" title="DockerHub"></a>DockerHub</h2><p>DockerHub是一个Docker镜像的托管平台，这样的平台称为Docker Registry</p>
-<p>国内也有类似于DockerHub的公开服务，比如网易云镜像服务，阿里云镜像库等</p>
-<p>官网：<a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
-<p><strong>docker架构</strong></p>
-<p>docker是一个CS架构的程序，由两部分组成</p>
-<p><strong>服务端（server）：</strong>Docker守护进程，负责处理Docker指令，管理镜像等，容器等</p>
-<p><strong>客户端（client）：</strong>通过命令或RestAPI向Docker服务端发送指令，可以在本地或远程向服务端发送指令</p>
-<h2 id="Docker基本操作"><a href="#Docker基本操作" class="headerlink" title="Docker基本操作"></a>Docker基本操作</h2><p><strong>镜像相关命令</strong></p>
-<p>镜像名称一般分两部分组成：[repository]:[tag]</p>
-<p>例如： <code>mysql:5.7</code></p>
-<p>在没有指定tag时，默认是latest，代表最新版本的镜像</p>
-<p><strong>镜像CRUD操作</strong></p>
-<p>Dockerfile → <code>docker build</code> 构建镜像</p>
-<p>Docker Registry → <code>docker pull</code> 从服务器拉取镜像</p>
-<p>Local本地 </p>
-<p><code>docker images</code>	查看镜像</p>
-<p><code>docker rmi</code>  删除镜像</p>
-<p><code>docker push</code>  推送镜像到服务器</p>
-<p><code>docker save</code>  保存镜像为一个压缩包</p>
-<p><code>docker load</code>  加载压缩包为镜像</p>
-<p><code>docker --help 具体命令</code>  查看docker命令帮助文档</p>
-<p><strong>容器相关命令</strong></p>
-<p><code>docker run</code>   创建并运行容器</p>
-<p><code>docker pause</code>  暂停容器运行</p>
-<p><code>docker unpause</code>  恢复容器运行</p>
-<p><code>docker stop</code>  停止容器运行</p>
-<p><code>docker start</code>  开始容器运行</p>
-<p><code>docker ps</code> 查看所有运行的容器及状态  <strong>-a</strong>参数，现实所有容器</p>
-<p><code>docker logs</code>  查看容器运行日志  <strong>-f</strong> 参数，持续查看日志</p>
-<p><code>docker exec</code>  进入容器执行命令</p>
-<p><code>docker rm</code> 删除指定容器</p>
-<p><strong>运行容器命令实例：</strong></p>
-<p><code>docker run --name containerName -p 80:80 -d nginx</code></p>
-<ul>
-<li>docker run 创建并运行一个容器</li>
-<li>–name 给容器起一个名字，比如叫做mn</li>
-<li>-p 将宿主机端口与容器端口映射，冒号左侧是宿主机端口，右侧是容器端口</li>
-<li>-d 后台运行容器</li>
-<li>nginx  镜像名称，例如nginx</li>
-</ul>
-<p><code>docker exec -it mn bash</code></p>
-<ul>
-<li>docker exec  进入容器内部，执行一个命令</li>
-<li>-it  给当前进入的容器创建一个标准输入、输出终端，允许我们与容器交互</li>
-<li>mn  要进入的容器的名称</li>
-<li>bash  进入容器后执行的命令，bash是一个linux终端交互命令</li>
-</ul>
-<h2 id="数据卷"><a href="#数据卷" class="headerlink" title="数据卷"></a>数据卷</h2><p>容器与数据耦合的问题</p>
-<p><strong>不便于修改</strong></p>
-<p>当我们需要修改Nginx的html内容时，需要进入容器内部修改，很不方便</p>
-<p><strong>数据不可复用</strong></p>
-<p>在容器内的修改对外是不可见的，所有修改对新创建的容器是不可复用的</p>
-<p><strong>升级维护困难</strong></p>
-<p>数据在容器内，如果要升级容器必然要删除旧容器，所有数据都跟着删除了</p>
-<p>数据集（volume）是一个<strong>虚拟目录</strong>，指向宿主机文件系统中的某个目录（<code>/var/lib/docker/volumes</code>）</p>
-<p><strong>数据卷的作用：</strong></p>
-<p>将容器与数据分离，解耦合，方便操作容器内数据，保证数据安全</p>
-<h3 id="操作数据卷"><a href="#操作数据卷" class="headerlink" title="操作数据卷"></a>操作数据卷</h3><p>数据卷操作的基本语法如下：</p>
-<p><code>docker volume [COMMAND]</code></p>
-<p>docker volume命令是数据卷操作，根据命令后跟随的command来确定下一步的操作：</p>
-<ul>
-<li>create 创建一个volume</li>
-<li>inspect 显示一个或多个volume的信息</li>
-<li>ls 列出所有的volume</li>
-<li>prune 删除未使用的volume</li>
-<li>rm 删除一个或多个指定的volume</li>
-</ul>
-<h3 id="挂载数据卷"><a href="#挂载数据卷" class="headerlink" title="挂载数据卷"></a>挂载数据卷</h3><p>我们在创建容器时，可以通过-v参数来挂载一个数据卷到某个容器目录</p>
-<p><code>-v html:/root/html</code>  把html数据卷挂载到<strong>容器内</strong>的&#x2F;root&#x2F;html这个目录中</p>
-<p>如果容器运行时volume不存在，会自动创建</p>
-<p><strong>挂载mysql的示例</strong></p>
-<pre><code class="console">docker run \
- --name mysqlTest -e MYSQL_ROOT_PASSWORD=root \
--p 3307:3306 \
--v /tmp/mysql/conf/hmy.cnf:/etc/mysql/conf.d/hmy.cnf \
--v /tmp/mysql/data:/var/lib/mysql \
--d \
-mysql:5.7.25
-</code></pre>
-<p><strong>数据卷挂载与目录直接挂载</strong></p>
-<ul>
-<li>数据卷挂载耦合度低，由docker来管理目录，但是目录较深，不好找</li>
-<li>目录挂载耦合度高，需要我们自己管理目录，不过目录容易寻找查看</li>
-</ul>
-<h2 id="Dockerfile自定义镜像"><a href="#Dockerfile自定义镜像" class="headerlink" title="Dockerfile自定义镜像"></a>Dockerfile自定义镜像</h2><p><strong>镜像结构</strong></p>
-<p>镜像是将应用程序及其需要的系统函数库，环境，配置，依赖打包而成</p>
-<p><strong>基础镜像（BaseImage）</strong></p>
-<p>应用依赖的系统函数库、环境、配置、文件等</p>
-<p><strong>层（Layer）</strong></p>
-<p>在BaseImage基础上添加安装包、依赖、配置等，每次操作都形成新的一层</p>
-<p><strong>入口（Entrypoint）</strong></p>
-<p>镜像运行入口，一般是程序启动的脚本和参数</p>
-<p><strong>什么是Dockerfile</strong></p>
-<p>Dockerfile就是一个文本文件，其中包含一个个的指令（Instruction），用指令来说明要执行什么操作来构建镜像，每一个指令都会形成一层Layer</p>
-<table>
-<thead>
-<tr>
-<th align="center">指令</th>
-<th align="center">说明</th>
-<th align="center">示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">FROM</td>
-<td align="center">指定基础镜像</td>
-<td align="center">FROM centos:6</td>
-</tr>
-<tr>
-<td align="center">ENV</td>
-<td align="center">设置环境变量，在后面指令使用</td>
-<td align="center">ENV key value</td>
-</tr>
-<tr>
-<td align="center">COPY</td>
-<td align="center">拷贝本地文件到镜像的指定目录</td>
-<td align="center">COPY .&#x2F;mysql-5.7.rpm &#x2F;tmp</td>
-</tr>
-<tr>
-<td align="center">RUN</td>
-<td align="center">执行Linux的shell命令，一般是安装过程的命令</td>
-<td align="center">RUN yum install gcc</td>
-</tr>
-<tr>
-<td align="center">EXPOSE</td>
-<td align="center">指定容器运行时监听的端口，是给镜像使用者看的</td>
-<td align="center">EXPOSE 8080</td>
-</tr>
-<tr>
-<td align="center">ENTRYPOINT</td>
-<td align="center">镜像中应用的启动命令，容器运行时调用</td>
-<td align="center">ENTRYPOINT java -jar xx.jar</td>
-</tr>
-</tbody></table>
-<p>官方语法文档: <a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder">https://docs.docker.com/engine/reference/builder</a></p>
-<h2 id="DockerCompose"><a href="#DockerCompose" class="headerlink" title="DockerCompose"></a>DockerCompose</h2><p><strong>DockerCompose是一个基于分布式集群部署的帮手</strong></p>
-<p>DockerCompose 可以基于Compose文件帮我们快速的部署分布式应用，而无需动手一个个创建和运行容器</p>
-<p>Compose文件是一个文本文件，通过<strong>指令定义集群中的每个容器如何运行</strong></p>
-<p><strong>例子</strong></p>
-<pre><code class="yaml">version: &quot;3.8&quot;
-services:
-  mysql:
-    image: mysql:5.7.25
-    environment:
-     MYSQL_ROOT_PASSWORD: 123 
-    volumes:
-     - /tmp/mysql/data:/var/lib/mysql
-     - /tmp/mysql/conf/hmy.cnf:/etc/mysql/conf.d/hmy.cnf
-  web:
-    build: .
-    ports:
-     - 8090:8090
-</code></pre>
-<p>上面的Compose文件就描述一个项目，其中包含两个容器：</p>
-<ul>
-<li>mysql：一个基于<code>mysql:5.7.25</code>镜像构建的容器，并且挂载了两个目录</li>
-<li>web：一个基于<code>docker build</code>临时构建的镜像容器，映射端口时8090</li>
-</ul>
-<p>DockerCompose的<strong>详细语法</strong>参考官网：<a target="_blank" rel="noopener" href="https://docs.docker.com/compose/compose-file/">https://docs.docker.com/compose/compose-file/</a></p>
-<p>其实DockerCompose文件可以看做是将多个docker run命令写到一个文件，只是语法稍有差异</p>
-<h3 id="CentOS7安装DockerCompose"><a href="#CentOS7安装DockerCompose" class="headerlink" title="CentOS7安装DockerCompose"></a>CentOS7安装DockerCompose</h3><p><strong>命令行安装</strong></p>
-<pre><code class="bash">#安装
-curl -L https://github.com/docker/compose/releases/download/1.29.1/docker-compose-`uname -s` - `uname -m` &gt; /usr/local/bin/docker-compose
-</code></pre>
-<p><strong>文件上传</strong></p>
-<p>或者将资料中的docker-compose文件上传到控制台的<code>usr/local/bin/</code>目录下</p>
-<p><strong>修改文件权限</strong></p>
-<p>给文件添加执行权</p>
-<pre><code class="bash">chmod +x /usr/local/bin/docker-compose
-</code></pre>
-<p><strong>Base自动补全命令</strong></p>
-<pre><code>#补全命令
-curl -L https://raw.githubusercontent.com/docker/compose/1.29.1/contrib/completion/bash/docker-compose &gt; /etc/bash_completion.d/docker-compose
-</code></pre>
-<p>如果这里出现错误需要修改自己的hosts文件：</p>
-<pre><code class="bash">echo &quot;185.199.108.133 raw.githubusercontent.com&quot; &gt;&gt; /etc/hosts
+<p>这样子el-upload组件就会在工作线程完成md5解析工作后获取到返回异步操作结果，然后执行上传的逻辑。</p>
+<p><strong>el上传前钩子</strong></p>
+<pre><code class="javascript">beforeUpload(file)&#123;  
 
-#自行编辑也可以
-vi /etc/hosts
+  /*推送上传消息*/
+  let info = &#123;
+    /*文件uid*/
+    uid:file.uid,
+    /*文件名*/
+    name:file.name,
+    /*状态*/
+    status:null,
+    /*进度条百分比*/
+    progressPercent:0,
+  &#125;;
 
-#下面是真实ip
-185.199.108.133  raw.githubusercontent.com
-185.199.109.133  raw.githubusercontent.com
-185.199.110.133  raw.githubusercontent.com
-185.199.111.133  raw.githubusercontent.com
-</code></pre>
-<p>在docker-compose之间，多个服务通过服务名+端口来互相访问</p>
-<h2 id="Docker镜像仓库"><a href="#Docker镜像仓库" class="headerlink" title="Docker镜像仓库"></a>Docker镜像仓库</h2><p>镜像仓库（Docker Registry）有公共的和私有的两种形式</p>
-<ul>
-<li><strong>公共仓库</strong>：例如<strong>Docker官方的Docker Hub</strong>，国内也有一些云服务商提供类似于Docker Hub的公开服务，比如<strong>网易云镜像服务</strong>、<strong>DaoCloud镜像服务</strong>、<strong>阿里云镜像服务</strong>等</li>
-<li>除了使用公开仓库外，用户还可以在本地搭建私有Docker Registry，企业自己的镜像最好是采用私有Docker Registry来实现</li>
-</ul>
-<p>搭建镜像仓库可以基于Docker官方提供的Docker Registry来实现</p>
-<p>官网地址：<a target="_blank" rel="noopener" href="https://hub.docker.com/_/registry">https://hub.docker.com/_/registry</a></p>
-<p><strong>简化版镜像仓库</strong></p>
-<p>Docker官方的Docker Registry 是一个基础版本的Docker镜像仓库，具备仓库管理的完整功能，但是没有图形化界面</p>
-<p>搭建方式比较简单，命令如下</p>
-<pre><code class="bash">docker run -d \
-    --restart=always \
-    --name registry	\
-    -p 5000:5000 \
-    -v registry-data:/var/lib/registry \
-    registry
-</code></pre>
-<p>命令中挂载了一个数据卷registry-data到容器内的&#x2F;var&#x2F;lib&#x2F;registry 目录，这是私有镜像库存放数据的目录</p>
-<p>访问<code>http://IP地址:5000/v2/_catalog</code> 可以查看当前私有镜像服务中包含的镜像</p>
-<p><strong>带有图形化界面的版本</strong></p>
-<p>使用DockerCompose部署带有图象界面的DockerRegistry，命令如下：</p>
-<pre><code>version: &#39;3.0&#39;
-services:
-  registry:
-    image: registry
-    volumes:
-      - ./registry-data:/var/lib/registry
-  ui:
-    image: joxit/docker-registry-ui:static
-    ports:
-      - 8080:80
-    environment:
-      - REGISTRY_TITLE=os467_registry
-      - REGISTRY_URL=http://registry:5000
-    depends_on:
-      - registry
-</code></pre>
-<p><strong>配置Docker信任地址</strong></p>
-<p>我们的私服采用的是http协议，默认不被Docker信任，所以需要做一个配置</p>
-<pre><code class="bash"># 打开要修改的文件
-vi /etc/docker/daemon.json
-# 添加内容：（如果之前有其它配置，需要用&quot;,&quot;隔开）
-&quot;insecure-registries&quot;:[&quot;http://192.168.119.88:8080&quot;]
-# 重加载
-systemctl daemon-reload
-# 重启docker
-systemctl restart docker
-</code></pre>
-<p><strong>搭建步骤</strong></p>
-<pre><code class="bash">mkdir registry-ui
-cd registry-ui
-touch docker-compose.yml
-#将之前的compose命令放入yaml文件中
-docker-compose up -d
+  this.$store.state.uploadInfoMap.set(file.uid,info);
+  this.$store.commit(&#39;uploadStart&#39;);
 
-#查看日志
-docker-compose logs -f
+ return new Promise((resolve, reject) =&gt; &#123;
+   /*创建一个新线程去处理*/
+   var myWorker = new Worker(&#39;../js/md5Worker.js&#39;);
+   /*为线程传递消息*/
+   myWorker.postMessage([file]);
+   /*计算函数*/
+   let md5;
+   let onMessage = (e)=&gt;&#123;
+     &#123;
+       md5 = e.data;
+       file.md5 = md5;
+       resolve();
+     &#125;
+   &#125;
+   /*绑定回调方法*/
+   myWorker.onmessage = onMessage;
+ &#125;)
+&#125;,
 </code></pre>
-<p>访问本机<code>http://192.168.119.88:8080/</code>查看图形化管理界面</p>
-<p>推送镜像到私有镜像服务必须先tag，<strong>步骤如下</strong></p>
-<ul>
-<li>重新tag本地镜像，名称前缀为私有仓库的地址</li>
-</ul>
-<pre><code class="bash">#docker tag 原始名字 重新生成的名字
-docker tag nginx:latest 192.168.199.88:8080/nginx:1.0 
+<p><strong>worker子线程</strong></p>
+<pre><code class="javascript">importScripts(&#39;../utils/spark-md5.js&#39;);
 
-#推送到私有仓库
-docker push 192.168.119.88:8080/nginx:1.0 
+self.onmessage = function(e) &#123;
+ /*   console.log(&#39;Message received from main script&#39;);*/
+    
+    let fileReader = new FileReader()
+    let spark = new SparkMD5.ArrayBuffer() // 创建md5对象（基于SparkMD5）
+    fileReader.readAsArrayBuffer(e.data[0]) // file 对应上传的文件
 
-#拉取镜像
-docker pull 192.168.119.88:8080/nginx:1.0
+    // 文件读取完毕之后的处理
+    fileReader.onload = (e) =&gt; &#123;
+        spark.append(e.target.result);
+        let md5 = spark.end();
+       /* console.log(&#39;Posting message back to main script&#39;);*/
+        self.postMessage(md5);
+    &#125;
+
+&#125;
 </code></pre>
-<p><strong>总结</strong></p>
-<ul>
-<li>1.推送本地镜像到仓库前都必须重命名(docker tag)镜像，以镜像仓库地址为前缀</li>
-<li>2.镜像仓库推送前需要把仓库地址配置到docker服务的daemon.json文件中，被docker信任</li>
-<li>3.推送使用docker push命令</li>
-<li>4.拉取使用docker pull命令</li>
-</ul>
+<blockquote>
+<p>通过<code>e.data[index]</code> 来获取传入的参数  </p>
+<p>调用<code>self.postMessage(result)</code> 来返回结果</p>
+</blockquote>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1551,12 +1326,12 @@ docker pull 192.168.119.88:8080/nginx:1.0
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Docker</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">2.9k</span></p>
+    <p><span class="copy-title">文章标题:</span>JS进阶</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">509</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-08-23, 13:25:11</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-16, 19:53:14</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/08/23/Docker/" title="Docker">https://os467.github.io/2022/08/23/Docker/</a>
+    <p><span class="copy-title">发布时间:</span>2024-01-05, 02:36:43</p>
+    <p><span class="copy-title">最后更新:</span>2024-01-05, 02:36:53</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/01/05/JS%E8%BF%9B%E9%98%B6/" title="JS进阶">https://os467.github.io/2024/01/05/JS%E8%BF%9B%E9%98%B6/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
