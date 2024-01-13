@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>JVM虚拟机 | Tly的博客</title>
+  <title>Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="JVM虚拟机 | Tly的博客">
+  <meta name="description" content="Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:type" content="website">
@@ -1209,32 +1209,22 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-JVM虚拟机" class="article article-type-post" itemscope itemprop="blogPost">
-    
-        <h1 class="article-title">JVM虚拟机</h1>
+        <article id="post-DispatcherServlet内部异常处理" class="article article-type-post" itemscope itemprop="blogPost">
     
     <div class="article-meta">
         
         
         
-        <span class="book">
-            <i class="iconfont icon-category"></i>
-            
-            
-            <a  data-rel="底层学习">底层学习</a>
-            
-        </span>
-        
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-05 00:08:45'>2022-08-24 18:28</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-13 17:45:53'>2024-01-13 17:45</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2.2k</span>
+        <span>字数:605</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1253,7 +1243,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">JVM虚拟机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM%E4%BB%8B%E7%BB%8D"><span class="toc-text">JVM介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83"><span class="toc-text">JVM内存分布</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E5%8C%BA-%E7%BA%BF%E7%A8%8B%E7%A7%81%E6%9C%89"><span class="toc-text">本地方法区(线程私有)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%EF%BC%88Heap-%E7%BA%BF%E7%A8%8B%E5%85%B1%E4%BA%AB%EF%BC%89-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA"><span class="toc-text">堆（Heap-线程共享）-运行时数据区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="toc-text">GC垃圾回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#finalize-%E6%96%B9%E6%B3%95"><span class="toc-text">finalize()方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA-x2F-%E6%B0%B8%E4%B9%85%E4%BB%A3%EF%BC%88%E7%BA%BF%E7%A8%8B%E5%85%B1%E4%BA%AB%EF%BC%89"><span class="toc-text">方法区&#x2F;永久代（线程共享）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#G1-%E6%94%B6%E9%9B%86%E5%99%A8"><span class="toc-text">G1 收集器</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DispatcherServlet%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-text">DispatcherServlet异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">解决方案</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1269,130 +1259,89 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="JVM虚拟机"><a href="#JVM虚拟机" class="headerlink" title="JVM虚拟机"></a>JVM虚拟机</h1><p><strong>Java在各个平台上是如何跑起来的？</strong></p>
-<p>我们都知道 Java 源文件，通过编译器，能够生产相应的.Class 文件，也就是字节码文件， 而字节码文件又通过 Java 虚拟机中的解释器，编译成特定机器上的机器码</p>
-<blockquote>
-<p> 不同平台上的解释器不同，但是虚拟机环境是相同的，这就是java为什么能在各个平台上运行的原因</p>
-</blockquote>
-<p><strong>JVM允许一个应用并发执行多个线程</strong></p>
-<p>JVM 内存区域主要分为线程私有区域【程序计数器、虚拟机栈、本地方法区】、线程共享区 域【JAVA 堆、方法区】、直接内存</p>
-<blockquote>
-<p>JVM的多线程处理提高了程序的并行处理效率</p>
-</blockquote>
-<h2 id="JVM介绍"><a href="#JVM介绍" class="headerlink" title="JVM介绍"></a>JVM介绍</h2><p><strong>程序计数器(线程私有)</strong></p>
-<p>一块较小的内存空间, 是当前线程所执行的字节码的行号指示器，每条线程都要有一个独立的程序计数器，这类内存也称为线程私有的内存</p>
-<p>正在执行 java 方法的话，计数器记录的是虚拟机<strong>字节码指令的地址</strong>（当前指令的地址），如 果还是 Native 方法，则为空</p>
-<p>这个内存区域是唯一一个在虚拟机中没有规定任何 OutOfMemoryError 情况的区域</p>
-<blockquote>
-<p>程序计数器的作用是用于存储下一条指令（即java代码编译完成的字节码指令）的地址，方便虚拟机解释器找到这些指令并且翻译成机器码交给CPU执行</p>
-</blockquote>
-<p><strong>虚拟机栈(线程私有)</strong></p>
-<p>是描述java方法执行的内存模型，<strong>每个方法在执行的同时都会创建一个栈帧</strong>（Stack Frame） 用于存储局部变量表、操作数栈、动态链接、方法出口等信息</p>
-<p>每一个方法从调用直至执行完成 的过程，就对应着一个栈帧在<strong>虚拟机栈</strong>中<strong>入栈到出栈的过程</strong></p>
-<ul>
-<li>栈帧随着方法调用而创建，随着<strong>方法结束而销毁</strong></li>
-</ul>
-<blockquote>
-<p>一个方法域都对应一个栈帧，每次方法执行结束，栈帧内存放的变量引用都会被GC机制回收，回收结束后，对应的强引用也会消失（不可达），便于GC机制继续回收那些不可达的对象占用的堆内存</p>
-</blockquote>
-<h2 id="JVM内存分布"><a href="#JVM内存分布" class="headerlink" title="JVM内存分布"></a>JVM内存分布</h2><p><img src="https://p1.itc.cn/q_70/images03/20220708/5b6750852c5a4e0d9fdb7577eda33a62.png"></p>
-<h3 id="本地方法区-线程私有"><a href="#本地方法区-线程私有" class="headerlink" title="本地方法区(线程私有)"></a>本地方法区(线程私有)</h3><p>本地方法栈则为 Native 方法服务，调用本地其它语言的方法，例如C++，C等</p>
-<blockquote>
-<p>Java提供了本地调用需要实现的接口（JNI）<strong>Java Native Interface</strong> ，它允许Java代码和其他语言写的代码进行交互</p>
-</blockquote>
-<h3 id="堆（Heap-线程共享）-运行时数据区"><a href="#堆（Heap-线程共享）-运行时数据区" class="headerlink" title="堆（Heap-线程共享）-运行时数据区"></a>堆（Heap-线程共享）-运行时数据区</h3><p>是被线程共享的一块内存区域，创建的对象和数组都保存在 Java 堆内存中，也是垃圾收集器进行 垃圾收集的最重要的内存区域</p>
-<blockquote>
-<p>堆内存通常存放new关键字创建的对象数据</p>
-</blockquote>
-<p>堆内存分为 <strong>新生代</strong> （Eden 区、From Survivor 区和 To Survivor 区）和 <strong>老年代</strong></p>
-<p><strong>在了解堆内存内的分代回收机制前，先要了解下垃圾回收机制如何判断一个对象是否存活</strong></p>
-<ul>
-<li>宣告一个对象的死亡一般要经历两次标记</li>
-</ul>
-<p><strong>第一次标记</strong></p>
-<p>如果对象在进行可达性分析后发现没有与GC Roots（对象引用关系链，相当于一个树结构）相连接的引用链， 那它将会被第一次标记，随后进行一次筛选</p>
-<blockquote>
-<p>GCroot原理：通过对枚举GCroot对象做引用可达性分析</p>
-<p>可以作为GC root对象的有：</p>
-<ul>
-<li>局部变量（Object obj &#x3D; new Object() 中的obj）引用的对象</li>
-<li>静态属性引用的对象 （static修饰的属性）</li>
-<li>方法区常量引用的对象（static+final修饰的属性）</li>
-<li>本地方法栈中引用的对象</li>
-</ul>
-</blockquote>
-<ul>
-<li><strong>新生代（8:1:1）</strong><ul>
-<li>Eden区（伊甸区）<ul>
-<li>Java 新对象的出生地（new关键字创建的，如果新创建的对象占用内存很大，则<strong>直接分配到老年代</strong>），当 <strong>Eden 区内存不够</strong>的时候就会触发 MinorGC（复制算法），对<strong>新生代区进行 一次垃圾回收</strong></li>
-</ul>
-</li>
-<li>ServivorFrom区（幸存者1区）<ul>
-<li>存放上一次 GC 的幸存者，作为这一次 GC 的被扫描者</li>
-</ul>
-</li>
-<li>ServivorTo区（幸存者2区）<ul>
-<li>保留了一次 MinorGC（复制算法） 过程中的幸存者</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="GC垃圾回收机制"><a href="#GC垃圾回收机制" class="headerlink" title="GC垃圾回收机制"></a>GC垃圾回收机制</h4><blockquote>
-<p><strong>GC机制在新生代中的运行过程</strong></p>
-<p>1、将Eden区和ServivorFrom区中的数据复制到ServivorTo区，对象年龄+1，如果有达到老年区对象标准的移至老年区(默认15次扫描后)</p>
-<p>2、清空Eden区和ServivorFrom区数据</p>
-<p>3、替换ServivorFrom区和ServivorTo区数据内容</p>
-</blockquote>
-<p>在第一次标记的同时我们要明白GC机制还做了一件事情：</p>
-<p><strong>判断是否要执行<code>finalize()</code>方法</strong></p>
-<h5 id="finalize-方法"><a href="#finalize-方法" class="headerlink" title="finalize()方法"></a>finalize()方法</h5><p>finalize()是Object的protected方法</p>
-<p><code>finalize()</code>与C++中的析构函数不是对应的。C++中的析构函数调用的时机是<strong>确定的</strong>（对象离开作用域或delete掉），但Java中的finalize的调用<strong>具有不确定性</strong></p>
-<ul>
-<li><p>如果需要执行，那么对象需要执行完<code>finalize()</code>方法才能被回收</p>
-</li>
-<li><p>如果对象重写了<code>finalize()</code>方法，那么该对象将会被放置在一个F-Queue队列中，稍后由一个虚拟机自动建立的、<strong>低优先级</strong>的Finalizer线程去执行它</p>
-</li>
-<li><p>对象如果没有重写<code>finalize()</code>方法，或者<code>finalize()</code>方法已经被虚拟机调用过，此时会被认<br>定为没必要执行<code>finalize()</code>方法</p>
-</li>
-</ul>
-<blockquote>
-<p>对象可由两种状态，涉及到两类状态空间</p>
-<p>一是终结状态空间 F &#x3D; {unfinalized, finalizable, finalized}</p>
-<p>二是可达状态空间 R &#x3D; {reachable, finalizer-reachable, unreachable}</p>
-<p>各状态含义如下：</p>
-<p><strong>unfinalized:</strong> 新建对象会先进入此状态，GC并未准备执行其finalize方法，因为该对象是可达的<br><strong>finalizable:</strong> 表示GC可对该对象执行finalize方法，GC已检测到该对象不可达。正如前面所述，GC通过F-Queue队列和一专用线程完成finalize的执行<br><strong>finalized:</strong> 表示GC已经对该对象执行过finalize方法<br><strong>reachable:</strong> 表示GC Roots引用可达<br><strong>finalizer-reachable(f-reachable)：</strong>表示不是reachable，但可通过某个finalizable对象可达<br><strong>unreachable：</strong>对象不可通过上面两种途径可达</p>
-</blockquote>
-<p><strong>第二次标记</strong></p>
-<p>第二次标记会为执行完<code>finalize()</code>方法的对象进行最后一次标记，之后销毁该对象内存</p>
-<ul>
-<li>若JVM检测到finalized状态的对象变成unreachable，回收其内存</li>
-<li>若对象并未覆盖finalize方法，JVM会进行优化，直接回收对象</li>
-</ul>
-<p><strong>老年代</strong></p>
-<p>新时代与老年代的内存比例为<code>1:2</code></p>
-<p>老年代的对象比较稳定，所以 MajorGC 不会频繁执行</p>
-<p><strong>MajorGC（采用标记复制回收策略）触发条件</strong></p>
-<ul>
-<li>至少触发一次MinorGC（不是绝对，有策略可以选择），使得有新生代的对象晋身入老年代，导致老年代内存空间不够用时才触发MajorGC</li>
-</ul>
-<blockquote>
-<p>频繁触发MajorGC的原因一般为：新生代内存不足以存放过大内存占用率的对象，或者是没有合理分配好新生代的对象内存</p>
-</blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangquan1992/article/details/99679969">参考博客</a></p>
-<h3 id="方法区-x2F-永久代（线程共享）"><a href="#方法区-x2F-永久代（线程共享）" class="headerlink" title="方法区&#x2F;永久代（线程共享）"></a>方法区&#x2F;永久代（线程共享）</h3><ul>
-<li>指内存的永久保存区域，主要存放 Class 和 Meta（元数据）的信息，类在被加载的时候被放入永久区域，它和和存放实例的区域不同，GC 不会在主程序运行期对永久区域进行清理</li>
-<li>在 Java8 中，永久代已经被移除，被一个称为<strong>元数据区（方法区）</strong>的区域所取代</li>
-</ul>
-<blockquote>
-<p>元空间并不在虚拟机中，而是使用本地内存，其大小仅受本地内存限制</p>
-</blockquote>
-<h3 id="G1-收集器"><a href="#G1-收集器" class="headerlink" title="G1 收集器"></a>G1 收集器</h3><p>G1 收集器 Garbage first 垃圾收集器是目前垃圾收集器理论发展的最前沿成果，相比与 CMS 收集器，G1 收 集器两个最突出的改进是： </p>
-<ol>
-<li>基于标记-整理算法，不产生内存碎片 </li>
-<li>可以非常精确控制停顿时间，在不牺牲吞吐量前提下，实现低停顿垃圾回收</li>
-</ol>
-<p> G1 收集器避免全区域垃圾收集，它把堆内存划分为大小固定的几个独立区域，并且跟踪这些区域 的垃圾收集进度，同时在后台维护一个<strong>优先级列表</strong>，每次根据所允许的收集时间，优先回收垃圾最多的区域，区域划分和优先级区域回收机制，确保 G1 收集器可以在有限时间获得最高的垃圾收集效率</p>
+        <p>title: Docker<br>date: 2024-01-13 17:45:11<br>category: 其它</p>
+<h1 id="DispatcherServlet异常处理"><a href="#DispatcherServlet异常处理" class="headerlink" title="DispatcherServlet异常处理"></a>DispatcherServlet异常处理</h1><p>由于无法通过filter捕捉并处理DispatcherServlet内部的异常，如项目中文件上传前端通过axios取消请求导致后端的EOF异常(在进入Controller之前接收文件流)。</p>
+<p>一般来说会从request底层的方法向上抛出异常，因此我尝试在filter对此异常进行捕获，</p>
+<p>但是在DispatcherServlet这里如果没做处理的话默认会一直抛给Tomcat的StandardWrapperValve打印异常，这里我们是想阻止此类异常打印并自行处理。</p>
+<p>这里分析下dispatcherServlet处理异常部分的源码</p>
+<p><strong>源码部分</strong></p>
+<pre><code class="java">@Nullable
+protected ModelAndView processHandlerException(HttpServletRequest request, HttpServletResponse response, @Nullable Object handler, Exception ex) throws Exception &#123;
+    //方法里的ex参数就是内部发生的具体异常对象
+
+    
+    request.removeAttribute(HandlerMapping.PRODUCIBLE_MEDIA_TYPES_ATTRIBUTE);
+    //这个exMv代表的就是错误视图和模型对象，如果为null则会记录异常日志
+    ModelAndView exMv = null;
+    //可以看到DispatcherServlet中的异常处理是由handlerExceptionResolvers这个异常处理解决程序列表来处理的
+    if (this.handlerExceptionResolvers != null) &#123;
+        Iterator var6 = this.handlerExceptionResolvers.iterator();
+
+        while(var6.hasNext()) &#123;
+            HandlerExceptionResolver resolver = (HandlerExceptionResolver)var6.next();
+            exMv = resolver.resolveException(request, response, handler, ex);
+            if (exMv != null) &#123;
+                break;
+            &#125;
+        &#125;
+    &#125;
+
+    //如果exMV为null就说明之前的异常处理程序并没有解决异常，如果我们自己设置了异常处理程序可以返回一个空视图而不是默认的null
+    if (exMv != null) &#123;
+        if (exMv.isEmpty()) &#123;
+            //如果我们自己设置异常处理后返回空视图，则在这里被被设置异常信息
+            request.setAttribute(EXCEPTION_ATTRIBUTE, ex);
+            return null;
+        &#125; else &#123;
+            if (!exMv.hasView()) &#123;
+                String defaultViewName = this.getDefaultViewName(request);
+                if (defaultViewName != null) &#123;
+                    exMv.setViewName(defaultViewName);
+                &#125;
+            &#125;
+
+            if (this.logger.isTraceEnabled()) &#123;
+                this.logger.trace(&quot;Using resolved error view: &quot; + exMv, ex);
+            &#125; else if (this.logger.isDebugEnabled()) &#123;
+                this.logger.debug(&quot;Using resolved error view: &quot; + exMv);
+            &#125;
+
+            WebUtils.exposeErrorRequestAttributes(request, ex, this.getServletName());
+            return exMv;
+        &#125;
+    &#125; else &#123;
+        //如果没有任何异常处理程序做处理返回null的话，则这里会抛出异常
+        throw ex;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>WebMvc中添加异常解决程序，不想让某个异常打印日志就返回一个空的ModelAndView</p>
+<pre><code class="java">@Configuration
+public class WebMvcConfig implements WebMvcConfigurer &#123;
+
+    @Override
+    public void configureHandlerExceptionResolvers(List&lt;HandlerExceptionResolver&gt; resolvers) &#123;
+        resolvers.add(new MyHandlerExceptionResolver());
+    &#125;
+
+
+&#125;
+
+class MyHandlerExceptionResolver implements HandlerExceptionResolver&#123;
+
+
+    @Override
+    public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) &#123;
+        if (ex instanceof MultipartException) &#123;
+            //这里是要捕获的异常类型，返回一个空视图模型
+            return new ModelAndView();
+        &#125;
+        // handle other exceptions
+        return null;
+    &#125;
+&#125;
+
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1406,12 +1355,12 @@ window.onload = function(){
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>JVM虚拟机</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">2.2k</span></p>
+    <p><span class="copy-title">文章标题:</span></p>
+    <p><span class="copy-title">字数:</span><span class="post-count">605</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-08-24, 18:28:03</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-05, 00:08:45</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/08/24/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/" title="JVM虚拟机">https://os467.github.io/2022/08/24/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/</a>
+    <p><span class="copy-title">发布时间:</span>2024-01-13, 17:45:20</p>
+    <p><span class="copy-title">最后更新:</span>2024-01-13, 17:45:53</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/01/13/DispatcherServlet%E5%86%85%E9%83%A8%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" title="">https://os467.github.io/2024/01/13/DispatcherServlet%E5%86%85%E9%83%A8%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
