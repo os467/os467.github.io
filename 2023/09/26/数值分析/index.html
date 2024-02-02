@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>文件下载方案 | Tly的博客</title>
+  <title>数值分析 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="文件下载方案 | Tly的博客">
+  <meta name="description" content="数值分析 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:type" content="website">
@@ -1227,9 +1227,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-文件下载方案" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-数值分析" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">文件下载方案</h1>
+        <h1 class="article-title">数值分析</h1>
     
     <div class="article-meta">
         
@@ -1247,12 +1247,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-08 02:47:19'>2024-01-08 02:46</time>
+            发布时间 : <time class="date" title='最后更新: 2024-02-03 04:28:02'>2023-09-26 14:21</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.4k</span>
+        <span>字数:985</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1271,7 +1271,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E6%96%B9%E6%A1%88"><span class="toc-text">文件下载方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="toc-text">单文件下载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IO%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-text">IO工具类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E8%BD%BD"><span class="toc-text">文件夹下载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ZIP%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-text">ZIP工具类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E6%8E%A5%E6%94%B6%E6%96%87%E4%BB%B6"><span class="toc-text">前端接收文件</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84"><span class="toc-text">解线性方程组</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1287,194 +1287,212 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="文件下载方案"><a href="#文件下载方案" class="headerlink" title="文件下载方案"></a>文件下载方案</h1><h2 id="单文件下载"><a href="#单文件下载" class="headerlink" title="单文件下载"></a>单文件下载</h2><p>首先要设置好响应头，提供前端解析</p>
-<p>这里由于数据库用的<code>utf-8</code>编码所以参数给前端需要对中文字段进行编码</p>
-<p><strong>响应头设置</strong></p>
-<pre><code class="java">
-//设置响应头
-response.setCharacterEncoding(&quot;utf-8&quot;);
-//比特流
-response.setContentType(&quot;application/octet-stream&quot;);
-//设置HTTP响应头，以允许浏览器访问服务器返回的特定的HTTP响应头
-response.setHeader(&quot;Access-Control-Expose-Headers&quot;,&quot;Content-Disposition&quot;);
-//设置文件名，设置字符集是避免文件名中有中文时出现乱码
-String encodeFileName = null;
-try &#123;
-    //UTF-8编码
-    encodeFileName = URLEncoder.encode(filePo.getFileName(), StandardCharsets.UTF_8.toString());
-&#125; catch (UnsupportedEncodingException e) &#123;
-    e.printStackTrace();
-&#125;
-//设置到响应头
-response.addHeader(&quot;Content-Disposition&quot;, &quot;attachment;filename=&quot; + encodeFileName);
-</code></pre>
-<p><strong>将文件输入流写到输出流</strong></p>
-<p>这里流的关闭在工具类里处理了</p>
-<pre><code class="java"> OutputStream outputStream = null;
-            FileInputStream inputStream = null;
-            try &#123;
-                outputStream = response.getOutputStream();
-                inputStream = new FileInputStream(file);
-            &#125; catch (IOException e) &#123;
-                e.printStackTrace();
-            &#125;
- IOUtils.copy(inputStream,outputStream);
-</code></pre>
-<h3 id="IO工具类"><a href="#IO工具类" class="headerlink" title="IO工具类"></a><strong>IO工具类</strong></h3><p>将读到buffer里的字节写到输出流，注意读到的字节个数以保证精确读取</p>
-<pre><code class="java">public class IOUtils &#123;
+        <h1 id="解线性方程组"><a href="#解线性方程组" class="headerlink" title="解线性方程组"></a>解线性方程组</h1><p>关于数值分析的相关实验源码可以访问我的github获取： <a target="_blank" rel="noopener" href="https://github.com/os467/JavaOs467/tree/main/project">JavaOs467&#x2F;project at main · os467&#x2F;JavaOs467 (github.com)</a></p>
+<p>下面采用的是消主元法，也是我们通常最常用的解线性方程组方法，本质上就是带入消元法。</p>
+<pre><code class="java">package project.lab5;
 
-    public static void copy(InputStream inputStream, OutputStream outputStream) &#123;
-        try &#123;
-            byte[] buffer = new byte[1024];
-            int read;
-            while (( read = inputStream.read(buffer) ) != -1)&#123;
-                outputStream.write(buffer,0,read);
-            &#125;
-        &#125; catch (IOException e) &#123;
-            e.printStackTrace();
-        &#125;finally &#123;
-            try &#123;
-                inputStream.close();
-                outputStream.close();
-            &#125; catch (IOException e) &#123;
-                e.printStackTrace();
-            &#125;
-        &#125;
-    &#125;
-&#125;
-</code></pre>
-<h2 id="文件夹下载"><a href="#文件夹下载" class="headerlink" title="文件夹下载"></a>文件夹下载</h2><p>通常浏览器下载文件夹不会返回文件夹，这里我采用了返回ZIP文件将文件夹内容打包返回给前端</p>
-<p><strong>构建ZIP文件集合</strong></p>
-<p>这里是我项目里面的一些逻辑，其实就是创建两种结点，一种文件夹结点，一种文件结点</p>
-<p>如果没有文件夹实体的话，要整合的集合value值用null就行了。</p>
-<p>然后文件类型的话value放File对象。</p>
-<p>key值代表在ZIP中的路径</p>
-<p>文件夹的话一定要以<code>/</code>结尾  dir1&#x2F;dir2&#x2F;</p>
-<p>文件的话带上路径&#x2F;文件名称 结尾即可 dir1&#x2F;dir2&#x2F;output.txt</p>
-<pre><code class="java">//构建zip内部文件集合
-Set&lt;String&gt; keySet = childFileMap.keySet();
-for (String path : keySet) &#123;
-    //创建文件夹结点
-    zipFileMap.put(path,null);
-    //获取到文件持久对象列表
-    List&lt;FilePo&gt; filePoList = childFileMap.get(path);
-    for (FilePo po : filePoList) &#123;
-        //获取文件源绝对路径
-        String location = locations.get(po.getSourceId());
-        //创建文件对象
-        File file = new File(location);
-        //创建文件结点
-        zipFileMap.put(path+po.getFileName(),file);
-    &#125;
-&#125;
-</code></pre>
-<p>返回给前端</p>
-<pre><code class="java">try &#123;
-    //打包为zip返回前端
-    ZipFileUtils.zipFilesToOutPutStream(zipFileMap,os);
-&#125; catch (IOException e) &#123;
-    e.printStackTrace();
-&#125;
-</code></pre>
-<h3 id="ZIP工具类"><a href="#ZIP工具类" class="headerlink" title="ZIP工具类"></a>ZIP工具类</h3><pre><code class="java">package pers.os467.utils;
-
-import java.io.*;
-import java.util.Map;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 
 /**
- * by os467
+ * 消主元法
  */
-public class ZipFileUtils &#123;
+public class Miss &#123;
 
-    /**
-     * 将输出流包装为zip输出流并按照文件结构映射打包文件
-     * @param files key为zip中的路径，分隔符必须使用&quot;/&quot; value为文件对象,若为null如果是目录则创建空目录
-     *              例如
-     *              新建文件夹1/ -&gt; null
-     *              新建文件夹1/新建文件夹2 -&gt; null
-     *              新建文件夹/1.txt  -&gt; new File(&quot;.../1.txt&quot;)
-     *              新建文件夹1/新建文件夹2/2.txt -&gt; new File(&quot;.../2.txt&quot;)
-     * @param out 输出流
-     * @throws IOException
-     */
-    public static void zipFilesToOutPutStream(Map&lt;String, File&gt; files, OutputStream out) throws IOException &#123;
-        if (files.size() == 0)&#123;
-            //创建空zip
-            try (ZipOutputStream zos = new ZipOutputStream(out))&#123;//do nothing...
-                &#125;
-            return;
+
+  /*  private float[][] matrix = &#123;
+            &#123;10F,-1F,-2F,7.2F&#125;,
+            &#123;-1F,10F,-2F,8.3F&#125;,
+            &#123;-1F,-1F,5F,4.2F&#125;
+    &#125;;*/
+
+ /*   private float[][] matrix =
+            &#123;
+                    &#123;-3F,2F,6F,4F&#125;,
+                    &#123;10F,-7F,0F,7F&#125;,
+                    &#123;5F,-1F,5F,6F&#125;
+            &#125;;*/
+
+    /*private float[][] matrix =
+            &#123;
+                    &#123;2F,3F,5F,5F&#125;,
+                    &#123;3F,4F,7F,6F&#125;,
+                    &#123;1F,3F,3F,5F&#125;
+            &#125;;*/
+
+    /*private float[][] matrix =
+            &#123;
+                    &#123;6F,18F,-15F,-17F,14F,-17F,24F&#125;,
+                    &#123;-4F,-19F,11F,12F,-4F,15F,12F&#125;,
+                    &#123;-7F,-2F,-22F,6F,-13F,21F,13F&#125;,
+                    &#123;-24F,-10F,-21F,10F,8F,-11F,24F&#125;,
+                    &#123;12F,-22F,9F,8F,-3F,-4F,24F&#125;,
+                    &#123;-5F,-18F,13F,4F,22F,15F,3F&#125;
+            &#125;;*/
+    private float[][] matrix =
+            &#123;
+                    &#123;226F,18F,-15F,-17F,14F,-17F,24F&#125;,
+                    &#123;-4F,201F,11F,12F,-4F,15F,12F&#125;,
+                    &#123;-7F,-2F,-198F,6F,-13F,21F,13F&#125;,
+                    &#123;-24F,-10F,-21F,230F,8F,-11F,24F&#125;,
+                    &#123;12F,-22F,9F,8F,217F,-4F,24F&#125;,
+                    &#123;-5F,-18F,13F,4F,22F,235F,3F&#125;
+            &#125;;
+
+    //行数量
+    private int r;
+    //列数量
+    private int c;
+    //已扫描行
+    private int pass = 0;
+    //原始矩阵副本
+    private float[][] matrixOrigin;
+    //解集
+    private float[] x;
+
+    public static void main(String[] args) &#123;
+        Miss guss = new Miss();
+        guss.d();
+    &#125;
+
+    private void d() &#123;
+
+        //检查矩阵合法性并初始化参数
+        if (checkMatrix()) return;
+
+        //打印矩阵
+        printMatrix();
+
+        //先记录以下原矩阵
+        matrixOrigin = new float[r][c];
+
+        for (int i = 0; i &lt; r; i++) &#123;
+            for (int j = 0; j &lt; c; j++) &#123;
+                matrixOrigin[i][j] = matrix[i][j];
+            &#125;
         &#125;
-        // 创建一个ZipOutputStream对象，它将用于写入压缩数据
-        try (ZipOutputStream zos = new ZipOutputStream(out)) &#123;
-            // 遍历文件映射
-            for (Map.Entry&lt;String, File&gt; entry : files.entrySet()) &#123;
-                // 获取文件的ZIP路径和对应的文件对象
-                String name = entry.getKey();
-                File file = entry.getValue();
 
-                //如果是目录则创建空目录 例如name = dir1/dir2/
-                if (file == null) &#123;
-                    zos.putNextEntry(new ZipEntry(name));
-                    zos.closeEntry();
-                    continue;
+        //先消去x1,然后x2，最后解出x3,x2,x1
+        for (int i = 0; i &lt; c - 2; i++) &#123;
+            //将系数最大的行选出
+            Float max = null;
+            Integer maxRow = null;
+            //比大小找最大主元行
+            for (int j = 0; j &lt; r; j++) &#123;
+                if (max == null || Math.abs(matrix[j][i]) &gt; Math.abs(max))&#123;
+                    max = matrix[j][i];
+                    maxRow = j;
                 &#125;
+            &#125;
+            //交换已扫描行最大行
+            exchangeRow(pass,maxRow);
+            maxRow = pass;
+            pass++;
+            //maxRow行的系数更新
+            for (int j = 0; j &lt; c; j++) &#123;
+                matrix[maxRow][j] /= max;
+            &#125;
 
-                // 如果文件对象不是一个文件，抛出异常
-                if (!file.isFile()) &#123;
-                    throw new IllegalArgumentException(&quot;Only files are supported&quot;);
-                &#125;
-
-                // 创建一个新的ZIP条目并将其添加到ZIP输出流中  例如: name = dir1/dir2/fileName
-                // 这里的name就是文件在压缩包中的路径，包括多级目录
-                zos.putNextEntry(new ZipEntry(name));
-
-                // 创建一个输入流来读取文件的内容
-                try (InputStream in = new FileInputStream(file)) &#123;
-                    // 创建一个缓冲区
-                    byte[] buffer = new byte[1024];
-                    int len;
-                    // 读取文件内容并写入ZIP输出流
-                    while ((len = in.read(buffer)) != -1) &#123;
-                        zos.write(buffer, 0, len);
+            //更新其它行的系数值
+            for (int j = pass; j &lt; r; j++) &#123;
+                float a = matrix[j][i];
+                //消去a
+                matrix[j][i] = 0;
+                //更改每行b值
+                matrix[j][c-1] += -a * matrix[maxRow][c-1];
+                //更改每行其它系数值
+                for (int k = 0; k &lt; c - 1; k++) &#123;
+                    if (k != i)&#123;
+                        matrix[j][k] += a * -matrix[maxRow][k];
                     &#125;
                 &#125;
-                // 关闭当前ZIP条目，使其写入ZIP文件
-                zos.closeEntry();
             &#125;
+
+        &#125;
+
+        //开始回解
+        for (int i = r-1; i &gt;= 0 ; i--) &#123;
+            float sumDiv = 0;
+            for (int j = 0; j &lt; c - 1; j++) &#123;
+                sumDiv+=matrix[i][j];
+            &#125;
+            x[i] = matrix[i][c-1]/sumDiv;
+            //消去其它行的未知数
+            for (int j = i - 1; j &gt;= 0; j--) &#123;
+                //更新b值
+                matrix[j][c-1] -= matrix[j][i] * x[i];
+                //系数置0
+                matrix[j][i] = 0;
+            &#125;
+        &#125;
+
+        //打印结果
+        printAns();
+    &#125;
+
+    private void exchangeRow(int pass, Integer maxRow) &#123;
+        if (pass == maxRow) return;
+        for (int i = 0; i &lt; c; i++) &#123;
+            matrix[maxRow][i] += matrix[pass][i];
+            matrix[pass][i] = matrix[maxRow][i] - matrix[pass][i];
+            matrix[maxRow][i] -= matrix[pass][i];
         &#125;
     &#125;
 
-&#125;
-</code></pre>
-<h2 id="前端接收文件"><a href="#前端接收文件" class="headerlink" title="前端接收文件"></a>前端接收文件</h2><p>最简单的就是 <code>location.href = 后端url</code> 让浏览器自行处理下载即可</p>
-<p>但是感觉不够灵活，这边写了个axios的方法</p>
-<p>原理就是，利用html5提供给<code>&lt;a&gt;</code> 标签的download属性下载文件，浏览器会识别响应为一个可下载内容。</p>
-<p>首先创建blob对象，然后创建一个下载链接</p>
-<p>创建一个a标签，并附带<code>href</code>属性和文件名</p>
-<p>这里文件名注意以下，因为后端用的<code>utf-8</code>编码后传递给前端的 %开头的那种的表示中文的utf8编码，这里先获取下<code>content-dispostion</code>中filename&#x3D;后面的部分，就是我们设置的文件名</p>
-<p>然后用JS的<code>decodeURIComponent</code>来解析即可</p>
-<p>最后a标签加入到body然后click触发下载即可。</p>
-<pre><code class="javascript">download: function (fid) &#123;
-  /*location.href=`$&#123;BACKEND_URL&#125;/download/file/$&#123;fid&#125;`*/
-  axios.get(`$&#123;BACKEND_URL&#125;/download/file/$&#123;fid&#125;`,
-      &#123;responseType: &#39;blob&#39;&#125;
-  ).then((resp) =&gt; &#123;
-    /*创建blob对象*/
-    const blob = new Blob([resp.data]);
-    /*创建下载链接*/
-    const url = window.URL.createObjectURL(blob);
-    /*创建链接标签*/
-    const link = document.createElement(&#39;a&#39;);
-    link.href = url;
-    const fileName = resp.headers[&#39;content-disposition&#39;].split(&#39;=&#39;)[1];
-    link.setAttribute(&#39;download&#39;, decodeURIComponent(fileName));
-    document.body.appendChild(link);
-    link.click();
-    /*移除链接标签*/
-    document.body.removeChild(link);
-  &#125;)
+    private void printAns() &#123;
+        float[] lrMiss = new float[r];
+
+        //计算左边 - 右边
+        for (int i = 0; i &lt; r; i++) &#123;
+            float sum = 0;
+            for (int j = 0; j &lt; c - 1; j++) &#123;
+                sum += matrixOrigin[i][j] * x[j];
+            &#125;
+            lrMiss[i] = sum - matrixOrigin[i][c-1];
+        &#125;
+
+        int padding = 20;
+        for (int i = 0; i &lt; r; i++) &#123;
+            String ansX = &quot;x&quot;+(i+1)+&quot; = &quot;+ (Math.abs(x[i]) &lt; 0.00001F ? 0 : x[i]);
+            System.out.print(ansX);
+            for (int j = 0; j &lt; padding - ansX.length(); j++) &#123;
+                System.out.print(&quot; &quot;);
+            &#125;
+            System.out.print(&quot;|&quot;);
+            System.out.println(&quot;\t\t 左边 - 右边 = &quot;+lrMiss[i]);
+        &#125;
+    &#125;
+
+    private void printMatrix() &#123;
+        System.out.println(&quot;解目标方程组:&quot;);
+        for (int i = 0; i &lt; r; i++) &#123;
+            for (int j = 0; j &lt; c - 1; j++) &#123;
+                if (j != 0)&#123;
+                    System.out.print(Math.abs(matrix[i][j])+&quot;x&quot;+(j+1)+&quot;\t&quot;);
+                &#125;else &#123;
+                    System.out.print(matrix[i][j]+&quot;x&quot;+(j+1)+&quot;\t&quot;);
+                &#125;
+                if (j != c-2)&#123;
+                    if (matrix[i][j+1] &gt; 0)&#123;
+                        System.out.print(&quot;+\t&quot;);
+                    &#125;else &#123;
+                        System.out.print(&quot;-\t&quot;);
+                    &#125;
+                &#125;
+
+            &#125;
+            System.out.println(&quot; = \t\t&quot;+matrix[i][c-1]);
+        &#125;
+        System.out.println(&quot;\n\n&quot;);
+    &#125;
+
+    private boolean checkMatrix() &#123;
+        r = matrix.length;
+        if (r == 0) return true;
+        c = matrix[0].length;
+        x = new float[c-1];
+        return false;
+    &#125;
+
+
 &#125;
 </code></pre>
 
@@ -1490,12 +1508,12 @@ public class ZipFileUtils &#123;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>文件下载方案</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">1.4k</span></p>
+    <p><span class="copy-title">文章标题:</span>数值分析</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">985</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2024-01-08, 02:46:12</p>
-    <p><span class="copy-title">最后更新:</span>2024-01-08, 02:47:19</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/01/08/%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E6%96%B9%E6%A1%88/" title="文件下载方案">https://os467.github.io/2024/01/08/%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E6%96%B9%E6%A1%88/</a>
+    <p><span class="copy-title">发布时间:</span>2023-09-26, 14:21:20</p>
+    <p><span class="copy-title">最后更新:</span>2024-02-03, 04:28:02</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/09/26/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/" title="数值分析">https://os467.github.io/2023/09/26/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
