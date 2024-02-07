@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>简单ORM映射方案(JDBC) | Tly的博客</title>
+  <title>视频播放与传输设计方案 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="简单ORM映射方案(JDBC) | Tly的博客">
+  <meta name="description" content="视频播放与传输设计方案 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="视频播放与传输设计方案这篇文章将通过SpringBoot + FFMPEG + hls.js 介绍一种前端视频播放器的实现方案 现代浏览器播放视频一般通过video标签请求mp4视频资源 但是通过src访问视频资源存在局限性  必须在视频加载完毕后才能播放视频 不支持视频分片播放  M3U8和TS如果不支持分片播放视频，那么如果有大视频需要播放，用户就必须等待视频文件流全部传输完毕才行，这不仅效率">
 <meta property="og:type" content="article">
@@ -1236,9 +1236,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-简单ORM映射方案" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-视频播放与传输设计方案" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">简单ORM映射方案(JDBC)</h1>
+        <h1 class="article-title">视频播放与传输设计方案</h1>
     
     <div class="article-meta">
         
@@ -1248,7 +1248,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="数据库">数据库</a>
+            <a  data-rel="其它">其它</a>
             
         </span>
         
@@ -1256,12 +1256,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-12-25 18:43:49'>2023-12-25 18:43</time>
+            发布时间 : <time class="date" title='最后更新: 2024-02-07 17:14:53'>2024-02-07 17:10</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:3k</span>
+        <span>字数:2.8k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1280,7 +1280,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E5%8D%95ORM%E6%98%A0%E5%B0%84%E6%96%B9%E6%A1%88-JDBC"><span class="toc-text">简单ORM映射方案(JDBC)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E6%88%90INSERT%EF%BC%8CUPDATE%E8%87%AA%E5%8A%A8%E7%BB%84%E8%A3%85"><span class="toc-text">集成INSERT，UPDATE自动组装</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E4%B8%8E%E4%BC%A0%E8%BE%93%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88"><span class="toc-text">视频播放与传输设计方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#M3U8%E5%92%8CTS"><span class="toc-text">M3U8和TS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FFMPEG"><span class="toc-text">FFMPEG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E8%AE%BE%E8%AE%A1"><span class="toc-text">后端设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-text">相关工具类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FFMPEG%E7%94%9F%E6%88%90TS%EF%BC%8CM3U8"><span class="toc-text">FFMPEG生成TS，M3U8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E7%BB%84%E4%BB%B6"><span class="toc-text">前端视频播放组件</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1296,746 +1296,445 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="简单ORM映射方案-JDBC"><a href="#简单ORM映射方案-JDBC" class="headerlink" title="简单ORM映射方案(JDBC)"></a>简单ORM映射方案(JDBC)</h1><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="java">package orm.factory;
-
-import orm.annotation.TableColumn;
-import orm.handler.TableColumnGetter;
-import orm.handler.TableHandler;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.sql.ResultSet;
-import java.util.*;
-
-public class TableObjectFactory &#123;
-
-    private static final String STRING = &quot;java.lang.String&quot;;
-
-    private static final String INTEGER = &quot;java.lang.Integer&quot;;
-
-    private static final String DOUBLE = &quot;java.lang.Double&quot;;
-    
-    private static final String CHARACTER = &quot;java.lang.Character&quot;;
-
-    private static final String BOOLEAN = &quot;java.lang.Boolean&quot;;
-
-    private static final String SHORT = &quot;java.lang.Short&quot;;
-
-    private static final String BYTE = &quot;java.lang.Byte&quot;;
-
-    private static final String LONG = &quot;java.lang.Long&quot;;
-
-    private static final String FLOAT = &quot;java.lang.Float&quot;;
-
-    private static final String DATE = &quot;java.util.Date&quot;;
-
-    private static final Map&lt;String,Class&gt; TYPE_MAP = new HashMap&lt;&gt;();
-
-    private static final Map&lt;String,String&gt; METHOD_MAP = new HashMap&lt;&gt;();
-
-    static &#123;
-        TYPE_MAP.put(STRING,String.class);
-        TYPE_MAP.put(INTEGER,Integer.class);
-        TYPE_MAP.put(DOUBLE,Double.class);
-        TYPE_MAP.put(BOOLEAN,Boolean.class);
-        TYPE_MAP.put(SHORT,Short.class);
-        TYPE_MAP.put(BYTE,Byte.class);
-        TYPE_MAP.put(LONG,Long.class);
-        TYPE_MAP.put(FLOAT,Float.class);
-        TYPE_MAP.put(DATE, Date.class);
-
-        METHOD_MAP.put(STRING,&quot;String&quot;);
-        METHOD_MAP.put(INTEGER,&quot;Int&quot;);
-        METHOD_MAP.put(DOUBLE,&quot;Double&quot;);
-        METHOD_MAP.put(BOOLEAN,&quot;Boolean&quot;);
-        METHOD_MAP.put(SHORT,&quot;Short&quot;);
-        METHOD_MAP.put(BYTE,&quot;Byte&quot;);
-        METHOD_MAP.put(LONG,&quot;Long&quot;);
-        METHOD_MAP.put(FLOAT,&quot;Float&quot;);
-        METHOD_MAP.put(DATE,&quot;Date&quot;);
-
-    &#125;
-
-
-    /**
-     * 自动解析result为对应持久对象数组
-     * @param resultSet 结果集
-     * @param tClass 持久对象字节码
-     * @param &lt;T&gt; 持久对象泛型
-     * @return
-     */
-    public static &lt;T&gt;List&lt;T&gt; toObjectList(ResultSet resultSet, Class&lt;T&gt; tClass)&#123;
-
-        List&lt;TableColumnGetter&gt; tableColumnGetterList = new ArrayList&lt;&gt;();
-
-        Class tableClass = tClass;
-        //获取属性标注的字段值，自动解析字段
-        Field[] fields = tableClass.getDeclaredFields();
-        if (tableClass == null)&#123;
-            return new ArrayList&lt;&gt;();
-        &#125;
-        for (Field field : fields) &#123;
-            TableColumn tableColumn = field.getAnnotation(TableColumn.class);
-            if (tableColumn != null)&#123;
-                //获取属性名
-                String propertyName = field.getName();
-                //set函数名
-                String setMethodName = &quot;set&quot; + propertyName.substring(0,1).toUpperCase() + propertyName.substring(1);
-                //字段名
-                String columnLabel = tableColumn.value();
-                //获取属性类型
-                String typeName = field.getGenericType().getTypeName();
-                try &#123;
-                    //获取到类型字节码
-                    Class typeClass = TYPE_MAP.get(typeName);
-                    //获取到set方法
-                    Method objectFieldSet = tableClass.getMethod(setMethodName,typeClass);
-                    //获取到字段对应的值
-                    Class&lt;? extends ResultSet&gt; resultSetClass = resultSet.getClass();
-                    //组装resultSet的get函数名称
-                    String getMethodName = &quot;get&quot; + METHOD_MAP.get(typeName);
-                    //获取到对应解析函数字节码
-                    Method resultSetGet = resultSetClass.getMethod(getMethodName, String.class);
-                    //创建获取字段注入器
-                    TableColumnGetter tableColumnGetter = new TableColumnGetter(objectFieldSet, resultSetGet, columnLabel);
-                    //整合字段注入器列表
-                    tableColumnGetterList.add(tableColumnGetter);
-                &#125; catch (NoSuchMethodException e) &#123;
-                    e.printStackTrace();
-                &#125;
-            &#125;
-        &#125;
-        //创建表处理器
-        TableHandler tableHandler = new TableHandler(tableClass,tableColumnGetterList);
-        //获取表java实例列表
-        List objectList = tableHandler.getObjectList(resultSet);
-        return objectList;
-    &#125;
-
-
-
-&#125;
+        <h1 id="视频播放与传输设计方案"><a href="#视频播放与传输设计方案" class="headerlink" title="视频播放与传输设计方案"></a>视频播放与传输设计方案</h1><p>这篇文章将通过SpringBoot + FFMPEG + hls.js 介绍一种前端视频播放器的实现方案</p>
+<p>现代浏览器播放视频一般通过video标签请求mp4视频资源</p>
+<p>但是通过src访问视频资源存在局限性</p>
+<ul>
+<li>必须在视频加载完毕后才能播放视频</li>
+<li>不支持视频分片播放</li>
+</ul>
+<h2 id="M3U8和TS"><a href="#M3U8和TS" class="headerlink" title="M3U8和TS"></a>M3U8和TS</h2><p>如果不支持分片播放视频，那么如果有大视频需要播放，用户就必须等待视频文件流全部传输完毕才行，这不仅效率低下，而且还有可能因为网络波动导致视频流丢失，造成视频无法正常播放。</p>
+<p>因此这里介绍下 <code>.m3u8</code> 和 <code>.ts</code> 文件</p>
+<p><strong>M3U8</strong></p>
+<p>M3U8文件是一种用于在线流媒体播放的视频文件格式。它通常是一组直播视频流的列表文件，包含了多个视频流的地址，用于在互联网上传输和播放视频直播。</p>
+<p>当M3U8文件作为媒体播放列表（Media Playlist）时，其内部信息记录的是一系列媒体片段资源，顺序播放该片段资源，即可完整展示多媒体资源。</p>
+<pre><code>#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-ALLOW-CACHE:YES
+#EXT-X-TARGETDURATION:11
+#EXTINF:10.021333,
+1405227008_00000.ts
+#EXTINF:10.000000,
+1405227008_00001.ts
+#EXT-X-ENDLIST
 </code></pre>
 <blockquote>
-<ol>
-<li>首先，从<code>tableClassMap</code>的映射中获取<code>T</code>类对应的表类（<code>tableClass</code>）。</li>
-<li>然后，获取<code>tableClass</code>的所有字段，并对每个字段进行检查。如果字段上有<code>TableColumn</code>注解，那么就创建一个<code>TableColumnGetter</code>对象，这个对象包含了字段的set方法、对应的<code>ResultSet</code>的get方法以及字段名。</li>
-<li>创建<code>TableColumnGetter</code>对象的过程中，会根据字段的类型从<code>TYPE_MAP</code>和<code>METHOD_MAP</code>两个映射中获取相应的类型类和方法名。</li>
-<li>最后，使用<code>tableClass</code>和<code>tableColumnGetterList</code>创建一个<code>TableHandler</code>对象，并调用其<code>getObjectList</code>方法来获取对象列表。</li>
-</ol>
+<p>这是一个m3u8文件格式，记录了视频时间戳以及对应的ts文件</p>
 </blockquote>
-<pre><code class="java">package orm.handler;
+<p><strong>TS</strong></p>
+<p>TS文件，全称为Transport Stream（传输流），是一种封装的格式，用于传输和存储音视频、节目和系统信息。</p>
+<p>由于TS的传输包长度是固定的，因此可以将视频、音频和数据信息进行实时的、灵活的分配。</p>
+<p>这里的TS文件正是我们需要的视频分片，这里我们只需要把视频分片传输给前端即可播放。</p>
+<h2 id="FFMPEG"><a href="#FFMPEG" class="headerlink" title="FFMPEG"></a>FFMPEG</h2><p>FFMPEG是一套开源的计算机程序，可以用来记录、转换数字音频、视频，并能将其转化为流。它提供了录制、转换以及流化音视频的完整解决方案。这里我们就需要在用户播放指定视频文件时让后端调用ffmpeg程序去生成我们需要的m3u8文件和ts文件</p>
+<h2 id="后端设计"><a href="#后端设计" class="headerlink" title="后端设计"></a>后端设计</h2><p><strong>MVC</strong></p>
+<p>这里映射请求地址对应接口，调用media服务，传输相关的鉴权，请求参数</p>
+<pre><code class="java">@RestController
+@RequestMapping(&quot;/media&quot;)
+public class MediaController &#123;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.sql.ResultSet;
+    @Autowired
+    private MediaService mediaService;
 
-
-public class TableColumnGetter &#123;
-
-    //持久对象属性set方法字节码
-    private Method objectFieldSet;
-
-    //resultSet对象get方法字节码
-    private Method resultSetGet;
-
-    //数据库字段名
-    private String columnLabel;
-
-    public TableColumnGetter(Method objectFieldSet, Method resultSetGet,String columnLabel) &#123;
-        this.objectFieldSet = objectFieldSet;
-        this.resultSetGet = resultSetGet;
-        this.columnLabel = columnLabel;
+    @ApiOperation(value = &quot;播放视频&quot;,notes = &quot;播放视频&quot;,httpMethod = &quot;POST&quot;)
+    @PostMapping(&quot;/playVideo&quot;)
+    public ResponseEntity playVideo(@RequestAttribute(Constant.AUTHENTICATION) JwtUser jwtUser,
+                                    @RequestParam(&quot;fid&quot;) Integer fid) throws GlobalException &#123;
+        String m3u8Path = mediaService.playVideo(jwtUser, fid);
+        return ResponseEntityUtils.getSuccessResult(m3u8Path);
     &#125;
 
-
-    //为持久对象对应属性注入值
-    public &lt;T&gt; void inject(ResultSet resultSet, T object) &#123;
-        try &#123;
-            Object result = resultSetGet.invoke(resultSet, columnLabel);
-            objectFieldSet.invoke(object, result);
-        &#125; catch (IllegalAccessException e) &#123;
-            e.printStackTrace();
-        &#125; catch (InvocationTargetException e) &#123;
-            e.printStackTrace();
-        &#125;
+    @ApiOperation(value = &quot;media资源请求&quot;,notes = &quot;m3u8请求&quot;,httpMethod = &quot;GET&quot;)
+    @GetMapping(&quot;/&#123;source&#125;&quot;)
+    public void fetchMedia(@RequestAttribute(Constant.AUTHENTICATION) JwtUser jwtUser,
+                                    @PathVariable(&quot;source&quot;) String source) throws GlobalException &#123;
+        mediaService.fetchMedia(jwtUser, source);
     &#125;
 
 &#125;
 </code></pre>
 <blockquote>
-<p><code>TableColumnGetter</code>类是一个字段注入器，它包含一个Java对象的set方法、一个<code>ResultSet</code>的get方法和一个数据库字段名。它的<code>inject</code>方法用于将<code>ResultSet</code>中的值注入到Java对象的属性中。</p>
+<p>接口地址</p>
 </blockquote>
-<pre><code class="java">package orm.handler;
+<p><strong>媒体服务</strong></p>
+<p>媒体服务有两个接口，分别处理后端对视频播放前准备逻辑，和视频播放过程的逻辑</p>
+<ul>
+<li><code>playVideo</code>接口负责播放用户指定文件，并执行生成ts文件任务，在生成完毕后返回m3u8文件请求地址给前端</li>
+<li><code>fetchMedia</code>接口负责解析请求，并返回对应的m3u8文件和ts文件流给前端</li>
+</ul>
+<pre><code class="java">@Service
+public class MediaServiceImpl implements MediaService &#123;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+    @Autowired
+    private SourceService sourceService;
 
-public class TableHandler&lt;T&gt; &#123;
+    @Autowired
+    private FileService fileService;
 
-    //持久化对象列表
-    private List&lt;T&gt; objectList;
+    @Value(&quot;$&#123;media.mediaBase&#125;&quot;)
+    private String mediaBase;
 
-    //持久化对象字节码
-    private Class tableClass;
-
-    //表列值获取器列表
-    private List&lt;TableColumnGetter&gt; tableColumnGetterList;
-
-    public TableHandler(Class tableClass, List&lt;TableColumnGetter&gt; tableColumnGetterList)&#123;
-        this.tableClass = tableClass;
-        this.tableColumnGetterList = tableColumnGetterList;
-    &#125;
-
-    //获取持久对象列表
-    public List&lt;T&gt; getObjectList(ResultSet resultSet) &#123;
-        if (objectList == null)&#123;
-            objectList = new ArrayList&lt;&gt;();
+    @Override
+    public String playVideo(JwtUser jwtUser, Integer fid) &#123;
+        //1 查询文件信息
+        FilePo filePo = fileService.queryUserFileById(jwtUser.getUid(), fid);
+        //2 检查文件类型
+        if (FileConstant.FILE_TYPE_VIDEO != filePo.getFileType())&#123;
+            throw new GlobalException(&quot;非视频格式资源，无法播放视频&quot;);
         &#125;
-        while (true)&#123;
-            try &#123;
-                if (!resultSet.next()) break;
+        //3 获取资源地址
+        Integer sourceId = filePo.getSourceId();
+        String path = sourceService.locateSource(sourceId);
 
-                T object = (T)tableClass.newInstance();
+        //4 ffmpeg执行视频切割 生成ts 和 m3u8文件
+        VideoConverter videoConverter = VideoConverter.getInstance();
+        VideoOutput videoOutput = videoConverter.converter(path, mediaBase);
 
-                for (TableColumnGetter tableColumnGetter : tableColumnGetterList) &#123;
-                    tableColumnGetter.inject(resultSet,object);
-                &#125;
+        //返回请求视频资源url
+        String m3u8Path = videoOutput.getFetchUrl();
 
-                objectList.add(object);
-
-            &#125; catch (SQLException throwables) &#123;
-                throwables.printStackTrace();
-            &#125; catch (IllegalAccessException e) &#123;
-                e.printStackTrace();
-            &#125; catch (InstantiationException e) &#123;
-                e.printStackTrace();
-            &#125;
-
-        &#125;
-        return objectList;
-    &#125;
-&#125;
-
-</code></pre>
-<blockquote>
-<p><code>TableHandler</code>类是一个表处理器，它包含一个Java对象列表、一个Java对象的类和一个字段注入器列表。它的<code>getObjectList</code>方法用于从<code>ResultSet</code>中获取Java对象列表。这个方法首先创建一个新的Java对象，然后使用字段注入器列表中的每一个注入器将<code>ResultSet</code>中的值注入到Java对象的属性中，最后将Java对象添加到列表中。</p>
-</blockquote>
-<pre><code class="java">package orm.annotation;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface TableColumn &#123;
-    String value();
-&#125;
-</code></pre>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre><code class="java">package com;
-
-import orm.annotation.TableColumn;
-
-import java.util.Date;
-
-public class TravelWay &#123;
-
-    @TableColumn(&quot;wid&quot;)
-    private Integer wid;
-
-    @TableColumn(&quot;way_name&quot;)
-    private String wayName;
-
-    @TableColumn(&quot;info&quot;)
-    private String info1;
-
-    @TableColumn(&quot;sign_begin&quot;)
-    private Date sb;
-
-    public Integer getWid() &#123;
-        return wid;
-    &#125;
-
-    public void setWid(Integer wid) &#123;
-        this.wid = wid;
-    &#125;
-
-    public String getWayName() &#123;
-        return wayName;
-    &#125;
-
-    public void setWayName(String wayName) &#123;
-        this.wayName = wayName;
-    &#125;
-
-    public String getInfo1() &#123;
-        return info1;
-    &#125;
-
-    public void setInfo1(String info1) &#123;
-        this.info1 = info1;
-    &#125;
-
-    public Date getSb() &#123;
-        return sb;
-    &#125;
-
-    public void setSb(Date sb) &#123;
-        this.sb = sb;
+        return m3u8Path;
     &#125;
 
     @Override
-    public String toString() &#123;
-        return &quot;TravelWay&#123;&quot; +
-                &quot;wid=&quot; + wid +
-                &quot;, wayName=&#39;&quot; + wayName + &#39;\&#39;&#39; +
-                &quot;, info1=&#39;&quot; + info1 + &#39;\&#39;&#39; +
-                &quot;, sb=&quot; + sb +
-                &#39;&#125;&#39;;
-    &#125;
-&#125;
-</code></pre>
-<pre><code class="java">package com;
+    public void fetchMedia(JwtUser jwtUser, String source) &#123;
+        HttpServletResponse currentResponse = ResponseUtils.getCurrentResponse();
+        File file;
+        if (source.endsWith(&quot;.ts&quot;) &amp;&amp; source.contains(&quot;_&quot;))&#123;
+            String[] s = source.split(&quot;_&quot;);
+            file = new File(mediaBase + File.separator + s[0] + File.separator + source);
+        &#125;else if (source.endsWith(&quot;.m3u8&quot;))&#123;
+            file = new File(mediaBase + File.separator + source.replace(&quot;.m3u8&quot;,&quot;&quot;) + File.separator + source);
+        &#125;else &#123;
+            throw new GlobalException(&quot;非法媒体资源请求格式&quot;);
+        &#125;
 
-import orm.utils.ORMUtils;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
-
-public class Test &#123;
-
-    public static void main(String[] args) &#123;
-
-        try &#123;
-            Connection connection = JdbcUtils.getConnection();
-
-            Statement statement = connection.createStatement();
-
-            ResultSet resultSet = statement.executeQuery(&quot;select * from tb_travel_way&quot;);
-
-            List&lt;TravelWay&gt; travelWays = ORMUtils.toObjectList(resultSet, TravelWay.class);
-
-            for (TravelWay travelWay : travelWays) &#123;
-
-                System.out.println(travelWay);
+        if (file.exists())&#123;
+            try &#123;
+                FileInputStream inputStream = new FileInputStream(file);
+                IOUtils.copy(inputStream,currentResponse.getOutputStream());
+            &#125; catch (FileNotFoundException e) &#123;
+                e.printStackTrace();
+            &#125; catch (IOException ioException) &#123;
+                ioException.printStackTrace();
             &#125;
-
-        &#125; catch (SQLException throwables) &#123;
-            throwables.printStackTrace();
         &#125;
 
     &#125;
+&#125;
+</code></pre>
+<p>playVideo服务最关键的是<code>VideoConverter</code>这个类执行的ts文件生成方法，详细看下文FFMPEG生成TS，M3U8</p>
+<p>fetchMedia服务根据请求查询对应的ts文件，将ts文件通过IO工具写入响应流即可</p>
+<h2 id="相关工具类"><a href="#相关工具类" class="headerlink" title="相关工具类"></a>相关工具类</h2><p>响应工具类通过Spring提供的请求上下文获取到当前线程服务请求的响应对象</p>
+<pre><code class="java">/**
+ * 响应工具类
+ * author: os467
+ */
+public class ResponseUtils &#123;
+
+
+    public static HttpServletResponse getCurrentResponse() &#123;
+        //获取到当前线程的请求对象
+        RequestAttributes attributes = RequestContextHolder.getRequestAttributes();
+
+        HttpServletRequest request;
+
+        //向下转型
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes)attributes;
+
+        HttpServletResponse response = requestAttributes.getResponse();
+        return response;
+    &#125;
+
+
+    public static void setResponseZIP(HttpServletResponse response,String fileName)&#123;
+        response.setContentType(&quot;application/zip&quot;);
+        setUTF8ResponseFileName(response, fileName,true);
+    &#125;
+
+    public static void setResponseFile(HttpServletResponse response, String fileName, Long contentLength)&#123;
+        //比特流
+        response.setContentType(&quot;application/octet-stream&quot;);
+        setUTF8ResponseFileName(response, fileName,false);
+        //设置响应实体大小
+        response.setContentLengthLong(contentLength);
+    &#125;
+
+    private static void setUTF8ResponseFileName(HttpServletResponse response, String fileName,boolean zip) &#123;
+        //设置响应头
+        response.setCharacterEncoding(&quot;utf-8&quot;);
+        response.setHeader(&quot;Access-Control-Expose-Headers&quot;,&quot;Content-Disposition&quot;);
+        //设置文件名，设置字符集是避免文件名中有中文时出现乱码
+        String encodeFileName = null;
+        try &#123;
+            //UTF-8编码
+            encodeFileName = URLEncoder.encode(fileName, StandardCharsets.UTF_8.toString());
+        &#125; catch (UnsupportedEncodingException e) &#123;
+            e.printStackTrace();
+        &#125;
+        //设置到响应头
+        response.addHeader(&quot;Content-Disposition&quot;, &quot;attachment;filename=&quot; + encodeFileName+(zip?&quot;.zip&quot;:&quot;&quot;));
+    &#125;
 
 &#125;
 </code></pre>
-<h2 id="集成INSERT，UPDATE自动组装"><a href="#集成INSERT，UPDATE自动组装" class="headerlink" title="集成INSERT，UPDATE自动组装"></a>集成INSERT，UPDATE自动组装</h2><pre><code class="java">package orm.utils;
+<p>IO工具类负责将ts文件流写入Http响应流</p>
+<pre><code class="java">package pers.os467.support.utils;
 
-import orm.annotation.Key;
-import orm.annotation.Table;
-import orm.annotation.TableColumn;
-import orm.handler.TableColumnGetter;
-import orm.handler.TableHandler;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.SimpleDateFormat;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+/**
+ * 输入输出流工具类
+ * author: os467
+ */
+public class IOUtils &#123;
+
+    public static void copy(InputStream inputStream, OutputStream outputStream) throws IOException &#123;
+        boolean normal = true;
+        try &#123;
+            byte[] buffer = new byte[1024];
+            int read;
+            while (( read = inputStream.read(buffer) ) != -1)&#123;
+                outputStream.write(buffer,0,read);
+            &#125;
+        &#125; catch (IOException e) &#123;
+            normal = false;
+            throw e;
+        &#125;finally &#123;
+            try &#123;
+                inputStream.close();
+                if (normal)&#123;
+                    outputStream.close();
+                &#125;
+            &#125; catch (IOException e) &#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+    &#125;
+
+
+&#125;
+</code></pre>
+<h2 id="FFMPEG生成TS，M3U8"><a href="#FFMPEG生成TS，M3U8" class="headerlink" title="FFMPEG生成TS，M3U8"></a>FFMPEG生成TS，M3U8</h2><p>VideoConverter负责调用FFMPEG进程切割mp4文件，生成视频媒体文件夹和对应的m3u8和ts资源</p>
+<p>这个类使用了单例模式获取一个全局单例对象，并且每次需要传入mp4视频所在资源位置，首先考虑到的是线程需要是安全的，因此使用了一个tasks集合来记录正在生成资源的表。</p>
+<p>当有其它线程进入要生成视频资源时，首先会查看指定mp4分割后的ts资源所在路径文件夹是否存在。若存在则有两种可能性</p>
+<ul>
+<li>有其它线程正在生成m3u8和ts</li>
+<li>已经生成完毕</li>
+</ul>
+<p>这里使用了一个上方法锁的hasTask方法，保证检查表和放置新任务的步骤是原子性的。</p>
+<p>当检查到有其它线程正在处理生成ts任务时，就让该线程循环检查，直到其它线程的ts生成任务完成。</p>
+<p>若不存在ts资源则启动ffmpeg生成mp4的ts分片文件和m3u8文件。并在生成完毕后移除tasks中的任务信息。</p>
+<pre><code class="java">package pers.os467.support.utils.media;
+
+import pers.os467.support.utils.FileUtils;
+
+import java.io.*;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class ORMUtils &#123;
+public class VideoConverter &#123;
 
-    private static final String STRING = &quot;java.lang.String&quot;;
+    private static VideoConverter videoConverter;
 
-    private static final String INTEGER = &quot;java.lang.Integer&quot;;
+    private volatile static Object mutex = new Object();
 
-    private static final String DOUBLE = &quot;java.lang.Double&quot;;
+    //正在处理的媒体切割任务
+    private Map tasks = new ConcurrentHashMap();
 
-    private static final String CHARACTER = &quot;java.lang.Character&quot;;
-
-    private static final String BOOLEAN = &quot;java.lang.Boolean&quot;;
-
-    private static final String SHORT = &quot;java.lang.Short&quot;;
-
-    private static final String BYTE = &quot;java.lang.Byte&quot;;
-
-    private static final String LONG = &quot;java.lang.Long&quot;;
-
-    private static final String FLOAT = &quot;java.lang.Float&quot;;
-
-    private static final String DATE = &quot;java.util.Date&quot;;
-
-    private static final Map&lt;String,Class&gt; TYPE_MAP = new HashMap&lt;&gt;();
-
-    private static final Map&lt;String,String&gt; METHOD_MAP = new HashMap&lt;&gt;();
-
-    static &#123;
-        TYPE_MAP.put(STRING,String.class);
-        TYPE_MAP.put(INTEGER,Integer.class);
-        TYPE_MAP.put(DOUBLE,Double.class);
-        TYPE_MAP.put(BOOLEAN,Boolean.class);
-        TYPE_MAP.put(SHORT,Short.class);
-        TYPE_MAP.put(BYTE,Byte.class);
-        TYPE_MAP.put(LONG,Long.class);
-        TYPE_MAP.put(FLOAT,Float.class);
-        TYPE_MAP.put(DATE, Date.class);
-
-        METHOD_MAP.put(STRING,&quot;String&quot;);
-        METHOD_MAP.put(INTEGER,&quot;Int&quot;);
-        METHOD_MAP.put(DOUBLE,&quot;Double&quot;);
-        METHOD_MAP.put(BOOLEAN,&quot;Boolean&quot;);
-        METHOD_MAP.put(SHORT,&quot;Short&quot;);
-        METHOD_MAP.put(BYTE,&quot;Byte&quot;);
-        METHOD_MAP.put(LONG,&quot;Long&quot;);
-        METHOD_MAP.put(FLOAT,&quot;Float&quot;);
-        METHOD_MAP.put(DATE,&quot;Date&quot;);
-
-    &#125;
-
-    private static final String EMPTY = &quot;&quot;;
-    private static final String SPACE = &quot; &quot;;
-    private static final String BASE_UPDATE = &quot;UPDATE &quot;;
-    private static final String BASE_SET = &quot; SET &quot;;
-    private static final String BASE_WHERE = &quot; WHERE 1 = 1 &quot;;
-    private static final String AND = &quot; AND &quot;;
-    private static final String BASE_INSERT = &quot;INSERT INTO &quot;;
-    private static final String START = &quot;(&quot;;
-    private static final String END = &quot;)&quot;;
-    private static final String BASE_VALUES = &quot;VALUES&quot;;
-
-    private static final String COLUMN_FLAG = &quot;`&quot;;
-
-    private static final String STRING_FLAG = &quot;&#39;&quot;;
-
-    private static final String SPLIT = &quot;,&quot;;
-
-    private static final String EQUAL = &quot; = &quot;;
-
-    private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
-
-    public static &lt;T&gt;boolean update(T t,Connection connection)&#123;
-        return update(EMPTY,t,connection);
-    &#125;
-
-    /**
-     *
-     * @param sqlAppend 拼接到 WHERE 之后的语句
-     * @param t 更新对象
-     * @param connection 连接对象
-     * @param &lt;T&gt;
-     * @return
-     */
-    public static &lt;T&gt;boolean update(String sqlAppend,T t, Connection connection)&#123;
-        Class tableClass = t.getClass();
-
-        if (tableClass == null)&#123;
-            return false;
-        &#125;
-
-        Table table = (Table)tableClass.getAnnotation(Table.class);
-
-        if (table == null)&#123;
-            return false;
-        &#125;
-
-        String sql = BASE_UPDATE + table.value() + BASE_SET;
-        String where = BASE_WHERE;
-
-        //获取属性标注的字段值，自动解析字段
-        Field[] fields = tableClass.getDeclaredFields();
-
-        StringBuilder sqlSB = new StringBuilder();
-        StringBuilder keySB = new StringBuilder();
-        sqlSB.append(sql);
-        keySB.append(where);
-        for (Field field : fields) &#123;
-            TableColumn tableColumn = field.getAnnotation(TableColumn.class);
-            if (tableColumn != null)&#123;
-                //获取属性名
-                String propertyName = field.getName();
-                //get函数名
-                String getMethodName = &quot;get&quot; + propertyName.substring(0,1).toUpperCase() + propertyName.substring(1);
-                //字段名
-                String columnLabel = tableColumn.value();
-                //获取属性类型
-                String typeName = field.getGenericType().getTypeName();
-                try &#123;
-                    //获取到类型字节码
-                    Class typeClass = TYPE_MAP.get(typeName);
-                    //获取到set方法
-                    Method objectFieldGet = tableClass.getMethod(getMethodName);
-                    Object value = objectFieldGet.invoke(t);
-                    if (value != null)&#123;
-
-                        Key key = field.getAnnotation(Key.class);
-
-                        boolean isKey = false;
-                        StringBuilder sb;
-                        if (key != null)&#123;
-                            keySB.append(AND);
-                            isKey = true;
-                            sb = keySB;
-                        &#125;else &#123;
-                            sb = sqlSB;
-                        &#125;
-
-                        //拼接表字段名
-                        sb.append(COLUMN_FLAG);
-                        sb.append(columnLabel);
-                        sb.append(COLUMN_FLAG);
-                        sb.append(EQUAL);
-
-                        //拼接值
-                        if (typeClass.getTypeName().equals(STRING))&#123;
-                            sb.append(STRING_FLAG);
-                            sb.append(value);
-                            sb.append(STRING_FLAG);
-                        &#125;else if (typeClass.getTypeName().equals(DATE))&#123;
-                            sb.append(STRING_FLAG);
-                            sb.append(SIMPLE_DATE_FORMAT.format(value));
-                            sb.append(STRING_FLAG);
-                        &#125;else &#123;
-                            sb.append(value);
-                        &#125;
-                        if (!isKey)&#123;
-                            sb.append(SPLIT);
-                        &#125;
-                    &#125;
-                &#125; catch (NoSuchMethodException e) &#123;
-                    e.printStackTrace();
-                &#125; catch (IllegalAccessException e) &#123;
-                    e.printStackTrace();
-                &#125; catch (InvocationTargetException e) &#123;
-                    e.printStackTrace();
+    public static VideoConverter getInstance()&#123;
+        if (videoConverter == null)&#123;
+            synchronized (mutex)&#123;
+                if (videoConverter == null)&#123;
+                    videoConverter = new VideoConverter();
                 &#125;
             &#125;
         &#125;
-
-        sql = sqlSB.toString();
-        where = keySB.toString();
-
-        //整理
-        if (sql.endsWith(SPLIT))&#123;
-            sql = sql.substring(0,sql.length()-1);
-        &#125;
-
-        //更新语句整合
-        String updateSql = sql + SPACE + where;
-        if (sqlAppend != EMPTY)&#123;
-            updateSql += AND + sqlAppend;
-        &#125;
-        //执行
-        boolean execute = false;
-        try &#123;
-            Statement statement = connection.createStatement();
-
-            execute = statement.execute(updateSql);
-        &#125; catch (SQLException throwables) &#123;
-            throwables.printStackTrace();
-        &#125;
-        return execute;
-
+        return videoConverter;
     &#125;
 
-
-    /**
-     *
-     * @param t
-     * @param connection
-     * @param &lt;T&gt;
-     * @return
-     */
-    public static &lt;T&gt;boolean insert(T t, Connection connection)&#123;
-        Class tableClass = t.getClass();
-
-        if (tableClass == null)&#123;
-            return false;
+    public VideoOutput converter(String videoPath,String mediaBase)&#123;
+        //检查文件夹是否存在
+        if (!new File(mediaBase).exists())&#123;
+            FileUtils.makeAccessDir(mediaBase);
         &#125;
 
-        Table table = (Table)tableClass.getAnnotation(Table.class);
+        File videoSource = new File(videoPath);
 
-        if (table == null)&#123;
-            return false;
+        String sourceName = videoSource.getName();
+        String mediaPath = mediaBase + File.separator + sourceName;
+
+        // 输出的m3u8文件路径
+        String m3u8Path = mediaPath + File.separator + sourceName + &quot;.m3u8&quot;;
+        // 输出的ts文件路径，%05d表示将替换为五位数的序列号
+        String tsPath = mediaPath + File.separator + sourceName+&quot;_%05d.ts&quot;;
+        //api路径信息
+        VideoOutput videoOutput = new VideoOutput(m3u8Path,tsPath,&quot;/media/&quot;+sourceName + &quot;.m3u8&quot;);
+
+        if (!new File(mediaPath).exists())&#123;
+            //构建该视频输出文件夹
+            FileUtils.makeAccessDir(mediaPath);
+            //构建切割mp4任务
+            buildTask(videoPath, mediaPath, m3u8Path, tsPath);
+        &#125;else &#123;
+            //该目录已经构建过，无需处理
+            return videoOutput;
         &#125;
 
-        String sql = BASE_INSERT + table.value() + START;
-        String values = BASE_VALUES + START;
+        return videoOutput;
+    &#125;
 
-        //获取属性标注的字段值，自动解析字段
-        Field[] fields = tableClass.getDeclaredFields();
-
-        StringBuilder sqlSB = new StringBuilder();
-        sqlSB.append(sql);
-        StringBuilder valueSB = new StringBuilder();
-        valueSB.append(values);
-        for (Field field : fields) &#123;
-            TableColumn tableColumn = field.getAnnotation(TableColumn.class);
-            if (tableColumn != null)&#123;
-                //获取属性名
-                String propertyName = field.getName();
-                //get函数名
-                String getMethodName = &quot;get&quot; + propertyName.substring(0,1).toUpperCase() + propertyName.substring(1);
-                //字段名
-                String columnLabel = tableColumn.value();
-                //获取属性类型
-                String typeName = field.getGenericType().getTypeName();
-                try &#123;
-                    //获取到类型字节码
-                    Class typeClass = TYPE_MAP.get(typeName);
-                    //获取到set方法
-                    Method objectFieldGet = tableClass.getMethod(getMethodName);
-                    Object value = objectFieldGet.invoke(t);
-                    if (value != null)&#123;
-
-                        //拼接表字段名
-                        sqlSB.append(COLUMN_FLAG);
-                        sqlSB.append(columnLabel);
-                        sqlSB.append(COLUMN_FLAG);
-                        sqlSB.append(SPLIT);
-
-                        //拼接值
-                        if (typeClass.getTypeName().equals(STRING))&#123;
-                            valueSB.append(STRING_FLAG);
-                            valueSB.append(value);
-                            valueSB.append(STRING_FLAG);
-                        &#125;else if (typeClass.getTypeName().equals(DATE))&#123;
-                            valueSB.append(STRING_FLAG);
-                            valueSB.append(SIMPLE_DATE_FORMAT.format(value));
-                            valueSB.append(STRING_FLAG);
-                        &#125;else &#123;
-                            valueSB.append(value);
-                        &#125;
-                        valueSB.append(SPLIT);
-                    &#125;
-                &#125; catch (NoSuchMethodException e) &#123;
-                    e.printStackTrace();
-                &#125; catch (IllegalAccessException e) &#123;
-                    e.printStackTrace();
-                &#125; catch (InvocationTargetException e) &#123;
-                    e.printStackTrace();
+     private void buildTask(String videoPath, String mediaPath, String m3u8Path, String tsPath) &#123;
+        //检查是否有正在构建的任务
+        if (hasTask(mediaPath))&#123;
+            //阻塞等到任务被其它线程完成
+            for (int i = 0; i &lt; 600; i++) &#123;
+                if (!hasTask(mediaPath)) &#123;
+                    return;
                 &#125;
+                try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                    //中断该线程
+                    Thread.currentThread().interrupt();
+                &#125;
+            &#125;
+            throw new RuntimeException(&quot;media converter task timeout&quot;);
+        &#125;else &#123;
+            //没有任务，则创建任务
+            try &#123;
+                List&lt;String&gt; command = buildConverterCommand(videoPath, m3u8Path, tsPath);
+                ProcessBuilder processBuilder = new ProcessBuilder();
+                processBuilder.command(command);
+                processBuilder.redirectErrorStream(true);
+                Process process = processBuilder.start();
+                //保证连接到子进程的标准输出的标准输入流不被阻塞
+                InputStream inputStream = process.getInputStream();
+                while (inputStream.read() != -1)&#123;
+                    //do nothing
+                &#125;
+                process.destroy();
+            &#125; catch (IOException e) &#123;
+                e.printStackTrace();
+                throw new RuntimeException(&quot;media ts task failed&quot;);
+            &#125;finally &#123;
+                //删除任务
+                tasks.remove(mediaPath);
             &#125;
         &#125;
 
-        sql = sqlSB.toString();
-        values = valueSB.toString();
-
-        //整理
-        if (sql.endsWith(SPLIT))&#123;
-            sql = sql.substring(0,sql.length()-1) + END;
+    &#125;
+    
+    private synchronized boolean hasTask(String mediaPath) &#123;
+        if (tasks.containsKey(mediaPath))&#123;
+            return true;
+        &#125;else &#123;
+            tasks.put(mediaPath,true);
+            return false;
         &#125;
-        //整理
-        if (values.endsWith(SPLIT))&#123;
-            values = values.substring(0,values.length()-1) + END;
-        &#125;
-        //插入语句整合
-        String insertSql = sql + values;
-        System.out.println(insertSql);
-        //执行
-        boolean execute = false;
-        try &#123;
-            Statement statement = connection.createStatement();
-
-            execute = statement.execute(insertSql);
-        &#125; catch (SQLException throwables) &#123;
-            throwables.printStackTrace();
-        &#125;
-        return execute;
-
     &#125;
 
-    /**
-     * 自动解析result为对应持久对象数组
-     * @param resultSet 结果集
-     * @param tClass 持久对象字节码
-     * @param &lt;T&gt; 持久对象泛型
-     * @return
-     */
-    public static &lt;T&gt;List&lt;T&gt; toObjectList(ResultSet resultSet, Class&lt;T&gt; tClass)&#123;
 
-        List&lt;TableColumnGetter&gt; tableColumnGetterList = new ArrayList&lt;&gt;();
+    private List&lt;String&gt; buildConverterCommand(String videoPath, String m3u8Path, String tsPath) &#123;
+        // 构造ffmpeg命令
+        List&lt;String&gt; command = new ArrayList&lt;&gt;();
+        command.add(&quot;ffmpeg&quot;);
+        command.add(&quot;-i&quot;);
+        command.add(videoPath);
+        command.add(&quot;-c:v&quot;);
+        command.add(&quot;copy&quot;);
+        command.add(&quot;-c:a&quot;);
+        command.add(&quot;copy&quot;);
+        command.add(&quot;-f&quot;);
+        command.add(&quot;ssegment&quot;);
+        command.add(&quot;-segment_format&quot;);
+        command.add(&quot;mpegts&quot;);
+        command.add(&quot;-segment_list&quot;);
+        command.add(m3u8Path);
+        command.add(&quot;-segment_time&quot;);
+        command.add(&quot;10&quot;);
+        command.add(tsPath);
+        return command;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="前端视频播放组件"><a href="#前端视频播放组件" class="headerlink" title="前端视频播放组件"></a>前端视频播放组件</h2><p>需要引入hls.js，如果使用npm详细查看网上的hls.js模块安装过程。</p>
+<p>这个组件是一个简单的视频播放器组件，可以嵌入到其它组件中使用。</p>
+<ul>
+<li>playVideo(fid) 视频播放方法，需要传递一个fid作为要播放文件的标识，将会拼接到请求中传递给后端</li>
+</ul>
+<pre><code class="vue">&lt;template&gt;
+  &lt;video style=&quot;width: 768px;height: 576px&quot; ref=&quot;videoPlayer&quot; controls&gt;&lt;/video&gt;
+&lt;/template&gt;
 
-        Class tableClass = tClass;
-        if (tableClass == null)&#123;
-            return new ArrayList&lt;&gt;();
+&lt;script&gt;
+module.exports = &#123;
+  name: &quot;MediaPlayerComponent.vue&quot;,
+  data() &#123;
+    return &#123;
+    &#125;
+  &#125;,
+  methods: &#123;
+    closeVideo()&#123;
+      const video = this.$refs.videoPlayer;
+      //清除video正在播放的视频资源
+      video.src = &#39;&#39;;
+    &#125;,
+    playVideo(fid) &#123;
+      axios.post(`$&#123;BACKEND_URL&#125;/media/playVideo?fid=$&#123;fid&#125;`).then((resp)=&gt;&#123;
+        if (resp.data.code === STATUS_CODE_SUCCESS)&#123;
+          this.loadHLS(resp.data.data);
+        &#125;else if (resp.data.code === STATUS_CODE_FAIL)&#123;
+          this.message.error(&quot;视频资源加载失败&quot;);
         &#125;
-        //获取属性标注的字段值，自动解析字段
-        Field[] fields = tableClass.getDeclaredFields();
-        for (Field field : fields) &#123;
-            TableColumn tableColumn = field.getAnnotation(TableColumn.class);
-            if (tableColumn != null)&#123;
-                //获取属性名
-                String propertyName = field.getName();
-                //set函数名
-                String setMethodName = &quot;set&quot; + propertyName.substring(0,1).toUpperCase() + propertyName.substring(1);
-                //字段名
-                String columnLabel = tableColumn.value();
-                //获取属性类型
-                String typeName = field.getGenericType().getTypeName();
-                try &#123;
-                    //获取到类型字节码
-                    Class typeClass = TYPE_MAP.get(typeName);
-                    //获取到set方法
-                    Method objectFieldSet = tableClass.getMethod(setMethodName,typeClass);
-                    //获取到字段对应的值
-                    Class&lt;? extends ResultSet&gt; resultSetClass = resultSet.getClass();
-                    //组装resultSet的get函数名称
-                    String getMethodName = &quot;get&quot; + METHOD_MAP.get(typeName);
-                    //获取到对应解析函数字节码
-                    Method resultSetGet = resultSetClass.getMethod(getMethodName, String.class);
-                    //创建获取字段注入器
-                    TableColumnGetter tableColumnGetter = new TableColumnGetter(objectFieldSet, resultSetGet, columnLabel);
-                    //整合字段注入器列表
-                    tableColumnGetterList.add(tableColumnGetter);
-                &#125; catch (NoSuchMethodException e) &#123;
-                    e.printStackTrace();
-                &#125;
-            &#125;
-        &#125;
-        //创建表处理器
-        TableHandler tableHandler = new TableHandler(tableClass,tableColumnGetterList);
-        //获取表java实例列表
-        List objectList = tableHandler.getObjectList(resultSet);
-        return objectList;
+      &#125;)
+    &#125;,
+    loadHLS(m3u8)&#123;
+      const video = this.$refs.videoPlayer;
+      if(Hls.isSupported()) &#123;
+        console.log(&quot;support hls&quot;)
+        const hls = new Hls();
+        // 加载m3u8文件
+        hls.loadSource(m3u8);
+        // 将hls附加到video元素
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function() &#123;
+          // 当m3u8文件解析完成后，开始播放视频
+          video.play();
+        &#125;);
+      &#125; else if (video.canPlayType(&#39;application/vnd.apple.mpegurl&#39;)) &#123;
+        // 对于原生支持HLS的浏览器（如Safari），直接设置video的src
+        video.src = m3u8;
+        video.addEventListener(&#39;loadedmetadata&#39;, function() &#123;
+          video.play();
+        &#125;);
+      &#125;
     &#125;
 
+  &#125;,
+  computed:&#123;
+
+  &#125;,
+  watch:&#123;
+
+  &#125;,
+  mounted()&#123;
+  &#125;
 &#125;
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
 </code></pre>
-<pre><code class="java">package orm.annotation;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Key &#123;
-&#125;
-</code></pre>
-<pre><code class="java">package orm.annotation;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Table &#123;
-    String value();
-&#125;
-</code></pre>
+<blockquote>
+<p>需要引入 hls.js  </p>
+<p>这里先通过axios请求后端m3u8地址，接收到地址后表明后端ts文件已经生成，接下来交给hls去发起ts请求即可</p>
+</blockquote>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -2049,12 +1748,12 @@ public @interface Table &#123;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>简单ORM映射方案(JDBC)</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">3k</span></p>
+    <p><span class="copy-title">文章标题:</span>视频播放与传输设计方案</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">2.8k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2023-12-25, 18:43:30</p>
-    <p><span class="copy-title">最后更新:</span>2023-12-25, 18:43:49</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/12/25/%E7%AE%80%E5%8D%95ORM%E6%98%A0%E5%B0%84%E6%96%B9%E6%A1%88/" title="简单ORM映射方案(JDBC)">https://os467.github.io/2023/12/25/%E7%AE%80%E5%8D%95ORM%E6%98%A0%E5%B0%84%E6%96%B9%E6%A1%88/</a>
+    <p><span class="copy-title">发布时间:</span>2024-02-07, 17:10:30</p>
+    <p><span class="copy-title">最后更新:</span>2024-02-07, 17:14:53</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/02/07/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E4%B8%8E%E4%BC%A0%E8%BE%93%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88/" title="视频播放与传输设计方案">https://os467.github.io/2024/02/07/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E4%B8%8E%E4%BC%A0%E8%BE%93%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
