@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>ThreadLocal | Tly的博客</title>
+  <title>GPT接口调用方案 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="ThreadLocal | Tly的博客">
+  <meta name="description" content="GPT接口调用方案 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="CHAT-GPT API调用方案GPT接口调用方案前言本方案仅供学习参考使用，请勿用在非法途径，如果有硬性gpt接口需求，可以选择国产的百度飞桨大模型，具体调用方式可以查看官方文档，支持大陆AI技术发展，打破技术垄断。 本方案是为了防止因为各种锁区原因导致的账号封禁提供的一种低成本的api调用方案 如果有海外服务器可以自行搭建代理 这里使用Cloudflare的GateWay代理  若直接使用大陆">
 <meta property="og:type" content="article">
@@ -1254,9 +1254,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-ThreadLocal" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-gpt使用" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">ThreadLocal</h1>
+        <h1 class="article-title">GPT接口调用方案</h1>
     
     <div class="article-meta">
         
@@ -1266,7 +1266,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="底层学习">底层学习</a>
+            <a  data-rel="其它">其它</a>
             
         </span>
         
@@ -1274,12 +1274,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-15 00:03:13'>2022-09-15 00:02</time>
+            发布时间 : <time class="date" title='最后更新: 2024-02-20 20:24:45'>2024-02-20 20:21</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:438</span>
+        <span>字数:2.5k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1298,7 +1298,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ThreadLocal"><span class="toc-text">ThreadLocal</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BBThreadLocalMap"><span class="toc-text">静态内部类ThreadLocalMap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ThreadLocal%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">ThreadLocal内存泄漏分析与解决方案</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CHAT-GPT-API%E8%B0%83%E7%94%A8%E6%96%B9%E6%A1%88"><span class="toc-text">CHAT-GPT API调用方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GPT%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8%E6%96%B9%E6%A1%88"><span class="toc-text">GPT接口调用方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%BD%91%E5%85%B3"><span class="toc-text">1创建一个网关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E5%88%9B%E5%BB%BA%E8%B4%A6%E6%88%B7"><span class="toc-text">1.1创建账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2%E5%88%9B%E5%BB%BA%E7%BD%91%E5%85%B3"><span class="toc-text">1.2创建网关</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%BF%9E%E6%8E%A5%E5%88%B0%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="toc-text">2 连接到你的程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E5%B9%B3%E5%8F%B0"><span class="toc-text">代理平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E8%B0%83%E8%AF%95"><span class="toc-text">普通调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Java-%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6gpt"><span class="toc-text">使用Java 开源框架gpt</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E8%A1%A8"><span class="toc-text">模型表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#How-to-get-API-key%EF%BC%9F"><span class="toc-text">How to get API key？</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1314,30 +1314,301 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h1><p>ThreadLocal是JDK包提供的，它提供线程本地变量，为当前线程提供了一个存储变量的副本，当我们在多线程场景下，想要让每个线程都拥有自己<strong>独立</strong>的”线程上下文变量“，就可以使用ThreadLocal来存储一个仅限当前线程内部使用的共享对象</p>
-<h2 id="静态内部类ThreadLocalMap"><a href="#静态内部类ThreadLocalMap" class="headerlink" title="静态内部类ThreadLocalMap"></a>静态内部类ThreadLocalMap</h2><p>定义在ThreadLocal类中，在Thread类中被使用到</p>
-<p>类似一个HashMap，泛型为&lt;ThreadLocal,Object&gt;，用来存储当前线程的ThreadLocal变量</p>
-<p><strong>threadLocals属性（Thread类拥有）</strong></p>
-<pre><code class="java">ThreadLocal.ThreadLocalMap threadLocals = null;
-</code></pre>
+        <h1 id="CHAT-GPT-API调用方案"><a href="#CHAT-GPT-API调用方案" class="headerlink" title="CHAT-GPT API调用方案"></a>CHAT-GPT API调用方案</h1><h1 id="GPT接口调用方案"><a href="#GPT接口调用方案" class="headerlink" title="GPT接口调用方案"></a>GPT接口调用方案</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本方案仅供学习参考使用，请勿用在非法途径，如果有硬性gpt接口需求，可以选择国产的百度飞桨大模型，具体调用方式可以查看官方文档，支持大陆AI技术发展，打破技术垄断。</p>
+<p>本方案是为了防止因为各种锁区原因导致的账号封禁提供的一种低成本的api调用方案</p>
+<p>如果有海外服务器可以自行搭建代理</p>
+<p>这里使用Cloudflare的GateWay代理</p>
 <blockquote>
-<p>引用ThreadLocalMap类的注释：该类是包私有的，以允许在类 Thread 中声明字段。为了帮助处理非常大且长期存在的实例，哈希表条目使用 WeakReferences 作为键。但是，由于不使用引用队列，因此只有在表开始空间不足时才能保证删除过时的条目。</p>
+<p>若直接使用大陆服务器调用api可能会封号</p>
 </blockquote>
-<p><strong>ThreadLocalMap静态内部类Entry</strong></p>
-<pre><code class="java">static class Entry extends WeakReference&lt;ThreadLocal&lt;?&gt;&gt; &#123;
-    /** The value associated with this ThreadLocal. */
-    Object value;
-
-    Entry(ThreadLocal&lt;?&gt; k, Object v) &#123;
-        super(k);
-        value = v;
+<h2 id="1创建一个网关"><a href="#1创建一个网关" class="headerlink" title="1创建一个网关"></a>1创建一个网关</h2><p>使用平台<code> Cloudflare</code></p>
+<h3 id="1-1创建账户"><a href="#1-1创建账户" class="headerlink" title="1.1创建账户"></a>1.1创建账户</h3><p><a target="_blank" rel="noopener" href="https://dash.cloudflare.com/sign-up/">Cloudflare | Web Performance &amp; Security</a></p>
+<h3 id="1-2创建网关"><a href="#1-2创建网关" class="headerlink" title="1.2创建网关"></a>1.2创建网关</h3><p><a target="_blank" rel="noopener" href="https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/general">Cloudflare | Web Performance &amp; Security</a></p>
+<h2 id="2-连接到你的程序"><a href="#2-连接到你的程序" class="headerlink" title="2 连接到你的程序"></a>2 连接到你的程序</h2><p>相关文档：<a target="_blank" rel="noopener" href="https://developers.cloudflare.com/ai-gateway/get-started/connecting-applications/">Connecting your application · Cloudflare AI Gateway docs</a></p>
+<p>AI 网关为您创建的每个网关提供多个端点 - 每个提供商一个端点，以及一个通用端点。通用终结点需要根据架构进行一些调整，但支持其他功能。例如，其中一些功能是在请求第一次失败时重试请求，或者在请求失败时配置回退模型&#x2F;提供程序。</p>
+<p>可以使用通用终结点联系每个提供商。有效负载需要一个消息数组，并且每条消息都是一个具有以下参数的对象：</p>
+<ul>
+<li><code>provider</code>：要将此消息定向到的提供商的名称。可以是 openai&#x2F;huggingface&#x2F;replicate</li>
+<li><code>endpoint</code>：您尝试访问的提供程序 API 的路径名。例如，在 OpenAI 上，它可以是 ，而对于 HuggingFace，这可能是 .在特定于每个提供程序的部分中查看详细信息。<code>chat/completions``bigstar/code</code></li>
+<li><code>authorization</code>：联系此提供商时应使用的授权 HTTP 标头的内容。这通常以“令牌”或“持有者”开头。</li>
+<li><code>query</code>：提供商在其官方 API 中期望的有效负载。</li>
+</ul>
+<pre><code class="json"># 使用 curl 命令向指定的 URL 发送一个 POST 请求
+curl https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY -X POST \
+  # 设置请求头的内容类型为 JSON 格式
+  --header &#39;Content-Type: application/json&#39; \
+  # 设置请求体的数据为一个 JSON 数组，包含三个对象，每个对象代表一个 GPT 接口的调用
+  --data &#39;[
+    &#123;
+      # 设置第一个接口的提供者为 huggingface
+        &quot;provider&quot;: &quot;huggingface&quot;,
+      # 设置第一个接口的端点为 bigcode/starcoder，这是一个用于生成代码的模型
+        &quot;endpoint&quot;: &quot;bigcode/starcoder&quot;,
+      # 设置第一个接口的请求头
+        &quot;headers&quot;: &#123;
+        # 设置授权方式为 Bearer Token，$TOKEN 是你的 API 密钥
+        &quot;Authorization&quot;: &quot;Bearer $TOKEN&quot;,
+        # 设置内容类型为 JSON 格式
+        &quot;Content-Type&quot;: &quot;application/json&quot;
+       &#125;,
+      # 设置第一个接口的查询参数
+        &quot;query&quot;: &#123;
+        # 设置输入为 console.log，这是一个 JavaScript 语句
+            &quot;input&quot;: &quot;console.log&quot;
+        &#125;
+    &#125;,
+    &#123;
+      # 设置第二个接口的提供者为 openai
+        &quot;provider&quot;: &quot;openai&quot;,
+      # 设置第二个接口的端点为 chat/completions，这是一个用于聊天的模型
+        &quot;endpoint&quot;: &quot;chat/completions&quot;,
+      # 设置第二个接口的请求头
+       &quot;headers&quot;: &#123;
+        # 设置授权方式为 Bearer Token，$TOKEN 是你的 API 密钥
+        &quot;Authorization&quot;: &quot;Bearer $TOKEN&quot;,
+        # 设置内容类型为 JSON 格式
+        &quot;Content-Type&quot;: &quot;application/json&quot;
+       &#125;,
+      # 设置第二个接口的查询参数
+        &quot;query&quot;: &#123;
+        # 设置模型为 gpt-3.5-turbo，这是一个最新的 GPT 模型
+            &quot;model&quot;: &quot;gpt-3.5-turbo&quot;,
+        # 设置流式响应为 true，这意味着你可以实时看到模型的输出
+            &quot;stream&quot;: true,
+        # 设置消息数组，包含一个对象，代表你的输入
+            &quot;messages&quot;: [
+                &#123;
+            # 设置角色为 user，表示这是你的消息
+                    &quot;role&quot;: &quot;user&quot;,
+            # 设置内容为 &quot;What is Cloudflare?&quot;，这是你想问的问题
+                    &quot;content&quot;: &quot;What is Cloudflare?&quot;
+                &#125;
+            ]
+        &#125;
+    &#125;,
+    &#123;
+      # 设置第三个接口的提供者为 replicate
+        &quot;provider&quot;: &quot;replicate&quot;,
+      # 设置第三个接口的端点为 predictions，这是一个用于生成文本的模型
+        &quot;endpoint&quot;: &quot;predictions&quot;,
+      # 设置授权方式为 Token，$TOKEN 是你的 API 密钥
+        &quot;authorization&quot;: &quot;Token $TOKEN&quot;,
+      # 设置第三个接口的查询参数
+        &quot;query&quot;: &#123;
+        # 设置版本为一个哈希值，表示你要使用的模型的版本
+            &quot;version&quot;: &quot;2796ee9483c3fd7aa2e171d38f4ca12251a30609463dcfd4cd76703f22e96cdf&quot;,
+        # 设置输入为一个对象
+            &quot;input&quot;: &#123;
+          # 设置提示为 &quot;What is Cloudflare?&quot;，这是你想问的问题
+                &quot;prompt&quot;: &quot;What is Cloudflare?&quot;
+            &#125;
+        &#125;
     &#125;
+]&#39;
+</code></pre>
+<h2 id="代理平台"><a href="#代理平台" class="headerlink" title="代理平台"></a>代理平台</h2><p><a target="_blank" rel="noopener" href="https://developers.cloudflare.com/">https://developers.cloudflare.com/</a></p>
+<h2 id="普通调试"><a href="#普通调试" class="headerlink" title="普通调试"></a>普通调试</h2><p>我的控制台：<a target="_blank" rel="noopener" href="https://dash.cloudflare.com/82fa06a46d6aaa72246a915b87ba4a06/ai/ai-gateway/general#gpt-os-467">AI Gateway | Tly1300452403@163.com's Account | Cloudflare</a></p>
+<pre><code class="json">curl -X POST https://gateway.ai.cloudflare.com/v1/82fa06a46d6aaa72246a915b87ba4a06/gpt-os-467/openai/chat/completions \
+  -H &#39;Authorization: Bearer XXX&#39; \
+  -H &#39;Content-Type: application/json&#39; \
+  -d &#39; &#123;
+      &quot;model&quot;: &quot;gpt-3.5-turbo&quot;,
+      &quot;messages&quot;: [
+        &#123;
+          &quot;role&quot;: &quot;user&quot;,
+          &quot;content&quot;: &quot;What is Cloudflare?&quot;
+        &#125;
+      ]
+    &#125;
+&#39;
+</code></pre>
+<h2 id="使用Java-开源框架gpt"><a href="#使用Java-开源框架gpt" class="headerlink" title="使用Java 开源框架gpt"></a>使用Java 开源框架gpt</h2><pre><code class="java">package pers.os467.support.core.gpt;
+
+
+import com.plexpt.chatgpt.ChatGPT;
+import com.plexpt.chatgpt.ChatGPTStream;
+import com.plexpt.chatgpt.entity.chat.Message;
+import com.plexpt.chatgpt.listener.ConsoleStreamListener;
+import com.plexpt.chatgpt.util.Proxys;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.math.BigDecimal;
+import java.net.Proxy;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.stream.Collectors;
+
+/**
+ * open ai 客户端
+ *
+ * @author plexpt
+ */
+
+@Slf4j
+
+public class ConsoleChatGPT &#123;
+
+    public static Proxy proxy = Proxy.NO_PROXY;
+
+    public static void main(String[] args) &#123;
+
+        System.out.println(&quot;ChatGPT - Java command-line interface&quot;);
+        System.out.println(&quot;Press enter twice to submit your question.&quot;);
+        System.out.println();
+        System.out.println(&quot;按两次回车以提交您的问题！！！&quot;);
+        System.out.println(&quot;按两次回车以提交您的问题！！！&quot;);
+        System.out.println(&quot;按两次回车以提交您的问题！！！&quot;);
+
+
+        System.out.println();
+        System.out.println(&quot;Please enter APIKEY, press Enter twice to submit:&quot;);
+        String key = getInput(&quot;请输入APIKEY，按两次回车以提交:\n&quot;);
+        check(key);
+
+        // 询问用户是否使用代理  国内需要代理
+        System.out.println(&quot;是否使用代理？(y/n): &quot;);
+        System.out.println(&quot;use proxy？(y/n): &quot;);
+        String useProxy = getInput(&quot;按两次回车以提交:\n&quot;);
+        if (useProxy.equalsIgnoreCase(&quot;y&quot;)) &#123;
+
+            // 输入代理地址
+            System.out.println(&quot;请输入代理类型(http/socks): &quot;);
+            String type = getInput(&quot;按两次回车以提交:\n&quot;);
+
+            // 输入代理地址
+            System.out.println(&quot;请输入代理IP: &quot;);
+            String proxyHost = getInput(&quot;按两次回车以提交:\n&quot;);
+
+            // 输入代理端口
+            System.out.println(&quot;请输入代理端口: &quot;);
+            String portStr = getInput(&quot;按两次回车以提交:\n&quot;);
+            Integer proxyPort = Integer.parseInt(portStr);
+
+            if (type.equals(&quot;http&quot;)) &#123;
+                proxy = Proxys.http(proxyHost, proxyPort);
+            &#125; else &#123;
+                proxy = Proxys.socks5(proxyHost, proxyPort);
+            &#125;
+
+        &#125;
+
+//        System.out.println(&quot;Inquiry balance...&quot;);
+//        System.out.println(&quot;查询余额中...&quot;);
+//        BigDecimal balance = getBalance(key);
+//        System.out.println(&quot;API KEY balance: &quot; + balance.toPlainString());
+//
+//        if (!NumberUtil.isGreater(balance, BigDecimal.ZERO)) &#123;
+//            System.out.println(&quot;API KEY 余额不足: &quot;);
+//            return;
+//        &#125;
+
+
+        while (true) &#123;
+            String prompt = getInput(&quot;\nYou:\n&quot;);
+
+            ChatGPTStream chatGPT = ChatGPTStream.builder()
+                    .apiKey(key)
+                    .proxy(proxy)
+                    .build()
+                    .init();
+
+            System.out.println(&quot;AI: &quot;);
+
+
+            //卡住
+            CountDownLatch countDownLatch = new CountDownLatch(1);
+
+            Message message = Message.of(prompt);
+            ConsoleStreamListener listener = new ConsoleStreamListener() &#123;
+                @Override
+                public void onError(Throwable throwable, String response) &#123;
+                    throwable.printStackTrace();
+                    countDownLatch.countDown();
+                &#125;
+            &#125;;
+
+            listener.setOnComplate(msg -&gt; &#123;
+                countDownLatch.countDown();
+            &#125;);
+            chatGPT.streamChatCompletion(Arrays.asList(message), listener);
+
+            try &#123;
+                countDownLatch.await();
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
+            &#125;
+
+        &#125;
+
+
+    &#125;
+
+    private static BigDecimal getBalance(String key) &#123;
+
+        ChatGPT chatGPT = ChatGPT.builder()
+                .apiKey(key)
+                .proxy(proxy)
+                .build()
+                .init();
+
+        return chatGPT.balance();
+    &#125;
+
+    private static void check(String key) &#123;
+        if (key == null || key.isEmpty()) &#123;
+            throw new RuntimeException(&quot;请输入正确的KEY&quot;);
+        &#125;
+    &#125;
+
+    @SneakyThrows
+    public static String getInput(String prompt) &#123;
+        System.out.print(prompt);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        List&lt;String&gt; lines = new ArrayList&lt;&gt;();
+        String line;
+        try &#123;
+            while ((line = reader.readLine()) != null &amp;&amp; !line.isEmpty()) &#123;
+                lines.add(line);
+            &#125;
+        &#125; catch (IOException e) &#123;
+            e.printStackTrace();
+        &#125;
+        return lines.stream().collect(Collectors.joining(&quot;\n&quot;));
+    &#125;
+
 &#125;
 </code></pre>
-<p>ThreadLocalMap 中使用的 <strong>key 为 ThreadLocal 的弱引用</strong>，<strong>而 value 是强引用</strong></p>
-<p>因此，ThreadLocalMap在没有外部强引用的情况下，<strong>在GC发生时</strong>，Entry中的Key因为弱引用会变为null，Object（value）则不会被清理掉，这样一来ThreadLocalMap中就会出现<strong>key为null的Entry</strong></p>
-<h3 id="ThreadLocal内存泄漏分析与解决方案"><a href="#ThreadLocal内存泄漏分析与解决方案" class="headerlink" title="ThreadLocal内存泄漏分析与解决方案"></a>ThreadLocal内存泄漏分析与解决方案</h3><p>假如我们不做任何措施的话，value 永远无法被GC 回收，这个时候就可能会产生内存泄露</p>
-<p>ThreadLocalMap实现中已经考虑了这种情况，在调用 set()、get()、remove() 方法的时候，会清理掉 key 为 null 的记录。使用完 ThreadLocal方法后 最好手动调用remove()方法</p>
+<blockquote>
+<p>通过上面简单程代理连接即可获取到返回信息</p>
+</blockquote>
+<h1 id="模型表"><a href="#模型表" class="headerlink" title="模型表"></a>模型表</h1><p>通过科学上网进入openai控制终端查看模型</p>
+<p>目前，OpenAI 的 API 有以下几种模型：</p>
+<ul>
+<li>GPT-4 Turbo：这是最新的 GPT 模型，具有 128k 上下文、更新的知识体系和最广泛的功能集。它的价格为每 1000 个 token 0.03 美元（约 0.21 元）的 prompt 和 0.06 美元（约 0.42 元）的 completion。</li>
+<li>GPT-4：这是之前的 GPT 模型，具有广泛的通识知识和领域专业知识。它的价格为每 1000 个 token 0.06 美元（约 0.42 元）的 prompt 和 0.12 美元（约 0.85 元）的 completion。</li>
+<li>GPT-3.5 Turbo：这是一个高效且经济实惠的 GPT 模型，支持 16k 上下文窗口，并经过对话优化。它的价格为每 1000 个 token 0.002 美元（约 0.014 元）。</li>
+<li>Fine-tuning models：这是一种自定义模型，可以使用自己的训练数据微调 OpenAI 的基础模型。微调模型后，只需要为使用请求中的 token 付费，价格与基础模型相同。</li>
+<li>Embedding models：这是一种嵌入式模型，可以构建先进的搜索、聚类、主题建模和分类功能。它的价格为每 1000 个 token 0.001 美元（约 0.007 元）。</li>
+<li>Image models：这是一种图像模型，可以生成和编辑新颖的图像和艺术品。它提供了三种分辨率层次，价格分别为每 1000 个 token 0.01 美元（约 0.07 元）、0.02 美元（约 0.14 元）和 0.04 美元（约 0.28 元）。</li>
+<li>Audio models：这是一种音频模型，可以将语音转录为文本，并将多种语言翻译成英语。它的价格为每 1000 个 token 0.01 美元（约 0.07 元）。</li>
+</ul>
+<blockquote>
+<p>本教程提供了一种不容易被锁区封号的代理gpt接口方案，若有需要可以按照上面步骤配置</p>
+</blockquote>
+<h1 id="How-to-get-API-key？"><a href="#How-to-get-API-key？" class="headerlink" title="How to get API key？"></a>How to get API key？</h1><p><strong>方法一</strong></p>
+<p><a target="_blank" rel="noopener" href="https://platform.openai.com/playground">Playground - OpenAI API</a></p>
+<p>你可能需要直接购买gpt的 API key</p>
+<p><strong>方法二</strong></p>
+<p>你需要一个非锁区国家的手机号，信用卡</p>
+<p>用手机号注册谷歌等邮箱（不要是大陆邮箱即可）</p>
+<p>注册openai账号</p>
+<p>按照上面的模型表价位，按照你的需求用信用卡在billing中充值账户余额即可</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1351,12 +1622,12 @@ window.onload = function(){
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>ThreadLocal</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">438</span></p>
+    <p><span class="copy-title">文章标题:</span>GPT接口调用方案</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">2.5k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-09-15, 00:02:03</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-15, 00:03:13</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/09/15/ThreadLocal/" title="ThreadLocal">https://os467.github.io/2022/09/15/ThreadLocal/</a>
+    <p><span class="copy-title">发布时间:</span>2024-02-20, 20:21:23</p>
+    <p><span class="copy-title">最后更新:</span>2024-02-20, 20:24:45</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/02/20/gpt%E4%BD%BF%E7%94%A8/" title="GPT接口调用方案">https://os467.github.io/2024/02/20/gpt%E4%BD%BF%E7%94%A8/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
