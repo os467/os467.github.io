@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>jdbc | Tly的博客</title>
+  <title>Java线程池 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="jdbc | Tly的博客">
+  <meta name="description" content="Java线程池 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:type" content="website">
@@ -1263,9 +1263,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-jdbc" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-java线程池" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">jdbc</h1>
+        <h1 class="article-title">Java线程池</h1>
     
     <div class="article-meta">
         
@@ -1275,7 +1275,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="JAVASE基础">JAVASE基础</a>
+            <a  data-rel="JAVASE进阶">JAVASE进阶</a>
             
         </span>
         
@@ -1283,12 +1283,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-05 00:08:35'>2022-07-01 08:24</time>
+            发布时间 : <time class="date" title='最后更新: 2024-03-13 17:58:35'>2024-03-13 17:15</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:3.5k</span>
+        <span>字数:2.2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1307,7 +1307,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JDBC"><span class="toc-text">JDBC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E9%93%BE%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">Java链接数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86"><span class="toc-text">事务处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E8%AE%BE%E7%BD%AEsetAuntoCommit"><span class="toc-text">事务设置setAuntoCommit()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E7%BC%96%E8%AF%91PreparedStatement"><span class="toc-text">预编译PreparedStatement</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%81%E8%A3%85%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-text">封装工具类</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">Java线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK%E8%87%AA%E5%B8%A6%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">JDK自带的四种线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BC%93%E5%AD%98%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">1.缓存线程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9B%BA%E5%AE%9A%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">2.固定线程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%A1%E5%88%92%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">3.计划线程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%8D%95%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">4.单线程池</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringBoot%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">SpringBoot线程池</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1323,641 +1323,232 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><p><strong>JDBC是什么？</strong></p>
-<p>jdbc是一个由sun公司(Oracle)提出的规范（一套接口），jdbc指的就是java语言连接数据库</p>
-<p>jdbc就是一套面向所有数据库厂家的接口</p>
-<p>每一个数据库厂家都希望可以通过java语言连接到自己开发的数据库，</p>
-<p>这个时候，厂家肯定要写一套程序，java语言连接数据库的具体实现，这个实现类必须要实现JDBC接口</p>
+        <h1 id="Java线程池"><a href="#Java线程池" class="headerlink" title="Java线程池"></a>Java线程池</h1><p>在使用多线程的时候，通常我们直接通过new Thread()然后实现run方法即可执行多线程任务，但这种方法存在一些弊端。而使用<strong>线程池</strong>更具有以下优势：</p>
 <ul>
-<li>作为开发人员来说，我们可能会连接到很多组不同的数据库，根据公司的业务不同，可能会连接mysql，SqlServer等等，但是我们不需要关注数据库具体的实现类是什么。我们关注的是jdbc这样的一套接口，因为这个接口提供了具体获取数据库对象的方法，还有相关执行增删改查的方法，还有相关事务提交的方法，事物处理的方法，我们只需要关注接口中有哪些方法，方法具体的实现交由数据库的厂家去完成！</li>
+<li>降低线程创建和销毁造成的系统开销，提高线程<strong>复用率</strong></li>
+<li>提高系统<strong>响应速度</strong>，直接使用存在的线程，无需等待线程创建。</li>
+<li>方便线程并发数控制，若无限制创建线程，可能会出现<strong>OOM异常</strong></li>
+<li>可扩展<strong>不同功能的线程池</strong>，如定时任务线程池，可控数量线程池</li>
 </ul>
-<p>例如：java语言连接 Mysql</p>
-<p>mysql的厂家就必须要实现jdbc这个接口</p>
-<p><strong>JDBC的驱动类型</strong></p>
+<h2 id="JDK自带的四种线程池"><a href="#JDK自带的四种线程池" class="headerlink" title="JDK自带的四种线程池"></a>JDK自带的四种线程池</h2><h3 id="1-缓存线程池"><a href="#1-缓存线程池" class="headerlink" title="1.缓存线程池"></a>1.缓存线程池</h3><p><code>newCachedThreadPool</code></p>
+<p>创建一个线程池，该线程池根据需要创建新线程，但在以前构建的线程可用时将重用这些线程。这些池通常会提高执行许多短期异步任务的程序的性能。执行的调用将重用以前构造的线程（如果可用）。如果没有可用的现有线程，将创建一个新线程并将其添加到池中。已60秒未使用的线程将终止并从缓存中删除。因此，一个空闲足够长时间的池将不会消耗任何资源。请注意，可以使用ThreadPoolExecutor构造函数创建具有类似属性但不同详细信息（例如，超时参数）的池。返回：新建的线程池</p>
+<blockquote>
+<p>以上是jdk源码注释</p>
+</blockquote>
+<p>简单来讲，缓存线程池具有一定的复用性，但存在一个缓存时间，也就是如果有长时间未使用的线程，缓存线程池会自动去回收这个线程。而当线程池池中线程不足时，缓存线程池会自动的去创建新的线程。</p>
 <ul>
-<li>ODBC是微软为了解决跨数据平台的一个方案，sun提供支持</li>
-<li>部分java驱动程序使用特定数据库的API（一般是C和C++）将jdbc翻译成数据库的特定代码</li>
-<li>Jdbc-net将jdbc翻译成不针对特定数据库的网络协议，由数据库服务器翻译成特定代码</li>
-<li>本地协议纯java驱动程序将jdbc请求转化成针对特定数据库的网络协议</li>
+<li><p>因此缓存线程池会优先使用线程池中目前存在的空闲线程，提高了线程的<strong>复用率</strong>。</p>
+</li>
+<li><p>同时当线程长时间未使用，也会自动去回收线程，避免了<strong>OOM</strong>。</p>
+</li>
 </ul>
-<p><strong>JDBC的用途</strong></p>
-<ol>
-<li>加载对应数据库驱动（Load Driver）</li>
-<li>与数据库建立连接（connection）</li>
-<li>发送操作数据库的语句（createStatement）</li>
-<li>执行并处理返回结果（executeQuery）</li>
-</ol>
-<h2 id="Java链接数据库"><a href="#Java链接数据库" class="headerlink" title="Java链接数据库"></a>Java链接数据库</h2><p>保证mysql服务是开启的</p>
-<p>将java包导入到工程lib下，并且添加到类路径下（保证版本对应）</p>
-<p>注册驱动，使用Class类下的一个静态方法<strong>forName</strong>,使得类加载</p>
-<p>获取数据库连接 DriverManager类提供了<strong>getConnection</strong>方法 （需要传入数据源信息）</p>
-<p>获取数据库操作对象 <strong>createStatement</strong>方法</p>
-<p>编写sql语句</p>
-<p>按照sql语句的类别调用不同方法,获取到返回的结果</p>
-<p>关闭数据库资源（放在<strong>finally</strong>语句块中）</p>
-<pre><code class="java">package com.os467.test;
-
-import java.sql.*;
-
-/**
- * JDBC编程六步：
- * 1.注册驱动
- * 2.获取数据库连接
- * 3.获取数据库操作对象
- * 4.执行sql
- * 5.返回记录条数/获取结果集对象
- * 6.关闭资源
- */
-
-public class JdbcTest01 &#123;
+<pre><code class="java">public class Pool &#123;
 
     public static void main(String[] args) &#123;
 
-        //使三个实例作为成员变量存在在类中，使得finally语句块中可以读取到
-        Connection connection = null;
-
-        Statement statement = null;
-
-        ResultSet resultSet = null;
-
-        try&#123;
-
-            //1.注册驱动
-            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
-
-            //2.获取数据库链接
-            /**
-             * String url 链接数据库的地址
-             * String user 数据库的用户名 root
-             * String password 数据库密码 root
-             * jdbc:mysql:// 协议
-             * localhost 本地的ip地址
-             * 3306 默认端口号
-             * os467test 需要使用的数据库
-             * ?serverTimezone=GMT 设置时区
-             */
-
-            String url = &quot;jdbc:mysql://localhost:3306/os467test?serverTimezone=GMT&quot;;
-
-            String user = &quot;root&quot;;
-
-            String password = &quot;root&quot;;
-
-            connection = DriverManager.getConnection(url, user, password);
-
-            System.out.println(connection);
-
-            //3.获取数据库操作对象
-            statement = connection.createStatement();
-
-            //4.编写sql语句，执行sql
-            String sql = &quot;select * from emp&quot;;
-
-            //5.执行sql，获取返回的结果集对象,遍历结果集
-            resultSet = statement.executeQuery(sql);
-
-            while(resultSet.next())&#123;
-
-                //取出结果集中的数据
-                int empno = resultSet.getInt(&quot;EMPNO&quot;);
-
-                String ename = resultSet.getString(&quot;ENAME&quot;);
-
-                System.out.println(&quot;员工的编号为&quot;+empno+&quot; 员工的姓名为&quot;+ename);
-
-            &#125;
 
 
-        &#125;catch (Exception e)&#123;
-
-            e.printStackTrace();
-
-        &#125;finally &#123;
-
-            //6.关闭数据库资源,先进行非空校验，对close()可能发生的异常进行处理
-            if (resultSet != null)&#123;
-
-                try &#123;
-                    resultSet.close();
-                &#125; catch (SQLException throwables) &#123;
-                    throwables.printStackTrace();
-                &#125;
-
-            &#125;
-
-            if (statement != null)&#123;
-
-                try &#123;
-                    statement.close();
-                &#125; catch (SQLException throwables) &#123;
-                    throwables.printStackTrace();
-                &#125;
-
-            &#125;
-
-            if (connection != null)&#123;
-
-                try &#123;
-                    connection.close();
-                &#125; catch (SQLException throwables) &#123;
-                    throwables.printStackTrace();
-                &#125;
-
-            &#125;
-
-        &#125;
-
-    &#125;
+        ExecutorService executorService = Executors.newCachedThreadPool();
 
 
-&#125;
-</code></pre>
-<p><strong>注意：</strong>在为字符集添加中文数据时，在<strong>url</strong>后面用**&amp;<strong>拼接</strong>characterEncoding&#x3D;utf-8**来设置字符集</p>
-<p>并且数据库校对中每个字段的字符集也要设置为utf-8</p>
-<pre><code class="java">package com.os467.test;
+        executorService.submit(()-&gt;&#123;
+            System.out.println(Thread.currentThread().getName()+&quot;正在执行工作&quot;);
+        &#125;);
 
-import javax.swing.*;
-import java.sql.*;
-
-/**
- * 往学生表中添加数据
- */
-public class JdbcTest03 &#123;
-
-    public static void main(String[] args) &#123;
-
-        Connection connection = null;
-
-        Statement statement = null;
-
+        //模拟延迟
         try &#123;
-
-            //加载jdbc驱动
-            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
-
-            String url = &quot;jdbc:mysql://localhost:3306/os467test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;;
-
-            String user = &quot;root&quot;;
-
-            String password = &quot;root&quot;;
-
-            //链接数据库
-            connection = DriverManager.getConnection(url, user, password);
-
-            //获取操作对象
-            statement = connection.createStatement();
-
-            String sql = &quot;insert into tb_student(name,age,hobby)&quot; +
-                    &quot;value(&#39;Tom&#39;,18,&#39;打篮球&#39;)&quot;;
-
-            int num = statement.executeUpdate(sql);
-
-            if (num != 0)&#123;
-
-                System.out.println(&quot;添加成功&quot;);
-            &#125;else&#123;
-
-                System.out.println(&quot;添加失败&quot;);
-
-            &#125;
-
-        &#125;catch (Exception e)&#123;
-
+            Thread.sleep(2000);
+        &#125; catch (InterruptedException e) &#123;
             e.printStackTrace();
-
-        &#125;finally &#123;
-            
-          //关闭数据库资源,避免占用系统资源
-          if (statement != null)&#123;
-
-              try &#123;
-                  statement.close();
-              &#125; catch (SQLException throwables) &#123;
-                  throwables.printStackTrace();
-              &#125;
-
-          &#125;
-
-          if (connection != null)&#123;
-
-              try &#123;
-                  connection.close();
-              &#125; catch (SQLException throwables) &#123;
-                  throwables.printStackTrace();
-              &#125;
-
-          &#125;
-
-
-
         &#125;
 
-
-    &#125;
-
-
-&#125;
-</code></pre>
-<p>&#x2F;&#x2F;模拟用户登入</p>
-<pre><code class="sql">package com.os467.test;
-
-import java.sql.*;
-import java.util.Scanner;
-
-public class UserJDBCTest02 &#123;
-
-    public static void main(String[] args) &#123;
-
-        //创建控制台打印对象
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println(&quot;请输入用户名:&quot;);
-
-        String username = scanner.next();
-
-        System.out.println(&quot;请输入密码:&quot;);
-
-        String password = scanner.next();
-
-
-        Connection connection = null;
-
-        Statement statement = null;
-
-        ResultSet resultSet = null;
-
-        try&#123;
-
-            //注册驱动
-            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
-
-            String url = &quot;jdbc:mysql://localhost:3306/web_test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;;
-
-            //获取数据库对象
-            connection = DriverManager.getConnection(url,&quot;root&quot;,&quot;root&quot;);
-
-            //获取数据库操作对象
-            statement = connection.createStatement();
-
-            resultSet = statement.executeQuery(&quot;select * from tb_user where username = &#39;&quot; + username + &quot;&#39; and password = &#39;&quot; + password + &quot;&#39;&quot;);
-
-            //判断结果集是否为空和集合中是否有元素
-            if(resultSet != null &amp;&amp; resultSet.next())&#123;
-
-                System.out.println(&quot;登入成功&quot;);
-
-            &#125;else&#123;
-
-                System.out.println(&quot;登入失败&quot;);
-
+        executorService.submit(()-&gt;&#123;
+            System.out.println(Thread.currentThread().getName()+&quot;正在执行工作&quot;);
+            //模拟延迟
+            try &#123;
+                Thread.sleep(100);
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
             &#125;
+        &#125;);
 
-        &#125;catch (Exception e)&#123;
-
-            e.printStackTrace();
-
-        &#125;finally &#123;
-
-            if (resultSet != null)&#123;
-
-                try &#123;
-                    resultSet.close();
-                &#125; catch (SQLException throwables) &#123;
-                    throwables.printStackTrace();
-                &#125;
-
-            &#125;
-
-            //关闭数据库资源
-            if (statement != null)&#123;
-
-                try &#123;
-                    statement.close();
-                &#125; catch (SQLException throwables) &#123;
-                    throwables.printStackTrace();
-                &#125;
-
-            &#125;
-
-            if (connection != null)&#123;
-
-                try &#123;
-                    connection.close();
-                &#125; catch (SQLException throwables) &#123;
-                    throwables.printStackTrace();
-                &#125;
-
-            &#125;
-
-        &#125;
-
-
+        executorService.submit(()-&gt;&#123;
+            System.out.println(Thread.currentThread().getName()+&quot;正在执行工作&quot;);
+        &#125;);
 
     &#125;
 
 &#125;
 </code></pre>
-<p>数据库中创建的每一张表 在java中都有一个实体与之对应</p>
-<p>table中的字段对应的是实体beans中的属性</p>
-<p>tb_user					User</p>
-<p>uid							uid</p>
-<p>username				username</p>
-<p>password				password</p>
-<p>通过jdbc来读取数据，这些数据也是以对象的形式被封装在结果集容器中<strong>ResultSet</strong></p>
-<p><code>resultSet !=null &amp;&amp; resultSet.next()</code></p>
-<p>第一个条件保证容器对象不为空，判断容器中是否有元素</p>
-<p>我们会将读取的数据封装成对象，然后将对象装进集合中（ArrayList&#x2F;HashMap）</p>
-<p>后面学习了前端之后，我们会将集合对象传到前端，在前端取出集合中的数据，渲染数据！</p>
-<h3 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h3><p><strong>java事务</strong></p>
-<p>实际上，一个Java应用系统，如果要操作数据库，则通过JDBC来实现的。增加、修改、删除都是通过相应方法间接来实现的，事务的控制也相应转移到java程序代码中。因此，数据库操作的事务习惯上就称为Java事务。</p>
-<p>通俗的理解，事务是一组原子操作单元，从数据库角度说，就是一组SQL指令，要么全部执行成功，若因为某个原因其中一条指令执行有错误，则撤销先前执行过的所有指令。更简单的说就是：要么全部执行成功，要么撤销不执行。</p>
+<blockquote>
+<p>pool-1-thread-1正在执行工作<br>pool-1-thread-1正在执行工作<br>pool-1-thread-2正在执行工作</p>
+</blockquote>
+<h3 id="2-固定线程池"><a href="#2-固定线程池" class="headerlink" title="2.固定线程池"></a>2.固定线程池</h3><p><code>newFixedThreadPool</code></p>
+<p>创建一个线程池，该线程池重用在共享的无边界队列中操作的固定数量的线程。在任何时候，最多nThreads线程将是活动的处理任务。如果在所有线程都处于活动状态时提交了其他任务，则它们将在队列中等待，直到有线程可用为止。如果任何线程在关闭前的执行过程中因故障而终止，则在需要执行后续任务时，将替换一个新线程。池中的线程将一直存在，直到显式关闭为止。</p>
+<blockquote>
+<p>以上是jdk源码注释</p>
+</blockquote>
+<p>固定线程池如同其名，线程池本身线程<strong>数量是确定</strong>下来的，并且这些线程一旦创建不会被自动销毁而是处于一种等待任务的状态。<strong>当该线程池中所有线程都处于活跃状态时，如果有新的任务提交，则需要将任务放在等待队列中，直到有线程可用为止。</strong></p>
 <ul>
-<li>事务必须服从ISO&#x2F;IEC所制定的ACID原则。ACID是原子性（atomicity），一致性（consistency），隔离性（isolation）和持久性（durability）的缩写</li>
-<li>通常的观念认为，事务仅与数据库相关</li>
-<li>事务只存在于增删改状态下</li>
+<li>提高了线程复用率，无需重新创建销毁线程（除非执行任务过程中线程出现了异常）</li>
+<li>固定线程数量，且天然具有队列，有一定的任务囤积能力，避免了<strong>OOM</strong></li>
 </ul>
-<p><strong>事务的原子性：</strong>表示事务执行过程中的任何失败都将导致事务所作的任何修改失败</p>
-<p><strong>事务的一致性：</strong>表示当事务执行失败时，所有被该事务影响的数据都应该恢复到事务执行前的状态</p>
-<p><strong>事务的隔离性：</strong>表示在事务执行过程中对数据的修改，在事务提交之前对其他事务不可见</p>
-<p><strong>事务的持久性：</strong>表示已提交的数据在事务执行失败时，数据的状态都应该正确</p>
-<p>案例：</p>
-<p>银行存钱</p>
-<p>银行取钱</p>
-<p>转账方法 A B</p>
-<p>假设有一个转账的场景：A账户转账给B账户，这个时候我们需要在A账户上扣钱，在B账户上加钱</p>
-<p>所以我们需要去写两条sql来完成这样的需求，但是我们要开启事务的支持，因为这两条sql是在一条事务线上的，所以要么同时执行成功，要么同时失败，要满足事务的原子性和一致性。</p>
-<h4 id="事务设置setAuntoCommit"><a href="#事务设置setAuntoCommit" class="headerlink" title="事务设置setAuntoCommit()"></a>事务设置setAuntoCommit()</h4><p>事务案例代码：</p>
-<p><strong>jdbc默认状态下是自动提交的</strong></p>
+<pre><code class="java">public class Pool &#123;
+
+    public static void main(String[] args) &#123;
+
+
+
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+
+        for (int i = 0; i &lt; 11; i++) &#123;
+
+            executorService.submit(()-&gt;&#123;
+                System.out.println(Thread.currentThread().getName()+&quot;正在工作&quot;);
+                try &#123;
+                    Thread.sleep(100);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+            &#125;);
+        &#125;
+
+    &#125;
+
+&#125;
+</code></pre>
+<blockquote>
+<p>pool-1-thread-1正在工作<br>pool-1-thread-3正在工作<br>pool-1-thread-2正在工作<br>pool-1-thread-4正在工作<br>pool-1-thread-5正在工作<br>pool-1-thread-6正在工作<br>pool-1-thread-7正在工作<br>pool-1-thread-8正在工作<br>pool-1-thread-9正在工作<br>pool-1-thread-10正在工作<br>pool-1-thread-8正在工作</p>
+</blockquote>
+<h3 id="3-计划线程池"><a href="#3-计划线程池" class="headerlink" title="3.计划线程池"></a>3.计划线程池</h3><p><code>newScheduledThreadPool</code></p>
+<p>创建一个线程池，该线程池可以安排命令在给定延迟后运行或定期执行。</p>
+<blockquote>
+<p>以上是jdk源码注释</p>
+</blockquote>
+<p>计划线程池提供了一组线程池来执行<strong>定时或是延时任务</strong>，当需要执行任务时，会从线程池中获取空闲的线程执行当前任务，且每次都随机抽取线程使用。</p>
 <ul>
-<li><p>A账户向B账户转账1000</p>
-</li>
-<li><p>模拟一个异常</p>
-</li>
-<li><p>开启对事务的支持</p>
-</li>
-<li><p>在jdbc中如何开启对事务的支持</p>
-</li>
-<li><p>jdbc默认是关闭事务的，如果想开启事务的话需要 <code>connection.setAutoCommit();</code><br>然后在sql都执行成功的情况下我们要进行一个事务提交的操作<code> connection.commit();</code></p>
-</li>
-<li><p><code>connection.rollback()</code>是一个回滚的方法，是为了让事务回到执行之前的状态</p>
-</li>
+<li><code>schedule</code> 延时任务方法，需要提供一个Runnable，一个延时数，一个时间单位</li>
+<li><code>scheduleAtFixedRate</code>   定时间隔任务方法，需要提供一个Runnable，一个定时间隔数，一个时间单位</li>
+<li><code>scheduleWithFixedDelay</code>  固定延时间隔任务方法，需要提供一个Runnable，一个延时数，一个时间单位</li>
 </ul>
-<pre><code class="java">/**
- * A账户向B账户转账1000
- *
- * 模拟一个异常
- *
- * 开启对事务的支持
- *
- * 在jdbc中如何开启对事务的支持
- *
- * jdbc默认是关闭事务的，如果想开启事务的话需要 connection.setAutoCommit();
- */
-public class JdbcDemo02 &#123;
+<blockquote>
+<p>前一个schedule可以类比js的setTimeout，后面的两个方法有点像setInterval，但是前者基于固定的时间间隔，后者基于当前任务与上一个任务的时间间隔</p>
+</blockquote>
+<pre><code class="java">public class Pool &#123;
 
     public static void main(String[] args) &#123;
 
-        Connection connection = null;
 
-        Statement statement = null;
+        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
 
-        try&#123;
-
-            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
-
-            connection = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/web_test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;, &quot;root&quot;, &quot;root&quot;);
-
-            //将自动提交设置为手动提交
-            connection.setAutoCommit(false);
-
-            statement = connection.createStatement();
-
-            //A账户扣钱
-            int num = statement.executeUpdate(&quot;update tb_account set balance_A = balance_A - 1000 where id = 1&quot;);
-
-            System.out.println(num==1 ? &quot;扣钱成功&quot; : &quot;扣钱失败&quot;);
-
-            //模拟一个异常
-            int i = 1 / 0;
-
-            //B账户加钱
-            num = statement.executeUpdate(&quot;update tb_account set balance_B = balance_B + 1000 where id = 1&quot;);
-
-            System.out.println(num==1?&quot;转账成功&quot;:&quot;转账失败&quot;);
-
-            //提交事务
-            connection.commit();
-
-        &#125; catch (Exception e) &#123;
-
-            e.printStackTrace();
-
-        &#125;finally&#123;
-
-            if (statement != null)&#123;
-
-                try &#123;
-                    statement.close();
-                &#125; catch (SQLException throwables) &#123;
-
-                    //事务回滚
-                    try &#123;
-                        connection.rollback();
-                    &#125; catch (SQLException e) &#123;
-                        e.printStackTrace();
-                    &#125;
-
-                    throwables.printStackTrace();
-                &#125;
-
+        scheduledExecutorService.schedule(new Runnable() &#123;
+            @Override
+            public void run() &#123;
+                System.out.println(Thread.currentThread().getName()+&quot;延时任务1&quot;);
             &#125;
+        &#125;, 1000,TimeUnit.MILLISECONDS);
 
-            if (connection != null)&#123;
-
-                try &#123;
-                    connection.close();
-                &#125; catch (SQLException throwables) &#123;
-                    throwables.printStackTrace();
-                &#125;
-
+        scheduledExecutorService.scheduleAtFixedRate(new Runnable() &#123;
+            @Override
+            public void run() &#123;
+                System.out.println(Thread.currentThread().getName()+&quot;定时任务1&quot;);
             &#125;
+        &#125;,0,1000,TimeUnit.MILLISECONDS);
 
-        &#125;
+
+        scheduledExecutorService.scheduleWithFixedDelay(new Runnable() &#123;
+            @Override
+            public void run() &#123;
+                System.out.println(Thread.currentThread().getName()+&quot;定时任务2&quot;);
+                try &#123;
+                    Thread.sleep(2000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+            &#125;
+        &#125;,0,1000,TimeUnit.MILLISECONDS);
 
     &#125;
 
 &#125;
 </code></pre>
-<h4 id="预编译PreparedStatement"><a href="#预编译PreparedStatement" class="headerlink" title="预编译PreparedStatement"></a>预编译PreparedStatement</h4><p><strong>sql注入</strong>：指的就是通过在sql中加入数据库的关键字，导致最终sql执行的结果是错误的</p>
-<p><strong>PreparedStatement</strong> 这个对象可以防止sql注入 因为这个对象在执行sql的时候</p>
-<p>是分为两个步骤： 1.先预编译sql，先把sql的架子给搭建出来，但是没有赋值，2.给sql中注入具体的数据，执行sql</p>
-<p><strong>Statement</strong>对象没有预编译的过程，直接就是执行sql</p>
-<p>考虑到安全性我们以后不会直接使用<code>Statement</code>而是使用<code>PreparedStatement</code></p>
-<pre><code class="java">              //获取数据库操作对象并且预编译sql
-             PreparedStatement preparedStatement = connection.prepareStatement(&quot;select * from tb_user where username = ? and password = ? &quot;);
+<blockquote>
+<p>pool-1-thread-1定时任务1<br>pool-1-thread-1定时任务2<br>pool-1-thread-1延时任务1<br>pool-1-thread-1定时任务1<br>pool-1-thread-1定时任务1<br>pool-1-thread-1定时任务1<br>pool-1-thread-1定时任务2</p>
+</blockquote>
+<h3 id="4-单线程池"><a href="#4-单线程池" class="headerlink" title="4.单线程池"></a>4.单线程池</h3><p><code>newSingleThreadExecutor</code></p>
+<p>创建一个执行器，该执行器使用在无边界队列中操作的单个工作线程。（但请注意，如果此单个线程在关闭前的执行过程中因故障而终止，则在需要执行后续任务时，将替换一个新线程。）任务保证按顺序执行，并且在任何给定时间活动的任务都不会超过一个。与其他等效的newFixedThreadPool（1）不同，返回的执行器保证不会重新配置为使用其他线程。返回：新创建的单线程执行器</p>
+<blockquote>
+<p>以上是jdk源码注释</p>
+</blockquote>
+<p>单线程池保证了线程池中只使用一个线程来服务所有提交到该线程池的任务，如果该线程正在活跃，则新来的任务需要被囤积在队里中，等待该线程处理。当该线程执行发生异常，会在下一次执行任务时重新创建线程。</p>
+<ul>
+<li>保证了每次只用一个线程来执行任务，避免了<strong>OOM</strong></li>
+<li>维护了一个线程，无需重复创建销毁线程，<strong>提高了系统速度</strong></li>
+</ul>
+<pre><code class="java">public class Pool &#123;
 
-             //给占位符?赋值,占位符从1开始
-            preparedStatement.setString(1,&quot;jack001&quot;);
-            preparedStatement.setString(2,&quot;123456&quot;);
+    public static void main(String[] args) &#123;
 
-            //执行sql
-            resultSet = preparedStatement.executeQuery();
 
-            if (resultSet != null &amp;&amp; resultSet.next())&#123;
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-                System.out.println(&quot;登录成功&quot;);
 
-            &#125;
-</code></pre>
-<p>关于数据库的悲观锁和乐观锁（都是跟事务有关的）：</p>
-<p>​	乐观锁：假设在多线程场景下，多个线程同时对数据库中的一个表进行操作</p>
-<p>​	如果多个线程会去修改同一条数据，乐观锁的思想就是觉得这种情况不可能发生</p>
-<p><strong>乐观锁：</strong>乐观锁可以不用去开启事务的支持（采用的是自动提交的策略）</p>
-<pre><code class="sql">update tb_user set username = &#39;tom&#39; where id = 1 and version = &quot;影响记录条数只要大于等于1，这个	版本号就会改变&quot;
-</code></pre>
-<p><strong>悲观锁：</strong>针对于以上描述的情况，悲观锁思想就会觉得这种情况一定会发生，然后要提前去解决这个问题</p>
-<p>悲观锁一定要去开启对事务的支持，采用手动提交的策略来解决问题，行级锁，在sql后面加上 for update</p>
-<pre><code class="sql">select * from tb_account where id = 1 for update;
-</code></pre>
-<p>当一个线程在对某一条记录进行查询的时候，那么别的线程只能等待</p>
-<h4 id="封装工具类"><a href="#封装工具类" class="headerlink" title="封装工具类"></a>封装工具类</h4><p>工具类不能实例化对象，构造函数被private修饰</p>
-<p>所有的方法都要被static修饰</p>
-<pre><code class="java">package com.os467.utils;
 
-import java.sql.*;
-
-/**
- * 封装工具类的步骤：
- *
- * 1.构造方法私有化
- * 2.所有的方法都得是静态方法
- *
- */
-
-public class JdbcUtils &#123;
-
-    //私有化构造方法
-    private JdbcUtils()&#123;
-
-    &#125;
-
-    //注册驱动
-    static &#123;
-
-        try &#123;
-            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
-        &#125; catch (ClassNotFoundException e) &#123;
-            e.printStackTrace();
-        &#125;
-
-    &#125;
-
-    /**
-     * 获取数据库链接方法
-     */
-    public static Connection getConnection() throws SQLException&#123;
-
-        return DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306&quot; +
-                &quot;/web_test?serverTimezone=GMT&amp;characterEncoding=utf-8&quot;,
-                &quot;root&quot;, &quot;root&quot;);
-
-    &#125;
-
-    /**
-     * 用于关闭资源的方法
-     */
-    public static void getClose(ResultSet resultSet, Statement statement,Connection connection)&#123;
-
-        if (resultSet != null)&#123;
-
+        executorService.submit(()-&gt;&#123;
+            System.out.println(Thread.currentThread().getName()+&quot;正在工作&quot;);
             try &#123;
-                resultSet.close();
-            &#125; catch (SQLException throwables) &#123;
-                throwables.printStackTrace();
+                Thread.sleep(100);
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
             &#125;
+        &#125;);
 
-        &#125;
 
-        if (statement != null)&#123;
-
+        executorService.submit(()-&gt;&#123;
+            System.out.println(Thread.currentThread().getName()+&quot;正在工作&quot;);
             try &#123;
-                statement.close();
-            &#125; catch (SQLException throwables) &#123;
-                throwables.printStackTrace();
+                Thread.sleep(100);
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
             &#125;
-
-        &#125;
-
-        if (connection != null)&#123;
-
-            try &#123;
-                connection.close();
-            &#125; catch (SQLException throwables) &#123;
-                throwables.printStackTrace();
-            &#125;
-
-        &#125;
+        &#125;);
 
     &#125;
 
 &#125;
 </code></pre>
-<p>利用工具类来执行sql</p>
-<pre><code class="java">package com.os467.demmo;
+<blockquote>
+<p>pool-1-thread-1正在工作<br>pool-1-thread-1正在工作</p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><strong>固定线程池</strong>：适用于并发任务数已知且稳定的场景。如果应用需要处理一组固定数量的任务，可以选择这个线程池。</li>
+<li><strong>缓存线程池</strong>：适用于执行时间较短的任务。如果应用需要动态创建线程以处理临时性任务，可以选择这个线程池</li>
+<li><strong>单线程池</strong>：适用于需要按顺序执行任务的场景。如果应用需要保证任务按照指定顺序执行，例如日志记录等，可以选择这个线程池。</li>
+<li><strong>计划线程池</strong>：支持定时和周期性任务的执行。如果应用需要定期执行任务，可以选择这个线程池。</li>
+</ul>
+<h2 id="SpringBoot线程池"><a href="#SpringBoot线程池" class="headerlink" title="SpringBoot线程池"></a>SpringBoot线程池</h2><p><code>ThrealPoolTaskExecutor</code></p>
+<ul>
+<li>Spring框架提供的线程池实现，具有更高的灵活性。</li>
+<li>可以配置线程池的各项参数，如核心线程数、最大线程数、队列容量等。</li>
+</ul>
+<pre><code class="java">@Configuration
+public class ThreadPoolTaskConfig implements AsyncConfigurer &#123;
 
-import com.os467.utils.JdbcUtils;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-public class JdbcDemo03 &#123;
-
-    public static void main(String[] args) &#123;
-
-        PreparedStatement preparedStatement = null;
-
-        ResultSet resultSet =null;
-
-        Connection connection = null;
-
-        try &#123;
-            //获取数据库链接对象
-            connection = JdbcUtils.getConnection();
-
-            //获取数据库操作对象
-            preparedStatement = connection.prepareStatement(&quot;select * from tb_user&quot;);
-
-            //执行sql
-            resultSet = preparedStatement.executeQuery();
-
-            if (resultSet != null)&#123;
-
-                while (resultSet.next())&#123;
-
-                    int uid = resultSet.getInt(&quot;uid&quot;);
-
-                    String username = resultSet.getString(&quot;username&quot;);
-
-                    String password = resultSet.getString(&quot;password&quot;);
-
-                    System.out.println(uid+&quot; &quot;+username+&quot; &quot;+password);
-
-                &#125;
-
-            &#125;
-
-        &#125; catch (SQLException throwables) &#123;
-            throwables.printStackTrace();
-        &#125;finally &#123;
-
-            JdbcUtils.getClose(resultSet,preparedStatement,connection);
-
-        &#125;
-
+    @Bean(&quot;taskExecutor&quot;)
+    public ThreadPoolTaskExecutor TaskExecutor() &#123;
+        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
+        taskExecutor.setCorePoolSize(5);
+        taskExecutor.setMaxPoolSize(10);
+        taskExecutor.setKeepAliveSeconds(60);
+        taskExecutor.setQueueCapacity(20);
+        taskExecutor.setThreadNamePrefix(&quot;&quot;);
+        taskExecutor.setWaitForTasksToCompleteOnShutdown(true);
+        // 线程池对拒绝任务的处理策略
+        taskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        // 初始化
+        taskExecutor.initialize();
+        return taskExecutor;
     &#125;
-
 &#125;
 </code></pre>
 
@@ -1973,12 +1564,12 @@ public class JdbcDemo03 &#123;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>jdbc</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">3.5k</span></p>
+    <p><span class="copy-title">文章标题:</span>Java线程池</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">2.2k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-07-01, 08:24:49</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-05, 00:08:35</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/07/01/jdbc/" title="jdbc">https://os467.github.io/2022/07/01/jdbc/</a>
+    <p><span class="copy-title">发布时间:</span>2024-03-13, 17:15:23</p>
+    <p><span class="copy-title">最后更新:</span>2024-03-13, 17:58:35</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/03/13/java%E7%BA%BF%E7%A8%8B%E6%B1%A0/" title="Java线程池">https://os467.github.io/2024/03/13/java%E7%BA%BF%E7%A8%8B%E6%B1%A0/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
