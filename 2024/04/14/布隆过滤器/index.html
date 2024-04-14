@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Java进程相关 | Tly的博客</title>
+  <title>布隆过滤器 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Java进程相关 | Tly的博客">
+  <meta name="description" content="布隆过滤器 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:type" content="website">
@@ -1290,9 +1290,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Process" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-布隆过滤器" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Java进程相关</h1>
+        <h1 class="article-title">布隆过滤器</h1>
     
     <div class="article-meta">
         
@@ -1310,12 +1310,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-05-30 21:41:18'>2023-05-30 21:41</time>
+            发布时间 : <time class="date" title='最后更新: 2024-04-14 19:08:39'>2024-04-14 19:08</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:525</span>
+        <span>字数:775</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1334,7 +1334,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Process"><span class="toc-text">Process</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">布隆过滤器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E5%86%85%E5%AD%98%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">Java内存实现的布隆过滤器</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1350,56 +1350,103 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h1><p>Java的Process进程，与线程不同，java的进程操作是极度依赖于操作系统的，通常我们在Java中有两种方式创建进程。</p>
-<p><strong>通过Runtime直接运行</strong></p>
-<pre><code class="java">Runtime.getRuntime().exec(&quot;...&quot;);
-</code></pre>
-<p><strong>通过ProcessBuilder创建进程</strong></p>
-<pre><code class="java">ProcessBuilder processBuilder = new ProcessBuilder();
-processBuilder.command(&quot;&quot;);
-Process process = processBuilder.start();
-</code></pre>
+        <h1 id="布隆过滤器"><a href="#布隆过滤器" class="headerlink" title="布隆过滤器"></a>布隆过滤器</h1><p>布隆过滤器常被用于检测一个元素是否在一个集合中，但存在一定的误判率。</p>
+<p><strong>特点</strong></p>
+<ul>
+<li>能代表全集，其它所有数据结构都不行</li>
+<li>存在一定的误判率，存在布隆过滤器里的元素不一定真的存在，不存在布隆过滤器里的元素一定不存在</li>
+<li>无法仅删除指定元素</li>
+</ul>
+<p>布隆过滤器本质上是一串<strong>很长的二进制向量</strong>和<strong>一系列随机映射函数</strong>，它的优点是空间效率和查询时间都比一般算法好很多，缺点是有一定误识别率和删除困难。</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
+<li>缓存穿透</li>
+<li>垃圾邮件过滤</li>
+<li>某个用户短视频的不重复推荐</li>
+</ul>
 <blockquote>
-<p>相比与Runtime创建，通过ProcessBuilder创建提供了更加方便的子进程输出输入流读写，个人更加推荐使用第二种创建进程。</p>
+<p>当<strong>遇到数据量大，又需要去重的时候就可以考虑布隆过滤器</strong></p>
 </blockquote>
-<p>JVM本身运行的java程序也是一个系统进程，在windows系统上，通过java程序创建的外部进程并没有自己的输出终端，其输出终端依赖于java进程。</p>
-<p>在Linux和Mac系统上创建的外部进程并不是其java进程的子进程。</p>
-<p>若想让它拥有其自己的输出终端，在Windows系统下我们使用以分离模式的方式启动此进程。</p>
-<pre><code class="java">try &#123;
-    Runtime.getRuntime().exec(&quot;cmd /c start ....&quot;);
-&#125; catch (IOException e) &#123;
-    e.printStackTrace();
+<blockquote>
+<p><strong>扩展知识点</strong></p>
+<ul>
+<li><strong>缓存穿透</strong>指的是数据库本就没有这个数据，请求直奔数据库，缓存系统形同虚设。<ul>
+<li>解决方案：<strong>布隆过滤器</strong></li>
+</ul>
+</li>
+<li><strong>缓存击穿（失效）</strong>指的是数据库有数据，缓存本应该也有数据，但是缓存过期了，Redis 这层流量防护屏障被击穿了，请求直奔数据库。<ul>
+<li>解决方案：1.<strong>热点数据key不设置过期时间</strong>  2. 使用互斥锁访问数据库</li>
+</ul>
+</li>
+<li><strong>缓存雪崩</strong>指的是<strong>大量</strong>的热点数据无法在 Redis 缓存中处理（大面积热点数据缓存失效、Redis 宕机），流量全部打到数据库，导致数据库极大压力。<ul>
+<li>解决方案：1.<strong>超时时间</strong>在原有失效时间上加个1-5分钟的<strong>随机</strong>值  2. 若无法避免，采用熔断机制，返回”系统拥塞“</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="Java内存实现的布隆过滤器"><a href="#Java内存实现的布隆过滤器" class="headerlink" title="Java内存实现的布隆过滤器"></a>Java内存实现的布隆过滤器</h2><p>引入依赖</p>
+<pre><code class="xml">&lt;dependency&gt;
+  &lt;groupId&gt;com.google.guava&lt;/groupId&gt;
+  &lt;artifactId&gt;guava&lt;/artifactId&gt;
+  &lt;version&gt;29.0-jre&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p><strong>测试布隆过滤器</strong></p>
+<pre><code class="java">import com.google.common.hash.BloomFilter;
+import com.google.common.hash.Funnels;
+
+public class BFTest &#123;
+
+    //预计插入的数据
+    private static Integer expectedInsertions = 10000000;
+
+    //误判率
+    private static Double fpp = 0.01;
+
+    //布隆过滤器
+    private static BloomFilter&lt;Integer&gt; bloomFilter =
+            BloomFilter.create(Funnels.integerFunnel(), expectedInsertions, fpp);
+
+    public static void main(String[] args) &#123;
+
+        //插入1千万条数据
+        for (int i = 0; i &lt; expectedInsertions; i++) &#123;
+            bloomFilter.put(i);
+        &#125;
+
+        //用1千万条不存在布隆过滤器的数据测试误判率
+        int count = 0;
+        for (int i = expectedInsertions; i &lt; expectedInsertions *2; i++) &#123;
+            if (bloomFilter.mightContain(i)) &#123;
+                count++;
+            &#125;
+        &#125;
+
+        int c = 0;
+        for (int i = 0; i &lt; expectedInsertions; i++) &#123;
+            if (bloomFilter.mightContain(i)) &#123;
+                c++;
+            &#125;
+        &#125;
+
+        System.out.println(&quot;一共误判了：&quot; + count);
+
+        System.out.println(&quot;存在于布隆过滤器：&quot; + c);
+    &#125;
+
 &#125;
 </code></pre>
-<p>&#x3D;&#x3D;踩坑，下面遇到的问题只是个人见解&#x3D;&#x3D;</p>
-<p>若不使用分离模式，则可能会遇到这种场景。</p>
-<p>当子进程的标准输出被Java的Process标准输入流获取到的时候，若在缓冲区未得到及时的读取，则可能会因为数据过多的问题填满缓冲区，而导致子进程卡死。</p>
-<p>如我在使用Java创建了一个外部媒体播放进程，但没有及时处理其InputStream中的数据，会使得外部进程卡死。</p>
-<p><strong>其它解决方案：</strong></p>
-<p>使用ProcessBuilder创建外部进程，并启动一个单独的线程，及时读取进程标准输入流中的数据</p>
-<pre><code class="java">Thread t1 = new Thread(new Runnable() &#123;
-    @Override
-    public void run() &#123;
-     ProcessBuilder processBuilder = new ProcessBuilder();
-                   processBuilder.command(&quot;...&quot;);
-                   try &#123;
-                       processBuilder.redirectErrorStream(true);
-                       Process process = processBuilder.start();
-                       //保证连接到子进程的标准输出的标准输入流不被阻塞
-                       InputStream inputStream = process.getInputStream();
-                       while (inputStream.read() != -1)&#123;
-                           //do nothing
-                       &#125;
-                       process.destroy();
-                   &#125; catch (IOException e) &#123;
-                       e.printStackTrace();
-                   &#125;
-        &#125;
-&#125;);
-//启动独立线程，不断循环处理
-t1.start();
-//主线程继续工作..
-</code></pre>
+<blockquote>
+<p>一共误判了：100075<br>存在于布隆过滤器：10000000</p>
+<p>可见结果误判率和一开始设置的误判率基本一致</p>
+<p>且布隆过滤器成功过滤了这一千万条数据</p>
+</blockquote>
+<p><strong>布隆过滤器创建参数说明</strong></p>
+<ul>
+<li><strong>Funnel funnel：</strong>数据类型，由Funnels类指定即可</li>
+<li><strong>long expectedInsertions：</strong>预期插入的值的数量</li>
+<li><strong>fpp：</strong>错误率</li>
+<li><strong>BloomFilter.Strategy：</strong>hash算法</li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1413,12 +1460,12 @@ t1.start();
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Java进程相关</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">525</span></p>
+    <p><span class="copy-title">文章标题:</span>布隆过滤器</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">775</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2023-05-30, 21:41:33</p>
-    <p><span class="copy-title">最后更新:</span>2023-05-30, 21:41:18</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/05/30/Process/" title="Java进程相关">https://os467.github.io/2023/05/30/Process/</a>
+    <p><span class="copy-title">发布时间:</span>2024-04-14, 19:08:21</p>
+    <p><span class="copy-title">最后更新:</span>2024-04-14, 19:08:39</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/04/14/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/" title="布隆过滤器">https://os467.github.io/2024/04/14/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
