@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>synchronized与锁机制 | Tly的博客</title>
+  <title>DDD领域驱动设计 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="synchronized与锁机制 | Tly的博客">
+  <meta name="description" content="DDD领域驱动设计 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:type" content="website">
@@ -1299,9 +1299,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-synchronized与锁机制" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-DDD领域设计" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">synchronized与锁机制</h1>
+        <h1 class="article-title">DDD领域驱动设计</h1>
     
     <div class="article-meta">
         
@@ -1311,7 +1311,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="底层学习">底层学习</a>
+            <a  data-rel="其它">其它</a>
             
         </span>
         
@@ -1319,12 +1319,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-11-05 23:54:36'>2022-11-05 23:46</time>
+            发布时间 : <time class="date" title='最后更新: 2024-04-20 21:41:16'>2024-04-20 21:41</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2k</span>
+        <span>字数:1.1k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1343,7 +1343,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Synchronized%E5%BA%95%E5%B1%82%E5%89%96%E6%9E%90"><span class="toc-text">Synchronized底层剖析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jdk1-5%E4%B9%8B%E5%89%8D%E7%9A%84Synchronized%E5%AE%9E%E7%8E%B0"><span class="toc-text">jdk1.5之前的Synchronized实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jdk1-5%E4%B9%8B%E5%90%8E%E7%9A%84Synchronized%E5%AE%9E%E7%8E%B0"><span class="toc-text">jdk1.5之后的Synchronized实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CAS%E6%93%8D%E4%BD%9C"><span class="toc-text">CAS操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E9%94%81%E7%8A%B6%E6%80%81"><span class="toc-text">无锁状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%8F%E5%90%91%E9%94%81"><span class="toc-text">偏向锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81"><span class="toc-text">轻量级锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E6%97%8B%E9%94%81-x2F-%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81"><span class="toc-text">自旋锁&#x2F;重量级锁</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DDD%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1"><span class="toc-text">DDD领域驱动设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E7%95%8C%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-text">限界上下文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E5%90%88"><span class="toc-text">聚合</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E6%A0%B9"><span class="toc-text">聚合根</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%86%E5%9F%9F%E4%BA%8B%E4%BB%B6"><span class="toc-text">领域事件</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1359,123 +1359,40 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Synchronized底层剖析"><a href="#Synchronized底层剖析" class="headerlink" title="Synchronized底层剖析"></a>Synchronized底层剖析</h1><p>Synchronized俗称对象锁，是一种<strong>悲观锁</strong>实现，要了解Synchronized的底层机制我们就需要了解象头锁记录的作用，以及jvm是如何去实现不同锁，何时使用不同锁</p>
-<p>简单来说，jvm在执行某个线程的时候必然是在某个对象上活跃的，Synchronized作为锁必然离不开某个特定的对象</p>
-<h2 id="jdk1-5之前的Synchronized实现"><a href="#jdk1-5之前的Synchronized实现" class="headerlink" title="jdk1.5之前的Synchronized实现"></a>jdk1.5之前的Synchronized实现</h2><p>在jdk1.5之前，Synchronized的实现十分简单，其底层是通过内部一个叫做<strong>Monitor的监视器</strong>实现的，当线程在某个对象上活跃的时候，如果遇到Synchronized关键字就会<strong>为这段代码块或是方法上锁</strong>，监视器检查到了需要上锁的位置就会调用<strong>底层操作系统的Mutex Lock（互斥锁）</strong>为需要上锁的资源加锁，<strong>此资源的访问就会形成互斥操作</strong></p>
+        <h1 id="DDD领域驱动设计"><a href="#DDD领域驱动设计" class="headerlink" title="DDD领域驱动设计"></a>DDD领域驱动设计</h1><p>Domain-Driven Design 简称DDD，是一种软件设计方法，它重点关注软件开发中设计领域的概念，旨在帮助团队在复杂系统中实现业务逻辑。</p>
+<p>DDD的<strong>核心思想</strong>是将实现连接到持续进化的模型，通过领域模型驱动系统设计。</p>
+<p>DDD的主要特点包括：</p>
 <ul>
-<li><blockquote>
-<p><strong>注意：</strong>同一时刻，只能有一个线程原有该锁</p>
+<li><strong>领域模型：</strong> 领域模型是对具有某个边界的领域的一个抽象，反映了领域内用户<strong>业务需求的本质</strong>，领域是<strong>有边界的</strong>，只反映我们在领域内关注的部分</li>
+<li><strong>通用语言：</strong> 以一种领域专家，设计人员，开发人员都能理解的通用语言作为相互交流的工具</li>
+<li><strong>领域服务：</strong> 领域服务是领域提供的<strong>接口服务</strong>，需要定义在<code>domain.service</code>包下，业务相关的前置业务判断，多个实体或值对象的行为逻辑处理等，都在领域服务中实现。</li>
+</ul>
+<p>把一个复杂软件应用系统中各个部分进行很好的拆解和封装，对软件系统模块化的思想。</p>
+<p>最终目标：<strong>高内聚，低耦合</strong></p>
+<h3 id="限界上下文"><a href="#限界上下文" class="headerlink" title="限界上下文"></a>限界上下文</h3><p>限界上下文可以拆分为两个词，限界和上下文。限界是领域的边界，上下文是语义环境。限界上下文用于封装语言和领域对象，并提供上下文环境，保证领域之内的一些术语，业务相关对象有一个确切含义，无二义性。</p>
+<h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3><p>实体和值对象是很基础的领域对象。实体一般对应业务对象，它具有业务属性和业务行为；而值对象主要是属性集合，对实体的状态和特征进行描述。实体和值对象都只是个体化的对象，表现出的都是个体的能力。</p>
+<p>聚合在 DDD 分层架构里属于领域层，领域层包含了多个聚合，共同实现核心业务逻辑。</p>
+<h4 id="聚合根"><a href="#聚合根" class="headerlink" title="聚合根"></a>聚合根</h4><p>如果把聚合比作组织，那么聚合根就是这个组织的管理者。聚合根也称为根实体。</p>
+<p>作为实体本身，聚合根拥有实体的属性和业务行为，实现自身业务逻辑。</p>
+<p>其次它作为聚合的管理者，在聚合内部负责协调实体和值对象按固定的业务规则完成共同的业务逻辑。</p>
+<p>在聚合之间，聚合根还是聚合对外的接口人，以聚合根ID关联方式接收外部任务和请求，在上下文内实现聚合之间的业务协同。</p>
+<p>聚合之间通过聚合根ID关联引用，如果要访问其它聚合实体，就要先访问聚合根，再导航到聚合内的实体。</p>
+<h3 id="领域事件"><a href="#领域事件" class="headerlink" title="领域事件"></a>领域事件</h3><p>领域事件可以是业务流程的一个步骤，也可能是定时批处理过程中发生的事件。</p>
+<p>在分析业务场景时，我们要捕捉业务，需求人员或领域专家口中的关键词：“如果发生…,则…”，”当做完…的时候，请通知….”</p>
+<p>在这些场景中若发生某种事件后，会触发进一步操作，那么此事件很可能就是领域事件。</p>
+<blockquote>
+<p> 通过领域事件驱动的异步化机制，可以推动业务流程和数据在各个不同微服务之间的流转，实现微服务的解耦，减轻微服务之间服务调用的压力，提升用户体验。</p>
 </blockquote>
-</li>
-<li><p>如果A线程访问某个需要上锁的资源，Monitor就会通过操作系统互斥锁上锁</p>
-</li>
-<li><p>当B线程访问此资源时<strong>就会尝试加锁，只有加锁成功了才能操作</strong>，<strong>如果不成功，则线程阻塞</strong></p>
-</li>
-<li><p>当A线程释放资源时就会唤醒在此锁上阻塞的所有线程，根据线程优先级获取到新锁（默认：先阻塞，先唤醒）</p>
-</li>
-</ul>
-<p>很显然，在jdk1.5之前的这种上锁机制效率很低，只要遇到资源被占用，线程就会被阻塞，并且通过<strong>操作系统实现互斥锁需要从用户态切换到核心态</strong>，<strong>十分耗费系统资源，会带来重大的性能损失</strong></p>
-<h2 id="jdk1-5之后的Synchronized实现"><a href="#jdk1-5之后的Synchronized实现" class="headerlink" title="jdk1.5之后的Synchronized实现"></a>jdk1.5之后的Synchronized实现</h2><p>jdk1.5之后的Synchronized实现是基于对象实现的</p>
-<p>我们知道Java对象中的<strong>markword</strong>有存放锁的信息，这段信息就是jvm识别在该对象上是否有线程占用的凭据</p>
+<p>一个完整的领域事件 &#x3D; 事件发布 + 事件存储 + 事件分发 + 事件处理。</p>
 <ul>
-<li>简单来说markword上的锁信息有以下几种状态<ul>
-<li><strong>无锁状态</strong></li>
-<li><strong>偏向锁</strong></li>
-<li><strong>轻量级锁</strong></li>
-<li><strong>重量级锁</strong></li>
-</ul>
-</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20190412114613367.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbmd4aWFvMTk5Mw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lengxiao1993/article/details/81568130">参考博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lp284558195/article/details/115547269?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromBaidu~Rate-1-115547269-blog-120847886.pc_relevant_3mothn_strategy_and_data_recovery&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromBaidu~Rate-1-115547269-blog-120847886.pc_relevant_3mothn_strategy_and_data_recovery&utm_relevant_index=1">参考博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_58196614/article/details/126475182">参考博客</a></p>
-<h4 id="CAS操作"><a href="#CAS操作" class="headerlink" title="CAS操作"></a>CAS操作</h4><p><strong>Compare And Swap</strong></p>
-<p><strong>比较后交换</strong>，CAS 是一种无锁的解决方案，是一种基于<strong>乐观锁</strong>的操作，解决多了线程并行情况下使用锁造成性能损耗</p>
-<p>CAS 原子操作包含三个操作数——内存位置（V）、预期原值（A）和新值(B)</p>
-<ul>
-<li><p>如果内存位置的值与<strong>预期原值一致，则将该值更新为新值</strong></p>
-</li>
-<li><p>否则，<strong>不做任何操作</strong></p>
-</li>
-</ul>
-<h3 id="无锁状态"><a href="#无锁状态" class="headerlink" title="无锁状态"></a>无锁状态</h3><blockquote>
-<p> markword锁标识位01</p>
-</blockquote>
-<ul>
-<li>即对象未被任何线程访问过，锁记录threadId为空</li>
-</ul>
-<h3 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h3><blockquote>
-<p>markword锁标识位01，偏向锁1</p>
-</blockquote>
-<p>jvm在开启4s后才会开启偏向锁模式，偏向锁模式下markword的ThreadId为0（匿名偏向状态），偏向锁是一种针对加锁操作的优化手段，在大多数情况下，锁不仅不存在多线程竞争，而且总是由同一线程多次获得，因此为了消除数据在无竞争情况下锁重入（CAS操作）的开销而引入偏向锁</p>
-<ul>
-<li><p>当线程A在一个对象上活跃时，先判断markword是否为无锁状态，偏向锁是否可用，如果无锁jvm会<strong>在此对象markword锁记录上记下线程A的threadId</strong>，此时我们可以说锁偏向线程A</p>
-</li>
-<li><p>此线程再次进入的时候只需要<strong>判断对象上的锁记录和线程threadId是否相同</strong>，相同则线程直接获取锁</p>
-</li>
-<li><p>如果有线程B访问此对象，则通过<strong>CAS操作</strong>竞争锁，如果竞争成功，则将对象头锁记录<strong>更新为线程B的threadId</strong>（<strong>偏向锁的再偏向机制</strong>）</p>
-<ul>
-<li>如果竞争失败，则说明有已经有别的线程获取到锁了，当达到全局安全点时（在这个时间点上没有字节码正在执行），<strong>获取偏向锁的线程被挂起</strong>，<strong>偏向锁被撤销，然后升级为轻量级锁</strong>，然后被阻塞在安全点的线程继续往下执行同步代码块</li>
-</ul>
-</li>
+<li>事件发布：构建一个事件，需要<strong>唯一标识</strong>，然后发布；</li>
+<li>事件存储：发布事件前需要存储，因为接收后的事件也会存储，可用于重试或对账等；就是每次执行一次具体的操作时，把行为记录下来，执行持久化。</li>
+<li>事件分发：服务内的应用服务或者领域服务<strong>直接发布给订阅者</strong>，服务外需要<strong>借助消息中间件</strong>，比如Kafka，RabbitMQ等，支持同步或者异步。</li>
+<li>事件处理：先将事件存储，然后再处理。</li>
 </ul>
 <blockquote>
-<p>只有在其它线程通过CAS操作竞争偏向锁的时候，持有该锁的线程才会主动释放偏向锁，从而<strong>恢复到无锁状态</strong>，尝试锁升级</p>
+<p>当然了，实际开发中事件存储和事件处理不是必须的。</p>
 </blockquote>
-<h3 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h3><blockquote>
-<p> markword锁标识位00</p>
-</blockquote>
-<p>轻量级锁是相对于传统通过操作系统互斥量（互斥锁）而言的，它的本意就是在没有多线程竞争的前提下减少传统的重量级锁产生的性能消耗</p>
-<p><strong>更新LockRecord和MarkWord</strong></p>
-<ul>
-<li><p>当线程进入同步代码块时，如果对象锁状态为<strong>无锁状态</strong>，偏向锁标识位为0，则jvm在当前线程栈帧中建立一个名为（Lock Record）的空间，用于存储该对象目前的markword拷贝</p>
-</li>
-<li><p>拷贝对象头中的Mark Word复制到锁记录中，将对象MarkWord更新为指向Lock Record的指针，并将Lock Record里的owner指针指向对象Mark Word（<strong>互指</strong>）</p>
-</li>
-<li><p>如果以上操作成功了，则此线程就拥有了该对象的锁（轻量级锁）</p>
-</li>
-<li><p>如果更新操作失败，则检查MarkWord是否指向该线程，<strong>如果指向该线程</strong>则说明该线程<strong>已经拥有轻量级锁</strong>，直接放行</p>
-</li>
-<li><p>如果不指向该线程则说明存在多个线程同时竞争该锁，轻量级锁就需要<strong>膨胀为重量级锁</strong>，而当前线程尝试使用<strong>自旋来获取锁</strong></p>
-<blockquote>
-<p>自旋是为了不让线程直接阻塞，采用循环的方式去获取</p>
-<p>如果竞争不激烈且锁占用时间非常短，则自旋锁能<strong>提高系统性能</strong></p>
-<p>如果自旋时间过长则会使得大量线程处于CAS重试状态，<strong>占用CPU资源</strong></p>
-<ul>
-<li>自适应自旋：通过自旋成功的次数调整，成功则次数增加</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<p>轻量级锁的解锁，在执行完毕同步代码块时，jvm会将Lock Record之前存储的markword锁记录与当前对象头中的<strong>锁记录比较</strong>，如果相同则将Lock Record中的锁记录替换回对象头，并且释放轻量级锁</p>
-<p>如果<strong>不同则表示存在竞争，锁升级为重量级锁</strong></p>
-<blockquote>
-<p>首先只有作为锁的对象处于未被锁定并且CAS成功或者锁被当前线程持有（可重入）时才可以进入同步块，否则都会进入inflate方法，注意在进入inflate方法将mark word中锁标志进行了修改</p>
-</blockquote>
-<h3 id="自旋锁-x2F-重量级锁"><a href="#自旋锁-x2F-重量级锁" class="headerlink" title="自旋锁&#x2F;重量级锁"></a>自旋锁&#x2F;重量级锁</h3><blockquote>
-<p> markword锁标识位10</p>
-</blockquote>
-<p>在轻量级锁膨胀为重量级锁前会<strong>尝试使用自旋锁</strong>，<strong>jdk1.7后默认开启</strong></p>
-<ul>
-<li><p>轻量级锁CAS抢占失败，线程将尝试自旋获取锁，如果次数过多则线程挂起进入<strong>阻塞</strong>，如果占用线程在<strong>短时间内释放锁</strong>，则阻塞线程被唤醒重新尝试抢占资源</p>
-</li>
-<li><p>如果多次获取自旋锁失败，<strong>同步锁将会升级为重量级锁</strong></p>
-</li>
-<li><p>未抢到锁的线程都会<strong>进入Monitor</strong>，之后会被阻塞在<strong>WaitSet</strong>中</p>
-</li>
-</ul>
-<p><strong>下面是一些例子</strong></p>
-<ul>
-<li><p>A先进入同步代码块，B随后进入，A执行完毕同步代码块，此时<strong>偏向锁属于A且闲置</strong>，B尝试获取偏向锁，A在<strong>安全点</strong>撤销偏向锁，B获取到偏向锁，此时<strong>偏向锁属于B</strong></p>
-</li>
-<li><p>A进入同步代码块，B也进入同步代码块，A先获取到偏向锁，此时A未执行完同步代码块，B尝试获取偏向锁，A达到<strong>安全点撤销偏向锁并升级锁为轻量级锁</strong>，此时B自旋尝试获取锁</p>
-<ul>
-<li>如果A短时间内执行完毕，则轻量级锁撤销为无锁状态，B重新获取到轻量级锁</li>
-<li>如果A长时间未执行完毕，则轻量级锁膨胀为重量级锁，B阻塞，直到重量级锁撤销，B重新获取轻量级锁</li>
-</ul>
-</li>
-</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1489,12 +1406,12 @@ window.onload = function(){
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>synchronized与锁机制</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">2k</span></p>
+    <p><span class="copy-title">文章标题:</span>DDD领域驱动设计</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">1.1k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-11-05, 23:46:13</p>
-    <p><span class="copy-title">最后更新:</span>2022-11-05, 23:54:36</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/11/05/synchronized%E4%B8%8E%E9%94%81%E6%9C%BA%E5%88%B6/" title="synchronized与锁机制">https://os467.github.io/2022/11/05/synchronized%E4%B8%8E%E9%94%81%E6%9C%BA%E5%88%B6/</a>
+    <p><span class="copy-title">发布时间:</span>2024-04-20, 21:41:12</p>
+    <p><span class="copy-title">最后更新:</span>2024-04-20, 21:41:16</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/04/20/DDD%E9%A2%86%E5%9F%9F%E8%AE%BE%E8%AE%A1/" title="DDD领域驱动设计">https://os467.github.io/2024/04/20/DDD%E9%A2%86%E5%9F%9F%E8%AE%BE%E8%AE%A1/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
