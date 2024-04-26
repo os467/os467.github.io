@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>SSM项目整合 | Tly的博客</title>
+  <title>RocketMQ | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="SSM项目整合 | Tly的博客">
+  <meta name="description" content="RocketMQ | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:type" content="website">
@@ -1308,9 +1308,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-ssm项目整合" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-RocketMQ" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">SSM项目整合</h1>
+        <h1 class="article-title">RocketMQ</h1>
     
     <div class="article-meta">
         
@@ -1328,12 +1328,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-05 00:09:35'>2022-08-08 12:15</time>
+            发布时间 : <time class="date" title='最后更新: 2024-04-26 15:00:14'>2024-04-26 14:59</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:5k</span>
+        <span>字数:6.5k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1352,7 +1352,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSM%E9%A1%B9%E7%9B%AE"><span class="toc-text">SSM项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#maven%E5%9D%90%E6%A0%87"><span class="toc-text">maven坐标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="toc-text">基础配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#web-xml"><span class="toc-text">web.xml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#beans-xml"><span class="toc-text">beans.xml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#springmvc-xml"><span class="toc-text">springmvc.xml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="toc-text">数据源</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSM%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B-Model"><span class="toc-text">SSM详细配置过程(Model)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E5%8A%9F%E8%83%BD"><span class="toc-text">分页功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-text">分页工具类</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RocketMQ"><span class="toc-text">RocketMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E5%AE%89%E8%A3%85RocketMQ"><span class="toc-text">Docker安装RocketMQ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="toc-text">概念介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maven%E5%9D%90%E6%A0%87"><span class="toc-text">maven坐标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85-Producer"><span class="toc-text">生产者 Producer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E8%B4%B9%E8%80%85-Consumer"><span class="toc-text">消费者 Consumer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E6%8E%A5%E6%94%B6%E6%A8%A1%E5%BC%8F-%E8%A2%AB%E5%8A%A8-x2F-%E4%B8%BB%E5%8A%A8"><span class="toc-text">两种接收模式 被动 &#x2F; 主动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E6%B6%88%E8%B4%B9%E6%A8%A1%E5%BC%8F-%E9%9B%86%E7%BE%A4-x2F-%E5%B9%BF%E6%92%AD"><span class="toc-text">两种消费模式  集群&#x2F;广播</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B"><span class="toc-text">消息类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E6%B6%88%E6%81%AF"><span class="toc-text">同步消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF"><span class="toc-text">异步消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%90%91%E6%B6%88%E6%81%AF"><span class="toc-text">单向消息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E6%B6%88%E6%81%AF"><span class="toc-text">特殊消息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%B6%E6%97%B6%E6%B6%88%E6%81%AF"><span class="toc-text">延时消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E6%B6%88%E6%81%AF"><span class="toc-text">批量消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E8%BF%87%E6%BB%A4"><span class="toc-text">消息过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Tag-%E5%88%86%E7%B1%BB%E8%BF%87%E6%BB%A4"><span class="toc-text">Tag 分类过滤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E8%BF%87%E6%BB%A4"><span class="toc-text">属性过滤</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%B6%88%E6%81%AF"><span class="toc-text">顺序消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF"><span class="toc-text">事务消息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E6%8F%90%E4%BA%A4"><span class="toc-text">事务提交</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E8%A1%A5%E5%81%BF"><span class="toc-text">事务补偿</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E5%9B%9E%E6%BB%9A"><span class="toc-text">事务回滚</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BD%9C%E5%9C%A8%E9%97%AE%E9%A2%98"><span class="toc-text">潜在问题</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1368,870 +1368,938 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="SSM项目"><a href="#SSM项目" class="headerlink" title="SSM项目"></a>SSM项目</h1><p><strong>（Spring + SpringMVC + Mybatis）</strong></p>
-<p>使用到的技术栈：</p>
-<p>spring，springMVC，mybatis，jQuery，ajax，bootstrap（前端框架），mysql数据库，基于maven创建工程</p>
-<p>项目选型：</p>
-<p>​	商品管理系统：</p>
-<p>​		商品表：</p>
-<p>​		品牌表：</p>
-<p>​		类别表：</p>
-<p>需求：</p>
-<p>SSM项目整合的时候会出现的问题：</p>
-<p>1、我们都知道，mybatis框架中，持久层实现类是通过代理创建出来的，那如何将持久层的实例装进spring中？</p>
-<p>我们在ssm项目整合的时候会去导入一个spring整合mybatis的包，这个包有一个扫描器设置，该扫描器会去扫描持久层所有的接口，并为该接口创建代理对象，然后将该实例装进spring中</p>
-<h2 id="maven坐标"><a href="#maven坐标" class="headerlink" title="maven坐标"></a>maven坐标</h2><pre><code class="xml"> &lt;dependencies&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-core&lt;/artifactId&gt;
-            &lt;version&gt;5.2.1.RELEASE&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-web&lt;/artifactId&gt;
-            &lt;version&gt;5.2.1.RELEASE&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-oxm&lt;/artifactId&gt;
-            &lt;version&gt;5.2.1.RELEASE&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-tx&lt;/artifactId&gt;
-            &lt;version&gt;5.2.1.RELEASE&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
-            &lt;version&gt;5.2.1.RELEASE&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
-            &lt;version&gt;5.2.1.RELEASE&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
-            &lt;artifactId&gt;servlet-api&lt;/artifactId&gt;
-            &lt;version&gt;2.5&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-aop&lt;/artifactId&gt;
-            &lt;version&gt;5.2.1.RELEASE&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-context&lt;/artifactId&gt;
-            &lt;version&gt;5.2.1.RELEASE&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-test&lt;/artifactId&gt;
-            &lt;version&gt;5.2.1.RELEASE&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;!--mybatis核心包--&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
-            &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
-            &lt;version&gt;3.4.5&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;!--mybatis/spring包--&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
-            &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;
-            &lt;version&gt;1.3.2&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;!--java ee jar包--&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;javax&lt;/groupId&gt;
-            &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;
-            &lt;version&gt;7.0&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;!--mysql数据库--&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;mysql&lt;/groupId&gt;
-            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
-            &lt;version&gt;8.0.22&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;!--日志--&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;log4j&lt;/groupId&gt;
-            &lt;artifactId&gt;log4j&lt;/artifactId&gt;
-            &lt;version&gt;1.2.17&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;!--连接池--&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;commons-dbcp&lt;/groupId&gt;
-            &lt;artifactId&gt;commons-dbcp&lt;/artifactId&gt;
-            &lt;version&gt;1.2.2&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.mchange&lt;/groupId&gt;
-            &lt;artifactId&gt;c3p0&lt;/artifactId&gt;
-            &lt;version&gt;0.9.5.5&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;jstl&lt;/groupId&gt;
-            &lt;artifactId&gt;jstl&lt;/artifactId&gt;
-            &lt;version&gt;1.2&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
-            &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
-            &lt;version&gt;1.2.47&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
-            &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
-            &lt;version&gt;2.9.5&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
-            &lt;artifactId&gt;jackson-annotations&lt;/artifactId&gt;
-            &lt;version&gt;2.9.5&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
-            &lt;artifactId&gt;jackson-core&lt;/artifactId&gt;
-            &lt;version&gt;2.9.5&lt;/version&gt;
-        &lt;/dependency&gt;
-
-    &lt;/dependencies&gt;
+        <h1 id="RocketMQ"><a href="#RocketMQ" class="headerlink" title="RocketMQ"></a>RocketMQ</h1><p>RocketMQ是阿里研发的消息队列中间件，后捐给apache维护。</p>
+<blockquote>
+<p> MQ: 起到微服务通信之间的解耦</p>
+</blockquote>
+<h2 id="Docker安装RocketMQ"><a href="#Docker安装RocketMQ" class="headerlink" title="Docker安装RocketMQ"></a>Docker安装RocketMQ</h2><pre><code class="bash">docker pull apache/rocketmq
 </code></pre>
-<p>由于导入了mybatis整合spring的包，以及数据库连接池的包，mybatis的配置文件可以不配置</p>
-<p>我们将spring和springMVC的配置文件给拆分开来，因此我们要在web.xml中为spring核心容器与springMVC另作配置</p>
-<p>注意：&#x3D;&#x3D;在spring核心配置文件和MVC配置文件中都要开启扫描包&#x3D;&#x3D;</p>
-<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><h4 id="web-xml"><a href="#web-xml" class="headerlink" title="web.xml"></a>web.xml</h4><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;
-         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;
-         version=&quot;4.0&quot;&gt;
-
-    &lt;!--配置前端总控制器--&gt;
-    &lt;servlet&gt;
-        &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
-        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
-
-        &lt;!--绑定springMVC核心配置文件--&gt;
-        &lt;init-param&gt;
-            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
-            &lt;param-value&gt;classpath:springmvc.xml&lt;/param-value&gt;
-        &lt;/init-param&gt;
-
-        &lt;!--设置启动级别--&gt;
-        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-
-    &lt;/servlet&gt;
-
-    &lt;!--拦截前端请求--&gt;
-    &lt;servlet-mapping&gt;
-        &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
-        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
-    &lt;/servlet-mapping&gt;
-
-
-    &lt;!--设置全局属性，绑定spring核心配置文件--&gt;
-    &lt;context-param&gt;
-
-        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
-        &lt;param-value&gt;classpath:beans.xml&lt;/param-value&gt;
-
-    &lt;/context-param&gt;
-
-    &lt;!--配置一个监听器，让项目在启动的时候就去加载spring核心容器--&gt;
-    &lt;listener&gt;
-        &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
-    &lt;/listener&gt;
-
-    &lt;!--配置一个编码过滤器，拦截所有的资源，将所有资源的字符集设置成utf-8--&gt;
-    &lt;filter&gt;
-    
-        &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;
-        &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
-
-        &lt;!--将字符集设置成utf-8--&gt;
-        &lt;init-param&gt;
-            &lt;param-name&gt;encoding&lt;/param-name&gt;
-            &lt;param-value&gt;utf-8&lt;/param-value&gt;
-        &lt;/init-param&gt;
-        
-    &lt;/filter&gt;
-
-    &lt;!--加*代表也拦截静态资源--&gt;
-    &lt;filter-mapping&gt;
-        &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;
-        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
-    &lt;/filter-mapping&gt;
-    
-&lt;/web-app&gt;
+<p>创建nameserver容器</p>
+<pre><code class="bash">docker run -d \
+--restart=always \
+--name rmqnamesrv \
+--privileged=true \
+-p 9876:9876 \
+-v /usr/local/rocketmq/data/namesrv/logs:/root/logs \
+-v /usr/local/rocketmq/data/namesrv/store:/root/store \
+-e &quot;MAX_POSSIBLE_HEAP=100000000&quot; \
+-e &quot;JAVA_OPT_EXT=-Xms512M -Xmx512M -Xmn128m&quot; \
+apache/rocketmq \
+sh mqnamesrv
 </code></pre>
-<h4 id="beans-xml"><a href="#beans-xml" class="headerlink" title="beans.xml"></a>beans.xml</h4><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;
-        http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
-
-    &lt;!--开启扫描包--&gt;
-    &lt;context:component-scan base-package=&quot;com.os467.shop&quot;&gt;&lt;/context:component-scan&gt;
-
-    &lt;!--读取配置文件中的数据，获取数据源信息--&gt;
-    &lt;context:property-placeholder location=&quot;classpath:db.properties&quot;&gt;&lt;/context:property-placeholder&gt;
-
-    &lt;!--配置数据源--&gt;
-    &lt;bean id=&quot;basicDataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;&gt;
-
-        &lt;!--注入源数据--&gt;
-        &lt;property name=&quot;driverClassName&quot; value=&quot;$&#123;db.driver&#125;&quot;&gt;&lt;/property&gt;
-        &lt;property name=&quot;url&quot; value=&quot;$&#123;db.url&#125;&quot;&gt;&lt;/property&gt;
-        &lt;property name=&quot;username&quot; value=&quot;$&#123;db.username&#125;&quot;&gt;&lt;/property&gt;
-        &lt;property name=&quot;password&quot; value=&quot;$&#123;db.password&#125;&quot;&gt;&lt;/property&gt;
-
-    &lt;/bean&gt;
-
-    &lt;!--配置mybatis需要的会话工厂，使用mybatis整合spring的会话工厂--&gt;
-    &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-
-        &lt;!--注入数据源--&gt;
-        &lt;property name=&quot;dataSource&quot; ref=&quot;basicDataSource&quot;&gt;&lt;/property&gt;
-        &lt;!--匹配mapper配置文件--&gt;
-        &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath:com/os467/shop/controller/*.xml&quot;&gt;&lt;/property&gt;
-
-    &lt;/bean&gt;
-
-    &lt;!--mybatis扫描器的配置--&gt;
-    &lt;bean id=&quot;configurer&quot; class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
-
-        &lt;!--扫描此包下所有持久层接口，并且通过代理模式创建出每个接口对应的代理对象，并交由spring管理--&gt;
-        &lt;property name=&quot;basePackage&quot; value=&quot;com.os467.shop.mapper&quot;&gt;&lt;/property&gt;
-
-    &lt;/bean&gt;
-
-&lt;/beans&gt;
+<blockquote>
+<p>-v后面的两个挂载目录可以自己设置</p>
+</blockquote>
+<p>创建broker结点</p>
+<pre><code class="bash">mkdir -p /usr/local/rocketmq/data/broker/logs /usr/local/rocketmq/data/broker/store /usr/local/rocketmq/conf
 </code></pre>
-<h4 id="springmvc-xml"><a href="#springmvc-xml" class="headerlink" title="springmvc.xml"></a>springmvc.xml</h4><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;
-        http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;
-
-    &lt;!--开启mvc注解的支持--&gt;
-    &lt;mvc:annotation-driven&gt;&lt;/mvc:annotation-driven&gt;
-
-    &lt;!--过滤静态资源--&gt;
-    &lt;mvc:default-servlet-handler&gt;&lt;/mvc:default-servlet-handler&gt;
-
-    &lt;!--扫描包--&gt;
-    &lt;context:component-scan base-package=&quot;com.os467.shop&quot;&gt;&lt;/context:component-scan&gt;
-    
-    &lt;!--配置视图解析器--&gt;
-    &lt;bean id=&quot;viewResolver&quot; class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
-
-        &lt;!--设置前缀--&gt;
-        &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;&gt;&lt;/property&gt;
-
-        &lt;!--设置后缀--&gt;
-        &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;&gt;&lt;/property&gt;
-
-    &lt;/bean&gt;
-
-
-&lt;/beans&gt;
+<p>编辑配置文件</p>
+<pre><code class="bash">vi /usr/local/rocketmq/conf/broker.conf
 </code></pre>
-<h4 id="数据源"><a href="#数据源" class="headerlink" title="数据源"></a>数据源</h4><pre><code class="properties">db.url=jdbc:mysql://localhost:3306/web_test?serverTimezone=GMT&amp;characterEncoding=utf-8
-db.driver=com.mysql.cj.jdbc.Driver
-db.username=root
-db.password=root
+<pre><code class="bash">brokerClusterName = DefaultCluster
+brokerName = broker-a
+brokerId = 0
+deleteWhen = 04
+fileReservedTime = 48
+brokerRole = ASYNC_MASTER
+flushDiskType = ASYNC_FLUSH
+brokerIP1 = 127.0.0.1
+diskMaxUsedSpaceRatio=95
 </code></pre>
-<h2 id="SSM详细配置过程-Model"><a href="#SSM详细配置过程-Model" class="headerlink" title="SSM详细配置过程(Model)"></a>SSM详细配置过程(Model)</h2><p>1、首先在pom.xml文件中引入maven坐标，见上文</p>
-<p>​	刷新pom.xml文件，让maven导入配置</p>
-<p>​	为工程添加web项目支持</p>
-<p>2、创建包结构</p>
-<p>2.1、在java文件下创建包结构</p>
+<p>运行broker</p>
+<pre><code class="bash">docker run -d \
+--restart=always \
+--name rmqbroker \
+--link rmqnamesrv:namesrv \
+--privileged=true \
+-p 10911:10911 \
+-p 10912:10912 \
+-p 10909:10909 \
+-v /usr/local/rocketmq/data/broker/logs:/root/logs \
+-v /usr/local/rocketmq/data/broker/store:/root/store \
+-v /usr/local/rocketmq/conf/broker.conf:/home/rocketmq/rocketmq-4.9.4/conf/broker.conf \
+-e &quot;NAMESRV_ADDR=namesrv:9876&quot; \
+-e &quot;JAVA_OPT_EXT=-Xms512M -Xmx512M -Xmn128m&quot; \
+-e &quot;MAX_POSSIBLE_HEAP=200000000&quot; \
+apache/rocketmq \
+sh mqbroker -c /home/rocketmq/rocketmq-4.9.4/conf/broker.conf
+</code></pre>
+<p><strong>创建rockermq-console服务</strong></p>
+<pre><code class="bash">docker pull styletang/rocketmq-console-ng
+</code></pre>
+<pre><code>docker run -d \
+--restart=always \
+--name rmqadmin \
+-e &quot;JAVA_OPTS=-Drocketmq.namesrv.addr=172.17.0.2:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false&quot; \
+-p 8081:8080 \
+--ulimit nofile=1024 \
+styletang/rocketmq-console-ng
+</code></pre>
+<h2 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h2><p><strong>RocketMQ分为四个部分</strong></p>
 <ul>
-<li><p>com.os467.ssm</p>
-<ul>
-<li><p>​	controller</p>
-</li>
-<li><p>​	mapper</p>
-<ul>
-<li>UserMapper</li>
+<li><strong>NameServer</strong></li>
 </ul>
-</li>
-<li><p>​    pojo</p>
+<p>NameServer是RocketMQ的<strong>注册中心</strong>，由于Broker服务的注册和发现，类似zookeeper</p>
+<p>NameServer之间不会相互通信</p>
 <ul>
-<li>User</li>
+<li><strong>Broker</strong></li>
 </ul>
-</li>
-<li><p>​	service</p>
+<p>Broker主要负责消息的存储、投递和查询及服务器高可用保证</p>
 <ul>
-<li><p>impl</p>
-<ul>
-<li>UserServiceImpl</li>
+<li><strong>Producer</strong></li>
 </ul>
+<p>消息的生产者</p>
+<ul>
+<li><strong>Consumer</strong></li>
+</ul>
+<p>消息的消费者</p>
+<p><strong>核心概念</strong></p>
+<p><strong>Topic</strong></p>
+<p>主题，每个消息都只会属于一个主题，消息和主题是一对一关系</p>
+<blockquote>
+<p>生产者生产各种不同消息，每个消息会自动归属于对应主题，消费者的消费是针对于主题的</p>
+</blockquote>
+<p><strong>Broker</strong></p>
+<p>Broker是RocketMQ的核心，大部分工作都在Broker中完成，包括<strong>接收请求</strong>，<strong>处理消费</strong>，<strong>消费持久</strong>，<strong>消息高可用</strong>，以及<strong>服务端过滤</strong>等都在这里完成</p>
+<p>Broker既是<strong>物理上的概念（电脑主机）</strong>，也是<strong>逻辑</strong>上的概念</p>
+<p>多个Broker用套接字区分，多个逻辑上的Broker通过<strong>BrokerName</strong>区分</p>
+<p><strong>NameServer</strong></p>
+<p>nameserver类似微服务框架中的注册中心</p>
+<p>它提供了<strong>路由管理，服务注册，服务发现</strong></p>
+<h2 id="maven坐标"><a href="#maven坐标" class="headerlink" title="maven坐标"></a>maven坐标</h2><pre><code class="xml">        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.rocketmq&lt;/groupId&gt;
+            &lt;artifactId&gt;rocketmq-client&lt;/artifactId&gt;
+            &lt;version&gt;4.5.2&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<h2 id="生产者-Producer"><a href="#生产者-Producer" class="headerlink" title="生产者 Producer"></a>生产者 Producer</h2><p><strong>GroupName</strong><br>和现实世界中一样，RocketMQ中也有组的概念，代表具有相同角色的生产者组合或消费者组合，称为生产者组或消费者组</p>
+<blockquote>
+<p>每一个生产者组只能有一个实例存在，考虑到提供的生产者在发送消息方面足够强大，每个生产者组和过程只允许一个实例</p>
+<p>消费组是一个很大的概念，实现了负载平衡和容错性</p>
+</blockquote>
+<p><strong>producer相关方法</strong></p>
+<ul>
+<li><p><code>setNamesrvAddr</code>  设置nameserver主机套接字</p>
 </li>
-<li><p>UserService</p>
+<li><p><code>start</code>  初始化生产者</p>
+</li>
+<li><p><code>send</code> 发送消息到消息队列</p>
+</li>
+<li><p><code>shutdown</code> 关闭连接</p>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>2.2在resource文件下创建文件夹，创建映射配置文件</p>
-<p>com&#x2F;os467&#x2F;ssm&#x2F;mapper&#x2F;UserMapper.xml</p>
-<p>2.3在resource文件夹下创建数据源文件db.properties，加入数据源信息，见上文</p>
-<p>3、在resource文件夹下创建spring核心配置文件 beans.xml，配置核心配置文件</p>
-<p>3.1、引入核心配置文件所对应的xml约束</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;
-        http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
-</code></pre>
-<p>3.2、加入开启扫描包标签，指定需要被扫描的包路径</p>
-<pre><code class="xml">&lt;!--开启扫描包--&gt;
-&lt;context:component-scan base-package=&quot;com.os467&quot;&gt;&lt;/context:component-scan&gt;
-</code></pre>
-<p>3.3、读取数据源配置文件中的数据，获取数据源信息，能够在本配置文件中用el表达式取到值</p>
-<pre><code class="xml">&lt;!--读取配置文件中的数据，获取数据源信息--&gt;
-&lt;context:property-placeholder location=&quot;classpath:db.properties&quot;&gt;&lt;/context:property-placeholder&gt;
-</code></pre>
-<p>配置数据源信息，我们使用dbcp连接池提供的BasicDataSource类来创建数据源实例，通过池的思想来创建持久层实例</p>
-<pre><code class="xml">&lt;!--配置数据源--&gt;
-&lt;bean id=&quot;basicDataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;&gt;
+<p><strong>Producer发送消息方法</strong></p>
+<pre><code class="java">public class MessageProducer &#123;
 
-    &lt;!--注入源数据--&gt;
-    &lt;property name=&quot;driverClassName&quot; value=&quot;$&#123;db.driver&#125;&quot;&gt;&lt;/property&gt;
-    &lt;property name=&quot;url&quot; value=&quot;$&#123;db.url&#125;&quot;&gt;&lt;/property&gt;
-    &lt;property name=&quot;username&quot; value=&quot;$&#123;db.username&#125;&quot;&gt;&lt;/property&gt;
-    &lt;property name=&quot;password&quot; value=&quot;$&#123;db.password&#125;&quot;&gt;&lt;/property&gt;
+    public void test()&#123;
+        //创建消息发送对象，生产者组
+        DefaultMQProducer producer = new DefaultMQProducer(&quot;demo1&quot;);
 
-&lt;/bean&gt;
-</code></pre>
-<p>3.4、配置mybatis所需要的会话工厂，工厂实例装载进spring容器中，选用mybatis.spring包下的<strong>SqlSessionFactoryBean</strong>类创建会话工厂</p>
-<p>需要提供之前配置的数据源实例</p>
-<p>然后需要提供映射文件的配置路径</p>
-<pre><code class="xml">&lt;!--配置mybatis需要的会话工厂，使用mybatis整合spring的会话工厂--&gt;
-&lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+        //设置nameserver注册中心地址
+        producer.setNamesrvAddr(&quot;192.168.119.88:9876&quot;);
 
-    &lt;!--注入数据源--&gt;
-    &lt;property name=&quot;dataSource&quot; ref=&quot;basicDataSource&quot;&gt;&lt;/property&gt;
-    &lt;!--匹配mapper配置文件--&gt;
-    &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath:com/os467/shop/mapper/*.xml&quot;&gt;&lt;/property&gt;
+        //启动发送服务,初始化生产者
+        try &#123;
+            producer.start();
 
-&lt;/bean&gt;
-</code></pre>
-<p>3.5、mybatis扫描器的配置，引入<strong>MapperScannerConfigurer</strong>类</p>
-<p>添加属性，配置需要被代理的持久层接口的包路径</p>
-<pre><code class="xml">&lt;!--mybatis扫描器的配置--&gt;
-&lt;bean id=&quot;configurer&quot; class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
+            //构建消息，指定topic和body
+             Message msg = new Message(&quot;topic1&quot;, &quot;Hello World!&quot;.getBytes());
 
-    &lt;!--扫描此包下所有持久层接口，并且通过代理模式创建出每个接口对应的代理对象，并交由spring管理--&gt;
-    &lt;property name=&quot;basePackage&quot; value=&quot;com.os467.shop.mapper&quot;&gt;&lt;/property&gt;
+            //发送消息
+            SendResult result = producer.send(msg, 10000);
 
-&lt;/bean&gt;
-</code></pre>
-<p>4、在resource文件夹下创建mvc框架配置文件 springmvc.xml</p>
-<p>4.1、引入xml约束</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;
-        http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;
-</code></pre>
-<p>4.2、开启扫描包</p>
-<pre><code class="xml">&lt;!--扫描包--&gt;
-&lt;context:component-scan base-package=&quot;com.os467.shop&quot;&gt;&lt;/context:component-scan&gt;
-</code></pre>
-<p>4.3、添加标签开启springmvc对注解的支持，过滤前端传来的静态资源</p>
-<pre><code class="xml">&lt;!--开启mvc对注解的支持--&gt;
-&lt;mvc:annotation-driven&gt;&lt;/mvc:annotation-driven&gt;
+            System.out.println(&quot;sendResult = &quot;+result);
 
-&lt;!--过滤静态资源--&gt;
-&lt;mvc:default-servlet-handler&gt;&lt;/mvc:default-servlet-handler&gt;
-</code></pre>
-<p>4.4、配置视图解析器，引入类<strong>InternalResourceViewResolver</strong></p>
-<p>配置视图前缀，jsp文件路径，配置视图后缀，文件格式</p>
-<pre><code class="xml">&lt;!--配置视图解析器--&gt;
-&lt;bean id=&quot;viewResolver&quot; class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+            //关闭连接
+            producer.shutdown();
 
-    &lt;!--设置前缀--&gt;
-    &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;&gt;&lt;/property&gt;
-
-    &lt;!--设置后缀--&gt;
-    &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;&gt;&lt;/property&gt;
-
-&lt;/bean&gt;
-</code></pre>
-<p>5、配置web.xml文件</p>
-<p>5.1、配置前端总控制器，引入类<strong>DispatcherServlet</strong>，绑定springMVC核心配置文件，配置初始化属性数据，设置启动级别</p>
-<p>拦截前端请求资源</p>
-<pre><code class="xml">&lt;!--配置前端总控制器--&gt;
-&lt;servlet&gt;
-    &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
-    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
-
-    &lt;!--绑定springMVC核心配置文件--&gt;
-    &lt;init-param&gt;
-        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
-        &lt;param-value&gt;classpath:springmvc.xml&lt;/param-value&gt;
-    &lt;/init-param&gt;
-
-    &lt;!--设置启动级别--&gt;
-    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-
-&lt;/servlet&gt;
-
-&lt;!--拦截前端请求--&gt;
-&lt;servlet-mapping&gt;
-    &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
-    &lt;url-pattern&gt;/&lt;/url-pattern&gt;
-&lt;/servlet-mapping&gt;
-</code></pre>
-<p>5.2、设置全局属性，绑定spring核心配置文件，同时配置一个监听器<strong>ContextLoaderListener</strong>，让项目在启动的时候就去加载核心容器</p>
-<pre><code class="xml">&lt;!--设置全局属性，绑定spring核心配置文件--&gt;
-&lt;context-param&gt;
-
-    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
-    &lt;param-value&gt;classpath:beans.xml&lt;/param-value&gt;
-
-&lt;/context-param&gt;
-
- &lt;!--配置一个监听器，让项目在启动的时候就去加载spring核心容器--&gt;
-&lt;listener&gt;
-    &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
-&lt;/listener&gt;
-</code></pre>
-<p>5.3、配置一个编码过滤器，将所有资源的字符集改成utf-8，同时拦所有资源，对静态资源也生效</p>
-<pre><code class="xml">&lt;!--配置一个编码过滤器，拦截所有的资源，将所有资源的字符集设置成utf-8--&gt;
-&lt;filter&gt;
-
-    &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;
-    &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
-
-    &lt;!--将字符集设置成utf-8--&gt;
-    &lt;init-param&gt;
-        &lt;param-name&gt;encoding&lt;/param-name&gt;
-        &lt;param-value&gt;utf-8&lt;/param-value&gt;
-    &lt;/init-param&gt;
-    
-&lt;/filter&gt;
-
-&lt;!--加*代表也拦截静态资源--&gt;
-&lt;filter-mapping&gt;
-    &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;
-    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
-&lt;/filter-mapping&gt;
-</code></pre>
-<p>6、配置UserMapper.xml文件</p>
-<p>引入mybatis相关xml约束，注册命名空间，编写测试sql语句</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
-&lt;!DOCTYPE mapper
-        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
-        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
-
-&lt;mapper namespace=&quot;com.os467.ssm.mapper.UserMapper&quot;&gt;
-
-    &lt;select id=&quot;findUserList&quot; resultType=&quot;com.os467.ssm.pojo.User&quot; &gt;
-
-        select * from tb_user
-
-    &lt;/select&gt;
-
-&lt;/mapper&gt;
-</code></pre>
-<p>7、完善三层架构配置</p>
-<p><strong>持久层</strong>UserMapper</p>
-<pre><code class="java">package com.os467.ssm.mapper;
-
-import com.os467.ssm.pojo.User;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
-
-@Repository
-public interface UserMapper &#123;
-
-    List&lt;User&gt; findUserList();
-
-&#125;
-</code></pre>
-<p><strong>业务层实现类</strong>UserServiceImpl</p>
-<pre><code class="java">package com.os467.ssm.service.impl;
-
-import com.os467.ssm.mapper.UserMapper;
-import com.os467.ssm.pojo.User;
-import com.os467.ssm.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
-import java.util.List;
-
-@Service
-public class UserServiceImpl implements UserService &#123;
-
-    @Autowired
-    private UserMapper userMapper;
-
-    public List&lt;User&gt; findUserList() &#123;
-        return userMapper.findUserList();
-    &#125;
-&#125;
-</code></pre>
-<p><strong>表现层</strong>UserController</p>
-<pre><code class="java">package com.os467.ssm.controller;
-
-import com.os467.ssm.pojo.User;
-import com.os467.ssm.service.UserService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.annotation.Resource;
-import java.util.List;
-
-@Controller
-@RequestMapping(&quot;user&quot;)
-public class UserController &#123;
-
-    @Resource(name = &quot;userServiceImpl&quot;)
-    private UserService userService;
-
-    @RequestMapping(&quot;list&quot;)
-    public String findUserList(Model model)&#123;
-
-        List&lt;User&gt; userList = userService.findUserList();
-
-        model.addAttribute(&quot;userList&quot;,userList);
-
-        return &quot;test&quot;;
+        &#125; catch (MQClientException e) &#123;
+            e.printStackTrace();
+        &#125; catch (InterruptedException e) &#123;
+            e.printStackTrace();
+        &#125; catch (RemotingException e) &#123;
+            e.printStackTrace();
+        &#125; catch (MQBrokerException e) &#123;
+            e.printStackTrace();
+        &#125;
     &#125;
 
 &#125;
 </code></pre>
-<h2 id="分页功能"><a href="#分页功能" class="headerlink" title="分页功能"></a>分页功能</h2><p>​	select * from ssm_goods limit 0,3</p>
-<p>分页需要的参数：</p>
-<ul>
-<li>​	首页 startPage</li>
-<li>​	上一页 prevPage</li>
-<li>​	下一页 nextPage</li>
-<li>​	尾页 lastPage</li>
-<li>​	起始索引位置 startIndex</li>
-<li>​	分页单位 pageSize</li>
+<p><strong>结果</strong></p>
+<pre><code>sendResult = SendResult [sendStatus=SEND_OK, msgId=0A8A3F3A469418B4AAC27ADC1D280000, offsetMsgId=C0A8775800002A9F000000000000060C, messageQueue=MessageQueue [topic=topic1, brokerName=broker-a, queueId=0], queueOffset=4]
+</code></pre>
+<h2 id="消费者-Consumer"><a href="#消费者-Consumer" class="headerlink" title="消费者 Consumer"></a>消费者 Consumer</h2><h3 id="两种接收模式-被动-x2F-主动"><a href="#两种接收模式-被动-x2F-主动" class="headerlink" title="两种接收模式 被动 &#x2F; 主动"></a>两种接收模式 被动 &#x2F; 主动</h3><ul>
+<li><p><strong>被动：</strong> Push 模型：当 Producer 发出的消息到达后，服务端马上将这条消息投递给 Consumer  <strong>(适合实时性强场景)</strong></p>
+</li>
+<li><p><strong>主动：</strong> Pull 模型：当服务端收到这条消息后什么也不做，只是等着 Consumer 主动到自己这里来读，即 Consumer 这里有一个“拉取”的动作 <strong>(适合高并发场景)</strong></p>
+</li>
 </ul>
-<p>如果需要给持久层传递多个不同数据，我们选择将数据先封装到集合中</p>
-<pre><code class="java">/**
- * 实现商品列表
- * currentPage 当前页的页码值
- */
-@RequestMapping(&quot;/list&quot;)
-public String getGoodsList(Model model,String currentPage)&#123;
+<blockquote>
+<p>RocketMQ的消费者有两个实现分别为<strong>DefaultMQPushConsumer</strong>和<strong>DefaultMQPullConsumer</strong>,它们分别为pull模式和push模式。其中pull模式为消费者主动发送请求，每隔一段时间去消息服务端拉取消息，push模式是采取长轮询的机制，消费者轮询方式主动发送请求到服务端Broker，Broker如果检测到有新的消息，则立即返回，否则暂时不返回任何消息，将请求挂起缓存到本地，Broker有一个线程检测挂起请求，等到有新消息时，对请求进项响应。</p>
+</blockquote>
+<h3 id="两种消费模式-集群-x2F-广播"><a href="#两种消费模式-集群-x2F-广播" class="headerlink" title="两种消费模式  集群&#x2F;广播"></a><strong>两种消费模式  集群&#x2F;广播</strong></h3><p>RocketMQ的策略有两种，其中一种是集群模式（平均分配），另外一种是广播模式（即：每个消费者都接收全部消息）</p>
+<p><strong>集群模式</strong>     <code>consumer.setMessageModel(MessageModel.CLUSTERING)</code>  </p>
+<ul>
+<li>该模式下，一条消息只要被关注该topic和tag的集群<strong>只消费一次就行</strong>（如果有多个集群(每个集群（group）里有多台机器)都关注了这个topic和tag，则每个集群都挑随机一个机器消费一次）。<br><strong>消息失败会重投，但不保证重投到同一机器上</strong><br>消费进度由broker维护</li>
+</ul>
+<p> <strong>广播模式</strong>	 <code>consumer.setMessageModel(MessageModel.BROADCASTING)</code> </p>
+<ul>
+<li>在广播消费模式下，MQ 会将每条消息推送给集群内所有订阅该topic和tag的客户端，保证消息至少被<strong>每台</strong>机器消费一次（若有多个集群都关注这个topic和tag，则每个集群的每个机器都消费一次）<br><strong>消息发送失败不会重投</strong><br>消费进度由consumer维护，broker并不关心一条消息有没有消费成功</li>
+</ul>
+<pre><code class="java">//设置消费者的消费模式：也是默认的模式负载均衡
+consumer.setMessageModel(MessageModel.CLUSTERING);
 
-    //接收当前页的页码值
-    if (currentPage == null || currentPage.equals(&quot;&quot;))&#123;
-
-        currentPage = &quot;1&quot;;
-
-    &#125;else &#123;
-
-        System.out.println(&quot;当前页的页码值为 &quot;+currentPage);
-
-    &#125;
-
-    //计算上一页的页码值
-    Integer prevPage = 0;
-
-    if (currentPage.equals(&quot;1&quot;))&#123;
-
-        prevPage = 1;
-
-    &#125;else &#123;
-
-        prevPage = Integer.parseInt(currentPage) - 1;
-
-    &#125;
-
-    //计算尾页的值
-    Integer lastPage = 0;
-
-    //获取商品的总记录条数
-    Integer count = goodsService.getCount();
-
-    System.out.println(&quot;总记录条数为 &quot;+count);
-
-    //指定分页单位
-    Integer pageSize = 2;
-
-    if (count % pageSize == 0)&#123;
-
-        lastPage = count / pageSize;
-
-    &#125;else &#123;
-
-        lastPage = (count / pageSize) + 1;
-
-    &#125;
-
-    //计算下一页的值
-    Integer nexPage = 0;
-
-    if (currentPage.equals(lastPage+&quot;&quot;))&#123;
-
-        nexPage = lastPage;
-
-    &#125;else &#123;
-
-        nexPage = Integer.parseInt(currentPage) + 1;
-
-    &#125;
-
-    //起始索引位置
-    Integer startIndex = (Integer.parseInt(currentPage) - 1) * pageSize;
-
-    //创建一个map集合，用于存放数据
-    HashMap&lt;Object, Object&gt; hashMap = new HashMap();
-
-    //将分页所需要的条件传到集合里
-    hashMap.put(&quot;startIndex&quot;,startIndex);
-    hashMap.put(&quot;pageSize&quot;,pageSize);
-
-    //查询商品数据
-    List&lt;Goods&gt; goodsList = goodsService.getGoodsList(hashMap);
-
-    //查询品牌数据
-    List&lt;Brand&gt; brandList = goodsService.getBrandList();
-
-    //查询类别的数据
-    List&lt;Cate&gt; cateList = goodsService.getCateList();
-
-    //将数据存到model中
-    model.addAttribute(&quot;goodsList&quot;,goodsList);
-    model.addAttribute(&quot;brandList&quot;,brandList);
-    model.addAttribute(&quot;cateList&quot;,cateList);
-    model.addAttribute(&quot;nexPage&quot;,nexPage);
-    model.addAttribute(&quot;lastPage&quot;,lastPage);
-    model.addAttribute(&quot;prevPage&quot;,prevPage);
-
-    return &quot;goodsList&quot;;
-
-&#125;
+//设置消费者的消费模式为广播模式：所有客户端接收的消息都是一样的
+consumer.setMessageModel(MessageModel.BROADCASTING);
 </code></pre>
-<p><strong>GoodsMapper</strong></p>
-<pre><code class="xml">&lt;!--查询所有的商品信息--&gt;
-&lt;select id=&quot;getGoodsList&quot; parameterType=&quot;hashMap&quot; resultMap=&quot;goodsVo&quot;&gt;
+<p><strong>consumer相关方法</strong></p>
+<ul>
+<li><code>setNamesrvAddr</code> 设置nameserver主机套接字地址</li>
+<li><code>subscribe</code> 订阅对应主题消息的方法</li>
+<li><code>registerMessageListener</code> 注册消息监听方法</li>
+<li><code>start</code> 开启消费者接收消息</li>
+</ul>
+<pre><code class="java">public class MessageConsumer &#123;
 
-    select * from ssm_goods limit #&#123;startIndex&#125;,#&#123;pageSize&#125;
+    public static void main(String[] args) &#123;
+        //创建消费者组
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(&quot;demo1&quot;);
 
-&lt;/select&gt;
-</code></pre>
-<p><strong>前端</strong></p>
-<pre><code class="jsp">&lt;script&gt;
-     //分页函数
-    function page(currentPage)&#123;
+        //设置nameserver地址
+        consumer.setNamesrvAddr(&quot;192.168.119.88:9876&quot;);
 
-        location.href = &quot;&lt;%=path%&gt;/goods/list?currentPage=&quot;+currentPage;
+        try &#123;
+            //设置接收消息对应的topic，对应的sub标签为任意*，之前producer没有指定tag。如果producer发送的消息指定了tag，那么也必须指定相应的tag
+            consumer.subscribe(&quot;topic1&quot;, &quot;*&quot;);
 
-    &#125;
-&lt;/script&gt;
+            consumer.registerMessageListener(new MessageListenerConcurrently() &#123;
+                @Override
+                public ConsumeConcurrentlyStatus consumeMessage(List&lt;MessageExt&gt; msgs, ConsumeConcurrentlyContext context) &#123;
+                    //遍历接收到的消息
+                    for (MessageExt msg : msgs) &#123;
+                        System.out.println(&quot;msg = &quot; + msg);
+                        System.out.println(&quot;消息为：&quot; + new String(msg.getBody()));
+                    &#125;
+                    return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+                &#125;
+            &#125;);
 
-&lt;tr&gt;
-    &lt;td colspan=&quot;12&quot; align=&quot;center&quot;&gt;
-        &lt;a onclick=&quot;page(1)&quot;&gt;首页&lt;/a&gt;
-        &lt;a onclick=&quot;page($&#123;prevPage&#125;)&quot;&gt;上一页&lt;/a&gt;
-        &lt;a onclick=&quot;page($&#123;nexPage&#125;)&quot;&gt;下一页&lt;/a&gt;
-        &lt;a onclick=&quot;page($&#123;lastPage&#125;)&quot;&gt;尾页&lt;/a&gt;
-    &lt;/td&gt;
-&lt;/tr&gt;
-</code></pre>
-<h3 id="分页工具类"><a href="#分页工具类" class="headerlink" title="分页工具类"></a>分页工具类</h3><p>initPage()</p>
-<p>初始化分页工具类的时候需要从前端获取字符串类型的当前页码，需要提供分页单位，需要提供数据总记录条数</p>
-<p>我们通过将分页工具类放进model域中来从前端获取分页数据</p>
-<pre><code class="java">package com.os467.shop.utils;
+            //启动消费者接收消息
+            consumer.start();
 
-import org.springframework.stereotype.Component;
-
-@Component
-public class PageUtils &#123;
-
-    //当前页
-    private String currentPage;
-
-    //上一页
-    private Integer prevPage;
-
-    //下一页
-    private Integer nextPage;
-
-    //尾页(也可以表示总页数)
-    private Integer lastPage;
-
-    //总记录条数
-    private Integer count;
-
-    //起始索引位置
-    private Integer startIndex;
-
-    //分页单位
-    private Integer pageSize;
-
-    public String getCurrentPage() &#123;
-        return currentPage;
-    &#125;
-
-    public void setCurrentPage(String currentPage) &#123;
-        this.currentPage = currentPage;
-    &#125;
-
-    public Integer getPrevPage() &#123;
-        return prevPage;
-    &#125;
-
-    public void setPrevPage(Integer prevPage) &#123;
-        this.prevPage = prevPage;
-    &#125;
-
-    public Integer getNextPage() &#123;
-        return nextPage;
-    &#125;
-
-    public void setNextPage(Integer nextPage) &#123;
-        this.nextPage = nextPage;
-    &#125;
-
-    public Integer getLastPage() &#123;
-        return lastPage;
-    &#125;
-
-    public void setLastPage(Integer lastPage) &#123;
-        this.lastPage = lastPage;
-    &#125;
-
-    public Integer getCount() &#123;
-        return count;
-    &#125;
-
-    public void setCount(Integer count) &#123;
-        this.count = count;
-    &#125;
-
-    public Integer getStartIndex() &#123;
-        return startIndex;
-    &#125;
-
-    public void setStartIndex(Integer startIndex) &#123;
-        this.startIndex = startIndex;
-    &#125;
-
-    public Integer getPageSize() &#123;
-        return pageSize;
-    &#125;
-
-    public void setPageSize(Integer pageSize) &#123;
-        this.pageSize = pageSize;
-    &#125;
-
-    //计算上一页的值
-    private void initPrevPage()&#123;
-
-        prevPage = currentPage.equals(&quot;1&quot;)?1:Integer.parseInt(currentPage)-1;
-
-    &#125;
-
-    //计算尾页的值
-    private void initLastPage()&#123;
-
-        lastPage = count % pageSize == 0 ? count / pageSize : (count / pageSize)+1;
-
-    &#125;
-
-    //计算下一页的值
-    private void initNextPage()&#123;
-
-        nextPage = currentPage.equals(lastPage+&quot;&quot;) ? lastPage : Integer.parseInt(currentPage) + 1;
-
-    &#125;
-
-    //计算起始索引位置
-    private void initStartIndex()&#123;
-
-        startIndex = (Integer.parseInt(currentPage) - 1) * pageSize;
-
-    &#125;
-
-    //初始化的方法
-    private void init(String currentPage,Integer pageSize,Integer count)&#123;
-
-        if (currentPage == null || currentPage.equals(&quot;&quot;))&#123;
-
-            currentPage = &quot;1&quot;;
-
+        &#125; catch (MQClientException e) &#123;
+            e.printStackTrace();
         &#125;
 
-        this.currentPage = currentPage;
-        this.pageSize = pageSize;
-        this.count = count;
-
-    &#125;
-
-    //调用的方法
-    public void initPage(String currentPage,Integer pageSize,Integer count)&#123;
-
-        init(currentPage,pageSize,count);
-        initStartIndex();
-        initPrevPage();
-        initLastPage();
-        initNextPage();
 
     &#125;
 
 &#125;
 </code></pre>
+<p><strong>结果</strong></p>
+<pre><code>msg = MessageExt [queueId=0, storeSize=173, queueOffset=4, sysFlag=0, bornTimestamp=1713962045736, bornHost=/192.168.119.1:3202, storeTimestamp=1713962045662, storeHost=/192.168.119.88:10911, msgId=C0A8775800002A9F000000000000060C, commitLogOffset=1548, bodyCRC=472456355, reconsumeTimes=0, preparedTransactionOffset=0, toString()=Message&#123;topic=&#39;topic1&#39;, flag=0, properties=&#123;MIN_OFFSET=0, MAX_OFFSET=5, CONSUME_START_TIME=1713962045745, UNIQ_KEY=0A8A3F3A469418B4AAC27ADC1D280000, CLUSTER=DefaultCluster&#125;, body=[72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100, 33], transactionId=&#39;null&#39;&#125;]
+消息为：Hello World!
+</code></pre>
+<h2 id="消息类型"><a href="#消息类型" class="headerlink" title="消息类型"></a><strong>消息类型</strong></h2><h3 id="同步消息"><a href="#同步消息" class="headerlink" title="同步消息"></a><strong>同步消息</strong></h3><p>即时性强，重要的消息，必须有回执消息，例如短信，通知（转账成功）</p>
+<h3 id="异步消息"><a href="#异步消息" class="headerlink" title="异步消息"></a><strong>异步消息</strong></h3><p>即时性弱，但需要有回执的消息，例如订单中的某些信息</p>
+<h3 id="单向消息"><a href="#单向消息" class="headerlink" title="单向消息"></a><strong>单向消息</strong></h3><p>不需要有回执的消息，如日志类消息</p>
+<pre><code class="java">public class Producer &#123;
+
+    public static void main(String[] args) &#123;
+
+        DefaultMQProducer producer = new DefaultMQProducer(&quot;demo1&quot;);
+
+        producer.setNamesrvAddr(&quot;192.168.119.88:9876&quot;);
+
+
+        try &#123;
+            producer.start();
+
+            //同步消息
+            for (int i = 1; i &lt;= 10; i++) &#123;
+                //构建消息，指定topic和body
+                Message msg = new Message(&quot;topic1&quot;, (&quot;同步消息: hello&quot; + i).getBytes());
+                //发送消息
+                SendResult result = producer.send(msg,10000);
+                System.out.println(&quot;sendResult = &quot;+result);
+            &#125;
+
+            //异步消息
+            for (int i = 1; i &lt;= 10; i++) &#123;
+                //构建消息，指定topic和body
+                Message msg = new Message(&quot;topic1&quot;, (&quot;异步消息: hello&quot; + i).getBytes());
+
+                producer.send(msg, new SendCallback() &#123;
+                    @Override
+                    public void onSuccess(SendResult sendResult) &#123;
+                        System.out.println(&quot;sendResult = &quot;+sendResult);
+                    &#125;
+
+                    @Override
+                    public void onException(Throwable e) &#123;
+                        System.out.println(&quot;e = &quot;+ e);
+                    &#125;
+                &#125;,10000);
+
+            &#125;
+
+            //单向消息
+            Message msg = new Message(&quot;topic1&quot;, (&quot;单向消息，hello&quot;.getBytes()));
+            producer.sendOneway(msg);
+
+            //休眠10秒，确保异步消息返回后能输出
+            TimeUnit.SECONDS.sleep(10);
+
+            //关闭连接
+            producer.shutdown();
+
+        &#125; catch (MQClientException e) &#123;
+            e.printStackTrace();
+        &#125; catch (InterruptedException e) &#123;
+            e.printStackTrace();
+        &#125; catch (RemotingException e) &#123;
+            e.printStackTrace();
+        &#125; catch (MQBrokerException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="特殊消息"><a href="#特殊消息" class="headerlink" title="特殊消息"></a>特殊消息</h2><h3 id="延时消息"><a href="#延时消息" class="headerlink" title="延时消息"></a>延时消息</h3><p>RocketMQ 支持定时消息，但是不支持任意时间精度，仅支持特定的 level，例如定时 5s， 10s， 1m 等。其中，level&#x3D;0 级表示不延时，level&#x3D;1 表示 1 级延时，level&#x3D;2 表示 2 级延时，以此类推</p>
+<p><strong>如何配置：</strong></p>
+<p>在服务器端（rocketmq-broker端）的属性配置文件中加入以下行：</p>
+<p>messageDelayLevel&#x3D;1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h </p>
+<pre><code class="java">public class Producer &#123;
+    public static void main(String[] args) throws Exception &#123;
+
+        //创建发送消息对象
+        DefaultMQProducer producer = new DefaultMQProducer(&quot;demo1&quot;);
+
+        //设定命名服务器地址---获取到消息服务器ip
+        producer.setNamesrvAddr(&quot;192.168.119.88:9876&quot;);
+
+        //启动发送服务
+        producer.start();
+
+        for (int i = 1; i &lt;= 10; i++) &#123;
+            //构建消息，指定topic和body
+            Message msg = new Message(&quot;topic1&quot;, (&quot;延时消息：&quot; + i).getBytes());
+
+            //设置延迟消息等级
+            msg.setDelayTimeLevel(3);
+
+            //发送消息
+            SendResult sendResult = producer.send(msg,10000);
+            System.out.println(&quot;sendResult = &quot; + sendResult);
+        &#125;
+
+        //关闭连接
+        producer.shutdown();
+
+    &#125;
+&#125;
+</code></pre>
+<h3 id="批量消息"><a href="#批量消息" class="headerlink" title="批量消息"></a>批量消息</h3><p>传输参数为Message队列</p>
+<ul>
+<li>消息内容总长度不超过4M</li>
+<li>消息内容总长度包含如下：</li>
+<li><ul>
+<li>topic（字符串字节数）</li>
+<li>body （字节数组长度）</li>
+<li>消息追加的属性（key与value对应字符串字节数）</li>
+<li>日志（固定20字节）</li>
+</ul>
+</li>
+</ul>
+<p>批量消息将一次发送多条消息，但是有发送数据总长度限制</p>
+<pre><code class="java">public class Producer &#123;
+    public static void main(String[] args) throws Exception &#123;
+
+        //创建发送消息对象
+        DefaultMQProducer producer = new DefaultMQProducer(&quot;demo1&quot;);
+
+        //设定命名服务器地址---获取到消息服务器ip
+        producer.setNamesrvAddr(&quot;192.168.119.88:9876&quot;);
+
+        //启动发送服务
+        producer.start();
+
+        List&lt;Message&gt; messageList = new ArrayList&lt;Message&gt;();
+
+        //构建消息，指定topic和body
+        Message msg1 = new Message(&quot;topic1&quot;, (&quot;批量消息：&quot; + 1).getBytes());
+        Message msg2 = new Message(&quot;topic1&quot;, (&quot;批量消息：&quot; + 2).getBytes());
+        Message msg3 = new Message(&quot;topic1&quot;, (&quot;批量消息：&quot; + 3).getBytes());
+        Message msg4 = new Message(&quot;topic1&quot;, (&quot;批量消息：&quot; + 4).getBytes());
+
+        messageList.add(msg1);
+        messageList.add(msg2);
+        messageList.add(msg3);
+        messageList.add(msg4);
+
+        //发送消息
+        SendResult sendResult = producer.send(messageList,10000);
+
+        System.out.println(&quot;sendResult = &quot; + sendResult);
+
+        //关闭连接
+        producer.shutdown();
+
+    &#125;
+&#125;
+</code></pre>
+<h3 id="消息过滤"><a href="#消息过滤" class="headerlink" title="消息过滤"></a>消息过滤</h3><h4 id="Tag-分类过滤"><a href="#Tag-分类过滤" class="headerlink" title="Tag 分类过滤"></a>Tag 分类过滤</h4><p> 构建消息，指定topic和body、tag </p>
+<ul>
+<li>Message msg &#x3D; new Message(“topic1”, “tag1”, “消息过滤tag1消息”.getBytes());</li>
+<li>Message msg2 &#x3D; new Message(“topic1”, “tag2”, “消息过滤tag2消息”.getBytes());</li>
+</ul>
+<pre><code class="java">public class Producer &#123;
+    public static void main(String[] args) throws Exception &#123;
+
+        //创建发送消息对象
+        DefaultMQProducer producer = new DefaultMQProducer(&quot;demo1&quot;);
+
+        //设定命名服务器地址---获取到消息服务器ip
+        producer.setNamesrvAddr(&quot;192.168.119.88:9876&quot;);
+
+        //启动发送服务
+        producer.start();
+
+        //构建消息，指定topic和body、tag
+        Message msg = new Message(&quot;topic1&quot;, &quot;tag1&quot;, &quot;消息过滤tag1消息&quot;.getBytes());
+        Message msg2 = new Message(&quot;topic1&quot;, &quot;tag2&quot;, &quot;消息过滤tag2消息&quot;.getBytes());
+
+        //发送消息
+        SendResult sendResult = producer.send(msg,10000);
+        SendResult sendResult2 = producer.send(msg2,10000);
+
+        System.out.println(&quot;sendResult = &quot; + sendResult);
+        System.out.println(&quot;sendResult2 = &quot; + sendResult2);
+
+        //关闭连接
+        producer.shutdown();
+
+    &#125;
+&#125;
+</code></pre>
+<p><strong>消费者过滤消息</strong></p>
+<pre><code class="java">public class Consumer &#123;
+    public static void main(String[] args) throws Exception &#123;
+
+        //创建一个消息接收对象consumer
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(&quot;demo1&quot;);
+
+        //设定接收消息的命名服务器地址---获取到消息服务器ip
+        consumer.setNamesrvAddr(&quot;192.168.119.88:9876&quot;);
+
+        //设置接收消息对应的topic，对应的sub标签为任意*，之前producer没有指定tag。如果producer发送的消息指定了tag，那么也必须指定相应的tag
+        consumer.subscribe(&quot;topic1&quot;, &quot;tag1||tag2&quot;);
+
+        //设置消费者的消费模式：也是默认的模式负载均衡
+        //consumer.setMessageModel(MessageModel.CLUSTERING);
+
+        //设置消费者的消费模式为广播模式：所有客户端接收的消息都是一样的
+        consumer.setMessageModel(MessageModel.BROADCASTING);
+
+        //开启监听，用于接收消息
+        consumer.registerMessageListener(new MessageListenerConcurrently() &#123;
+            public ConsumeConcurrentlyStatus consumeMessage(List&lt;MessageExt&gt; list, ConsumeConcurrentlyContext consumeConcurrentlyContext) &#123;
+                //遍历接收到的消息
+                for (MessageExt msg : list) &#123;
+                    System.out.println(&quot;消息为：&quot; + new String(msg.getBody()));
+                &#125;
+                return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+            &#125;
+        &#125;);
+
+        //启动消息接收服务
+        consumer.start();
+
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="属性过滤"><a href="#属性过滤" class="headerlink" title="属性过滤"></a>属性过滤</h4><p>直接使用bySql方法过滤消息属性会报错，需要在broker.conf中配置后重启broker</p>
+<pre><code class="properties">enablePropertyFilter=true
+</code></pre>
+<pre><code class="java">public class Producer &#123;
+    public static void main(String[] args) throws Exception &#123;
+
+        //创建发送消息对象
+        DefaultMQProducer producer = new DefaultMQProducer(&quot;demo1&quot;);
+
+        //设定命名服务器地址---获取到消息服务器ip
+        producer.setNamesrvAddr(&quot;192.168.119.88:9876&quot;);
+
+        //启动发送服务
+        producer.start();
+
+        //构建消息，指定topic和body
+        Message msg = new Message(&quot;topic1&quot;, &quot;tag1&quot;, &quot;消息过滤tag1消息&quot;.getBytes());
+
+        //为消息添加属性
+        msg.putUserProperty(&quot;vip&quot;,&quot;1&quot;);
+        msg.putUserProperty(&quot;age&quot;,&quot;20&quot;);
+
+        //发送消息
+        SendResult sendResult = producer.send(msg,10000);
+
+        System.out.println(&quot;sendResult = &quot; + sendResult);
+
+        //关闭连接
+        producer.shutdown();
+
+    &#125;
+&#125;
+</code></pre>
+<p><strong>消费者通过属性过滤消息</strong></p>
+<pre><code class="java">public class Consumer &#123;
+    public static void main(String[] args) throws Exception &#123;
+
+        //创建一个消息接收对象consumer
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(&quot;demo1&quot;);
+
+        //设定接收消息的命名服务器地址---获取到消息服务器ip
+        consumer.setNamesrvAddr(&quot;192.168.119.88:9876&quot;);
+
+        //使用消息选择器来过滤对应的属性，语法格式为类SQL语法
+        //consumer.subscribe(&quot;topic1&quot;, MessageSelector.bySql(&quot;vip=1&quot;));
+        consumer.subscribe(&quot;topic1&quot;, MessageSelector.bySql(&quot;age&gt;18&quot;));
+
+        consumer.setMessageModel(MessageModel.BROADCASTING);
+
+        //开启监听，用于接收消息
+        consumer.registerMessageListener(new MessageListenerConcurrently() &#123;
+            public ConsumeConcurrentlyStatus consumeMessage(List&lt;MessageExt&gt; list, ConsumeConcurrentlyContext consumeConcurrentlyContext) &#123;
+                //遍历接收到的消息
+                for (MessageExt msg : list) &#123;
+                    System.out.println(&quot;消息为：&quot; + new String(msg.getBody()));
+                &#125;
+                return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+            &#125;
+        &#125;);
+
+        //启动消息接收服务
+        consumer.start();
+
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="顺序消息"><a href="#顺序消息" class="headerlink" title="顺序消息"></a>顺序消息</h3><p>某些情况下业务是有一定的顺序性的，没有订单就先生成子单，很容易出问题。如果消息是单个的还好，如果是具有一定业务顺序的，就一定会有问题</p>
+<p>消息的发送是多线程随机发送到不同队列内的，无法保证业务消息顺序性，这时候我们就需要指定发送到的队列</p>
+<p>同时因为消费者使用的多线程获取消息，因此也存在不是顺序问题，所以我们使用单线程获取顺序消息</p>
+<ul>
+<li>生产者指定消息列队</li>
+<li>单线程消费</li>
+</ul>
+<p>使用<code>MessageQueueSelector</code>  和  <code>MessageListenerOrderly</code>  来保证顺序消息</p>
+<pre><code class="java">public class Producer &#123;
+
+
+    public static void main(String[] args) throws Exception &#123;
+
+        //创建发送消息对象
+        DefaultMQProducer producer = new DefaultMQProducer(&quot;demo1&quot;);
+
+        //设定命名服务器地址---获取到消息服务器ip
+        producer.setNamesrvAddr(&quot;192.168.119.88:9876&quot;);
+
+        //启动发送服务
+        producer.start();
+
+        producer.setSendMsgTimeout(10000);
+
+        List&lt;Msg&gt; msgList = new ArrayList&lt;&gt;();
+
+        msgList.add(new Msg(&quot;a&quot;,&quot;消息一&quot;));
+
+        msgList.add(new Msg(&quot;b&quot;,&quot;消息二&quot;));
+
+        msgList.add(new Msg(&quot;c&quot;,&quot;消息三&quot;));
+
+        //设置消息进入到指定的消息队列中
+        for (Msg msg : msgList) &#123;
+            //构建消息
+            Message message = new Message(&quot;topic1&quot;,msg.toString().getBytes());
+
+            //发送时要指定对应的消息队列选择器
+            SendResult sendResult = producer.send(message, new MessageQueueSelector() &#123;
+                public MessageQueue select(List&lt;MessageQueue&gt; list, Message message, Object o) &#123;
+
+                    //根据发送的消息的不同，选择不同的消息队列
+                    //根据id来选择一个消息队列的对象，并返回-&gt;id得到int值，作为索引
+                    int index = msg.getId().hashCode() % list.size();
+
+                    //返回一个消息队列MessageQueue
+                    return list.get(index);
+
+                &#125;
+            &#125;, null);
+
+            System.out.println(&quot;sendResult = &quot; + sendResult);
+        &#125;
+
+        //关闭连接
+        producer.shutdown();
+
+    &#125;
+
+
+&#125;
+
+
+class Msg&#123;
+
+    private String id;
+
+    private String msg;
+
+    public Msg(String id, String msg) &#123;
+        this.id = id;
+        this.msg = msg;
+    &#125;
+
+    public String getId() &#123;
+        return id;
+    &#125;
+
+    public void setId(String id) &#123;
+        this.id = id;
+    &#125;
+
+    public String getMsg() &#123;
+        return msg;
+    &#125;
+
+    public void setMsg(String msg) &#123;
+        this.msg = msg;
+    &#125;
+
+    @Override
+    public String toString() &#123;
+        return &quot;Msg&#123;&quot; +
+                &quot;id=&#39;&quot; + id + &#39;\&#39;&#39; +
+                &quot;, msg=&#39;&quot; + msg + &#39;\&#39;&#39; +
+                &#39;&#125;&#39;;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>消费者顺序接收</strong></p>
+<pre><code class="java">public class Consumer &#123;
+
+    public static void main(String[] args) throws Exception &#123;
+
+        //创建一个消息接收对象consumer
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(&quot;demo1&quot;);
+
+        //设定接收消息的命名服务器地址---获取到消息服务器ip
+        consumer.setNamesrvAddr(&quot;192.168.119.88:9876&quot;);
+
+        //设置接收消息对应的topic，对应的sub标签为任意*，之前producer没有指定tag。如果producer发送的消息指定了tag，那么也必须指定相应的tag
+        consumer.subscribe(&quot;topic1&quot;, &quot;*&quot;);
+
+
+        //使用单线程的模式从消息队列中取数据，一个线程绑定一个消息队列
+        consumer.registerMessageListener(new MessageListenerOrderly() &#123;
+            //使用ConsumeListenerOrderly后,对消息队列的处理由一个消息队列多个线程服务，转换为一个消息队列一个线程服务
+            public ConsumeOrderlyStatus consumeMessage(List&lt;MessageExt&gt; list, ConsumeOrderlyContext consumeOrderlyContext) &#123;
+                //遍历接收到的消息
+                for (MessageExt msg : list) &#123;
+                    System.out.println(Thread.currentThread().getName() + &quot;消息为：&quot; + new String(msg.getBody()));
+                &#125;
+                return ConsumeOrderlyStatus.SUCCESS;
+            &#125;
+
+        &#125;);
+
+
+        //启动消息接收服务
+        consumer.start();
+
+    &#125;
+
+
+&#125;
+</code></pre>
+<pre><code>ConsumeMessageThread_3消息为：Msg&#123;id=&#39;a&#39;, msg=&#39;消息一&#39;&#125;
+ConsumeMessageThread_4消息为：Msg&#123;id=&#39;b&#39;, msg=&#39;消息二&#39;&#125;
+ConsumeMessageThread_5消息为：Msg&#123;id=&#39;c&#39;, msg=&#39;消息三&#39;&#125;
+</code></pre>
+<h3 id="事务消息"><a href="#事务消息" class="headerlink" title="事务消息"></a>事务消息</h3><p><strong>三种状态</strong></p>
+<ul>
+<li><p><strong>提交状态：</strong>允许进入队列，此消息与非事务消息无区别</p>
+</li>
+<li><p><strong>回滚状态：</strong>不允许进入队列，此消息等同于未发送过</p>
+</li>
+<li><p><strong>中间状态：</strong>完成了half消息的发送，未对MQ进行二次状态确认</p>
+<blockquote>
+<p> <strong>注意</strong>：事务消息仅与生产者有关，与消费者无关</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>什么是事务消息</strong></p>
+<p>事务消息是 Apache RocketMQ 提供的一种高级消息类型，支持在分布式场景下保障消息生产和本地事务的最终一致性</p>
+<p><strong>事务消息流程</strong></p>
+<ol>
+<li><p>生产者将消息发送至Apache RocketMQ服务端</p>
+</li>
+<li><p>Apache RocketMQ服务端将消息持久化成功之后，向<strong>生产者返回Ack确认消息已经发送成功</strong>，此时消息被标记为”暂不能投递”，这种状态下的消息即为<strong>半事务消息</strong></p>
+</li>
+<li><p>生产者开始<strong>执行本地事务逻辑</strong></p>
+</li>
+<li><p>生产者根据本地事务执行结果向服务端<strong>提交二次确认结果</strong>（Commit或是Rollback），服务端收到确认结果后处理逻辑如下：</p>
+<ul>
+<li>二次确认结果为Commit：服务端将半事务消息标记为可投递，并投递给消费者。</li>
+<li>二次确认结果为Rollback：服务端将回滚事务，不会将半事务消息投递给消费者。</li>
+</ul>
+</li>
+<li><p>在断网或者是生产者应用重启的特殊情况下，若服务端未收到发送者提交的二次确认结果，或服务端收到的二次确认结果为<strong>Unknown未知状态</strong>，经过固定时间后，服务端将对消息生产者即生产者集群中任一生产者实例发起消息回查。</p>
+<blockquote>
+<p>服务端回查的间隔时间和最大回查次数，请参见<a target="_blank" rel="noopener" href="https://rocketmq.apache.org/zh/docs/introduction/03limits">参数限制</a></p>
+</blockquote>
+</li>
+<li><p>生产者收到消息回查后，需要检查对应消息的本地事务执行的最终结果</p>
+</li>
+<li><p>生产者根据检查到的本地事务的最终状态再次提交二次确认，服务端仍按照步骤4对半事务消息进行处理</p>
+</li>
+</ol>
+<p><strong>事务消息生命周期</strong></p>
+<ul>
+<li>初始化：半事务消息创建，生产者待发送</li>
+<li>事务待提交：半事务消息被发送到服务端，并<strong>不会被持久化</strong>，而是会被单独存储到事务存储系统中，等待第二阶段本地事务返回执行结果后再提交，此时消息<strong>对消费者不可见</strong></li>
+<li>消息回滚：第二阶段如果事务执行结果明确为回滚，服务端会将半事务消息回滚，该事务消息流程终止</li>
+<li>提交待消费：第二阶段如果事务执行结果明确为提交，服务端会将半事务消息重新存储到普通存储系统中，此时消息<strong>对下游消费者可见</strong>，等待被消费者获取并消费</li>
+<li>消费中：消息被消费者获取，并按照消费者本地的业务逻辑进行处理的过程。 此时服务端会等待消费者完成消费并提交消费结果，如果一定时间后没有收到消费者的响应，Apache RocketMQ会对消息进行重试处理。具体信息 <a target="_blank" rel="noopener" href="https://rocketmq.apache.org/zh/docs/featureBehavior/10consumerretrypolicy">消费重试</a></li>
+<li>消费提交：消费者完成消费处理，并向服务端提交消费结果，服务端标记当前消息已经被处理（包括消费成功和失败）。 Apache RocketMQ<strong>默认支持保留所有消息</strong>，此时消息数据并不会立即被删除，只是<strong>逻辑标记已消费</strong>。消息在保存时间到期或存储空间不足被删除前，消费者仍然可以回溯消息重新消费。</li>
+<li>消息删除：Apache RocketMQ按照消息保存机制滚动清理最早的消息数据，将消息从<strong>物理文件中删除</strong>。更多信息，请参见 <a target="_blank" rel="noopener" href="https://rocketmq.apache.org/zh/docs/featureBehavior/11messagestorepolicy">消息存储和清理机制</a></li>
+</ul>
+<blockquote>
+<p>如果事务补偿过程返回的状态仍然是 return LocalTransactionState.UNKNOW;那么还会一直进行事务补偿，测试结论为每60秒发起一次事务补偿</p>
+</blockquote>
+<h4 id="事务提交"><a href="#事务提交" class="headerlink" title="事务提交"></a>事务提交</h4><pre><code class="java">public class Producer1 &#123;
+
+
+    public static void main(String[] args) &#123;
+
+        TransactionMQProducer producer = new TransactionMQProducer(&quot;demo1&quot;);
+
+        producer.setNamesrvAddr(&quot;192.168.119.88:9876&quot;);
+
+        producer.setSendMsgTimeout(10000);
+
+        try &#123;
+            producer.start();
+
+            producer.setTransactionListener(new TransactionListener() &#123;
+                //正常提交事务
+                @Override
+                public LocalTransactionState executeLocalTransaction(Message msg, Object arg) &#123;
+                    System.out.println(&quot;提交事务消息&quot;);
+                    return LocalTransactionState.COMMIT_MESSAGE;
+                &#125;
+
+                //事务补偿过程
+                @Override
+                public LocalTransactionState checkLocalTransaction(MessageExt msg) &#123;
+                    return null;
+                &#125;
+            &#125;);
+
+            Message message = new Message(&quot;topic1&quot;,&quot;事务消息&quot;.getBytes());
+
+            SendResult sendResult = producer.sendMessageInTransaction(message,null);
+
+            System.out.println(&quot;sendResult = &quot;+ sendResult );
+
+            producer.shutdown();
+
+
+        &#125; catch (MQClientException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+
+
+    &#125;
+
+
+&#125;
+</code></pre>
+<h4 id="事务补偿"><a href="#事务补偿" class="headerlink" title="事务补偿"></a><strong>事务补偿</strong></h4><pre><code class="java">public class Producer2 &#123;
+
+    public static void main(String[] args) &#123;
+
+
+        TransactionMQProducer producer = new TransactionMQProducer(&quot;demo1&quot;);
+
+        producer.setNamesrvAddr(&quot;192.168.119.88:9876&quot;);
+
+        producer.setSendMsgTimeout(10000);
+
+        try &#123;
+            producer.start();
+
+            producer.setTransactionListener(new TransactionListener() &#123;
+
+                long start;
+
+                @Override
+                public LocalTransactionState executeLocalTransaction(Message msg, Object arg) &#123;
+                    start = System.currentTimeMillis();
+                    return LocalTransactionState.UNKNOW;
+                &#125;
+
+                //事务补偿过程
+                @Override
+                public LocalTransactionState checkLocalTransaction(MessageExt msg) &#123;
+                    long time = (System.currentTimeMillis() - start) / 1000;
+                    System.out.println(&quot;time = &quot; + time);
+                    System.out.println(&quot;事务补偿过程执行了&quot;);
+                    return LocalTransactionState.COMMIT_MESSAGE;//提交
+                &#125;
+            &#125;);
+
+            Message message = new Message(&quot;topic1&quot;,&quot;事务消息&quot;.getBytes());
+
+            SendResult sendResult = producer.sendMessageInTransaction(message,null);
+
+            System.out.println(&quot;sendResult = &quot;+ sendResult );
+
+            //producer.shutdown();
+
+
+        &#125; catch (MQClientException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="事务回滚"><a href="#事务回滚" class="headerlink" title="事务回滚"></a>事务回滚</h4><pre><code class="java">public class Producer3 &#123;
+
+    public static void main(String[] args) &#123;
+
+        TransactionMQProducer producer = new TransactionMQProducer(&quot;demo1&quot;);
+
+        producer.setNamesrvAddr(&quot;192.168.119.88:9876&quot;);
+
+        producer.setSendMsgTimeout(10000);
+
+        try &#123;
+            producer.start();
+
+            producer.setTransactionListener(new TransactionListener() &#123;
+
+                //事务回滚
+                @Override
+                public LocalTransactionState executeLocalTransaction(Message msg, Object arg) &#123;
+                    System.out.println(&quot;执行事务&quot;);
+                    try &#123;
+                        int i = 1/0;
+                    &#125;catch (Exception e) &#123;
+                        System.out.println(&quot;回滚事务&quot;);
+                        return LocalTransactionState.ROLLBACK_MESSAGE;
+                    &#125;
+
+                    return LocalTransactionState.COMMIT_MESSAGE;
+                &#125;
+
+                //事务补偿过程
+                @Override
+                public LocalTransactionState checkLocalTransaction(MessageExt msg) &#123;
+                    return LocalTransactionState.COMMIT_MESSAGE;//提交
+                &#125;
+            &#125;);
+
+            Message message = new Message(&quot;topic1&quot;,&quot;事务消息&quot;.getBytes());
+
+            SendResult sendResult = producer.sendMessageInTransaction(message,null);
+
+            System.out.println(&quot;sendResult = &quot;+ sendResult );
+
+            //producer.shutdown();
+
+
+        &#125; catch (MQClientException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+
+    &#125;
+
+&#125;
+</code></pre>
+<pre><code>执行事务
+回滚事务
+sendResult = SendResult [sendStatus=SEND_OK, msgId=0A8A3F3A55B418B4AAC283EFF9B10000, offsetMsgId=null, messageQueue=MessageQueue [topic=topic1, brokerName=broker-a, queueId=0], queueOffset=11]
+</code></pre>
+<h2 id="潜在问题"><a href="#潜在问题" class="headerlink" title="潜在问题"></a>潜在问题</h2><ol>
+<li><p><strong>生产者发送给MQ的过程中，消息丢失怎么办？</strong></p>
+<ul>
+<li><p>场景1：</p>
+<p>如果生产者将消息发送给RocketMQ时出现网络抖动或通信异常，消息可能会丢失。</p>
+<ul>
+<li><p>解决方案：</p>
+<p>使用RocketMQ自带的</p>
+<p>事务消息</p>
+<p>机制。这样，消息在发送成功之后才会执行本地操作，从而保证零丢失。事务消息的流程如下：</p>
+<ol>
+<li>生产者发送半消息到RocketMQ。</li>
+<li>若半消息发送失败，执行回滚逻辑。</li>
+<li>若半消息发送成功且RocketMQ返回成功响应，执行生产者的核心链路。</li>
+<li>若生产者核心链路执行失败，回滚并通知RocketMQ删除半消息。</li>
+<li>若生产者核心链路执行成功，通知RocketMQ提交半消息，允许消费者消费数据。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>MQ宕机，消息丢失怎么办？</strong></p>
+<ul>
+<li><p>场景2：</p>
+<p>消息需要持久化到磁盘中，但有两种情况可能导致消息丢失：</p>
+<ul>
+<li>RocketMQ为了减少磁盘IO，会先将消息写入OS缓存中，然后异步刷入磁盘。如果在这个过程中Broker宕机，消息会丢失。</li>
+<li>若消息已刷入磁盘但没有备份，一旦磁盘损坏，消息也会丢失。</li>
+</ul>
+</li>
+<li><p>解决方案：</p>
+<ul>
+<li>将OS缓存的异步刷盘策略改为<strong>同步刷盘</strong>，修改Broker配置文件中的<code>flushDiskType</code>为<code>SYNC_FLUSH</code>。这样可以保证消息持久化到磁盘。</li>
+<li>采用<strong>主从机构</strong>，集群部署，确保Leader中的数据在多个Follower中都有备份，防止单点故障。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>如何保证消息的顺序性？</strong></p>
+<ul>
+<li>RocketMQ支持<strong>顺序消息</strong>，即按照发送顺序进行消费。生产者发送消息时，可以指定消息的顺序关键字，确保相同关键字的消息被顺序消费。</li>
+</ul>
+</li>
+<li><p><strong>MQ在发给消费者的时候，消息丢失怎么办？</strong></p>
+<ul>
+<li><p>场景3：</p>
+<p>消费者成功获取消息，但在完全消费之前宕机，导致消息丢失。</p>
+<ul>
+<li><strong>解决方案：</strong> RocketMQ在消费者中注册监听器，当消费者获取消息后，回调监听器函数处理消息。只有在消息处理完毕后返回<code>CONSUME_SUCCESS</code>，RocketMQ才认为消息已被消费。若消费者宕机，消息不会丢失。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>如何保证消息不重复消费？</strong></p>
+<ul>
+<li>在<code>consumeMessage</code>方法中直接写消息消费的业务逻辑，确保消息不会被重复消费。</li>
+<li>避免在子线程异步处理消息，以防消息还未完全消费就宕机，导致消息丢失。</li>
+</ul>
+</li>
+</ol>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -2245,12 +2313,12 @@ public class PageUtils &#123;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>SSM项目整合</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">5k</span></p>
+    <p><span class="copy-title">文章标题:</span>RocketMQ</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">6.5k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-08-08, 12:15:25</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-05, 00:09:35</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/08/08/ssm%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88/" title="SSM项目整合">https://os467.github.io/2022/08/08/ssm%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88/</a>
+    <p><span class="copy-title">发布时间:</span>2024-04-26, 14:59:49</p>
+    <p><span class="copy-title">最后更新:</span>2024-04-26, 15:00:14</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/04/26/RocketMQ/" title="RocketMQ">https://os467.github.io/2024/04/26/RocketMQ/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
