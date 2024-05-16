@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>dubbo | Tly的博客</title>
+  <title>ReentrantLock | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="dubbo | Tly的博客">
+  <meta name="description" content="ReentrantLock | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:type" content="website">
@@ -1326,9 +1326,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-dubbo" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-ReentrantLock" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">dubbo</h1>
+        <h1 class="article-title">ReentrantLock</h1>
     
     <div class="article-meta">
         
@@ -1338,7 +1338,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="微服务">微服务</a>
+            <a  data-rel="其它">其它</a>
             
         </span>
         
@@ -1346,12 +1346,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-05 00:08:10'>2022-08-15 07:25</time>
+            发布时间 : <time class="date" title='最后更新: 2024-05-16 21:32:02'>2024-05-16 21:31</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2.2k</span>
+        <span>字数:2.3k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1370,7 +1370,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Dubbo"><span class="toc-text">Dubbo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA"><span class="toc-text">分布式基础理论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%B8%80%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84"><span class="toc-text">单一应用架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9E%82%E7%9B%B4%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84"><span class="toc-text">垂直应用架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84"><span class="toc-text">分布式服务架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E5%8A%A8%E8%AE%A1%E7%AE%97%E6%9E%B6%E6%9E%84"><span class="toc-text">流动计算架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RPC"><span class="toc-text">RPC</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dubbo%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-text">dubbo核心概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dubbo%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">dubbo环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#springboot%E6%95%B4%E5%90%88dubbo"><span class="toc-text">springboot整合dubbo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%93%E5%BA%93"><span class="toc-text">仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%B6%88%E8%B4%B9%E8%80%85"><span class="toc-text">服务消费者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85"><span class="toc-text">服务提供者</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ReentrantLock"><span class="toc-text">ReentrantLock</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AQS"><span class="toc-text">AQS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="toc-text">核心组成部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AQS%E6%89%A7%E8%A1%8C%E9%80%BB%E8%BE%91"><span class="toc-text">AQS执行逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AQS%E7%89%B9%E7%82%B9"><span class="toc-text">AQS特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E5%B9%B3%E9%94%81%E5%92%8C%E9%9D%9E%E5%85%AC%E5%B9%B3%E9%94%81"><span class="toc-text">公平锁和非公平锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E9%87%8D%E5%85%A5%E9%94%81"><span class="toc-text">可重入锁</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ReentrantLock%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">ReentrantLock是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BB%8B%E7%BB%8D"><span class="toc-text">方法介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-text">简单使用案例</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1386,171 +1386,259 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Dubbo"><a href="#Dubbo" class="headerlink" title="Dubbo"></a>Dubbo</h1><h2 id="分布式基础理论"><a href="#分布式基础理论" class="headerlink" title="分布式基础理论"></a>分布式基础理论</h2><p><strong>什么是分布式系统？</strong></p>
-<p>分布式系统是<strong>若干独立计算机的集合</strong>，这些计算机对于用户来说就像个相关系统</p>
-<p>分布式系统（distributed system）是建立在网络之上的软件系统</p>
-<p>随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应付，<strong>分布式服务架构以及流动计算架构</strong>势在必行，急需一个<strong>治理系统</strong>确保架构有条不紊的进行</p>
-<p><a target="_blank" rel="noopener" href="https://www.woshipm.com/pmd/3841985.html">参考博客</a></p>
-<p><img src="https://image.woshipm.com/wp-files/2020/05/k2DgvyOl3LKbVsVe3FFJ.png"></p>
-<h3 id="单一应用架构"><a href="#单一应用架构" class="headerlink" title="单一应用架构"></a>单一应用架构</h3><p>当网站<strong>流量很小</strong>时，只需一个应用，将所有功能都部署在一起，以减少部署节点和成本，此时，用于简化增删改查工作量的数据访问框架（ORM）是关键</p>
-<p>适用于小型网站，小型管理系统，将所有功能都部署到一个功能里，简单易用</p>
-<p><strong>缺点：</strong>性能扩展比较难，协同开发问题，不利于升级维护</p>
-<h3 id="垂直应用架构"><a href="#垂直应用架构" class="headerlink" title="垂直应用架构"></a>垂直应用架构</h3><p>当访问量逐渐增大，单一应用增加机器带来的加速度越来越小，将应用拆成互不相干的几个应用，以提升效率，此时，用于加速前端页面开发的Web框架（MVC）是关键</p>
-<p>通过切分业务来实现各个模块独立部署，降低了维护和部署的难度，团队各司其职更易管理，性能扩展也更方便，更有针对性</p>
-<p><strong>缺点：</strong>公用模块无法重复利用，开发性的浪费</p>
-<h3 id="分布式服务架构"><a href="#分布式服务架构" class="headerlink" title="分布式服务架构"></a>分布式服务架构</h3><p>当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，使前端应用能更快速的响应多变的市场需求，此时，用于提高业务复用及整合的分布式服务框架（RPC）是关键</p>
-<h3 id="流动计算架构"><a href="#流动计算架构" class="headerlink" title="流动计算架构"></a>流动计算架构</h3><p>当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率，此时，用于<strong>提高机器利用率的资源调度和治理中心</strong>（SOA）Service Oriented Architecture 是关键</p>
-<p><strong>搭建分布式架构会用到的技术栈：</strong></p>
-<p>spring cloud 基于springboot的框架，springboot可以看成是分布式的一个节点 </p>
+        <h1 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h1><p>ReentrantLock是一种基于<strong>AQS</strong>（Abstract Queued Synchronizer）的应用实现，是JDK中一种线程并发的同步手段。</p>
+<p>它的功能类似于sychronized，是一种互斥锁，可以保证线程安全。</p>
+<p>sychronized是关键字，是JVM级别实现的悲观锁。</p>
+<p>ReentrantLock是类级别实现的锁。</p>
+<p><strong>基本使用</strong></p>
+<p><code>ReentrantLock() </code> 构造方法</p>
 <ul>
-<li>具有一栈式的解决方案</li>
+<li>传入参数 false&#x2F;true 不传默认为false 使用的是非公平锁，true为公平锁实现</li>
 </ul>
-<p>dubbo + zookeeper </p>
-<ul>
-<li>没有很多组件，集成第三方组件较为轻松，例如nginx</li>
-</ul>
-<h4 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h4><p><strong>什么叫RPC？</strong></p>
-<p>RPC【Remote Procedure Call】是指<strong>远程进程调用</strong>，是一种进程间通信方式，它是一种技术的思想，而不是规范，RPC允许程序调用另一个地址空间（通常是共享网络的另一台机器上）的过程或函数，而不用程序员显式编码这个远程调用的细节，即程序员无论是调用本地的还是远程的函数，本质上编写的调用代码基本相同</p>
-<p><strong>RPC基本原理</strong></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5341773-0385b7dfe6c8f994.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/500/format/webp"></p>
-<p>客户端会将需要发送的对象<strong>序列化</strong>成加密数据，通过sockets通讯网络发送到服务端，服务端接收到数据后<strong>反序列化</strong>成需要的对象</p>
-<h2 id="dubbo核心概念"><a href="#dubbo核心概念" class="headerlink" title="dubbo核心概念"></a>dubbo核心概念</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Apache Dubbo 是一款高性能、轻量级的开源Java RPC 框架，它提供了三大核心模块： 面向接口的远程方法调用，智能容错（服务健康检测、服务权重）和负载均衡，以及服务自动注册和发现</p>
-<p>官网：<a target="_blank" rel="noopener" href="http://dubbo.apache.org/">http://dubbo.apache.org/</a></p>
-<p> <strong>基本概念</strong></p>
-<p><img src="https://oscimg.oschina.net/oscnet/up-2281931ac68a65cecb77495e99f84c95a1a.png"></p>
-<p><strong>服务提供者(Provider) ：</strong>暴露服务的服务提供方，服务提供者在启动时，向注册中心注册自己提供的服务</p>
-<p><strong>服务消费者(Consumer) ：</strong>调用远程服务的服务消费方，服务消费者在启动时，向注册中心订阅自己所需的服务，服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用</p>
-<p><strong>注册中心(Registry) ：</strong>注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者</p>
-<p><strong>监控中心（Monitor）：</strong>服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心</p>
-<p><strong>调用关系说明</strong></p>
-<ul>
-<li><p>服务容器负责启动，加载，运行服务提供者</p>
-</li>
-<li><p>服务提供者在启动时，向注册中心注册自己提供的服务</p>
-</li>
-<li><p>服务消费者在启动时，向注册中心订阅自己所需的服务</p>
-</li>
-<li><p>注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者</p>
-</li>
-<li><p>服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用</p>
-</li>
-<li><p>服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心</p>
-</li>
-</ul>
-<h2 id="dubbo环境搭建"><a href="#dubbo环境搭建" class="headerlink" title="dubbo环境搭建"></a>dubbo环境搭建</h2><p>【windows】安装zookeeper</p>
-<p>1、下载zookeeper</p>
-<p>网址：<a target="_blank" rel="noopener" href="https://archive.apache.org/dist/zookeeper/zookeeper-3.4.13/">https://archive.apache.org/dist/zookeeper/zookeeper-3.4.13/</a></p>
-<p>2、解压zookeeper</p>
-<p>解压运行zkServer.cmd，初次运行会报错，没有zoo.cfg配置文件</p>
-<p>3、修改zoo.cfg配置文件</p>
-<p>将conf下的<code>zoo_sample.cfg</code>复制一份改名为zoo.cfg即可</p>
-<p>注意几个重要位置：</p>
-<p><code>dataDir=./ </code>临时数据存储的目录（可写相对路径）</p>
-<p><code>clientPort=2181</code> zookeeper的端口号</p>
-<p>修改完成后再次启动zookeeper</p>
-<p>4、使用zkCli.cmd 测试</p>
-<p>【Linux】安装zookeeper</p>
-<p><strong>linux安装java环境：</strong></p>
-<p><code>yum list java*</code></p>
-<p><code>yum install java-1.8.0-openjdk* -y</code></p>
-<p><strong>关闭防火墙</strong></p>
-<p><code>systemctl stop firewalld</code></p>
-<p><strong>开机关闭防火墙</strong></p>
-<p><code>systemctl disable firewalld</code></p>
-<p>显示文件列表</p>
-<p><code>ll</code></p>
-<p>解压zookeeper包</p>
-<p><code>tar -zxvf zookeeper-3.4.13.tar.gz</code></p>
-<p>进入bin目录</p>
-<p><code>cd zookeeper-3.4.13</code></p>
-<p><code>cd bin</code></p>
-<p>启动zkServer</p>
-<p><code>/zkServer.sh start</code></p>
-<p>进入conf文件夹</p>
-<p><code>cd conf</code></p>
-<p>将<code>dubbo-admin.war</code> 移动到 <code>/apache-tomcat-8.0.53/webapps/</code>目录下部署服务，重启zookeeper</p>
-<p>在tomcat的bin目录下启动startup.sh</p>
-<p>访问注册中心<code>http://192.168.119.88:8080/dubbo-admin/</code></p>
-<h2 id="springboot整合dubbo"><a href="#springboot整合dubbo" class="headerlink" title="springboot整合dubbo"></a>springboot整合dubbo</h2><p>创建两个工程，一个作为请求资源的客户端，一个作为传输资源的服务端</p>
-<p>创建dubbo_client工程、dubbo_server工程</p>
-<p>导入maven坐标</p>
-<pre><code class="xml">&lt;!--dubbo场景启动器--&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;io.dubbo.springboot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-dubbo&lt;/artifactId&gt;
-    &lt;version&gt;1.0.0&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
-<p><strong>dubbo提供者配置</strong></p>
-<pre><code class="properties">spring.dubbo.application.name=dubbo-server
-spring.dubbo.registry.address=zookeeper://(ip地址):2181
-spring.dubbo.protocol.name=dubbo
-spring.dubbo.protocol.port=20880
-spring.dubbo.scan=com.*.impl
-</code></pre>
-<p><strong>注</strong>：暴露服务的扫描包需要定位到具体的服务包impl下</p>
-<p><strong>dubbo消费者配置</strong></p>
-<pre><code class="properties">spring.dubbo.application.name=dubbo-client
-spring.dubbo.registry.address=zookeeper://(ip地址):2181
-spring.dubbo.scan=com.*.controller
-</code></pre>
-<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><p>创建一个maven工程，用来存放Service资源</p>
-<p>通过<code>clean</code>+<code>install</code>命令将当前工程打包存放到maven仓库中，再通过当前工程的maven坐标在客户端Controller获取到Service资源</p>
-<p><strong>注：</strong>保证在idea中用的是同一个仓库</p>
-<p><strong>客户端表现层</strong></p>
-<pre><code class="java">package com.os467.demo.controller;
+<p><code>lock</code> 当前线程获取锁方法</p>
+<p><code>unlock</code>  当前线程释放锁方法，如果当前线程不持有锁，则抛出IllegalMonitorStateException异常</p>
+<p>为了确保线程不会因为异常而未解锁而导致的死锁问题，必须在<strong>finally语句块中解锁</strong></p>
+<p>同时为了保证线程能获取到锁，lock方法与try语句块之间不应该有其它代码。</p>
+<pre><code class="java">import java.util.concurrent.locks.ReentrantLock;
 
-import com.os467.service.TestService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+public class LockDemo &#123;
 
-@Controller
-@RequestMapping(&quot;test&quot;)
-public class TestController &#123;
+    private static ReentrantLock fairLock = new ReentrantLock(true);
 
-    private TestService testService;
+    private static ReentrantLock nonFairLock = new ReentrantLock();
 
-&#125;
-</code></pre>
-<p>导入maven仓库中之前保存的Service资源</p>
-<pre><code class="xml">&lt;dependency&gt;
-    &lt;groupId&gt;org.example&lt;/groupId&gt;
-    &lt;artifactId&gt;dubbo_demo&lt;/artifactId&gt;
-    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
-<h3 id="服务消费者"><a href="#服务消费者" class="headerlink" title="服务消费者"></a>服务消费者</h3><p>导入<strong>dubbo</strong>提供的注解 <strong>@Reference</strong></p>
-<p> <strong>@Reference</strong>  用于订阅服务</p>
-<pre><code class="java"> @Reference
- private TestService testService;
-</code></pre>
-<h3 id="服务提供者"><a href="#服务提供者" class="headerlink" title="服务提供者"></a>服务提供者</h3><p>服务端也要导入坐标并且实现Service接口</p>
-<p>服务端需要去暴露服务</p>
-<p>使用<strong>dubbo</strong>提供的**@Service**注解</p>
-<p><strong>@Service</strong> 用于暴露服务</p>
-<pre><code class="java">package com.os467.demo.service.impl;
+    public static void main(String[] args) &#123;
 
-import com.alibaba.dubbo.config.annotation.Service;
-import com.os467.service.TestService;
+        System.out.println(&quot;非公平锁竞争：&quot;);
 
-@Service
-public class TestServiceImpl implements TestService &#123;
+        for (int i = 0; i &lt; 10; i++) &#123;
+            new Thread(()-&gt;&#123;
+                nonFairLock.lock();
+                try &#123;
+                    System.out.println(Thread.currentThread().getName()+&quot;获取到锁&quot;);
+                &#125;finally &#123;
+                    nonFairLock.unlock();
+                &#125;
+            &#125;).start();
+        &#125;
 
-    @Override
-    public void findData() &#123;
+        try &#123;
+            Thread.sleep(2000);
+        &#125; catch (InterruptedException e) &#123;
+            e.printStackTrace();
+        &#125;
 
-        System.out.println(&quot;消费者调用提供者调用成功&quot;);
+        System.out.println(&quot;公平锁竞争：&quot;);
+
+        for (int i = 0; i &lt; 10; i++) &#123;
+            new Thread(()-&gt;&#123;
+                fairLock.lock();
+                try &#123;
+                    System.out.println(Thread.currentThread().getName()+&quot;获取到锁&quot;);
+                &#125;finally &#123;
+                    fairLock.unlock();
+                &#125;
+            &#125;).start();
+        &#125;
+
 
     &#125;
 
 &#125;
 </code></pre>
-<p>修改下服务端端口号，防止报错</p>
-<pre><code class="properties">server.port=8081
+<blockquote>
+<p>非公平锁竞争：<br>Thread-0获取到锁<br>Thread-1获取到锁<br>Thread-2获取到锁<br>Thread-3获取到锁<br>Thread-4获取到锁<br>Thread-5获取到锁<br>Thread-6获取到锁<br>Thread-7获取到锁<br>Thread-8获取到锁<br>Thread-9获取到锁<br>公平锁竞争：<br>Thread-10获取到锁<br>Thread-11获取到锁<br>Thread-12获取到锁<br>Thread-13获取到锁<br>Thread-14获取到锁<br>Thread-15获取到锁<br>Thread-16获取到锁<br>Thread-17获取到锁<br>Thread-18获取到锁<br>Thread-19获取到锁</p>
+<p>可见两种锁的结果是不同的，公平锁的获取锁顺序是有序的，而非公平锁则是无序的，后面将解释为什么两种锁的竞争结果不同。</p>
+</blockquote>
+<h2 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h2><p>由于ReentrantLock同步器底层是由AQS构建的，因此我们需要简单了解一下AQS</p>
+<p><strong>AQS  抽象队列式同步器</strong></p>
+<p><strong>场景引入</strong></p>
+<p>有四个线程由于业务需求要同时占用某资源，但该资源在同一时刻只能被其中一个线程占用。也就是我们的共享资源场景。</p>
+<p>AQS是一个集同步状态管理，线程阻塞，线程释放及队列管理功能于一身的同步框架。</p>
+<p><strong>核心思想：</strong> </p>
+<p>提供了一个基于<strong>FIFO队列</strong>的框架，用于构建锁和其它同步器，这个框架用一个单一的整型变量state来表示同步状态。被放入队列的线程会保持阻塞直到被前驱结点唤醒。(确保了有序性，<strong>减少了不必要的竞争</strong>)</p>
+<blockquote>
+<p>该队列中只有队首结点有资格竞争锁</p>
+</blockquote>
+<h3 id="核心组成部分"><a href="#核心组成部分" class="headerlink" title="核心组成部分"></a><strong>核心组成部分</strong></h3><ol>
+<li><p><strong>同步状态（State）</strong>：AQS使用一个volatile变量来表示同步状态，这个状态可以表示锁的获取次数或者资源的可用性。</p>
+<blockquote>
+<ol>
+<li>**getState()**：获取当前的同步状态。</li>
+<li>**setState(int newState)**：设置当前的同步状态。</li>
+<li>**compareAndSetState(int expect, int update)**：如果当前状态值等于预期值</li>
+</ol>
+</blockquote>
+</li>
+<li><p><strong>节点（Node）和队列</strong>：当线程尝试获取同步状态失败时，AQS会将这些线程封装成节点（Node）并加入到一个FIFO队列中。这个队列是AQS中管理线程等待的主要结构。</p>
+</li>
+<li><p><strong>独占模式和共享模式</strong>：AQS支持两种同步模式。独占模式下，每次只有一个线程能够执行（ReentrantLock就是这种）；共享模式下，多个线程可以同时执行。</p>
+</li>
+<li><p><strong>获取和释放方法</strong>：AQS定义了<code>acquire</code>和<code>release</code>等方法，允许线程以独占或共享的方式来获取和释放同步状态。</p>
+</li>
+<li><p><strong>等待和通知机制</strong>：AQS还提供了条件变量（Condition）的支持，允许线程在特定条件下等待，或者在条件满足时被通知唤醒。</p>
+</li>
+</ol>
+<h3 id="AQS执行逻辑"><a href="#AQS执行逻辑" class="headerlink" title="AQS执行逻辑"></a><strong>AQS执行逻辑</strong></h3><ol>
+<li>线程1进入</li>
+<li>如果锁可用（同步状态允许），直接获取锁</li>
+<li>锁不可用（被占用），封装为Node放入FIFO队列并阻塞</li>
+<li><ol>
+<li><strong>非公平锁：</strong>线程2进入，尝试获取锁（<strong>自旋CAS</strong>），如果竞争失败，放入FIFO队尾，阻塞等待</li>
+<li><strong>公平锁：</strong>线程2进入，检查等待队列，确保无线程等待，若存在线程等待，加入队尾等待</li>
+</ol>
+</li>
+<li>线程1释放锁，更新同步状态，唤醒队列中下一个等待线程</li>
+<li>线程2被唤醒，尝试获取锁</li>
+</ol>
+<h3 id="AQS特点"><a href="#AQS特点" class="headerlink" title="AQS特点"></a>AQS特点</h3><ul>
+<li><p>AQS利用<strong>CAS操作</strong>来管理同步状态，提高了并发效率（<strong>自旋锁+传统阻塞</strong>）</p>
+<blockquote>
+<p>CAS操作在不放弃CPU时间片的情况下尝试重复获取锁（减少线程上下文切换）</p>
+</blockquote>
+</li>
+<li><p>同时AQS是许多同步器的基础，如ReentrantLock，Semaphore，CountDownLatch等</p>
+</li>
+<li><p>AQS使用<strong>模板方法模式</strong>，允许开发者通过继承AQS并重写指定方法来实现自定义的同步器</p>
+</li>
+<li><p>AQS支持<strong>条件变量</strong>，即允许线程在特定条件下等待，在特定条件满足时被唤醒</p>
+</li>
+</ul>
+<h2 id="公平锁和非公平锁"><a href="#公平锁和非公平锁" class="headerlink" title="公平锁和非公平锁"></a>公平锁和非公平锁</h2><p><strong>公平锁：</strong>先来的线程先执行</p>
+<p>在申请锁时如果有其它线程占用了锁，则进行排队等待</p>
+<ul>
+<li><strong>优点：</strong>线程资源都能得到分配，不会出现长时间得不到分配的情况</li>
+<li><strong>缺点：</strong>吞吐量会下降许多，队列里除了第一个线程，其它线程都会阻塞，CPU唤醒阻塞线程开销较大</li>
+</ul>
+<p><strong>非公平锁：</strong> 后来的线程有可能插队执行</p>
+<ul>
+<li><strong>优点：</strong> 减少CPU唤醒线程开销，整体吞吐效率会高一些，减少了线程上下文切换的开销</li>
+<li><strong>缺点：</strong> 被阻塞的线程可能会因为被插队而长时间获取不到资源</li>
+</ul>
+<p>由此可见，我们之前的代码由于每个线程执行时间很短，竞争并不激烈。因此非公平锁模式下会经常发生插队，所以线程执行并不是FIFO的。</p>
+<p>而公平锁模式下，线程的执行是遵循FIFO的。</p>
+<h2 id="可重入锁"><a href="#可重入锁" class="headerlink" title="可重入锁"></a>可重入锁</h2><p>可重入锁，也被称为递归锁，ReentrantLock就是典型的可重入锁。</p>
+<p><strong>核心：</strong>可重入锁的设计使得当同一个线程再次进入由它持有锁的代码块时，<strong>能再次获取锁并不被阻塞</strong>。</p>
+<p>ReentrantLock对于AQS的state状态的定义是线程获取锁的次数，基于这种设计，ReentrantLock具备记忆锁次数的特性，因此当重复获取锁时可以通过state的值来判断当前线程是否持有锁。</p>
+<h1 id="ReentrantLock是什么？"><a href="#ReentrantLock是什么？" class="headerlink" title="ReentrantLock是什么？"></a>ReentrantLock是什么？</h1><p>基于上面的概念介绍，我们再来认识一下reentrantLock是什么。</p>
+<ul>
+<li>一个基于AQS实现的同步器</li>
+<li>支持公平锁和非公平锁两种模式</li>
+<li>互斥锁（只能执行一个线程）</li>
+<li>可重入锁</li>
+</ul>
+<h2 id="方法介绍"><a href="#方法介绍" class="headerlink" title="方法介绍"></a>方法介绍</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>lock()</td>
+<td>获取锁的方法，尝试获取锁，如果锁被占用，则阻塞等待。</td>
+</tr>
+<tr>
+<td>unlock()</td>
+<td>一个线程在完成其临界区的代码后，应该调用这个方法来释放锁。</td>
+</tr>
+<tr>
+<td>tryLock()</td>
+<td>尝试立即获取到锁，如果锁可用，返回true，如果锁被占用，返回false。</td>
+</tr>
+<tr>
+<td>tryLock(long timeout, TimeUnit unit)</td>
+<td>这个方法尝试在给定的等待时间内获取锁，如果在指定的时间内锁变得可用，并且当前线程未被中断，它将返回true。</td>
+</tr>
+<tr>
+<td>lockInterruptibly()</td>
+<td>这个方法类似于<code>lock()</code>，但它允许在等待锁的过程中响应中断。如果当前线程在进入此方法时已经设置了中断状态，或者在等待锁的过程中被中断，它将抛出InterruptedException。</td>
+</tr>
+<tr>
+<td>newCondition()</td>
+<td>这个方法返回一个与该锁绑定的新的Condition实例。Condition提供了一种在某个条件成立之前挂起线程的方法，并且在条件成立时能够唤醒一个或多个线程。(类似生产者消费者wait notify)</td>
+</tr>
+<tr>
+<td>getHoldCount()</td>
+<td>当前线程调用 lock() 方法的次数。</td>
+</tr>
+<tr>
+<td>getQueueLength()</td>
+<td>当前正在等待获取 Lock 锁的线程的估计数。</td>
+</tr>
+<tr>
+<td>getWaitQueueLength(Condition condition)</td>
+<td>当前正在等待状态的线程的估计数，需要传入 Condition 对象。</td>
+</tr>
+<tr>
+<td>hasWaiters(Condition condition)</td>
+<td>查询是否有线程正在等待与 Lock 锁有关的 Condition 条件。</td>
+</tr>
+<tr>
+<td>hasQueuedThread(Thread thread)</td>
+<td>查询指定的线程是否正在等待获取 Lock 锁。</td>
+</tr>
+<tr>
+<td>hasQueuedThreads()</td>
+<td>查询是否有线程正在等待获取此锁定。</td>
+</tr>
+<tr>
+<td>isFair()</td>
+<td>判断当前 Lock 锁是不是公平锁。</td>
+</tr>
+<tr>
+<td>isHeldByCurrentThread()</td>
+<td>查询当前线程是否持有锁。</td>
+</tr>
+</tbody></table>
+<h2 id="简单使用案例"><a href="#简单使用案例" class="headerlink" title="简单使用案例"></a>简单使用案例</h2><pre><code class="java">import java.util.concurrent.locks.ReentrantLock;
+
+public class ReentrantExample &#123;
+    private final ReentrantLock lock = new ReentrantLock();
+    private int count = 0;
+
+    // 使用ReentrantLock增加计数
+    public void increment() &#123;
+        lock.lock();
+        try &#123;
+            count++;
+        &#125; finally &#123;
+            lock.unlock();
+        &#125;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        ReentrantExample example = new ReentrantExample();
+
+        // 创建两个线程，模拟并发环境
+        Thread t1 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 1000; i++) &#123;
+                example.increment();
+            &#125;
+        &#125;);
+
+        Thread t2 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 1000; i++) &#123;
+                example.increment();
+            &#125;
+        &#125;);
+
+        t1.start();
+        t2.start();
+
+        // 等待两个线程完成
+        try &#123;
+            t1.join();
+            t2.join();
+        &#125; catch (InterruptedException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+        // 输出最终的计数值
+        System.out.println(&quot;Count is: &quot; + example.count);
+    &#125;
+&#125;
 </code></pre>
-<p>客户端继续用默认的8080端口</p>
-<p>访问视图资源，虽然会报错status&#x3D;500（没有配置视图），但是我们可以在服务端控制台上发现<code>消费者调用提供者调用成功</code>，说明本次调用成功</p>
-<p>在分布式项目中，由于架构分离扫描不到持久层接口，我们需要使用<code>@Mapper注解</code></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1564,12 +1652,12 @@ public class TestServiceImpl implements TestService &#123;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>dubbo</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">2.2k</span></p>
+    <p><span class="copy-title">文章标题:</span>ReentrantLock</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">2.3k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-08-15, 07:25:45</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-05, 00:08:10</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/08/15/dubbo/" title="dubbo">https://os467.github.io/2022/08/15/dubbo/</a>
+    <p><span class="copy-title">发布时间:</span>2024-05-16, 21:31:48</p>
+    <p><span class="copy-title">最后更新:</span>2024-05-16, 21:32:02</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/05/16/ReentrantLock/" title="ReentrantLock">https://os467.github.io/2024/05/16/ReentrantLock/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
