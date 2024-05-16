@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ES文档搜索 | Tly的博客</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="ES文档搜索 | Tly的博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tly的博客">
+<meta property="og:url" content="https://os467.github.io/about/index.html">
+<meta property="og:site_name" content="Tly的博客">
+<meta property="og:description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-05T07:48:23.998Z">
+<meta property="article:modified_time" content="2022-09-05T07:48:23.998Z">
+<meta property="article:author" content="Os467">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/headimg.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/headimg.jpg"/>
+</a>
+<div class="author">
+    <span>Os467</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/os467"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:1300452403@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=1300452403&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/song?id=551339076&amp;userid=1571495855"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+  <!-- 新增的网易云外链播放器 -->
+  <div class="music-player" style="transform: transform:translateY(-50%);">
+    <iframe id="music-player-iframe" frameborder="no" border="0" marginwidth="0" marginheight="0" allow="autoplay" width=160 height=52 src=""></iframe>
+        
+    <div>
+        <!-- 动态切换歌曲 -->
+       <!--  <input class="input" type="button" onclick="playPre()" value="上一首"  style="width: 50px; text-align: center;"> -->
+        <img onclick="playPre()" style="height: 15px; width: 15px;margin-left:60px" src="/img/back.png">
+        <img onclick="playNext()" style="height: 15px; width: 15px;margin-left:5px" src="/img/next.png">
+        <!-- <input class="input" type="button" onclick="playNext()" value="下一首" style="width: 50px; text-align: center;">     -->
+    </div>
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(91)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="JAVASE基础">
+                        
+                        JAVASE基础
+                        <small>(9)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="JAVASE进阶">
+                        
+                        JAVASE进阶
+                        <small>(10)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="框架学习">
+                        
+                        框架学习
+                        <small>(12)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="微服务">
+                        
+                        微服务
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="运维">
+                        
+                        运维
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="项目">
+                        
+                        项目
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="底层学习">
+                        
+                        底层学习
+                        <small>(5)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="前端">
+                        
+                        前端
+                        <small>(8)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="其它">
+                        
+                        其它
+                        <small>(25)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="算法">
+                        
+                        算法
+                        <small>(6)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="数据库">
+                        
+                        数据库
+                        <small>(3)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="91">
+<input type="hidden" id="yelog_site_word_count" value="337.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+
+
+<!-- 新添加的音乐切换功能 -->
+<script>
+
+    var index = 0;
+
+const musicList = [
+     /* 中文曲目 */
+    "//music.163.com/outchain/player?type=2&id=1301884692&height=32",
+    "//music.163.com/outchain/player?type=2&id=28496172&height=32",
+    /* 英文曲目 */
+    "//music.163.com/outchain/player?type=2&id=1919435807&height=32",
+    "//music.163.com/outchain/player?type=2&id=411314681&height=32",
+    "//music.163.com/outchain/player?type=2&id=1464325108&height=32",
+    "//music.163.com/outchain/player?type=2&id=1440570723&height=32",
+    "//music.163.com/outchain/player?type=2&id=1406067418&height=32",
+    "//music.163.com/outchain/player?type=2&id=1313035063&height=32",
+    "//music.163.com/outchain/player?type=2&id=500410102&height=32",
+    "//music.163.com/outchain/player?type=2&id=31010566&height=32",
+     /* 日语 */
+     "//music.163.com/outchain/player?type=2&id=498286345&height=32",
+    "//music.163.com/outchain/player?type=2&id=1350330823&height=32",
+    "//music.163.com/outchain/player?type=2&id=1358226158&height=32",
+    "//music.163.com/outchain/player?type=2&id=28913884&height=32",
+    /* 纯音乐 */
+    "//music.163.com/outchain/player?type=2&id=1484017437&height=32",
+    "//music.163.com/outchain/player?type=2&id=29979829&height=32",
+    "//music.163.com/outchain/player?type=2&id=425280053&height=32"
+
+]
+
+
+
+const indexMax = musicList.length -1;
+
+const musicDoc = document.getElementById("music-player-iframe");
+
+var playNext = function(){
+
+    index == indexMax ? index = 0 : index +=1;
+
+    musicDoc.setAttribute("src",musicList[index]+"&auto=1");
+
+}
+
+var playPre = function(){
+
+    index == 0 ? index = indexMax : index -=1;
+
+    musicDoc.setAttribute("src",musicList[index]+"&auto=1")
+}
+
+//随机初始值
+let ranIndex = Math.floor(Math.random() * indexMax);
+
+window.onload = function(){
+    document.getElementById("music-player-iframe").setAttribute("src",musicList[ranIndex]+"&auto=0");
+    }
+
+</script>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://os467.github.io/mdResource">os467</a></li>
+            
+            <li><a target="_blank" href="https://www.bilibili.com/video/BV17h411k7jB?vd_source=38c37e7cf61f2c4591c73b0a37eab964">这是一个神奇的链接</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2024/05/16/ES%E6%96%87%E6%A1%A3%E6%90%9C%E7%B4%A2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ES文档搜索">ES文档搜索</span>
+            <span class="post-date" title="2024-05-16 15:59:19">2024/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2024/04/26/RocketMQ/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RocketMQ">RocketMQ</span>
+            <span class="post-date" title="2024-04-26 14:59:49">2024/04/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2024/04/20/DDD%E9%A2%86%E5%9F%9F%E8%AE%BE%E8%AE%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="DDD领域驱动设计">DDD领域驱动设计</span>
+            <span class="post-date" title="2024-04-20 21:41:12">2024/04/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2024/04/14/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="布隆过滤器">布隆过滤器</span>
+            <span class="post-date" title="2024-04-14 19:08:21">2024/04/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2024/03/23/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="排序算法">排序算法</span>
+            <span class="post-date" title="2024-03-23 17:59:00">2024/03/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 "
+           href="/2024/03/20/Mysql%E7%B4%A2%E5%BC%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mysql索引">Mysql索引</span>
+            <span class="post-date" title="2024-03-20 21:53:15">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2024/03/13/java%E7%BA%BF%E7%A8%8B%E6%B1%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java线程池">Java线程池</span>
+            <span class="post-date" title="2024-03-13 17:15:23">2024/03/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2024/02/20/gpt%E4%BD%BF%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="GPT接口调用方案">GPT接口调用方案</span>
+            <span class="post-date" title="2024-02-20 20:21:23">2024/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2024/02/15/%E5%9C%A8%E7%BA%BF%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E7%BC%A9/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="在线压缩和解压缩">在线压缩和解压缩</span>
+            <span class="post-date" title="2024-02-15 16:52:31">2024/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2024/02/07/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E4%B8%8E%E4%BC%A0%E8%BE%93%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="视频播放与传输设计方案">视频播放与传输设计方案</span>
+            <span class="post-date" title="2024-02-07 17:10:30">2024/02/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2024/01/28/mybatis%E6%89%B9%E9%87%8F%E5%A4%84%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mybatis批量处理">Mybatis批量处理</span>
+            <span class="post-date" title="2024-01-28 20:24:33">2024/01/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2024/01/13/DispatcherServlet%E5%86%85%E9%83%A8%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="DispatcherServlet异常处理">DispatcherServlet异常处理</span>
+            <span class="post-date" title="2024-01-13 17:50:11">2024/01/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2024/01/08/%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E6%96%B9%E6%A1%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="文件下载方案">文件下载方案</span>
+            <span class="post-date" title="2024-01-08 02:46:12">2024/01/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 项目 "
+           href="/2024/01/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%BE%E8%AE%BE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="学生管理系统">学生管理系统</span>
+            <span class="post-date" title="2024-01-05 14:19:20">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2024/01/05/JS%E8%BF%9B%E9%98%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JS进阶">JS进阶</span>
+            <span class="post-date" title="2024-01-05 02:36:43">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/12/26/xss%E6%94%BB%E5%87%BB%E5%92%8Ccsrf%E6%94%BB%E5%87%BB%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="XSS和CSRF解决方案">XSS和CSRF解决方案</span>
+            <span class="post-date" title="2023-12-26 17:48:10">2023/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 "
+           href="/2023/12/25/%E7%AE%80%E5%8D%95ORM%E6%98%A0%E5%B0%84%E6%96%B9%E6%A1%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="简单ORM映射方案(JDBC)">简单ORM映射方案(JDBC)</span>
+            <span class="post-date" title="2023-12-25 18:43:30">2023/12/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/12/24/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%A1%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="文件上传方案">文件上传方案</span>
+            <span class="post-date" title="2023-12-24 19:20:53">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/09/26/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数值分析">数值分析</span>
+            <span class="post-date" title="2023-09-26 14:21:20">2023/09/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/06/04/%E5%8D%95%E4%BE%8B%E5%B7%A5%E5%8E%82/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="单例工厂">单例工厂</span>
+            <span class="post-date" title="2023-06-04 22:52:03">2023/06/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/05/30/Process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java进程相关">Java进程相关</span>
+            <span class="post-date" title="2023-05-30 21:41:33">2023/05/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 项目 "
+           href="/2023/05/22/%E8%B5%9B%E4%BA%8B%E7%B3%BB%E7%BB%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据结构课设">数据结构课设</span>
+            <span class="post-date" title="2023-05-22 23:15:11">2023/05/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2023/04/22/Netty/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Netty">Netty</span>
+            <span class="post-date" title="2023-04-22 20:55:26">2023/04/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/04/15/%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="进程调度">进程调度</span>
+            <span class="post-date" title="2023-04-15 13:43:20">2023/04/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/04/15/%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="银行家算法">银行家算法</span>
+            <span class="post-date" title="2023-04-15 13:43:18">2023/04/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2023/04/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据结构">数据结构</span>
+            <span class="post-date" title="2023-04-05 17:42:05">2023/04/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2023/03/29/NIO%E5%9F%BA%E7%A1%80/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NIO基础">NIO基础</span>
+            <span class="post-date" title="2023-03-29 21:31:10">2023/03/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2023/03/29/%E7%AE%97%E6%B3%953/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="算法3">算法3</span>
+            <span class="post-date" title="2023-03-29 16:07:12">2023/03/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/03/20/javaSwing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Swing入门">Swing入门</span>
+            <span class="post-date" title="2023-03-20 20:07:33">2023/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2023/03/17/NIO%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NIO入门">NIO入门</span>
+            <span class="post-date" title="2023-03-17 21:25:10">2023/03/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2023/03/13/%E9%A1%B9%E7%9B%AE%E4%B8%8A%E7%BA%BF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="项目上线部署经验">项目上线部署经验</span>
+            <span class="post-date" title="2023-03-13 23:20:12">2023/03/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2023/03/09/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3%E6%95%B4%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="算法思想整理">算法思想整理</span>
+            <span class="post-date" title="2023-03-09 19:43:10">2023/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2023/03/09/%E7%AE%97%E6%B3%952/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="算法2">算法2</span>
+            <span class="post-date" title="2023-03-09 19:43:02">2023/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 算法 "
+           href="/2023/03/03/%E7%AE%97%E6%B3%951/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="算法1">算法1</span>
+            <span class="post-date" title="2023-03-03 12:49:07">2023/03/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/12/07/Java%E6%A6%82%E5%BF%B5%E5%A4%8D%E4%B9%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java概念复习">Java概念复习</span>
+            <span class="post-date" title="2022-12-07 19:54:23">2022/12/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/12/01/Ascii%E7%BC%96%E7%A0%81%E5%8A%A0%E5%AF%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ascii码加密编码">Ascii码加密编码</span>
+            <span class="post-date" title="2022-12-01 15:02:11">2022/12/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/11/22/TypeScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="TypeScript">TypeScript</span>
+            <span class="post-date" title="2022-11-22 22:13:06">2022/11/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/11/17/ThreeJS/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ThreeJS">ThreeJS</span>
+            <span class="post-date" title="2022-11-17 00:07:03">2022/11/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/11/05/synchronized%E4%B8%8E%E9%94%81%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="synchronized与锁机制">synchronized与锁机制</span>
+            <span class="post-date" title="2022-11-05 23:46:13">2022/11/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/10/18/ElementUI/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ElementUI">ElementUI</span>
+            <span class="post-date" title="2022-10-18 21:17:36">2022/10/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/10/13/Axios/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Axios">Axios</span>
+            <span class="post-date" title="2022-10-13 00:16:19">2022/10/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/10/10/Vue2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Vue2">Vue2</span>
+            <span class="post-date" title="2022-10-10 22:15:06">2022/10/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/10/08/%E8%AF%B7%E6%B1%82%E9%99%90%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="请求限流">请求限流</span>
+            <span class="post-date" title="2022-10-08 19:57:03">2022/10/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 项目 "
+           href="/2022/10/05/%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前后端分离博客项目">前后端分离博客项目</span>
+            <span class="post-date" title="2022-10-05 00:52:35">2022/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/10/05/Swagger/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Swagger">Swagger</span>
+            <span class="post-date" title="2022-10-05 00:51:35">2022/10/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/10/01/Aop%E6%97%A5%E5%BF%97%E5%AE%9E%E7%8E%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Aop日志实现">Aop日志实现</span>
+            <span class="post-date" title="2022-10-01 23:47:22">2022/10/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/09/24/Git/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2022-09-24 01:54:20">2022/09/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 运维 "
+           href="/2022/09/23/Linux/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux指令">Linux指令</span>
+            <span class="post-date" title="2022-09-23 21:30:12">2022/09/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/09/19/SpringSecurity/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringSecurity">SpringSecurity</span>
+            <span class="post-date" title="2022-09-19 23:33:22">2022/09/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 "
+           href="/2022/09/16/Mysql%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mysql事务隔离级别">Mysql事务隔离级别</span>
+            <span class="post-date" title="2022-09-16 19:51:23">2022/09/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/09/15/ThreadLocal/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ThreadLocal">ThreadLocal</span>
+            <span class="post-date" title="2022-09-15 00:02:03">2022/09/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/09/11/%E6%A0%91%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="树结构入门.md">树结构入门.md</span>
+            <span class="post-date" title="2022-09-11 02:27:07">2022/09/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/09/08/NodeJS/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NodeJS">NodeJS</span>
+            <span class="post-date" title="2022-09-08 20:18:43">2022/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 "
+           href="/2022/09/08/%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前端入门">前端入门</span>
+            <span class="post-date" title="2022-09-08 10:21:00">2022/09/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/09/06/Java%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java对象创建">Java对象创建</span>
+            <span class="post-date" title="2022-09-06 21:16:42">2022/09/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/09/04/ElasticSearch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ElasticSearch">ElasticSearch</span>
+            <span class="post-date" title="2022-09-04 23:29:31">2022/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/09/01/springCloud%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud项目搭建">SpringCloud项目搭建</span>
+            <span class="post-date" title="2022-09-01 22:23:21">2022/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/30/RabbitMQ/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RabbitMQ">RabbitMQ</span>
+            <span class="post-date" title="2022-08-30 20:25:33">2022/08/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2022/08/29/MVC%E8%AE%BF%E9%97%AE%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MVC多线程安全问题">MVC多线程安全问题</span>
+            <span class="post-date" title="2022-08-29 17:18:53">2022/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/08/27/JVM%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM类加载机制">JVM类加载机制</span>
+            <span class="post-date" title="2022-08-27 18:10:23">2022/08/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 底层学习 "
+           href="/2022/08/24/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM虚拟机">JVM虚拟机</span>
+            <span class="post-date" title="2022-08-24 18:28:03">2022/08/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 运维 "
+           href="/2022/08/23/Docker/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Docker">Docker</span>
+            <span class="post-date" title="2022-08-23 13:25:11">2022/08/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/18/springCloud/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringCloud">SpringCloud</span>
+            <span class="post-date" title="2022-08-18 13:21:39">2022/08/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="微服务入门">微服务入门</span>
+            <span class="post-date" title="2022-08-15 15:44:35">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 微服务 "
+           href="/2022/08/15/dubbo/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="dubbo">dubbo</span>
+            <span class="post-date" title="2022-08-15 07:25:45">2022/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/13/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Redis">Redis</span>
+            <span class="post-date" title="2022-08-13 14:25:31">2022/08/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/12/bootstrap/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Bootstrap(WEB框架)">Bootstrap(WEB框架)</span>
+            <span class="post-date" title="2022-08-12 16:23:21">2022/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/12/springboot/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringBoot">SpringBoot</span>
+            <span class="post-date" title="2022-08-12 12:15:35">2022/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/08/ssm%E9%A1%B9%E7%9B%AE%E6%95%B4%E5%90%88/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SSM项目整合">SSM项目整合</span>
+            <span class="post-date" title="2022-08-08 12:15:25">2022/08/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 项目 "
+           href="/2022/08/03/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="外卖项目">外卖项目</span>
+            <span class="post-date" title="2022-08-03 08:35:11">2022/08/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/08/01/MyBatisPlus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatisPlus">MyBatisPlus</span>
+            <span class="post-date" title="2022-08-01 11:15:26">2022/08/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/31/MyBatis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MyBatis">MyBatis</span>
+            <span class="post-date" title="2022-07-31 10:10:26">2022/07/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/28/Maven/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Maven">Maven</span>
+            <span class="post-date" title="2022-07-28 19:10:41">2022/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/26/spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="spring">spring</span>
+            <span class="post-date" title="2022-07-26 21:54:22">2022/07/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架学习 "
+           href="/2022/07/23/springMVC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SpringMVC">SpringMVC</span>
+            <span class="post-date" title="2022-07-23 21:35:21">2022/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式">设计模式</span>
+            <span class="post-date" title="2022-07-18 19:21:50">2022/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/17/Ajax/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ajax">Ajax</span>
+            <span class="post-date" title="2022-07-17 12:07:22">2022/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/14/Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Annotation">Annotation</span>
+            <span class="post-date" title="2022-07-14 19:36:02">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/14/%E6%B3%A8%E8%A7%A3Annotation/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="注解">注解</span>
+            <span class="post-date" title="2022-07-14 10:09:18">2022/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/13/Reflect/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Reflect">Reflect</span>
+            <span class="post-date" title="2022-07-13 14:40:18">2022/07/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/12/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2022-07-12 12:29:58">2022/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE进阶 "
+           href="/2022/07/10/IO%E6%B5%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IO流">IO流</span>
+            <span class="post-date" title="2022-07-10 20:14:33">2022/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/08/jQuery/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jQuery">jQuery</span>
+            <span class="post-date" title="2022-07-08 16:24:33">2022/07/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/07/javaScript/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="javaScript">javaScript</span>
+            <span class="post-date" title="2022-07-07 12:54:16">2022/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/06/XML/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="XML">XML</span>
+            <span class="post-date" title="2022-07-06 18:28:03">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/06/cookie%E5%92%8Csession/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="cookie和session">cookie和session</span>
+            <span class="post-date" title="2022-07-06 18:27:45">2022/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/02/servlet/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="servlet">servlet</span>
+            <span class="post-date" title="2022-07-02 08:24:49">2022/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/07/01/jdbc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="jdbc">jdbc</span>
+            <span class="post-date" title="2022-07-01 08:24:49">2022/07/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/06/19/SQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL">SQL</span>
+            <span class="post-date" title="2022-06-19 19:45:07">2022/06/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVASE基础 "
+           href="/2022/05/28/JAVA%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JAVA入门">JAVA入门</span>
+            <span class="post-date" title="2022-05-28 00:32:07">2022/05/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/2022/05/27/Linux%E4%BA%91%E8%AE%A1%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux云计算">Linux云计算</span>
+            <span class="post-date" title="2022-05-27 00:05:15">2022/05/27</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-ES文档搜索" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">ES文档搜索</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="框架学习">框架学习</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-05-16 16:00:49'>2024-05-16 15:59</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:2.1k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ES%E6%96%87%E6%A1%A3%E6%90%9C%E7%B4%A2"><span class="toc-text">ES文档搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Java-ES%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">使用Java ES客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%BA%93%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-text">索引库相关操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-text">工具类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%B5%8B%E8%AF%95"><span class="toc-text">查询测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%96%87%E6%A1%A3"><span class="toc-text">批量插入文档</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C"><span class="toc-text">查询结果</span></a></li></ol></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ES文档搜索"><a href="#ES文档搜索" class="headerlink" title="ES文档搜索"></a>ES文档搜索</h1><p>ElasticSearch与Kibana安装以及ik分词器安装请看之前的文章，这里就不做过多赘述。</p>
+<p><strong>ES语言命名规范</strong></p>
+<p>仅可能为小写字母，不能下划线开头</p>
+<blockquote>
+<p>索引库名称，包括属性名称都用小写字母加下划线的方式命名</p>
+</blockquote>
+<p><strong>创建索引库</strong></p>
+<p>需要提前安装ik分词器</p>
+<p>创建索引库，包含两个属性，文件名称和文本内容，使用<code>ik_smart</code>分词</p>
+<pre><code class="json">PUT /text_file_doc
+&#123;
+  &quot;settings&quot;: &#123;
+    &quot;number_of_shards&quot;: 3,
+    &quot;number_of_replicas&quot;: 1
+  &#125;,
+  &quot;mappings&quot;: &#123;
+    &quot;properties&quot;: &#123;
+      &quot;file_name&quot;:&#123;
+        &quot;type&quot;: &quot;text&quot;, 
+        &quot;analyzer&quot;: &quot;ik_smart&quot;
+      &#125;,
+      &quot;content&quot;:&#123;
+          &quot;type&quot;: &quot;text&quot;,
+        &quot;analyzer&quot;: &quot;ik_smart&quot;
+      &#125;
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<h2 id="使用Java-ES客户端"><a href="#使用Java-ES客户端" class="headerlink" title="使用Java ES客户端"></a>使用Java ES客户端</h2><pre><code class="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.elasticsearch.client&lt;/groupId&gt;
+    &lt;artifactId&gt;elasticsearch-rest-high-level-client&lt;/artifactId&gt;
+    &lt;version&gt;7.6.1&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+    &lt;version&gt;2.9.1&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;
+    &lt;artifactId&gt;log4j-core&lt;/artifactId&gt;
+    &lt;version&gt;2.10.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<blockquote>
+<p>一个是ES的java客户端，还有一个是用于封装JSON字符串的依赖</p>
+</blockquote>
+<p><strong>需要将日志文件添加到resource文件下</strong></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Configuration status=&quot;WARN&quot;&gt;
+    &lt;Appenders&gt;
+        &lt;Console name=&quot;Console&quot; target=&quot;SYSTEM_OUT&quot;&gt;
+            &lt;PatternLayout pattern=&quot;%d&#123;HH:mm:ss.SSS&#125; [%t] %-5level %logger&#123;36&#125; - %msg%n&quot;/&gt;
+        &lt;/Console&gt;
+        &lt;!-- 添加其他 appender，如 RollingFile 等 --&gt;
+    &lt;/Appenders&gt;
+    &lt;Loggers&gt;
+        &lt;Root level=&quot;info&quot;&gt;
+            &lt;AppenderRef ref=&quot;Console&quot;/&gt;
+            &lt;!-- 添加其他 appender 的引用 --&gt;
+        &lt;/Root&gt;
+    &lt;/Loggers&gt;
+&lt;/Configuration&gt;
+</code></pre>
+<h3 id="索引库相关操作"><a href="#索引库相关操作" class="headerlink" title="索引库相关操作"></a>索引库相关操作</h3><pre><code class="java">import org.apache.http.HttpHost;
+import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.indices.GetIndexResponse;
+
+import java.io.IOException;
+
+public class ESTest &#123;
+
+    public static RestHighLevelClient client;
+
+    static &#123;
+        client = new RestHighLevelClient(RestClient.builder(new HttpHost(&quot;192.168.119.88&quot;, 9200, &quot;http&quot;)));
+    &#125;
+
+    public static void main(String[] args) &#123;
+
+
+        ESUtils esUtils = new ESUtils(client);
+
+        try &#123;
+            //创建索引
+            boolean created = esUtils.createIndex(&quot;text_file_doc&quot;);
+            System.out.println(created);
+
+            //查询索引消息
+            GetIndexResponse response = esUtils.getIndex(&quot;text_file_doc&quot;);
+            System.out.println(response.getAliases());
+            System.out.println(response.getMappings());
+            System.out.println(response.getSettings());
+
+            //删除索引
+            boolean result = esUtils.deleteIndex(&quot;text_file_doc&quot;);
+            System.out.println(result);
+
+        &#125; catch (IOException ioException) &#123;
+            ioException.printStackTrace();
+        &#125; finally &#123;
+            try &#123;
+                client.close();
+            &#125; catch (IOException ioException) &#123;
+                ioException.printStackTrace();
+            &#125;
+        &#125;
+
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a><strong>工具类</strong></h4><p>本文所使用到的ES工具类</p>
+<pre><code class="java">import com.fasterxml.jackson.databind.ObjectMapper;
+import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
+import org.elasticsearch.action.bulk.BulkRequest;
+import org.elasticsearch.action.bulk.BulkResponse;
+import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.support.master.AcknowledgedResponse;
+import org.elasticsearch.client.RequestOptions;
+import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.indices.CreateIndexRequest;
+import org.elasticsearch.client.indices.CreateIndexResponse;
+import org.elasticsearch.client.indices.GetIndexRequest;
+import org.elasticsearch.client.indices.GetIndexResponse;
+import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.index.query.QueryBuilder;
+
+import java.io.IOException;
+import java.util.List;
+
+
+public class ESUtils &#123;
+
+    public SearchUtils searchUtils;
+
+    public static ObjectMapper objectMapper = new ObjectMapper();
+
+    private RestHighLevelClient client;
+
+    public ESUtils(RestHighLevelClient client)&#123;
+        this.client = client;
+        this.searchUtils = new SearchUtils(client);
+    &#125;
+
+    class SearchUtils &#123;
+
+        private RestHighLevelClient client;
+
+        public SearchUtils(RestHighLevelClient client) &#123;
+            this.client = client;
+        &#125;
+
+        public SearchResponse search(String indexName, QueryBuilder queryBuilder) throws IOException &#123;
+            SearchRequest request = new SearchRequest(indexName);
+            request.source().query(queryBuilder);
+            SearchResponse searchResponse = client.search(request, RequestOptions.DEFAULT);
+            return searchResponse;
+        &#125;
+
+
+    &#125;
+
+    /**
+     * 创建索引库，使用默认settings，默认mappings
+     * @param indexName 索引库名称
+     * @return
+     * @throws IOException
+     */
+    public boolean createIndex(String indexName) throws IOException &#123;
+        CreateIndexRequest request = new CreateIndexRequest(indexName);
+        CreateIndexResponse response = client.indices().create(request, RequestOptions.DEFAULT);
+        return response.isAcknowledged();
+    &#125;
+
+    /**
+     * 获取索引库信息
+     * @param indexName 索引库名称
+     * @return
+     * @throws IOException
+     */
+    public GetIndexResponse getIndex(String indexName) throws IOException &#123;
+        GetIndexRequest getIndexRequest = new GetIndexRequest(indexName);
+        GetIndexResponse response = client.indices().get(getIndexRequest, RequestOptions.DEFAULT);
+        return response;
+    &#125;
+
+    /**
+     * 删除索引库
+     * @param indexName 索引库名称
+     * @return
+     * @throws IOException
+     */
+    public boolean deleteIndex(String indexName) throws IOException &#123;
+        DeleteIndexRequest deleteIndexRequest = new DeleteIndexRequest(indexName);
+        AcknowledgedResponse response = client.indices().delete(deleteIndexRequest, RequestOptions.DEFAULT);
+        return response.isAcknowledged();
+    &#125;
+
+    /**
+     * 添加文档到索引库
+     * @param indexName 索引库名称
+     * @param docId 指定文档id
+     * @param doc 文档对象
+     * @return
+     * @throws IOException
+     */
+    public IndexResponse addDoc(String indexName,String docId,Object doc) throws IOException &#123;
+        IndexRequest request = new IndexRequest();
+        request.index(indexName).id(docId);
+
+        String data = objectMapper.writeValueAsString(doc);
+        request.source(data, XContentType.JSON);
+        IndexResponse response = client.index(request, RequestOptions.DEFAULT);
+
+        return response;
+    &#125;
+
+    /**
+     * 添加文档到索引库
+     * @param indexName 索引库名称
+     * @param doc 文档对象
+     * @return
+     * @throws IOException
+     */
+    public IndexResponse addDoc(String indexName,Object doc) throws IOException &#123;
+        IndexRequest request = new IndexRequest();
+        request.index(indexName);
+
+        String data = objectMapper.writeValueAsString(doc);
+        request.source(data, XContentType.JSON);
+        IndexResponse response = client.index(request, RequestOptions.DEFAULT);
+
+        return response;
+    &#125;
+
+    /**
+     * 批量添加文档
+     * @param indexName 索引库名称
+     * @param docs 文档列表
+     * @throws IOException
+     */
+    public BulkResponse bulkAddDoc(String indexName, List&lt;?&gt; docs) throws IOException &#123;
+        BulkRequest bulkRequest = new BulkRequest();
+
+        for (Object doc : docs) &#123;
+            IndexRequest request = new IndexRequest();
+            request.index(indexName);
+            String data = objectMapper.writeValueAsString(doc);
+            request.source(data,XContentType.JSON);
+            bulkRequest.add(request);
+        &#125;
+
+        BulkResponse bulkResponse = client.bulk(bulkRequest, RequestOptions.DEFAULT);
+        return bulkResponse;
+    &#125;
+
+
+&#125;
+</code></pre>
+<blockquote>
+<p>创建索引的方法没有提前指定mappings，因此没有约束</p>
+<p>如果在创建时要指定mappings和settings等约束，使用</p>
+<p><code>CreateIndexRequest request = new CreateIndexRequest(indexName);</code><br><code>request.source(source,XContentType.JSON);</code></p>
+</blockquote>
+<h3 id="查询测试"><a href="#查询测试" class="headerlink" title="查询测试"></a>查询测试</h3><pre><code class="json">GET /text_file_doc/_search
+&#123;
+    &quot;query&quot;:&#123;
+        &quot;match&quot;:&#123;
+            &quot;context&quot;:&quot;docker&quot;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="text">&#123;
+  &quot;took&quot; : 4424,
+  &quot;timed_out&quot; : false,
+  &quot;_shards&quot; : &#123;
+    &quot;total&quot; : 3,
+    &quot;successful&quot; : 3,
+    &quot;skipped&quot; : 0,
+    &quot;failed&quot; : 0
+  &#125;,
+  &quot;hits&quot; : &#123;
+    &quot;total&quot; : &#123;
+      &quot;value&quot; : 1,
+      &quot;relation&quot; : &quot;eq&quot;
+    &#125;,
+    &quot;max_score&quot; : 0.57595575,
+    &quot;hits&quot; : [
+      &#123;
+        &quot;_index&quot; : &quot;text_file_doc&quot;,
+        &quot;_type&quot; : &quot;_doc&quot;,
+        &quot;_id&quot; : &quot;1&quot;,
+        &quot;_score&quot; : 0.57595575,
+        &quot;_source&quot; : &#123;
+          &quot;fileName&quot; : &quot;ElasticSearch入门&quot;,
+          &quot;context&quot; : &quot;&quot;&quot;# 分布式搜索ES
+
+## Elastic Search简介
+
+**什么是elasticsearch？**
+
+elasticsearch是一款非常强大的开源搜索引擎，可以帮助我们从海量数据中快速找到需要的内容
+
+elasticsearch结合kibana、Logstash、Beats，也就是**elastic stack（ELK）**，被广泛应用在日志数据分析、实时监控等领域
+</code></pre>
+<blockquote>
+<p>查询结果如上</p>
+</blockquote>
+<p><strong>清空索引库方法</strong></p>
+<pre><code class="json">POST /text_file_doc/_delete_by_query
+&#123;
+  &quot;query&quot;: &#123;
+    &quot;match_all&quot;: &#123;&#125;
+  &#125;
+&#125;
+</code></pre>
+<h3 id="批量插入文档"><a href="#批量插入文档" class="headerlink" title="批量插入文档"></a>批量插入文档</h3><p>下面是一个简单的需求，将电脑指定目录下的所有markdown文件存入ES并创建倒排索引，然后通过关键词进行文档搜索。</p>
+<p><strong>创建文本文档java类</strong></p>
+<p>封装对应的文档类</p>
+<pre><code class="java">public class TextFileDoc &#123;
+
+    private String fileName;
+
+    private String context;
+
+
+    public String getFileName() &#123;
+        return fileName;
+    &#125;
+
+    public void setFileName(String fileName) &#123;
+        this.fileName = fileName;
+    &#125;
+
+    public String getContext() &#123;
+        return context;
+    &#125;
+
+    public void setContext(String context) &#123;
+        this.context = context;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>文档读取工具</strong></p>
+<p>文档读取工具，到指定目录下读取对应类型的文档信息</p>
+<pre><code class="java">import com.os467.entity.TextFileDoc;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ESLoadLongTextDocument &#123;
+
+    private StringBuilder stringBuilder = new StringBuilder();
+
+    /**
+     * 读取该目录下所有指定类型的文档信息
+     * @param dirPath 目录路径
+     * @param extraName 后缀名 如 docx md txt
+     */
+    public List&lt;TextFileDoc&gt; loadAllDocumentFile(String dirPath,String extraName) throws IOException &#123;
+        List&lt;TextFileDoc&gt; textFileDocList = new ArrayList&lt;&gt;();
+        File file = new File(dirPath);
+        if (file.exists())&#123;
+            readFile(file,extraName,textFileDocList);
+        &#125;
+        return textFileDocList;
+    &#125;
+
+    private void readFile(File file, String extraName,List&lt;TextFileDoc&gt; textFileDocs) throws IOException &#123;
+        if (file.isDirectory())&#123;
+            File[] files = file.listFiles();
+            for (File f : files) &#123;
+                readFile(f,extraName,textFileDocs);
+            &#125;
+        &#125;else &#123;
+            if (file.getName().endsWith(&quot;.&quot;+extraName))&#123;
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+                char[] chars = new char[1024 * 1024];
+                int len;
+                while ((len = bufferedReader.read(chars)) != -1)&#123;
+                    stringBuilder.append(chars,0,len);
+                &#125;
+                TextFileDoc textFileDoc = new TextFileDoc();
+                textFileDoc.setFileName(file.getName());
+                textFileDoc.setContext(stringBuilder.toString());
+                textFileDocs.add(textFileDoc);
+                stringBuilder.setLength(0);
+            &#125;
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>批量插入</strong></p>
+<pre><code class="java">import com.os467.entity.TextFileDoc;
+import org.apache.http.HttpHost;
+import org.elasticsearch.action.bulk.BulkResponse;
+import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestHighLevelClient;
+
+import java.io.IOException;
+import java.util.List;
+
+public class ESTest &#123;
+
+    public static RestHighLevelClient client;
+
+    static &#123;
+        client = new RestHighLevelClient(RestClient.builder(new HttpHost(&quot;192.168.119.88&quot;, 9200, &quot;http&quot;)));
+    &#125;
+
+    public static void main(String[] args) &#123;
+
+
+        ESUtils esUtils = new ESUtils(client);
+
+        try &#123;
+
+            ESLoadLongTextDocument esLoadLongTextDocument = new ESLoadLongTextDocument();
+
+            List&lt;TextFileDoc&gt; fileDocs = esLoadLongTextDocument.loadAllDocumentFile(&quot;D:\\md笔记\\java后端&quot;, &quot;md&quot;);
+
+            BulkResponse response = esUtils.bulkAddDoc(&quot;text_file_doc&quot;, fileDocs);
+            System.out.println(response.status());
+
+
+        &#125; catch (IOException ioException) &#123;
+            ioException.printStackTrace();
+        &#125; finally &#123;
+            try &#123;
+                client.close();
+            &#125; catch (IOException ioException) &#123;
+                ioException.printStackTrace();
+            &#125;
+        &#125;
+
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="查询结果"><a href="#查询结果" class="headerlink" title="查询结果"></a>查询结果</h4><pre><code class="java">import com.os467.entity.TextFileDoc;
+import org.apache.http.HttpHost;
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.SearchHits;
+
+import java.io.IOException;
+
+public class ESTest &#123;
+
+    public static RestHighLevelClient client;
+
+    static &#123;
+        client = new RestHighLevelClient(RestClient.builder(new HttpHost(&quot;192.168.119.88&quot;, 9200, &quot;http&quot;)));
+    &#125;
+
+    public static void main(String[] args) &#123;
+
+
+        ESUtils esUtils = new ESUtils(client);
+
+
+        try &#123;
+            ESUtils.SearchUtils searchUtils = esUtils.searchUtils;
+
+
+            SearchResponse response =
+                    searchUtils.search(&quot;text_file_doc&quot;, QueryBuilders.matchQuery(&quot;context&quot;, &quot;mybatis配置&quot;));
+
+            SearchHits hits = response.getHits();
+
+
+            for (SearchHit hit : hits.getHits()) &#123;
+                String source = hit.getSourceAsString();
+                TextFileDoc textFileDoc = ESUtils.objectMapper.readValue(source, TextFileDoc.class);
+                System.out.println(textFileDoc.getFileName());
+            &#125;
+
+        &#125; catch (IOException ioException) &#123;
+            ioException.printStackTrace();
+        &#125; finally &#123;
+            try &#123;
+                client.close();
+            &#125; catch (IOException ioException) &#123;
+                ioException.printStackTrace();
+            &#125;
+        &#125;
+
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>按照关联度打分搜索结果</strong></p>
+<pre><code class="text">ssm项目整合.md
+springCloud项目.md
+MyBatis.md
+springboot.md
+MyBatisPlus.md
+微服务.md
+mini_cloud.md
+redis.md
+SpringSecurity.md
+异常日志.md
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>ES文档搜索</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">2.1k</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
+    <p><span class="copy-title">发布时间:</span>2024-05-16, 15:59:19</p>
+    <p><span class="copy-title">最后更新:</span>2024-05-16, 16:00:49</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/05/16/ES%E6%96%87%E6%A1%A3%E6%90%9C%E7%B4%A2/" title="ES文档搜索">https://os467.github.io/2024/05/16/ES%E6%96%87%E6%A1%A3%E6%90%9C%E7%B4%A2/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 os467
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 582px;
+    }
+    .nav.fullscreen {
+        margin-left: -582px;
+    }
+    .nav-left {
+        width: 160px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 592px;
+        }
+        .nav.fullscreen {
+            margin-left: -592px;
+        }
+        .nav-left {
+            width: 200px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 592px;
+            margin-left: -592px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
