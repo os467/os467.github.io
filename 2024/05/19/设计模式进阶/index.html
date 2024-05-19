@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>servlet | Tly的博客</title>
+  <title>设计模式进阶 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="servlet | Tly的博客">
+  <meta name="description" content="设计模式进阶 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:type" content="website">
@@ -1335,9 +1335,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-servlet" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-设计模式进阶" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">servlet</h1>
+        <h1 class="article-title">设计模式进阶</h1>
     
     <div class="article-meta">
         
@@ -1347,7 +1347,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="JAVASE基础">JAVASE基础</a>
+            <a  data-rel="其它">其它</a>
             
         </span>
         
@@ -1355,12 +1355,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-05 00:09:12'>2022-07-02 08:24</time>
+            发布时间 : <time class="date" title='最后更新: 2024-05-19 17:38:08'>2024-05-19 17:37</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:5.6k</span>
+        <span>字数:5.7k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1379,7 +1379,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Servlet"><span class="toc-text">Servlet</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Servlet-1"><span class="toc-text">Servlet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HttpServlet"><span class="toc-text">HttpServlet</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ServletConfig"><span class="toc-text">ServletConfig</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#servlet%E5%9F%9F%E5%AF%B9%E8%B1%A1"><span class="toc-text">servlet域对象</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="toc-text">HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GET%E8%AF%B7%E6%B1%82"><span class="toc-text">GET请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">客户端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-text">服务端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HttpServletRequest%E7%B1%BB"><span class="toc-text">HttpServletRequest类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#HttpServletRequest%E7%B1%BB%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">HttpServletRequest类的常用方法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%B5%84%E6%BA%90%E8%B7%AF%E5%BE%84%E7%9A%84%E6%96%B9%E5%BC%8F-%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3"><span class="toc-text">配置资源路径的方式(基于注解)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#GET%E6%96%B9%E6%B3%95%E5%A4%84%E7%90%86%EF%BC%9A"><span class="toc-text">GET方法处理：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Post%E6%96%B9%E6%B3%95%E5%A4%84%E7%90%86%EF%BC%9A"><span class="toc-text">Post方法处理：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HttpServletResponse%E7%B1%BB"><span class="toc-text">HttpServletResponse类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BE%80%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%9B%9E%E4%BC%A0%E6%95%B0%E6%8D%AE"><span class="toc-text">往客户端回传数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E7%9A%84%E8%BD%AC%E5%8F%91"><span class="toc-text">请求的转发</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE-%EF%BC%88%E4%BD%BF%E7%94%A8jsp%EF%BC%89"><span class="toc-text">渲染后端数据 （使用jsp）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">请求重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSP"><span class="toc-text">JSP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E5%85%A5jstl%E6%A0%87%E7%AD%BE%E5%BA%93"><span class="toc-text">引入jstl标签库</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%BF%9B%E9%98%B6"><span class="toc-text">设计模式进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F%EF%BC%885%E7%A7%8D%EF%BC%89"><span class="toc-text">创建型模式（5种）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">单例模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-text">工厂模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">建造者模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">原型模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%BC%8F"><span class="toc-text">对象池模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F%EF%BC%8812%E7%A7%8D%EF%BC%89"><span class="toc-text">行为型模式（12种）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F%EF%BC%887%E7%A7%8D%EF%BC%89"><span class="toc-text">结构型模式（7种）</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1395,882 +1395,1008 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h1><h2 id="Servlet-1"><a href="#Servlet-1" class="headerlink" title="Servlet"></a>Servlet</h2><p>JavaEE规范之一</p>
-<p>是运行在服务端上的一个java小程序，它可以接收客户端发过来的数据请求，并且响应数据给客户端</p>
-<p><strong>部署tomcat的时候记得部署工程</strong></p>
-<p><strong>Servlet的生命周期</strong></p>
-<p>1.浏览器根据地址来发起调用，tomcat容器在接收到请求之后会根据地址栏上的地址进行一个数据的解析</p>
-<p>会找到具体的工程，然后再定位到工程下面具体的资源</p>
-<p>2.定位到资源以后，首先会创建当前servlet类的实例，所以调用的是<strong>无参构造方法</strong></p>
-<p>3.会执行初始化<strong>init</strong>方法，初始化servlet上下文配置对象ServletConfig</p>
-<p>4.会去执行<strong>service</strong>方法，service方法以后我们会用来执行请求的分发处理</p>
-<p>5.当容器关闭的时候，会执行销毁方法<strong>destroy</strong></p>
-<p>使用浏览器去访问项目资源时候，记得在xml文件下注册资源路径，例如将HelloServlet注册路径设置为&#x2F;hello</p>
-<pre><code class="xml">  &lt;!--资源注册--&gt;
-    &lt;servlet&gt;
-        &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
-        &lt;servlet-class&gt;com.os467.servlet.HelloServlet&lt;/servlet-class&gt;
-    &lt;/servlet&gt;
-
-    &lt;!--资源路径的配置--&gt;
-    &lt;servlet-mapping&gt;
-        &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
-        &lt;url-pattern&gt;/hello&lt;/url-pattern&gt;
-    &lt;/servlet-mapping&gt;
-</code></pre>
-<p>servlet的实例是由容器所创建的</p>
-<pre><code class="java">package com.os467.servlet;
-
-import javax.servlet.*;
-import java.io.IOException;
-
-public class HelloServlet implements Servlet &#123;
-
-    public HelloServlet()&#123;
-
-        System.out.println(&quot;无参构造方法执行了!&quot;);
-
-    &#125;
-
-
-    /**
-     * 初始化的方法
-     * @param servletConfig
-     * @throws ServletException
-     */
-    @Override
-    public void init(ServletConfig servletConfig) throws ServletException &#123;
-
-        System.out.println(&quot;init初始化方法执行了！&quot;);
-
-    &#125;
-
-    @Override
-    public ServletConfig getServletConfig() &#123;
-        return null;
-    &#125;
-
-    @Override
-    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException &#123;
-
-        System.out.println(&quot;service方法执行了！&quot;);
-
-    &#125;
-
-    @Override
-    public String getServletInfo() &#123;
-        return null;
-    &#125;
-
-    @Override
-    public void destroy() &#123;
-
-        System.out.println(&quot;destroy方法执行了！&quot;);
-
-    &#125;
-&#125;
-</code></pre>
-<h3 id="HttpServlet"><a href="#HttpServlet" class="headerlink" title="HttpServlet"></a>HttpServlet</h3><p>HttpServlet中的<strong>service</strong>方法为我们提供了请求分发的处理</p>
-<p>创建一个HelloServlet类，继承HttpServlet</p>
-<p>先由service方法接收到request对象，与response对象</p>
-<p>再根据客户端提交的方式调用不同的方法</p>
-<pre><code class="java">package com.os467.servlet;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
-public class HelloServlet extends HttpServlet &#123;
-
-    /**
-     * servlet中的service方法实际上就是完成请求的分发处理，会根据客户端不同提交的方式来执行不同的方法
-     * @param request 请求对象 一般用于请求客户端传递过来的数据或者用于获取浏览器的一些信息
-     * @param response 响应对象 响应数据给前端
-     * @throws ServletException
-     * @throws IOException
-     */
-
-    @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-
-        //获取客户端的提交方式
-        String method = request.getMethod();
-
-        //客户端的提交方式
-        System.out.println(&quot;客户端的提交方式为：&quot;+method);
-
-        if (method.equals(&quot;GET&quot;))&#123;
-
-            doGet(request,response);
-
-        &#125;else if (method.equals(&quot;POST&quot;))&#123;
-
-            doPost(request,response);
-
-        &#125;
-
-
-
-    &#125;
-
-    public void doGet(HttpServletRequest request,HttpServletResponse response)&#123;
-
-        System.out.println(&quot;执行了doGet方法!!!&quot;);
-
-    &#125;
-
-    public void doPost(HttpServletRequest request,HttpServletResponse response)&#123;
-
-        System.out.println(&quot;执行了doPost方法!!!&quot;);
-
-    &#125;
-
-&#125;
-</code></pre>
-<p>&#x2F;&#x2F;前端资源</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;Title&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-    &lt;form action=&quot;http://localhost:8080/servlet/hello&quot; method=&quot;post&quot;&gt;
-
-        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
-
-    &lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h4 id="ServletConfig"><a href="#ServletConfig" class="headerlink" title="ServletConfig"></a>ServletConfig</h4><p>通过<strong>ServletConfig</strong>的对象来获取上下文配置信息（即xml文件内配置的信息）</p>
-<pre><code class="java">  /**
-     * ServletConfig用于获取上下文配置信息
-     * @param config
-     * @throws ServletException
-     */
-    @Override
-    public void init(ServletConfig config) throws ServletException &#123;
-
-        //获取初始化的数据
-        String mysql_url = config.getInitParameter(&quot;mysql_url&quot;);
-
-        System.out.println(mysql_url);
-    &#125;
-</code></pre>
-<p>配置文件</p>
-<pre><code class="xml"> &lt;servlet&gt;
-        &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
-        &lt;servlet-class&gt;com.os467.servlet.HelloServlet&lt;/servlet-class&gt;
-        &lt;init-param&gt;
-            &lt;param-name&gt;mysql_url&lt;/param-name&gt;
-            &lt;param-value&gt;jdbc:mysql://localhost:3306&lt;/param-value&gt;
-        &lt;/init-param&gt;
-
-        &lt;init-param&gt;
-            &lt;param-name&gt;username&lt;/param-name&gt;
-            &lt;param-value&gt;root&lt;/param-value&gt;
-        &lt;/init-param&gt;
-
-        &lt;init-param&gt;
-            &lt;param-name&gt;driver&lt;/param-name&gt;
-            &lt;param-value&gt;com.mysql.jdbc.Driver&lt;/param-value&gt;
-        &lt;/init-param&gt;
-
-    &lt;/servlet&gt;
-</code></pre>
-<p>servlet配置对象和servlet域对象都是<strong>单例</strong>的(从工程启动时，这两个实例就创建成功了，使用的都是同一个对象)</p>
-<p>单例模式（提高了系统资源，提高了程序的执行效率）</p>
-<pre><code class="java">public void doGet(HttpServletRequest request,HttpServletResponse response)&#123;
-
-        //获取servlet核心配置对象，打印结果为true
-        ServletConfig servletConfig01 = getServletConfig();
-        ServletConfig servletConfig02 = getServletConfig();
-
-        System.out.println(servletConfig01 == servletConfig02);
-
-        //获取servlet域对象,打印结果为true
-        //1.
-        ServletContext servletContext = getServletConfig().getServletContext();
-
-        //2.
-        ServletContext servletContext1 = getServletContext();
-
-        System.out.println(servletContext == servletContext1);
-    &#125;
-</code></pre>
-<h5 id="servlet域对象"><a href="#servlet域对象" class="headerlink" title="servlet域对象"></a>servlet域对象</h5><p><strong>ServletConfig</strong> 是servlet核心配置对象，而且该对象的生命周期是随着容器的创建而创建，<br>容器的销毁而销毁,在工程的任意位置去获取该实例的时候，指向的都是同一份内存地址<br><strong>作用</strong>：在servlet实例加载的时候去获取局部的初始化信息</p>
-<p><strong>servletContext</strong> 是servlet中的一个上下文本对象，而且该对象的生命周期是随着容器的创建而创建，<br>容器的销毁而销毁，在工程的任意位置去获取该实例的时候，指向的都是同一份内存地址<br><strong>作用</strong>：可以像map一样存放数据，取出数据，而且是在工程的任意位置取出数据，范围是<strong>整个web工程</strong>，可以去读取全局的初始化信息，可以在工程的任何位置读取</p>
-<p>后面会接触到的域对象：</p>
-<p>request（也是一个域对象，也可以去存放数据，只不过该对象的取值范围比较小），session（会话对象，会对客户端和服务端进行一个绑定）</p>
-<pre><code class="java">public void doGet(HttpServletRequest request,HttpServletResponse response)&#123;
-
-        //获取servlet核心配置对象
-        ServletConfig servletConfig0 = getServletConfig();
-
-        //获取servlet域对象
-        ServletContext servletContext = getServletConfig().getServletContext();
-
-        //往域中存放数据
-        servletContext.setAttribute(&quot;username&quot;,&quot;root&quot;);
-        servletContext.setAttribute(&quot;password&quot;,&quot;123456&quot;);
-
-        //取出域中的数据
-        System.out.println(&quot;username的值为：&quot;+servletContext.getAttribute(&quot;username&quot;)+
-        &quot;  password的值为：&quot;+servletContext.getAttribute(&quot;password&quot;));
-
-    &#125;
-</code></pre>
-<p>取出全局的初始化数据</p>
-<pre><code class="java"> //取出全局的初始化数据
-        String name = servletContext.getInitParameter(&quot;name&quot;);
-        String age = servletContext.getInitParameter(&quot;age&quot;);
-        String sex = servletContext.getInitParameter(&quot;sex&quot;);
-
-        System.out.println(name+&quot; &quot;+age+&quot; &quot;+sex);
-</code></pre>
-<p>配置文件（需要写在根标签web-app内部）</p>
-<pre><code class="xml"> &lt;/servlet-mapping&gt;
-
-    &lt;!--配置全局的初始化数据--&gt;
-    &lt;context-param&gt;
-        &lt;param-name&gt;name&lt;/param-name&gt;
-        &lt;param-value&gt;jack&lt;/param-value&gt;
-    &lt;/context-param&gt;
-
-    &lt;context-param&gt;
-        &lt;param-name&gt;age&lt;/param-name&gt;
-        &lt;param-value&gt;20&lt;/param-value&gt;
-    &lt;/context-param&gt;
-
-    &lt;context-param&gt;
-        &lt;param-name&gt;sex&lt;/param-name&gt;
-        &lt;param-value&gt;男&lt;/param-value&gt;
-    &lt;/context-param&gt;
-
-
-&lt;/web-app&gt;
-</code></pre>
-<p>**<init-param>**标签内的数据用servletConfig对象取出</p>
-<p>**<context-param>**标签内的数据用servletContext对象取出</p>
-<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><p>所谓HTTP协议，客户端和服务器之间通信时，发送的数据，需要遵循的规则，叫HTTP协议</p>
-<p>请求分为GET和POST两种</p>
-<p><strong>响应HTTP协议格式</strong></p>
-<p>1.响应行</p>
+        <h1 id="设计模式进阶"><a href="#设计模式进阶" class="headerlink" title="设计模式进阶"></a>设计模式进阶</h1><p>面向对象的四个基本原则：封装，抽象，继承，多条</p>
+<p><strong>设计原则</strong></p>
+<p>面向对象的设计原则被称为SOLID，包括</p>
 <ul>
-<li>响应的协议和版本号</li>
-<li>响应状态码</li>
-<li>响应状态描述符</li>
-</ul>
-<p>2.响应头key ：value不同的请求头，有不同的含义</p>
-<p>3.响应体 &#x3D;&#x3D;&#x3D;&gt;&gt;&gt;就是回传给客户端的数据</p>
-<p><strong>常用响应码说明</strong></p>
-<ul>
-<li>200表示请求成功</li>
-<li>302表示请求重定向</li>
-<li>404表示请求服务器已经收到了，但是你要的数据不存在（请求地址错误）</li>
-<li>500表示服务器已经收到请求，但是服务器内部错误（代码错误）</li>
-</ul>
-<h4 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h4><p><strong>请求行</strong></p>
-<p>1.请求的方式GET</p>
-<p>2.请求的资源路径[+?+请求参数]</p>
-<p>3.请求的协议的版本号HTTP&#x2F;1.1</p>
-<p><strong>请求头</strong></p>
-<p>key : value 组成 不同的键值对，表示不同的含义</p>
-<p>无论客户端给服务器传数据，还是服务端给客户端传数据，都是基于http协议来完成数据的互传</p>
-<h4 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h4><p>客户端如何访问服务端，如何给服务区发送数据?</p>
-<p>1.要知道访问服务端具体的地址</p>
-<p><a target="_blank" rel="noopener" href="http://localhost:8080/servlet/hello">http://localhost:8080/servlet/hello</a></p>
-<p>格式：http:&#x2F;&#x2F;本地IP地址:端口号&#x2F;工程路径&#x2F;资源路径</p>
-<p>2.如何去传递数据</p>
-<p>看一下浏览器端的提交方式是什么，如果是get，则把数据封装在地址后面：资源路径?key1&#x3D;value1&amp;key2&#x3D;value2</p>
-<p>如果是post提交方式，则数据是被封装在请求体中的</p>
-<h4 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h4><p>服务端给客户端响应数据，直接是在当前页面上完成，没有地址的跳转，响应的数据则直接被封装在响应体中</p>
-<p>以后在前端框架中，我们会根据后端的响应数据，来完成前端逻辑的判断（比如AJA异步技术）</p>
-<h3 id="HttpServletRequest类"><a href="#HttpServletRequest类" class="headerlink" title="HttpServletRequest类"></a>HttpServletRequest类</h3><p>每次只要有请求进入Tomcat服务器，Tomcat服务器就会把请求过来的HTTP协议信息解析好封装到Request对象中。然后传递到service方法（doGet和doPost）中给我们使用。我们可以通过HttpServletRequest对象，获取到所有请求的信息</p>
-<h5 id="HttpServletRequest类的常用方法"><a href="#HttpServletRequest类的常用方法" class="headerlink" title="HttpServletRequest类的常用方法"></a>HttpServletRequest类的常用方法</h5><ul>
-<li><p>getRequestURI()  获取请求的资源路径</p>
+<li><p>单一职责原则：类的设计应当只负责本类负责的部分</p>
 </li>
-<li><p>getRequestURL()  获取请求的统一资源定位符（绝对路径）</p>
+<li><p>开闭原则：代码设计对修改关闭，对扩展开放</p>
 </li>
-<li><p>getRemoteHost()  获取客户端的ip地址iv.getHeader()获取求头</p>
+<li><p>里氏替换原则：派生类应该像其父类一样表现</p>
 </li>
-<li><p>getParameter()  获取请求的参数</p>
+<li><p>接口隔离原则：客户端不应该依赖其不需要的接口</p>
 </li>
-<li><p>getParameterValues()  获取请求的参数（多个值的时候使用）</p>
-</li>
-<li><p>getMethod()  获取请求的方法GET或POST</p>
-</li>
-<li><p>setAttribute(key,value)  设置域数据</p>
-</li>
-<li><p>getAttribute(key)  获取域数据</p>
-</li>
-<li><p>getRequestDispatcher()  获取请求转发对象</p>
+<li><p>依赖倒置原则：高级模块与低级模块都依赖于抽象，细节依赖于抽象</p>
 </li>
 </ul>
-<h4 id="配置资源路径的方式-基于注解"><a href="#配置资源路径的方式-基于注解" class="headerlink" title="配置资源路径的方式(基于注解)"></a>配置资源路径的方式(基于注解)</h4><p>在类名上注释<code>@WebServlet(&quot;/hello05&quot;)</code></p>
-<h5 id="GET方法处理："><a href="#GET方法处理：" class="headerlink" title="GET方法处理："></a>GET方法处理：</h5><pre><code class="java">package com.os467.servlet;
+<h2 id="创建型模式（5种）"><a href="#创建型模式（5种）" class="headerlink" title="创建型模式（5种）"></a>创建型模式（5种）</h2><h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><p>提前加载（饿汉式）</p>
+<p>延迟加载（懒汉式）</p>
+<p><strong>提前加载</strong></p>
+<p>提前加载的单例模式直接在static属性new对象即可，由于static代码段在类创建时就会创建对象，因此保证了只会被创建一次</p>
+<pre><code class="java">public class Singleton &#123;
 
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
+    public static void main(String[] args) &#123;
+        Singleton instance = Singleton.getInstance();
+        System.out.println(&quot;单例模式(提前加载)：&quot;+instance);
+    &#125;
 
-@WebServlet(&quot;/hello05&quot;)
-public class HelloServlet04 extends HttpServlet &#123;
+
+    //由于类加载的特性，static属性只会加载一次，因此static属性的对象也是唯一的
+    private static Singleton instance = new Singleton();
+
+    private Singleton()&#123;&#125;
     
-     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-
-        doGet(request,response);
-
-    &#125;
-
-     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-
-        //获取请求的资源路径
-        String requestURI = request.getRequestURI();
-
-        System.out.println(&quot;请求的资源路径为:&quot;+requestURI);
-
-        //基于浏览器的全路径
-        StringBuffer requestURL = request.getRequestURL();
-
-        //http://localhost:8080/servlet/hello04
-        System.out.println(requestURL);
-
-        //获取客户端的ip
-        String remoteHost = request.getRemoteHost();
-
-        //0:0:0:0:0:0:0:1
-        System.out.println(remoteHost);
-
-        String header = request.getHeader(&quot;User-Agent&quot;);
-
-        System.out.println(header);
-
-        //获取请求的参数，获取客户端传递过来的数据
-        String key1 = request.getParameter(&quot;key1&quot;);
-        String key2 = request.getParameter(&quot;key2&quot;);
-        String key3 = request.getParameter(&quot;key3&quot;);
-        String name = request.getParameter(&quot;name&quot;);
-
-        System.out.println(key1+&quot; &quot;+key2+&quot; &quot;+key3+&quot; &quot;+name);
-
-
+    public static Singleton getInstance()&#123;
+        return instance;
     &#125;
 
 &#125;
 </code></pre>
-<h5 id="Post方法处理："><a href="#Post方法处理：" class="headerlink" title="Post方法处理："></a>Post方法处理：</h5><p><strong>接收数据的方法:</strong></p>
-<p><code>request.getParameter(&quot;key的值&quot;)</code></p>
-<p><strong>处理中文乱码的方法:</strong></p>
-<pre><code class="java">//处理中文乱码
-request.setCharacterEncoding(&quot;utf-8&quot;);
-</code></pre>
-<pre><code class="java">package com.os467.servlet;
+<p><strong>延迟加载</strong></p>
+<p>延迟加载就需要保证多线程场景下的单例</p>
+<p>new对象时必须保证只有一个线程进入创建单例</p>
+<p>使用<strong>双重检查机制</strong>来保证单例唯一性</p>
+<ul>
+<li>第一个if是为了判断是否需要让线程获取锁</li>
+<li>获取完锁后进入同步代码块，再进入if判断一次单例是否被其它线程创建过</li>
+</ul>
+<pre><code class="java">public class DelaySingleton &#123;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
-@WebServlet(&quot;/hello04&quot;)
-public class HelloServlet04 extends HttpServlet &#123;
-
-    @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-
-        //处理中文乱码
-        request.setCharacterEncoding(&quot;utf-8&quot;);
-
-        if (request.getMethod().equals(&quot;GET&quot;))&#123;
-
-            doGet(request,response);
-
-        &#125;else if (request.getMethod().equals(&quot;POST&quot;))&#123;
-
-            doPost(request,response);
-
-        &#125;
-
+    public static void main(String[] args) &#123;
+        DelaySingleton instance = DelaySingleton.getInstance();
+        System.out.println(&quot;单例模式(延迟加载)：&quot;+instance);
     &#125;
 
+    //全局单例
+    private static DelaySingleton instance;
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-        
-        //获取客户端传递来的数据
-        String username = request.getParameter(&quot;username&quot;);
-        String password = request.getParameter(&quot;password&quot;);
-        String sex = request.getParameter(&quot;sex&quot;);
-        String country = request.getParameter(&quot;country&quot;);
+    //私有构造方法
+    private DelaySingleton()&#123;&#125;
 
-        System.out.println(username);
-        System.out.println(password);
-        System.out.println(sex);
-        System.out.println(country);
-
+    //双重检查保证多线程下的单例唯一性
+    public static DelaySingleton getInstance() &#123;
+        if (instance == null)&#123;
+            synchronized (DelaySingleton.class)&#123;
+                if (instance == null)&#123;
+                    instance = new DelaySingleton();
+                &#125;
+            &#125;
+        &#125;
+        return instance;
     &#125;
 &#125;
 </code></pre>
-<p>前端布局：</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;Title&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
+<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><p>工厂模式的出现是为了抽离类中对象实例化部分的逻辑，使得类能更好的遵循单一职责原则。同时在新增子类时，也不需要重新修改创建实例的代码，创建新类型的逻辑交给了工厂负责，遵循了开闭原则。</p>
+<p><strong>工厂模式分类</strong></p>
+<p>简单工厂模式</p>
+<ul>
+<li>静态工厂</li>
+<li>反射工厂</li>
+<li>实例工厂</li>
+</ul>
+<p>抽象工厂模式</p>
+<ul>
+<li>工厂方法模式</li>
+<li>抽象工厂</li>
+</ul>
+<blockquote>
+<p>工厂模式的具体实现方法有很多种，有时候我们可以根据场景需要灵活选择不同的实现方案来设计工厂模式，因此工厂模式并不存在非常严格的规定和准则。</p>
+<p>我们需要知道的是工厂模式的<strong>核心</strong>就是由工厂类来负责合适对象的创建。</p>
+</blockquote>
+<p><strong>产品类</strong></p>
+<pre><code class="java">public interface Product &#123;
 
-    &lt;form action=&quot;http://localhost:8080/servlet/hello04&quot; method=&quot;post&quot;&gt;
-        username:&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;br&gt;
-
-        password:&lt;input type=&quot;text&quot; name=&quot;password&quot;&gt;&lt;br&gt;
-
-        男:&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;男&quot;&gt; 女:&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;女&quot;&gt;&lt;br&gt;
-        
-        国籍:&lt;select name=&quot;country&quot;&gt;
-            &lt;option value=&quot;1&quot;&gt;----请选择----&lt;/option&gt;
-            &lt;option value=&quot;中国&quot;&gt;中国&lt;/option&gt;
-            &lt;option value=&quot;美国&quot;&gt;美国&lt;/option&gt;
-            &lt;option value=&quot;日本&quot;&gt;日本&lt;/option&gt;
-            &lt;option value=&quot;德国&quot;&gt;德国&lt;/option&gt;
-            &lt;/select&gt;&lt;br&gt;
-
-        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
-
-    &lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+    String getName();
+    
+    Product newInstance();
+    
+&#125;
 </code></pre>
-<p>接收具有多个value值的key的方法</p>
-<pre><code class="java">//通过请求对象来接收value有多个的key
-        String[] hobbies = request.getParameterValues(&quot;hobby&quot;);
-        
-        //遍历value
-        for (String hobby : hobbies) &#123;
-
-            System.out.println(hobby);
-
-        &#125;
-</code></pre>
-<h3 id="HttpServletResponse类"><a href="#HttpServletResponse类" class="headerlink" title="HttpServletResponse类"></a>HttpServletResponse类</h3><p><strong>HttpServletResponse</strong>类和<strong>HttpServletRequest</strong>类一样，每次请求进来，Tomcat服务器都会创建一个<strong>Response</strong>对象传递给Servlet程序去使用，HttpServletRequest表示<strong>请求过来的信息</strong>，HttpServletResponse表示所有<strong>响应的信息</strong>，我们如果需要设置返回给客户端的信息，都可以通过HttpServletResponse对象来进行设置</p>
-<h5 id="往客户端回传数据"><a href="#往客户端回传数据" class="headerlink" title="往客户端回传数据"></a>往客户端回传数据</h5><p>字节流<strong>getOutputStream()</strong></p>
-<p>效率高</p>
-<p>常用于下载（传递二进制数据）</p>
-<p>字符流<strong>getWriter()</strong></p>
-<p>效率低</p>
-<p>常用于回传字符串（常用）</p>
-<p>响应中文乱码解决方法，以及设置浏览器可读取文本类型</p>
-<p><code>setContentType(&quot;text/html;charset=UTF-8&quot;)</code></p>
-<pre><code class="java">package com.os467.servlet;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
-@WebServlet(&quot;/hello06&quot;)
-public class HelloServlet06 extends HttpServlet &#123;
+<pre><code class="java">public class ProductA implements Product&#123;
+    @Override
+    public String getName() &#123;
+        return &quot;产品A&quot;;
+    &#125;
 
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-
-        //让前后端字符集统一的方法
-        response.setContentType(&quot;text/html;charset=UTF-8&quot;);
-
-        //向tomcat服务器请求字符流对象
-        response.getWriter().print(&quot;hello servlet&quot;);
-        response.getWriter().print(&quot;&lt;br/&gt;&quot;);
-        response.getWriter().print(&quot;响应成功！&quot;);
-        response.getWriter().print(&quot;&lt;br/&gt;&quot;);
-        response.getWriter().print(&quot;&lt;input type=&#39;text&#39;&gt;&quot;);
-        
-
-
+    public Product newInstance() &#123;
+        return new ProductA();
     &#125;
 &#125;
 </code></pre>
-<p>案例：（通过前端访问，后端响应数据库数据给前端）</p>
-<p>User用户类</p>
-<p>JdbcUtils工具类</p>
-<pre><code class="java">package com.os467.servlet;
-
-import com.os467.beans.User;
-import com.os467.utils.JdbcUtils;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-public class UserServlet extends HttpServlet &#123;
+<pre><code class="java">public class ProductB implements Product&#123;
+    @Override
+    public String getName() &#123;
+        return &quot;产品B&quot;;
+    &#125;
 
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+    public Product newInstance() &#123;
+        return new ProductB();
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">public class ProductC implements Product&#123;
+    @Override
+    public String getName() &#123;
+        return &quot;产品C&quot;;
+    &#125;
 
-        //处理中文乱码
-        request.setCharacterEncoding(&quot;utf-8&quot;);
-        response.setContentType(&quot;text/html;charset=utf-8&quot;);
+    @Override
+    public Product newInstance() &#123;
+        return new ProductC();
+    &#125;
+&#125;
+</code></pre>
+<p><strong>简单工厂</strong></p>
+<p>简单工厂只需要客户提供指明对象类型的参数，即可实例化具体的产品返回，返回的产品转换为基类型。</p>
+<p><strong>1.静态工厂</strong></p>
+<p>下面是一个最简单的静态工厂实现，但是如果需要一个新的产品类型D，我们就需要修改工厂代码，这<strong>打破了开闭原则</strong>，因此我们需要改进该静态工厂。</p>
+<pre><code class="java">public class SimpleStaticFactory &#123;
+    
+    public enum ProductType&#123;
+        A,B,C
+    &#125;
+    
+    public static Product create(ProductType productType)&#123;
+        if (productType.equals(ProductType.A))&#123;
+            return new ProductA();
+        &#125;
+        else if (productType.equals(ProductType.B))&#123;
+            return new ProductB();
+        &#125;
+        else if (productType.equals(ProductType.C))&#123;
+            return new ProductC();
+        &#125;
+        return null;
+    &#125;
+    
+&#125;
+</code></pre>
+<p><strong>2.反射工厂</strong></p>
+<p>反射工厂模式需要运行时权限，因此在某些特定环境是无法实现的。同时反射机制也会降低程序的效率，在对性能要求很高的场景应该避免这种用法。</p>
+<pre><code class="java">public class ClassFactory &#123;
 
-        //获取提交类型
-        String method = request.getMethod();
+    public static void main(String[] args) &#123;
+        ClassFactory classStaticFactory = new ClassFactory();
+        //向静态工厂注册子类型
+        classStaticFactory.registerProduct(&quot;A&quot;, ProductA.class);
+        classStaticFactory.registerProduct(&quot;B&quot;, ProductB.class);
+        classStaticFactory.registerProduct(&quot;C&quot;, ProductC.class);
 
-        if (method.equals(&quot;GET&quot;))&#123;
+        try &#123;//创建实例
+            Product a = classStaticFactory.create(&quot;A&quot;);
+            Product b = classStaticFactory.create(&quot;B&quot;);
+            Product c = classStaticFactory.create(&quot;C&quot;);
+            System.out.println(&quot;简单工厂(反射):&quot;+ a.getName());
+            System.out.println(&quot;简单工厂(反射):&quot;+ b.getName());
+            System.out.println(&quot;简单工厂(反射):&quot;+ c.getName());
+        &#125; catch (IllegalAccessException e) &#123;
+            e.printStackTrace();
+        &#125; catch (InstantiationException e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
 
-            doGet(request,response);
+    private Map&lt;String,Class&gt; registeredProducts = new HashMap&lt;&gt;();
 
-        &#125;else if (method.equals(&quot;POST&quot;))&#123;
+    //向工厂注册一种新的类型
+    public void registerProduct(String productId,Class&lt;? extends Product&gt; productClass)&#123;
+        registeredProducts.put(productId,productClass);
+    &#125;
 
-            doPost(request,response);
+    //通过反射动态创建类的实例
+    public Product create(String productId) throws IllegalAccessException, InstantiationException &#123;
+        Class productClass = registeredProducts.get(productId);
+        return (Product) productClass.newInstance();
+    &#125;
 
+
+&#125;
+</code></pre>
+<p><strong>3.使用newInstance方法进行类注册的简单工厂</strong></p>
+<p>这种工厂的特点是提前注册，将子类的一个<strong>实例副本</strong>保存到集合中，同时所有子类需要实现一个<code>newInstance()</code>来创建当前类的实例。工厂通过调用子类的<code>newInstance()</code>方法来动态的创建子类实例。</p>
+<pre><code class="java">import java.util.HashMap;
+import java.util.Map;
+
+public class NewInstanceFactory &#123;
+
+    public static void main(String[] args) &#123;
+        NewInstanceFactory newInstanceStaticFactory = new NewInstanceFactory();
+        //向工厂注册子类型
+        newInstanceStaticFactory.registerProduct(&quot;A&quot;, new ProductA());
+        newInstanceStaticFactory.registerProduct(&quot;B&quot;, new ProductB());
+        newInstanceStaticFactory.registerProduct(&quot;C&quot;, new ProductC());
+
+        Product a = newInstanceStaticFactory.create(&quot;A&quot;);
+        Product b = newInstanceStaticFactory.create(&quot;B&quot;);
+        Product c = newInstanceStaticFactory.create(&quot;C&quot;);
+        System.out.println(&quot;简单工厂(实例):&quot;+ a.getName());
+        System.out.println(&quot;简单工厂(实例):&quot;+ b.getName());
+        System.out.println(&quot;简单工厂(实例):&quot;+ c.getName());
+    &#125;
+
+    private Map&lt;String,Product&gt; registeredProducts = new HashMap&lt;&gt;();
+
+    //向工厂注册新的实例
+    public void registerProduct(String productId,Product product)&#123;
+        registeredProducts.put(productId,product);
+    &#125;
+
+    //通过保存的实例创建新的实例
+    public Product create(String productId)&#123;
+        Product product = registeredProducts.get(productId);
+        if (product != null)&#123;
+            return product.newInstance();
+        &#125;
+        return null;
+    &#125;
+
+
+&#125;
+</code></pre>
+<p><strong>抽象工厂模式</strong></p>
+<p>抽象工厂模式要求<strong>产品和工厂</strong>都是面向抽象类或接口的，每一个产品都有其父类，且交由具体的工厂实例化，所有具体的工厂都实现了抽象工厂类。</p>
+<p><strong>1.传统工厂方法模式</strong></p>
+<p>工厂方法模式是抽象工厂模式的特例，即只存在一个抽象产品类。通过一个抽象的工厂类提供创建实例的抽象方法，其创建实例的逻辑应交由具体的子类工厂方法实现。也就是如果我们需要一个新的产品加入工厂，需要继承抽象工厂并实现对应的创建方法，这<strong>遵循了开闭原则</strong>。</p>
+<blockquote>
+<p>传统工厂方法模式就是只有一种抽象产品的抽象工厂</p>
+</blockquote>
+<p><strong>2.匿名工厂方法</strong></p>
+<p>匿名工厂方法即将抽象工厂类的具体实现通过匿名类的形式写在代码块中，同样遵循了开闭原则。</p>
+<pre><code class="java">public abstract class ProductFactory &#123;
+
+    public static void main(String[] args) &#123;
+        //创建子类工厂
+        ProductFactory productAFactory = new ProductAFactory();
+        Product a = productAFactory.create();
+        System.out.println(&quot;工厂方法模式:&quot;+a.getName());
+
+        //匿名具体工厂方法模式，创建实例C
+        ProductFactory productBFactory = new ProductFactory() &#123;
+            @Override
+            protected Product create() &#123;
+                return new ProductB();
+            &#125;
+        &#125;;
+
+        Product b = productBFactory.create();
+        System.out.println(&quot;匿名具体工厂方法模式:&quot;+b.getName());
+
+    &#125;
+
+    //抽象方法，将具体创建实例的逻辑交由具体工厂类实现
+    protected abstract Product create();
+
+&#125;
+</code></pre>
+<p>具体的工厂类</p>
+<pre><code class="java">public class ProductAFactory extends ProductFactory&#123;
+
+    @Override
+    protected Product create() &#123;
+        return new ProductA();
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>3.抽象工厂模式</strong></p>
+<p>抽象工厂模式是工厂方法模式的拓展，如果说工厂方法模式中只包含一个抽象产品类，那么抽象工厂模式则包含多个抽象产品类。</p>
+<p>抽象工厂模式中，每个<strong>抽象产品</strong>都有一个<strong>抽象实例化方法</strong>，具体的产品类将交由具体工厂实现每个产品的实例化方法。</p>
+<p><strong>抽象工厂模式组成部分</strong></p>
+<ul>
+<li><code>AbstractFactory</code>（抽象工厂类）：抽象类，用于声明创建不同类型产品的方法</li>
+<li><code>ConcreteFactory</code>（具体工厂类）：具体类，用于实现抽象工厂中声明的方法</li>
+<li><code>AbstractProduct</code> （抽象产品类）：抽象类或接口，一簇相关的产品类由来自不同层级的相似产品类组成。ProductA1和ProductB1来自第一个类簇，由ConcreteFactory1实例化。ProductA2和ProductB2来自第二个类簇，由ConcreteFactory2实例化。</li>
+</ul>
+<blockquote>
+<p>抽象工厂模式使得产品和工厂都依赖了抽象，抽象工厂类只关心一系列抽象的产品，<strong>不关心具体的产品是什么</strong>，也<strong>不关心如何生产产品</strong>。</p>
+</blockquote>
+<pre><code class="java">public abstract class AbstractFactory &#123;
+
+    public static void main(String[] args) &#123;
+
+        //创建具体工厂1
+        AbstractFactory factory1 = new ConcreteFactory1();
+        AbstractProductA productA1 = factory1.createProductA();
+        AbstractProductB productB1 = factory1.createProductB();
+
+        System.out.println(&quot;factory1创建的具体产品:&quot;+productA1.getName());
+        System.out.println(&quot;factory1创建的具体产品:&quot;+productB1.getName());
+
+        //创建具体工厂2
+        AbstractFactory factory2 = new ConcreteFactory2();
+        AbstractProductA productA2 = factory2.createProductA();
+        AbstractProductB productB2 = factory2.createProductB();
+
+        System.out.println(&quot;factory2创建的具体产品:&quot;+productA2.getName());
+        System.out.println(&quot;factory2创建的具体产品:&quot;+productB2.getName());
+    &#125;
+
+    protected abstract AbstractProductA createProductA();
+
+    protected abstract AbstractProductB createProductB();
+
+
+&#125;
+
+abstract class AbstractProductA &#123;
+
+    protected abstract String getName();
+
+&#125;
+
+abstract class AbstractProductB &#123;
+
+    protected abstract String getName();
+
+&#125;
+
+class ConcreteFactory1 extends AbstractFactory &#123;
+
+
+    @Override
+    protected AbstractProductA createProductA() &#123;
+        return new ProductA1();
+    &#125;
+
+    @Override
+    protected AbstractProductB createProductB() &#123;
+        return new ProductB1();
+    &#125;
+&#125;
+
+class ConcreteFactory2 extends AbstractFactory&#123;
+
+    @Override
+    protected AbstractProductA createProductA() &#123;
+        return new ProductA2();
+    &#125;
+
+    @Override
+    protected AbstractProductB createProductB() &#123;
+        return new ProductB2();
+    &#125;
+&#125;
+
+class ProductA1 extends AbstractProductA &#123;
+
+    @Override
+    protected String getName() &#123;
+        return &quot;产品A1&quot;;
+    &#125;
+&#125;
+
+class ProductA2 extends AbstractProductA &#123;
+
+    @Override
+    protected String getName() &#123;
+        return &quot;产品A2&quot;;
+    &#125;
+&#125;
+
+class ProductB1 extends AbstractProductB &#123;
+
+    @Override
+    protected String getName() &#123;
+        return &quot;产品B1&quot;;
+    &#125;
+&#125;
+
+class ProductB2 extends AbstractProductB &#123;
+
+    @Override
+    protected String getName() &#123;
+        return &quot;产品B2&quot;;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h3><p>如果一个对象有多种实例化形式，最直接的方法就是构建多个构造函数，按照不同场景进行实例化，但缺少可读性和灵活性，因此不是最佳方案。</p>
+<p>建造者模式的目的旨在对一个复杂对象的实例化操作逻辑分别进行封装，这些类就被称为建造者。每当需要<strong>来自同一个类但具有不同结构的对象时</strong>，就可以通过构造另一个建造者来进行实例化。</p>
+<blockquote>
+<p>当需要不同结构的对象时，我们可以通过添加新的建造者，从而实现对修改的关闭对拓展的开放</p>
+</blockquote>
+<p><strong>建造者模式组成部分</strong></p>
+<ul>
+<li><code>Product</code>（产品类）：需要为其构建对象的类，是具有不同表现形式的复杂或复合对象</li>
+<li><code>Builder</code> （抽象建造者类）：用于声明构建产品类的组成部分的抽象类或接口，它的作用是仅公开构建产品类的功能，隐藏产品类的其它功能。（<strong>将产品类和构建产品类的其它类分离开</strong>）</li>
+<li><code>ConcreteBuilder</code> （具体建造者类）：用于实现抽象建造者类接口中声明的方法，通过<code>getResult()</code>方法返回构建好的产品类</li>
+<li><code>Director</code>（导演类）：用于指导如何构建对象的类。在建造者模式的某些变体中，导演类已被移除，其角色被抽象建造者或客户端所替代。</li>
+</ul>
+<p><strong>带有导演类的建造者模式</strong></p>
+<p><strong>产品类</strong></p>
+<pre><code class="java">public abstract class Product &#123;
+
+    public abstract Double getPrice();
+
+    public abstract String getName();
+
+    public abstract Long getId();
+
+    public abstract String getDesc();
+
+    @Override
+    public String toString() &#123;
+        return super.toString();
+    &#125;
+
+&#125;
+</code></pre>
+<pre><code class="java">public class Product1 extends Product&#123;
+
+    private String name;
+
+    private Long id;
+
+    private String desc;
+
+    private Double price;
+
+    public void addName(String name) &#123;
+        this.name = name;
+    &#125;
+
+    public void addId(Long id) &#123;
+        this.id = id;
+    &#125;
+
+    public void addDesc(String desc) &#123;
+        this.desc = desc;
+    &#125;
+
+    public void addPrice(Double price) &#123;
+        this.price = price;
+    &#125;
+
+    @Override
+    public Double getPrice() &#123;
+        return price;
+    &#125;
+
+    public String getName() &#123;
+        return name;
+    &#125;
+
+    public Long getId() &#123;
+        return id;
+    &#125;
+
+    public String getDesc() &#123;
+        return desc;
+    &#125;
+
+
+    @Override
+    public String toString() &#123;
+        return &quot;Product1&#123;&quot; +
+                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                &quot;, id=&quot; + id +
+                &quot;, desc=&#39;&quot; + desc + &#39;\&#39;&#39; +
+                &quot;, price=&quot; + price +
+                &#39;&#125;&#39;;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">public class Product2 extends Product&#123;
+
+    private String name;
+
+    private Long id;
+
+    private String desc;
+
+    private Double price;
+
+    public void addName(String name) &#123;
+        this.name = name;
+    &#125;
+
+    public void addId(Long id) &#123;
+        this.id = id;
+    &#125;
+
+    public void addDesc(String desc) &#123;
+        this.desc = desc;
+    &#125;
+
+    public void addPrice(Double price) &#123;
+        this.price = price;
+    &#125;
+
+    @Override
+    public Double getPrice() &#123;
+        return price;
+    &#125;
+
+    @Override
+    public String getName() &#123;
+        return name;
+    &#125;
+
+    @Override
+    public Long getId() &#123;
+        return id;
+    &#125;
+
+    @Override
+    public String getDesc() &#123;
+        return desc;
+    &#125;
+
+    @Override
+    public String toString() &#123;
+        return &quot;Product2&#123;&quot; +
+                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                &quot;, id=&quot; + id +
+                &quot;, desc=&#39;&quot; + desc + &#39;\&#39;&#39; +
+                &quot;, price=&quot; + price +
+                &#39;&#125;&#39;;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>建造者类</strong></p>
+<pre><code class="java">public interface ProductBuilder &#123;
+
+    void buildProduct();
+
+    void addName(String name);
+
+    void addId(Long id);
+
+    void addDesc(String desc);
+
+    void addPrice(Double price);
+
+    Product getProduct();
+&#125;
+</code></pre>
+<pre><code>public class Product1Builder implements ProductBuilder&#123;
+
+    private Product1 product;
+
+    @Override
+    public void buildProduct() &#123;
+      product = new Product1();
+    &#125;
+
+    @Override
+    public void addName(String name) &#123;
+        product.addName(name);
+    &#125;
+
+    @Override
+    public void addId(Long id) &#123;
+        product.addId(id);
+    &#125;
+
+    @Override
+    public void addDesc(String desc) &#123;
+        product.addDesc(desc);
+    &#125;
+
+    @Override
+    public void addPrice(Double price) &#123;
+        product.addPrice(price);
+    &#125;
+
+    @Override
+    public Product getProduct() &#123;
+        return product;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">public class Product2Builder implements ProductBuilder&#123;
+
+    private Product2 product;
+
+    @Override
+    public void buildProduct() &#123;
+      product = new Product2();
+    &#125;
+
+    @Override
+    public void addName(String name) &#123;
+        product.addName(name);
+    &#125;
+
+    @Override
+    public void addId(Long id) &#123;
+        product.addId(id);
+    &#125;
+
+    @Override
+    public void addDesc(String desc) &#123;
+        product.addDesc(desc);
+    &#125;
+
+    @Override
+    public void addPrice(Double price) &#123;
+        product.addPrice(price);
+    &#125;
+
+    @Override
+    public Product getProduct() &#123;
+        return product;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>Director类</strong></p>
+<pre><code class="java">public class ProductBuilderDirector &#123;
+
+
+    public static void main(String[] args) &#123;
+        ProductBuilderDirector director = new ProductBuilderDirector();
+
+        Product product1 = director.buildProduct1(new Product1Builder());
+        Product product2 = director.buildProduct2(new Product2Builder());
+
+        System.out.println(&quot;director协助下完成product1的构建:&quot;+product1);
+        System.out.println(&quot;director协助下完成product2的构建:&quot;+product2);
+    &#125;
+
+    public Product buildProduct1(ProductBuilder builder) &#123;
+        builder.buildProduct();
+        builder.addId(System.currentTimeMillis());
+        builder.addName(&quot;product-1&quot;);
+        builder.addDesc(&quot;product-1 version 1.0&quot;);
+        builder.addPrice(3.5D);
+        return builder.getProduct();
+    &#125;
+
+    public Product buildProduct2(ProductBuilder builder) &#123;
+        builder.buildProduct();
+        builder.addId(System.currentTimeMillis());
+        builder.addName(&quot;product-2&quot;);
+        builder.addDesc(&quot;product-2 version 1.0&quot;);
+        builder.addPrice(8.5D);
+        return builder.getProduct();
+    &#125;
+
+
+&#125;
+</code></pre>
+<p><strong>问题思考</strong></p>
+<p>在建造者模式中，如果产品1和产品2的结构不同，它们对应的具体建造者类的方法也会不同。在这种情况下，可以考虑以下几种设计选择：</p>
+<ol>
+<li><strong>在抽象建造者类中声明所有方法</strong>：这种方式可以让<code>Director</code>类统一使用抽象建造者来构建产品，但是这样做会导致一些方法在某些具体建造者中是不必要的。例如，产品2的建造者可能不需要实现<code>addPart1</code>方法。这种设计具有侵入性，因为它要求所有具体建造者类都必须实现抽象建造者中定义的所有方法。</li>
+<li><strong>使用接口隔离原则</strong>：可以为每个不同的产品建造者定义不同的接口，这样每个建造者只需要实现它们真正需要的方法。这样做可以减少侵入性，但是<code>Director</code>类在使用时需要知道具体的建造者类型，这可能会增加使用的复杂性。</li>
+<li><strong>使用可选的方法实现</strong>：在抽象建造者类中声明所有方法，但是提供一个默认的空实现（例如，在Java中可以使用接口的默认方法）。这样，具体建造者类可以选择性地覆盖它们需要的方法。这种方式既保持了<code>Director</code>类的统一性，又减少了对具体建造者的侵入性。</li>
+<li><strong>不在抽象建造者中声明特定方法</strong>：如果<code>addPart1</code>和<code>addPart2</code>方法是特定于具体建造者的，那么它们不应该在抽象建造者中声明。<code>Director</code>类可以通过其他方式来指导建造过程，例如通过使用工厂模式来获取正确的建造者实例。</li>
+</ol>
+<p><strong>具有方法链的匿名建造者</strong></p>
+<p>这是一种建造者模式的实现方式，方法链即链式调用，就是通过返回当前对象(this)来继续调用其本身。</p>
+<p>下面通过将对象的构造者类构造为内部类的方式进行使用。</p>
+<pre><code class="java">public class UseExample &#123;
+
+    public static void main(String[] args) &#123;
+        Product product = new Product.Builder()
+                .setName(&quot;product-1&quot;)
+                .setDesc(&quot;description for product-1&quot;)
+                .setPrice(2.9D)
+                .setType(&quot;type-1&quot;)
+                .setVersion(&quot;version 1.0&quot;)
+                .build();
+
+        System.out.println(product);
+    &#125;
+    
+&#125;
+</code></pre>
+<pre><code class="java">public class Product &#123;
+
+    public static class Builder&#123;
+
+        private Product product = new Product();
+
+        public Builder setName(String name)&#123;
+            product.setName(name);
+            return this;
+        &#125;
+
+        public Builder setDesc(String desc)&#123;
+            product.setDesc(desc);
+            return this;
+        &#125;
+
+        public Builder setPrice(Double price)&#123;
+            product.setPrice(price);
+            return this;
+        &#125;
+
+        public Builder setType(String type)&#123;
+            product.setType(type);
+            return this;
+        &#125;
+
+        public Builder setVersion(String version)&#123;
+            product.setVersion(version);
+            return this;
+        &#125;
+
+        public Product build()&#123;
+            return product;
         &#125;
 
     &#125;
 
+    private String name;
+
+    private String desc;
+
+    private Double price;
+
+    private String type;
+
+    private String version;
+
+    private Product()&#123;&#125;
+
+    private void setName(String name) &#123;
+        this.name = name;
+    &#125;
+
+    public void setDesc(String desc) &#123;
+        this.desc = desc;
+    &#125;
+
+    public void setPrice(Double price) &#123;
+        this.price = price;
+    &#125;
+
+    public void setType(String type) &#123;
+        this.type = type;
+    &#125;
+
+    public void setVersion(String version) &#123;
+        this.version = version;
+    &#125;
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+    public String toString() &#123;
+        return &quot;Product&#123;&quot; +
+                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                &quot;, desc=&#39;&quot; + desc + &#39;\&#39;&#39; +
+                &quot;, price=&quot; + price +
+                &quot;, type=&#39;&quot; + type + &#39;\&#39;&#39; +
+                &quot;, version=&#39;&quot; + version + &#39;\&#39;&#39; +
+                &#39;&#125;&#39;;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><p>原型模式实际上是一种克隆对象的方法，在以下几种情况可能需要克隆已经实例化的对象</p>
+<ul>
+<li>依赖于外部资源或硬件密集型操作进行新对象的创建的情况</li>
+<li>获取相同对象在相同状态的拷贝而无须进行重复获取状态操作的情况</li>
+<li>在不确定所属具体类型时需要对象的实例的情况</li>
+</ul>
+<p><strong>原型模式组成</strong></p>
+<p><code>Prototype</code>（抽象原型类）：声明了<code>clone()</code>方法的接口或基类，其中<code>clone()</code>方法必须由派生对象实现，在简单场景中，并不需要这种基类，只需要具体的类即可</p>
+<p><code>ConcretePrototype</code>（具体原型类）：用于实现或扩展<code>clone</code>方法的类，<code>clone</code>方法<strong>必须要实现</strong>，因为它返回了类型的新实例。如果只在基类中实现了clone方法，却没在具体类中实现，那么当我们在具体原型类的对象上调用该方法时，会返回一个基类的抽象原型对象</p>
+<p><strong>浅拷贝和深拷贝</strong></p>
+<p>浅拷贝是指复制对象的属性值，如果遇到引用对象也只是复制地址</p>
+<p>深拷贝则是在复制值的同时如果遇到引用对象，也要对引用对象进行深拷贝</p>
+<blockquote>
+<p>Object作为抽象原型类,在Java语言中,所有的类都是Object的子类,在Object 中提供了克隆方法clone(),用于创建一个原型对象,其 clone()方法具体实现由JVM完成,用户在使用时无须关心。</p>
+</blockquote>
+<p><strong>浅拷贝原型模式</strong></p>
+<p>在Java中只有实现了Cloneable接口的类才能够使用clone()方法来进行复制，因此我们需要实现Cloneable。</p>
+<pre><code class="java">public class ConcretePrototype implements Cloneable &#123;
 
-        Connection connection = null;
+    public static void main(String[] args) &#123;
 
-        PreparedStatement preparedStatement = null;
+        ConcretePrototype concretePrototype = new ConcretePrototype();
 
-        ResultSet resultSet = null;
-
-        //创建集合对象
-        ArrayList&lt;User&gt; users = new ArrayList&lt;&gt;();
-
-        //获取数据库对象
         try &#123;
-             connection = JdbcUtils.getConnection();
+            ConcretePrototype prototype = (ConcretePrototype) concretePrototype.clone();
 
-             //获取数据库操作对象并且预编译sql
-             preparedStatement = connection.prepareStatement(&quot;select * from tb_user&quot;);
+            System.out.println(&quot;是否新对象:&quot;+ (prototype != concretePrototype) );
 
-             //执行sql
-             resultSet = preparedStatement.executeQuery();
+            System.out.println(&quot;是否浅拷贝:&quot;+ (prototype.attachment == concretePrototype.attachment) );
 
-             //遍历结果集
-             while (resultSet.next())&#123;
-
-                 //取出数据
-                 int uid = resultSet.getInt(&quot;uid&quot;);
-
-                 String username = resultSet.getString(&quot;username&quot;);
-
-                 String password = resultSet.getString(&quot;password&quot;);
-
-                 //创建用户对象
-                 User user = new User(uid, username, password);
-
-                 //将用户对象添加到集合
-                 users.add(user);
-
-
-             &#125;
-
-           //将集合对象响应到前端
-            response.getWriter().print(users);
-
-        &#125; catch (Exception throwables) &#123;
-            throwables.printStackTrace();
-        &#125;finally &#123;
-
-            //关闭资源
-            JdbcUtils.getClose(resultSet,preparedStatement,connection);
-
+            System.out.println(prototype);
+        &#125; catch (CloneNotSupportedException e) &#123;
+            e.printStackTrace();
         &#125;
 
-
-
-
     &#125;
-&#125;
-</code></pre>
-<h3 id="请求的转发"><a href="#请求的转发" class="headerlink" title="请求的转发"></a>请求的转发</h3><p>请求转发是指，服务器收到请求后，从一次资源跳转到另一个资源的操作叫做请求转发。（地址不会改变，即浏览器路径不会跳转）</p>
-<p>getRequestDispatcher() 获取请求转发对象</p>
-<pre><code class="java">package com.os467.servlet;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+    private int anInt = 1;
 
-@WebServlet(&quot;/hello01&quot;)
-public class HelloServlet extends HttpServlet &#123;
+    private double aDouble = 2.2f;
+
+    private String string = &quot;str&quot;;
+
+    private Attachment attachment = new Attachment();
 
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-
-        //往域中去存放数据
-        request.setAttribute(&quot;username&quot;,&quot;jack&quot;);
-        request.setAttribute(&quot;password&quot;,&quot;123456&quot;);
-
-        //获取转发对象  相对路径
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(&quot;/hello02&quot;);
-
-        //走向具体的资源
-        requestDispatcher.forward(request,response);
+    protected Object clone() throws CloneNotSupportedException &#123;
+        return super.clone();
     &#125;
-&#125;
-</code></pre>
-<p>request除了可以作为请求对象之外，还可以作为域对象，但是该域对象的取值范围，是一次请求范围之内</p>
-<p>request通过<code>setAttribute(key,value)</code>方法存放数据</p>
-<p>通过<code>getAttribute(key)</code>方法获取数据</p>
-<p>请求转发：内部资源的跳转，通过浏览器发起访问，工程中的资源会从一个地址跳转到另外一个地址，浏览器的地址不会发生改变</p>
-<p><strong>请求转发集合对象</strong>  (使用request域存放数据，要使用请求转发)</p>
-<pre><code class="java">package com.os467.servlet;
-
-import com.os467.beans.User;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.ArrayList;
-
-@WebServlet(&quot;/hello06&quot;)
-public class HelloServlet06 extends HttpServlet &#123;
-
 
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-
-        //创建集合对象
-        ArrayList&lt;User&gt; users = new ArrayList&lt;&gt;();
-
-        //创建用户对象
-        User user1 = new User(100,&quot;jack001&quot;,&quot;123&quot;);
-        User user2 = new User(100,&quot;jack002&quot;,&quot;123&quot;);
-        User user3 = new User(100,&quot;jack003&quot;,&quot;123&quot;);
-        User user4 = new User(100,&quot;jack004&quot;,&quot;123&quot;);
-        User user5 = new User(100,&quot;jack005&quot;,&quot;123&quot;);
-
-        //将数据添加到集合中去
-        users.add(user1);
-        users.add(user2);
-        users.add(user3);
-        users.add(user4);
-        users.add(user5);
-
-        //将集合存放到域中
-        request.setAttribute(&quot;users&quot;,users);
-
-        //执行请求转发
-        request.getRequestDispatcher(&quot;/jsp/test.jsp&quot;).forward(request,response);
-
+    public String toString() &#123;
+        return &quot;ConcretePrototype&#123;&quot; +
+                &quot;anInt=&quot; + anInt +
+                &quot;, aDouble=&quot; + aDouble +
+                &quot;, string=&#39;&quot; + string + &#39;\&#39;&#39; +
+                &quot;, attachment=&quot; + attachment +
+                &#39;&#125;&#39;;
     &#125;
 &#125;
-</code></pre>
-<h5 id="渲染后端数据-（使用jsp）"><a href="#渲染后端数据-（使用jsp）" class="headerlink" title="渲染后端数据 （使用jsp）"></a>渲染后端数据 （使用jsp）</h5><p>jsp的底层是java</p>
-<p>不使用html，html作为一个静态文件，是不能读取动态数据的，需要用jsp去操作</p>
-<p><strong>el表达式：</strong><br>      作用：取出后端域中的数据，完成数据的校验和判断<br>        <code>$&#123;后端域中的key&#125;</code></p>
-<pre><code class="jsp">&lt;%--
-  Created by IntelliJ IDEA.
-  User: tly20
-  Date: 2022/7/3
-  Time: 19:54
-  To change this template use File | Settings | File Templates.
---%&gt;
-&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;test&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;%--
-        el表达式：
-        取出后端域中的数据
-        $&#123;后端域中的key&#125;
-    --%&gt;
-        $&#123;users&#125;
 
+class Attachment&#123;
 
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>使用servletContext域存放数据（可以使用请求重定向）</p>
-<pre><code class="java">//获取域对象
-ServletContext servletContext = getServletContext();
+    private String str = &quot;attachment&quot;;
 
-servletContext.setAttribute(&quot;users&quot;,users);
-response.sendRedirect(&quot;http://localhost:8080/servlet/jsp/test.jsp&quot;);
-</code></pre>
-<h3 id="请求重定向"><a href="#请求重定向" class="headerlink" title="请求重定向"></a>请求重定向</h3><p>请求重定向，是指客户端给服务器发请求，然后服务器告诉客户端去新地址访问，叫做请求重定向</p>
-<p>请求重定向：也可以完成内部资源的跳转，而且浏览器的地址是会发生改变的，这种情况下是不能取到request域中的数据的</p>
-<pre><code class="java">package com.os467.servlet;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
-@WebServlet(&quot;/hello03&quot;)
-public class HelloServlet03 extends HttpServlet &#123;
+    private boolean aBoolean = false;
 
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-
-        //存数据
-        request.setAttribute(&quot;key&quot;,&quot;value&quot;);
-
-        //请求重定向  绝对路径
-        response.sendRedirect(&quot;http://localhost:8080/servlet/hello04&quot;);
-
-
+    public String toString() &#123;
+        return &quot;Attachment&#123;&quot; +
+                &quot;str=&#39;&quot; + str + &#39;\&#39;&#39; +
+                &quot;, aBoolean=&quot; + aBoolean +
+                &#39;&#125;&#39;;
     &#125;
 &#125;
 </code></pre>
-<pre><code class="java">package com.os467.servlet;
+<p><strong>深拷贝原型模式</strong></p>
+<p>通常java中我们可以通过序列化和反序列化来深拷贝一个对象，属性中需要序列化的类都要实现<strong>Serializable接口</strong>，不需要序列化拷贝的属性可以使用transient关键字，这样拷贝到的就是null</p>
+<pre><code class="java">import java.io.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+public class DeepCloneConcretePrototype implements Serializable &#123;
 
-@WebServlet(&quot;/hello04&quot;)
-public class HelloServlet04 extends HttpServlet &#123;
+    private static final long serialVersionUID = 1236212586122492189L;
+
+    public static void main(String[] args) &#123;
+
+        DeepCloneConcretePrototype deepCloneConcretePrototype = new DeepCloneConcretePrototype();
+
+        DeepCloneConcretePrototype prototype = null;
+        try &#123;
+            prototype = deepCloneConcretePrototype.deepClone();
+        &#125; catch (IOException ioException) &#123;
+            ioException.printStackTrace();
+        &#125; catch (ClassNotFoundException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+        System.out.println(&quot;是否新对象:&quot;+ (prototype != deepCloneConcretePrototype) );
+
+        System.out.println(&quot;是否深拷贝:&quot;+ (prototype.attachment != deepCloneConcretePrototype.attachment) );
+
+        System.out.println(prototype);
+
+    &#125;
+
+    private DeepCloneConcretePrototype deepClone() throws IOException, ClassNotFoundException &#123;
+        //序列化
+        ByteArrayOutputStream bao = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(bao);
+        oos.writeObject(this);
+
+        //反序列化
+        ByteArrayInputStream bis = new ByteArrayInputStream(bao.toByteArray());
+        ObjectInputStream ois = new ObjectInputStream(bis);
+        return (DeepCloneConcretePrototype)ois.readObject();
+    &#125;
+
+    private int anInt = 1;
+
+    private double aDouble = 2.2f;
+
+    private String string = &quot;str&quot;;
+
+    private DeepCloneAttachment attachment = new DeepCloneAttachment();
 
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+    public String toString() &#123;
+        return &quot;DeepCloneConcretePrototype&#123;&quot; +
+                &quot;anInt=&quot; + anInt +
+                &quot;, aDouble=&quot; + aDouble +
+                &quot;, string=&#39;&quot; + string + &#39;\&#39;&#39; +
+                &quot;, attachment=&quot; + attachment +
+                &#39;&#125;&#39;;
+    &#125;
+&#125;
 
-        Object key = request.getAttribute(&quot;key&quot;);
-        
-        //打印key的值应该为null，因为request域中的数据的作用范围只在一次请求范围内
-        System.out.println(key);
+class DeepCloneAttachment implements Serializable&#123;
 
+    private String str = &quot;attachment&quot;;
 
+    private boolean aBoolean = false;
+
+    @Override
+    public String toString() &#123;
+        return &quot;DeepCloneAttachment&#123;&quot; +
+                &quot;str=&#39;&quot; + str + &#39;\&#39;&#39; +
+                &quot;, aBoolean=&quot; + aBoolean +
+                &#39;&#125;&#39;;
     &#125;
 &#125;
 </code></pre>
-<p><strong>注意的点：</strong></p>
-<p>重定向和转发使用的域对象有哪些</p>
+<h3 id="对象池模式"><a href="#对象池模式" class="headerlink" title="对象池模式"></a>对象池模式</h3><p>当我们处理封装外部资源的对象（如数据库连接）时，对象的创建造作会耗费很多资源</p>
+<p>解决方案是重用和共享这些创建成本高昂的对象，这被称为对象池模式</p>
+<p><strong>对象池模式组成部分</strong></p>
 <ul>
-<li>采用重定向的时候:    servletContext  session</li>
-<li>采用转发的时候:   servletContext  request  session</li>
+<li><code>ResourcePool</code>（资源池类）：用于封装逻辑的类，用来保存和管理资源列表</li>
+<li><code>Resource</code>（资源类）：用于封装特定资源的类，资源类通常被资源池类引用，因此只要资源池不重新分配，它们就永远不会被回收</li>
+<li><code>Client</code> （客户端类）：使用资源的类</li>
 </ul>
-<h3 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h3><p>什么是jsp？</p>
-<ul>
-<li><p>JSP（全称Java Server Pages）是由Sun公司专门为了解决动态生成HTML文档的技术</p>
-</li>
-<li><p>jsp的主要作用是代替Servlet程序回传html页面的数据，因为Servlet程序回传html页面数据是一件非常繁琐的事情，开发成本和维护成本都极高</p>
-</li>
-</ul>
-<p><strong>jsp的运行原理</strong></p>
-<p>jsp的本质，其实是一个Servlet程序</p>
-<p>可以在<code>&lt;%...%&gt;</code>内写java代码</p>
-<p>通过脚本表达式<code>&lt;%=...%&gt;</code>取到值</p>
-<p>也可以通过el表达式<code>$&#123;...&#125;</code>取到域对象中的值</p>
-<p>el表达式可以取到后端中的数据，而且取值的方式比较简单${域的key}</p>
-<p>jsp脚本表达式&lt;%&#x3D;request.getAttribute(“key”)%&gt;</p>
-<p>el表达式其实在底层封装的就是对应的<strong>jsp</strong>脚本表达式，它出现目的就是为了替换脚本表达式，使得我们在开发的时候更高效</p>
-<p>el表达式的用法：相关的逻辑判断，判断一个容器是否为空，el表达式取到的数据只能是域中的数据，</p>
-<pre><code class="jsp">&lt;%--
-  Created by IntelliJ IDEA.
-  User: tly20
-  Date: 2022/7/4
-  Time: 9:53
-  To change this template use File | Settings | File Templates.
---%&gt;
-&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;study&lt;/title&gt;
-&lt;/head&gt;
+<p>当客户端需要使用资源时，会向资源池类申请，资源池类检查后获取第一个可用资源并将其返回给客户端</p>
+<p>客户端使用完资源后会释放资源，资源会重新回到资源池以便重复使用</p>
+<p><strong>资源池类</strong></p>
+<pre><code class="java">import java.util.ArrayList;
+import java.util.List;
 
-&lt;%
-    String username = &quot;123456&quot;;
-    request.setAttribute(&quot;key1&quot;,&quot;value1&quot;);
-    
-     ArrayList&lt;String&gt; strings = new ArrayList&lt;&gt;();
+public class ResourcePool &#123;
 
-    strings.add(&quot;hello&quot;);
-    strings.add(&quot;world&quot;);
-    strings.add(&quot;java&quot;);
-    strings.add(&quot;c++&quot;);
+    //可用资源列表
+    private List&lt;Resource&gt; available = new ArrayList&lt;&gt;();
 
-    request.setAttribute(&quot;strings&quot;,strings);
-    
-    HashMap&lt;String, String&gt; hashMap = new HashMap&lt;&gt;();
+    //当前资源池创建被投入使用的资源列表
+    private List&lt;Resource&gt; inuse = new ArrayList&lt;&gt;();
 
-    hashMap.put(&quot;key1&quot;,&quot;value1&quot;);
-    hashMap.put(&quot;key2&quot;,&quot;value2&quot;);
-    hashMap.put(&quot;key3&quot;,&quot;value3&quot;);
-    hashMap.put(&quot;key4&quot;,&quot;value4&quot;);
+    //客户端获取资源
+    public Resource acquireResource()&#123;
+        if (available.size() &lt;= 0)&#123;
+            Resource resource = new Resource(this);
+            inuse.add(resource);
+            return resource;
+        &#125;else &#123;
+            //返回第一个可用资源
+            return available.remove(0);
+        &#125;
+    &#125;
 
-    session.setAttribute(&quot;hashMap&quot;,hashMap);
-%&gt;
-&lt;body&gt;
-    
-    &lt;%=request.getAttribute(&quot;key1&quot;)%&gt;
-    &lt;%=username%&gt;
-    $&#123;key1&#125;
-    
-    &lt;%=strings%&gt;&lt;br&gt;
-    集合中的一个对象:$&#123;strings[0]&#125;&lt;br&gt;
-    集合中的一个对象:$&#123;strings[1]&#125;&lt;br&gt;
-    集合中的一个对象:$&#123;strings[2]&#125;&lt;br&gt;
-    集合中的一个对象:$&#123;strings[3]&#125;&lt;br&gt;
-    map集合对象:$&#123;hashMap&#125;&lt;br&gt;
-    根据下表取到某一个元素:$&#123;hashMap.get(&quot;key1&quot;)&#125;&lt;br&gt;
-
-
-
-&lt;/body&gt;
-&lt;/html&gt;
+    //客户端释放资源
+    public void releaseResource(Resource resource) &#123;
+        available.add(resource);
+    &#125;
+&#125;
 </code></pre>
-<p>判断一个对象是否为空（指的是对象是否存在，不是说容器长度为0）</p>
-<pre><code class="jsp">$&#123;empty strings&#125;   判断是否为空
-$&#123;not empty strings&#125;  判断是否不为空
-</code></pre>
-<h4 id="引入jstl标签库"><a href="#引入jstl标签库" class="headerlink" title="引入jstl标签库"></a>引入jstl标签库</h4><pre><code class="jsp">&lt;%@taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot;%&gt;
-</code></pre>
-<p><strong>ForEach标签</strong></p>
-<p>items表示遍历集合， var表示遍历集合中每一个对象</p>
-<pre><code class="jsp">&lt;c:forEach items=&quot;$&#123;empList&#125;&quot; var=&quot;emp&quot;&gt;
+<p><strong>资源类</strong></p>
+<pre><code class="java">public class Resource &#123;
 
-    &lt;tr&gt;
-        &lt;td&gt;$&#123;emp.empName&#125;&lt;/td&gt;
-        &lt;td&gt;$&#123;emp.age&#125;&lt;/td&gt;
-        &lt;td&gt;$&#123;emp.sex == 1? &#39;男&#39; : &#39;女&#39;&#125;&lt;/td&gt;
-        &lt;td&gt;$&#123;emp.salary&#125;&lt;/td&gt;
-        &lt;td&gt;$&#123;emp.birthday&#125;&lt;/td&gt;
-        &lt;td&gt;
-            &lt;a href=&quot;http://localhost:8080/servlet/emp?flag=showEmpByID&amp;eid=$&#123;emp.eid&#125;&quot;&gt;修改&lt;/a&gt;
-            &lt;a href=&quot;http://localhost:8080/servlet/emp?flag=deleteEmpByID&amp;eid=$&#123;emp.eid&#125;&quot;&gt;删除&lt;/a&gt;
-        &lt;/td&gt;
-    &lt;/tr&gt;
+    private ResourcePool resourcePool;
 
-&lt;/c:forEach&gt;
-</code></pre>
-<p><strong>If标签</strong></p>
-<pre><code class="jsp">&lt;c:if test=&quot;$&#123;not empty user&#125;&quot;&gt;
-代码执行
-&lt;/c:if&gt;
-</code></pre>
+    public Resource(ResourcePool resourcePool) &#123;
+        this.resourcePool = resourcePool;
+    &#125;
 
+    //资源释放方法
+    public void release()&#123;
+        resourcePool.releaseResource(this);
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>客户端类</strong></p>
+<pre><code class="java">public class Client &#123;
+
+    public static void main(String[] args) &#123;
+
+        ResourcePool resourcePool = new ResourcePool();
+        Resource resource = resourcePool.acquireResource();
+
+        System.out.println(&quot;当前使用资源:&quot;+resource);
+
+        System.out.println(&quot;释放资源&quot;);
+        resource.release();
+
+        Resource resource1 = resourcePool.acquireResource();
+
+        System.out.println(&quot;当前使用资源:&quot;+resource1);
+
+        Resource resource2 = resourcePool.acquireResource();
+
+        System.out.println(&quot;当前使用资源:&quot;+resource2);
+
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="行为型模式（12种）"><a href="#行为型模式（12种）" class="headerlink" title="行为型模式（12种）"></a>行为型模式（12种）</h2><h2 id="结构型模式（7种）"><a href="#结构型模式（7种）" class="headerlink" title="结构型模式（7种）"></a>结构型模式（7种）</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
     </div>
@@ -2283,12 +2409,12 @@ $&#123;not empty strings&#125;  判断是否不为空
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>servlet</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">5.6k</span></p>
+    <p><span class="copy-title">文章标题:</span>设计模式进阶</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">5.7k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-07-02, 08:24:49</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-05, 00:09:12</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/07/02/servlet/" title="servlet">https://os467.github.io/2022/07/02/servlet/</a>
+    <p><span class="copy-title">发布时间:</span>2024-05-19, 17:37:02</p>
+    <p><span class="copy-title">最后更新:</span>2024-05-19, 17:38:08</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/05/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%BF%9B%E9%98%B6/" title="设计模式进阶">https://os467.github.io/2024/05/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%BF%9B%E9%98%B6/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
