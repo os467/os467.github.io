@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Swagger | Tly的博客</title>
+  <title>AQS | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Swagger | Tly的博客">
+  <meta name="description" content="AQS | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:type" content="website">
@@ -1353,9 +1353,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Swagger" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-AQS" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Swagger</h1>
+        <h1 class="article-title">AQS</h1>
     
     <div class="article-meta">
         
@@ -1365,7 +1365,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="其它">其它</a>
+            <a  data-rel="底层学习">底层学习</a>
             
         </span>
         
@@ -1373,12 +1373,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-10-05 00:53:10'>2022-10-05 00:51</time>
+            发布时间 : <time class="date" title='最后更新: 2024-05-26 00:15:37'>2024-05-26 00:14</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1k</span>
+        <span>字数:3.9k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1397,7 +1397,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swagger2"><span class="toc-text">Swagger2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8"><span class="toc-text">为什么使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="toc-text">引入依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E7%94%A8Swagger2"><span class="toc-text">启用Swagger2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E9%85%8D%E7%BD%AE"><span class="toc-text">具体配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Controller%E9%85%8D%E7%BD%AE"><span class="toc-text">Controller配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E9%85%8D%E7%BD%AE"><span class="toc-text">接口配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E7%B1%BB%E9%85%8D%E7%BD%AE"><span class="toc-text">实体类配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E4%BF%A1%E6%81%AF%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="toc-text">文档信息配置类</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AQS"><span class="toc-text">AQS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%82%A3%E4%B9%88AQS%E5%8F%88%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%90%8C%E6%AD%A5%E7%9A%84%EF%BC%9F"><span class="toc-text">那么AQS又是如何实现同步的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unsafe"><span class="toc-text">Unsafe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E9%98%BB%E5%A1%9E"><span class="toc-text">线程阻塞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%81%E9%87%8A%E6%94%BE"><span class="toc-text">锁释放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8AQS%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E9%94%81"><span class="toc-text">用AQS设计一个简单的锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E5%B9%B3%E9%94%81%E4%B8%8E%E9%9D%9E%E5%85%AC%E5%B9%B3%E9%94%81"><span class="toc-text">公平锁与非公平锁</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1413,130 +1413,389 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Swagger2"><a href="#Swagger2" class="headerlink" title="Swagger2"></a>Swagger2</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Swagger是一套基于 OpenAPI 规范构建的开源工具，可以帮助我们设计，构建，记录以及使用Rest API</p>
-<h2 id="为什么使用"><a href="#为什么使用" class="headerlink" title="为什么使用"></a>为什么使用</h2><p>当今大部分公司都采用前后端分离的模式来开发项目，前端和后端的工作由不同的工程师来完成，这种开发模式下，维持一份及时更新且完善的Rest API 文档将会极大的提高我们的工作效率</p>
-<p>传统意义上的文档都是后端开发人员手动编写的，这种方式很难保证文档的及时性，这种文档久而久之也会失去参考意义，反而还会增加沟通成本，而Swagger给我们提供了一个全新的API文档维护方式</p>
-<p><strong>优点：</strong></p>
-<ul>
-<li>代码变，文档变，只需要少量的注解，Swagger就可以根据代码自动生成API文档，保证了文档的及时性</li>
-<li>跨语言性，Swagger支持40多种语言</li>
-<li>Swagger UI呈现出来的是一份可交互式的API文档，我们可以直接在文档中尝试API的调用，省略了复杂的参数调用过程</li>
-</ul>
-<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><pre><code class="xml">&lt;!-- swagger2 --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;io.springfox&lt;/groupId&gt;
-    &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;
-    &lt;version&gt;2.7.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;io.springfox&lt;/groupId&gt;
-    &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;
-    &lt;version&gt;2.7.0&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
-<h3 id="启用Swagger2"><a href="#启用Swagger2" class="headerlink" title="启用Swagger2"></a>启用Swagger2</h3><p>在启动类上或者配置类加 <strong>@EnableSwagger2 注解</strong></p>
-<p>访问swagger文档： <a target="_blank" rel="noopener" href="http://localhost:8080/swagger-ui.html">http://localhost:8080/swagger-ui.html</a></p>
-<blockquote>
-<p><strong>注意：</strong> 其中的localhost:8080在项目中都要改为真实域名+端口号</p>
-</blockquote>
-<h3 id="具体配置"><a href="#具体配置" class="headerlink" title="具体配置"></a>具体配置</h3><h4 id="Controller配置"><a href="#Controller配置" class="headerlink" title="Controller配置"></a>Controller配置</h4><p><strong>@Api注解</strong></p>
-<p><strong>属性：</strong></p>
-<ul>
-<li>tags  设置标签</li>
-<li>description 设置描述信息</li>
-</ul>
-<pre><code class="java">@RestController
-@RequestMapping(&quot;/comment&quot;)
-@Api(tags = &quot;评论&quot;,description = &quot;评论相关接口&quot;)
-public class CommentController &#123;
-&#125;
-</code></pre>
-<h4 id="接口配置"><a href="#接口配置" class="headerlink" title="接口配置"></a>接口配置</h4><ul>
-<li><strong>@ApiOperation</strong>  接口描述</li>
-</ul>
-<pre><code class="java">@GetMapping(&quot;/linkCommentList&quot;)
-@ApiOperation(value = &quot;友链评论列表&quot;,notes = &quot;获取一页友链评论信息&quot;)
-public ResponseResult linkCommentList(Integer pageNum,Integer pageSize)&#123;
-    return commentService.linkCommentList(pageNum,pageSize);
-&#125;
-</code></pre>
-<ul>
-<li><strong>@ApiImplicitParam ** 用于描述接口的非对象参数，但是一个接口可能有多个参数，所以一般与</strong>@ApiImplicitParams **组合使用</li>
-</ul>
-<pre><code class="java">@GetMapping(&quot;/linkCommentList&quot;)
-@ApiOperation(value = &quot;友链评论列表&quot;,notes = &quot;获取一页友链评论信息&quot;)
-@ApiImplicitParams(&#123;
-        @ApiImplicitParam(name = &quot;pageNum&quot;,value = &quot;页号&quot;),
-        @ApiImplicitParam(name = &quot;pageSize&quot;,value = &quot;每页大小&quot;)
-&#125;)
-public ResponseResult linkCommentList(Integer pageNum,Integer pageSize)&#123;
-    return commentService.linkCommentList(pageNum,pageSize);
-&#125;
-</code></pre>
-<h4 id="实体类配置"><a href="#实体类配置" class="headerlink" title="实体类配置"></a>实体类配置</h4><p><strong>@ApiModel</strong>  用于描述实体类</p>
-<p><strong>@ApiModelProperty</strong>   用于描述实体的属性</p>
-<pre><code class="java">@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@ApiModel(description = &quot;添加评论Dto&quot;)
-public class AddCommentDto &#123;
+        <h1 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h1><p><strong>引言</strong></p>
+<p>在多线程高并发场景下，我们为了保证操作的原子性，必要的需要对代码块进行线程同步。</p>
+<p>我们知道<code>ReentrantLock</code>可以在Java中实现公平锁和非公平锁，它是类层面实现的锁，可以起到像<code>sychronized</code>关键字那样的同步功能，那么它是如何做到的呢？</p>
+<p>为了深入了解<code>ReentrantLock</code>的实现，那么就必须要了解<code>ReentrantLock</code>的底层设计—AQS，这篇文章将会结合底层源码来理解AQS是什么。</p>
+<p><img src="https://img-blog.csdnimg.cn/direct/85133abbea49429181f772e42d107e66.png" alt="img"></p>
+<p><strong>AQS</strong></p>
+<p>AQS，其实就是<code>AbstractQueuedSynchronizer</code>（抽象队列式同步器）这个抽象类</p>
+<p>位于<code>java.util.concurrent.locks</code>这个包下，如果看它的派生类，会发现各种同步场景的设计都使用到了AQS，如<code>LeentrantLock</code>，<code>Semaphore</code>，<code>ThreadPoolExecutor</code>等。</p>
+<p>实际上AQS内部使用的是一种遵循FIFO的双向链表来存储线程对象的，这一点从源码中AQS的内部类Node即可看出。</p>
+<p><strong>设想这样的场景：</strong>如果有多个线程需要获取锁，那么我们对每个线程都要做妥善的处置，那么必然需要一个空间来存放这些线程以便我们管理这些线程，AQS就提供了这样一种数据结构来保存并发线程对象的引用。当我们需要唤醒线程，或是阻塞线程时都将通过这个FIFO的链式队列操作我们的线程对象。</p>
+<pre><code class="java">static final class Node &#123;
 
-    private Long id;
-    //评论类型（0代表文章评论，1代表友链评论）
-    @ApiModelProperty(notes = &quot;评论类型（0代表文章评论，1代表友链评论）&quot;)
-    private String type;
-    //文章id
-    @ApiModelProperty(notes = &quot;文章id&quot;)
-    private Long articleId;
-    //...   
-&#125;
-</code></pre>
-<blockquote>
-<p>在实际开发中，我们一般不会用与数据库建立表关系的对象来接收前端传输的数据，接收参数和实际数据库中的表字段也不一定完全相同</p>
-<p>这样子在使用Swagger注解的时候也会和不同的方法需要接收的参数产生耦合</p>
-<p>因此我们一般会封装一层DTO对象（Data  Transaction Object数据传输对象，数据事务对象）</p>
-</blockquote>
-<p><strong>修改表现层参数</strong></p>
-<pre><code class="java">@PostMapping
-public ResponseResult comment(@RequestBody AddCommentDto addCommentDto)&#123;
-    Comment comment = BeanCopyUtils.copyBean(addCommentDto, Comment.class);
-    return commentService.comment(comment);
-&#125;
-</code></pre>
-<blockquote>
-<p>这里接收到的CommentDto对象再拷贝成Comment对象即可</p>
-</blockquote>
-<h3 id="文档信息配置类"><a href="#文档信息配置类" class="headerlink" title="文档信息配置类"></a>文档信息配置类</h3><p>加上**@Configuration注解**</p>
-<p>需要返回一个Docket对象，加上**@bean注解**</p>
-<p>使用了构造器模式创建了<code>Docket和apiInfo</code></p>
-<ul>
-<li>配置当前项目的一些基本信息</li>
-</ul>
-<pre><code class="java">@Configuration
-public class SwaggerConfig &#123;
+    //省略....
+    
+    volatile Node prev;
 
-    @Bean
-    public Docket customDocket()&#123;
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .select()
-                //扫描的包
-                .apis(RequestHandlerSelectors.basePackage(&quot;com.os467.controller&quot;))
-                .build();
+    volatile Node next;
+
+    volatile Thread thread;
+   
+     //省略....
+&#125;
+</code></pre>
+<h2 id="那么AQS又是如何实现同步的？"><a href="#那么AQS又是如何实现同步的？" class="headerlink" title="那么AQS又是如何实现同步的？"></a><strong>那么AQS又是如何实现同步的？</strong></h2><p>如果要实现同步，我们就需要一种状态机制来确定当前同步队列的状态，是处于锁释放状态，还是处于锁占用状态，锁占用状态下我们同步队列的各个线程状态又是如何的，锁释放状态我们的同步队列又该如何运作。</p>
+<p>其实在AQS中，是通过一个原子的int值<code>state</code>来表示当前同步队列状态，具体的<code>state</code>值是多少，是交由具体的实现类去定义的。</p>
+<p>由于AQS支持独占&#x2F;共享模式，因此不同实现对<code>state</code>值的不同解释也不同，AQS只是做了抽象层面的定义。</p>
+<p><strong>例如</strong></p>
+<p>在<code>RenntrantLock</code>实现中<code>state</code>值为1时表示有线程正在占用锁，<code>state</code>值代表0时表示锁被释放，这点我们来看源码。</p>
+<pre><code class="java">final void lock() &#123;
+    acquire(1);//调用父类AQS的acquire方法
+&#125;
+</code></pre>
+<pre><code class="java">//父类AQS中的方法，如果尝试获取锁失败就阻塞当前线程，将调用子类的tryAcquire方法
+public final void acquire(int arg) &#123;
+    if (!tryAcquire(arg) &amp;&amp;
+        acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
+        selfInterrupt();
+&#125;
+</code></pre>
+<p>我们关心的<code>compareAndSetState</code>这个语句，在底层使用的其实是<code>Unsafe</code>类。</p>
+<pre><code class="java">protected final boolean tryAcquire(int acquires) &#123;
+            final Thread current = Thread.currentThread();
+            int c = getState();
+            if (c == 0) &#123;
+                if (!hasQueuedPredecessors() &amp;&amp;
+                    compareAndSetState(0, acquires)) &#123;
+                    setExclusiveOwnerThread(current);
+                    return true;
+                &#125;
+            &#125;
+            else if (current == getExclusiveOwnerThread()) &#123;
+                int nextc = c + acquires;
+                if (nextc &lt; 0)
+                    throw new Error(&quot;Maximum lock count exceeded&quot;);
+                setState(nextc);
+                return true;
+            &#125;
+            return false;
+        &#125;
+</code></pre>
+<p>没错可以看到AQS用了<code>Unsafe</code>类的方法，正是<code>CAS</code>操作（比较并替换），这是一个原子操作调用了本地方法，使用的。</p>
+<pre><code class="java">protected final boolean compareAndSetState(int expect, int update) &#123;
+    // See below for intrinsics setup to support this
+    return unsafe.compareAndSwapInt(this, stateOffset, expect, update);//这个方法
+&#125;
+</code></pre>
+<h2 id="Unsafe"><a href="#Unsafe" class="headerlink" title="Unsafe"></a>Unsafe</h2><p>这个类提供了一种底层的、不安全的操作内存的方式。在<code>compareAndSetState</code>方法中，<code>Unsafe</code>类的<code>compareAndSwapInt</code>方法被用来执行CAS（比较并交换）操作。</p>
+<p><code>Unsafe</code>这个类比较特殊，可以直接操作内存，一般来说高级语言是没法直接操作内存的，java也存在相关的安全检查和内存管理机制。但是通过<code>Unsafe</code>这个不安全的类就能完成这一操作。</p>
+<p><code>compareAndSwapInt</code>就是它提供的一种硬件级别的原子操作指令。</p>
+<blockquote>
+<p>原子操即在多线程环境中单个线程要么一次性做完，要么全不做。</p>
+</blockquote>
+<p>CAS操作分为下面三个步骤</p>
+<ul>
+<li>读取当前变量值</li>
+<li>比较这个值是否等于预期值</li>
+<li>如果是将这个变量更新为预期值</li>
+</ul>
+<blockquote>
+<p>这样的三个操作就是原子操作</p>
+</blockquote>
+<p><strong>为什么要有这样的操作呢？</strong></p>
+<p>就好比现在多个人竞争一个房间的使用权，只有房间上挂上<strong>未使用(值&#x3D;0)<strong>的牌子，才允许他人进去，这个人在进去前是不是就能挂上一个</strong>在使用的牌子（值&#x3D;1）</strong>，这样子其它人来的时候看到了就不会直接冲进去了，只能在外面等着。 </p>
+<p>只不过CAS操作保证了这个<code>看牌子→判断→挂牌子</code>的不被他人打断。</p>
+<h2 id="线程阻塞"><a href="#线程阻塞" class="headerlink" title="线程阻塞"></a><strong>线程阻塞</strong></h2><p>回到刚才<code>ReentrantLock</code>对state值的改变，我们知道了<code>ReentrantLock</code>是通过AQS中提供的<code>CAS</code>方法(底层Unsafe操作本地方法)通过操作内存来改变state的值。</p>
+<p>那么如果CAS操作失败怎么办，也就是已经有线程通过CAS获取到锁了(state &#x3D; 1)，这时候我们再来看AQS接下来的操作。</p>
+<p>其实在刚才CAS操作之后，在AQS中还有一个相与的条件方<code>acquireQueued(addWaiter(Node.EXCLUSIVE), arg))</code>，这个方法中有一个<code>addWaiter</code>方法，看似套娃其实就是把当前的线程构造为AQS同步队列中的一个<code>Node</code>并放入链式队列中了。</p>
+<p>那么放进去就好了吗？当然不是，既然是同步阻塞队列，那么线程竞争锁失败肯定是会被阻塞的。我们来看看阻塞的具体方法。</p>
+<p>其实就是这个方法 <code>parkAndCheckInterrupt</code>，我们进入这个方法看看。 </p>
+<pre><code class="java">final boolean acquireQueued(final Node node, int arg) &#123;
+    //...
+    try &#123;
+        //...
+        for (;;) &#123;
+            //...
+            if (shouldParkAfterFailedAcquire(p, node) &amp;&amp;
+                parkAndCheckInterrupt())
+                    //...
+        &#125;
+    &#125; finally &#123;
+            //...
+    &#125;
+&#125;
+</code></pre>
+<p>可以看到这个方法使用到了<code>LockSupport</code>这个类，我们直接打入内部。</p>
+<pre><code class="java">private final boolean parkAndCheckInterrupt() &#123;
+    LockSupport.park(this);
+    return Thread.interrupted();
+&#125;
+</code></pre>
+<p>现在我们打入<code>LockSupport</code>这个类的内部了，结果一看又是老朋友<code>Unsafe</code>提供的方法，那我们就不用往下看了，线程阻塞的方法也是Unsafe类提供的方法实现的。<code>UNSAFE.park(false, 0L);</code></p>
+<p>这里其实就是设置了线程无限期的等待，通过本地方法实现了线程的阻塞逻辑。</p>
+<pre><code class="java">public static void park(Object blocker) &#123;
+    Thread t = Thread.currentThread();
+    setBlocker(t, blocker);
+    UNSAFE.park(false, 0L);
+    setBlocker(t, null);
+&#125;
+</code></pre>
+<p>到此为止我们大概了解了<code>ReentrantLock</code>是如何利用AQS来实现的线程获取锁以及获取锁失败后的阻塞原理。</p>
+<p>让我们来梳理一下逻辑：</p>
+<ul>
+<li>当线程进入AQS后，具体的锁实现会调用<code>acquire</code>方法来获取锁，本质上就是CAS方法</li>
+<li>如果获取锁成功（CAS），其它线程进入后也会尝试CAS获取锁</li>
+<li>如果获取锁失败（CAS），就放入FIFO链式队列中阻塞等待</li>
+</ul>
+<h2 id="锁释放"><a href="#锁释放" class="headerlink" title="锁释放"></a><strong>锁释放</strong></h2><p>我们知道使用锁的时候当线程完成任务时也一定要记得释放锁，否则就会发生死锁问题，那么在释放锁后，AQS又发生了什么呢？</p>
+<p>这里我们就快速定位到释放锁方法，主要是以下两个步骤</p>
+<ul>
+<li>调用具体的释放锁方法，<code>ReentrantLock</code>中最后是将<code>state</code>的值设置回了0</li>
+<li>由AQS负责调用<code>unparkSuccessor</code>方法，将后续节点节点从阻塞状态被唤醒  (底层方法<code>LockSupport.unpark(s.thread);</code>)</li>
+</ul>
+<pre><code class="java">public void unlock() &#123;
+    sync.release(1);
+&#125;
+
+public final boolean release(int arg) &#123;
+        if (tryRelease(arg)) &#123;
+            Node h = head;
+            if (h != null &amp;&amp; h.waitStatus != 0)
+                unparkSuccessor(h);
+            return true;
+        &#125;
+        return false;
+    &#125;
+</code></pre>
+<p><strong><code>ReentrantLock</code>中释放锁具体实现</strong></p>
+<pre><code class="java">protected final boolean tryRelease(int releases) &#123;
+    int c = getState() - releases;
+    if (Thread.currentThread() != getExclusiveOwnerThread())
+        throw new IllegalMonitorStateException();
+    boolean free = false;
+    if (c == 0) &#123;
+        free = true;
+        setExclusiveOwnerThread(null);
+    &#125;
+    setState(c);
+    return free;
+&#125;
+</code></pre>
+<p>那么后续节点所对应的阻塞线程从阻塞状态中恢复后发生了什么？</p>
+<p>其实我们就看刚才发生阻塞的方法在调用了<code>parkAndCheckInterrupt()</code>后被阻塞，那么被唤醒后其实就是再次循环调用<code>tryAcquire</code>方法获取锁。这样子我们就分析完了从<code>锁获取→阻塞→再次获取锁</code>的一个分析流程。</p>
+<pre><code class="java">final boolean acquireQueued(final Node node, int arg) &#123;
+    boolean failed = true;
+    try &#123;
+        boolean interrupted = false;
+        for (;;) &#123;
+            final Node p = node.predecessor();
+            if (p == head &amp;&amp; tryAcquire(arg)) &#123;
+                setHead(node);
+                p.next = null; // help GC
+                failed = false;
+                return interrupted;
+            &#125;
+            if (shouldParkAfterFailedAcquire(p, node) &amp;&amp;
+                parkAndCheckInterrupt()) //在这行被阻塞
+                interrupted = true;
+        &#125;
+    &#125; finally &#123;
+        if (failed)
+            cancelAcquire(node);
+    &#125;
+&#125;
+</code></pre>
+<h2 id="用AQS设计一个简单的锁"><a href="#用AQS设计一个简单的锁" class="headerlink" title="用AQS设计一个简单的锁"></a><strong>用AQS设计一个简单的锁</strong></h2><p>到这里我们就能自己实现一个自己的锁了，我们仿照<code>ReentrantLock</code>的逻辑实现一个我们的锁，AQS使用了模板设计模式，将需要实现的方法开放给了我们，我们需要重写一些方法来实现具体的上锁和解锁方法。</p>
+<blockquote>
+<p>下面的方法是博主自己写的，仅供学习参考，但是实现了基本的逻辑，大家可以参考<code>ReentrantLock</code>源码实现一个完善的锁</p>
+</blockquote>
+<pre><code class="java">import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+
+
+public class AQSTest &#123;
+
+    public static void main(String[] args) &#123;
+        Lock lock = new Lock();
+
+        Thread t1 = new Thread(new Runnable() &#123;
+            @Override
+            public void run() &#123;
+                System.out.println(&quot;t1尝试获取锁&quot;);
+                lock.lock();
+                lock.lock();//重入锁
+                System.out.println(&quot;t1获取到锁&quot;);
+                System.out.println(&quot;5s后释放锁&quot;);
+                try &#123;
+                    Thread.sleep(5000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                lock.unlock();//释放锁
+                lock.unlock();//释放锁
+                System.out.println(&quot;t1释放锁&quot;);
+            &#125;
+        &#125;);
+        t1.start();
+
+        try &#123;
+            Thread.sleep(2000);
+        &#125; catch (InterruptedException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+        System.out.println(&quot;主线程尝试获取锁&quot;);
+        lock.lock();
+        System.out.println(&quot;主线程获取到锁&quot;);
+        lock.unlock();
+        System.out.println(&quot;主线程释放锁&quot;);
+
     &#125;
 
-    private ApiInfo apiInfo() &#123;
-        Contact contact = new Contact(&quot;团队名&quot;,&quot;http://www.my.com&quot;,&quot;my@my.com&quot;);
-        return new ApiInfoBuilder()
-                .title(&quot;文档标题&quot;)
-                .description(&quot;文档描述&quot;)
-                .contact(&quot;联系方式&quot;)
-                .version(&quot;1.1.0&quot;)
-                .build();
+&#125;
+
+class Lock &#123;
+
+    private Sync sync = new Sync();
+
+    void lock()&#123;
+        sync.lock();
+    &#125;
+
+    void unlock()&#123;
+        sync.unlock();
+    &#125;
+
+    class Sync extends AbstractQueuedSynchronizer&#123;
+
+        void lock()&#123;
+            acquire(1);
+        &#125;
+
+        /**
+         * 返回true代表获取锁成功，false代表获取锁失败
+         * @param arg
+         * @return
+         */
+        @Override
+        protected boolean tryAcquire(int arg) &#123;
+            int state = getState();
+            if (state == 0)&#123;
+                //CAS操作
+                compareAndSetState(0,arg);
+                setExclusiveOwnerThread(Thread.currentThread());
+                return true;
+            &#125;else if (getExclusiveOwnerThread() == Thread.currentThread())&#123;
+                //可重入锁逻辑
+                int nextS = getState() + arg;
+                setState(nextS);//更新状态值，直接更新
+                return true;
+            &#125;
+            return false;
+
+        &#125;
+
+        /**
+         * 返回true代表释放锁成功，false代表释放锁失败
+         * @param arg
+         * @return
+         */
+        @Override
+        protected boolean tryRelease(int arg) &#123;
+            //当前线程释放锁
+            int c = getState() - arg;
+            if (Thread.currentThread() != getExclusiveOwnerThread())&#123;
+                throw new IllegalMonitorStateException();
+            &#125;
+            boolean b = false;
+            if (c == 0)&#123;
+                b = true;
+                setExclusiveOwnerThread(null);//清除拥有锁的线程引用
+            &#125;
+            setState(c);
+            return b;
+        &#125;
+
+        void unlock()&#123;
+            release(1);
+        &#125;
+
     &#125;
 
 &#125;
 </code></pre>
+<p><strong>结果</strong></p>
+<pre><code class="java">t1尝试获取锁
+t1获取到锁
+5s后释放锁
+主线程尝试获取锁
+t1释放锁
+主线程获取到锁
+主线程释放锁
+</code></pre>
+<p><strong>下面是AQS的JDK注释，如果要设计锁的话可以仔细结合源码阅读</strong></p>
+<blockquote>
+<p>为实现阻塞锁和依赖于先进先出（FIFO）等待队列的相关同步器（semaphores、事件等）提供了一个框架。该类旨在为大多数依赖于单个原子 int 值来表示状态的同步器提供有用的基础。子类必须定义改变该状态的受保护方法，以及定义该状态在该对象被获取或释放时的含义。有了这些方法，该类中的其他方法就可以执行所有队列和阻塞机制。子类可以维护其他状态字段，但只有使用 <code>getState</code>、<code>setState</code> 和 <code>compareAndSetState</code> 方法原子更新的 int 值才会被同步跟踪。<br>子类应定义为非公开的内部辅助类，用于实现其外层类的同步属性。<code>AbstractQueuedSynchronizer</code> 类没有实现任何同步接口。相反，该类定义了 <code>acquireInterruptibly</code> 等方法，具体锁和相关同步器可根据需要调用这些方法来实现其公共方法。<br>该类支持默认独占模式和共享模式。在独占模式下获取时，其他线程尝试获取不会成功。多个线程在共享模式下的获取可能（但不必）成功。该类并不 “理解 “这些差异，只是在机械意义上，当共享模式获取成功时，下一个等待线程（如果存在）也必须确定它是否也能获取。在不同模式下等待的线程共享同一个 FIFO 队列。通常，实现子类只支持其中一种模式，但这两种模式都会发挥作用，例如在读写锁中。只支持独占模式或共享模式的子类无需定义支持未使用模式的方法。<br>该类定义了一个嵌套的 <code>AbstractQueuedSynchronizer.ConditionObject</code> 类，支持独占模式的子类可将该类用作 Condition 实现，其中的方法 <code>isHeldExclusively</code> 会报告同步是否被当前线程独占，使用当前 <code>getState</code> 值调用的方法 release 会完全释放该对象，而获取（acquire）则会根据保存的状态值，最终将该对象恢复到之前的获取状态。没有任何 <code>AbstractQueuedSynchronizer</code> 方法会在其他情况下创建这样的条件，因此如果无法满足这一限制条件，请不要使用该方法。当然，<code>AbstractQueuedSynchronizer.ConditionObject</code> 的行为取决于其同步器实现的语义。<br>该类为内部队列提供了检查、检测和监控方法，并为条件对象提供了类似的方法。这些方法可根据需要导出到使用 <code>AbstractQueuedSynchronizer</code> 作为同步机制的类中。<br>该类的序列化只存储底层的原子整数维护状态，因此反序列化对象的线程队列是空的。需要序列化的典型子类将定义一个 <code>readObject</code> 方法，用于在反序列化时将其恢复到已知的初始状态。</p>
+</blockquote>
+<h2 id="公平锁与非公平锁"><a href="#公平锁与非公平锁" class="headerlink" title="公平锁与非公平锁"></a>公平锁与非公平锁</h2><p>最后我们来对比下<code>ReentrantLock</code>中公平锁和非公平锁的区别</p>
+<p><strong>非公平锁</strong></p>
+<pre><code class="java">final void lock() &#123;
+    if (compareAndSetState(0, 1)) //直接尝试CAS，插队了
+        setExclusiveOwnerThread(Thread.currentThread());//CAS成功就获取到锁
+    else
+        acquire(1);//没抢到才执行AQS里获取锁的逻辑，也就是在进行一次CAS，再没抢到锁才去排队
+&#125;
+
+final boolean nonfairTryAcquire(int acquires) &#123;
+    final Thread current = Thread.currentThread();
+    int c = getState();
+    if (c == 0) &#123;
+        if (compareAndSetState(0, acquires)) &#123;
+            setExclusiveOwnerThread(current);
+            return true;
+        &#125;
+    &#125;
+    else if (current == getExclusiveOwnerThread()) &#123;
+        int nextc = c + acquires;
+        if (nextc &lt; 0) // overflow
+            throw new Error(&quot;Maximum lock count exceeded&quot;);
+        setState(nextc);
+        return true;
+    &#125;
+    return false;
+&#125;
+</code></pre>
+<p><strong>公平锁</strong></p>
+<pre><code class="java">final void lock() &#123;
+    acquire(1);//老老实实执行获取锁的操作
+&#125;
+
+protected final boolean tryAcquire(int acquires) &#123;
+    final Thread current = Thread.currentThread();
+    int c = getState();
+    if (c == 0) &#123;
+        if (!hasQueuedPredecessors() &amp;&amp;  //先看有没有其它线程排在该线程前面，如果该线程就是队首才尝试去CAS，不然就去排队
+            compareAndSetState(0, acquires)) &#123;
+            setExclusiveOwnerThread(current);
+            return true;
+        &#125;
+    &#125;
+    else if (current == getExclusiveOwnerThread()) &#123;
+        int nextc = c + acquires;
+        if (nextc &lt; 0)
+            throw new Error(&quot;Maximum lock count exceeded&quot;);
+        setState(nextc);
+        return true;
+    &#125;
+    return false;
+&#125;
+&#125;
+</code></pre>
+<p><strong><code>ReentrantLock</code>对于两种锁的执行逻辑</strong></p>
+<ol>
+<li>线程1进入</li>
+<li>如果锁可用（同步状态允许），直接获取锁</li>
+<li>锁不可用（被占用），封装为Node放入FIFO队列并阻塞</li>
+<li><ol>
+<li><strong>非公平锁：</strong>线程2进入，尝试获取锁（<strong>共2次CAS</strong>），如果竞争失败，放入FIFO队尾，阻塞等待</li>
+<li><strong>公平锁：</strong>线程2进入，检查等待队列，确保无线程等待，若存在线程等待，加入队尾等待</li>
+</ol>
+</li>
+<li>线程1释放锁，更新同步状态，唤醒队列中下一个等待线程</li>
+<li>线程2被唤醒，尝试获取锁</li>
+</ol>
+<p>相信经过本文的讲述你对AQS应该也不再陌生，如果感兴趣一定要自己去动手实践一下，前路漫漫，与君共勉。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1550,12 +1809,12 @@ public class SwaggerConfig &#123;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Swagger</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">1k</span></p>
+    <p><span class="copy-title">文章标题:</span>AQS</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">3.9k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-10-05, 00:51:35</p>
-    <p><span class="copy-title">最后更新:</span>2022-10-05, 00:53:10</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/10/05/Swagger/" title="Swagger">https://os467.github.io/2022/10/05/Swagger/</a>
+    <p><span class="copy-title">发布时间:</span>2024-05-26, 00:14:11</p>
+    <p><span class="copy-title">最后更新:</span>2024-05-26, 00:15:37</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/05/26/AQS/" title="AQS">https://os467.github.io/2024/05/26/AQS/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
