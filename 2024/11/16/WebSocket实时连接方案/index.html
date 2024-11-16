@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>javaScript | Tly的博客</title>
+  <title>WebSocket实时连接方案 | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="javaScript | Tly的博客">
+  <meta name="description" content="WebSocket实时连接方案 | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:type" content="website">
@@ -1362,9 +1362,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-javaScript" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-WebSocket实时连接方案" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">javaScript</h1>
+        <h1 class="article-title">WebSocket实时连接方案</h1>
     
     <div class="article-meta">
         
@@ -1374,7 +1374,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="JAVASE基础">JAVASE基础</a>
+            <a  data-rel="其它">其它</a>
             
         </span>
         
@@ -1382,12 +1382,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-09-05 00:08:32'>2022-07-07 12:54</time>
+            发布时间 : <time class="date" title='最后更新: 2024-11-16 17:05:55'>2024-11-16 17:05</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2.5k</span>
+        <span>字数:539</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1406,7 +1406,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#js%E7%9A%84%E4%BB%A3%E7%A0%81%E8%AF%A5%E5%A6%82%E4%BD%95%E5%8E%BB%E7%BC%96%E5%86%99"><span class="toc-text">js的代码该如何去编写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript%E5%8F%98%E9%87%8F"><span class="toc-text">JavaScript变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89%E6%96%B9%E5%BC%8F"><span class="toc-text">数组的定义方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E5%AF%B9%E8%B1%A1"><span class="toc-text">JS对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%A4%E7%A7%8D%E5%AE%9A%E4%B9%89%E6%96%B9%E5%BC%8F"><span class="toc-text">函数的两种定义方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6"><span class="toc-text">JS中的事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Ehtml%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E6%96%87%E6%9C%AC%E5%AF%B9%E8%B1%A1document"><span class="toc-text">关于html的上下文文本对象document</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E7%9A%84%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7"><span class="toc-text">标签的常用属性</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WebSocket%E5%AE%9E%E6%97%B6%E8%BF%9E%E6%8E%A5%E6%96%B9%E6%A1%88"><span class="toc-text">WebSocket实时连接方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF"><span class="toc-text">后端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="toc-text">配置类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89Websocket%E7%BB%84%E4%BB%B6"><span class="toc-text">定义Websocket组件</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1422,303 +1422,158 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>什么是JavaScript？</strong></p>
-<ul>
-<li><p>JavaScript语言诞生主要是完成页面的数据验证</p>
-<p>因此它运行在客户端，需要运行浏览器来解析执行JavaScript代码 ，简称JS</p>
-</li>
-<li><p>JS是Netscape网景公司的产品，最早取名为LiveScript 为了吸引更多java开发人员，更名为JavaScript，JS是弱类型，Java是强类型</p>
-</li>
-</ul>
-<p><strong>JavaScript和html代码的结合</strong></p>
-<ul>
-<li>使用script标签来书写JavaScript代码</li>
-<li>使用script标签引入单独的JavaScript代码文件</li>
-</ul>
-<p><strong>JavaScript是运行在客户端的一门编程语言，简称js</strong></p>
-<h2 id="js的代码该如何去编写"><a href="#js的代码该如何去编写" class="headerlink" title="js的代码该如何去编写"></a>js的代码该如何去编写</h2><p>​		我们需要结合html来编写js代码：</p>
-<p>​		a、在html文件中定义一个<code>&lt;script&gt;&lt;/script&gt;</code>标签，在该标签的内部去写js代码</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;JavaScript&lt;/title&gt;
-&lt;/head&gt;
-
-&lt;!--定义一个script去写js代码--&gt;
-&lt;script&gt;
-
-    //js中封装的有对应的函数
-    alert(&quot;网页弹窗&quot;);
-
-&lt;/script&gt;
-&lt;body&gt;
-
-
-
-&lt;/body&gt;
-&lt;/html&gt;
+        <h1 id="WebSocket实时连接方案"><a href="#WebSocket实时连接方案" class="headerlink" title="WebSocket实时连接方案"></a>WebSocket实时连接方案</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/chang100111/article/details/119909603">参考</a></p>
+<h2 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h2><p><strong>引入依赖</strong></p>
+<pre><code class="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-websocket&lt;/artifactId&gt;
+&lt;/dependency&gt;
 </code></pre>
-<p>​		b、会声明一个js文件，在js文件中去写js代码，然后通过<code>&lt;script&gt;</code>标签去引入js文件</p>
-<pre><code class="html">&lt;!--引入js文件--&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;../js/test.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-<h2 id="JavaScript变量"><a href="#JavaScript变量" class="headerlink" title="JavaScript变量"></a>JavaScript变量</h2><ul>
-<li>数值类型：number</li>
-<li>字符串类型：string</li>
-<li>对象类型：object</li>
-<li>布尔类型：boolean</li>
-<li>函数类型：function</li>
-</ul>
-<p><strong>在js中如何去声明一个变量</strong></p>
-<p>​	<code>var、let</code>这两个关键字可以去接收一个变量</p>
-<p>而且任何变量都可以用这两个关键字接收</p>
-<p>var i &#x3D; 100</p>
-<p>let str &#x3D; “123456”</p>
-<p>关于js中的逻辑运行算（与 &amp;&amp;	或 ||	非 ! ）：</p>
-<p>在js中 null、undefined、0 、false参与逻辑运算时本身代表的是false，其余所有的数据都表示true</p>
-<p><strong>与运算</strong></p>
-<ul>
-<li>如果参与&amp;&amp;与运算两者都为真的情况下，会取到后者的值</li>
-<li>如果参与&amp;&amp;与运算有一者为假的情况下，会取到为假的那个值</li>
-<li>如果参与&amp;&amp;与运算两者都为假的情况下，会取到前者的值</li>
-</ul>
-<p><strong>或运算</strong></p>
-<ul>
-<li>如果参与||或运算两者都为真的情况下，会取到前者的值</li>
-<li>如果参与||或运算有一者为假的情况下，会取到为真的那个值</li>
-<li>如果参与||或运算两者都为假的情况下，会取到后者的值</li>
-</ul>
-<p><em>都有惰性取值的特点，最后计算完的值返回</em></p>
-<p>取非！运算，首先要搞清楚，数据本身是为真还是为假，取非之后，真就是假，假就是真</p>
-<h3 id="数组的定义方式"><a href="#数组的定义方式" class="headerlink" title="数组的定义方式"></a>数组的定义方式</h3><p>JS中数组的定义：</p>
-<p><strong>格式：</strong></p>
-<p><code>var 数组名 = [];</code>&#x2F;&#x2F;空数组</p>
-<p><code>var 数组名 = [1,&#39;abc&#39;,true];</code>&#x2F;&#x2F;定义数组同时赋值元素</p>
-<p>js数组可以在一个数组中存放任意类型的值</p>
-<p>js数组可以给任意一个下标赋值，未赋值的默认为<strong>undefined</strong></p>
-<p><strong>遍历数组</strong></p>
-<pre><code class="javascript">for (let i = 0;i &lt; array.length; i++)&#123;
+<h3 id="配置类"><a href="#配置类" class="headerlink" title="配置类"></a>配置类</h3><pre><code class="java">package pers.os467.config;
 
-    alert(array[i]);
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import org.springframework.web.socket.server.standard.ServerEndpointExporter;
+
+@Configuration
+@EnableWebSocket
+public class WebSocketConfig &#123;
+
+    @Bean
+    public ServerEndpointExporter serverEndpointExporter() &#123;
+        return new ServerEndpointExporter();
+    &#125;
 
 &#125;
 </code></pre>
-<h3 id="JS对象"><a href="#JS对象" class="headerlink" title="JS对象"></a>JS对象</h3><p>在js中也能new对象，但是必须使用js封装好的对象</p>
-<p>通过<code>对象.属性 = 值</code>的方法赋值，属性和值都可以自定义</p>
-<pre><code class="javascript">let object = new Object();
+<blockquote>
+<p>开启服务端websocket</p>
+</blockquote>
+<p>定义webSocket客户端</p>
+<pre><code class="java">package pers.os467.websocket;
 
-object.name = &quot;tom&quot;;
-object.age = 15;
-object.address = &quot;北京市&quot;;
-object.key = &quot;value&quot;;
+import lombok.Data;
 
-alert(object.name);
-alert(object.age);
-alert(object.address);
+import javax.websocket.Session;
 
-//正则对象
-let regExp = new RegExp();
-</code></pre>
-<h2 id="函数的两种定义方式"><a href="#函数的两种定义方式" class="headerlink" title="函数的两种定义方式"></a>函数的两种定义方式</h2><ul>
-<li><p>function 函数名(形参列表){函数体}</p>
-<pre><code class="javascript">function function01(num1,num2)&#123;
+@Data
+public class WebSocketClient &#123;
+
+    //用户id
+    private String uid;
     
-    let num = num1 + num2;
-    
-    return num;
+    //webSocket会话
+    private Session session;
     
 &#125;
 </code></pre>
-</li>
-<li><p>let  函数名 &#x3D; function(形参列表){函数体}</p>
-</li>
-</ul>
-<pre><code class="javascript">let function02 = function(num1,num2)&#123;
-    
-    let num = num1 + num2;
-    
-    return num;
-    
-&#125;
-</code></pre>
-<p><strong>注：</strong>js中的函数，在定义参数的时候可以不用写数据类型，参数与参数之间用逗号分割</p>
-<p><strong>注：</strong>js中的函数没有返回值类型，在函数体中写完代码之后，有返回值就返回，没有返回值就不用返回</p>
-<p><strong>注：</strong>js中的函数是不支持重载的，如果你同时定义了两个同名的函数，下面那个会覆盖上面那个</p>
-<p>在JavaScript语言中，定义带有返回值的函数<strong>只需要在函数体内直接使用return语句返回值即可</strong></p>
-<p><strong>JS隐式参数</strong></p>
-<pre><code class="javascript">//arguments js 中的隐式参数，是一个数组类型，可以去接收所有数据
-function function02()&#123;
+<h3 id="定义Websocket组件"><a href="#定义Websocket组件" class="headerlink" title="定义Websocket组件"></a>定义Websocket组件</h3><p>下面是使用WebSocket实现的简单好友聊天功能</p>
+<pre><code class="java">
+@Component
+@ServerEndpoint(value = &quot;/websocket/friend/&#123;uid&#125;&quot;, encoders = &#123;JSONObjectEncoder.class&#125;)
+public class FriendChatWebSocketServiceImpl implements FriendChatWebSocketService &#123;
 
-    alert(arguments[0]);
-    alert(arguments[1]);
-    alert(arguments[2]);
+    private static FriendSessionService friendSessionService;
 
-&#125;
+    @Autowired
+    public void setFriendSessionService(FriendSessionService friendSessionService)&#123;
+        this.friendSessionService = friendSessionService;
+    &#125;
 
-alert(function02(100,true,&quot;hello&quot;));
-</code></pre>
-<p><strong>简单的数字相加函数</strong></p>
-<pre><code class="javascript">let function02 = function(num1,num2) &#123;
+    private ThreadLogger logger = ThreadLogger.getInstance();
 
-       let num = null;
+    //当前在线连接数
+    private static int onlineCount = 0;
 
-       if ((typeof num1) == &quot;number&quot; &amp;&amp; (typeof num2) == &quot;number&quot;) &#123;
+    //客户端表
+    private static ConcurrentHashMap&lt;Integer, WebSocketClient&gt; webSocketMap = new ConcurrentHashMap&lt;&gt;();
 
-           let num = num1 + num2;
+    //当前连接客户端
+    private Session session;
 
-       &#125; else &#123;
+    //客户端用户id
+    private Integer uid;
 
-           return &quot;你传的数据不合法&quot;;
-
-       &#125;
-
-       return num;
-   &#125;
-</code></pre>
-<h2 id="JS中的事件"><a href="#JS中的事件" class="headerlink" title="JS中的事件"></a>JS中的事件</h2><ul>
-<li><strong>onload</strong> 加载完成事件：页面加载完成之后，常用于做页面js代码初始化操作</li>
-<li><strong>onclick</strong> 单机事件：常用于按钮的点击响应操作</li>
-<li><strong>onblur</strong> 失去焦点事件：常用于输入框失去焦点后验证其输入内容是否合法</li>
-<li><strong>onchange</strong> 内容发生改变事件：常用于下拉列表和输入框内容发生改变后操作</li>
-<li><strong>onsubmit</strong> 表单提交事件：常用于表单提交前，验证所有表单项是否合法</li>
-</ul>
-<p><strong>关于js中的事件（分为静态注册和动态注册）：</strong></p>
-<p>​	<strong>静态注册</strong>：通过html标签内部的事件属性来完成事件的注册</p>
-<pre><code class="javascript">&lt;body onload=&quot;alert(&#39;静态注册页面加载完成事件&#39;)&quot;&gt; &lt;/body&gt;
-</code></pre>
-<pre><code class="javascript">&lt;!--鼠标单机事件：静态注册--&gt;
-&lt;input type=&quot;button&quot; value=&quot;测试鼠标单机事件&quot; onclick=&quot;alert(&#39;鼠标单机事件静态注册&#39;)&quot;&gt;
-</code></pre>
-<p>​	</p>
-<p>​	<strong>动态注册</strong>：先通过dom对象获取到某一个具体的html元素，然后对这个标签进行绑定，注册事件</p>
-<p><code>document.getElementById()</code>通过id这个属性查找html元素</p>
-<p><strong>注</strong>：动态注册一定要写在<code>script</code>标签中，或者js文件中</p>
-<pre><code class="javascript">//页面加载完成事件动态注册
-//window是html内置对象
-  window.onload = function ()&#123;
-      
-    //在该函数中完成页面初始化的操作
-      
-      alert(&quot;动态绑定页面加载完成事件&quot;)
-
-  &#125;
-</code></pre>
-<p>动态注册单击事件</p>
-<pre><code class="javascript">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;JavaScript&lt;/title&gt;
-&lt;/head&gt;
-
-&lt;!--定义一个script去写js代码--&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-
-
-  //页面加载完成事件动态注册
-  //window是html内置对象
-    window.onload = function ()&#123;
-
-        alert(&quot;动态绑定页面加载完成事件&quot;)
-
-        //通过动态注册的方式来注册单击事件
-        let elementInput = document.getElementById(&quot;onclickTest&quot;);
-
-        //[object HTMLInputElement] dom对象
-        alert(elementInput)
-
-        //动态注册单击事件
-        elementInput.onclick=function ()&#123;
-
-            alert(&quot;触发了单击事件，动态注册的方式&quot;)
-
+    @OnOpen
+    public void onOpen(Session session, @PathParam(&quot;uid&quot;) Integer uid)&#123;
+        if (!webSocketMap.containsKey(uid))&#123;
+            addOnlineCount();
         &#125;
+        this.session = session;
+        this.uid = uid;
+        WebSocketClient client = new WebSocketClient();
+        client.setSession(session);
+        client.setUid(uid);
+        webSocketMap.put(uid,client);
+        logger.info(&quot;建立连接:&quot;+uid + &quot;，当前连接数:&quot;+onlineCount);
+    &#125;
+
+    @OnClose
+    public void onClose()&#123;
+        if (webSocketMap.containsKey(uid))&#123;
+            if (webSocketMap.size() &gt; 0)&#123;
+                subOnlineCount();
+            &#125;
+            webSocketMap.remove(uid);
+        &#125;
+        logger.info(&quot;断开连接:&quot;+uid + &quot;，当前连接数:&quot;+onlineCount);
+    &#125;
+
+    @OnMessage
+    public void onMessage(String message,Session session)&#123;
+        JSONObject jsonObject = (JSONObject)JSON.parse(message);
+        String messageContext = (String) jsonObject.get(&quot;messageContext&quot;);
+        Integer fsId =  (Integer) jsonObject.get(&quot;fsId&quot;);
+        Integer targetFriendUserId = (Integer) jsonObject.get(&quot;targetFriendUserId&quot;);
+        //发送消息
+        FriendMessageVo friendMessageVo = friendSessionService.sendUserMessage(messageContext, fsId, uid, targetFriendUserId);
+        //向好友推送
+        sendMessage(targetFriendUserId,friendMessageVo);
+        logger.info(&quot;接收到用户消息:&quot;+uid+&quot;报文&quot;+messageContext);
     &#125;
 
 
-    
+    @OnError
+    public void onError(Session session, Throwable throwable)&#123;
+        logger.error(&quot;用户错误:&quot;+uid+&quot;,原因:&quot;+throwable.getMessage());
+        throwable.printStackTrace();
+    &#125;
 
-&lt;/script&gt;
+    public static void sendMessage(Integer uid,Object object)&#123;
+        try &#123;
+            WebSocketClient webSocketClient = webSocketMap.get(uid);
+            if(webSocketClient!=null)&#123;
+                webSocketClient.getSession().getBasicRemote().sendObject(object);
+            &#125;
+        &#125; catch (IOException | EncodeException e) &#123;
+            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
+        &#125;
+    &#125;
 
-&lt;!--引入js文件--&gt;
-&lt;!--&lt;script type=&quot;text/javascript&quot; src=&quot;../js/test.js&quot;&gt;&lt;/script&gt;--&gt;
-&lt;body&gt;
+    public static void sendMessage(String uid,String message)&#123;
+        WebSocketClient webSocketClient = webSocketMap.get(uid);
+        if (webSocketClient != null)&#123;
+            try &#123;
+                webSocketClient.getSession().getBasicRemote().sendText(message);
+            &#125; catch (IOException ioException) &#123;
+                ioException.printStackTrace();
+                throw new RuntimeException(ioException.getMessage());
+            &#125;
+        &#125;
+    &#125;
 
-    &lt;!--鼠标单机事件：静态注册--&gt;
-    &lt;input type=&quot;button&quot; value=&quot;测试鼠标单机事件(静态)&quot; onclick=&quot;alert(&#39;鼠标单机事件静态注册&#39;)&quot;&gt;&lt;br&gt;
-    &lt;input type=&quot;button&quot; value=&quot;测试鼠标单机事件(动态)&quot; id=&quot;onclickTest&quot;&gt;&lt;br&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>加载完成事件（<strong>onload</strong>）：</p>
-<p>​		浏览器在解析html页面的时候是一个标签一个标签的往下解析</p>
-<p>​		在浏览器解析完所有的html元素之后会触发的操作</p>
-<p>失去焦点事件（<strong>onblur</strong>）</p>
-<pre><code class="html">测试鼠标失去焦点事件(静态):&lt;input type=&quot;text&quot; id=&quot;onblur&quot; onblur=&quot;alert(&#39;触发了失去焦点事件&#39;)&quot;&gt;&lt;br&gt;
-</code></pre>
-<pre><code class="javascript">//动态绑定失去焦点事件
-let elementOnblur = document.getElementById(&quot;onblurTest&quot;);
+    private synchronized void subOnlineCount() &#123;
+        onlineCount--;
+    &#125;
 
-//绑定事件
-elementOnblur.onblur = function ()&#123;
-
-    alert(&quot;触发了失去焦点事件，动态注册的方式&quot;);
-
-&#125;
-</code></pre>
-<p>内容发送改变事件（<strong>onchange</strong>）</p>
-<pre><code class="html">测试内容发生改变事件(静态):&lt;input type=&quot;text&quot; value=&quot;123&quot; onchange=&quot;alert(&#39;内容已发生改变&#39;)&quot;&gt;&lt;br&gt;
-</code></pre>
-<pre><code class="javascript">//内容发生改变事件
-let elementSelect = document.getElementById(&quot;onchangeTest&quot;);
-
-//绑定事件
-elementSelect.onchange = function ()&#123;
-
-    alert(&quot;内容已发生改变,动态注册的方式&quot;);
+    private synchronized void addOnlineCount() &#123;
+        onlineCount++;
+    &#125;
 
 &#125;
 </code></pre>
-<h4 id="关于html的上下文文本对象document"><a href="#关于html的上下文文本对象document" class="headerlink" title="关于html的上下文文本对象document"></a>关于html的上下文文本对象document</h4><p>这个是html内置的对象，通过这个对象可以去获取html对象（标签）</p>
-<p>而且获取的方式有很多种（比如：根据id属性获取，根据name属性获取，根据具体的标签名称获取）</p>
-<p><strong>DOM模型和document对象</strong></p>
-<p><strong>DOM</strong>全称是Document Object Model 文档对象模型</p>
-<p><strong>document</strong>对象</p>
-<p>1.Document它管理了所有的HTML文档内容</p>
-<p>2.document它是一种树结构的文档，有层级关系</p>
-<p>3.它让我们把所有的标签都对象化</p>
-<p>4.我们可以通过document访问所有的标签对象</p>
-<p><strong>Document对象中的方法</strong></p>
-<ul>
-<li><code>document.getElementById(elementId)</code>通过标签的id属性查找标签dom对象，elementId是标签的id属性值</li>
-<li><code>document.getElementsByName(elementName)</code>通过标签的name属性查找标签dom对象，elementName标签的name属性值</li>
-<li><code>document.getElementsByTagName(tagname)</code>通过标签名找标签dom对象，tagname是标签名</li>
-<li><code>document.createElement(tagName)</code>方法，通过给定的标签名，创建一个标签对象，tagName是要创建的标签名</li>
-</ul>
-<pre><code class="javascript">//获取所有name属性值为username的标签
-let inputEls = document.getElementsByName(&quot;username&quot;);
-
-//[object NodeList]
-alert(inputEls);
-
-for (let i = 0; i &lt; inputEls.length; i++) &#123;
-
-    alert(inputEls[i]);
-
-&#125;
-</code></pre>
-<h5 id="标签的常用属性"><a href="#标签的常用属性" class="headerlink" title="标签的常用属性"></a>标签的常用属性</h5><ul>
-<li>childNodes属性，获取当前节点的所有子节点</li>
-<li>firstChild属性，获取当前节点的第一个子节点</li>
-<li>lastChild属性，获取当前节点的最后一个子节点</li>
-<li>parentNode属性，获取当前节点的父节点</li>
-<li>nextSibling，获取当前节点的下一个节点</li>
-<li>previousSibling属性，获取当前节点的上一个节点</li>
-<li>className用于获取或设置标签的class属性值</li>
-<li>innerHTML属性，表示获取&#x2F;设置起始标签和结束标签中的内容</li>
-<li>innerText属性，表示获取&#x2F;设置起始标签和结束标签中的文本</li>
-</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1732,12 +1587,12 @@ for (let i = 0; i &lt; inputEls.length; i++) &#123;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>javaScript</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">2.5k</span></p>
+    <p><span class="copy-title">文章标题:</span>WebSocket实时连接方案</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">539</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-07-07, 12:54:16</p>
-    <p><span class="copy-title">最后更新:</span>2022-09-05, 00:08:32</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/07/07/javaScript/" title="javaScript">https://os467.github.io/2022/07/07/javaScript/</a>
+    <p><span class="copy-title">发布时间:</span>2024-11-16, 17:05:00</p>
+    <p><span class="copy-title">最后更新:</span>2024-11-16, 17:05:55</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/11/16/WebSocket%E5%AE%9E%E6%97%B6%E8%BF%9E%E6%8E%A5%E6%96%B9%E6%A1%88/" title="WebSocket实时连接方案">https://os467.github.io/2024/11/16/WebSocket%E5%AE%9E%E6%97%B6%E8%BF%9E%E6%8E%A5%E6%96%B9%E6%A1%88/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
