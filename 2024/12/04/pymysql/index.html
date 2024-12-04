@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Java线程池 | Tly的博客</title>
+  <title>Pymysql | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Java线程池 | Tly的博客">
+  <meta name="description" content="Pymysql | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:type" content="website">
@@ -1389,9 +1389,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-java线程池" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-pymysql" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Java线程池</h1>
+        <h1 class="article-title">Pymysql</h1>
     
     <div class="article-meta">
         
@@ -1401,7 +1401,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="JAVASE进阶">JAVASE进阶</a>
+            <a  data-rel="其它">其它</a>
             
         </span>
         
@@ -1409,12 +1409,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-03-14 22:02:02'>2024-03-13 17:15</time>
+            发布时间 : <time class="date" title='最后更新: 2024-12-04 15:51:00'>2024-12-04 15:50</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:3.1k</span>
+        <span>字数:707</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1433,7 +1433,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">Java线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK%E8%87%AA%E5%B8%A6%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">JDK自带的四种线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BC%93%E5%AD%98%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">1.缓存线程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9B%BA%E5%AE%9A%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">2.固定线程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%A1%E5%88%92%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">3.计划线程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%8D%95%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">4.单线程池</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%A0%B8%E5%BF%83%E5%8F%82%E6%95%B0"><span class="toc-text">线程池核心参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E4%B8%AA%E6%A0%B8%E5%BF%83%E5%8F%82%E6%95%B0"><span class="toc-text">七个核心参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%A0%B8%E5%BF%83%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%A4%A7%E5%B0%8F"><span class="toc-text">1.核心线程池大小</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9C%80%E5%A4%A7%E7%BA%BF%E7%A8%8B%E5%A4%A7%E5%B0%8F"><span class="toc-text">2.最大线程大小</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%A9%BA%E9%97%B2%E7%BA%BF%E7%A8%8B%E5%AD%98%E6%B4%BB%E6%97%B6%E9%97%B4"><span class="toc-text">3.空闲线程存活时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%A9%BA%E9%97%B2%E7%BA%BF%E7%A8%8B%E5%AD%98%E6%B4%BB%E6%97%B6%E9%97%B4%E5%8D%95%E4%BD%8D"><span class="toc-text">4.空闲线程存活时间单位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97"><span class="toc-text">5.工作队列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%BA%BF%E7%A8%8B%E5%B7%A5%E5%8E%82"><span class="toc-text">6.线程工厂</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E6%8B%92%E7%BB%9D%E7%AD%96%E7%95%A5"><span class="toc-text">7.拒绝策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringBoot%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">SpringBoot线程池</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Pymsql"><span class="toc-text">Pymsql</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">连接数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">查询数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="toc-text">参数传递</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E6%93%8D%E4%BD%9C"><span class="toc-text">事务操作</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1449,284 +1449,174 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Java线程池"><a href="#Java线程池" class="headerlink" title="Java线程池"></a>Java线程池</h1><p>在使用多线程的时候，通常我们直接通过new Thread()然后实现run方法即可执行多线程任务，但这种方法存在一些弊端。而使用<strong>线程池</strong>更具有以下优势：</p>
-<ul>
-<li>降低线程创建和销毁造成的系统开销，提高线程<strong>复用率</strong></li>
-<li>提高系统<strong>响应速度</strong>，直接使用存在的线程，无需等待线程创建。</li>
-<li>方便线程并发数控制，若无限制创建线程，可能会出现<strong>OOM异常</strong></li>
-<li>可扩展<strong>不同功能的线程池</strong>，如定时任务线程池，可控数量线程池</li>
-</ul>
-<h2 id="JDK自带的四种线程池"><a href="#JDK自带的四种线程池" class="headerlink" title="JDK自带的四种线程池"></a>JDK自带的四种线程池</h2><h3 id="1-缓存线程池"><a href="#1-缓存线程池" class="headerlink" title="1.缓存线程池"></a>1.缓存线程池</h3><p><code>newCachedThreadPool</code></p>
-<p>创建一个线程池，该线程池根据需要创建新线程，但在以前构建的线程可用时将重用这些线程。这些池通常会提高执行许多短期异步任务的程序的性能。执行的调用将重用以前构造的线程（如果可用）。如果没有可用的现有线程，将创建一个新线程并将其添加到池中。已60秒未使用的线程将终止并从缓存中删除。因此，一个空闲足够长时间的池将不会消耗任何资源。请注意，可以使用ThreadPoolExecutor构造函数创建具有类似属性但不同详细信息（例如，超时参数）的池。返回：新建的线程池</p>
-<blockquote>
-<p>以上是jdk源码注释</p>
-</blockquote>
-<p>简单来讲，缓存线程池具有一定的复用性，但存在一个缓存时间，也就是如果有长时间未使用的线程，缓存线程池会自动去回收这个线程。而当线程池池中线程不足时，缓存线程池会自动的去创建新的线程。</p>
-<ul>
-<li><p>因此缓存线程池会优先使用线程池中目前存在的空闲线程，提高了线程的<strong>复用率</strong>。</p>
-</li>
-<li><p>同时当线程长时间未使用，也会自动去回收线程，避免了<strong>OOM</strong>。</p>
-</li>
-</ul>
-<pre><code class="java">public class Pool &#123;
+        <h1 id="Pymsql"><a href="#Pymsql" class="headerlink" title="Pymsql"></a>Pymsql</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code class="python">pip install pymysql -i https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre>
+<h2 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h2><pre><code class="python">from pymysql import Connection, connect
 
-    public static void main(String[] args) &#123;
+connect = None
 
+try:
+    connect = Connection(
+        host=&#39;localhost&#39;,
+        port=3306,
+        user=&#39;root&#39;,
+        password=&#39;root&#39;,
+    )
 
+    print(&quot;连接mysql成功&quot;)
 
-        ExecutorService executorService = Executors.newCachedThreadPool();
+except Exception as e:
+    print(e)
+finally:
+    if connect is not None:
+        connect.close()
+</code></pre>
+<p><strong>使用游标执行语句</strong></p>
+<pre><code class="python">from pymysql import Connection, connect
 
+connect = None
 
-        executorService.submit(()-&gt;&#123;
-            System.out.println(Thread.currentThread().getName()+&quot;正在执行工作&quot;);
-        &#125;);
+try:
+    connect = Connection(
+        host=&#39;localhost&#39;,
+        port=3306,
+        user=&#39;root&#39;,
+        password=&#39;root&#39;,
+        database=&#39;web_test&#39;, #指定要操作的数据库
+    )
 
-        //模拟延迟
-        try &#123;
-            Thread.sleep(2000);
-        &#125; catch (InterruptedException e) &#123;
-            e.printStackTrace();
-        &#125;
+    #选择要操作的数据库
+    connect.select_db(&#39;web_test&#39;)
 
-        executorService.submit(()-&gt;&#123;
-            System.out.println(Thread.currentThread().getName()+&quot;正在执行工作&quot;);
-            //模拟延迟
-            try &#123;
-                Thread.sleep(100);
-            &#125; catch (InterruptedException e) &#123;
-                e.printStackTrace();
-            &#125;
-        &#125;);
+    #获取游标对象
+    cursor = connect.cursor()
 
-        executorService.submit(()-&gt;&#123;
-            System.out.println(Thread.currentThread().getName()+&quot;正在执行工作&quot;);
-        &#125;);
+    #cursor.execute(数据库操作语句)
 
-    &#125;
-
-&#125;
+except Exception as e:
+    print(e)
+finally:
+    if connect is not None:
+        connect.close()
 </code></pre>
 <blockquote>
-<p>pool-1-thread-1正在执行工作<br>pool-1-thread-1正在执行工作<br>pool-1-thread-2正在执行工作</p>
+<p>选择操作的数据库可以在创建Connection对象时指定，也可以通过<code>select_db</code>方法指定</p>
 </blockquote>
-<h3 id="2-固定线程池"><a href="#2-固定线程池" class="headerlink" title="2.固定线程池"></a>2.固定线程池</h3><p><code>newFixedThreadPool</code></p>
-<p>创建一个线程池，该线程池重用在共享的无边界队列中操作的固定数量的线程。在任何时候，最多nThreads线程将是活动的处理任务。如果在所有线程都处于活动状态时提交了其他任务，则它们将在队列中等待，直到有线程可用为止。如果任何线程在关闭前的执行过程中因故障而终止，则在需要执行后续任务时，将替换一个新线程。池中的线程将一直存在，直到显式关闭为止。</p>
-<blockquote>
-<p>以上是jdk源码注释</p>
-</blockquote>
-<p>固定线程池如同其名，线程池本身线程<strong>数量是确定</strong>下来的，并且这些线程一旦创建不会被自动销毁而是处于一种等待任务的状态。<strong>当该线程池中所有线程都处于活跃状态时，如果有新的任务提交，则需要将任务放在等待队列中，直到有线程可用为止。</strong></p>
-<ul>
-<li>提高了线程复用率，无需重新创建销毁线程（除非执行任务过程中线程出现了异常）</li>
-<li>固定线程数量，且天然具有队列，有一定的任务囤积能力，避免了<strong>OOM</strong></li>
-</ul>
-<pre><code class="java">public class Pool &#123;
+<h2 id="查询数据库"><a href="#查询数据库" class="headerlink" title="查询数据库"></a>查询数据库</h2><p><strong>游标</strong></p>
+<pre><code class="python">#获取游标对象
+cursor = connect.cursor()
 
-    public static void main(String[] args) &#123;
+cursor.execute(&#39;select * from user&#39;)
+
+#获取查询所有结果
+result = cursor.fetchall()
+
+#遍历结果
+for row in result:
+    print(row)
+</code></pre>
+<p><strong>游标方法</strong></p>
+<p><code>fetchall</code> 查询所有结果</p>
+<p><code>fetchon</code> 查询当前位置下一行</p>
+<p><code>scroll</code> 游标移动，mode参数: “absolute” 绝对位置移动，”relative”相对位置移动</p>
+<p><code>fetchmany</code> 获取指定数量的结果</p>
+<pre><code class="python">from pymysql import Connection, connect
+
+connect = None
+
+try:
+    connect = Connection(
+        host=&#39;localhost&#39;,
+        port=3306,
+        user=&#39;root&#39;,
+        password=&#39;root&#39;,
+        database=&#39;web_test&#39;, #指定要操作的数据库
+    )
+
+    #选择要操作的数据库
+    connect.select_db(&#39;web_test&#39;)
+
+    #获取游标对象
+    cursor = connect.cursor()
+
+    #未执行时rowcount = -1
+    print(cursor.rowcount)
+
+    cursor.execute(&#39;select * from user&#39;)
+
+    # rowcount = 8
+    print(cursor.rowcount)
+
+    #查询多个
+    #res = cursor.fetchmany(cursor.rowcount)
+
+    cursor.scroll(0, mode=&#39;absolute&#39;)  # 相对绝对位置移动
+    print(cursor.fetchone()) #查询当前行的下一行
+    cursor.scroll(1, mode=&#39;relative&#39;)  # 相对当前位置移动
+    print(cursor.fetchone()) #查询当前行的下一行
 
 
 
-        ExecutorService executorService = Executors.newFixedThreadPool(10);
+except Exception as e:
+    print(e)
+finally:
+    if connect is not None:
+        connect.close()
+</code></pre>
+<h2 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h2><pre><code class="python">#获取游标对象
+cursor = connect.cursor()
 
-        for (int i = 0; i &lt; 11; i++) &#123;
+cursor.execute(&quot;select * from user where username like %s&quot;,(&#39;%jack%&#39;))
 
-            executorService.submit(()-&gt;&#123;
-                System.out.println(Thread.currentThread().getName()+&quot;正在工作&quot;);
-                try &#123;
-                    Thread.sleep(100);
-                &#125; catch (InterruptedException e) &#123;
-                    e.printStackTrace();
-                &#125;
-            &#125;);
-        &#125;
+res = cursor.fetchall()
 
-    &#125;
-
-&#125;
+for re in res:
+    print(re)
 </code></pre>
 <blockquote>
-<p>pool-1-thread-1正在工作<br>pool-1-thread-3正在工作<br>pool-1-thread-2正在工作<br>pool-1-thread-4正在工作<br>pool-1-thread-5正在工作<br>pool-1-thread-6正在工作<br>pool-1-thread-7正在工作<br>pool-1-thread-8正在工作<br>pool-1-thread-9正在工作<br>pool-1-thread-10正在工作<br>pool-1-thread-8正在工作</p>
+<p>通常查询条件我们使用元组传递，使用<code>%s</code>占位符传递值，这样子可以防止sql注入问题</p>
 </blockquote>
-<h3 id="3-计划线程池"><a href="#3-计划线程池" class="headerlink" title="3.计划线程池"></a>3.计划线程池</h3><p><code>newScheduledThreadPool</code></p>
-<p>创建一个线程池，该线程池可以安排命令在给定延迟后运行或定期执行。</p>
-<blockquote>
-<p>以上是jdk源码注释</p>
-</blockquote>
-<p>计划线程池提供了一组线程池来执行<strong>定时或是延时任务</strong>，当需要执行任务时，会从线程池中获取空闲的线程执行当前任务，且每次都随机抽取线程使用。</p>
-<ul>
-<li><code>schedule</code> 延时任务方法，需要提供一个Runnable，一个延时数，一个时间单位</li>
-<li><code>scheduleAtFixedRate</code>   定时间隔任务方法，需要提供一个Runnable，一个定时间隔数，一个时间单位</li>
-<li><code>scheduleWithFixedDelay</code>  固定延时间隔任务方法，需要提供一个Runnable，一个延时数，一个时间单位</li>
-</ul>
-<blockquote>
-<p>前一个schedule可以类比js的setTimeout，后面的两个方法有点像setInterval，但是前者基于固定的时间间隔，后者基于当前任务与上一个任务的时间间隔</p>
-</blockquote>
-<pre><code class="java">public class Pool &#123;
+<p><strong>SQL注入代码示范</strong></p>
+<pre><code class="python">username = &quot;&#39;&#39; OR &#39;1&#39;=&#39;1&#39;&quot;
 
-    public static void main(String[] args) &#123;
-
-
-        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
-
-        scheduledExecutorService.schedule(new Runnable() &#123;
-            @Override
-            public void run() &#123;
-                System.out.println(Thread.currentThread().getName()+&quot;延时任务1&quot;);
-            &#125;
-        &#125;, 1000,TimeUnit.MILLISECONDS);
-
-        scheduledExecutorService.scheduleAtFixedRate(new Runnable() &#123;
-            @Override
-            public void run() &#123;
-                System.out.println(Thread.currentThread().getName()+&quot;定时任务1&quot;);
-            &#125;
-        &#125;,0,1000,TimeUnit.MILLISECONDS);
-
-
-        scheduledExecutorService.scheduleWithFixedDelay(new Runnable() &#123;
-            @Override
-            public void run() &#123;
-                System.out.println(Thread.currentThread().getName()+&quot;定时任务2&quot;);
-                try &#123;
-                    Thread.sleep(2000);
-                &#125; catch (InterruptedException e) &#123;
-                    e.printStackTrace();
-                &#125;
-            &#125;
-        &#125;,0,1000,TimeUnit.MILLISECONDS);
-
-    &#125;
-
-&#125;
+cursor.execute(f&quot;select * from user where username like &#123;username&#125;&quot;)
 </code></pre>
 <blockquote>
-<p>pool-1-thread-1定时任务1<br>pool-1-thread-1定时任务2<br>pool-1-thread-1延时任务1<br>pool-1-thread-1定时任务1<br>pool-1-thread-1定时任务1<br>pool-1-thread-1定时任务1<br>pool-1-thread-1定时任务2</p>
+<p>这是一段危险代码会导致SQL注入，使得查询出所有用户信息</p>
 </blockquote>
-<h3 id="4-单线程池"><a href="#4-单线程池" class="headerlink" title="4.单线程池"></a>4.单线程池</h3><p><code>newSingleThreadExecutor</code></p>
-<p>创建一个执行器，该执行器使用在无边界队列中操作的单个工作线程。（但请注意，如果此单个线程在关闭前的执行过程中因故障而终止，则在需要执行后续任务时，将替换一个新线程。）任务保证按顺序执行，并且在任何给定时间活动的任务都不会超过一个。与其他等效的newFixedThreadPool（1）不同，返回的执行器保证不会重新配置为使用其他线程。返回：新创建的单线程执行器</p>
-<blockquote>
-<p>以上是jdk源码注释</p>
-</blockquote>
-<p>单线程池保证了线程池中只使用一个线程来服务所有提交到该线程池的任务，如果该线程正在活跃，则新来的任务需要被囤积在队里中，等待该线程处理。当该线程执行发生异常，会在下一次执行任务时重新创建线程。</p>
-<ul>
-<li>保证了每次只用一个线程来执行任务，避免了<strong>OOM</strong></li>
-<li>维护了一个线程，无需重复创建销毁线程，<strong>提高了系统速度</strong></li>
-</ul>
-<pre><code class="java">public class Pool &#123;
+<p><strong>更新操作</strong></p>
+<pre><code class="python">#获取游标对象
+cursor = connect.cursor()
 
-    public static void main(String[] args) &#123;
+sql = &quot;update user set username = %s where uid = %s&quot;
 
-
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-
-
-
-        executorService.submit(()-&gt;&#123;
-            System.out.println(Thread.currentThread().getName()+&quot;正在工作&quot;);
-            try &#123;
-                Thread.sleep(100);
-            &#125; catch (InterruptedException e) &#123;
-                e.printStackTrace();
-            &#125;
-        &#125;);
-
-
-        executorService.submit(()-&gt;&#123;
-            System.out.println(Thread.currentThread().getName()+&quot;正在工作&quot;);
-            try &#123;
-                Thread.sleep(100);
-            &#125; catch (InterruptedException e) &#123;
-                e.printStackTrace();
-            &#125;
-        &#125;);
-
-    &#125;
-
-&#125;
+# 执行SQL语句
+cursor.execute(sql,( &quot;user0001&quot;,10))
 </code></pre>
 <blockquote>
-<p>pool-1-thread-1正在工作<br>pool-1-thread-1正在工作</p>
+<p><code>%s</code>作为通用占位符，会自动转换数据类型</p>
 </blockquote>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li><strong>固定线程池</strong>：适用于并发任务数已知且稳定的场景。如果应用需要处理一组固定数量的任务，可以选择这个线程池。</li>
-<li><strong>缓存线程池</strong>：适用于执行时间较短的任务。如果应用需要动态创建线程以处理临时性任务，可以选择这个线程池</li>
-<li><strong>单线程池</strong>：适用于需要按顺序执行任务的场景。如果应用需要保证任务按照指定顺序执行，例如日志记录等，可以选择这个线程池。</li>
-<li><strong>计划线程池</strong>：支持定时和周期性任务的执行。如果应用需要定期执行任务，可以选择这个线程池。</li>
-</ul>
-<h2 id="线程池核心参数"><a href="#线程池核心参数" class="headerlink" title="线程池核心参数"></a>线程池核心参数</h2><h3 id="七个核心参数"><a href="#七个核心参数" class="headerlink" title="七个核心参数"></a>七个核心参数</h3><pre><code class="java">public ThreadPoolExecutor(int corePoolSize,
-                          int maximumPoolSize,
-                          long keepAliveTime,
-                          TimeUnit unit,
-                          BlockingQueue&lt;Runnable&gt; workQueue,
-                          ThreadFactory threadFactory,
-                          RejectedExecutionHandler handler)
+<h2 id="事务操作"><a href="#事务操作" class="headerlink" title="事务操作"></a>事务操作</h2><p><strong>删除操作</strong></p>
+<pre><code class="python"># 使用cursor()方法获取操作游标 
+cursor = db.cursor()
+ 
+# SQL 删除语句
+sql = &quot;DELETE FROM EMPLOYEE WHERE AGE &gt; %s&quot; % (20)
+try:
+   # 执行SQL语句
+   cursor.execute(sql)
+   # 提交修改
+   connect.commit()
+except:
+   # 发生错误时回滚
+   connect.rollback()
+ 
+# 关闭连接
+connect.close()
 </code></pre>
-<h4 id="1-核心线程池大小"><a href="#1-核心线程池大小" class="headerlink" title="1.核心线程池大小"></a>1.<strong>核心线程池大小</strong></h4><p><code>corePoolSize</code>  即线程池中至少会保留的线程数量</p>
-<h4 id="2-最大线程大小"><a href="#2-最大线程大小" class="headerlink" title="2.最大线程大小"></a>2.<strong>最大线程大小</strong></h4><p><code>maximumPoolSize</code>  池中允许的最大线程数</p>
-<h4 id="3-空闲线程存活时间"><a href="#3-空闲线程存活时间" class="headerlink" title="3.空闲线程存活时间"></a>3.<strong>空闲线程存活时间</strong></h4><p><code>keepAliveTime</code> 大于核心线程数时的空闲线程保持的存活时间</p>
-<h4 id="4-空闲线程存活时间单位"><a href="#4-空闲线程存活时间单位" class="headerlink" title="4.空闲线程存活时间单位"></a>4.<strong>空闲线程存活时间单位</strong></h4><p><code>unit</code></p>
-<h4 id="5-工作队列"><a href="#5-工作队列" class="headerlink" title="5.工作队列"></a>5.<strong>工作队列</strong></h4><p><code>workQueue</code>  当有任务进入线程池时会先进入工作队列等待线程调度</p>
-<p><strong>有以下四种工作队列</strong></p>
-<p>①<code>ArrayBlockingQueue</code></p>
-<p>基于数组的<strong>有界阻塞队列</strong>，按FIFO排序。新任务进来后，会放到该队列的队尾，有界的数组可以防止资源耗尽问题。当线程池中线程数量达到<code>corePoolSize</code>后，再有新任务进来，则会将任务放入该队列的队尾，等待被调度。如果队列已经是满的，则创建一个新线程，如果线程数量已经达到<code>maxPoolSize</code>，则会执行拒绝策略。</p>
 <blockquote>
-<p>底层基于数组实现的队列的数据结构</p>
+<p>以删除操作为例，如果发生异常自动回滚</p>
 </blockquote>
-<p>②<code>LinkedBlockingQuene</code></p>
-<p>基于链表的<strong>无界阻塞队列</strong>（其实最大容量为<code>Interger.MAX</code>），按照FIFO排序。由于该队列的近似无界性，当线程池中线程数量达到<code>corePoolSize</code>后，再有新任务进来，会一直存入该队列，而基本不会去创建新线程直到<code>maxPoolSize</code>（很难达到<code>Interger.MAX</code>这个数），因此使用该工作队列时，参数<code>maxPoolSize</code>其实是不起作用的。</p>
-<blockquote>
-<p>底层基于链表实现的数据结构</p>
-</blockquote>
-<p>③<strong>无缓冲等待队列</strong>  <code>SynchronousQuene</code></p>
-<p>一个<strong>不缓存任务</strong>的阻塞队列，生产者放入一个任务必须等到消费者取出这个任务。也就是说新任务进来时，不会缓存，而是直接被调度执行该任务，如果没有可用线程，则创建新线程，如果线程数量达到<code>maxPoolSize</code>，则执行拒绝策略。</p>
-<blockquote>
-<p>底层是基于栈实现的非公平队列，如果传参true，可以使用基于队列实现的公平队列</p>
-<p><code>SynchronousQueue</code>是一种特殊的阻塞队列，队列长度是0，一个线程往队列放数据，必须等待另一个线程取走数据。同样，一个线程从队列中取数据，必须等待另一个线程往队列中放数据。</p>
-</blockquote>
-<p>④<code>PriorityBlockingQueue</code></p>
-<p><strong>具有优先级的无界阻塞队列</strong>，优先级通过参数<strong>Comparator</strong>实现。</p>
-<h4 id="6-线程工厂"><a href="#6-线程工厂" class="headerlink" title="6.线程工厂"></a>6.<strong>线程工厂</strong></h4><p><code>threadFactory</code>  创建一个新线程时使用的工厂，可以用来设定线程名、是否为守护线程等等</p>
-<h4 id="7-拒绝策略"><a href="#7-拒绝策略" class="headerlink" title="7.拒绝策略"></a>7.<strong>拒绝策略</strong></h4><p>当工作队列已满且线程池活跃线程已经达到线程池最大线程数量时，如果有新的任务进入则会除法拒绝策略。</p>
-<p>①<strong>呼叫者运行策略</strong>  <code>CallerRunsPolicy</code></p>
-<p>该策略下，在调用者线程中直接执行被拒绝任务的run方法，除非线程池已经关闭，则直接抛弃任务。哪里来的回到哪里去、</p>
-<pre><code class="java">new ThreadPoolExecutor.CallerRunsPolicy()
-</code></pre>
-<p>②<strong>终止策略</strong>  <code>AbortPolicy</code></p>
-<p>该策略下，直接丢弃任务，并抛出<code>RejectedExecutionException</code>异常。</p>
-<pre><code class="java">new ThreadPoolExecutor.AbortPolicy()
-</code></pre>
-<p>③<strong>丢弃策略</strong>  <code>DiscardPolicy</code></p>
-<p>该策略下，直接丢弃任务，什么都不做。  </p>
-<pre><code class="java">new ThreadPoolExecutor.DiscardPolicy()
-</code></pre>
-<p>④<strong>丢弃最旧策略</strong>  <code>DiscardOldestPolicy</code></p>
-<p>该策略下，抛弃进入队列最早的那个任务，然后尝试把这次拒绝的任务放入队列。 (抛弃队头元素，新任务放入队尾)</p>
-<pre><code class="java">new ThreadPoolExecutor.DiscardOldestPolicy()
-</code></pre>
-<h2 id="SpringBoot线程池"><a href="#SpringBoot线程池" class="headerlink" title="SpringBoot线程池"></a>SpringBoot线程池</h2><p><code>ThrealPoolTaskExecutor</code></p>
-<ul>
-<li>Spring框架提供的线程池实现，具有更高的灵活性。</li>
-<li>可以配置线程池的各项参数，如核心线程数、最大线程数、队列容量等。</li>
-</ul>
-<pre><code class="java">@Configuration
-public class ThreadPoolTaskConfig implements AsyncConfigurer &#123;
-
-    @Bean(&quot;taskExecutor&quot;)
-    public ThreadPoolTaskExecutor TaskExecutor() &#123;
-        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
-        taskExecutor.setCorePoolSize(5);
-        taskExecutor.setMaxPoolSize(10);
-        taskExecutor.setKeepAliveSeconds(60);
-        taskExecutor.setQueueCapacity(20);
-        taskExecutor.setThreadNamePrefix(&quot;&quot;);
-        taskExecutor.setWaitForTasksToCompleteOnShutdown(true);
-        // 线程池对拒绝任务的处理策略
-        taskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
-        // 初始化
-        taskExecutor.initialize();
-        return taskExecutor;
-    &#125;
-&#125;
-</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1740,12 +1630,12 @@ public class ThreadPoolTaskConfig implements AsyncConfigurer &#123;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Java线程池</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">3.1k</span></p>
+    <p><span class="copy-title">文章标题:</span>Pymysql</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">707</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2024-03-13, 17:15:23</p>
-    <p><span class="copy-title">最后更新:</span>2024-03-14, 22:02:02</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/03/13/java%E7%BA%BF%E7%A8%8B%E6%B1%A0/" title="Java线程池">https://os467.github.io/2024/03/13/java%E7%BA%BF%E7%A8%8B%E6%B1%A0/</a>
+    <p><span class="copy-title">发布时间:</span>2024-12-04, 15:50:03</p>
+    <p><span class="copy-title">最后更新:</span>2024-12-04, 15:51:00</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/12/04/pymysql/" title="Pymysql">https://os467.github.io/2024/12/04/pymysql/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>

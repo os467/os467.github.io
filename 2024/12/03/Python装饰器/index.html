@@ -184,7 +184,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(98)</small>
+                <small>(99)</small>
             
         </div>
     </li>
@@ -307,7 +307,7 @@
                     <div data-rel="其它">
                         
                         其它
-                        <small>(30)</small>
+                        <small>(31)</small>
                         
                     </div>
                     
@@ -363,8 +363,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="98">
-<input type="hidden" id="yelog_site_word_count" value="375.4k">
+<input type="hidden" id="yelog_site_posts_number" value="99">
+<input type="hidden" id="yelog_site_word_count" value="376.3k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -479,6 +479,15 @@ window.onload = function(){
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 其它 "
+           href="/2024/12/04/pymysql/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Pymysql">Pymysql</span>
+            <span class="post-date" title="2024-12-04 15:50:03">2024/12/04</span>
+        </a>
         
         
         <a  class="全部文章 其它 "
@@ -1400,12 +1409,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-12-03 12:16:17'>2024-12-03 12:14</time>
+            发布时间 : <time class="date" title='最后更新: 2024-12-04 15:51:49'>2024-12-03 12:14</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:822</span>
+        <span>字数:1k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1424,7 +1433,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-text">装饰器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-text">自定义装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-text">返回装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E8%A3%85%E9%A5%B0%E5%99%A8%E7%9A%84%E4%B8%8D%E5%90%8C%E7%82%B9"><span class="toc-text">两种装饰器的不同点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E7%B1%BB"><span class="toc-text">装饰器类</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-text">装饰器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-text">自定义装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-text">返回装饰器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E8%A3%85%E9%A5%B0%E5%99%A8%E7%9A%84%E4%B8%8D%E5%90%8C%E7%82%B9"><span class="toc-text">两种装饰器的不同点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E7%B1%BB"><span class="toc-text">装饰器类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#functools-warp"><span class="toc-text">functools.warp</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1541,6 +1550,39 @@ add(1,2)
 <blockquote>
 <p>这里的装饰器类，可以大大的增加的代码的通用性，同时需要注意，当类中出现<code>__call__</code>魔法方法时，该类大概率为装饰器类。</p>
 </blockquote>
+<h2 id="functools-warp"><a href="#functools-warp" class="headerlink" title="functools.warp"></a><code>functools.warp</code></h2><p>Python装饰器（decorator）在实现的时候，被装饰后的函数其实已经是另外一个函数了（函数名等函数属性会发生改变），为了不影响，Python的<code>functools</code>包中提供了一个叫wraps的decorator来消除这样的副作用。写一个decorator的时候，最好在实现之前加上<code>functools</code>的wrap，它能保留原有函数的名称和函数属性</p>
+<p>不加wraps</p>
+<pre><code class="python">def my_decorator(func):
+    def wrapper(*args, **kwargs):
+        &#39;&#39;&#39;decorator&#39;&#39;&#39;
+        print(&#39;Calling decorated function...&#39;)
+        return func(*args, **kwargs)
+    return wrapper
+
+@my_decorator
+def example():
+    &quot;&quot;&quot;Docstring&quot;&quot;&quot;
+    print(&#39;Called example function&#39;)
+
+print(example.__name__, example.__doc__) #wrapper decorator
+</code></pre>
+<p>加上warp以后</p>
+<pre><code class="python">import functools
+def my_decorator(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        &#39;&#39;&#39;decorator&#39;&#39;&#39;
+        print(&#39;Calling decorated function...&#39;)
+        return func(*args, **kwargs)
+    return wrapper
+
+@my_decorator
+def example():
+    &quot;&quot;&quot;Docstring&quot;&quot;&quot;
+    print(&#39;Called example function&#39;)
+
+print(example.__name__, example.__doc__) #example Docstring
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1555,10 +1597,10 @@ add(1,2)
 
 <div class="article_copyright">
     <p><span class="copy-title">文章标题:</span>Python装饰器</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">822</span></p>
+    <p><span class="copy-title">字数:</span><span class="post-count">1k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
     <p><span class="copy-title">发布时间:</span>2024-12-03, 12:14:02</p>
-    <p><span class="copy-title">最后更新:</span>2024-12-03, 12:16:17</p>
+    <p><span class="copy-title">最后更新:</span>2024-12-04, 15:51:49</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/12/03/Python%E8%A3%85%E9%A5%B0%E5%99%A8/" title="Python装饰器">https://os467.github.io/2024/12/03/Python%E8%A3%85%E9%A5%B0%E5%99%A8/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
