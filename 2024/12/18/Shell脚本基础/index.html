@@ -364,7 +364,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="101">
-<input type="hidden" id="yelog_site_word_count" value="381.7k">
+<input type="hidden" id="yelog_site_word_count" value="384.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1427,12 +1427,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-12-19 00:23:22'>2024-12-18 23:30</time>
+            发布时间 : <time class="date" title='最后更新: 2024-12-19 00:27:51'>2024-12-18 23:30</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:809</span>
+        <span>字数:3.4k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1451,7 +1451,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80"><span class="toc-text">Shell脚本基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80"><span class="toc-text">Shell脚本基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">算术运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">关系运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">布尔运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">字符串运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%B5%8B%E8%AF%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">文件测试运算符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="toc-text">流程控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1555,10 +1555,549 @@ echo $&#123;str:1:3&#125; #bcd
 </code></pre>
 <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>bash支持一维数组（不支持多维数组），并没有限定数组的大小</p>
 <p>数组下标由0开始编号，获取数组中的元素要利用下标，下标可以是整数或算术表达式，其值应大于0</p>
-<p>&#96;&#96;&#96;shell<br>#定义一个数组，不同元素用空格分隔<br>fav&#x3D;(“唱” “跳” “RAP” “篮球”)</p>
-<p>#取数组中的值，下标取值，从0开始<br>echo ${fav[0]} #唱</p>
-<p>#获取数组所有元素<br>echo ${fav[@]} #唱 跳 RAP 篮球</p>
-<p>#获取数组的长度<br>echo $</p>
+<pre><code class="shell">#定义一个数组，不同元素用空格分隔
+fav=(&quot;唱&quot; &quot;跳&quot; &quot;RAP&quot; &quot;篮球&quot;)
+
+#取数组中的值，下标取值，从0开始
+echo $&#123;fav[0]&#125; #唱
+
+#获取数组所有元素
+echo $&#123;fav[@]&#125; #唱 跳 RAP 篮球
+
+#也可以使用数字下标来定义数组
+fav[4]=&quot;游泳&quot;
+echo $&#123;fav[4]&#125;
+</code></pre>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>直接使用运算符是无效的，如<code>echo $a+$b</code>只会显示<code>1+2</code>这样的结果</p>
+<p>原生bash不支持简单的数学运算，但是可以通过其他命令来实现，这里使用<code>expr</code>来运算</p>
+<pre><code class="shell">a=1
+b=2
+echo $a+$b #1+2
+echo `expr $a+$b` #3
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">说明</th>
+<th align="left">举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">+</td>
+<td align="left">加法</td>
+<td align="left"><code>expr $a + $b</code> 结果为 30。</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">减法</td>
+<td align="left"><code>expr $a - $b</code> 结果为 -10。</td>
+</tr>
+<tr>
+<td align="left">\*</td>
+<td align="left">乘法</td>
+<td align="left"><code>expr $a \* $b</code> 结果为  200。</td>
+</tr>
+<tr>
+<td align="left">&#x2F;</td>
+<td align="left">除法</td>
+<td align="left"><code>expr $b / $a</code> 结果为 2。</td>
+</tr>
+<tr>
+<td align="left">%</td>
+<td align="left">取余</td>
+<td align="left"><code>expr $b % $a</code> 结果为 0。</td>
+</tr>
+<tr>
+<td align="left">&#x3D;</td>
+<td align="left">赋值</td>
+<td align="left">a&#x3D;$b 把变量 b 的值赋给 a。</td>
+</tr>
+<tr>
+<td align="left">&#x3D;&#x3D;</td>
+<td align="left">相等。用于比较两个数字，相同则返回 true。</td>
+<td align="left">[ $a &#x3D;&#x3D; $b ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">!&#x3D;</td>
+<td align="left">不相等。用于比较两个数字，不相同则返回 true。</td>
+<td align="left">[ $a !&#x3D; $b ] 返回 true。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><code>[ ]</code>命令是Shell脚本中进行条件判断的基础工具之一</p>
+</blockquote>
+<p><strong>注意：</strong>条件表达式要放在方括号之间，并且要有空格，例如: <strong>[$a&#x3D;&#x3D;$b]</strong> 是错误的，必须写成 **[ $a &#x3D;&#x3D; $b ]**。</p>
+<p>乘号(*)前边必须加反斜杠()才能实现乘法运算；</p>
+<p>如果使用 <code>$(())</code>则可以直接用运算符，效果和expr相同</p>
+<p>使用a&#x3D;${b}的效果和a&#x3D;$b也是等价的</p>
+<p><strong>例如</strong></p>
+<pre><code class="shell">a=10
+b=20
+echo $((a*b))
+</code></pre>
+<pre><code class="shell">a=10
+b=20
+
+if [ $a == $b ]
+then
+   echo &quot;a等于b&quot;
+fi
+
+if [ $a != $b ]
+then
+  echo &quot;a不等于b&quot;
+fi
+</code></pre>
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><p>关系运算符只支持数字，不支持字符串，除非字符串的值是数字。</p>
+<p>下表列出了常用的关系运算符，假定变量 a 为 10，变量 b 为 20：</p>
+<table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">说明</th>
+<th align="left">举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-eq</td>
+<td align="left">检测两个数是否相等，相等返回 true。</td>
+<td align="left">[ $a -eq $b ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">-ne</td>
+<td align="left">检测两个数是否不相等，不相等返回 true。</td>
+<td align="left">[ $a -ne $b ] 返回 true。</td>
+</tr>
+<tr>
+<td align="left">-gt</td>
+<td align="left">检测左边的数是否大于右边的，如果是，则返回 true。</td>
+<td align="left">[ $a -gt $b ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">-lt</td>
+<td align="left">检测左边的数是否小于右边的，如果是，则返回 true。</td>
+<td align="left">[ $a -lt $b ] 返回 true。</td>
+</tr>
+<tr>
+<td align="left">-ge</td>
+<td align="left">检测左边的数是否大于等于右边的，如果是，则返回 true。</td>
+<td align="left">[ $a -ge $b ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">-le</td>
+<td align="left">检测左边的数是否小于等于右边的，如果是，则返回 true。</td>
+<td align="left">[ $a -le $b ] 返回 true。</td>
+</tr>
+</tbody></table>
+<pre><code class="shell">a=10
+b=20
+
+if [ $a -eq $b ]
+then
+  echo &quot;a等于b&quot;
+else
+  echo &quot;a不等于b&quot;
+fi
+
+if [ $a -lt $b ]
+then
+  echo &quot;a小于b&quot;
+fi
+</code></pre>
+<p>如果使用 <strong>((…))</strong> 作为判断语句，大于和小于可以直接使用 <strong>&gt;</strong> 和 **&lt;**。</p>
+<pre><code class="shell">if (( a &gt; b )); then
+    ...
+fi
+</code></pre>
+<h3 id="布尔运算符"><a href="#布尔运算符" class="headerlink" title="布尔运算符"></a>布尔运算符</h3><p>下表列出了常用的布尔运算符，假定变量 a 为 10，变量 b 为 20：</p>
+<table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">说明</th>
+<th align="left">举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">!</td>
+<td align="left">非运算，表达式为 true 则返回 false，否则返回 true。</td>
+<td align="left">[ ! false ] 返回 true。</td>
+</tr>
+<tr>
+<td align="left">-o</td>
+<td align="left">或运算，有一个表达式为 true 则返回 true。</td>
+<td align="left">[ $a -lt 20 -o $b -gt 100 ] 返回 true。</td>
+</tr>
+<tr>
+<td align="left">-a</td>
+<td align="left">与运算，两个表达式都为 true 才返回 true。</td>
+<td align="left">[ $a -lt 20 -a $b -gt 100 ] 返回 false。</td>
+</tr>
+</tbody></table>
+<ol>
+<li><code>!</code>（非运算符）的优先级最高。</li>
+<li><code>-a</code>（与运算符）的优先级次之。</li>
+<li><code>-o</code>（或运算符）的优先级最低</li>
+</ol>
+<blockquote>
+<p>可以通过加()的方式改变运算优先级</p>
+</blockquote>
+<p><strong>例如</strong></p>
+<pre><code class="shell">if [ ! -f &quot;$file&quot; ] -o ([ -d &quot;$dir&quot; ] -a [ -w &quot;$dir&quot; ]); then
+    echo &quot;File does not exist or (directory exists and is writable).&quot;
+fi
+</code></pre>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>以下介绍 Shell 的逻辑运算符，假定变量 a 为 10，变量 b 为 20:</p>
+<table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">说明</th>
+<th align="left">举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&amp;&amp;</td>
+<td align="left">逻辑的 AND</td>
+<td align="left">[[ $a -lt 100 &amp;&amp; $b -gt 100 ]] 返回 false</td>
+</tr>
+<tr>
+<td align="left">||</td>
+<td align="left">逻辑的 OR</td>
+<td align="left">[[ $a -lt 100 || $b -gt 100 ]] 返回 true</td>
+</tr>
+</tbody></table>
+<p><strong>注意：</strong>逻辑运算是用在<code>[[]]</code>中的而布尔运算用在<code>[]</code>中，用法和之前的布尔运算符类似</p>
+<p><strong>补充知识点</strong></p>
+<p>在Shell脚本中，<code>[ ]</code>（方括号）和<code>[[ ]]</code>（双方括号）都用于条件测试，但它们之间存在一些重要的区别：</p>
+<p><strong><code>[ ]</code>（方括号）</strong></p>
+<ol>
+<li><strong>兼容性</strong>：<code>[ ]</code> 是 POSIX 标准的一部分，因此在所有遵循 POSIX 的 Shell 中都可用，包括 <code>sh</code>、<code>bash</code>、<code>ksh</code> 等。</li>
+<li><strong>语法限制</strong>：<code>[ ]</code> 的语法较为简单，不支持复杂的字符串操作和模式匹配。</li>
+<li><strong>退出状态</strong>：<code>[ ]</code> 命令执行完毕后会返回一个退出状态（0表示真，非0表示假）。</li>
+<li><strong>错误处理</strong>：如果 <code>[ ]</code> 内的表达式语法错误，它会产生一个非零退出状态，但不会报错。</li>
+<li><strong>使用<code>test</code>命令</strong>：在某些系统中，<code>[ ]</code> 实际上是一个名为 <code>test</code> 的命令的链接，因此也可以写作 <code>test condition</code>。</li>
+</ol>
+<p><strong><code>[[ ]]</code>（双方括号）</strong></p>
+<ol>
+<li><strong>Bash 扩展</strong>：<code>[[ ]]</code> 是 Bash 的扩展测试命令，提供了更多的功能和灵活性，但不是 POSIX 标准的一部分。因此，它只在支持 Bash 扩展的 Shell 中可用。</li>
+<li><strong>字符串操作</strong>：<code>[[ ]]</code> 支持使用 <code>==</code> 和 <code>!=</code> 进行字符串比较，而 <code>[ ]</code> 只能使用 <code>=</code> 和 <code>!=</code>。</li>
+<li><strong>模式匹配</strong>：<code>[[ ]]</code> 支持使用 Shell 的模式匹配符号（如 <code>*</code>、<code>?</code>、<code>[...]</code>）进行字符串匹配。</li>
+<li><strong>正则表达式</strong>：<code>[[ ]]</code> 支持使用 <code>=~</code> 进行正则表达式匹配。</li>
+<li><strong>优先级</strong>：在 <code>[[ ]]</code> 中，逻辑运算符 <code>&amp;&amp;</code> 和 <code>||</code> 的优先级高于比较运算符，而在 <code>[ ]</code> 中，所有运算符的优先级是相同的。</li>
+<li><strong>错误处理</strong>：如果 <code>[[ ]]</code> 内的表达式语法错误，Bash 会报错并显示错误信息。</li>
+<li><strong>退出状态</strong>：与 <code>[ ]</code> 类似，<code>[[ ]]</code> 命令执行完毕后也会返回一个退出状态。</li>
+</ol>
+<h3 id="字符串运算符"><a href="#字符串运算符" class="headerlink" title="字符串运算符"></a>字符串运算符</h3><p>下表列出了常用的字符串运算符，假定变量 a 为 “abc”，变量 b 为 “efg”：</p>
+<table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">说明</th>
+<th align="left">举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&#x3D;</td>
+<td align="left">检测两个字符串是否相等，相等返回 true。</td>
+<td align="left">[ $a &#x3D; $b ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">!&#x3D;</td>
+<td align="left">检测两个字符串是否不相等，不相等返回 true。</td>
+<td align="left">[ $a !&#x3D; $b ] 返回 true。</td>
+</tr>
+<tr>
+<td align="left">-z</td>
+<td align="left">检测字符串长度是否为0，为0返回 true。</td>
+<td align="left">[ -z $a ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">-n</td>
+<td align="left">检测字符串长度是否不为 0，不为 0 返回 true。</td>
+<td align="left">[ -n “$a” ] 返回 true。</td>
+</tr>
+<tr>
+<td align="left">$</td>
+<td align="left">检测字符串是否不为空，不为空返回 true。</td>
+<td align="left">[ $a ] 返回 true。</td>
+</tr>
+</tbody></table>
+<pre><code class="shell">a=&#39;hello&#39;
+b=&#39;world&#39;
+
+if [ $a = $b ]
+then
+  echo &#39;a = b&#39;
+fi
+
+if [ $a != $b ]
+then
+  echo &#39;a != b&#39;
+fi
+
+if [ -z $a ]
+then
+  echo &#39;字符串a长度为0&#39;
+fi
+
+if [ -n $a ]
+then
+  echo &#39;字符串a长度不为0&#39;
+fi
+
+if [ $a ]
+then
+ echo &#39;字符串不为空&#39;
+fi
+</code></pre>
+<h3 id="文件测试运算符"><a href="#文件测试运算符" class="headerlink" title="文件测试运算符"></a>文件测试运算符</h3><p>文件测试运算符用于检测 Unix 文件的各种属性。</p>
+<p>属性检测描述如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">操作符</th>
+<th align="left">说明</th>
+<th align="left">举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-b file</td>
+<td align="left">检测文件是否是块设备文件，如果是，则返回 true。</td>
+<td align="left">[ -b $file ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">-c file</td>
+<td align="left">检测文件是否是字符设备文件，如果是，则返回 true。</td>
+<td align="left">[ -c $file ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">-d file</td>
+<td align="left">检测文件是否是目录，如果是，则返回 true。</td>
+<td align="left">[ -d $file ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">-f file</td>
+<td align="left">检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。</td>
+<td align="left">[ -f $file ] 返回 true。</td>
+</tr>
+<tr>
+<td align="left">-g file</td>
+<td align="left">检测文件是否设置了 SGID 位，如果是，则返回 true。</td>
+<td align="left">[ -g $file ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">-k file</td>
+<td align="left">检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。</td>
+<td align="left">[ -k $file ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">-p file</td>
+<td align="left">检测文件是否是有名管道，如果是，则返回 true。</td>
+<td align="left">[ -p $file ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">-u file</td>
+<td align="left">检测文件是否设置了 SUID 位，如果是，则返回 true。</td>
+<td align="left">[ -u $file ] 返回 false。</td>
+</tr>
+<tr>
+<td align="left">-r file</td>
+<td align="left">检测文件是否可读，如果是，则返回 true。</td>
+<td align="left">[ -r $file ] 返回 true。</td>
+</tr>
+<tr>
+<td align="left">-w file</td>
+<td align="left">检测文件是否可写，如果是，则返回 true。</td>
+<td align="left">[ -w $file ] 返回 true。</td>
+</tr>
+<tr>
+<td align="left">-x file</td>
+<td align="left">检测文件是否可执行，如果是，则返回 true。</td>
+<td align="left">[ -x $file ] 返回 true。</td>
+</tr>
+<tr>
+<td align="left">-s file</td>
+<td align="left">检测文件是否为空（文件大小是否大于0），不为空返回 true。</td>
+<td align="left">[ -s $file ] 返回 true。</td>
+</tr>
+<tr>
+<td align="left">-e file</td>
+<td align="left">检测文件（包括目录）是否存在，如果是，则返回 true。</td>
+<td align="left">[ -e $file ] 返回 true。</td>
+</tr>
+</tbody></table>
+<p>其他检查符：</p>
+<ul>
+<li><strong>-S</strong>: 判断某文件是否 socket。</li>
+<li><strong>-L</strong>: 检测文件是否存在并且是一个符号链接。</li>
+</ul>
+<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><p><strong>if</strong></p>
+<pre><code class="shell">if condition1
+then
+    command1
+elif condition2
+then
+    command2
+else
+    command3
+fi
+</code></pre>
+<p><strong>case</strong></p>
+<pre><code class="shell">echo &#39;输入 1 到 4 之间的数字:&#39;
+read num
+case $num in
+    1) echo &#39;你选择了1&#39;
+    ;;
+    2) echo &#39;你选择了2&#39;
+    ;;
+    3) echo &#39;你选择了3&#39;
+    ;;
+    4) echo &#39;你选择了4&#39;
+    ;;
+    *) echo &#39;你没有输入1到4之间的数字&#39;
+    ;;
+esac
+</code></pre>
+<p><strong>for</strong></p>
+<p>for循环使用变量名获取列表中的当前取值</p>
+<pre><code class="shell">for loop in 1 2 3 4 5
+do
+    echo &quot;The value is: $loop&quot;
+done
+</code></pre>
+<p><strong>while</strong></p>
+<p>while 循环用于不断执行一系列命令，也用于从输入文件中读取数据。其语法格式为：</p>
+<pre><code class="shell">#!/bin/bash
+i=1
+while(( $i&lt;=5 ))
+do
+    echo $i
+    let &quot;i++&quot;
+done
+</code></pre>
+<blockquote>
+<p>let是用于实现类似c++中自增1的命令</p>
+</blockquote>
+<p><strong>break和continue</strong></p>
+<pre><code class="shell">#!/bin/bash
+i=1
+while(( $i&lt;=5 ))
+do
+    echo $i
+    let &quot;i++&quot;
+    if (( $i&gt;=3 ))
+    then
+      break
+    fi
+done
+</code></pre>
+<blockquote>
+<p>continue用于跳过本次循环，break用于退出循环</p>
+</blockquote>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>函数通过$1,$2来接受传参，如果超过10个参数则使用${10}这样来接受第十个参数，调用完函数后使用<code>$?</code>来获取上一个函数的返回值</p>
+<p><strong>注意：</strong>$?取值不能超过255，否则会取其模上256</p>
+<pre><code class="shell">func()&#123;
+a=$1
+b=$2
+result=1
+i=0
+while (( i&lt;b ))
+do
+  result=$((result*a))
+  ((i++))
+done
+echo &quot;return is $result&quot;
+return $result
+&#125;
+
+
+#调用函数
+func 2 3
+echo &quot;func 2 3运算结果为 $?&quot;
+</code></pre>
+<blockquote>
+<p>return is 8</p>
+<p>func 2 3运算结果为8</p>
+</blockquote>
+<p><strong>exit</strong>关键字用于返回状态码，如果成功则返回0，失败返回其它状态码</p>
+<p>另外，还有几个特殊字符用来处理参数：</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数处理</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$#</td>
+<td align="left">传递到脚本或函数的参数个数</td>
+</tr>
+<tr>
+<td align="left">$*</td>
+<td align="left">以一个单字符串显示所有向脚本传递的参数</td>
+</tr>
+<tr>
+<td align="left">$$</td>
+<td align="left">脚本运行的当前进程ID号</td>
+</tr>
+<tr>
+<td align="left">$!</td>
+<td align="left">后台运行的最后一个进程的ID号</td>
+</tr>
+<tr>
+<td align="left">$@</td>
+<td align="left">与$*相同，但是使用时加引号，并在引号中返回每个参数。</td>
+</tr>
+<tr>
+<td align="left">$-</td>
+<td align="left">显示Shell使用的当前选项，与set命令功能相同。</td>
+</tr>
+<tr>
+<td align="left">$?</td>
+<td align="left">显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误。</td>
+</tr>
+</tbody></table>
+<p><strong>案例</strong></p>
+<pre><code class="shell">func()&#123;
+        timeout=5
+        success=0
+        #失败次数
+        fails=0
+        while true
+           do
+             wget www.baidu.com --timeout=$&#123;timeout&#125; --tries=1 -q -O /etc/null
+
+
+             if [ $? -ne 0 ]
+               then
+                 let fails=fails+1
+             else
+                 let success++
+             fi
+
+             if ((success &gt;= 1))
+               then
+                 echo &quot;恭喜你，该网站正在健康运作&quot;
+                 break
+             fi
+
+             if ((fails &gt;= 2))
+               then
+                 echo &quot;该网站出现了异常&quot;
+                 break
+             fi
+           done
+  return
+&#125;
+
+func
+exit 0
+</code></pre>
+<blockquote>
+<p>检查网站是否健康的一个简单shell脚本</p>
+</blockquote>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -1573,10 +2112,10 @@ echo $&#123;str:1:3&#125; #bcd
 
 <div class="article_copyright">
     <p><span class="copy-title">文章标题:</span>Shell脚本基础</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">809</span></p>
+    <p><span class="copy-title">字数:</span><span class="post-count">3.4k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
     <p><span class="copy-title">发布时间:</span>2024-12-18, 23:30:10</p>
-    <p><span class="copy-title">最后更新:</span>2024-12-19, 00:23:22</p>
+    <p><span class="copy-title">最后更新:</span>2024-12-19, 00:27:51</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/12/18/Shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/" title="Shell脚本基础">https://os467.github.io/2024/12/18/Shell%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
