@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>简单ORM映射方案(JDBC) | Tly的博客</title>
+  <title>Flask | Tly的博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="简单ORM映射方案(JDBC) | Tly的博客">
+  <meta name="description" content="Flask | Tly的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="window.onload &#x3D; function(){          location.href&#x3D;&quot;https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV17h411k7jB?vd_source&#x3D;38c37e7cf61f2c4591c73b0a37eab964&quot;      }       	---不要点开这个链接---">
 <meta property="og:type" content="website">
@@ -1398,9 +1398,9 @@ window.onload = function(){
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-简单ORM映射方案" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-flask" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">简单ORM映射方案(JDBC)</h1>
+        <h1 class="article-title">Flask</h1>
     
     <div class="article-meta">
         
@@ -1410,7 +1410,7 @@ window.onload = function(){
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="数据库">数据库</a>
+            <a  data-rel="框架学习">框架学习</a>
             
         </span>
         
@@ -1418,12 +1418,12 @@ window.onload = function(){
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2023-12-25 18:43:49'>2023-12-25 18:43</time>
+            发布时间 : <time class="date" title='最后更新: 2024-12-18 11:40:20'>2024-12-18 11:39</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:3k</span>
+        <span>字数:4.6k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1442,7 +1442,7 @@ window.onload = function(){
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E5%8D%95ORM%E6%98%A0%E5%B0%84%E6%96%B9%E6%A1%88-JDBC"><span class="toc-text">简单ORM映射方案(JDBC)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E6%88%90INSERT%EF%BC%8CUPDATE%E8%87%AA%E5%8A%A8%E7%BB%84%E8%A3%85"><span class="toc-text">集成INSERT，UPDATE自动组装</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Flask"><span class="toc-text">Flask</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-text">安装依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E4%BD%93"><span class="toc-text">响应体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E8%A1%A8"><span class="toc-text">列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Request%E5%92%8CSession"><span class="toc-text">Request和Session</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flask%E8%A3%85%E9%A5%B0%E5%99%A8%E4%BD%BF%E7%94%A8"><span class="toc-text">flask装饰器使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%93%9D%E5%9B%BE-BluePrint"><span class="toc-text">蓝图 BluePrint</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="toc-text">数据库连接池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95"><span class="toc-text">静态文件目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">加载配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E7%B3%BB%E7%BB%9F"><span class="toc-text">路由系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E9%92%A9%E5%AD%90"><span class="toc-text">请求钩子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-text">Flask工作流程</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1458,746 +1458,748 @@ window.onload = function(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="简单ORM映射方案-JDBC"><a href="#简单ORM映射方案-JDBC" class="headerlink" title="简单ORM映射方案(JDBC)"></a>简单ORM映射方案(JDBC)</h1><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="java">package orm.factory;
+        <h1 id="Flask"><a href="#Flask" class="headerlink" title="Flask"></a>Flask</h1><p>Flask 是一个用 Python 编写的轻量级 Web 应用框架。</p>
+<p>Flask相比Django更加轻量级，具有齐全的第三方组件库。</p>
+<blockquote>
+<p>flask的模板引擎使用jinja2，web服务使用wsgi</p>
+</blockquote>
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><p><code>pip install flask</code></p>
+<p><strong>一个简单的Flask Web程序</strong></p>
+<pre><code class="python">from flask import Flask
 
-import orm.annotation.TableColumn;
-import orm.handler.TableColumnGetter;
-import orm.handler.TableHandler;
+app = Flask(__name__)
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.sql.ResultSet;
-import java.util.*;
+@app.route(&#39;/index&#39;)
+def index():
+    return &#39;Hello World!&#39;
 
-public class TableObjectFactory &#123;
+if __name__ == &#39;__main__&#39;:
+    app.run()
+</code></pre>
+<p><strong>WSGI</strong></p>
+<p>本质上Flask底层使用的还是werkzeug这个wsgi工具包来处理网络请求</p>
+<pre><code class="python">from werkzeug.serving import run_simple
 
-    private static final String STRING = &quot;java.lang.String&quot;;
+def service(environ, start_response):
+    print(&#39;请求来了&#39;)
+    pass
 
-    private static final String INTEGER = &quot;java.lang.Integer&quot;;
-
-    private static final String DOUBLE = &quot;java.lang.Double&quot;;
+if __name__ == &#39;__main__&#39;:
+    run_simple(&#39;127.0.0.1&#39;,8181,service)
     
-    private static final String CHARACTER = &quot;java.lang.Character&quot;;
+    
+</code></pre>
+<p><strong>简单内部实现</strong></p>
+<pre><code class="python">from werkzeug.serving import run_simple
 
-    private static final String BOOLEAN = &quot;java.lang.Boolean&quot;;
+class Flask(object):
+    def __call__(self, environ, start_response):
+        return &quot;hello world&quot;
+    
+    def run(self):
+        run_simple(&#39;127.0.0.1&#39;, 5000, self)
 
-    private static final String SHORT = &quot;java.lang.Short&quot;;
+app = Flask()
 
-    private static final String BYTE = &quot;java.lang.Byte&quot;;
-
-    private static final String LONG = &quot;java.lang.Long&quot;;
-
-    private static final String FLOAT = &quot;java.lang.Float&quot;;
-
-    private static final String DATE = &quot;java.util.Date&quot;;
-
-    private static final Map&lt;String,Class&gt; TYPE_MAP = new HashMap&lt;&gt;();
-
-    private static final Map&lt;String,String&gt; METHOD_MAP = new HashMap&lt;&gt;();
-
-    static &#123;
-        TYPE_MAP.put(STRING,String.class);
-        TYPE_MAP.put(INTEGER,Integer.class);
-        TYPE_MAP.put(DOUBLE,Double.class);
-        TYPE_MAP.put(BOOLEAN,Boolean.class);
-        TYPE_MAP.put(SHORT,Short.class);
-        TYPE_MAP.put(BYTE,Byte.class);
-        TYPE_MAP.put(LONG,Long.class);
-        TYPE_MAP.put(FLOAT,Float.class);
-        TYPE_MAP.put(DATE, Date.class);
-
-        METHOD_MAP.put(STRING,&quot;String&quot;);
-        METHOD_MAP.put(INTEGER,&quot;Int&quot;);
-        METHOD_MAP.put(DOUBLE,&quot;Double&quot;);
-        METHOD_MAP.put(BOOLEAN,&quot;Boolean&quot;);
-        METHOD_MAP.put(SHORT,&quot;Short&quot;);
-        METHOD_MAP.put(BYTE,&quot;Byte&quot;);
-        METHOD_MAP.put(LONG,&quot;Long&quot;);
-        METHOD_MAP.put(FLOAT,&quot;Float&quot;);
-        METHOD_MAP.put(DATE,&quot;Date&quot;);
-
-    &#125;
-
-
-    /**
-     * 自动解析result为对应持久对象数组
-     * @param resultSet 结果集
-     * @param tClass 持久对象字节码
-     * @param &lt;T&gt; 持久对象泛型
-     * @return
-     */
-    public static &lt;T&gt;List&lt;T&gt; toObjectList(ResultSet resultSet, Class&lt;T&gt; tClass)&#123;
-
-        List&lt;TableColumnGetter&gt; tableColumnGetterList = new ArrayList&lt;&gt;();
-
-        Class tableClass = tClass;
-        //获取属性标注的字段值，自动解析字段
-        Field[] fields = tableClass.getDeclaredFields();
-        if (tableClass == null)&#123;
-            return new ArrayList&lt;&gt;();
-        &#125;
-        for (Field field : fields) &#123;
-            TableColumn tableColumn = field.getAnnotation(TableColumn.class);
-            if (tableColumn != null)&#123;
-                //获取属性名
-                String propertyName = field.getName();
-                //set函数名
-                String setMethodName = &quot;set&quot; + propertyName.substring(0,1).toUpperCase() + propertyName.substring(1);
-                //字段名
-                String columnLabel = tableColumn.value();
-                //获取属性类型
-                String typeName = field.getGenericType().getTypeName();
-                try &#123;
-                    //获取到类型字节码
-                    Class typeClass = TYPE_MAP.get(typeName);
-                    //获取到set方法
-                    Method objectFieldSet = tableClass.getMethod(setMethodName,typeClass);
-                    //获取到字段对应的值
-                    Class&lt;? extends ResultSet&gt; resultSetClass = resultSet.getClass();
-                    //组装resultSet的get函数名称
-                    String getMethodName = &quot;get&quot; + METHOD_MAP.get(typeName);
-                    //获取到对应解析函数字节码
-                    Method resultSetGet = resultSetClass.getMethod(getMethodName, String.class);
-                    //创建获取字段注入器
-                    TableColumnGetter tableColumnGetter = new TableColumnGetter(objectFieldSet, resultSetGet, columnLabel);
-                    //整合字段注入器列表
-                    tableColumnGetterList.add(tableColumnGetter);
-                &#125; catch (NoSuchMethodException e) &#123;
-                    e.printStackTrace();
-                &#125;
-            &#125;
-        &#125;
-        //创建表处理器
-        TableHandler tableHandler = new TableHandler(tableClass,tableColumnGetterList);
-        //获取表java实例列表
-        List objectList = tableHandler.getObjectList(resultSet);
-        return objectList;
-    &#125;
-
-
-
-&#125;
+if __name__ == &#39;__main__&#39;:
+    app.run()
 </code></pre>
 <blockquote>
+<p> 用户请求进入，就会执行Flask的<code>__call__()</code>方法</p>
+</blockquote>
+<h2 id="响应体"><a href="#响应体" class="headerlink" title="响应体"></a>响应体</h2><p><strong>视图渲染</strong></p>
+<p>需要将启动类和templates文件夹放在同一级目录下，将我们的html文件放在templates文件夹下</p>
+<pre><code class="python">from flask import Flask,render_template
+
+app = Flask(__name__)
+
+@app.route(&#39;/login&#39;)
+def login():
+    return render_template(&quot;login.html&quot;)
+
+if __name__ == &#39;__main__&#39;:
+    app.run()
+</code></pre>
+<blockquote>
+<p>Flask使用jinja2模板引擎来渲染前端视图界面</p>
+</blockquote>
+<p>自定义模板文件夹名称，默认情况下使用templates</p>
+<pre><code class="python">app = Flask(__name__,template_folder=&#39;templates&#39;)
+</code></pre>
+<p><strong>JSON响应体</strong></p>
+<pre><code class="python">from flask import Flask,jsonify
+
+app = Flask(__name__)
+
+@app.route(&#39;/login&#39;)
+def login():
+    return jsonify(&#123;
+        &quot;code&quot;:200,
+        &quot;data&quot;:[1,2,3,4]
+    &#125;)
+
+if __name__ == &#39;__main__&#39;:
+    app.run()
+</code></pre>
+<blockquote>
+<p>使用<code>jsonify</code> 返回json格式数据</p>
+</blockquote>
+<p><strong>支持POST请求</strong></p>
+<p>默认情况下路由方法只支持GET请求</p>
+<pre><code class="python">@app.route(&#39;/login&#39; , methods=[&#39;GET&#39;,&#39;POST&#39;])
+</code></pre>
+<p><strong>一个简单的登录程序</strong></p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/1999/html&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;登录页面&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;登录页面&lt;/h1&gt;
+&lt;form method=&quot;post&quot;&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;td&gt;用户名&lt;/td&gt;
+            &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;user&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;密码&lt;/td&gt;
+            &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;pwd&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;input type=&quot;submit&quot; value=&quot;提交&quot;/&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+    &lt;br/&gt;
+    &#123;&#123;error&#125;&#125;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<pre><code class="python">from flask import Flask,render_template,request,redirect
+
+app = Flask(__name__,template_folder=&#39;templates&#39;)
+
+@app.route(&#39;/login&#39;, methods=[&#39;GET&#39;,&#39;POST&#39;])
+def login():
+    if request.method == &#39;GET&#39;:
+        return render_template(&quot;login.html&quot;)
+    if request.method == &#39;POST&#39;:
+        if request.form[&#39;user&#39;] == &#39;admin&#39; and request.form[&#39;pwd&#39;] == &#39;admin&#39;:
+            return redirect(&quot;/main&quot;)
+        else:
+            return render_template(&quot;login.html&quot;,error=&quot;用户名或密码错误&quot;)
+
+@app.route(&#39;/main&#39;, methods=[&#39;GET&#39;,&#39;POST&#39;])
+def main():
+    return render_template(&#39;main.html&#39;)
+
+if __name__ == &#39;__main__&#39;:
+    app.run()
+</code></pre>
+<ul>
+<li>通过<code>request.form</code>获取表单提交内容</li>
+<li>通过<code>request.method</code>判断请求模式</li>
+<li>通过<code>redirect(&quot;/url&quot;)</code>来重定向页面</li>
+<li>通过传递字典信息来渲染登录失败提示</li>
+</ul>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p><code>&#123;% %&#125;</code>是jinja2提供的一种模板渲染语法，可以查阅相关文档</p>
+<pre><code class="python">@app.route(&quot;/index&quot;)
+def index():
+    return render_template(&#39;index.html&#39;,data_dict = &#123;
+        &#39;1&#39;:&#123;&#39;name&#39;:&#39;bob&#39;,&#39;age&#39;:23&#125;,
+        &#39;2&#39;:&#123;&#39;name&#39;:&#39;kate&#39;,&#39;age&#39;:19&#125;,
+        &#39;3&#39;:&#123;&#39;name&#39;:&#39;david&#39;,&#39;age&#39;:22&#125;,
+    &#125;)
+</code></pre>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;表单&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;table border=&quot;1px&quot;&gt;
+    &lt;thead&gt;
+        &lt;th&gt;序号&lt;/th&gt;
+        &lt;th&gt;名字&lt;/th&gt;
+        &lt;th&gt;年龄&lt;/th&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &#123;% for key,value in data_dict.items() %&#125;
+            <tr>
+                <td>&#123;&#123;key&#125;&#125;</td>
+                <td>&#123;&#123;value.name&#125;&#125;</td>
+                <td>&#123;&#123;value.age&#125;&#125;</td>
+            </tr>
+        &#123;% endfor %&#125;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>添加编辑、删除功能</strong></p>
+<p>两种接收页面参数形式</p>
+<p>通过<code>request.args</code>获取<code>?</code>后的参数</p>
+<p>通过<code>/url/&lt;flag&gt;</code>的形式获取路径参数</p>
+<pre><code class="python">@app.route(&#39;/edit&#39;, methods=[&#39;GET&#39;,&#39;POST&#39;])
+def edit():
+    if request.method == &#39;GET&#39;:
+        id = request.args.get(&#39;id&#39;)
+        data = DATA_DICT.get(id)
+        return render_template(&#39;edit.html&#39;, name=data[&#39;name&#39;], age=data[&#39;age&#39;], id=id)
+    if request.method == &#39;POST&#39;:
+        data_dict = DATA_DICT
+        name = request.form.get(&#39;name&#39;)
+        age = int(request.form.get(&#39;age&#39;))
+        id = request.form[&#39;id&#39;]
+        data = data_dict[id]
+        data[&#39;name&#39;] = name
+        data[&#39;age&#39;] = age
+        return render_template(&#39;index.html&#39;,data_dict = data_dict)
+
+@app.route(&#39;/delete/&lt;id&gt;&#39;)
+def delete(id):
+    del DATA_DICT[id]
+    return redirect(&quot;/index&quot;)
+</code></pre>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;修改界面&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form method=&quot;post&quot;&gt;
+    &lt;table&gt;
+        &lt;thead&gt;
+    &lt;th&gt;名字&lt;/th&gt;
+    &lt;th&gt;年龄&lt;/th&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;input value=&quot;&#123;&#123;name&#125;&#125;&quot; name=&quot;name&quot; type=&quot;text&quot;/&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input value=&quot;&#123;&#123;age&#125;&#125;&quot; name=&quot;age&quot; type=&quot;text&quot;/&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;input value=&quot;&#123;&#123;id&#125;&#125;&quot; name=&quot;id&quot; hidden=&quot;true&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="Request和Session"><a href="#Request和Session" class="headerlink" title="Request和Session"></a>Request和Session</h2><p><strong>request</strong></p>
+<p>在 Flask 中由全局的 request 对象来提供请求信息</p>
+<p><strong>常用属性</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>form</td>
+<td>POST和PUT请求提交的表单信息（MultiDict）</td>
+</tr>
+<tr>
+<td>args</td>
+<td>URL携带参数 ?key&#x3D;value</td>
+</tr>
+<tr>
+<td>cookies</td>
+<td>请求的cookies，类型是dict</td>
+</tr>
+<tr>
+<td>stream</td>
+<td>在可知的mimetype下，如果进来的表单数据无法解码，会没有任何改动的保存到这个 stream 以供使用。很多时候，当请求的数据转换为string时，使用<code>data</code>是最好的方式。这个stream只返回数据一次</td>
+</tr>
+<tr>
+<td>headers</td>
+<td>请求头，字典类型</td>
+</tr>
+<tr>
+<td>data</td>
+<td>包含了请求的数据，并转换为字符串，除非是一个Flask无法处理的mimetype</td>
+</tr>
+<tr>
+<td>files</td>
+<td>MultiDict，带有通过POST或PUT请求上传的文件</td>
+</tr>
+<tr>
+<td>method</td>
+<td>请求方法，比如POST、GET</td>
+</tr>
+<tr>
+<td>url</td>
+<td>获取全部url</td>
+</tr>
+<tr>
+<td>blueprint</td>
+<td>蓝图名字</td>
+</tr>
+<tr>
+<td>json</td>
+<td>如果<code>mimetype</code>是<code>application/json</code>，这个参数将会解析JSON数据，如果不是则返回None</td>
+</tr>
+</tbody></table>
+<p><strong>Session</strong></p>
+<p>session使得服务器可以识别客户端状态，flask中使用session需要提供secret_key</p>
+<p>flask的session信息实际上保存在客户端，但是是通过加密后存储在cookie中的形式存储的</p>
+<pre><code class="python">#提供session生成令牌使用的密钥，后端存储
+app.secret_key = &#39;d1niond12f0139jif10edj3d3&#39;
+
+@app.route(&#39;/login&#39;, methods=[&#39;GET&#39;,&#39;POST&#39;])
+def login():
+    username = session.get(&#39;username&#39;)
+    if request.method == &#39;GET&#39;:
+        if not username:
+            return render_template(&quot;login.html&quot;)
+        return redirect(&quot;/main&quot;)
+    if request.method == &#39;POST&#39;:
+        if request.form[&#39;user&#39;] == &#39;admin&#39; and request.form[&#39;pwd&#39;] == &#39;admin&#39;:
+            session[&#39;username&#39;] = &#39;admin&#39;
+            return redirect(&quot;/main&quot;)
+        else:
+            return render_template(&quot;login.html&quot;,error=&quot;用户名或密码错误&quot;)
+</code></pre>
+<h2 id="flask装饰器使用"><a href="#flask装饰器使用" class="headerlink" title="flask装饰器使用"></a>flask装饰器使用</h2><p>由于flask中路由是根据函数名称和<code>url</code>来建立路由关系的，默认endpoint使用的是函数的名称，如果不同的路由被同一个装饰器装饰，在没有包装的前提下都会被修改为内函数名称，因此会发送重名错误</p>
+<p>在flask中使用装饰器时，我们需要使用<code>functiontools.warp</code>功能为函数进行包装，由于装饰器本身修改了函数名称使其成为内函数，因此我们需要使用该功能使得函数保持原来函数名称</p>
+<pre><code class="python">def auth(func):
+    @functools.wraps(func) #包装函数
+    def wrapper(*args, **kwargs):
+        print(&quot;auth&quot;)
+        return func(*args, **kwargs)
+    return wrapper
+
+@app.route(&#39;/login&#39;, methods=[&#39;GET&#39;,&#39;POST&#39;])
+@auth
+def index():
+    #代码逻辑
+</code></pre>
+<blockquote>
+<p>以上正确的装饰器使用方式，必须要注意使用<code>@functools.warp</code>，导入functools模块即可</p>
+</blockquote>
+<h2 id="蓝图-BluePrint"><a href="#蓝图-BluePrint" class="headerlink" title="蓝图 BluePrint"></a>蓝图 BluePrint</h2><p>构建业务功能可拆分的目录结构，帮助我们拆分业务功能构建多个py文件，把各个功能放置到各个蓝图，最后将蓝图注册到flask对象中</p>
+<p><strong>使用蓝图的步骤</strong></p>
 <ol>
-<li>首先，从<code>tableClassMap</code>的映射中获取<code>T</code>类对应的表类（<code>tableClass</code>）。</li>
-<li>然后，获取<code>tableClass</code>的所有字段，并对每个字段进行检查。如果字段上有<code>TableColumn</code>注解，那么就创建一个<code>TableColumnGetter</code>对象，这个对象包含了字段的set方法、对应的<code>ResultSet</code>的get方法以及字段名。</li>
-<li>创建<code>TableColumnGetter</code>对象的过程中，会根据字段的类型从<code>TYPE_MAP</code>和<code>METHOD_MAP</code>两个映射中获取相应的类型类和方法名。</li>
-<li>最后，使用<code>tableClass</code>和<code>tableColumnGetterList</code>创建一个<code>TableHandler</code>对象，并调用其<code>getObjectList</code>方法来获取对象列表。</li>
+<li><strong>创建蓝图</strong>：在独立的模块中定义蓝图，并指定路由和视图函数。</li>
+<li><strong>注册蓝图</strong>：在主应用中注册蓝图，并设置路由前缀。</li>
+<li><strong>使用蓝图中的模板和静态文件</strong>：将模板和静态文件放在蓝图的 <code>templates</code> 和 <code>static</code> 文件夹中。</li>
+<li><strong>使用请求钩子和错误处理</strong>：在蓝图中定义请求钩子和错误处理函数。</li>
 </ol>
-</blockquote>
-<pre><code class="java">package orm.handler;
+<p>蓝图项目目录结构</p>
+<ul>
+<li><code>app.py</code></li>
+<li><code>auth/</code><ul>
+<li><code>__init__.py</code></li>
+<li><code>routes.py</code></li>
+<li><code>static/</code><ul>
+<li><code>login.js</code></li>
+<li><code>login.css</code></li>
+</ul>
+</li>
+<li><code>templates/</code><ul>
+<li><code>login.html</code></li>
+<li><code>register.html</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>blog/</code><ul>
+<li><code>__init__.py</code></li>
+<li><code>routes.py</code></li>
+<li><code>static/</code><ul>
+<li><code>index.js</code></li>
+<li><code>index.css</code></li>
+</ul>
+</li>
+<li><code>templates/</code><ul>
+<li><code>intdex.html</code></li>
+<li><code>post.html</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>app.py</strong></p>
+<p>通常我们在<code>app.py</code>文件中导入每个模块的蓝图，同时注册蓝图</p>
+<pre><code class="python">from flask import Flask
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.sql.ResultSet;
+app = Flask(__name__)
 
+#导入蓝图
+from auth.route import auth
+from blog.route import blog
 
-public class TableColumnGetter &#123;
+#注册蓝图
+app.register_blueprint(auth, url_prefix=&#39;/auth&#39;)
+app.register_blueprint(blog, url_prefix=&#39;/blog&#39;)
 
-    //持久对象属性set方法字节码
-    private Method objectFieldSet;
-
-    //resultSet对象get方法字节码
-    private Method resultSetGet;
-
-    //数据库字段名
-    private String columnLabel;
-
-    public TableColumnGetter(Method objectFieldSet, Method resultSetGet,String columnLabel) &#123;
-        this.objectFieldSet = objectFieldSet;
-        this.resultSetGet = resultSetGet;
-        this.columnLabel = columnLabel;
-    &#125;
-
-
-    //为持久对象对应属性注入值
-    public &lt;T&gt; void inject(ResultSet resultSet, T object) &#123;
-        try &#123;
-            Object result = resultSetGet.invoke(resultSet, columnLabel);
-            objectFieldSet.invoke(object, result);
-        &#125; catch (IllegalAccessException e) &#123;
-            e.printStackTrace();
-        &#125; catch (InvocationTargetException e) &#123;
-            e.printStackTrace();
-        &#125;
-    &#125;
-
-&#125;
+if __name__ == &#39;__main__&#39;:
+    app.run(debug=True)
 </code></pre>
 <blockquote>
-<p><code>TableColumnGetter</code>类是一个字段注入器，它包含一个Java对象的set方法、一个<code>ResultSet</code>的get方法和一个数据库字段名。它的<code>inject</code>方法用于将<code>ResultSet</code>中的值注入到Java对象的属性中。</p>
+<p>在注册蓝图时，可以给路由加上统一前缀</p>
 </blockquote>
-<pre><code class="java">package orm.handler;
+<p><strong>route.py</strong></p>
+<p>创建蓝图</p>
+<pre><code class="python">from flask import Blueprint,render_template,request,redirect,url_for
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+auth = Blueprint(&#39;auth&#39;,__name__,template_folder=&#39;templates&#39;)
 
-public class TableHandler&lt;T&gt; &#123;
+@auth.route(&#39;/login&#39;)
+def login():
+    return render_template(&#39;index.html&#39;)
 
-    //持久化对象列表
-    private List&lt;T&gt; objectList;
-
-    //持久化对象字节码
-    private Class tableClass;
-
-    //表列值获取器列表
-    private List&lt;TableColumnGetter&gt; tableColumnGetterList;
-
-    public TableHandler(Class tableClass, List&lt;TableColumnGetter&gt; tableColumnGetterList)&#123;
-        this.tableClass = tableClass;
-        this.tableColumnGetterList = tableColumnGetterList;
-    &#125;
-
-    //获取持久对象列表
-    public List&lt;T&gt; getObjectList(ResultSet resultSet) &#123;
-        if (objectList == null)&#123;
-            objectList = new ArrayList&lt;&gt;();
-        &#125;
-        while (true)&#123;
-            try &#123;
-                if (!resultSet.next()) break;
-
-                T object = (T)tableClass.newInstance();
-
-                for (TableColumnGetter tableColumnGetter : tableColumnGetterList) &#123;
-                    tableColumnGetter.inject(resultSet,object);
-                &#125;
-
-                objectList.add(object);
-
-            &#125; catch (SQLException throwables) &#123;
-                throwables.printStackTrace();
-            &#125; catch (IllegalAccessException e) &#123;
-                e.printStackTrace();
-            &#125; catch (InstantiationException e) &#123;
-                e.printStackTrace();
-            &#125;
-
-        &#125;
-        return objectList;
-    &#125;
-&#125;
-
+@auth.route(&#39;/logout&#39;)
+def logout():
+    return redirect(url_for(&#39;auth.login&#39;))
 </code></pre>
 <blockquote>
-<p><code>TableHandler</code>类是一个表处理器，它包含一个Java对象列表、一个Java对象的类和一个字段注入器列表。它的<code>getObjectList</code>方法用于从<code>ResultSet</code>中获取Java对象列表。这个方法首先创建一个新的Java对象，然后使用字段注入器列表中的每一个注入器将<code>ResultSet</code>中的值注入到Java对象的属性中，最后将Java对象添加到列表中。</p>
+<p>在我们的具体业务模块中创建<code>route.py</code>文件，在这个文件中，我们就开始创建我们的蓝图对象，同时创建不同路由对应的业务函数</p>
 </blockquote>
-<pre><code class="java">package orm.annotation;
+<h2 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h2><p><strong>依赖</strong></p>
+<p><code>pip install dbutils</code></p>
+<p><code>pip install pymysql</code></p>
+<p><strong>连接池使用</strong></p>
+<pre><code class="python">import pymysql
+from dbutils.pooled_db import PooledDB
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+pool = PooledDB(
+    creator=pymysql,
+    maxconnections=6, #最大连接数量 0和None表示不限制数量
+    blocking=True, #连接池中如果没有可用连接后，是否阻塞等待，不等待抛出异常
+    ping=0, #检查Mysql服务器是否可用，0表示不检查, 1 = default 请求都会检查, 2 创建cursor时检查, 4 执行sql时检查, 7 全部检查
+    host=&#39;localhost&#39;,
+    port=3306,
+    user=&#39;root&#39;,
+    passwd=&#39;root&#39;,
+    database=&#39;web_test&#39;,
+    charset=&#39;utf8&#39;
+)
 
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface TableColumn &#123;
-    String value();
-&#125;
+#去连接池中选择一个连接
+con = pool.connection()
+
+cur = con.cursor()
+cur.execute(&quot;select * from user&quot;)
+result = cur.fetchall()
+print(result)
+#将连接放回连接池
+con.close()
 </code></pre>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre><code class="java">package com;
+<blockquote>
+<p>使用数据库连接池可以支持并发请求的数据库查询，提高了系统效率</p>
+</blockquote>
+<p><strong>多线程下使用单例管理数据库连接池方案</strong></p>
+<pre><code class="python">import pymysql
+from dbutils.pooled_db import PooledDB
+import threading
 
-import orm.annotation.TableColumn;
+class SqlHelper(object):
 
-import java.util.Date;
 
-public class TravelWay &#123;
+    def __init__(self):
+        self.threadLocalMap = &#123;&#125;
+        self.pool = PooledDB(
+            creator=pymysql,
+            maxconnections=6,  # 最大连接数量 0和None表示不限制数量
+            blocking=True,  # 连接池中如果没有可用连接后，是否阻塞等待，不等待抛出异常
+            ping=0,  # 检查Mysql服务器是否可用，0表示不检查, 1 = default 请求都会检查 #2 创建cursor时检查 #4 执行sql时检查 #7 全部检查
+            host=&#39;localhost&#39;,
+            port=3306,
+            user=&#39;root&#39;,
+            passwd=&#39;root&#39;,
+            database=&#39;web_test&#39;,
+            charset=&#39;utf8&#39;
+        )
 
-    @TableColumn(&quot;wid&quot;)
-    private Integer wid;
+    def open(self):
+        connection = self.pool.connection()
+        cursor = connection.cursor()
+        return connection, cursor
 
-    @TableColumn(&quot;way_name&quot;)
-    private String wayName;
+    def close(self, connection, cursor):
+        cursor.close()
+        connection.close()
 
-    @TableColumn(&quot;info&quot;)
-    private String info1;
+    def fetchall(self,sql):
+        connection, cursor = self.getCurrentContext()
+        cursor.execute(sql)
+        return cursor.fetchall()
 
-    @TableColumn(&quot;sign_begin&quot;)
-    private Date sb;
+    def getCurrentContext(self):
+        return self.threadLocalMap.get(threading.currentThread().ident)
 
-    public Integer getWid() &#123;
-        return wid;
-    &#125;
+    def __enter__(self):
+        connection, cursor = self.open()
+        self.threadLocalMap[threading.currentThread().ident] = (connection, cursor)
+        return self
 
-    public void setWid(Integer wid) &#123;
-        this.wid = wid;
-    &#125;
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        connection, cursor = self.getCurrentContext()
+        cursor.close()
+        connection.close()
 
-    public String getWayName() &#123;
-        return wayName;
-    &#125;
-
-    public void setWayName(String wayName) &#123;
-        this.wayName = wayName;
-    &#125;
-
-    public String getInfo1() &#123;
-        return info1;
-    &#125;
-
-    public void setInfo1(String info1) &#123;
-        this.info1 = info1;
-    &#125;
-
-    public Date getSb() &#123;
-        return sb;
-    &#125;
-
-    public void setSb(Date sb) &#123;
-        this.sb = sb;
-    &#125;
-
-    @Override
-    public String toString() &#123;
-        return &quot;TravelWay&#123;&quot; +
-                &quot;wid=&quot; + wid +
-                &quot;, wayName=&#39;&quot; + wayName + &#39;\&#39;&#39; +
-                &quot;, info1=&#39;&quot; + info1 + &#39;\&#39;&#39; +
-                &quot;, sb=&quot; + sb +
-                &#39;&#125;&#39;;
-    &#125;
-&#125;
+db = SqlHelper()
 </code></pre>
-<pre><code class="java">package com;
+<blockquote>
+<p>将数据库连接池交由Sqlhelper这个单例管理，由于python模块单例特性，这边要使用时直接引入db对象即可</p>
+<p>在实现时需要考虑到多线程问题，多个线程进入使用db对象，要各自操作对应线程上绑定的连接和游标，因此这边引入一个字典对象来存储各个线程的连接和游标信息，使用各个线程名称作为key值</p>
+<p>这种设计以后就可以使用<code>with</code>语法来自由开关闭使用sqlHelper</p>
+</blockquote>
+<p><strong>多线程下测试使用</strong></p>
+<pre><code class="python">from threading import Thread
 
-import orm.utils.ORMUtils;
+def func():
+    from sqlHelper import db
+    with db as db:
+        result = db.fetchall(&quot;select * from user&quot;)
+        print(&quot;result1====&gt;&quot;,result)
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
-
-public class Test &#123;
-
-    public static void main(String[] args) &#123;
-
-        try &#123;
-            Connection connection = JdbcUtils.getConnection();
-
-            Statement statement = connection.createStatement();
-
-            ResultSet resultSet = statement.executeQuery(&quot;select * from tb_travel_way&quot;);
-
-            List&lt;TravelWay&gt; travelWays = ORMUtils.toObjectList(resultSet, TravelWay.class);
-
-            for (TravelWay travelWay : travelWays) &#123;
-
-                System.out.println(travelWay);
-            &#125;
-
-        &#125; catch (SQLException throwables) &#123;
-            throwables.printStackTrace();
-        &#125;
-
-    &#125;
-
-&#125;
+if __name__ == &#39;__main__&#39;:
+    for i in range(30):
+        t1 = Thread(name=f&quot;测试&#123;i&#125;&quot;, target=func)
+        t1.start()
 </code></pre>
-<h2 id="集成INSERT，UPDATE自动组装"><a href="#集成INSERT，UPDATE自动组装" class="headerlink" title="集成INSERT，UPDATE自动组装"></a>集成INSERT，UPDATE自动组装</h2><pre><code class="java">package orm.utils;
+<blockquote>
+<p>但这种设计不支持嵌套，因此下面介绍一种支持嵌套的多线程sqlHelper</p>
+</blockquote>
+<p><strong>使用threadinglocal</strong></p>
+<pre><code class="python">def func(num):
+    local.num = num
+    print(local.num)
 
-import orm.annotation.Key;
-import orm.annotation.Table;
-import orm.annotation.TableColumn;
-import orm.handler.TableColumnGetter;
-import orm.handler.TableHandler;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.*;
-
-public class ORMUtils &#123;
-
-    private static final String STRING = &quot;java.lang.String&quot;;
-
-    private static final String INTEGER = &quot;java.lang.Integer&quot;;
-
-    private static final String DOUBLE = &quot;java.lang.Double&quot;;
-
-    private static final String CHARACTER = &quot;java.lang.Character&quot;;
-
-    private static final String BOOLEAN = &quot;java.lang.Boolean&quot;;
-
-    private static final String SHORT = &quot;java.lang.Short&quot;;
-
-    private static final String BYTE = &quot;java.lang.Byte&quot;;
-
-    private static final String LONG = &quot;java.lang.Long&quot;;
-
-    private static final String FLOAT = &quot;java.lang.Float&quot;;
-
-    private static final String DATE = &quot;java.util.Date&quot;;
-
-    private static final Map&lt;String,Class&gt; TYPE_MAP = new HashMap&lt;&gt;();
-
-    private static final Map&lt;String,String&gt; METHOD_MAP = new HashMap&lt;&gt;();
-
-    static &#123;
-        TYPE_MAP.put(STRING,String.class);
-        TYPE_MAP.put(INTEGER,Integer.class);
-        TYPE_MAP.put(DOUBLE,Double.class);
-        TYPE_MAP.put(BOOLEAN,Boolean.class);
-        TYPE_MAP.put(SHORT,Short.class);
-        TYPE_MAP.put(BYTE,Byte.class);
-        TYPE_MAP.put(LONG,Long.class);
-        TYPE_MAP.put(FLOAT,Float.class);
-        TYPE_MAP.put(DATE, Date.class);
-
-        METHOD_MAP.put(STRING,&quot;String&quot;);
-        METHOD_MAP.put(INTEGER,&quot;Int&quot;);
-        METHOD_MAP.put(DOUBLE,&quot;Double&quot;);
-        METHOD_MAP.put(BOOLEAN,&quot;Boolean&quot;);
-        METHOD_MAP.put(SHORT,&quot;Short&quot;);
-        METHOD_MAP.put(BYTE,&quot;Byte&quot;);
-        METHOD_MAP.put(LONG,&quot;Long&quot;);
-        METHOD_MAP.put(FLOAT,&quot;Float&quot;);
-        METHOD_MAP.put(DATE,&quot;Date&quot;);
-
-    &#125;
-
-    private static final String EMPTY = &quot;&quot;;
-    private static final String SPACE = &quot; &quot;;
-    private static final String BASE_UPDATE = &quot;UPDATE &quot;;
-    private static final String BASE_SET = &quot; SET &quot;;
-    private static final String BASE_WHERE = &quot; WHERE 1 = 1 &quot;;
-    private static final String AND = &quot; AND &quot;;
-    private static final String BASE_INSERT = &quot;INSERT INTO &quot;;
-    private static final String START = &quot;(&quot;;
-    private static final String END = &quot;)&quot;;
-    private static final String BASE_VALUES = &quot;VALUES&quot;;
-
-    private static final String COLUMN_FLAG = &quot;`&quot;;
-
-    private static final String STRING_FLAG = &quot;&#39;&quot;;
-
-    private static final String SPLIT = &quot;,&quot;;
-
-    private static final String EQUAL = &quot; = &quot;;
-
-    private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
-
-    public static &lt;T&gt;boolean update(T t,Connection connection)&#123;
-        return update(EMPTY,t,connection);
-    &#125;
-
-    /**
-     *
-     * @param sqlAppend 拼接到 WHERE 之后的语句
-     * @param t 更新对象
-     * @param connection 连接对象
-     * @param &lt;T&gt;
-     * @return
-     */
-    public static &lt;T&gt;boolean update(String sqlAppend,T t, Connection connection)&#123;
-        Class tableClass = t.getClass();
-
-        if (tableClass == null)&#123;
-            return false;
-        &#125;
-
-        Table table = (Table)tableClass.getAnnotation(Table.class);
-
-        if (table == null)&#123;
-            return false;
-        &#125;
-
-        String sql = BASE_UPDATE + table.value() + BASE_SET;
-        String where = BASE_WHERE;
-
-        //获取属性标注的字段值，自动解析字段
-        Field[] fields = tableClass.getDeclaredFields();
-
-        StringBuilder sqlSB = new StringBuilder();
-        StringBuilder keySB = new StringBuilder();
-        sqlSB.append(sql);
-        keySB.append(where);
-        for (Field field : fields) &#123;
-            TableColumn tableColumn = field.getAnnotation(TableColumn.class);
-            if (tableColumn != null)&#123;
-                //获取属性名
-                String propertyName = field.getName();
-                //get函数名
-                String getMethodName = &quot;get&quot; + propertyName.substring(0,1).toUpperCase() + propertyName.substring(1);
-                //字段名
-                String columnLabel = tableColumn.value();
-                //获取属性类型
-                String typeName = field.getGenericType().getTypeName();
-                try &#123;
-                    //获取到类型字节码
-                    Class typeClass = TYPE_MAP.get(typeName);
-                    //获取到set方法
-                    Method objectFieldGet = tableClass.getMethod(getMethodName);
-                    Object value = objectFieldGet.invoke(t);
-                    if (value != null)&#123;
-
-                        Key key = field.getAnnotation(Key.class);
-
-                        boolean isKey = false;
-                        StringBuilder sb;
-                        if (key != null)&#123;
-                            keySB.append(AND);
-                            isKey = true;
-                            sb = keySB;
-                        &#125;else &#123;
-                            sb = sqlSB;
-                        &#125;
-
-                        //拼接表字段名
-                        sb.append(COLUMN_FLAG);
-                        sb.append(columnLabel);
-                        sb.append(COLUMN_FLAG);
-                        sb.append(EQUAL);
-
-                        //拼接值
-                        if (typeClass.getTypeName().equals(STRING))&#123;
-                            sb.append(STRING_FLAG);
-                            sb.append(value);
-                            sb.append(STRING_FLAG);
-                        &#125;else if (typeClass.getTypeName().equals(DATE))&#123;
-                            sb.append(STRING_FLAG);
-                            sb.append(SIMPLE_DATE_FORMAT.format(value));
-                            sb.append(STRING_FLAG);
-                        &#125;else &#123;
-                            sb.append(value);
-                        &#125;
-                        if (!isKey)&#123;
-                            sb.append(SPLIT);
-                        &#125;
-                    &#125;
-                &#125; catch (NoSuchMethodException e) &#123;
-                    e.printStackTrace();
-                &#125; catch (IllegalAccessException e) &#123;
-                    e.printStackTrace();
-                &#125; catch (InvocationTargetException e) &#123;
-                    e.printStackTrace();
-                &#125;
-            &#125;
-        &#125;
-
-        sql = sqlSB.toString();
-        where = keySB.toString();
-
-        //整理
-        if (sql.endsWith(SPLIT))&#123;
-            sql = sql.substring(0,sql.length()-1);
-        &#125;
-
-        //更新语句整合
-        String updateSql = sql + SPACE + where;
-        if (sqlAppend != EMPTY)&#123;
-            updateSql += AND + sqlAppend;
-        &#125;
-        //执行
-        boolean execute = false;
-        try &#123;
-            Statement statement = connection.createStatement();
-
-            execute = statement.execute(updateSql);
-        &#125; catch (SQLException throwables) &#123;
-            throwables.printStackTrace();
-        &#125;
-        return execute;
-
-    &#125;
-
-
-    /**
-     *
-     * @param t
-     * @param connection
-     * @param &lt;T&gt;
-     * @return
-     */
-    public static &lt;T&gt;boolean insert(T t, Connection connection)&#123;
-        Class tableClass = t.getClass();
-
-        if (tableClass == null)&#123;
-            return false;
-        &#125;
-
-        Table table = (Table)tableClass.getAnnotation(Table.class);
-
-        if (table == null)&#123;
-            return false;
-        &#125;
-
-        String sql = BASE_INSERT + table.value() + START;
-        String values = BASE_VALUES + START;
-
-        //获取属性标注的字段值，自动解析字段
-        Field[] fields = tableClass.getDeclaredFields();
-
-        StringBuilder sqlSB = new StringBuilder();
-        sqlSB.append(sql);
-        StringBuilder valueSB = new StringBuilder();
-        valueSB.append(values);
-        for (Field field : fields) &#123;
-            TableColumn tableColumn = field.getAnnotation(TableColumn.class);
-            if (tableColumn != null)&#123;
-                //获取属性名
-                String propertyName = field.getName();
-                //get函数名
-                String getMethodName = &quot;get&quot; + propertyName.substring(0,1).toUpperCase() + propertyName.substring(1);
-                //字段名
-                String columnLabel = tableColumn.value();
-                //获取属性类型
-                String typeName = field.getGenericType().getTypeName();
-                try &#123;
-                    //获取到类型字节码
-                    Class typeClass = TYPE_MAP.get(typeName);
-                    //获取到set方法
-                    Method objectFieldGet = tableClass.getMethod(getMethodName);
-                    Object value = objectFieldGet.invoke(t);
-                    if (value != null)&#123;
-
-                        //拼接表字段名
-                        sqlSB.append(COLUMN_FLAG);
-                        sqlSB.append(columnLabel);
-                        sqlSB.append(COLUMN_FLAG);
-                        sqlSB.append(SPLIT);
-
-                        //拼接值
-                        if (typeClass.getTypeName().equals(STRING))&#123;
-                            valueSB.append(STRING_FLAG);
-                            valueSB.append(value);
-                            valueSB.append(STRING_FLAG);
-                        &#125;else if (typeClass.getTypeName().equals(DATE))&#123;
-                            valueSB.append(STRING_FLAG);
-                            valueSB.append(SIMPLE_DATE_FORMAT.format(value));
-                            valueSB.append(STRING_FLAG);
-                        &#125;else &#123;
-                            valueSB.append(value);
-                        &#125;
-                        valueSB.append(SPLIT);
-                    &#125;
-                &#125; catch (NoSuchMethodException e) &#123;
-                    e.printStackTrace();
-                &#125; catch (IllegalAccessException e) &#123;
-                    e.printStackTrace();
-                &#125; catch (InvocationTargetException e) &#123;
-                    e.printStackTrace();
-                &#125;
-            &#125;
-        &#125;
-
-        sql = sqlSB.toString();
-        values = valueSB.toString();
-
-        //整理
-        if (sql.endsWith(SPLIT))&#123;
-            sql = sql.substring(0,sql.length()-1) + END;
-        &#125;
-        //整理
-        if (values.endsWith(SPLIT))&#123;
-            values = values.substring(0,values.length()-1) + END;
-        &#125;
-        //插入语句整合
-        String insertSql = sql + values;
-        System.out.println(insertSql);
-        //执行
-        boolean execute = false;
-        try &#123;
-            Statement statement = connection.createStatement();
-
-            execute = statement.execute(insertSql);
-        &#125; catch (SQLException throwables) &#123;
-            throwables.printStackTrace();
-        &#125;
-        return execute;
-
-    &#125;
-
-    /**
-     * 自动解析result为对应持久对象数组
-     * @param resultSet 结果集
-     * @param tClass 持久对象字节码
-     * @param &lt;T&gt; 持久对象泛型
-     * @return
-     */
-    public static &lt;T&gt;List&lt;T&gt; toObjectList(ResultSet resultSet, Class&lt;T&gt; tClass)&#123;
-
-        List&lt;TableColumnGetter&gt; tableColumnGetterList = new ArrayList&lt;&gt;();
-
-        Class tableClass = tClass;
-        if (tableClass == null)&#123;
-            return new ArrayList&lt;&gt;();
-        &#125;
-        //获取属性标注的字段值，自动解析字段
-        Field[] fields = tableClass.getDeclaredFields();
-        for (Field field : fields) &#123;
-            TableColumn tableColumn = field.getAnnotation(TableColumn.class);
-            if (tableColumn != null)&#123;
-                //获取属性名
-                String propertyName = field.getName();
-                //set函数名
-                String setMethodName = &quot;set&quot; + propertyName.substring(0,1).toUpperCase() + propertyName.substring(1);
-                //字段名
-                String columnLabel = tableColumn.value();
-                //获取属性类型
-                String typeName = field.getGenericType().getTypeName();
-                try &#123;
-                    //获取到类型字节码
-                    Class typeClass = TYPE_MAP.get(typeName);
-                    //获取到set方法
-                    Method objectFieldSet = tableClass.getMethod(setMethodName,typeClass);
-                    //获取到字段对应的值
-                    Class&lt;? extends ResultSet&gt; resultSetClass = resultSet.getClass();
-                    //组装resultSet的get函数名称
-                    String getMethodName = &quot;get&quot; + METHOD_MAP.get(typeName);
-                    //获取到对应解析函数字节码
-                    Method resultSetGet = resultSetClass.getMethod(getMethodName, String.class);
-                    //创建获取字段注入器
-                    TableColumnGetter tableColumnGetter = new TableColumnGetter(objectFieldSet, resultSetGet, columnLabel);
-                    //整合字段注入器列表
-                    tableColumnGetterList.add(tableColumnGetter);
-                &#125; catch (NoSuchMethodException e) &#123;
-                    e.printStackTrace();
-                &#125;
-            &#125;
-        &#125;
-        //创建表处理器
-        TableHandler tableHandler = new TableHandler(tableClass,tableColumnGetterList);
-        //获取表java实例列表
-        List objectList = tableHandler.getObjectList(resultSet);
-        return objectList;
-    &#125;
-
-&#125;
+if __name__ == &#39;__main__&#39;:
+    global local
+    local = local()
+    for i in range(10):
+        t = Thread(target=func, args=(i,))
+        t.start()
 </code></pre>
-<pre><code class="java">package orm.annotation;
+<blockquote>
+<p>threadlocal为每个线程开辟了一个空间，当不同线程进入使用local时，所操作的将是当前线程的值，不和其它线程共享</p>
+</blockquote>
+<p><strong>使用threading.local的SqlHelper</strong></p>
+<pre><code class="python">import pymysql
+from dbutils.pooled_db import PooledDB
+import threading
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+class SqlHelper(object):
 
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Key &#123;
-&#125;
+
+    def __init__(self):
+        self.threadLocalMap = &#123;&#125;
+        self.pool = PooledDB(
+            creator=pymysql,
+            maxconnections=6,  # 最大连接数量 0和None表示不限制数量
+            blocking=True,  # 连接池中如果没有可用连接后，是否阻塞等待，不等待抛出异常
+            ping=0,  # 检查Mysql服务器是否可用，0表示不检查, 1 = default 请求都会检查 #2 创建cursor时检查 #4 执行sql时检查 #7 全部检查
+            host=&#39;localhost&#39;,
+            port=3306,
+            user=&#39;root&#39;,
+            passwd=&#39;root&#39;,
+            database=&#39;web_test&#39;,
+            charset=&#39;utf8&#39;
+        )
+        self.local = threading.local()
+
+    def open(self):
+        connection = self.pool.connection()
+        cursor = connection.cursor()
+        return connection, cursor
+
+    def close(self, connection, cursor):
+        cursor.close()
+        connection.close()
+
+    def __enter__(self):
+        con, cur = self.open()
+        rv = getattr(self.local,&#39;stack&#39;,None)
+        if rv is None:
+            self.local.stack = [(con,cur)]
+        else:
+            rv.append(cur)
+        return cur
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        rv = getattr(self.local, &#39;stack&#39;, None)
+        if not rv:
+            del rv
+            return
+        con,cur = rv.pop()
+        self.close(con,cur)
+
+db = SqlHelper()
 </code></pre>
-<pre><code class="java">package orm.annotation;
+<p><strong>测试</strong></p>
+<pre><code class="python">from threading import Thread
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+def func():
+    from sqlHelper2 import db
+    with db as db:
+        db.execute(&quot;select * from user&quot;)
+        result = db.fetchall()
+        print(&quot;result1====&gt;&quot;,result)
 
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Table &#123;
-    String value();
-&#125;
+if __name__ == &#39;__main__&#39;:
+    for i in range(30):
+        t1 = Thread(name=f&quot;测试&#123;i&#125;&quot;, target=func)
+        t1.start()
 </code></pre>
+<p>在这个 <code>SqlHelper</code> 类中，使用 <code>stack</code>（栈）是为了管理数据库连接和游标对象的生命周期，特别是在使用上下文管理器（<code>__enter__</code> 和 <code>__exit__</code> 方法）时。这样做有几个好处：</p>
+<ol>
+<li><strong>维护数据库连接和游标的配对</strong>：每次进入 <code>__enter__</code> 方法时，都会打开一个新的数据库连接和游标，并将它们作为一个元组压入栈中。这样，每个连接都有一个对应的游标，并且它们可以被正确地配对。</li>
+<li><strong>支持嵌套的数据库操作</strong>：在某些情况下，你可能需要在已经打开的数据库连接中执行更深层次的操作，这可能涉及到再次进入 <code>__enter__</code> 和 <code>__exit__</code> 方法。使用栈可以确保即使在嵌套的情况下，每个 <code>__enter__</code> 调用都有一个对应的 <code>__exit__</code> 调用来关闭连接和游标。</li>
+<li><strong>确保资源正确释放</strong>：在 <code>__exit__</code> 方法中，通过弹出栈顶的元素（即最后打开的连接和游标）来关闭它们。这样可以确保即使在发生异常时，资源也能被正确释放，避免资源泄露。</li>
+<li><strong>线程安全</strong>：由于每个线程都有自己的 <code>threading.local()</code> 对象，因此每个线程都有自己的栈，这确保了线程安全，不同线程的数据库操作不会互相干扰。</li>
+</ol>
+<h2 id="静态文件目录"><a href="#静态文件目录" class="headerlink" title="静态文件目录"></a>静态文件目录</h2><pre><code class="python">app = Flask(__name__,static_url_path=&#39;/static&#39;,static_folder=&#39;static&#39;)
+</code></pre>
+<blockquote>
+<p>static_url_path是用于识别静态文件引入的url标识</p>
+<p>static_folder则是静态文件目录位置</p>
+</blockquote>
+<pre><code class="python">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;主页面&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ 主页面
+&lt;img src=&quot;&#123;&#123;url_for('static', filename='test.png')&#125;&#125;&quot; /&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<blockquote>
+<p>推荐使用<code>url_for</code>来引入静态文件，以避免静态文件名修改需要重新修改引入路径名</p>
+</blockquote>
+<p><strong>全局模板函数</strong></p>
+<p>使用app.template_global装饰器直接将函数注册为模板全局函数</p>
+<p><code>template_global</code></p>
+<p>定制在所有模板中可以使用的函数</p>
+<pre><code class="python">@app.template_global
+def bar():
+    return &quot;I am bar.&quot;
+</code></pre>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;index&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;hr /&gt;
+    &lt;p&gt;调用bar()的结果为：&#123;&#123; bar() &#125;&#125;&lt;/p&gt;
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="加载配置文件"><a href="#加载配置文件" class="headerlink" title="加载配置文件"></a>加载配置文件</h2><p><strong>基于全局变量配置</strong></p>
+<pre><code class="python">app = Flask(__name__)
+
+#加载配置文件
+app.config.from_object(&#39;config.settings&#39;)
+
+print(app.config[&#39;DB_HOST&#39;])
+</code></pre>
+<blockquote>
+<p>到config包下的settings.py文件中加载配置</p>
+</blockquote>
+<p><strong>配置文件</strong></p>
+<pre><code class="python">DB_HOST = &#39;192.168.16.88&#39;
+
+#导入本地配置文件（如测试环境，会使用以下操作），如果要上传生产环境不上传localsettings
+try:
+    from .localsettings import *
+except ImportError:
+    pass
+</code></pre>
+<blockquote>
+<p>通常在本地使用测试文件时会将配置放在localsettings里，去覆盖生产配置文件</p>
+</blockquote>
+<h2 id="路由系统"><a href="#路由系统" class="headerlink" title="路由系统"></a>路由系统</h2><p>路由的两种写法</p>
+<pre><code class="python">@app.route(&#39;/index&#39;)
+def index():
+    return render_template(&#39;index.html&#39;)
+</code></pre>
+<pre><code class="python">def index():
+    return render_template(&#39;index.html&#39;)
+app.add_url_rule(&#39;/index&#39;,&#39;index&#39;,index)
+</code></pre>
+<blockquote>
+<p>两种写法本质上没有区别</p>
+</blockquote>
+<p><strong>动态路由基本过程</strong></p>
+<ul>
+<li>将url和函数打包成rule对象</li>
+<li>将rule对象加到Map对象中</li>
+<li>app.url_map &#x3D; Map对象</li>
+</ul>
+<h2 id="请求钩子"><a href="#请求钩子" class="headerlink" title="请求钩子"></a>请求钩子</h2><p>请求钩子允许你在处理请求的不同阶段插入代码，Flask 提供了几种钩子来处理请求生命周期的不同阶段：</p>
+<ul>
+<li>**<code>before_request</code>**：在每个请求处理之前执行。</li>
+<li>**<code>after_request</code>**：在每个请求处理之后执行。</li>
+<li>**<code>teardown_request</code>**：请求处理结束后，无论是否发生异常都会执行。</li>
+<li>**<code>before_first_request</code>**：仅在应用第一次处理请求之前执行。</li>
+</ul>
+<pre><code class="python">app = Flask(__name__)
+
+@app.before_request
+def func():
+    print(request.headers)
+
+@app.after_request
+def after_request(response):
+    return response
+</code></pre>
+<p><strong>两个常用装饰器执行顺序</strong></p>
+<pre><code class="python">@app.before_request
+def func1():
+    print(&quot;func1&quot;)
+
+@app.before_request
+def func2():
+    print(&quot;func2&quot;)
+
+@app.after_request
+def after_request1(response):
+    print(&quot;after1&quot;)
+    return response
+
+@app.after_request
+def after_request2(response):
+    print(&quot;after2&quot;)
+    return response
+</code></pre>
+<blockquote>
+<p>一个请求进入，打印func1 func2 after2 after1 </p>
+<p>before_request按照谁在前谁先生效的原则</p>
+<p>after_request则反之</p>
+</blockquote>
+<ul>
+<li>对于钩子函数，是可以在蓝图中定义的，但是作用域也只会在定义的蓝图内生效</li>
+</ul>
+<h2 id="Flask工作流程"><a href="#Flask工作流程" class="headerlink" title="Flask工作流程"></a>Flask工作流程</h2><p><strong>当有用户请求到来时</strong></p>
+<ol>
+<li>创建ctx &#x3D; RequestContext对象，其内部封装了Request对象，g对象</li>
+<li>创建app_ctx &#x3D; AppContext对象，内部封装了App对象，g对象</li>
+<li>ctx.push函数触发ctx和app_ctx通过自己的LocalStack对象将其放入Local中，Local的本质是一个以线程ID为key，以栈为value的字典</li>
+<li>执行所有before_request函数</li>
+<li>执行视图函数</li>
+<li>执行所有after_request函数（session加密放到cookie中）</li>
+<li>销毁ctx和app_ctx</li>
+</ol>
+<blockquote>
+<p>g保存的是当前请求的全局变量，仅在当前这一个请求内，从一个函数到另一个函数共享数据，不同的请求会有不同的全局变量，通过不同的thread id区别</p>
+</blockquote>
+<p>补充：在Flask中request，session，g都使用LocalProxy和偏函数的方式进行代理本质上都是调用<code>ctx.操作对象</code>的方式</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 1300452403@qq.com </span>
@@ -2211,12 +2213,12 @@ public @interface Table &#123;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>简单ORM映射方案(JDBC)</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">3k</span></p>
+    <p><span class="copy-title">文章标题:</span>Flask</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">4.6k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="Os467">Os467</a></p>
-    <p><span class="copy-title">发布时间:</span>2023-12-25, 18:43:30</p>
-    <p><span class="copy-title">最后更新:</span>2023-12-25, 18:43:49</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2023/12/25/%E7%AE%80%E5%8D%95ORM%E6%98%A0%E5%B0%84%E6%96%B9%E6%A1%88/" title="简单ORM映射方案(JDBC)">https://os467.github.io/2023/12/25/%E7%AE%80%E5%8D%95ORM%E6%98%A0%E5%B0%84%E6%96%B9%E6%A1%88/</a>
+    <p><span class="copy-title">发布时间:</span>2024-12-18, 11:39:13</p>
+    <p><span class="copy-title">最后更新:</span>2024-12-18, 11:40:20</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/12/18/flask/" title="Flask">https://os467.github.io/2024/12/18/flask/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
